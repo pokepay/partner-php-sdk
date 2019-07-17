@@ -10,5 +10,6 @@
         }
     ],
     "require": {
+        "ramsey/uuid": "^3.8"
     }
 }
