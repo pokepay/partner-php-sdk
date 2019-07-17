@@ -1,0 +1,14 @@
+{
+    "name": "pokepay/partner-php-sdk",
+    "description": "Pokepay Partner API SDK for PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pocket Change",
+            "homepage": "https://www.pocket-change.jp"
+        }
+    ],
+    "require": {
+    }
+}
