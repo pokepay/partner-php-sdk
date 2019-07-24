@@ -10,7 +10,7 @@ $client->send($request);
 
 ## Prerequisites
 
-- PHP 5.6.40 or above
+- PHP 5.6 or above
 - curl, json and openssl extensions
 
 ## Configuration
