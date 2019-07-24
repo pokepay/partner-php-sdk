@@ -1,7 +1,7 @@
 <?php
-namespace Pokepay;
+namespace Pokepay\Request;
 
-abstract class Request
+abstract class Base
 {
     protected $method = 'GET';
     protected $path;

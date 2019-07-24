@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Request;
 
-class SendEcho extends \Pokepay\Request
+class SendEcho extends Base
 {
     protected $method = 'POST';
     protected $path = '/echo';
@@ -9,6 +9,7 @@ class SendEcho extends \Pokepay\Request
 
     public function __construct($params)
     {
+        parent::__construct();
         $this->params = $params;
     }
 
