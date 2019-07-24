@@ -3,7 +3,6 @@ namespace Pokepay;
 
 use Pokepay\Error\ApiConnection;
 use Pokepay\Error\HttpRequest;
-use Ramsey\Uuid\Uuid;
 use DateTime;
 use DateTimeZone;
 
@@ -19,14 +18,14 @@ class HttpClient
         $this->secretKey = Util::base64url_decode($clientSecret);
     }
 
-    public function request($method, $url, $headers, $params)
+    public function request($callId, $method, $url, $headers, $params)
     {
         $curl = curl_init();
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, self::encodeParameters($params));
+        curl_setopt($curl, CURLOPT_POSTFIELDS, self::encodeParameters($callId, $params));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($curl, CURLOPT_TIMEOUT, 5);
@@ -54,7 +53,7 @@ class HttpClient
         return Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
     }
 
-    private function encodeParameters($params)
+    private function encodeParameters($callId, $params)
     {
         $date = new DateTime("now", new DateTimeZone($this->timezone));
 
@@ -66,7 +65,7 @@ class HttpClient
                         array(
                             'request_data' => $params,
                             'timestamp' => $date->format(DateTime::ATOM),
-                            'partner_call_id' => Uuid::uuid4()
+                            'partner_call_id' => $callId
                         )
                     ),
                     $this->secretKey

@@ -32,6 +32,7 @@ class PartnerAPI
         }
 
         return $this->clientInstance->request(
+            $request->getCallId(),
             $request->getMethod(),
             $this->apiBase . $request->getPath(),
             $request->getHeaders(),
