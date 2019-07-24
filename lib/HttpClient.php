@@ -2,6 +2,7 @@
 namespace Pokepay;
 
 use Pokepay\Error\ApiConnection;
+use Pokepay\Error\HttpRequest;
 
 class HttpClient
 {
@@ -26,9 +27,16 @@ class HttpClient
             throw new Error\ApiConnection($errno, $message);
         }
 
-        $responseBody = json_decode($response, TRUE);
+        $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        if (400 <= $code)
+        {
+            curl_close($curl);
+            throw new Error\HttpRequest($code, $response);
+        }
 
         curl_close($curl);
+        $responseBody = json_decode($response, TRUE);
 
         return $responseBody;
     }
