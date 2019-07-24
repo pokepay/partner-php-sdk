@@ -5,11 +5,13 @@ use Pokepay\Error\ApiConnection;
 use Pokepay\Error\HttpRequest;
 use Ramsey\Uuid\Uuid;
 use DateTime;
+use DateTimeZone;
 
 class HttpClient
 {
     private $clientId;
     private $secretKey;
+    private $timezone = 'Asia/Tokyo';
 
     public function __construct($clientId, $clientSecret)
     {
@@ -54,7 +56,7 @@ class HttpClient
 
     private function encodeParameters($params)
     {
-        $date = new DateTime();
+        $date = new DateTime("now", new DateTimeZone($this->timezone));
 
         return json_encode(
             array(
