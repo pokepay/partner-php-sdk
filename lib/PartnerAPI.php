@@ -11,13 +11,18 @@ class PartnerAPI
     public static $apiBase = 'https://partnerapi-sandbox.pokepay.jp';
     const VERSION = '0.1.0';
 
-    public static function setCredentials($clientId, $clientSecret)
+    function __construct($clientId, $clientSecret)
     {
         self::$clientId = $clientId;
         self::$clientSecret = $clientSecret;
     }
 
-    public static function echo($content)
+    public function setApiBase($apiBase)
+    {
+        self::$apiBase = $apiBase;
+    }
+
+    public function echo($content)
     {
         $key = Util::base64url_decode(self::$clientSecret);
         $date = new DateTime();

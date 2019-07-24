@@ -3,8 +3,8 @@
 ## Usage
 
 ```php
-\Pokepay\PartnerAPI::setCredentials("clientId_xxxxxxx...", "clientSecret_xxxxxxx...");
-\Pokepay\PartnerAPI::echo('{"message":"hello"}');
+$client = new Pokepay\PartnerAPI("clientId_xxxxxxx...", "clientSecret_xxxxxxx...");
+$client->echo('{"message":"hello"}');
 ```
 
 ## Copyright
