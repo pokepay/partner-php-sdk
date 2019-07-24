@@ -41,7 +41,13 @@ class HttpClient
 
         $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-        $responseBody = json_decode($response, TRUE);
+        $responseBody = json_decode($response, true);
+
+        if (!is_array($responseBody) || !array_key_exists('response_data', $responseBody))
+        {
+            throw new Error\ApiConnection(0, $response);
+        }
+
         $responseData = Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
 
         if (400 <= $code)
