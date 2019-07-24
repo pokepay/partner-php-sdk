@@ -1,6 +1,7 @@
 <?php
 namespace Pokepay;
 
+use Pokepay\HttpClient;
 use Ramsey\Uuid\Uuid;
 use DateTime;
 
@@ -39,15 +40,12 @@ class PartnerAPI
                 $key
             )
         );
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, self::$apiBase . '/echo');
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($requestBody));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($curl);
-        curl_close($curl);
-        $responseBody = json_decode($response, TRUE);
+
+        $client = new HttpClient();
+        $responseBody = $client->request('POST', self::$apiBase . '/echo',
+                                         array('Content-Type: application/json'),
+                                         json_encode($requestBody));
+
         return Crypto::decodeAES256($responseBody['response_data'], $key);
     }
 }
