@@ -5,26 +5,26 @@ use Pokepay\HttpClient;
 
 class PartnerAPI
 {
-    public static $clientId;
-    public static $clientSecret;
-    public static $apiBase = 'https://partnerapi-sandbox.pokepay.jp';
+    private $clientId;
+    private $clientSecret;
+    private $apiBase = 'https://partnerapi-sandbox.pokepay.jp';
     const VERSION = '0.1.0';
 
     function __construct($clientId, $clientSecret)
     {
-        self::$clientId = $clientId;
-        self::$clientSecret = $clientSecret;
+        $this->clientId = $clientId;
+        $this->clientSecret = $clientSecret;
     }
 
     public function setApiBase($apiBase)
     {
-        self::$apiBase = $apiBase;
+        $this->apiBase = $apiBase;
     }
 
     public function echo($params)
     {
-        $client = new HttpClient(self::$clientId, self::$clientSecret);
-        $responseBody = $client->request('POST', self::$apiBase . '/echo',
+        $client = new HttpClient($this->clientId, $this->clientSecret);
+        $responseBody = $client->request('POST', $this->apiBase . '/echo',
                                          array('Content-Type: application/json'),
                                          $params);
 
