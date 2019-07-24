@@ -44,17 +44,22 @@ class Transaction
     public $customerName;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $terminalId;
 
     /**
-     * @var double
+     * @var double|null
+     */
+    public $amount;
+
+    /**
+     * @var double|null
      */
     public $moneyAmount;
 
     /**
-     * @var double
+     * @var double|null
      */
     public $pointAmount;
 
@@ -69,12 +74,17 @@ class Transaction
     public $deviceType;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $organizationCode;
 
     /**
-     * @var Transfer[]
+     * @var string|null
+     */
+    public $organizationName;
+
+    /**
+     * @var Transfer[]|null
      */
     public $rows;
 }

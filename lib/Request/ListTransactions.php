@@ -6,6 +6,8 @@ class ListTransactions extends Base
     protected $method = 'GET';
     protected $path = '/transactions';
 
+    public $responseClass = 'PaginatedTransactions';
+
     private $filterArgs;
 
     public function __construct($filterArgs = array())
