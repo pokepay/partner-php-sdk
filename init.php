@@ -7,6 +7,8 @@ require(dirname(__FILE__) . '/lib/Request/SendEcho.php');
 require(dirname(__FILE__) . '/lib/Request/ListTransactions.php');
 require(dirname(__FILE__) . '/lib/Request/ShowTransaction.php');
 require(dirname(__FILE__) . '/lib/Request/RefundTransaction.php');
+require(dirname(__FILE__) . '/lib/Response/Transaction.php');
+require(dirname(__FILE__) . '/lib/Response/Transfer.php');
 require(dirname(__FILE__) . '/lib/Error/ApiConnection.php');
 require(dirname(__FILE__) . '/lib/Error/HttpRequest.php');
 require(dirname(__FILE__) . '/lib/Util.php');

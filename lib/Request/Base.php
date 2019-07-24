@@ -8,6 +8,8 @@ abstract class Base
     protected $method = 'GET';
     protected $path;
 
+    public $responseClass;
+
     private $callId;
 
     public function __construct()

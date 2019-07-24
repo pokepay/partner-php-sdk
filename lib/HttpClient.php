@@ -5,6 +5,7 @@ use Pokepay\Error\ApiConnection;
 use Pokepay\Error\HttpRequest;
 use DateTime;
 use DateTimeZone;
+use JsonMapper;
 
 class HttpClient
 {
@@ -18,7 +19,7 @@ class HttpClient
         $this->secretKey = Util::base64url_decode($clientSecret);
     }
 
-    public function request($callId, $method, $url, $headers, $params)
+    public function request($callId, $method, $url, $headers, $params, $responseClass)
     {
         $curl = curl_init();
 
@@ -55,7 +56,7 @@ class HttpClient
             throw new Error\HttpRequest($code, $responseData);
         }
 
-        return json_decode($responseData, TRUE);
+        return self::decodeResponse($responseData, $responseClass);
     }
 
     private function encodeParameters($callId, $params)
@@ -77,5 +78,44 @@ class HttpClient
                 )
             )
         );
+    }
+
+    private static function decodeResponse($data, $class)
+    {
+        $decodedData = self::camelizeArray(json_decode($data, true));
+
+        if (!$class)
+        {
+            return $decodedData;
+        }
+
+        $jm = new JsonMapper();
+        $jm->bEnforceMapType = false;
+
+        $responseClassName = 'Pokepay\Response\\' . $class;
+
+        return $jm->map($decodedData, new $responseClassName);
+    }
+
+    private static function camel($str)
+    {
+        return lcfirst(strtr(ucwords(strtr($str, ['_' => ' '])), [' ' => '']));
+    }
+
+    private static function camelizeArray($array)
+    {
+        $results = [];
+        foreach ($array as $key => $value)
+        {
+            if (is_array($value))
+            {
+                $results[self::camel($key)] = self::camelizeArray($value);
+            }
+            else
+            {
+                $results[self::camel($key)] = $value;
+            }
+        }
+        return $results;
     }
 }

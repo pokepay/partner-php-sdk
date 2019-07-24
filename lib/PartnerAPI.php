@@ -36,7 +36,8 @@ class PartnerAPI
             $request->getMethod(),
             $this->apiBase . $request->getPath(),
             $request->getHeaders(),
-            $request->getParams()
+            $request->getParams(),
+            $request->responseClass
         );
     }
 }
