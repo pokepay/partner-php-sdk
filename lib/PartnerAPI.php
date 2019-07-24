@@ -2,8 +2,6 @@
 namespace Pokepay;
 
 use Pokepay\HttpClient;
-use Ramsey\Uuid\Uuid;
-use DateTime;
 
 class PartnerAPI
 {
@@ -23,29 +21,13 @@ class PartnerAPI
         self::$apiBase = $apiBase;
     }
 
-    public function echo($content)
+    public function echo($params)
     {
-        $key = Util::base64url_decode(self::$clientSecret);
-        $date = new DateTime();
-        $requestBody = array(
-            'partner_client_id' => self::$clientId,
-            'data' => Crypto::encodeAES256(
-                json_encode(
-                    array(
-                        'request_data' => json_decode($content, TRUE),
-                        'timestamp' => $date->format(DateTime::ATOM),
-                        'partner_call_id' => Uuid::uuid4()
-                    )
-                ),
-                $key
-            )
-        );
-
-        $client = new HttpClient();
+        $client = new HttpClient(self::$clientId, self::$clientSecret);
         $responseBody = $client->request('POST', self::$apiBase . '/echo',
                                          array('Content-Type: application/json'),
-                                         json_encode($requestBody));
+                                         $params);
 
-        return Crypto::decodeAES256($responseBody['response_data'], $key);
+        return $responseBody;
     }
 }

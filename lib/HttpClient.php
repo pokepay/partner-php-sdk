@@ -3,17 +3,28 @@ namespace Pokepay;
 
 use Pokepay\Error\ApiConnection;
 use Pokepay\Error\HttpRequest;
+use Ramsey\Uuid\Uuid;
+use DateTime;
 
 class HttpClient
 {
-    public function request($method, $url, $headers, $requestBody)
+    private $clientId;
+    private $secretKey;
+
+    public function __construct($clientId, $clientSecret)
+    {
+        $this->clientId = $clientId;
+        $this->secretKey = Util::base64url_decode($clientSecret);
+    }
+
+    public function request($method, $url, $headers, $params)
     {
         $curl = curl_init();
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $requestBody);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, self::encodeParameters($params));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($curl, CURLOPT_TIMEOUT, 5);
@@ -38,6 +49,27 @@ class HttpClient
         curl_close($curl);
         $responseBody = json_decode($response, TRUE);
 
-        return $responseBody;
+        return Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
+    }
+
+    private function encodeParameters($params)
+    {
+        $date = new DateTime();
+
+        return json_encode(
+            array(
+                'partner_client_id' => $this->clientId,
+                'data' => Crypto::encodeAES256(
+                    json_encode(
+                        array(
+                            'request_data' => $params,
+                            'timestamp' => $date->format(DateTime::ATOM),
+                            'partner_call_id' => Uuid::uuid4()
+                        )
+                    ),
+                    $this->secretKey
+                )
+            )
+        );
     }
 }
