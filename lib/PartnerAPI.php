@@ -13,10 +13,10 @@ class PartnerAPI
 
     private $clientInstance;
 
-    function __construct($clientId, $clientSecret)
+    function __construct($clientId = null, $clientSecret = null)
     {
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
+        $this->clientId = isset($clientId) ? $clientId : getenv('POKEPAY_PARTNER_CLIENT_ID');
+        $this->clientSecret = isset($clientSecret) ? $clientSecret : getenv('POKEPAY_PARTNER_CLIENT_SECRET');
     }
 
     public function setApiBase($apiBase)
