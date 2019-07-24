@@ -40,17 +40,16 @@ class HttpClient
         }
 
         $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        curl_close($curl);
+        $responseBody = json_decode($response, TRUE);
+        $responseData = Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
 
         if (400 <= $code)
         {
-            curl_close($curl);
-            throw new Error\HttpRequest($code, $response);
+            throw new Error\HttpRequest($code, $responseData);
         }
 
-        curl_close($curl);
-        $responseBody = json_decode($response, TRUE);
-
-        return Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
+        return json_decode($responseData, TRUE);
     }
 
     private function encodeParameters($callId, $params)
