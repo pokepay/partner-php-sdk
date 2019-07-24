@@ -8,7 +8,10 @@ class PartnerAPI
     private $clientId;
     private $clientSecret;
     private $apiBase = 'https://partnerapi-sandbox.pokepay.jp';
+
     const VERSION = '0.1.0';
+
+    private $clientInstance;
 
     function __construct($clientId, $clientSecret)
     {
@@ -21,13 +24,18 @@ class PartnerAPI
         $this->apiBase = $apiBase;
     }
 
-    public function echo($params)
+    public function send($request)
     {
-        $client = new HttpClient($this->clientId, $this->clientSecret);
-        $responseBody = $client->request('POST', $this->apiBase . '/echo',
-                                         array('Content-Type: application/json'),
-                                         $params);
+        if (!$this->clientInstance)
+        {
+            $this->clientInstance = new HttpClient($this->clientId, $this->clientSecret);
+        }
 
-        return $responseBody;
+        return $this->clientInstance->request(
+            $request->getMethod(),
+            $this->apiBase . $request->getPath(),
+            $request->getHeaders(),
+            $request->getParams()
+        );
     }
 }

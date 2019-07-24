@@ -4,7 +4,8 @@
 
 ```php
 $client = new Pokepay\PartnerAPI("clientId_xxxxxxx...", "clientSecret_xxxxxxx...");
-$client->echo(array('message' => 'hello'));
+$request = new Pokepay\Request\SendEcho(array('message' => 'hello'));
+$client->send($request);
 ```
 
 ## Copyright
