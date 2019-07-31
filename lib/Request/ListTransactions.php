@@ -1,6 +1,8 @@
 <?php
 namespace Pokepay\Request;
 
+use DateTime;
+
 class ListTransactions extends Base
 {
     protected $method = 'GET';
@@ -18,6 +20,19 @@ class ListTransactions extends Base
 
     public function getParams()
     {
-        return $this->filterArgs;
+        $params = array();
+        foreach ($this->filterArgs as $key => $val) {
+            if ($val instanceof DateTime) {
+                $params[$key] = $val->format(DateTime::ATOM);
+            }
+            else if (is_bool($val)) {
+                $params[$key] = $val ? "true" : "false";
+            }
+            else {
+                $params[$key] = strval($val);
+            }
+        }
+
+        return $params;
     }
 }
