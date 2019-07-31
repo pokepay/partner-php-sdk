@@ -22,6 +22,11 @@ abstract class Base
         return $this->callId;
     }
 
+    public function setCallId($newCallId)
+    {
+        $this->callId = $newCallId;
+    }
+
     public function getMethod()
     {
         return $this->method;
