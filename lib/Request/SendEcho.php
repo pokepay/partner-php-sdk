@@ -5,16 +5,16 @@ class SendEcho extends Base
 {
     protected $method = 'POST';
     protected $path = '/echo';
-    private $params;
+    private $message;
 
-    public function __construct($params)
+    public function __construct($message)
     {
         parent::__construct();
-        $this->params = $params;
+        $this->message = $message;
     }
 
     public function getParams()
     {
-        return $this->params;
+        return array('message' => $this->message);
     }
 }

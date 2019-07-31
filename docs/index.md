@@ -57,7 +57,7 @@ Partner APIへの通信はリクエストオブジェクトを作り、`Pokepay\
 たとえば `Pokepay\Request\SendEcho` 送信した内容をそのまま返す処理です。
 
 ```php
-$request = new Pokepay\Request\SendEcho(array('message' => 'hello'));
+$request = new Pokepay\Request\SendEcho('hello');
 
 $client->send($request);
 //=> array('message' => 'hello')
