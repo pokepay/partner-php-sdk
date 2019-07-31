@@ -17,6 +17,7 @@ require dirname(__FILE__) . '/lib/Request/CreateShop.php';
 require dirname(__FILE__) . '/lib/Response/Transaction.php';
 require dirname(__FILE__) . '/lib/Response/Transfer.php';
 require dirname(__FILE__) . '/lib/Response/Organization.php';
+require dirname(__FILE__) . '/lib/Response/Shop.php';
 require dirname(__FILE__) . '/lib/Error/ApiConnection.php';
 require dirname(__FILE__) . '/lib/Error/HttpRequest.php';
 require dirname(__FILE__) . '/lib/Util.php';
