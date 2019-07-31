@@ -246,6 +246,19 @@ $request = new Pokepay\Request\RefundTransaction(
 );
 ```
 
+成功したときは `Pokepay\Response\Transfer` のオブジェクトを返します。以下にプロパティを示します。
+
+- id (string): 送金ID
+- sender (Response\User): 送金者情報
+- receiver (Response\User): 受取者情報
+- senderAccount (Response\Account): 送金口座情報
+- receiverAccount (Response\Account): 受取口座情報
+- amount (double): 決済総額 (マネー額 + ポイント額)
+- moneyAmount (double): 決済マネー額
+- pointAmount (double): 決済ポイント額
+- doneAt (DateTime): 取引日時
+- description (string): 取引説明文
+
 ### Organization
 
 #### 新規加盟店組織を追加する

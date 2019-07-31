@@ -8,6 +8,8 @@ class RefundTransaction extends Base
     private $transactionId;
     private $description;
 
+    public $responseClass = \Pokepay\Response\Transfer::class;
+
     public function __construct($transactionId, $description = null)
     {
         parent::__construct();
