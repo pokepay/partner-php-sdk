@@ -47,6 +47,16 @@ class PartnerAPI
         $this->apiBase = $apiBase;
     }
 
+    public function getCurlOptions()
+    {
+        return $this->curlOptions;
+    }
+
+    public function setCurlOptions($curlOptions)
+    {
+        $this->curlOptions = $curlOptions;
+    }
+
     public function send($request)
     {
         if (!$this->clientInstance) {
