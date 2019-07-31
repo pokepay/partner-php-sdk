@@ -1,13 +1,5 @@
 # Pokepay Partner API SDK for PHP
 
-## Usage
-
-```php
-$client = new Pokepay\PartnerAPI("clientId_xxxxxxx...", "clientSecret_xxxxxxx...");
-$request = new Pokepay\Request\SendEcho(array('message' => 'hello'));
-$client->send($request);
-```
-
 ## Prerequisites
 
 - PHP 5.6 or above
@@ -44,16 +36,49 @@ $ composer install
 
 ## Configuration
 
-Client credentials have to be set before attempting API requests. The easiest way is just passing client ID and secret via the constructor of `Pokepay\PartnerAPI`.
+### Client credentials
 
-```php
-$client = new Pokepay\PartnerAPI("clientId_xxxxxxx...", "clientSecret_xxxxxxx...");
-```
-
-If those two are not set, it tries to retrieve from the following environment variables:
+Client credentials have to be set before attempting API requests. Those are retrieved from the following environment variables by default:
 
 - `POKEPAY_PARTNER_CLIENT_ID`: client ID
 - `POKEPAY_PARTNER_CLIENT_SECRET`: client secret
+
+If environment variables cannot be set in some reasons, setter methods are also available:
+
+```php
+$client = new Pokepay\PartnerAPI();
+$client->setClientId('clientId_xxxxxxx...');
+$client->setClientSecret('clientSecret_xxxxxxx...');
+```
+
+### SSL certificates
+
+Partner API requires SSL client certificates. It can be set via the first argument of `Pokepay\PartnerAPI` constructor.
+
+
+```php
+$curlOptions = array(
+    CURLOPT_SSLKEY       => 'path/to/key.pem',
+    CURLOPT_SSLKEYPASSWD => 's3cret',
+    CURLOPT_SSLCERT      => 'path/to/client.pem',
+);
+$client = new Pokepay\PartnerAPI($curlOptions);
+```
+
+### Switching API environments
+
+Use `Pokepay\PartnerAPI#setAPIBase` for switching API environments to request. The default is sandbox one.
+
+```php
+// Sandbox (default)
+$client->setApiBase('https://partner-sandbox.pokepay.jp');
+// Production
+$client->setApiBase('https://partner.pokepay.jp');
+```
+
+## Documentation
+
+See [docs/](docs/index.md).
 
 ## Copyright
 

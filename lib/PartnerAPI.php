@@ -15,11 +15,31 @@ class PartnerAPI
 
     private $clientInstance;
 
-    public function __construct($clientId = null, $clientSecret = null, $curlOptions = null)
+    public function __construct($curlOptions = null)
     {
-        $this->clientId = isset($clientId) ? $clientId : getenv('POKEPAY_PARTNER_CLIENT_ID');
-        $this->clientSecret = isset($clientSecret) ? $clientSecret : getenv('POKEPAY_PARTNER_CLIENT_SECRET');
+        $this->clientId = getenv('POKEPAY_PARTNER_CLIENT_ID');
+        $this->clientSecret = getenv('POKEPAY_PARTNER_CLIENT_SECRET');
         $this->curlOptions = $curlOptions;
+    }
+
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+    }
+
+    public function getClientSecret()
+    {
+        return $this->clientSecret;
+    }
+
+    public function setClientSecret($clientSecret)
+    {
+        $this->clientSecret = $clientSecret;
     }
 
     public function setApiBase($apiBase)
