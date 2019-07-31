@@ -24,11 +24,9 @@ class ListTransactions extends PagingBase
         foreach ($this->filterArgs as $key => $val) {
             if ($val instanceof DateTime) {
                 $params[$key] = $val->format(DateTime::ATOM);
-            }
-            else if (is_bool($val)) {
+            } else if (is_bool($val)) {
                 $params[$key] = $val ? "true" : "false";
-            }
-            else {
+            } else {
                 $params[$key] = $val;
             }
         }
