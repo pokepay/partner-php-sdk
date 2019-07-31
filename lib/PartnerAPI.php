@@ -13,7 +13,7 @@ class PartnerAPI
 
     private $clientInstance;
 
-    function __construct($clientId = null, $clientSecret = null)
+    public function __construct($clientId = null, $clientSecret = null)
     {
         $this->clientId = isset($clientId) ? $clientId : getenv('POKEPAY_PARTNER_CLIENT_ID');
         $this->clientSecret = isset($clientSecret) ? $clientSecret : getenv('POKEPAY_PARTNER_CLIENT_SECRET');
@@ -26,8 +26,7 @@ class PartnerAPI
 
     public function send($request)
     {
-        if (!$this->clientInstance)
-        {
+        if (!$this->clientInstance) {
             $this->clientInstance = new HttpClient($this->clientId, $this->clientSecret);
         }
 

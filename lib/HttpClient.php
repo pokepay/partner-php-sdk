@@ -1,11 +1,11 @@
 <?php
 namespace Pokepay;
 
-use Pokepay\Error\ApiConnection;
-use Pokepay\Error\HttpRequest;
 use DateTime;
 use DateTimeZone;
 use JsonMapper;
+use Pokepay\Error\ApiConnection;
+use Pokepay\Error\HttpRequest;
 
 class HttpClient
 {
@@ -44,15 +44,13 @@ class HttpClient
         curl_close($curl);
         $responseBody = json_decode($response, true);
 
-        if (!is_array($responseBody) || !array_key_exists('response_data', $responseBody))
-        {
+        if (!is_array($responseBody) || !array_key_exists('response_data', $responseBody)) {
             throw new Error\ApiConnection(0, $response);
         }
 
         $responseData = Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
 
-        if (400 <= $code)
-        {
+        if (400 <= $code) {
             throw new Error\HttpRequest($code, $responseData);
         }
 
@@ -71,11 +69,11 @@ class HttpClient
                         array(
                             'request_data' => $params,
                             'timestamp' => $date->format(DateTime::ATOM),
-                            'partner_call_id' => $callId
+                            'partner_call_id' => $callId,
                         )
                     ),
                     $this->secretKey
-                )
+                ),
             )
         );
     }
@@ -84,8 +82,7 @@ class HttpClient
     {
         $decodedData = self::camelizeArray(json_decode($data, true));
 
-        if (!$class)
-        {
+        if (!$class) {
             return $decodedData;
         }
 
@@ -105,14 +102,10 @@ class HttpClient
     private static function camelizeArray($array)
     {
         $results = [];
-        foreach ($array as $key => $value)
-        {
-            if (is_array($value))
-            {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
                 $results[self::camel($key)] = self::camelizeArray($value);
-            }
-            else
-            {
+            } else {
                 $results[self::camel($key)] = $value;
             }
         }
