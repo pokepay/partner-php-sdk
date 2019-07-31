@@ -6,7 +6,7 @@ class CreateShop extends Base
     protected $method = 'POST';
     protected $path = '/shops';
 
-    public $responseClass = 'Shop';
+    public $responseClass = 'User';
 
     private $shopName;
     private $metadata;

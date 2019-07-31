@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Response;
 
-class Shop
+class User
 {
     /**
      * @var string
