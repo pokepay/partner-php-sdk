@@ -6,7 +6,7 @@ class CreateTransaction extends Base
     protected $method = 'POST';
     protected $path = '/transactions';
 
-    public $responseClass = 'Transaction';
+    public $responseClass = \Pokepay\Response\Transaction::class;
 
     private $shopAccountId;
     private $customerAccountId;

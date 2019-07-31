@@ -6,7 +6,7 @@ class CreateOrganization extends Base
     protected $method = 'POST';
     protected $path = '/organizations';
 
-    public $responseClass = 'Organization';
+    public $responseClass = \Pokepay\Response\Organization::class;
 
     private $code;
     private $name;

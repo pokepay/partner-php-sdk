@@ -8,7 +8,7 @@ class ListTransactions extends PagingBase
     protected $method = 'GET';
     protected $path = '/transactions';
 
-    public $responseClass = 'PaginatedTransactions';
+    public $responseClass = \Pokepay\Response\PaginatedTransactions::class;
 
     private $filterArgs;
 

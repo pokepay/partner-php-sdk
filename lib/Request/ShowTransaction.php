@@ -6,7 +6,7 @@ class ShowTransaction extends Base
     protected $method = 'GET';
     private $transactionId;
 
-    public $responseClass = 'Transaction';
+    public $responseClass = \Pokepay\Response\Transaction::class;
 
     public function __construct($transactionId)
     {

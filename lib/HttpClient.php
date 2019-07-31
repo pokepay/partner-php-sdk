@@ -99,9 +99,7 @@ class HttpClient
         $jm = new JsonMapper();
         $jm->bEnforceMapType = false;
 
-        $responseClassName = 'Pokepay\Response\\' . $class;
-
-        return $jm->map($decodedData, new $responseClassName);
+        return $jm->map($decodedData, new $class);
     }
 
     private static function camel($str)

@@ -6,7 +6,7 @@ class CreateShop extends Base
     protected $method = 'POST';
     protected $path = '/shops';
 
-    public $responseClass = 'User';
+    public $responseClass = \Pokepay\Response\User::class;
 
     private $shopName;
     private $metadata;
