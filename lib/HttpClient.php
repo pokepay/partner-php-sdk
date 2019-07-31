@@ -13,23 +13,33 @@ class HttpClient
     private $secretKey;
     private $timezone = 'Asia/Tokyo';
 
-    public function __construct($clientId, $clientSecret)
+    private $curlOptions;
+
+    public function __construct($clientId, $clientSecret, $options)
     {
         $this->clientId = $clientId;
         $this->secretKey = Util::base64url_decode($clientSecret);
+        $this->curlOptions = $options;
     }
 
     public function request($callId, $method, $url, $headers, $params, $responseClass)
     {
         $curl = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, self::encodeParameters($callId, $params));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+        $opts = array();
+        $opts[CURLOPT_URL] = $url;
+        $opts[CURLOPT_CUSTOMREQUEST] = $method;
+        $opts[CURLOPT_HTTPHEADER] = $headers;
+        $opts[CURLOPT_POSTFIELDS] = self::encodeParameters($callId, $params);
+        $opts[CURLOPT_RETURNTRANSFER] = true;
+        $opts[CURLOPT_CONNECTTIMEOUT] = 5;
+        $opts[CURLOPT_TIMEOUT] = 5;
+
+        if ($this->curlOptions) {
+            $opts += $this->curlOptions;
+        }
+
+        curl_setopt_array($curl, $opts);
 
         $response = curl_exec($curl);
 
