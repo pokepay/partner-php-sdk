@@ -55,7 +55,7 @@ class HttpClient
         $responseBody = json_decode($response, true);
 
         if (!is_array($responseBody) || !array_key_exists('response_data', $responseBody)) {
-            throw new Error\ApiConnection(0, $response);
+            throw new Error\HttpRequest($code, $response);
         }
 
         $responseData = Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
