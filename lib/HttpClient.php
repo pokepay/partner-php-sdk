@@ -55,16 +55,17 @@ class HttpClient
         $responseBody = json_decode($response, true);
 
         if (!is_array($responseBody) || !array_key_exists('response_data', $responseBody)) {
-            throw new Error\HttpRequest($code, $response);
+            throw new Error\HttpRequest($code, $response, $responseBody);
         }
 
         $responseData = Crypto::decodeAES256($responseBody['response_data'], $this->secretKey);
+        $responseJsonData = json_decode($responseData, true);
 
         if (400 <= $code) {
-            throw new Error\HttpRequest($code, $responseData);
+            throw new Error\HttpRequest($code, $responseData, $responseJsonData);
         }
 
-        return self::decodeResponse($responseData, $responseClass);
+        return self::decodeResponse($responseJsonData, $responseClass);
     }
 
     private function encodeParameters($callId, $params)
@@ -90,16 +91,16 @@ class HttpClient
 
     private static function decodeResponse($data, $class)
     {
-        $decodedData = self::camelizeArray(json_decode($data, true));
+        $camelizedData = self::camelizeArray($data);
 
         if (!$class) {
-            return $decodedData;
+            return $camelizedData;
         }
 
         $jm = new JsonMapper();
         $jm->bEnforceMapType = false;
 
-        return $jm->map($decodedData, new $class);
+        return $jm->map($camelizedData, new $class);
     }
 
     private static function camel($str)
