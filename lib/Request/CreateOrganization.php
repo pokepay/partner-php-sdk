@@ -6,6 +6,8 @@ class CreateOrganization extends Base
     protected $method = 'POST';
     protected $path = '/organizations';
 
+    public $responseClass = 'Organization';
+
     // required
     private $code;
     private $name;
