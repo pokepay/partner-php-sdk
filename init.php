@@ -6,6 +6,7 @@ require dirname(__FILE__) . '/lib/Request/Base.php';
 require dirname(__FILE__) . '/lib/Request/SendEcho.php';
 require dirname(__FILE__) . '/lib/Request/ListTransactions.php';
 require dirname(__FILE__) . '/lib/Request/ShowTransaction.php';
+require dirname(__FILE__) . '/lib/Request/CreateTransaction.php';
 require dirname(__FILE__) . '/lib/Request/RefundTransaction.php';
 require dirname(__FILE__) . '/lib/Response/Pagination.php';
 require dirname(__FILE__) . '/lib/Response/Summary.php';
