@@ -18,5 +18,8 @@
         "psr-4": {
             "Pokepay\\": "lib/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
     }
 }

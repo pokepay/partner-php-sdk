@@ -76,6 +76,14 @@ $client->setApiBase('https://partner-sandbox.pokepay.jp');
 $client->setApiBase('https://partner.pokepay.jp');
 ```
 
+## Running tests
+
+```
+$ ./vendor/phpunit/phpunit/phpunit
+```
+
+Tests assume the SSL client key file is put at './sslkey.pem' and SSL certificate file is at './sslcert.pem'.
+
 ## Documentation
 
 See [docs/](docs/index.md).
