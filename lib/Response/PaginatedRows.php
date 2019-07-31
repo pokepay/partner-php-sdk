@@ -17,9 +17,4 @@ abstract class PaginatedRows
      * @var Pagination
      */
     public $pagination;
-
-    /**
-     * @var Summary
-     */
-    public $summary;
 }

@@ -9,9 +9,29 @@ class Transfer
     public $id;
 
     /**
-     * @var string
+     * @var User
      */
-    public $direction;
+    public $sender;
+
+    /**
+     * @var Account
+     */
+    public $senderAccount;
+
+    /**
+     * @var User
+     */
+    public $receiver;
+
+    /**
+     * @var Account
+     */
+    public $receiverAccount;
+
+    /**
+     * @var double
+     */
+    public $amount;
 
     /**
      * @var double
@@ -24,17 +44,12 @@ class Transfer
     public $pointAmount;
 
     /**
-     * @var string
-     */
-    public $description;
-
-    /**
      * @var \DateTime
      */
     public $doneAt;
 
     /**
-     * @var string|null
+     * @var string
      */
-    public $operator;
+    public $description;
 }

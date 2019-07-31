@@ -78,15 +78,6 @@ API操作によっては、大量のデータがある場合に備えてペー�
   - maxPage (int): 最終ページ番号
   - hasPrev (bool): 前のページがあるかどうか
   - hasNext (bool): 後のページがあるかどうか
-- summary
-  - payment: 支払いサマリー
-    - count (int): 支払い数
-    - money (int): 支払いに使われたマネー額
-    - point (int): 支払いに使われたポイント額
-  - topup: チャージサマリー
-    - count (int): チャージ数
-    - money (int): チャージされたマネー額
-    - point (int): 付与されたポイント額
     
 以下にコード例を示します。
 
@@ -116,7 +107,7 @@ if ($response->pagination->hasNext) {
 
 ```php
 try {
-    $response = $client->send(new Pokepay\Request\ListTransactions(array()));
+    $response = $client->send(new Pokepay\Request\ListTransactions());
 } catch(Pokepay\Error\ApiConnection $e) {
     // Partner APIとの通信が失敗したときの処理
 } catch(Pokepay\Error\HttpRequest $e) {
@@ -173,16 +164,41 @@ $request = new Pokepay\Request\ShowTransaction(
 - id (string): 取引ID
 - type (string): 取引種別 (チャージ=topup, 支払い=payment)
 - isModified (bool): 返金された取引かどうか
-- doneAt (DateTime): 取引日時
-- shopName (string): 取引店舗名
-- shopId (string): 取引店舗ID
-- userId (string): エンドユーザーID
-- customerName (string): エンドユーザー名
-- terminalId (string|null): 端末ID
+- sender (Response\User): 送金者情報
+- receiver (Response\User): 受取者情報
+- senderAccount (Response\Account): 送金口座情報
+- receiverAccount (Response\Account): 受取口座情報
+- amount (double): 決済総額 (マネー額 + ポイント額)
 - moneyAmount (double): 決済マネー額
 - pointAmount (double): 決済ポイント額
-- organizationName (string): 取引店舗の組織名
-- rows (array): 取引詳細 (Transferオブジェクト) の配列
+- doneAt (DateTime): 取引日時
+- description (string): 取引説明文
+
+`sender` と `receiver` には `Pokepay\Response\User` オブジェクトが入ります。 以下にプロパティを示します。
+
+- id (string): ユーザー (または店舗) ID
+- name (string): ユーザー (または店舗) 名
+- isMerchant (bool): 店舗ユーザーかどうか
+
+`senderAccount` と `receiverAccount` は `Pokepay\Response\Account` オブジェクトです。以下にプロパティを示します。
+
+- id (string): 口座ID
+- name (string): 口座名
+- balance (double): 口座残高
+- isSuspended (bool): 口座が凍結されているかどうか
+- privateMoney (Response\PrivateMoney): 設定マネー情報
+
+`privateMoney` は `Pokepay\Response\PrivateMoney` のオブジェクトです。以下にプロパティを示します。
+
+- id (string): マネーID
+- name (string): マネー名
+- unit (string): マネー単位 (例: 円)
+- isExclusive (bool): 会員制のマネーかどうか
+- description (string): マネー説明文
+- maxBalance (double): 口座の上限金額
+- transferLimit (double): マネーの取引上限額
+- type (string): マネー種別 (自家型=own, 第三者型=third-party)
+- expirationType (string): 有効期限種別 (チャージ日時起算=static, 最終利用日時起算=last-update)
 
 #### チャージする
 
@@ -203,8 +219,8 @@ $request = new Pokepay\Request\CreateTransaction(
 ```php
 $request = new Pokepay\Request\ListTransactions(
     array( // フィルタオプション (すべて任意)
-        // ページ番号指定
-        'page' => 1,
+        'page' => 1,       // ページ番号指定
+        'per_page' => 50,  // 1ページのレコード数
 
         // 期間指定 (ISO8601形式の文字列、またはDateTimeオブジェクト)
         'from' => '2019-01-01T00:00:00+09:00',
@@ -232,7 +248,7 @@ $request = new Pokepay\Request\ListTransactions(
 ```php
 $request = new Pokepay\Request\RefundTransaction(
     '9f4781d6....', // 取引ID
-    '返品対応のため'   // 取引履歴に表示する説明文 (任意)
+    '返品対応のため'   // 取引履歴に表示する返金事由 (任意)
 );
 ```
 

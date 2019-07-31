@@ -19,6 +19,41 @@ class Transaction
     public $isModified;
 
     /**
+     * @var User
+     */
+    public $sender;
+
+    /**
+     * @var Account
+     */
+    public $senderAccount;
+
+    /**
+     * @var User
+     */
+    public $receiver;
+
+    /**
+     * @var Account
+     */
+    public $receiverAccount;
+
+    /**
+     * @var double
+     */
+    public $amount;
+
+    /**
+     * @var double
+     */
+    public $moneyAmount;
+
+    /**
+     * @var double
+     */
+    public $pointAmount;
+
+    /**
      * @var \DateTime
      */
     public $doneAt;
@@ -26,65 +61,5 @@ class Transaction
     /**
      * @var string
      */
-    public $shopName;
-
-    /**
-     * @var string
-     */
-    public $shopId;
-
-    /**
-     * @var string
-     */
-    public $userId;
-
-    /**
-     * @var string
-     */
-    public $customerName;
-
-    /**
-     * @var string|null
-     */
-    public $terminalId;
-
-    /**
-     * @var double|null
-     */
-    public $amount;
-
-    /**
-     * @var double|null
-     */
-    public $moneyAmount;
-
-    /**
-     * @var double|null
-     */
-    public $pointAmount;
-
-    /**
-     * @var string|null
-     */
-    public $deviceSerialNumber;
-
-    /**
-     * @var string|null
-     */
-    public $deviceType;
-
-    /**
-     * @var string|null
-     */
-    public $organizationCode;
-
-    /**
-     * @var string|null
-     */
-    public $organizationName;
-
-    /**
-     * @var Transfer[]|null
-     */
-    public $rows;
+    public $description;
 }

@@ -29,7 +29,7 @@ class ListTransactions extends Base
                 $params[$key] = $val ? "true" : "false";
             }
             else {
-                $params[$key] = strval($val);
+                $params[$key] = $val;
             }
         }
 
