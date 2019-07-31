@@ -12,6 +12,7 @@ require dirname(__FILE__) . '/lib/Response/Pagination.php';
 require dirname(__FILE__) . '/lib/Response/Summary.php';
 require dirname(__FILE__) . '/lib/Response/PaginatedRows.php';
 require dirname(__FILE__) . '/lib/Response/PaginatedTransactions.php';
+require dirname(__FILE__) . '/lib/Request/CreateOrganization.php';
 require dirname(__FILE__) . '/lib/Response/Transaction.php';
 require dirname(__FILE__) . '/lib/Response/Transfer.php';
 require dirname(__FILE__) . '/lib/Error/ApiConnection.php';
