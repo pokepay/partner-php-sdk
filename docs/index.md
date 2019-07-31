@@ -105,9 +105,9 @@ if ($response->pagination->hasNext) {
 ```php
 try {
     $response = $client->send(new Pokepay\Request\ListTransactions());
-} catch(Pokepay\Error\ApiConnection $e) {
+} catch (Pokepay\Error\ApiConnection $e) {
     // Partner APIとの通信が失敗したときの処理
-} catch(Pokepay\Error\HttpRequest $e) {
+} catch (Pokepay\Error\HttpRequest $e) {
     // Partner APIがエラーを返したときの処理
 }
 ```
@@ -121,7 +121,7 @@ while (true) {
         $response = $client->send($request);
         echo "ok\n";
         break;
-    } catch(Pokepay\Error\ApiConnection $e) {
+    } catch (Pokepay\Error\ApiConnection $e) {
         echo "Failed to request:\n";
         echo $e . "\n";
         echo "Retry in 3 seconds...\n";
@@ -264,7 +264,7 @@ $request = new Pokepay\Request\RefundTransaction(
 #### 新規加盟店組織を追加する
 
 ```php
-$request = new Pokepay\Request\CreateTransaction(
+$request = new Pokepay\Request\CreateOrganization(
     'ox_supermarket',                   // 新規組織コード
     '○×スーパー',                        // 新規組織名
     'pay@xx-issuer-company.jp',         // 発行体担当者メールアドレス
@@ -278,7 +278,7 @@ $request = new Pokepay\Request\CreateTransaction(
         'bank_banch_code'  => '99X',            // 銀行支店コード
         'bank_account_type' => 'saving',        // 銀行口座種別 (普通=saving, 当座=current, その他=other)
         'bank_account' => '9999999',            // 銀行口座番号
-        'bank_account_holder_name' => '田中A太', // 口座名義人名
+        'bank_account_holder_name' => 'ﾌｸｻﾞﾜﾕｷﾁ', // 口座名義人名
     )
 );
 ```
