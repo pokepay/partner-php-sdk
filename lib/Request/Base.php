@@ -42,6 +42,11 @@ abstract class Base
         return array('Content-Type: application/json');
     }
 
+    public function getDefaultParams()
+    {
+        return array();
+    }
+
     public function getParams()
     {
         return array();

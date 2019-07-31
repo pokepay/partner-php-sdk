@@ -3,7 +3,7 @@ namespace Pokepay\Request;
 
 use DateTime;
 
-class ListTransactions extends Base
+class ListTransactions extends PagingBase
 {
     protected $method = 'GET';
     protected $path = '/transactions';

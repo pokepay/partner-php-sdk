@@ -87,11 +87,8 @@ $response = $client->send($request);
 
 // 2ページ目があるときは取得する
 if ($response->pagination->hasNext) {
-    $request = new Pokepay\Request\ListTransactions(
-        array(
-            'page' => $response->pagination->current + 1
-        )
-    );
+    $request = new Pokepay\Request\ListTransactions();
+    $request->setPage($response->pagination->current + 1);
     $client->send($request);
 }
 ```
@@ -219,9 +216,6 @@ $request = new Pokepay\Request\CreateTransaction(
 ```php
 $request = new Pokepay\Request\ListTransactions(
     array( // フィルタオプション (すべて任意)
-        'page' => 1,       // ページ番号指定
-        'per_page' => 50,  // 1ページのレコード数
-
         // 期間指定 (ISO8601形式の文字列、またはDateTimeオブジェクト)
         'from' => '2019-01-01T00:00:00+09:00',
         'to'   => '2019-07-31T18:13:39+09:00',
