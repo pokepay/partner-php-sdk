@@ -71,9 +71,9 @@ Use `Pokepay\PartnerAPI#setAPIBase` for switching API environments to request. T
 
 ```php
 // Sandbox (default)
-$client->setApiBase('https://partner-sandbox.pokepay.jp');
+$client->setApiBase('https://partnerapi-sandbox.pokepay.jp');
 // Production
-$client->setApiBase('https://partner.pokepay.jp');
+$client->setApiBase('https://partnerapi.pokepay.jp');
 ```
 
 ## Running tests
