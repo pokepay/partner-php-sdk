@@ -181,7 +181,6 @@ $request = new Pokepay\Request\ShowTransaction(
 
 - id (string): 口座ID
 - name (string): 口座名
-- balance (double): 口座残高
 - isSuspended (bool): 口座が凍結されているかどうか
 - privateMoney (Response\PrivateMoney): 設定マネー情報
 

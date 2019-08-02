@@ -14,11 +14,6 @@ class Account
     public $name;
 
     /**
-     * @var double
-     */
-    public $balance;
-
-    /**
      * @var boolean
      */
     public $isSuspended;
