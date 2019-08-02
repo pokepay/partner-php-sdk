@@ -55,7 +55,7 @@ class Transfer extends Base
      */
     public $description;
 
-    public function normalize($timezone)
+    protected function normalize($timezone)
     {
         $this->doneAt->setTimezone(new DateTimeZone($timezone));
     }

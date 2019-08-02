@@ -3,7 +3,7 @@ namespace Pokepay\Response;
 
 abstract class Base
 {
-    public function normalize()
+    protected function normalize()
     {
     }
 }

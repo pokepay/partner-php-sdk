@@ -100,7 +100,10 @@ class HttpClient
         $jm->bEnforceMapType = false;
 
         $object = $jm->map($camelizedData, new $class);
-        $object->normalize($timezone);
+        $reflection = new \ReflectionClass($class);
+        $method = $reflection->getMethod('normalize');
+        $method->setAccessible(true);
+        $method->invoke($object, $timezone);
 
         return $object;
     }
