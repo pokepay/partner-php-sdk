@@ -201,8 +201,9 @@ $request = new Pokepay\Request\ShowTransaction(
 
 ```php
 $request = new Pokepay\Request\CreateTransaction(
-    'xxxxxxxxxxxxxxxxxxxxx',  // 店舗のアカウントID
-    'zzzzzzzzzzzzzzzzzzzzz',  // エンドユーザーのアカウントID
+    'xxxxxxxxxxxxxxxxxxxxx',  // 店舗ID
+    'yyyyyyyyyyyyyyyyyyyyy',  // エンドユーザーのID
+    'zzzzzzzzzzzzzzzzzzzzz',  // 送るマネーのID
     1000,                     // チャージマネー額
     0,                        // チャージするポイント額 (任意)
     '初夏のチャージキャンペーン',  // 取引履歴に表示する説明文 (任意)

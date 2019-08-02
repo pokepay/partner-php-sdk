@@ -9,10 +9,11 @@ class RefundTransactionTest extends TestCase
     {
         $client = $this->newClient();
 
-        $shopAccountId = '06636a0b-655f-4cf2-9eda-c14beef291b1';
-        $customerAccountId = '87e1e0b5-1857-49f5-883d-6ad653c47b58';
+        $shopId = '7e86f46a-ea48-4059-aa99-94bcdf3bbbb0';
+        $customerId = 'f16328ca-029a-4a15-a4cb-e189f541f5ec';
+        $privateMoneyId = '0e0d6a42-f0fb-4c56-b708-c5eca7964ad6';
 
-        $request = new Request\CreateTransaction($shopAccountId, $customerAccountId, 100, 0, 'PHP SDKテストチャージ');
+        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, 100, 0, 'PHP SDKテストチャージ');
 
         return $client->send($request);
     }

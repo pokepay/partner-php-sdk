@@ -8,17 +8,19 @@ class CreateTransaction extends Base
 
     public $responseClass = \Pokepay\Response\Transaction::class;
 
-    private $shopAccountId;
-    private $customerAccountId;
+    private $shopId;
+    private $customerId;
+    private $privateMoneyId;
     private $moneyAmount;
     private $pointAmount;
     private $description;
 
-    public function __construct($shopAccountId, $customerAccountId, $moneyAmount, $pointAmount, $description)
+    public function __construct($shopId, $customerId, $privateMoneyId, $moneyAmount, $pointAmount, $description)
     {
         parent::__construct();
-        $this->shopAccountId = $shopAccountId;
-        $this->customerAccountId = $customerAccountId;
+        $this->shopId = $shopId;
+        $this->customerId = $customerId;
+        $this->privateMoneyId = $privateMoneyId;
         $this->moneyAmount = $moneyAmount;
         $this->pointAmount = $pointAmount;
         $this->description = $description;
@@ -27,8 +29,9 @@ class CreateTransaction extends Base
     public function getParams()
     {
         $params = array(
-            'shop_account_id' => $this->shopAccountId,
-            'customer_account_id' => $this->customerAccountId,
+            'shop_id' => $this->shopId,
+            'customer_id' => $this->customerId,
+            'private_money_id' => $this->privateMoneyId,
         );
         if ($this->moneyAmount) {
             $params['money_amount'] = $this->moneyAmount;
