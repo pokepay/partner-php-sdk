@@ -3,6 +3,7 @@ namespace Pokepay;
 
 use DateTime;
 use DateTimeZone;
+use DateInterval;
 
 class ListTransactionsTest extends TestCase
 {
@@ -28,9 +29,11 @@ class ListTransactionsTest extends TestCase
     {
         $client = $this->newClient();
 
+        $date = new DateTime('now', new DateTimeZone('Asia/Tokyo'));
+        $date->add(new DateInterval('P1D'));
         $request = new Request\ListTransactions(
             array(
-                'from' => new DateTime('now', new DateTimeZone('Asia/Tokyo'))
+                'from' => $date
             )
         );
         $response = $client->send($request);
