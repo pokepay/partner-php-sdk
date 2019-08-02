@@ -10,6 +10,7 @@ require_once __DIR__ . '/lib/Request/CreateTransaction.php';
 require_once __DIR__ . '/lib/Request/RefundTransaction.php';
 require_once __DIR__ . '/lib/Request/CreateOrganization.php';
 require_once __DIR__ . '/lib/Request/CreateShop.php';
+require_once __DIR__ . '/lib/Response/Base.php';
 require_once __DIR__ . '/lib/Response/Pagination.php';
 require_once __DIR__ . '/lib/Response/PaginatedRows.php';
 require_once __DIR__ . '/lib/Response/PaginatedTransactions.php';

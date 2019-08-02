@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Response;
 
-class Organization
+class Organization extends Base
 {
     /**
      * @var string

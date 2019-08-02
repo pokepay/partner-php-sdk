@@ -100,7 +100,10 @@ class HttpClient
         $jm = new JsonMapper();
         $jm->bEnforceMapType = false;
 
-        return $jm->map($camelizedData, new $class);
+        $object = $jm->map($camelizedData, new $class);
+        $object->normalize();
+
+        return $object;
     }
 
     private static function camel($str)

@@ -1,7 +1,9 @@
 <?php
 namespace Pokepay\Response;
 
-class Transaction
+use DateTimeZone;
+
+class Transaction extends Base
 {
     /**
      * @var string
@@ -62,4 +64,9 @@ class Transaction
      * @var string
      */
     public $description;
+
+    public function normalize()
+    {
+        $this->doneAt->setTimezone(new DateTimeZone('Asia/Tokyo'));
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Response;
 
-class Pagination
+class Pagination extends Base
 {
     /**
      * @var integer

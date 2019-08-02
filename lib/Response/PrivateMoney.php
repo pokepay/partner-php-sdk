@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Response;
 
-class PrivateMoney
+class PrivateMoney extends Base
 {
     /**
      * @var string

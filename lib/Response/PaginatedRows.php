@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Response;
 
-abstract class PaginatedRows
+abstract class PaginatedRows extends Base
 {
     /**
      * @var array
@@ -17,4 +17,11 @@ abstract class PaginatedRows
      * @var Pagination
      */
     public $pagination;
+
+    public function normalize()
+    {
+        foreach ($this->rows as $row) {
+            $row->normalize();
+        }
+    }
 }

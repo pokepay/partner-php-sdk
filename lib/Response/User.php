@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Response;
 
-class User
+class User extends Base
 {
     /**
      * @var string
