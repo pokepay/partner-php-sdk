@@ -36,55 +36,19 @@ $ composer install
 
 ## Configuration
 
-### Client credentials
-
-Client credentials have to be set before attempting API requests. Those are retrieved from the following environment variables by default:
-
-- `POKEPAY_PARTNER_CLIENT_ID`: client ID
-- `POKEPAY_PARTNER_CLIENT_SECRET`: client secret
-
-If environment variables cannot be set in some reasons, setter methods are also available:
+Client credentials have to be set before attempting API requests. `Pokepay\PartnerAPI` takes the location of a configuration INI file as an argument.
 
 ```php
-$client = new Pokepay\PartnerAPI();
-$client->setClientId('clientId_xxxxxxx...');
-$client->setClientSecret('clientSecret_xxxxxxx...');
+$client = new Pokepay\PartnerAPI('./config.ini');
 ```
 
-### SSL certificates
-
-Partner API requires SSL client certificates. It can be set via the first argument of `Pokepay\PartnerAPI` constructor.
-
-
-```php
-$curlOptions = array(
-    CURLOPT_SSLKEY       => 'path/to/key.pem',
-    CURLOPT_SSLKEYPASSWD => 's3cret',
-    CURLOPT_SSLCERT      => 'path/to/client.pem',
-);
-$client = new Pokepay\PartnerAPI($curlOptions);
-```
-
-### Switching API environments
-
-API host can be set via an environment variable `POKEPAY_PARTNER_API_BASE`. If it's not set, sandbox one is used.
-
-It also allows to be overwritten with `Pokepay\PartnerAPI#setApiBase` like this:
-
-```php
-// Sandbox (default)
-$client->setApiBase('https://partnerapi-sandbox.pokepay.jp');
-// Production
-$client->setApiBase('https://partnerapi.pokepay.jp');
-```
+If it's not given, the file location is set from an environment variable `POKEPAY_PARTNER_CONFIG_FILE`.
 
 ## Running tests
 
 ```
 $ ./vendor/phpunit/phpunit/phpunit
 ```
-
-Tests assume the SSL client key file is put at './sslkey.pem' and SSL certificate file is at './sslcert.pem'.
 
 ## Documentation
 

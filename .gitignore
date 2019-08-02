@@ -1,3 +1,6 @@
 .DS_Store
 /vendor/
 composer.lock
+
+config.ini
+config.test.ini

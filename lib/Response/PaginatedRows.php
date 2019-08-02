@@ -18,10 +18,10 @@ abstract class PaginatedRows extends Base
      */
     public $pagination;
 
-    public function normalize()
+    public function normalize($timezone)
     {
         foreach ($this->rows as $row) {
-            $row->normalize();
+            $row->normalize($timezone);
         }
     }
 }

@@ -5,48 +5,19 @@
 Partner APIとの通信は `Pokepay\PartnerAPI` クラスを通じて行います。
 
 ```php
-$client = new Pokepay\PartnerAPI();
+$client = new Pokepay\PartnerAPI('./config.ini');
 ```
 
-通信の安全性のため、以下の情報を事前に設定しておく必要があります。これらはパートナー契約時にお渡ししているものです。
+設定はINIファイルに記述し、 `Pokepay\PartnerAPI` のコンストラクタにファイルパスを指定します。設定ファイルのパスは環境変数 `POKEPAY_PARTNER_CONFIG_FILE` で指定することもできます。
 
-- Client ID
-- Client Secret
-- SSLクライアント証明書
+SDKプロジェクトルートに `config.ini.sample` というファイルがありますのでそれを元に必要な情報を記述してください。特に以下の情報は通信の安全性のため必要な項目です。これらはパートナー契約時にお渡ししているものです。
 
-以下にそれぞれの設定方法を示します。
+- `CLIENT_ID`: パートナーAPI クライアントID
+- `CLIENT_SECRET`: パートナーAPI クライアント秘密鍵
+- `SSL_KEY_FILE`: SSL秘密鍵ファイルパス
+- `SSL_CERT_FILE`: SSL証明書ファイルパス
 
-### クライアント認証情報
-
-「Client ID」と「Client Secret」は実行環境の環境変数で設定します。
-
-- `POKEPAY_PARTNER_CLIENT_ID`: Client ID
-- `POKEPAY_PARTNER_CLIENT_SECRET`: Client Secret
-
-もし何らかの理由で環境変数を設定することができない場合は、 `Pokepay\PartnerAPI` のセッターを使って設定することもできます。
-
-```php
-// コードに埋め込む場合
-$client = new Pokepay\PartnerAPI();
-$client->setClientId('clientId_xxxxxxx...');
-$client->setClientSecret('clientSecret_xxxxxxx...');
-```
-
-ソースコードに認証情報を埋め込んだ場合、その管理には十分に気をつけてください。
-
-### SSLクライアント証明書
-
-Partner APIによるサーバー間の通信にはSSLクライアント認証が必要です。証明書を設定するには、 `Pokepay\PartnerAPI` のコンストラクタにオプションを渡します。
-
-```php
-```php
-$curlOptions = array(
-    CURLOPT_SSLKEY       => 'path/to/key.pem',
-    CURLOPT_SSLKEYPASSWD => 's3cret',
-    CURLOPT_SSLCERT      => 'path/to/client.pem',
-);
-$client = new Pokepay\PartnerAPI($curlOptions);
-```
+また、この設定ファイルには認証に必要な情報が含まれるため、ファイルの管理・取り扱いに十分注意してください。
 
 ## Overview
 

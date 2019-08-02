@@ -11,15 +11,16 @@ class HttpClient
 {
     private $clientId;
     private $secretKey;
-    private $timezone = 'Asia/Tokyo';
+    private $timezone;
 
     private $curlOptions;
 
-    public function __construct($clientId, $clientSecret, $options)
+    public function __construct($clientId, $clientSecret, $curlOptions, $timezone = 'Asia/Tokyo')
     {
         $this->clientId = $clientId;
         $this->secretKey = Util::base64url_decode($clientSecret);
-        $this->curlOptions = $options;
+        $this->curlOptions = $curlOptions;
+        $this->timezone = $timezone;
     }
 
     public function request($callId, $method, $url, $headers, $params, $responseClass)
@@ -32,8 +33,6 @@ class HttpClient
         $opts[CURLOPT_HTTPHEADER] = $headers;
         $opts[CURLOPT_POSTFIELDS] = self::encodeParameters($callId, $params);
         $opts[CURLOPT_RETURNTRANSFER] = true;
-        $opts[CURLOPT_CONNECTTIMEOUT] = 5;
-        $opts[CURLOPT_TIMEOUT] = 5;
 
         if ($this->curlOptions) {
             $opts += $this->curlOptions;
@@ -65,7 +64,7 @@ class HttpClient
             throw new Error\HttpRequest($code, $responseData, $responseJsonData);
         }
 
-        return self::decodeResponse($responseJsonData, $responseClass);
+        return self::decodeResponse($responseJsonData, $responseClass, $this->timezone);
     }
 
     private function encodeParameters($callId, $params)
@@ -89,7 +88,7 @@ class HttpClient
         );
     }
 
-    private static function decodeResponse($data, $class)
+    private static function decodeResponse($data, $class, $timezone)
     {
         $camelizedData = self::camelizeArray($data);
 
@@ -101,7 +100,7 @@ class HttpClient
         $jm->bEnforceMapType = false;
 
         $object = $jm->map($camelizedData, new $class);
-        $object->normalize();
+        $object->normalize($timezone);
 
         return $object;
     }

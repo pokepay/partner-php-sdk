@@ -1,0 +1,11 @@
+CLIENT_ID        =
+CLIENT_SECRET    =
+API_BASE_URL     = https://partnerapi-sandbox.pokepay.jp
+
+#SSL_KEY_FILE     = ./sslkey.pem
+#SSL_KEY_PASSWORD = s3cret
+#SSL_CERT_FILE    = ./sslcert.pem
+
+TIMEZONE         = Asia/Tokyo
+CONNECTTIMEOUT   = 5
+TIMEOUT          = 5

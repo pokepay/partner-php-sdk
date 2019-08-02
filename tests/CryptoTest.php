@@ -5,7 +5,8 @@ class CryptoTest extends TestCase
 {
     public function testEncodeAES256()
     {
-        $key = getenv('POKEPAY_PARTNER_CLIENT_ID');
+        $config = parse_ini_file(getenv('POKEPAY_PARTNER_CONFIG_FILE'));
+        $key = $config['CLIENT_ID'];
         $encoded = Crypto::encodeAES256('Hi, All', $key);
 
         $this->assertSame(gettype($encoded), 'string');
@@ -14,7 +15,8 @@ class CryptoTest extends TestCase
 
     public function testDecodeAES256()
     {
-        $key = getenv('POKEPAY_PARTNER_CLIENT_ID');
+        $config = parse_ini_file(getenv('POKEPAY_PARTNER_CONFIG_FILE'));
+        $key = $config['CLIENT_ID'];
         $plaintext = 'Hi, All';
         $encoded = Crypto::encodeAES256($plaintext, $key);
         $decoded = Crypto::decodeAES256($encoded, $key);

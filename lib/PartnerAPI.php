@@ -7,23 +7,41 @@ class PartnerAPI
 {
     private $clientId;
     private $clientSecret;
-    private $apiBase = 'https://partnerapi-sandbox.pokepay.jp';
+    private $apiBase;
 
     const VERSION = '0.1.0';
 
-    private $curlOptions;
+    private $config = array();
 
     private $clientInstance;
+    private $curlOptions = array();
 
-    public function __construct($curlOptions = null)
+    public function __construct($iniFile = null)
     {
-        $this->clientId = getenv('POKEPAY_PARTNER_CLIENT_ID');
-        $this->clientSecret = getenv('POKEPAY_PARTNER_CLIENT_SECRET');
-        $apiBase = getenv('POKEPAY_PARTNER_API_BASE');
-        if ($apiBase) {
-            $this->apiBase = $apiBase;
+        $iniFile = isset($iniFile) ? $iniFile : getenv('POKEPAY_PARTNER_CONFIG_FILE');
+
+        if ($iniFile) {
+            $config = parse_ini_file($iniFile);
+            $this->clientId = $config['CLIENT_ID'];
+            $this->clientSecret = $config['CLIENT_SECRET'];
+            $this->apiBase = $config['API_BASE_URL'];
+            if (array_key_exists('SSL_KEY_FILE', $config)) {
+                $this->curlOptions[CURLOPT_SSLKEY] = $config['SSL_KEY_FILE'];
+            }
+            if (array_key_exists('SSL_KEY_PASSWORD', $config)) {
+                $this->curlOptions[CURLOPT_SSLKEYPASSWD] = $config['SSL_KEY_PASSWORD'];
+            }
+            if (array_key_exists('SSL_CERT_FILE', $config)) {
+                $this->curlOptions[CURLOPT_SSLCERT] = $config['SSL_CERT_FILE'];
+            }
+            if (array_key_exists('CONNECTTIMEOUT', $config)) {
+                $this->curlOptions[CURLOPT_CONNECTTIMEOUT] = $config['CONNECTTIMEOUT'];
+            }
+            if (array_key_exists('TIMEOUT', $config)) {
+                $this->curlOptions[CURLOPT_TIMEOUT] = $config['TIMEOUT'];
+            }
+            $this->config = $config;
         }
-        $this->curlOptions = $curlOptions;
     }
 
     public function getClientId()
@@ -64,7 +82,7 @@ class PartnerAPI
     public function send($request)
     {
         if (!$this->clientInstance) {
-            $this->clientInstance = new HttpClient($this->clientId, $this->clientSecret, $this->curlOptions);
+            $this->clientInstance = new HttpClient($this->clientId, $this->clientSecret, $this->curlOptions, $this->config['TIMEZONE']);
         }
 
         return $this->clientInstance->request(

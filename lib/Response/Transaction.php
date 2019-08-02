@@ -65,8 +65,8 @@ class Transaction extends Base
      */
     public $description;
 
-    public function normalize()
+    public function normalize($timezone)
     {
-        $this->doneAt->setTimezone(new DateTimeZone('Asia/Tokyo'));
+        $this->doneAt->setTimezone(new DateTimeZone($timezone));
     }
 }
