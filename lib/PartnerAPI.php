@@ -19,6 +19,10 @@ class PartnerAPI
     {
         $this->clientId = getenv('POKEPAY_PARTNER_CLIENT_ID');
         $this->clientSecret = getenv('POKEPAY_PARTNER_CLIENT_SECRET');
+        $apiBase = getenv('POKEPAY_PARTNER_API_BASE');
+        if ($apiBase) {
+            $this->apiBase = $apiBase;
+        }
         $this->curlOptions = $curlOptions;
     }
 

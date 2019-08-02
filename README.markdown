@@ -67,7 +67,9 @@ $client = new Pokepay\PartnerAPI($curlOptions);
 
 ### Switching API environments
 
-Use `Pokepay\PartnerAPI#setAPIBase` for switching API environments to request. The default is sandbox one.
+API host can be set via an environment variable `POKEPAY_PARTNER_API_BASE`. If it's not set, sandbox one is used.
+
+It also allows to be overwritten with `Pokepay\PartnerAPI#setApiBase` like this:
 
 ```php
 // Sandbox (default)
