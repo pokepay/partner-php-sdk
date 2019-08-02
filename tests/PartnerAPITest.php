@@ -9,7 +9,7 @@ class PartnerAPITest extends TestCase
         $client->setClientId(null);
 
         try {
-            $client->send(new Request\SendEcho(array('message' => 'Hello')));
+            $client->send(new Request\SendEcho('Hello'));
         } catch (Error\HttpRequest $e) {
             $this->assertSame(400, $e->code);
             $this->assertSame('invalid_parameters', $e->response['type']);
@@ -23,7 +23,7 @@ class PartnerAPITest extends TestCase
         $client->setClientSecret(null);
 
         try {
-            $client->send(new Request\SendEcho(array('message' => 'Hello')));
+            $client->send(new Request\SendEcho('Hello'));
         } catch (Error\HttpRequest $e) {
             $this->assertSame(400, $e->code);
             $this->assertSame('partner_decryption_failed', $e->response['type']);
@@ -39,7 +39,7 @@ class PartnerAPITest extends TestCase
         );
 
         try {
-            $client->send(new Request\SendEcho(array('message' => 'Hello')));
+            $client->send(new Request\SendEcho('Hello'));
             $this->assertTrue(false);
         } catch (Error\ApiConnection $e) {
             $this->assertTrue(true);
