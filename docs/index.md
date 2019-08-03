@@ -200,8 +200,7 @@ $request = new Pokepay\Request\ListTransactions(
         'organization'   => 'pocketchange',   // 組織コード
         'private_money'  => '9ff644fc......', // マネーID
         'is_modified'    => true,             // キャンセルされた取引のみ検索するか
-        'transaction_types'                   // 取引種別 (複数指定可)
-                         => array('topup', 'payment'), // チャージ=topup、支払い=payment
+        'types'          => array('topup', 'payment'), // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
     )
 );
 ```
