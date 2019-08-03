@@ -8,7 +8,7 @@ class Crypto
     {
         $ivLength = openssl_cipher_iv_length(self::$method);
         $iv = openssl_random_pseudo_bytes($ivLength);
-        $len = mb_strlen($plaintext);
+        $len = strlen($plaintext);
         $paddedLength = $ivLength + $len + ($ivLength - ($len % $ivLength));
         $paddedPlaintext = str_repeat(chr($paddedLength - ($len + $ivLength)), $ivLength) . $plaintext;
         $encrypted = openssl_encrypt($paddedPlaintext, self::$method, $key, OPENSSL_RAW_DATA, $iv);
