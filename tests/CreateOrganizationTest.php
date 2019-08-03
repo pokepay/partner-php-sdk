@@ -24,6 +24,7 @@ class CreateOrganizationTest extends TestCase
         $request->setCallId(Uuid::uuid4());
         try {
             $client->send($request);
+            $this->assertTrue(false);
         } catch (Error\HttpRequest $e) {
             $this->assertSame(409, $e->code);
             $this->assertSame('organization_conflict', $e->response['type']);

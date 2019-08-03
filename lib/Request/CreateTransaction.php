@@ -33,10 +33,10 @@ class CreateTransaction extends Base
             'customer_id' => $this->customerId,
             'private_money_id' => $this->privateMoneyId,
         );
-        if ($this->moneyAmount) {
+        if (isset($this->moneyAmount)) {
             $params['money_amount'] = $this->moneyAmount;
         }
-        if ($this->pointAmount) {
+        if (isset($this->pointAmount)) {
             $params['point_amount'] = $this->pointAmount;
         }
         if ($this->description) {

@@ -26,4 +26,23 @@ class CreateTransactionTest extends TestCase
         $this->assertSame('PHP SDKテストチャージ', $response->description);
         $this->assertInstanceOf(DateTime::class, $response->doneAt);
     }
+
+    public function testBothOfMoneyAndPointAreZero()
+    {
+        $client = $this->newClient();
+
+        $shopId = '7e86f46a-ea48-4059-aa99-94bcdf3bbbb0';
+        $customerId = 'f16328ca-029a-4a15-a4cb-e189f541f5ec';
+        $privateMoneyId = '0e0d6a42-f0fb-4c56-b708-c5eca7964ad6';
+
+        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, 0, 0, 'PHP SDKテストチャージ');
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(false);
+        } catch (Error\HttpRequest $e) {
+            $this->assertSame(400, $e->code);
+            $this->assertSame('invalid_parameter_both_point_and_money_are_zero', $e->response['type']);
+            $this->assertSame(array('invalid' => array('money_amount', 'point_amount')), $e->response['errors']);
+        }
+    }
 }
