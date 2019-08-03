@@ -1,6 +1,7 @@
 <?php
 namespace Pokepay;
 
+use Exception;
 use Pokepay\HttpClient;
 
 class PartnerAPI
@@ -41,6 +42,8 @@ class PartnerAPI
                 $this->curlOptions[CURLOPT_TIMEOUT] = $config['TIMEOUT'];
             }
             $this->config = $config;
+        } else {
+            throw new Exception('Configuration file is not given and not determined with POKEPAY_PARTNER_CONFIG_FILE.');
         }
     }
 
