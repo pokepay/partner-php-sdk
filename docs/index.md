@@ -49,7 +49,7 @@ API操作によっては、大量のデータがある場合に備えてペー�
   - maxPage (int): 最終ページ番号
   - hasPrev (bool): 前のページがあるかどうか
   - hasNext (bool): 後のページがあるかどうか
-    
+
 以下にコード例を示します。
 
 ```
@@ -239,7 +239,7 @@ $request = new Pokepay\Request\CreateOrganization(
     '○×スーパー',                        // 新規組織名
     'pay@xx-issuer-company.jp',         // 発行体担当者メールアドレス
     'admin+pokepay@ox-supermarket.com', // 新規組織担当者メールアドレス
-    
+
     // 精算用追加データ (すべて任意)
     array(
         'bank_name' => 'XYZ銀行',               // 銀行名
@@ -282,3 +282,39 @@ $request = new Pokepay\Request\CreateShop(
 - id (string): 店舗ID
 - name (string): 店舗名
 - isMerchant (bool): 店舗かどうかのフラグ (この場合は常に真)
+
+### Private Money
+
+#### 決済加盟店の取引サマリを取得する
+
+```php
+$request = new Pokepay\Request\GetPrivateMoneyOrganizationSummary(
+    '0e0d6a42.....', // マネーID
+
+    array( // フィルタオプション (すべて任意)
+        // 期間指定 (ISO8601形式の文字列、またはDateTimeオブジェクト)
+        'from' => '2019-01-01T00:00:00+09:00',
+        'to'   => '2019-07-31T18:13:39+09:00',
+
+        // ページングオプション
+        'page' => 1,
+        'per_page' => 50,
+    )
+);
+```
+
+成功したときは `Pokepay\Response\PrivateMoneyOrganizationSummary` を `rows` に含むページングオブジェクトを返します。以下にプロパティを示します。
+
+- organizationCode (string): 組織コード
+- topup (Response\OrganizationSummary): チャージのサマリ情報
+- payment (Response\OrganizationSummary): 支払いのサマリ情報
+
+`Pokepay\Response\OrganizationSummary` のプロパティを以下に示します。
+
+- count (integer): 取引数
+- moneyAmount (double): 取引マネー総額
+- moneyCount (integer): マネー取引数
+- pointAmount (double): 取引ポイント総額
+- pointCount (integer): ポイント取引数
+
+ページングについての詳細は [ページング](#paging) を参照してください。
