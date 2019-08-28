@@ -293,6 +293,8 @@ $request = new Pokepay\Request\GetPrivateMoneyOrganizationSummaries(
 
     array( // フィルタオプション (すべて任意)
         // 期間指定 (ISO8601形式の文字列、またはDateTimeオブジェクト)
+        // fromとtoを指定する場合は同時に指定する必要あり。
+        // デフォルトではfromは昨日0時、toは当日0時。
         'from' => '2019-01-01T00:00:00+09:00',
         'to'   => '2019-07-31T18:13:39+09:00',
 
