@@ -11,27 +11,10 @@ Install [Composer](https://getcomposer.org/) if not already installed.
 
 ### composer.json settings
 
-While pokepay/partner-php-sdk is not yet ready at Packagist, "repositories" settings have to be written in `composer.json`.
-
-```json
-# composer.json
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/pokepay/partner-php-sdk"
-        }
-    ],
-    "require": {
-        "pokepay/partner-php-sdk": "dev-master"
-    }
-}
-```
-
-To install dependencies into `vendor/`, run `composer install`:
+Install this SDK by executing `composer require pokepay/partner-php-sdk` on your shell.
 
 ```
-$ composer install
+$ composer require pokepay/partner-php-sdk
 ```
 
 ## Configuration
