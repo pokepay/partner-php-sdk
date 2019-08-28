@@ -3,11 +3,11 @@ namespace Pokepay\Request;
 
 use DateTime;
 
-class GetPrivateMoneyOrganizationSummary extends Base
+class GetPrivateMoneyOrganizationSummaries extends Base
 {
     protected $method = 'GET';
 
-    public $responseClass = \Pokepay\Response\PaginatedPrivateMoneyOrganizationSummary::class;
+    public $responseClass = \Pokepay\Response\PaginatedPrivateMoneyOrganizationSummaries::class;
 
     private $privateMoneyId;
     private $filterArgs;
@@ -21,7 +21,7 @@ class GetPrivateMoneyOrganizationSummary extends Base
 
     public function getPath()
     {
-        return '/private-moneys/' . $this->privateMoneyId . '/organizations/summary';
+        return '/private-moneys/' . $this->privateMoneyId . '/organization-summaries';
     }
 
     public function getParams()

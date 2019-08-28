@@ -288,7 +288,7 @@ $request = new Pokepay\Request\CreateShop(
 #### 決済加盟店の取引サマリを取得する
 
 ```php
-$request = new Pokepay\Request\GetPrivateMoneyOrganizationSummary(
+$request = new Pokepay\Request\GetPrivateMoneyOrganizationSummaries(
     '0e0d6a42.....', // マネーID
 
     array( // フィルタオプション (すべて任意)

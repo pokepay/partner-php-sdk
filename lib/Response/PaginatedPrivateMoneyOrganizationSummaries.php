@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay\Response;
 
-class PaginatedPrivateMoneyOrganizationSummary extends PaginatedRows
+class PaginatedPrivateMoneyOrganizationSummaries extends PaginatedRows
 {
     /**
      * @var PrivateMoneyOrganizationSummary[]
