@@ -25,8 +25,8 @@ class CreateShopTest extends TestCase
         $metadata = array(
             'shop_postal_code' => '108-0014',
             'shop_address' => '東京都港区芝',
-            'shop_tel' => '03-0000-0000',
-            'shop_email' => 'mita@pokepay-test.jp',
+            'shop_tel' => $this->randomPhoneNumber(),
+            'shop_email' => $this->randomEmail(),
             'shop_external_id' => 'mita0309',
         );
 
