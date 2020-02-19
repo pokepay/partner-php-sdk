@@ -7,7 +7,7 @@ class GetPrivateMoneyOrganizationSummariesTest extends TestCase
     {
         $client = $this->newClient();
 
-        $privateMoneyId = '0e0d6a42-f0fb-4c56-b708-c5eca7964ad6';
+        $privateMoneyId = $this->testPrivateMoneyId;
 
         $request = new Request\GetPrivateMoneyOrganizationSummaries($privateMoneyId);
         $response = $client->send($request);
