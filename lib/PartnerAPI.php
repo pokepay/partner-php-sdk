@@ -85,7 +85,11 @@ class PartnerAPI
     public function send($request)
     {
         if (!$this->clientInstance) {
-            $this->clientInstance = new HttpClient($this->clientId, $this->clientSecret, $this->curlOptions, $this->config['TIMEZONE']);
+            $args = [$this->clientId, $this->clientSecret, $this->curlOptions];
+            if ($this->config['TIMEZONE']) {
+                array_push($args, $this->config['TIMEZONE']);
+            }
+            $this->clientInstance = new HttpClient(...$args);
         }
 
         return $this->clientInstance->request(
