@@ -4,20 +4,22 @@
 namespace Pokepay\Request;
 
 
-class CreateTransaction extends Base
+class CreatePaymentTransaction extends Base
 {
     protected $method = 'POST';
-    protected $path = '/transactions';
+    protected $path = '/transactions/payment';
     public $responseClass = \Pokepay\Response\Transaction::class;
     private $shopId;
     private $customerId;
     private $privateMoneyId;
-    public function __construct($shopId, $customerId, $privateMoneyId, $optionalParams = array())
+    private $amount;
+    public function __construct($shopId, $customerId, $privateMoneyId, $amount, $optionalParams = array())
     {
         parent::__construct();
         $this->shopId = $shopId;
         $this->customerId = $customerId;
         $this->privateMoneyId = $privateMoneyId;
+        $this->amount = $amount;
         $this->optionalParams = $optionalParams;
     }
 
@@ -28,6 +30,7 @@ class CreateTransaction extends Base
             'shop_id' => $this->shopId,
             'customer_id' => $this->customerId,
             'private_money_id' => $this->privateMoneyId,
+            'amount' => $this->amount,
         );
 
         $params += $this->optionalParams;

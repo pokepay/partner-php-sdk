@@ -5,18 +5,14 @@
 namespace Pokepay\Response;
 
 
-class User extends Base
+class PartnerRequestExpired extends Base
 {
     /**
      * @var string
      */
-    public $id;
+    public $type;
     /**
      * @var string
      */
-    public $name;
-    /**
-     * @var boolean
-     */
-    public $isMerchant;
+    public $message;
 }

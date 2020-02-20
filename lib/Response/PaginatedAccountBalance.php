@@ -5,10 +5,10 @@
 namespace Pokepay\Response;
 
 
-class PaginatedPrivateMoneyOrganizationSummaries extends Base
+class PaginatedAccountBalance extends Base
 {
     /**
-     * @var PrivateMoneyOrganizationSummary[]
+     * @var AccountBalance[]
      */
     public $rows;
     /**

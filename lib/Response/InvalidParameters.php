@@ -5,18 +5,18 @@
 namespace Pokepay\Response;
 
 
-class User extends Base
+class InvalidParameters extends Base
 {
     /**
      * @var string
      */
-    public $id;
+    public $type;
     /**
      * @var string
      */
-    public $name;
+    public $message;
     /**
-     * @var boolean
+     * @var Object
      */
-    public $isMerchant;
+    public $errors;
 }

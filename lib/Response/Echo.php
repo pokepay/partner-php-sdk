@@ -5,18 +5,14 @@
 namespace Pokepay\Response;
 
 
-class User extends Base
+class Echo extends Base
 {
     /**
      * @var string
      */
-    public $id;
+    public $status;
     /**
      * @var string
      */
-    public $name;
-    /**
-     * @var boolean
-     */
-    public $isMerchant;
+    public $message;
 }

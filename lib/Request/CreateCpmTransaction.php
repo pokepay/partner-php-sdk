@@ -4,20 +4,20 @@
 namespace Pokepay\Request;
 
 
-class CreateTransaction extends Base
+class CreateCpmTransaction extends Base
 {
     protected $method = 'POST';
-    protected $path = '/transactions';
+    protected $path = '/transactions/cpm';
     public $responseClass = \Pokepay\Response\Transaction::class;
+    private $cpmToken;
+    private $amount;
     private $shopId;
-    private $customerId;
-    private $privateMoneyId;
-    public function __construct($shopId, $customerId, $privateMoneyId, $optionalParams = array())
+    public function __construct($cpmToken, $amount, $shopId, $optionalParams = array())
     {
         parent::__construct();
+        $this->cpmToken = $cpmToken;
+        $this->amount = $amount;
         $this->shopId = $shopId;
-        $this->customerId = $customerId;
-        $this->privateMoneyId = $privateMoneyId;
         $this->optionalParams = $optionalParams;
     }
 
@@ -25,9 +25,9 @@ class CreateTransaction extends Base
     public function getParams()
     {
         $params = array(
+            'cpm_token' => $this->cpmToken,
+            'amount' => $this->amount,
             'shop_id' => $this->shopId,
-            'customer_id' => $this->customerId,
-            'private_money_id' => $this->privateMoneyId,
         );
 
         $params += $this->optionalParams;
