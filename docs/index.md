@@ -171,12 +171,14 @@ $request = new Pokepay\Request\ShowTransaction(
 
 ```php
 $request = new Pokepay\Request\CreateTransaction(
-    'xxxxxxxxxxxxxxxxxxxxx',  // 店舗ID
-    'yyyyyyyyyyyyyyyyyyyyy',  // エンドユーザーのID
-    'zzzzzzzzzzzzzzzzzzzzz',  // 送るマネーのID
-    1000,                     // チャージマネー額
-    0,                        // チャージするポイント額 (任意)
-    '初夏のチャージキャンペーン',  // 取引履歴に表示する説明文 (任意)
+    'xxxxxxxxxxxxxxxxxxxxx',                            // 店舗ID
+    'yyyyyyyyyyyyyyyyyyyyy',                            // エンドユーザーのID
+    'zzzzzzzzzzzzzzzzzzzzz',                            // 送るマネーのID
+    array(
+        "money_amount" => 1000,                         // チャージマネー額
+        "point_amount" => 0                             // チャージするポイント額 (任意)
+        "description" => '初夏のチャージキャンペーン',  // 取引履歴に表示する説明文 (任意)
+    )
 );
 ```
 
@@ -212,7 +214,9 @@ $request = new Pokepay\Request\ListTransactions(
 ```php
 $request = new Pokepay\Request\RefundTransaction(
     '9f4781d6....', // 取引ID
-    '返品対応のため'   // 取引履歴に表示する返金事由 (任意)
+    array(
+        "description" => '返品対応のため' // 取引履歴に表示する返金事由 (任意)
+    )
 );
 ```
 
