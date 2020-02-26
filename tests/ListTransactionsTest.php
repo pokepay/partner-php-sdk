@@ -14,7 +14,7 @@ class ListTransactionsTest extends TestCase
         $request = new Request\ListTransactions();
         $response = $client->send($request);
 
-        $this->assertInstanceOf(Response\PaginatedTransactions::class, $response);
+        $this->assertInstanceOf(Response\PaginatedTransaction::class, $response);
 
         if ($response->pagination->hasNext) {
             $request = new Request\ListTransactions();
@@ -38,7 +38,7 @@ class ListTransactionsTest extends TestCase
         );
         $response = $client->send($request);
 
-        $this->assertInstanceOf(Response\PaginatedTransactions::class, $response);
+        $this->assertInstanceOf(Response\PaginatedTransaction::class, $response);
         $this->assertCount(0, $response->rows);
         $this->assertSame(0, $response->count);
         $this->assertFalse($response->pagination->hasNext);

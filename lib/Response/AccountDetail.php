@@ -5,7 +5,7 @@
 namespace Pokepay\Response;
 
 
-class Account extends Base
+class AccountDetail extends Base
 {
     /**
      * @var string
@@ -19,6 +19,18 @@ class Account extends Base
      * @var boolean
      */
     public $isSuspended;
+    /**
+     * @var double
+     */
+    public $balance;
+    /**
+     * @var double
+     */
+    public $moneyBalance;
+    /**
+     * @var double
+     */
+    public $pointBalance;
     /**
      * @var PrivateMoney
      */

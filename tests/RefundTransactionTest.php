@@ -13,7 +13,7 @@ class RefundTransactionTest extends TestCase
         $customerId = $this->testCustomerId;
         $privateMoneyId = $this->testPrivateMoneyId;
 
-        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, 100, 0, 'PHP SDKテストチャージ');
+        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, ["money_amount" => 100, "point_amount" => 0, "description" => 'PHP SDKテストチャージ']);
 
         return $client->send($request);
     }

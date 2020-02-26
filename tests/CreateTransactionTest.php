@@ -13,7 +13,7 @@ class CreateTransactionTest extends TestCase
         $customerId = $this->testCustomerId;
         $privateMoneyId = $this->testPrivateMoneyId;
 
-        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, 100, 0, 'PHP SDKテストチャージ');
+        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, ['money_amount' => 100, 'point_amount' => 0, 'description' => 'PHP SDKテストチャージ']);
         $response = $client->send($request);
 
         $this->assertInstanceOf(Response\Transaction::class, $response);
@@ -35,7 +35,7 @@ class CreateTransactionTest extends TestCase
         $customerId = $this->testCustomerId;
         $privateMoneyId = $this->testPrivateMoneyId;
 
-        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, 0, 0, 'PHP SDKテストチャージ');
+        $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, ['money_amount' => 0, 'point_amount' => 0, 'description' => 'PHP SDKテストチャージ']);
         try {
             $response = $client->send($request);
             $this->assertTrue(false);

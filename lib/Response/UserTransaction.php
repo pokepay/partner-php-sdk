@@ -6,36 +6,20 @@ namespace Pokepay\Response;
 
 use DateTimeZone;
 
-class Transaction extends Base
+class UserTransaction extends Base
 {
     /**
      * @var string
      */
     public $id;
     /**
-     * @var string
-     */
-    public $type;
-    /**
-     * @var boolean
-     */
-    public $isModified;
-    /**
      * @var User
      */
-    public $sender;
+    public $user;
     /**
-     * @var Account
+     * @var double
      */
-    public $senderAccount;
-    /**
-     * @var User
-     */
-    public $receiver;
-    /**
-     * @var Account
-     */
-    public $receiverAccount;
+    public $balance;
     /**
      * @var double
      */
@@ -49,13 +33,25 @@ class Transaction extends Base
      */
     public $pointAmount;
     /**
+     * @var Account
+     */
+    public $account;
+    /**
+     * @var string
+     */
+    public $description;
+    /**
      * @var \DateTime
      */
     public $doneAt;
     /**
      * @var string
      */
-    public $description;
+    public $type;
+    /**
+     * @var boolean
+     */
+    public $isModified;
 
     protected function normalize($timezone)
     {

@@ -170,13 +170,31 @@ $request = new Pokepay\Request\ShowTransaction(
 #### チャージする
 
 ```php
-$request = new Pokepay\Request\CreateTransaction(
-    'xxxxxxxxxxxxxxxxxxxxx',  // 店舗ID
-    'yyyyyyyyyyyyyyyyyyyyy',  // エンドユーザーのID
-    'zzzzzzzzzzzzzzzzzzzzz',  // 送るマネーのID
-    1000,                     // チャージマネー額
-    0,                        // チャージするポイント額 (任意)
-    '初夏のチャージキャンペーン',  // 取引履歴に表示する説明文 (任意)
+$request = new Pokepay\Request\CreateTopupTransaction(
+    'xxxxxxxxxxxxxxxxxxxxx',                            // 店舗ID
+    'yyyyyyyyyyyyyyyyyyyyy',                            // エンドユーザーのID
+    'zzzzzzzzzzzzzzzzzzzzz',                            // 送るマネーのID
+    array(
+        "money_amount" => 1000,                         // チャージマネー額
+        "point_amount" => 0                             // チャージするポイント額 (任意)
+        "description" => '初夏のチャージキャンペーン',  // 取引履歴に表示する説明文 (任意)
+    )
+);
+```
+
+成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#show-transaction) を参照してください。
+
+#### 支払いする
+
+```php
+$request = new Pokepay\Request\CreatePaymentTransaction(
+    'xxxxxxxxxxxxxxxxxxxxx',                            // 店舗ID
+    'yyyyyyyyyyyyyyyyyyyyy',                            // エンドユーザーID
+    'zzzzzzzzzzzzzzzzzzzzz',                            // 支払うマネーのID
+    1000,                                               // 支払い額
+    array(
+        "description" => 'たい焼き(小倉)',              // 取引履歴に表示する説明文 (任意)
+    )
 );
 ```
 
@@ -193,7 +211,7 @@ $request = new Pokepay\Request\ListTransactions(
 
         // 検索オプション
         'customer_id' => 'xxxxxxxxxxxxxxxxx', // エンドユーザーID
-        'customer_name'  => '福沢',            // エンドユーザー名
+        'customer_name'  => '福沢',           // エンドユーザー名
         'transaction_id' => '24bba30c......', // 取引ID
         'shop_id'        => '456a820b......', // 店舗ID
         'terminal_id'    => 'd8023185......', // 端末ID
@@ -212,7 +230,9 @@ $request = new Pokepay\Request\ListTransactions(
 ```php
 $request = new Pokepay\Request\RefundTransaction(
     '9f4781d6....', // 取引ID
-    '返品対応のため'   // 取引履歴に表示する返金事由 (任意)
+    array(
+        "description" => '返品対応のため' // 取引履歴に表示する返金事由 (任意)
+    )
 );
 ```
 
@@ -228,6 +248,66 @@ $request = new Pokepay\Request\RefundTransaction(
 - pointAmount (double): 決済ポイント額
 - doneAt (DateTime): 取引日時
 - description (string): 取引説明文
+
+### Customer
+
+#### 新規エンドユーザー口座を追加する
+
+```php
+$request = new Pokepay\Request\CreateCustomerAccount(
+    '0e0d6a42.....', // マネーID
+
+    // 追加データ (すべて任意)
+    array(
+        'user_name'    => 'ポケペイ太郎',             // ユーザー名
+        'account_name' => 'ポケペイ太郎のアカウント', // アカウント名
+    )
+);
+```
+
+成功したときは以下のプロパティを持つ `Pokepay\Response\AccountWithUser` のオブジェクトをレスポンスとして返します。
+
+- id (string): 口座ID
+- name (string): 口座名
+- isSuspended (bool): 口座が凍結されているかどうか
+- privateMoney (Response\PrivateMoney): 設定マネー情報
+- user (Response\User): ユーザーIDなどを含むユーザー情報
+
+#### エンドユーザーの口座情報を表示する
+
+```php
+$request = new Pokepay\Request\GetAccount(
+    '8653fa08.....', // 口座ID
+);
+```
+
+成功したときは以下のプロパティを持つ `Pokepay\Response\AccountDetail` のオブジェクトをレスポンスとして返します。
+
+- id (string): 口座ID
+- name (string): 口座名
+- isSuspended (bool): 口座が凍結されているかどうか
+- balance (double): 総残高
+- moneyBalance (double): 総マネー残高
+- pointBalance (double): 総ポイント残高
+- privateMoney (Response\PrivateMoney): 設定マネー情報
+
+#### エンドユーザーの残高内訳を表示する
+
+エンドユーザーの残高は有効期限別のリストとして取得できます。
+
+```php
+$request = new Pokepay\Request\ListAccountBalances(
+    '8653fa08.....', // 口座ID
+);
+```
+
+成功したときは `Pokepay\Response\AccountBalance` を `rows` に含むページングオブジェクトを返します。詳細は [ページング](#paging) を参照してください。
+
+`Pokepay\Response\AccountBalance` のプロパティは以下の通りです。
+
+- expiresAt (DateTime): 失効日時
+- moneyAmount (double): マネー額
+- pointAmount (double): ポイント額
 
 ### Organization
 

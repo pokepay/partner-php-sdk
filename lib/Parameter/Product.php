@@ -5,22 +5,30 @@
 namespace Pokepay\Response;
 
 
-class Account extends Base
+class Product extends Base
 {
     /**
      * @var string
      */
-    public $id;
+    public $janCode;
     /**
      * @var string
      */
     public $name;
     /**
+     * @var integer
+     */
+    public $unitPrice;
+    /**
+     * @var integer
+     */
+    public $price;
+    /**
      * @var boolean
      */
-    public $isSuspended;
+    public $isDiscounted;
     /**
-     * @var PrivateMoney
+     * @var string
      */
-    public $privateMoney;
+    public $other;
 }

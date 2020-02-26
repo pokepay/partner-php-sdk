@@ -4,10 +4,10 @@
 namespace Pokepay\Request;
 
 
-class CreateTransaction extends Base
+class CreateTopupTransaction extends Base
 {
     protected $method = 'POST';
-    protected $path = '/transactions';
+    protected $path = '/transactions/topup';
     public $responseClass = \Pokepay\Response\Transaction::class;
     private $shopId;
     private $customerId;

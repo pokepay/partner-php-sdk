@@ -4,27 +4,25 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
-class OrganizationSummary extends Base
+class AccountBalance extends Base
 {
     /**
-     * @var integer
+     * @var \DateTime
      */
-    public $count;
+    public $expiresAt;
     /**
      * @var double
      */
     public $moneyAmount;
     /**
-     * @var integer
-     */
-    public $moneyCount;
-    /**
      * @var double
      */
     public $pointAmount;
-    /**
-     * @var integer
-     */
-    public $pointCount;
+
+    protected function normalize($timezone)
+    {
+        $this->expiresAt->setTimezone(new DateTimeZone($timezone));
+    }
 }

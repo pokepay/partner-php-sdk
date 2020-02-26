@@ -4,16 +4,16 @@
 namespace Pokepay\Request;
 
 
-class CreateShop extends Base
+class CreateCustomerAccount extends Base
 {
     protected $method = 'POST';
-    protected $path = '/shops';
-    public $responseClass = \Pokepay\Response\User::class;
-    private $shopName;
-    public function __construct($shopName, $optionalParams = array())
+    protected $path = '/accounts/customers';
+    public $responseClass = \Pokepay\Response\AccountWithUser::class;
+    private $privateMoneyId;
+    public function __construct($privateMoneyId, $optionalParams = array())
     {
         parent::__construct();
-        $this->shopName = $shopName;
+        $this->privateMoneyId = $privateMoneyId;
         $this->optionalParams = $optionalParams;
     }
 
@@ -21,7 +21,7 @@ class CreateShop extends Base
     public function getParams()
     {
         $params = array(
-            'shop_name' => $this->shopName,
+            'private_money_id' => $this->privateMoneyId,
         );
 
         $params += $this->optionalParams;

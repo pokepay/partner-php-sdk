@@ -5,14 +5,10 @@
 namespace Pokepay\Response;
 
 
-class Organization extends Base
+class Pong extends Base
 {
     /**
      * @var string
      */
-    public $code;
-    /**
-     * @var string
-     */
-    public $name;
+    public $ok;
 }
