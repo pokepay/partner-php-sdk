@@ -8,7 +8,7 @@ class GetAccount extends Base
 {
     protected $method = 'GET';
     
-    public $responseClass = \Pokepay\Response\Account::class;
+    public $responseClass = \Pokepay\Response\AccountDetail::class;
     private $accountId;
     public function __construct($accountId)
     {

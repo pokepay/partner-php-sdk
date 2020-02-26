@@ -37,15 +37,15 @@ class Transaction extends Base
      */
     public $receiverAccount;
     /**
-     * @var double
+     * @var integer
      */
     public $amount;
     /**
-     * @var double
+     * @var integer
      */
     public $moneyAmount;
     /**
-     * @var double
+     * @var integer
      */
     public $pointAmount;
     /**
