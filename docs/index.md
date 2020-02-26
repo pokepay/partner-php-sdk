@@ -191,8 +191,8 @@ $request = new Pokepay\Request\CreatePaymentTransaction(
     'xxxxxxxxxxxxxxxxxxxxx',                            // 店舗ID
     'yyyyyyyyyyyyyyyyyyyyy',                            // エンドユーザーID
     'zzzzzzzzzzzzzzzzzzzzz',                            // 支払うマネーのID
+    1000,                                               // 支払い額
     array(
-        "amount" => 1000,                               // 支払い額
         "description" => 'たい焼き(小倉)',              // 取引履歴に表示する説明文 (任意)
     )
 );
@@ -271,7 +271,7 @@ $request = new Pokepay\Request\CreateCustomerAccount(
 - name (string): 口座名
 - isSuspended (bool): 口座が凍結されているかどうか
 - privateMoney (Response\PrivateMoney): 設定マネー情報
-- user (Response\User): ユーザー情報
+- user (Response\User): ユーザーIDなどを含むユーザー情報
 
 #### エンドユーザーの口座情報を表示する
 
@@ -286,10 +286,10 @@ $request = new Pokepay\Request\GetAccount(
 - id (string): 口座ID
 - name (string): 口座名
 - isSuspended (bool): 口座が凍結されているかどうか
-- privateMoney (Response\PrivateMoney): 設定マネー情報
 - balance (double): 総残高
 - moneyBalance (double): 総マネー残高
 - pointBalance (double): 総ポイント残高
+- privateMoney (Response\PrivateMoney): 設定マネー情報
 
 #### エンドユーザーの残高内訳を表示する
 

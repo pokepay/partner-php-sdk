@@ -13,7 +13,7 @@ class GetUser extends Base
     public function __construct()
     {
         parent::__construct();
-                $this->optionalParams = $optionalParams;
+                $this->optionalParams = array();
     }
 
     

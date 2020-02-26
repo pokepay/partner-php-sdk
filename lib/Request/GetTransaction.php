@@ -14,7 +14,7 @@ class GetTransaction extends Base
     {
         parent::__construct();
         $this->transactionId = $transactionId;
-        $this->optionalParams = $optionalParams;
+        $this->optionalParams = array();
     }
 
     public function getPath()

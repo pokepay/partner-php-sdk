@@ -14,7 +14,7 @@ class CreateEcho extends Base
     {
         parent::__construct();
         $this->message = $message;
-        $this->optionalParams = $optionalParams;
+        $this->optionalParams = array();
     }
 
     

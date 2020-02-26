@@ -14,7 +14,7 @@ class GetAccount extends Base
     {
         parent::__construct();
         $this->accountId = $accountId;
-        $this->optionalParams = $optionalParams;
+        $this->optionalParams = array();
     }
 
     public function getPath()
