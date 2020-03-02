@@ -16,6 +16,8 @@ class CreateTransactionTest extends TestCase
         $request = new Request\CreateTransaction($shopId, $customerId, $privateMoneyId, ['money_amount' => 100, 'point_amount' => 0, 'description' => 'PHP SDKテストチャージ']);
         $response = $client->send($request);
 
+        print_r($response);
+
         $this->assertInstanceOf(Response\Transaction::class, $response);
         $this->assertSame('topup', $response->type);
         $this->assertSame($shopId, $response->sender->id);

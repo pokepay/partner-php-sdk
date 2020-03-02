@@ -26,6 +26,8 @@ class ShowTransactionTest extends TestCase
         $request = new Request\ShowTransaction($transaction->id);
         $response = $client->send($request);
 
+        print_r($response);
+
         $this->assertInstanceOf(Response\Transaction::class, $response);
         $this->assertSame($transaction->id, $response->id);
     }
