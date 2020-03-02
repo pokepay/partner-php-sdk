@@ -5,7 +5,7 @@
 namespace Pokepay\Response;
 
 
-class PaginatedPrivateMoneyOrganizationSummaries extends Base
+class PaginatedPrivateMoneyOrganizationSummaries extends PaginatedRows
 {
     /**
      * @var PrivateMoneyOrganizationSummary[]

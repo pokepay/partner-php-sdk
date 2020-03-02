@@ -5,7 +5,7 @@
 namespace Pokepay\Response;
 
 
-class PaginatedTransaction extends Base
+class PaginatedTransaction extends PaginatedRows
 {
     /**
      * @var Transaction[]
