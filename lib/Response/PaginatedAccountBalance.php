@@ -5,7 +5,7 @@
 namespace Pokepay\Response;
 
 
-class PaginatedAccountBalance extends Base
+class PaginatedAccountBalance extends PaginatedRows
 {
     /**
      * @var AccountBalance[]
