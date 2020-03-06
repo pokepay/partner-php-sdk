@@ -204,9 +204,9 @@ $request = new Pokepay\Request\CreatePaymentTransaction(
 
 チャージ用QRコードを解析すると次のようなURLになります(URLは環境によって異なります)。
 
-`https://www-sandbox.pokepay.jp/checks/yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy`
+`https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
 
-この `yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy` の部分がチャージ用QRコードのIDです。
+この `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージ用QRコードのIDです。
 これを以下のようにエンドユーザIDと共に渡すことでチャージ取引が作られます。
 
 ```php
