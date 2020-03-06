@@ -200,6 +200,24 @@ $request = new Pokepay\Request\CreatePaymentTransaction(
 
 成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#show-transaction) を参照してください。
 
+#### チャージ用QRコードを読み取ることでチャージする
+
+チャージ用QRコードを解析すると次のようなURLになります(URLは環境によって異なります)。
+
+`https://www-sandbox.pokepay.jp/checks/yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy`
+
+この `yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy` の部分がチャージ用QRコードのIDです。
+これを以下のようにエンドユーザIDと共に渡すことでチャージ取引が作られます。
+
+```php
+$request = new Pokepay\Request\CreateTopupTransactionWithCheck(
+    'xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx',             // エンドユーザーのID
+    'yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy',             // チャージ用QRコードのID
+);
+```
+
+成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#show-transaction) を参照してください。
+
 #### 取引履歴を取得する
 
 ```php
