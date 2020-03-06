@@ -211,8 +211,8 @@ $request = new Pokepay\Request\CreatePaymentTransaction(
 
 ```php
 $request = new Pokepay\Request\CreateTopupTransactionWithCheck(
-    'xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx',             // エンドユーザーのID
-    'yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy',             // チャージ用QRコードのID
+    'xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx',             // チャージ用QRコードのID
+    'yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy',             // エンドユーザーのID
 );
 ```
 
