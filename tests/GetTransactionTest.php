@@ -1,7 +1,7 @@
 <?php
 namespace Pokepay;
 
-class ShowTransactionTest extends TestCase
+class GetTransactionTest extends TestCase
 {
     private function getTransaction()
     {
@@ -17,13 +17,13 @@ class ShowTransactionTest extends TestCase
         return null;
     }
 
-    public function testShowTransaction()
+    public function testGetTransaction()
     {
         $client = $this->newClient();
 
         $transaction = $this->getTransaction();
 
-        $request = new Request\ShowTransaction($transaction->id);
+        $request = new Request\GetTransaction($transaction->id);
         $response = $client->send($request);
 
         $this->assertInstanceOf(Response\Transaction::class, $response);
