@@ -118,8 +118,16 @@ $request->setCallId($newCallId);
 
 ### Transaction
 
-<a name="show-transaction"></a>
+<a name="get-transaction"></a>
 #### 取引情報を取得する
+
+```php
+$request = new Pokepay\Request\GetTransaction(
+    '0ace85e7.....'  // 取引ID
+);
+```
+
+`ShowTransaction` も使えますが非推奨です。
 
 ```php
 $request = new Pokepay\Request\ShowTransaction(
@@ -182,7 +190,7 @@ $request = new Pokepay\Request\CreateTopupTransaction(
 );
 ```
 
-成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#show-transaction) を参照してください。
+成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
 
 #### 支払いする
 
@@ -198,7 +206,7 @@ $request = new Pokepay\Request\CreatePaymentTransaction(
 );
 ```
 
-成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#show-transaction) を参照してください。
+成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
 
 #### チャージ用QRコードを読み取ることでチャージする
 
@@ -216,7 +224,7 @@ $request = new Pokepay\Request\CreateTopupTransactionWithCheck(
 );
 ```
 
-成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#show-transaction) を参照してください。
+成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
 
 #### 取引履歴を取得する
 
