@@ -127,6 +127,14 @@ $request = new Pokepay\Request\GetTransaction(
 );
 ```
 
+`ShowTransaction` も使えますが非推奨です。
+
+```php
+$request = new Pokepay\Request\ShowTransaction(
+    '0ace85e7.....'  // 取引ID
+);
+```
+
 成功したときは以下のプロパティを含む `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。
 
 - id (string): 取引ID
