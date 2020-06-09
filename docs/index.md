@@ -208,24 +208,6 @@ $request = new Pokepay\Request\CreatePaymentTransaction(
 
 成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
 
-#### チャージ用QRコードを読み取ることでチャージする
-
-チャージ用QRコードを解析すると次のようなURLになります(URLは環境によって異なります)。
-
-`https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
-
-この `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージ用QRコードのIDです。
-これを以下のようにエンドユーザIDと共に渡すことでチャージ取引が作られます。
-
-```php
-$request = new Pokepay\Request\CreateTopupTransactionWithCheck(
-    'xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx',             // チャージ用QRコードのID
-    'yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy',             // エンドユーザーのID
-);
-```
-
-成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
-
 #### 取引履歴を取得する
 
 ```php
@@ -274,6 +256,75 @@ $request = new Pokepay\Request\RefundTransaction(
 - pointAmount (double): 決済ポイント額
 - doneAt (DateTime): 取引日時
 - description (string): 取引説明文
+
+### チャージQRコード
+
+店舗ユーザが発行し、エンドユーザがポケペイアプリから読み取ることでチャージ取引が発生するQRコードです。
+チャージQRコードを解析すると次のようなURLになります(URLは環境によって異なります)。
+
+`https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
+
+このURLを直接スマーホフォン(iOS/Android)上でタップすることによっても、アプリが起動して取引が行われます。
+
+この `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
+
+#### チャージQRコードの発行
+
+チャージQRコードの発行は以下のように行ないます。
+
+```php
+$request = new Pokepay\Request\CreateCheck(
+  'xxxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx', // 送金元の店舗アカウントID
+  array(
+    "money_amount" => 100, // 付与マネー額
+    "point_amount" => 20,  // 付与ポイント額
+    "description" => "test check", // 説明文(アプリ上で取引の説明文として表示される)
+    "is_onetime" => false, // ワンタイムかどうか。真の場合1度読み込まれた時点でそのチャージQRは失効する(デフォルト値は真)
+    "usage_limit" => 10,   // ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数
+    "expires_at" => '2021-01-01T00:00:00+09:00', // チャージQR自体の失効日時
+    "point_expires_at" => '2021-01-01T00:00:00+09:00', // チャージQRによって付与されるポイントの失効日時
+    "point_expires_in_days" => 60, // チャージQRによって付与されるポイントの有効期限(相対指定、単位は日)
+    // ポイントがエンドユーザによって消費されたときに負担が発生する店舗のアカウントID(デフォルトは本店アカウント)
+    "bear_point_account" => 'yyyyyyyyyyyyy-yyyy-yyyy-yyyyyyyyyyyy',
+  ));
+```
+
+送金元となる店舗アカウントIDは必須で、残りはオプショナルですが、`money_amount`(付与マネー額)と`point_amount`付与ポイント額の少なくともどちらか一方は必要になります。
+`is_onetime`はチャージQRコードがワンタイムで失効するときに真にします。デフォルト値は真です。
+`is_onetime`が偽の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
+`usage_limit`は複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。省略すると無制限に読み取り可能なチャージQRコードになります。チャージQRコードは管理画面よりいつでも無効化(有効化)することができます。
+
+成功は `Pokepay\Response\Check` オブジェクトをレスポンスとして返します。以下にプロパティを示します。
+
+- id (string): チャージQRコードのID
+- amount (double): チャージマネー額 (廃止予定)
+- moneyAmount (double): チャージマネー額
+- pointAmount (double): チャージポイント額
+- description (string): チャージQRコードの説明文(アプリ上で取引の説明文として表示される)
+- user (Response\User): 送金元ユーザ情報
+- isOnetime (bool): ワンタイムかどうか
+- isDisabled (bool): 無効化されているかどうか
+- expiresAt (DateTime): チャージQRコード自体の失効日時
+- privateMoney (Response\PrivateMoney): 対象マネー情報
+- usageLimit (integer): ワンタイムでない場合の最大読み取り回数
+- usageCount (integer): ワンタイムでない場合の現在の読み取られた回数
+- token (string): チャージQRコードを解析したときに出てくるURL
+
+#### チャージQRコードを読み取ることでチャージする
+
+通常チャージQRコードはエンドユーザのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。
+もしエンドユーザとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報を代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
+
+エンドユーザから受け取ったチャージ用QRコードのIDを以下のようにエンドユーザIDと共に渡すことでチャージ取引が作られます。
+
+```php
+$request = new Pokepay\Request\CreateTopupTransactionWithCheck(
+    'xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx',             // チャージ用QRコードのID
+    'yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy',             // エンドユーザーのID
+);
+```
+
+成功時は `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
 
 ### Customer
 
