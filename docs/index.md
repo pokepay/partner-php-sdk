@@ -265,7 +265,7 @@ $request = new Pokepay\Request\RefundTransaction(
 
 `https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
 
-このURLを直接スマーホフォン(iOS/Android)上でタップすることによっても、アプリが起動して取引が行われます。
+QRコードを読み取る方法以外にも、このURLを直接スマートフォン(iOS/Android)上でタップすることによりアプリが起動して取引が行われます。
 上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
 
 #### チャージQRコードの発行
