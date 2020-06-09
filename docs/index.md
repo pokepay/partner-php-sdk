@@ -265,7 +265,7 @@ $request = new Pokepay\Request\RefundTransaction(
 
 `https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
 
-QRコードを読み取る方法以外にも、このURLを直接スマートフォン(iOS/Android)上でタップすることによりアプリが起動して取引が行われます。
+QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注意: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります)
 上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
 
 #### チャージQRコードの発行
@@ -289,10 +289,10 @@ $request = new Pokepay\Request\CreateCheck(
   ));
 ```
 
-送金元となる店舗アカウントIDは必須で、残りはオプショナルですが、`money_amount`(付与マネー額)と`point_amount`付与ポイント額の少なくともどちらか一方は必要になります。
-`is_onetime`はチャージQRコードがワンタイムで失効するときに真にします。デフォルト値は真です。
-`is_onetime`が偽の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
-`usage_limit`は複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。省略すると無制限に読み取り可能なチャージQRコードになります。チャージQRコードは管理画面よりいつでも無効化(有効化)することができます。
+送金元となる店舗アカウントIDは必須で、残りはオプショナルですが、`money_amount`(付与マネー額)と`point_amount`(付与ポイント額)の少なくともどちらか一方は必要です。
+`is_onetime`はチャージQRコードが一度の読み取りで失効するときに`true`にします。デフォルト値は`true`です。
+`is_onetime`が`false`の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
+`usage_limit`は複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。省略すると無制限に読み取り可能なチャージQRコードになります。チャージQRコードは管理画面からいつでも無効化(有効化)することができます。
 
 成功時は `Pokepay\Response\Check` オブジェクトをレスポンスとして返します。以下にプロパティを示します。
 
@@ -302,18 +302,18 @@ $request = new Pokepay\Request\CreateCheck(
 - pointAmount (double): チャージポイント額
 - description (string): チャージQRコードの説明文(アプリ上で取引の説明文として表示される)
 - user (Response\User): 送金元ユーザ情報
-- isOnetime (bool): ワンタイムかどうか
+- isOnetime (bool): 使用回数が一回限りかどうか
 - isDisabled (bool): 無効化されているかどうか
 - expiresAt (DateTime): チャージQRコード自体の失効日時
 - privateMoney (Response\PrivateMoney): 対象マネー情報
-- usageLimit (integer): ワンタイムでない場合の最大読み取り回数
-- usageCount (integer): ワンタイムでない場合の現在の読み取られた回数
+- usageLimit (integer): 一回限りでない場合の最大読み取り回数
+- usageCount (integer): 一回限りでない場合の現在までに読み取られた回数
 - token (string): チャージQRコードを解析したときに出てくるURL
 
 #### チャージQRコードを読み取ることでチャージする
 
 通常チャージQRコードはエンドユーザのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。
-もしエンドユーザとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報を代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
+もしエンドユーザとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報をエンドユーザから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
 
 エンドユーザから受け取ったチャージ用QRコードのIDを以下のようにエンドユーザIDと共に渡すことでチャージ取引が作られます。
 
