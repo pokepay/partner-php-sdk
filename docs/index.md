@@ -260,13 +260,13 @@ $request = new Pokepay\Request\RefundTransaction(
 ### チャージQRコード
 
 店舗ユーザが発行し、エンドユーザがポケペイアプリから読み取ることでチャージ取引が発生するQRコードです。
+
 チャージQRコードを解析すると次のようなURLになります(URLは環境によって異なります)。
 
 `https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
 
 このURLを直接スマーホフォン(iOS/Android)上でタップすることによっても、アプリが起動して取引が行われます。
-
-この `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
+上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
 
 #### チャージQRコードの発行
 
@@ -274,7 +274,7 @@ $request = new Pokepay\Request\RefundTransaction(
 
 ```php
 $request = new Pokepay\Request\CreateCheck(
-  'xxxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx', // 送金元の店舗アカウントID
+  'xxxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx', // 送金元の店舗アカウントID(必須)
   array(
     "money_amount" => 100, // 付与マネー額
     "point_amount" => 20,  // 付与ポイント額
@@ -294,7 +294,7 @@ $request = new Pokepay\Request\CreateCheck(
 `is_onetime`が偽の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
 `usage_limit`は複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。省略すると無制限に読み取り可能なチャージQRコードになります。チャージQRコードは管理画面よりいつでも無効化(有効化)することができます。
 
-成功は `Pokepay\Response\Check` オブジェクトをレスポンスとして返します。以下にプロパティを示します。
+成功時は `Pokepay\Response\Check` オブジェクトをレスポンスとして返します。以下にプロパティを示します。
 
 - id (string): チャージQRコードのID
 - amount (double): チャージマネー額 (廃止予定)
