@@ -86,7 +86,7 @@ class PartnerAPI
     {
         if (!$this->clientInstance) {
             $args = [$this->clientId, $this->clientSecret, $this->curlOptions];
-            if ($this->config['TIMEZONE']) {
+            if (!empty($this->config['TIMEZONE'])) {
                 array_push($args, $this->config['TIMEZONE']);
             }
             $this->clientInstance = new HttpClient(...$args);
