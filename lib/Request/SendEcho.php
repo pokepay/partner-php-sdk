@@ -7,17 +7,21 @@ namespace Pokepay\Request;
 class SendEcho extends Base
 {
     protected $method = 'POST';
-    protected $path = '/echo';
-    public $responseClass = \Pokepay\Response\Echo::class;
+    public $responseClass = \Pokepay\Response\Echoed::class;
     private $message;
     public function __construct($message)
     {
         parent::__construct();
         $this->message = $message;
+
         $this->optionalParams = array();
     }
 
-    
+    public function getPath()
+    {
+        return '/echo';
+    }
+
     public function getParams()
     {
         $params = array(

@@ -7,16 +7,20 @@ namespace Pokepay\Request;
 class GetPing extends Base
 {
     protected $method = 'GET';
-    protected $path = '/ping';
     public $responseClass = \Pokepay\Response\Pong::class;
     
     public function __construct()
     {
         parent::__construct();
-                $this->optionalParams = array();
+        
+        $this->optionalParams = array();
     }
 
-    
+    public function getPath()
+    {
+        return '/ping';
+    }
+
     public function getParams()
     {
         $params = array(

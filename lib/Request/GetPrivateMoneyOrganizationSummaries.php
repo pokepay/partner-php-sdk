@@ -3,18 +3,18 @@
 
 namespace Pokepay\Request;
 
-
 use DateTime;
+
 class GetPrivateMoneyOrganizationSummaries extends PagingBase
 {
     protected $method = 'GET';
-    
     public $responseClass = \Pokepay\Response\PaginatedPrivateMoneyOrganizationSummaries::class;
     private $privateMoneyId;
     public function __construct($privateMoneyId, $optionalParams = array())
     {
         parent::__construct();
         $this->privateMoneyId = $privateMoneyId;
+
         $this->optionalParams = $optionalParams;
     }
 

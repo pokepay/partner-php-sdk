@@ -7,7 +7,6 @@ namespace Pokepay\Request;
 class CreateTopupTransactionWithCheck extends Base
 {
     protected $method = 'POST';
-    protected $path = '/transactions/topup/check';
     public $responseClass = \Pokepay\Response\Transaction::class;
     private $checkId;
     private $customerId;
@@ -16,10 +15,15 @@ class CreateTopupTransactionWithCheck extends Base
         parent::__construct();
         $this->checkId = $checkId;
         $this->customerId = $customerId;
+
         $this->optionalParams = array();
     }
 
-    
+    public function getPath()
+    {
+        return '/transactions/topup/check';
+    }
+
     public function getParams()
     {
         $params = array(

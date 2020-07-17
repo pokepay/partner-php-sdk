@@ -3,22 +3,26 @@
 
 namespace Pokepay\Request;
 
-
 use DateTime;
+
 class CreateCheck extends Base
 {
     protected $method = 'POST';
-    protected $path = '/checks';
     public $responseClass = \Pokepay\Response\Check::class;
     private $accountId;
     public function __construct($accountId, $optionalParams = array())
     {
         parent::__construct();
         $this->accountId = $accountId;
+
         $this->optionalParams = $optionalParams;
     }
 
-    
+    public function getPath()
+    {
+        return '/checks';
+    }
+
     public function getParams()
     {
         $params = array(
@@ -29,6 +33,9 @@ class CreateCheck extends Base
 
         if (isset($params['expiresAt']) && $params['expiresAt'] instanceof DateTime) {
             $params['expiresAt'] = $params['expiresAt']->format(DateTime::ATOM);
+        }
+        if (isset($params['pointExpiresAt']) && $params['pointExpiresAt'] instanceof DateTime) {
+            $params['pointExpiresAt'] = $params['pointExpiresAt']->format(DateTime::ATOM);
         }
 
         return $params;

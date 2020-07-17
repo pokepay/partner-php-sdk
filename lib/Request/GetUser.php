@@ -7,16 +7,20 @@ namespace Pokepay\Request;
 class GetUser extends Base
 {
     protected $method = 'GET';
-    protected $path = '/user';
     public $responseClass = \Pokepay\Response\AdminUserWithShopsAndPrivateMoneys::class;
     
     public function __construct()
     {
         parent::__construct();
-                $this->optionalParams = array();
+        
+        $this->optionalParams = array();
     }
 
-    
+    public function getPath()
+    {
+        return '/user';
+    }
+
     public function getParams()
     {
         $params = array(

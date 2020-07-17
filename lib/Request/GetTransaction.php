@@ -7,13 +7,13 @@ namespace Pokepay\Request;
 class GetTransaction extends Base
 {
     protected $method = 'GET';
-    
     public $responseClass = \Pokepay\Response\Transaction::class;
     private $transactionId;
     public function __construct($transactionId)
     {
         parent::__construct();
         $this->transactionId = $transactionId;
+
         $this->optionalParams = array();
     }
 

@@ -7,7 +7,6 @@ namespace Pokepay\Request;
 class CreatePaymentTransaction extends Base
 {
     protected $method = 'POST';
-    protected $path = '/transactions/payment';
     public $responseClass = \Pokepay\Response\Transaction::class;
     private $shopId;
     private $customerId;
@@ -20,10 +19,15 @@ class CreatePaymentTransaction extends Base
         $this->customerId = $customerId;
         $this->privateMoneyId = $privateMoneyId;
         $this->amount = $amount;
+
         $this->optionalParams = $optionalParams;
     }
 
-    
+    public function getPath()
+    {
+        return '/transactions/payment';
+    }
+
     public function getParams()
     {
         $params = array(

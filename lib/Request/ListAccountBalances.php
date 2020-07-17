@@ -7,13 +7,13 @@ namespace Pokepay\Request;
 class ListAccountBalances extends PagingBase
 {
     protected $method = 'GET';
-    
     public $responseClass = \Pokepay\Response\PaginatedAccountBalance::class;
     private $accountId;
     public function __construct($accountId, $optionalParams = array())
     {
         parent::__construct();
         $this->accountId = $accountId;
+
         $this->optionalParams = $optionalParams;
     }
 
