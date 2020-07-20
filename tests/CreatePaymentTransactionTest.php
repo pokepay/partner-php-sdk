@@ -7,7 +7,7 @@ class CreatePaymentTransaction extends TestCase
     public function testCreatePaymentTransaction0()
     {
         $client = $this->newClient();
-        $request = new Request\CreatePaymentTransaction("9a75c09c-8a21-42c0-b1a4-513c0b5fcff2", "5bcd0e36-4bd5-4533-bfe3-c2735f9c89c1", "1d368a20-3a49-46b2-b2f4-9d61ca0c36c9", 710);
+        $request = new Request\CreatePaymentTransaction("93efe0e5-6678-421f-ab6c-c2233ffb654e", "4dfe840b-1712-4c09-b306-384146bf7921", "cbed9b68-21f7-4499-b751-0a587fd2869f", 9580);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +20,7 @@ class CreatePaymentTransaction extends TestCase
     public function testCreatePaymentTransaction1()
     {
         $client = $this->newClient();
-        $request = new Request\CreatePaymentTransaction("9a75c09c-8a21-42c0-b1a4-513c0b5fcff2", "5bcd0e36-4bd5-4533-bfe3-c2735f9c89c1", "1d368a20-3a49-46b2-b2f4-9d61ca0c36c9", 710, ['description' => "eJKAOphpioNc8jno1mbfxyuSguVHWNXtuVOtC5VbIuIbfm2xRVJnwjVsCnqy9w3Ijhuuuk7tJ9x7WG2dWWHP2itmvMWHKmKXkvtHxz5UcM5HSeKhlJH52meGw8Ais1LbzEvZ1pXCtnqRQ09PpoJqmGqZbfuNnjDO8Pquga6wHI7aWxLhvXvHPlu7e"]);
+        $request = new Request\CreatePaymentTransaction("93efe0e5-6678-421f-ab6c-c2233ffb654e", "4dfe840b-1712-4c09-b306-384146bf7921", "cbed9b68-21f7-4499-b751-0a587fd2869f", 9580, ['description' => "XNh7xEUmYSMWZgKzybQR5f77vttNs2lfpDqWiQMP6q"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

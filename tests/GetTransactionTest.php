@@ -7,7 +7,7 @@ class GetTransaction extends TestCase
     public function testGetTransaction0()
     {
         $client = $this->newClient();
-        $request = new Request\GetTransaction("e755f23a-38ce-4b5d-9b29-d8d49b1ae03f");
+        $request = new Request\GetTransaction("4b717c85-90a5-462a-ab39-907582b2ca21");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

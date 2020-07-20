@@ -7,7 +7,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck0()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a");
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +20,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck1()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['bear_point_account' => "4c3ab539-43e5-4517-83bf-c8df5e23632d"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['bear_point_account' => "6b64371d-5a9b-4326-aaa4-342f9bcdcdb9"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +33,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck2()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['point_expires_in_days' => 9465, 'bear_point_account' => "8cc6a5b7-1bbd-4f74-8351-1a410c78f9ef"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['point_expires_in_days' => 4399, 'bear_point_account' => "3e3e02ca-f6a3-46c6-a9f9-d43d288248c9"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -46,7 +46,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck3()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['point_expires_at' => "2016-12-12T23:26:39.000000+09:00", 'point_expires_in_days' => 7334, 'bear_point_account' => "6c91b16f-292e-4ba7-8ee5-189030c81fc2"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['point_expires_at' => "2024-08-17T23:52:58.000000+09:00", 'point_expires_in_days' => 7743, 'bear_point_account' => "1f0589b4-85ec-405d-bc37-e27975c6c07f"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -59,7 +59,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck4()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['expires_at' => "2016-03-08T02:18:33.000000+09:00", 'point_expires_at' => "2021-01-21T20:52:26.000000+09:00", 'point_expires_in_days' => 2052, 'bear_point_account' => "0587e41a-a2b7-4ee0-91da-75dd080cc5c8"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['expires_at' => "2020-04-05T20:46:55.000000+09:00", 'point_expires_at' => "2021-09-13T10:56:58.000000+09:00", 'point_expires_in_days' => 54, 'bear_point_account' => "6d8b23bf-3512-4bea-af7c-5d862a8bd366"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -72,7 +72,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck5()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['usage_limit' => 7911, 'expires_at' => "2018-02-07T00:08:03.000000+09:00", 'point_expires_at' => "2018-01-25T14:45:54.000000+09:00", 'point_expires_in_days' => 6788, 'bear_point_account' => "b1cde4cc-10c2-492c-9b4b-8449cd2c9489"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['usage_limit' => 7167, 'expires_at' => "2018-07-22T01:11:01.000000+09:00", 'point_expires_at' => "2023-11-27T09:37:19.000000+09:00", 'point_expires_in_days' => 6530, 'bear_point_account' => "492ddc96-f98a-46bc-92f3-036cc8f51ed5"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -85,7 +85,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck6()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['is_onetime' => FALSE, 'usage_limit' => 413, 'expires_at' => "2016-10-19T00:08:19.000000+09:00", 'point_expires_at' => "2025-01-11T11:33:09.000000+09:00", 'point_expires_in_days' => 487, 'bear_point_account' => "6a3e31f1-0113-4883-b050-4afa3ed41a52"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['is_onetime' => FALSE, 'usage_limit' => 7068, 'expires_at' => "2022-05-29T13:49:11.000000+09:00", 'point_expires_at' => "2020-04-25T08:51:51.000000+09:00", 'point_expires_in_days' => 9916, 'bear_point_account' => "2349f42c-2e06-4a09-90e7-5d617973f612"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -98,7 +98,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck7()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['description' => "maw4gVr8yxi6OUJGovmbiaEJValFWpm35mTiVmVnKiyieYJmAsomXWoUvcMRAwumUPxcD1LGL6EsCw5pjLFMGuoZ5PGrJlUqqXR9iWH1tbwHjWgoXXAGEyL", 'is_onetime' => FALSE, 'usage_limit' => 8050, 'expires_at' => "2017-05-15T11:15:19.000000+09:00", 'point_expires_at' => "2017-10-26T05:04:26.000000+09:00", 'point_expires_in_days' => 3372, 'bear_point_account' => "435d6744-1ea9-48bf-97c4-c2e2e0a066d7"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['description' => "rApvwDqo0amr5dkK53MX4E967mmjPKKggjtg9he5ze6WKtySR4kk58S0wVlcTHVMk5BDidqUIIaWJe52rssz89HcC6f4JJ4tJtWVB6jhCO0bvvhOcT0gc4Y9ugTSfOLVU1tFq8nryFLtJOsRKtaeh9SUrPfvVX87gjt51dQ9qV1FTUJ", 'is_onetime' => TRUE, 'usage_limit' => 8036, 'expires_at' => "2018-04-16T01:29:56.000000+09:00", 'point_expires_at' => "2021-10-17T06:00:53.000000+09:00", 'point_expires_in_days' => 7891, 'bear_point_account' => "8312ed00-37e5-4e58-9b8d-5a1f76cef0d9"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -111,7 +111,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck8()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['point_amount' => 1153, 'description' => "Sbw8Dv2hFGftH4x38EmvCaVS3sf2fByFeamL143JVLXjnO7xD0lSKhr66wYohKPXq6QGo0k5CiJrkskFdfyl0oXTpk3HdFCUgJpLWV9WFqJ9q9QtjzeK3mVML4IzAvlcvRKJQK1BEqoWxeamgNJgT1MIsGb70TnlIb2F9ExxWil", 'is_onetime' => FALSE, 'usage_limit' => 6580, 'expires_at' => "2022-08-19T19:15:49.000000+09:00", 'point_expires_at' => "2016-01-30T08:21:29.000000+09:00", 'point_expires_in_days' => 4660, 'bear_point_account' => "dd4ea522-0f5d-491b-9f94-b8a6146de73a"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['point_amount' => 4104, 'description' => "Oni6CHSvwwYNIGpscq3jyy82r6O2N0HlEsZ64PhMQM6JvjaxMZIfJo4fFsQxqUIbnhDG7myCuDd2wfpfLJg9I69REyKwYXqnbN6AR83kw4gkb6YLKgznTbvYXeT0Fd1VWJRT2sDmOMF", 'is_onetime' => FALSE, 'usage_limit' => 5764, 'expires_at' => "2024-05-21T03:34:45.000000+09:00", 'point_expires_at' => "2020-03-07T07:56:26.000000+09:00", 'point_expires_in_days' => 9582, 'bear_point_account' => "6afd356e-b80f-4133-b6bf-d8ada7b321e3"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -124,7 +124,7 @@ class CreateCheck extends TestCase
     public function testCreateCheck9()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCheck("78ee7297-d652-4cc4-8510-3288c42b863a", ['money_amount' => 9250, 'point_amount' => 4954, 'description' => "OmQsCkFeUa6IGdYDPoboVJLAf2q60MTXePITgHS3bzNeNzuBh8unGZskiPISRZ6YSBysyCZgWozydsvM4et3Rou8iZIk0BccFW2HNNV4uMsS6aXOeeb", 'is_onetime' => TRUE, 'usage_limit' => 9197, 'expires_at' => "2021-09-11T04:18:38.000000+09:00", 'point_expires_at' => "2017-02-10T20:28:18.000000+09:00", 'point_expires_in_days' => 5593, 'bear_point_account' => "05f432b9-4504-45d1-befb-ddeb0f9bd74e"]);
+        $request = new Request\CreateCheck("ca93c93d-9618-4072-85d0-a94489bc5dbf", ['money_amount' => 2758, 'point_amount' => 6895, 'description' => "RTtwx2WAj4QUHkO71rqOR7UnrgGzUmfgkdnd8JkKZMpsrWW6nyJkNzZfc5fbkomT0wmrmDXENiod3rGVJKq8NmL8tDl1vxzoNqDqZJs9WtcYNDDiH16WfW9Yb", 'is_onetime' => FALSE, 'usage_limit' => 7978, 'expires_at' => "2018-03-22T20:37:55.000000+09:00", 'point_expires_at' => "2024-08-16T01:28:44.000000+09:00", 'point_expires_in_days' => 6340, 'bear_point_account' => "3c312821-7e4d-4b83-b39e-47414878324d"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

@@ -7,7 +7,7 @@ class CreateCustomerAccount extends TestCase
     public function testCreateCustomerAccount0()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCustomerAccount("1a4d414f-9427-4648-8948-7ba4cd695c8e");
+        $request = new Request\CreateCustomerAccount("696ba6dc-3d26-45c7-a558-ff89663562df");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +20,7 @@ class CreateCustomerAccount extends TestCase
     public function testCreateCustomerAccount1()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCustomerAccount("1a4d414f-9427-4648-8948-7ba4cd695c8e", ['account_name' => "zbqmzXcUUPq5JkXVudpQkFymcQTvQbFZcZSEAFql9X9OOHMwG6Ejh5lWlmpdaTeNerOtZWHxhbVR94ROeNDlFwwK3jwCXYtPLf1UBKhiVuC3bMAjNLzVPNJsFnfMFauKpxKs1mekASfTEHJVveCjylMyVrfNexeoz7La61PGReFzYdOhOWHv80YPhXYleAkSwnD4nH1Cs9bi"]);
+        $request = new Request\CreateCustomerAccount("696ba6dc-3d26-45c7-a558-ff89663562df", ['account_name' => "Y3MFAVs6KAzcrRqOgyjAV6M5adK6BvQUIow2OUYi1Y5bgt8cvDGHK1F7olc9zWOFVjCChAVubSAxZRa0jEts5OXKn10vbAQNxvrZqMPczwH40KFbtHsMEqN5agDMot6jpSd4p"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +33,7 @@ class CreateCustomerAccount extends TestCase
     public function testCreateCustomerAccount2()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCustomerAccount("1a4d414f-9427-4648-8948-7ba4cd695c8e", ['user_name' => "cOrybisZ", 'account_name' => "yP6EHlQa2kZc29niJI6NinB482E49wunS6nDLSkcSzbjBG7lQVEtvGVFVjCOn34dBamhh6kP7RPvxAooOZ9ReJ"]);
+        $request = new Request\CreateCustomerAccount("696ba6dc-3d26-45c7-a558-ff89663562df", ['user_name' => "qYNLVcNHJ589Rx1WliVSFFzoYTKiooKuZ06PNbeHZqImva50KStAEpPr", 'account_name' => "mbPW5HhdN"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

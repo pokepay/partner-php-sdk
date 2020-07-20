@@ -7,7 +7,7 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries0()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("85b497b3-3054-4493-8481-8c59f9736d7e");
+        $request = new Request\GetPrivateMoneyOrganizationSummaries("3bb1f083-a6f8-4e4f-a31b-4b99987542dc");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +20,7 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries1()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("85b497b3-3054-4493-8481-8c59f9736d7e", ['page' => 6429, 'per_page' => 2414, 'page' => 7751]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries("3bb1f083-a6f8-4e4f-a31b-4b99987542dc", ['page' => 2153, 'per_page' => 3952, 'page' => 8802]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +33,7 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries2()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("85b497b3-3054-4493-8481-8c59f9736d7e", ['page' => 6023, 'per_page' => 5685, 'page' => 2810, 'from' => "2022-03-08T22:55:46.000000+09:00", 'to' => "2022-01-30T00:09:10.000000+09:00"]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries("3bb1f083-a6f8-4e4f-a31b-4b99987542dc", ['page' => 5241, 'per_page' => 5647, 'page' => 8080, 'from' => "2024-08-01T18:23:37.000000+09:00", 'to' => "2016-05-03T00:36:14.000000+09:00"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -46,7 +46,7 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries3()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("85b497b3-3054-4493-8481-8c59f9736d7e", ['from' => "2016-07-04T02:46:22.000000+09:00", 'to' => "2016-12-15T06:46:28.000000+09:00"]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries("3bb1f083-a6f8-4e4f-a31b-4b99987542dc", ['from' => "2016-05-02T22:57:54.000000+09:00", 'to' => "2024-12-10T17:20:44.000000+09:00"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
