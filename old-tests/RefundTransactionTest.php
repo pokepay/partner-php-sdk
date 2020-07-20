@@ -27,7 +27,7 @@ class RefundTransactionTest extends TestCase
         if (!isset($transaction)) {
             $this->markTestSkipped("Can't continue refunding tests because there're no transactions.");
         } else {
-            $request = new Request\RefundTransaction($transaction->id, '返金処理のため');
+            $request = new Request\RefundTransaction($transaction->id, ['description' => '返金処理のため']);
             $response = $client->send($request);
 
             $this->assertInstanceOf(Response\Transfer::class, $response);

@@ -24,6 +24,7 @@ require_once __DIR__ . '/lib/Request/CreateTopupTransactionWithCheck.php';
 require_once __DIR__ . '/lib/Request/CreatePaymentTransaction.php';
 require_once __DIR__ . '/lib/Request/CreateExchangeTransaction.php';
 require_once __DIR__ . '/lib/Request/GetTransaction.php';
+require_once __DIR__ . '/lib/Request/RefundTransaction.php';
 require_once __DIR__ . '/lib/Request/ListTransfers.php';
 require_once __DIR__ . '/lib/Request/CreateOrganization.php';
 require_once __DIR__ . '/lib/Request/CreateShop.php';

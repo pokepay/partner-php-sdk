@@ -1302,6 +1302,34 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+  /transactions/{transaction_id}/refund:
+    post:
+      summary: 返金する
+      x-pokepay-operator-name: RefundTransaction
+      parameters:
+        - in: path
+          name: transaction_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+          summary: '取引ID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                description:
+                  type: string
+                  maxLength: 200
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
   /transfers:
     get:
       x-pokepay-operator-name: "ListTransfers"
