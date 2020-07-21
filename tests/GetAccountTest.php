@@ -7,7 +7,7 @@ class GetAccount extends TestCase
     public function testGetAccount0()
     {
         $client = $this->newClient();
-        $request = new Request\GetAccount("f6cde57b-5e23-4813-bea2-a3619974ab71");
+        $request = new Request\GetAccount("c01514a0-28a6-4224-b299-b8e967bdf638");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

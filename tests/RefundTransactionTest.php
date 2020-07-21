@@ -7,7 +7,7 @@ class RefundTransaction extends TestCase
     public function testRefundTransaction0()
     {
         $client = $this->newClient();
-        $request = new Request\RefundTransaction("bb282b34-58cb-4ee9-bee6-941e37f56cbd");
+        $request = new Request\RefundTransaction("bfa3e733-2eb2-4245-92e1-5a940499cacc");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +20,7 @@ class RefundTransaction extends TestCase
     public function testRefundTransaction1()
     {
         $client = $this->newClient();
-        $request = new Request\RefundTransaction("bb282b34-58cb-4ee9-bee6-941e37f56cbd", ['description' => "RzYl"]);
+        $request = new Request\RefundTransaction("bfa3e733-2eb2-4245-92e1-5a940499cacc", ['description' => "SQPdseUAKaD31Sos4Kt6RbsKiSw64gPt62RZykRUKzmXO44RQL8mUKWZJrH6k8wewkYJ7Gdve5ny5dE1Am3mFUDF8jY4tYv9RWfV24z8J"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

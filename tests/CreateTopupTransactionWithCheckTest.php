@@ -7,7 +7,7 @@ class CreateTopupTransactionWithCheck extends TestCase
     public function testCreateTopupTransactionWithCheck0()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTopupTransactionWithCheck("ebe5dbdd-3dc1-490f-9702-111e04225eae", "64e1c8b9-dbca-421f-90f6-fd4f734cb571");
+        $request = new Request\CreateTopupTransactionWithCheck("b3d4a6ca-906a-480e-b1a3-29ad15c73207", "4b9f9d41-3d8a-48c4-8a88-1ec3df46d9ad");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

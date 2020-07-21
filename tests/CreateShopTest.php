@@ -7,7 +7,7 @@ class CreateShop extends TestCase
     public function testCreateShop0()
     {
         $client = $this->newClient();
-        $request = new Request\CreateShop("0Hv4BvDigwf0t4yyFWpU8ex6kNYpGrZUC3RpQg4HgsgZwoExJf7FlTa8alDCFruHctctoVbljd1dKr18X4wPEkVDOnB");
+        $request = new Request\CreateShop("ARb91");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +20,7 @@ class CreateShop extends TestCase
     public function testCreateShop1()
     {
         $client = $this->newClient();
-        $request = new Request\CreateShop("0Hv4BvDigwf0t4yyFWpU8ex6kNYpGrZUC3RpQg4HgsgZwoExJf7FlTa8alDCFruHctctoVbljd1dKr18X4wPEkVDOnB", ['organization_code' => "ae-QZ-8-3-0d-iMIN-WURSQGw4i3YViV"]);
+        $request = new Request\CreateShop("ARb91", ['organization_code' => "-b9--b---ca9X-Fg-q-5h45Ebw0F"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +33,7 @@ class CreateShop extends TestCase
     public function testCreateShop2()
     {
         $client = $this->newClient();
-        $request = new Request\CreateShop("0Hv4BvDigwf0t4yyFWpU8ex6kNYpGrZUC3RpQg4HgsgZwoExJf7FlTa8alDCFruHctctoVbljd1dKr18X4wPEkVDOnB", ['shop_external_id' => "vt8YWHq3r8", 'organization_code' => "-X-9G933"]);
+        $request = new Request\CreateShop("ARb91", ['shop_external_id' => "v66TbUcxc0haDyamRk8QdPNm6lqM0Ir", 'organization_code' => "-4r5J-j-k--w"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -46,7 +46,7 @@ class CreateShop extends TestCase
     public function testCreateShop3()
     {
         $client = $this->newClient();
-        $request = new Request\CreateShop("0Hv4BvDigwf0t4yyFWpU8ex6kNYpGrZUC3RpQg4HgsgZwoExJf7FlTa8alDCFruHctctoVbljd1dKr18X4wPEkVDOnB", ['shop_email' => "j1NCSBGron@wb4m.com", 'shop_external_id' => "UJfh3", 'organization_code' => "-3ll70ZbN6k02-IF-78-"]);
+        $request = new Request\CreateShop("ARb91", ['shop_email' => "wQi2Ew5Xwj@68ab.com", 'shop_external_id' => "dim876Lv5aKOIFxv", 'organization_code' => "234M7v--jmu3-iXE--"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -59,7 +59,7 @@ class CreateShop extends TestCase
     public function testCreateShop4()
     {
         $client = $this->newClient();
-        $request = new Request\CreateShop("0Hv4BvDigwf0t4yyFWpU8ex6kNYpGrZUC3RpQg4HgsgZwoExJf7FlTa8alDCFruHctctoVbljd1dKr18X4wPEkVDOnB", ['shop_tel' => "09-824-742", 'shop_email' => "lWb2iNAeIN@TXax.com", 'shop_external_id' => "p42gpkW7P2BuE3OZ2PBlwfUpZAtZ", 'organization_code' => ""]);
+        $request = new Request\CreateShop("ARb91", ['shop_tel' => "0497-1837", 'shop_email' => "gwyhtNTI2X@NzSz.com", 'shop_external_id' => "899NJ5qAdTvVz239b8YSY2OB4TSioKEYn", 'organization_code' => "quX03HC614e-f"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -72,7 +72,7 @@ class CreateShop extends TestCase
     public function testCreateShop5()
     {
         $client = $this->newClient();
-        $request = new Request\CreateShop("0Hv4BvDigwf0t4yyFWpU8ex6kNYpGrZUC3RpQg4HgsgZwoExJf7FlTa8alDCFruHctctoVbljd1dKr18X4wPEkVDOnB", ['shop_address' => "W9Eu1m5JjAQTkMW2cxPXeieyk5ra7CyaRXPXMTyCrimC3k9k5RP43Zy6uGJligg6UShBES00SqLwLwsAdLJjUXwByk", 'shop_tel' => "03828456", 'shop_email' => "qB6TXVnOQD@hC5W.com", 'shop_external_id' => "Fd31jZVyWHlIju5Prv80FQh", 'organization_code' => "QSZ5W10-4-9-o-9qu9-Jk"]);
+        $request = new Request\CreateShop("ARb91", ['shop_address' => "5B8ByHHzOQjeBLdW9XZJGo5m7iyAcKHSxtorNGybB2SiCyDiCcy8nkiLEZ0dc2wkNhhuSGr", 'shop_tel' => "01-8616-7220", 'shop_email' => "QHYfLivedg@iM56.com", 'shop_external_id' => "iuFFhpW", 'organization_code' => "hzvQ-T--riq0--JWeN6-l3"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -85,7 +85,7 @@ class CreateShop extends TestCase
     public function testCreateShop6()
     {
         $client = $this->newClient();
-        $request = new Request\CreateShop("0Hv4BvDigwf0t4yyFWpU8ex6kNYpGrZUC3RpQg4HgsgZwoExJf7FlTa8alDCFruHctctoVbljd1dKr18X4wPEkVDOnB", ['shop_postal_code' => "472-8877", 'shop_address' => "Dc9JUPdy65ApGsILiHWQ9qCiMSSiQLX39tuIXBuB6MrR", 'shop_tel' => "04-13-852", 'shop_email' => "w8Yn7yi38x@Z7fS.com", 'shop_external_id' => "sD1nKNpM7iSshlxjgGI3F9H9171I", 'organization_code' => "4-pR5q4-1P--55H-sSm"]);
+        $request = new Request\CreateShop("ARb91", ['shop_postal_code' => "3084572", 'shop_address' => "lMcbmvVZ1j6S6XMNzZaikJcL6vL8", 'shop_tel' => "0390897-242", 'shop_email' => "Hn7BWD9yET@uPow.com", 'shop_external_id' => "hMDcv5IkdAgQq50MFvGUN4hTEJ1", 'organization_code' => "p--ZedQ822q-"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

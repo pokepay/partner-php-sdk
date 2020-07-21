@@ -7,7 +7,7 @@ class CreateTransaction extends TestCase
     public function testCreateTransaction0()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTransaction("7cae257b-77a8-4da9-8ac8-1071b06c4103", "7b1b879c-316e-4f8d-b544-8b49fa050f87", "92db5c9d-1ded-4250-8aa1-b19a4eb94396");
+        $request = new Request\CreateTransaction("ff2b67de-dfa4-4ba6-bf75-a7ad4a70ab74", "08ddad30-c8c5-4d99-b0e7-bdbf96837e3d", "435db9df-baaf-460a-9f1f-10cdb7440a15");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +20,7 @@ class CreateTransaction extends TestCase
     public function testCreateTransaction1()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTransaction("7cae257b-77a8-4da9-8ac8-1071b06c4103", "7b1b879c-316e-4f8d-b544-8b49fa050f87", "92db5c9d-1ded-4250-8aa1-b19a4eb94396", ['description' => "N9zA"]);
+        $request = new Request\CreateTransaction("ff2b67de-dfa4-4ba6-bf75-a7ad4a70ab74", "08ddad30-c8c5-4d99-b0e7-bdbf96837e3d", "435db9df-baaf-460a-9f1f-10cdb7440a15", ['description' => "NF8TbHH9FjMDwvXkVnBWoRM6tEV7oX4ZwR7Qfj5OOatrZM36uTqcJC6ds2upLnt4U5VRCoFUM59lyMsxI2sikDmSzBDWL9aarkUnkbOQxo3a4RmQEkhdGUy1amMYp3NCx6Pne417M6op1RnaDQLhwfmxBWtZjrN"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +33,7 @@ class CreateTransaction extends TestCase
     public function testCreateTransaction2()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTransaction("7cae257b-77a8-4da9-8ac8-1071b06c4103", "7b1b879c-316e-4f8d-b544-8b49fa050f87", "92db5c9d-1ded-4250-8aa1-b19a4eb94396", ['point_amount' => 3938, 'description' => "iEh6wUJzX52R8XuI23w5he9l709UZwK5GiGaCszYaUNvzNp1c2EY17En6KE46uloxc3nVkV"]);
+        $request = new Request\CreateTransaction("ff2b67de-dfa4-4ba6-bf75-a7ad4a70ab74", "08ddad30-c8c5-4d99-b0e7-bdbf96837e3d", "435db9df-baaf-460a-9f1f-10cdb7440a15", ['point_amount' => 7496, 'description' => "tL59F6fJz63OxuiMCnMlmUNpXzwdxflQOMRwI2RNTFC"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -46,7 +46,7 @@ class CreateTransaction extends TestCase
     public function testCreateTransaction3()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTransaction("7cae257b-77a8-4da9-8ac8-1071b06c4103", "7b1b879c-316e-4f8d-b544-8b49fa050f87", "92db5c9d-1ded-4250-8aa1-b19a4eb94396", ['money_amount' => 3759, 'point_amount' => 7675, 'description' => "BZY6QdrDX2Bga3tcoArqGerg0fCoMnRbxFyZ6LMfb1n8xhiJ3N5eZBN0q4TptHIAotQhti2Q10d1Jnrpti1C5XO26zpecn5eA"]);
+        $request = new Request\CreateTransaction("ff2b67de-dfa4-4ba6-bf75-a7ad4a70ab74", "08ddad30-c8c5-4d99-b0e7-bdbf96837e3d", "435db9df-baaf-460a-9f1f-10cdb7440a15", ['money_amount' => 1702, 'point_amount' => 4190, 'description' => "FW52"]);
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

@@ -7,7 +7,7 @@ class SendEcho extends TestCase
     public function testSendEcho0()
     {
         $client = $this->newClient();
-        $request = new Request\SendEcho("gIt");
+        $request = new Request\SendEcho("lif");
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
