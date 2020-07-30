@@ -7,17 +7,21 @@ namespace Pokepay\Request;
 class CreateCustomerAccount extends Base
 {
     protected $method = 'POST';
-    protected $path = '/accounts/customers';
     public $responseClass = \Pokepay\Response\AccountWithUser::class;
     private $privateMoneyId;
     public function __construct($privateMoneyId, $optionalParams = array())
     {
         parent::__construct();
         $this->privateMoneyId = $privateMoneyId;
+
         $this->optionalParams = $optionalParams;
     }
 
-    
+    public function getPath()
+    {
+        return '/accounts/customers';
+    }
+
     public function getParams()
     {
         $params = array(

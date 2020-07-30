@@ -3,21 +3,25 @@
 
 namespace Pokepay\Request;
 
-
 use DateTime;
+
 class ListTransfers extends PagingBase
 {
     protected $method = 'GET';
-    protected $path = '/transfers';
     public $responseClass = \Pokepay\Response\PaginatedTransfers::class;
     
     public function __construct($optionalParams = array())
     {
         parent::__construct();
-                $this->optionalParams = $optionalParams;
+        
+        $this->optionalParams = $optionalParams;
     }
 
-    
+    public function getPath()
+    {
+        return '/transfers';
+    }
+
     public function getParams()
     {
         $params = array(

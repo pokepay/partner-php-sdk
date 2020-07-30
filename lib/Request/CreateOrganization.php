@@ -7,28 +7,35 @@ namespace Pokepay\Request;
 class CreateOrganization extends Base
 {
     protected $method = 'POST';
-    protected $path = '/organizations';
     public $responseClass = \Pokepay\Response\Organization::class;
     private $code;
     private $name;
+    private $privateMoneyIds;
     private $issuerAdminUserEmail;
     private $memberAdminUserEmail;
-    public function __construct($code, $name, $issuerAdminUserEmail, $memberAdminUserEmail, $optionalParams = array())
+    public function __construct($code, $name, $privateMoneyIds, $issuerAdminUserEmail, $memberAdminUserEmail, $optionalParams = array())
     {
         parent::__construct();
         $this->code = $code;
         $this->name = $name;
+        $this->privateMoneyIds = $privateMoneyIds;
         $this->issuerAdminUserEmail = $issuerAdminUserEmail;
         $this->memberAdminUserEmail = $memberAdminUserEmail;
+
         $this->optionalParams = $optionalParams;
     }
 
-    
+    public function getPath()
+    {
+        return '/organizations';
+    }
+
     public function getParams()
     {
         $params = array(
             'code' => $this->code,
             'name' => $this->name,
+            'private_money_ids' => $this->privateMoneyIds,
             'issuer_admin_user_email' => $this->issuerAdminUserEmail,
             'member_admin_user_email' => $this->memberAdminUserEmail,
         );

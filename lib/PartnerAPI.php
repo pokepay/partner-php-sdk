@@ -10,7 +10,7 @@ class PartnerAPI
     private $clientSecret;
     private $apiBase;
 
-    const VERSION = '0.2.3';
+    const VERSION = '0.2.4';
 
     private $config = array();
 
@@ -86,7 +86,7 @@ class PartnerAPI
     {
         if (!$this->clientInstance) {
             $args = [$this->clientId, $this->clientSecret, $this->curlOptions];
-            if ($this->config['TIMEZONE']) {
+            if (!empty($this->config['TIMEZONE'])) {
                 array_push($args, $this->config['TIMEZONE']);
             }
             $this->clientInstance = new HttpClient(...$args);

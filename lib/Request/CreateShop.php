@@ -7,17 +7,21 @@ namespace Pokepay\Request;
 class CreateShop extends Base
 {
     protected $method = 'POST';
-    protected $path = '/shops';
     public $responseClass = \Pokepay\Response\User::class;
     private $shopName;
     public function __construct($shopName, $optionalParams = array())
     {
         parent::__construct();
         $this->shopName = $shopName;
+
         $this->optionalParams = $optionalParams;
     }
 
-    
+    public function getPath()
+    {
+        return '/shops';
+    }
+
     public function getParams()
     {
         $params = array(
