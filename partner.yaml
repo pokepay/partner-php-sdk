@@ -725,10 +725,12 @@ paths:
                 page:
                   type: integer
                   minimum: 1
+                  summary: 'ページ番号'
                   description: 取得したいページ番号です。
                 per_page:
                   type: integer
                   minimum: 1
+                  summary: '1ページ分の取引数'
                   description: 1ページ分のウォレット残高数です。
       responses:
         '200':
@@ -834,7 +836,7 @@ paths:
                   nullable: true
                   summary: 'ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数'
                   description: |
-                    は複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。
+                    複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。
                     省略すると無制限に読み取り可能なチャージQRコードになります。
                     チャージQRコードは管理画面からいつでも無効化(有効化)することができます。
                 expires_at:
@@ -1340,6 +1342,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transfer'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /transfers:
     get:
       x-pokepay-operator-name: "ListTransfers"

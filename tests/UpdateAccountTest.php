@@ -7,7 +7,9 @@ class UpdateAccount extends TestCase
     public function testUpdateAccount0()
     {
         $client = $this->newClient();
-        $request = new Request\UpdateAccount("ffc66446-185e-4643-90bf-40981a908b9d");
+        $request = new Request\UpdateAccount(
+            "928c33d7-5690-46b5-91be-9077f39783a6"
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +22,12 @@ class UpdateAccount extends TestCase
     public function testUpdateAccount1()
     {
         $client = $this->newClient();
-        $request = new Request\UpdateAccount("ffc66446-185e-4643-90bf-40981a908b9d", ['is_suspended' => TRUE]);
+        $request = new Request\UpdateAccount(
+            "928c33d7-5690-46b5-91be-9077f39783a6",
+            [
+                'is_suspended' => TRUE
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

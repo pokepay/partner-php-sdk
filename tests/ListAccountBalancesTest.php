@@ -7,7 +7,9 @@ class ListAccountBalances extends TestCase
     public function testListAccountBalances0()
     {
         $client = $this->newClient();
-        $request = new Request\ListAccountBalances("16800696-440e-439e-b81e-bb85c9bb7ab1");
+        $request = new Request\ListAccountBalances(
+            "01d176e2-a84e-40fb-b84d-adb1d4f09987"
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +22,12 @@ class ListAccountBalances extends TestCase
     public function testListAccountBalances1()
     {
         $client = $this->newClient();
-        $request = new Request\ListAccountBalances("16800696-440e-439e-b81e-bb85c9bb7ab1", ['per_page' => 5812]);
+        $request = new Request\ListAccountBalances(
+            "01d176e2-a84e-40fb-b84d-adb1d4f09987",
+            [
+                'per_page' => 116
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +40,13 @@ class ListAccountBalances extends TestCase
     public function testListAccountBalances2()
     {
         $client = $this->newClient();
-        $request = new Request\ListAccountBalances("16800696-440e-439e-b81e-bb85c9bb7ab1", ['page' => 1966, 'per_page' => 4927]);
+        $request = new Request\ListAccountBalances(
+            "01d176e2-a84e-40fb-b84d-adb1d4f09987",
+            [
+                'page' => 8617,
+                'per_page' => 5323
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

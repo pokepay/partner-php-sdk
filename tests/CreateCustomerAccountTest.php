@@ -7,7 +7,9 @@ class CreateCustomerAccount extends TestCase
     public function testCreateCustomerAccount0()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCustomerAccount("7665c60d-009a-4205-bb04-8d2f1d96124f");
+        $request = new Request\CreateCustomerAccount(
+            "ef92d422-9504-473e-82b0-071260cc1c3f"
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +22,12 @@ class CreateCustomerAccount extends TestCase
     public function testCreateCustomerAccount1()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCustomerAccount("7665c60d-009a-4205-bb04-8d2f1d96124f", ['account_name' => "AkDIajhQTmbyWWJDxQjDcB26KinQNy17VNAxJH16Fe3A1Pbe5pMibunh4cdVg59ADJLyMYy2rXTKC7212nBcdk7E9gUwlfuyPB75em5nIARgq9nGoxci5qe9lJiNaoAOhOxW0V1cTjRxek5ZPdkGndds2AszHLUiuvlHtNHqkocdUrIBwKb86M5znveypVZqoJTJYesTlZmWhl4qgz4C7HuSJwnWQmk9trti2boDhigAzPcQugw0pf2N9DZsant"]);
+        $request = new Request\CreateCustomerAccount(
+            "ef92d422-9504-473e-82b0-071260cc1c3f",
+            [
+                'account_name' => "zMvIXlar"
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +40,13 @@ class CreateCustomerAccount extends TestCase
     public function testCreateCustomerAccount2()
     {
         $client = $this->newClient();
-        $request = new Request\CreateCustomerAccount("7665c60d-009a-4205-bb04-8d2f1d96124f", ['user_name' => "nH2JyWd07DyGOuiYhKktZ2pGJBRDTJaxTQ6nKujyWRK9auD2qfUo1IH86DyUv8jnsTisgK4nq69AYLpGqEZAUVd5kVeE1xNQruHR1EZh2nSKBcDyPm42oiYrHxbw93aQopKbu5uQvAkZ1kp3PzbWN0tYvBx0lFZ0WDljpeO65zweK55QMI5awfIgdNS4ylPQyoEg9YwKkMJz3ehWyEIbMrQx8fL", 'account_name' => "vts1gKyIwKe4cFpRqQ8VNx4lpaV0DcZplLY1sa7zAiSvzsEaYuVivYRA77NAZXdKPCzWDQrsXkIMsKFL4VqKj5KsM5HyYmTyattLaFxTf0vbAYwQOa1e0PqaZQOFflWLlvFPOV6uJBqtxMGNbhgghKWcp9wmeD3Hx8jj5tqnnKEemMlko3rS"]);
+        $request = new Request\CreateCustomerAccount(
+            "ef92d422-9504-473e-82b0-071260cc1c3f",
+            [
+                'user_name' => "7gUl4PilyqhgMRcwEDNMZbSAAjPOqu8zDoiEoXMZXcSQU1UOD8vemDZ3tQR7epnO2ShVjhtXHJD",
+                'account_name' => "L2DydeQjdN5cv6qDzMrjEhPzONVi4yeks8rJanvRgQSYsIXN3ffDgU2NbwFNI8OirMJNE9gVqMFV9E8nRfmT0hti6Q5TEnHiQierYa31SWNFjgIFFdZleyrs1e6qlOGmnSjeSwHDABnc7heElJ5GKpyIidzLtvaeLhn0SCOdSNYZ99XdqOzvOAua0dto6XtnMPoapedR2j2AINoEZyzlhg7XOoPsTeIg2HJDBBIzdzCDogPYUL6jgWUArK"
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

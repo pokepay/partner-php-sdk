@@ -7,7 +7,11 @@ class CreateTopupTransaction extends TestCase
     public function testCreateTopupTransaction0()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTopupTransaction("99fe47fc-baa2-4730-933e-fd4e4642c0dc", "6c5d04f9-57a5-40eb-8fad-769141915a34", "e80f3ce9-0c94-490c-9ec5-4ae3cc81cb47");
+        $request = new Request\CreateTopupTransaction(
+            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
+            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
+            "236262df-8237-44e1-ae14-cf1c63bf7a86"
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +24,14 @@ class CreateTopupTransaction extends TestCase
     public function testCreateTopupTransaction1()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTopupTransaction("99fe47fc-baa2-4730-933e-fd4e4642c0dc", "6c5d04f9-57a5-40eb-8fad-769141915a34", "e80f3ce9-0c94-490c-9ec5-4ae3cc81cb47", ['description' => "as1xnGNp9oa6BfM5YqviTHAfps6mmgqur6bGHeI91WHtXFtCosUco3ENoMhUMkxjcAixqAK7JWmO8RWia313xLR4PD42Yc8YbdL1ccbq34D0GL54SpA6jcGJDY6Qbeuz8re0Dh1NgKyRWvw"]);
+        $request = new Request\CreateTopupTransaction(
+            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
+            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
+            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            [
+                'description' => "PKVzLHamYdPvuGmcF568p5lRDfRuSQrtikn0SashETQGEnGpxpcwzcVzotTqJ96I1eDAKwZoSNMJvwIXn3UCWVXYmzirMVGcbk"
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +44,15 @@ class CreateTopupTransaction extends TestCase
     public function testCreateTopupTransaction2()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTopupTransaction("99fe47fc-baa2-4730-933e-fd4e4642c0dc", "6c5d04f9-57a5-40eb-8fad-769141915a34", "e80f3ce9-0c94-490c-9ec5-4ae3cc81cb47", ['point_amount' => 8419, 'description' => "4lIKyRLjO2WXYVoMVL75xhtBPfZdwoCbapwTb2NklQwkMRkcGfmspVIF14CetYzMQyBV9CVDTKQybPH1KPm14iLmSmebMFo1w7Y095Yuf6KalcUcn9MnkIRbVMI2yBcmeqAeUoREdpplTGmyXgoFVXKQdDkCUZ7GB6qRcXr4rGIG7X9wi4MwjTrCQW39SlVfv"]);
+        $request = new Request\CreateTopupTransaction(
+            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
+            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
+            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            [
+                'point_amount' => 5650,
+                'description' => "jtO1qXh1xkap4bBY5dTBG1YKGilfF9oAdY8fSUPOJJU2IqvIqEt4ns4k38vhmBtfXw3cuHKMMXmB4K0KdakyBsKfRjIpv90Q8goZsDR1Wvf9wkc0jQXbhNZ2AH791PqzNQpqthfWBM3g6xpt3fVousZf7SCV53NRgyruTSow2jke7JJIjYbeHLnjWbGoZjAwxSZssH9Z"
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -46,7 +65,16 @@ class CreateTopupTransaction extends TestCase
     public function testCreateTopupTransaction3()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTopupTransaction("99fe47fc-baa2-4730-933e-fd4e4642c0dc", "6c5d04f9-57a5-40eb-8fad-769141915a34", "e80f3ce9-0c94-490c-9ec5-4ae3cc81cb47", ['money_amount' => 2813, 'point_amount' => 2410, 'description' => "NOz9KaWEUsgR8p2r6QVToIDH7NVOqTehKdYqBnAfk54fPyYA6omN8tuhP4Vid0ejAxuB8Q4tWG67BjZ0DCQmgLNAbJzsEMEGetdMlz5ZDPAufggxlDvC2tDwB4SZDCu79Q5D7nELt289KpBNV4t0UsIOAc6degyCzioHAm2M30Qm01xKkchkxdsmUjWaf9eLwHV"]);
+        $request = new Request\CreateTopupTransaction(
+            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
+            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
+            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            [
+                'money_amount' => 4825,
+                'point_amount' => 9255,
+                'description' => "hVNJLNyZmZIF9xv8AuG395K8I7waL5E1HYmFw1Eiqo2c2hPrNMM7k38LkVxfycZZQmjPyYriveLJmWkfGyhmDFY37w8LgGbGqNXhjjkQgY9eCvn3P81fixep7hGSgnpH4nM48mbKq8fO"
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -59,7 +87,17 @@ class CreateTopupTransaction extends TestCase
     public function testCreateTopupTransaction4()
     {
         $client = $this->newClient();
-        $request = new Request\CreateTopupTransaction("99fe47fc-baa2-4730-933e-fd4e4642c0dc", "6c5d04f9-57a5-40eb-8fad-769141915a34", "e80f3ce9-0c94-490c-9ec5-4ae3cc81cb47", ['bear_point_shop_id' => "4c1fe6f6-4a7b-467d-893a-8c88a54e1532", 'money_amount' => 1945, 'point_amount' => 6462, 'description' => "xSXI5nyybfzCcGch28JZH6gwz7PQOAEYa1aFoBbI4gDzHiGSvvQSA5PNiqzTJOXcgD56XjA9xcMs0cfFRSgYF82jWe9euX4TmM4M3fLoe7yA4lNOOitAcNroZbHaTgthMY"]);
+        $request = new Request\CreateTopupTransaction(
+            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
+            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
+            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            [
+                'bear_point_shop_id' => "7f284e04-d6d8-4a54-973c-33df1fec7d7d",
+                'money_amount' => 9005,
+                'point_amount' => 9007,
+                'description' => "MvtTaScM9KFvO0iTtFq4bZdQYryMMi2357m1cSui6TSahud96mULFhw7uPXu1izf6rwQ3ERUxioNTZzV4mQbMr5uieuamqD9LiME3KR5yWKAvVIulk98CzCw3lxnPwkcwCmI9LUK4uqfXcLfIdaW5JaY24bqUJa9fWBk"
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
