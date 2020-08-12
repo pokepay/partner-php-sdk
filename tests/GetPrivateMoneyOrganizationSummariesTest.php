@@ -7,7 +7,9 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries0()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("2ad06bdb-d5f0-4683-a6ca-8ab8a5f8cafe");
+        $request = new Request\GetPrivateMoneyOrganizationSummaries(
+            "d25dc6a5-847b-469f-a1d2-9f5ebbd9fa46"
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -20,7 +22,12 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries1()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("2ad06bdb-d5f0-4683-a6ca-8ab8a5f8cafe", ['page' => 4440]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries(
+            "d25dc6a5-847b-469f-a1d2-9f5ebbd9fa46",
+            [
+                'page' => 5991
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +40,13 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries2()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("2ad06bdb-d5f0-4683-a6ca-8ab8a5f8cafe", ['per_page' => 260, 'page' => 1019]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries(
+            "d25dc6a5-847b-469f-a1d2-9f5ebbd9fa46",
+            [
+                'per_page' => 7493,
+                'page' => 4944
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -46,7 +59,13 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries3()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("2ad06bdb-d5f0-4683-a6ca-8ab8a5f8cafe", ['from' => "2018-01-25T06:18:04.000000+09:00", 'to' => "2021-11-13T04:01:41.000000+09:00"]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries(
+            "d25dc6a5-847b-469f-a1d2-9f5ebbd9fa46",
+            [
+                'from' => "2018-07-15T15:53:00.000000+09:00",
+                'to' => "2018-06-12T03:13:12.000000+09:00"
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -59,7 +78,14 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries4()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("2ad06bdb-d5f0-4683-a6ca-8ab8a5f8cafe", ['from' => "2017-08-04T12:58:06.000000+09:00", 'to' => "2020-05-24T19:47:20.000000+09:00", 'page' => 4718]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries(
+            "d25dc6a5-847b-469f-a1d2-9f5ebbd9fa46",
+            [
+                'from' => "2015-12-20T08:16:05.000000+09:00",
+                'to' => "2025-06-16T16:20:12.000000+09:00",
+                'page' => 8443
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -72,7 +98,15 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     public function testGetPrivateMoneyOrganizationSummaries5()
     {
         $client = $this->newClient();
-        $request = new Request\GetPrivateMoneyOrganizationSummaries("2ad06bdb-d5f0-4683-a6ca-8ab8a5f8cafe", ['from' => "2019-07-21T23:57:05.000000+09:00", 'to' => "2024-09-16T20:59:43.000000+09:00", 'per_page' => 5929, 'page' => 6333]);
+        $request = new Request\GetPrivateMoneyOrganizationSummaries(
+            "d25dc6a5-847b-469f-a1d2-9f5ebbd9fa46",
+            [
+                'from' => "2020-10-17T08:29:49.000000+09:00",
+                'to' => "2019-03-18T02:16:50.000000+09:00",
+                'per_page' => 4345,
+                'page' => 3281
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

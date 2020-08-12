@@ -20,7 +20,11 @@ class ListTransfers extends TestCase
     public function testListTransfers1()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['transfer_types' => ["transfer", "payment", "topup"]]);
+        $request = new Request\ListTransfers(
+            [
+                'transfer_types' => []
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -33,7 +37,12 @@ class ListTransfers extends TestCase
     public function testListTransfers2()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['transaction_types' => ["topup", "payment", "transfer", "exchange"], 'transfer_types' => ["transfer"]]);
+        $request = new Request\ListTransfers(
+            [
+                'transaction_types' => ["topup"],
+                'transfer_types' => []
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -46,7 +55,13 @@ class ListTransfers extends TestCase
     public function testListTransfers3()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['is_modified' => FALSE, 'transaction_types' => ["transfer", "payment"], 'transfer_types' => ["payment"]]);
+        $request = new Request\ListTransfers(
+            [
+                'is_modified' => TRUE,
+                'transaction_types' => ["transfer", "exchange", "payment"],
+                'transfer_types' => ["topup", "exchange", "transfer"]
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -59,7 +74,14 @@ class ListTransfers extends TestCase
     public function testListTransfers4()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['private_money_id' => "73c4abd0-db71-49dc-b4b7-2212ab270dbe", 'is_modified' => FALSE, 'transaction_types' => ["payment"], 'transfer_types' => ["payment", "exchange", "transfer", "topup"]]);
+        $request = new Request\ListTransfers(
+            [
+                'private_money_id' => "02c2be7f-a1e7-4fd9-ac93-f45ea7c1181c",
+                'is_modified' => TRUE,
+                'transaction_types' => [],
+                'transfer_types' => []
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -72,7 +94,15 @@ class ListTransfers extends TestCase
     public function testListTransfers5()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['transaction_id' => "072d12bc-b297-46a6-b336-3ee806998285", 'private_money_id' => "138586e5-8d81-4c6d-9283-30eeb4d07e28", 'is_modified' => FALSE, 'transaction_types' => ["exchange"], 'transfer_types' => []]);
+        $request = new Request\ListTransfers(
+            [
+                'transaction_id' => "4664c9b6-482d-4f09-b784-1c2f1951c46d",
+                'private_money_id' => "9cbc7f46-9d67-4b03-8d31-851dc4babea8",
+                'is_modified' => FALSE,
+                'transaction_types' => [],
+                'transfer_types' => []
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -85,7 +115,16 @@ class ListTransfers extends TestCase
     public function testListTransfers6()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['customer_name' => "c3FuHhc80JqIWSBs5gp29Z9d9gsmW0rlQlbbp6ewuhQZC9BS2n4NqycyW8QjHY91S5BOglJf6ya3jvCzxojiaR9tvfSG7ETfiE5", 'transaction_id' => "cf457aad-ba1e-404f-8dcc-507f6f0ae911", 'private_money_id' => "a0fa8b18-0a2d-4b1d-972e-1294deadedeb", 'is_modified' => TRUE, 'transaction_types' => ["payment", "topup"], 'transfer_types' => ["transfer"]]);
+        $request = new Request\ListTransfers(
+            [
+                'customer_name' => "teGkcTFi8rly2A3fUSTnBnw1ebiwwp7XWkzGOkshCloN6mhdOZrA0kK3PVNMy53MfmYtdOJ4TSKZOTBGQy3rzEUE1qq",
+                'transaction_id' => "c2808222-f7fd-41f2-90ad-80744a0dd571",
+                'private_money_id' => "19cafee2-7fc0-4d23-ad62-6308383288b4",
+                'is_modified' => FALSE,
+                'transaction_types' => ["topup", "transfer", "payment"],
+                'transfer_types' => []
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -98,7 +137,17 @@ class ListTransfers extends TestCase
     public function testListTransfers7()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['customer_id' => "5e707a08-9a59-4d63-bffc-68a00d6ed23c", 'customer_name' => "4mW24ocXU4j5A5fTLzBwzSJlZt1xlM7oAxSi91wbpSMqveYXGFjra5jMYPuj1MQoqJGSBM8C0dd7FXcHMeG555", 'transaction_id' => "4e9bfd6d-c1af-4b8c-b108-3f2f6ea120e4", 'private_money_id' => "0fc6589e-5dba-46fd-b283-d49c5893510c", 'is_modified' => FALSE, 'transaction_types' => ["payment", "exchange", "transfer", "topup"], 'transfer_types' => []]);
+        $request = new Request\ListTransfers(
+            [
+                'customer_id' => "4e6f1e4d-8f66-42f2-afde-400a7810b822",
+                'customer_name' => "QBj8LZLbSgpqCg51lbFg",
+                'transaction_id' => "83272682-664d-4d89-8709-3aab370408a4",
+                'private_money_id' => "ceb35f48-c095-4a9b-bdb2-12fbaf0a9626",
+                'is_modified' => FALSE,
+                'transaction_types' => [],
+                'transfer_types' => ["payment", "transfer", "exchange"]
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -111,7 +160,18 @@ class ListTransfers extends TestCase
     public function testListTransfers8()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['shop_name' => "o1rkjyGDlXAGEBW2KQbxfhF92J2eAzKo7UOkmWE53qnX1", 'customer_id' => "6b8ec1f3-e693-4878-86e9-f80f0d3e0397", 'customer_name' => "YUtcFRcSRWTUvQQ85h7ay3NzIS9KzuLzRAwhPQb2ztdsRz8IBHVIZMER9smHgecqKVECduCgTsCIiyyaLmPTNbKovfmtgT8a2RuS2qTtdWp1eibwGs0zhOy1p3qlYkDhvfPYK8cVmoO5OXawQN4HWogp6OeUEEzgQmGnLoe8N0cUMbUmkeLDCTYpYcijSnSrb36T8ARa6YqKsMtkUjE5lP7TGoIVoXy5ixkPthLNnnFCLqzssBiQHOHGUe0kSk", 'transaction_id' => "d4eb045c-45e2-454d-a1aa-d0320ff4578a", 'private_money_id' => "51fad438-faf9-4ea2-b529-63d4686c463d", 'is_modified' => FALSE, 'transaction_types' => [], 'transfer_types' => ["topup", "payment", "transfer", "exchange"]]);
+        $request = new Request\ListTransfers(
+            [
+                'shop_name' => "3AlEBom27bUbqEj8bNrd3i7298gqYIl2oa2AbAkKAmraskFVQIAXM2zHDGgQ3WiOkDhIS88Baev1lDGX3YxYb",
+                'customer_id' => "9b6072b9-b5ec-4d0a-a7d5-ae69a6be54b3",
+                'customer_name' => "4G2anVIVZNHQB9CXSZplmcFlVMUqLBHbhJTyAccy2SmlL0nFlOt3BRz7qHjAHD9pJjzc0rEI5Xbkf9h09zVU0MKqe0aVieqR0QEuLfHCR1XuzTTpiu2oWn7Un6ClX6GdWHJCtz3zbNIo81XZg5JwYrx83tmXYsKUrk2R58poEHJhkbXeYzHcy2rsRV6ii5tKsQlxzzZhMdiNEpBPuRWXSvfIlwW0dkRyGxiprjWkXdm",
+                'transaction_id' => "25f4f661-e815-4109-9329-ea49df2302d3",
+                'private_money_id' => "2e3830d6-f99d-4995-bb04-4b35f9b17bf8",
+                'is_modified' => FALSE,
+                'transaction_types' => ["exchange", "transfer", "payment"],
+                'transfer_types' => ["exchange"]
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -124,7 +184,19 @@ class ListTransfers extends TestCase
     public function testListTransfers9()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['shop_id' => "b7313140-7cd2-4863-acf7-93e506de9792", 'shop_name' => "NjIeEHoBRGpaJRB9Q2VxZFQRBahReSZ3L9yfFZjAKMRptMmrgkc3FTrzK61mjubRhe1ul7Yw5Nu0Xf5sARN0ljfKr81fewBAON2HuoJm2GAkKzAzaZJBuJ6Fzf0yEH0aNkH02bVfFnRtTDasflxgrMBkP2Hpmf0hBYHmSnxiP2US8Y2Q2WgdidqcyBf7o61kgQdbFdimH2xFusRfZ8GUp6Ba7DRo5aWjYgty0taChXsLw56rS3YB50sXeG", 'customer_id' => "29e09783-c4ad-49db-b6cc-9f9688feca0c", 'customer_name' => "JEnKtHEYJWSvS9UO4Pxbsayonfsqfr94cYGSr0rKIh2JyWnQMYuKiN1TVXN65B3abPkI7vk4cvDXHSXSftA2p5QBuRurOt9BXv2xOxHh6MtDRPOpRShO9vAwsRKi6jQqJFiuwmi3Ix51DVOMM3QcmwsouKSIDQyntn3zVhuFI6UMCulWxnzGj1U8ie0k0Z8CLYbQOCTQChrjfMjjk17ZuYaOIuqIyHcMadyMDkWUsqktgtFYrqkbb", 'transaction_id' => "f213068a-caac-451f-bb5e-b9d2b739a761", 'private_money_id' => "725cb3c9-d2f8-4207-b61b-70a9f9fe047c", 'is_modified' => FALSE, 'transaction_types' => ["exchange", "topup"], 'transfer_types' => ["topup", "payment", "transfer"]]);
+        $request = new Request\ListTransfers(
+            [
+                'shop_id' => "89c73268-8d67-4a1d-b897-047aefcbbe02",
+                'shop_name' => "Gjp2VdopDHojCZvJF3JmdQndq8u9y7B383FYTLutQKsvYgkqGOqEJwSFMTYoYjMeERlmcdmJkxSv5pnLhFmMWC1UNahafRenuXajbax6Q8tIfGArljxgdmoXtJMxUiLvzvY4YLwrj7tLimXo0t6CtX17LYvxfW29HVscWOcY7vjXVskWgkgB8cCHahiVfbIP9WMlrqBJcsHDH3iftjmyDX8HutG7TnDj9vADJtRYkZGcX",
+                'customer_id' => "0d6ecb7f-cc53-437c-abc7-ca36cff95038",
+                'customer_name' => "vfgXi3IywbP9TDzOfrZKEKkhBSuua8QNH6kWFC3BmX9VLd1MHUspxDHQECw76XpZ43g6ntdQfCR0cC83FXxz9WKKoall39841vJ8udi9pnXZ7lul8UbRYbuhqlEmGvIyBnpJyITrFAj39BHqBVpMdrfS3fSfVPrxR6VIDsCD20dhbHRr0jxnjF0BGnyMhYQZWvZhKXHk8qqA3VIANrCpuuGjNLv5lp3O0SjXlad",
+                'transaction_id' => "17a8d05d-9281-4bb1-9b39-ec90fb5c364b",
+                'private_money_id' => "4b02e2a2-b05e-40e9-a17f-05ba8d77a47d",
+                'is_modified' => TRUE,
+                'transaction_types' => [],
+                'transfer_types' => ["payment", "transfer"]
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -137,7 +209,20 @@ class ListTransfers extends TestCase
     public function testListTransfers10()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['per_page' => 4901, 'shop_id' => "cb3f7ae4-e88d-476b-949f-bc9896045304", 'shop_name' => "fWIFKl0O9JzlKEyr5xIF8dHKn8V9YDv5DvuQpqQ5oZrOvOk3Dhts9hZsSoo0kA0S3EBY0NorFfwPl4b9dGIuMJhXjVQFaSKj2tR2RnpDoou8eUtQQ6gaz7xXtYNCjBEipRY92fsOW5SpdsDDeNoKxGByV5OwmlFEG75CTLv0rKSOtm4ZBzscYUwbgQMVFYcQsvCtHGhVb57EKTTm77", 'customer_id' => "e2ec962e-2240-43da-83a4-f32d13f0bf13", 'customer_name' => "l4C2dXXTDe9gP94VVz8kaF0cVhwaaZvtNR9fCVK7GKPIr9xA1ETPU6srsbV2fmRO8uZQ95qJxA19UCAdl2ruTpszObxxD", 'transaction_id' => "c23b047e-b008-41af-8df4-d5bb6d85d093", 'private_money_id' => "60a0dc60-2cd3-463d-8689-717e6b3c2b33", 'is_modified' => FALSE, 'transaction_types' => ["transfer", "payment", "topup"], 'transfer_types' => ["payment", "topup", "transfer", "exchange"]]);
+        $request = new Request\ListTransfers(
+            [
+                'per_page' => 6526,
+                'shop_id' => "8d006be6-acd5-4a7a-b221-4fb43c124ec0",
+                'shop_name' => "swljLN08tBmf0MEWLmyVygr6GWw3nuepDMDvsbWk90UALPJAuISAaE00XM7ibtw66nMLYLH0BVB5qlHpirmtZajWQ0TWLvNOwjGm1vLEAXmJg3wI4t3rWcubAeQGZDIbYBvOwnPm1yyh0YHyDnSmN9DL6xxp2PlSODzNZQASewVrloTfMFMupzLu25WMRjOmVEbP7v2Oxj4z9xvUgNLDcOp48XHEumKULvhtlRy3Rmfwt8l1y3bWMj",
+                'customer_id' => "13ca5e8e-211d-4079-ae29-24b0c3be9342",
+                'customer_name' => "DBrrTe0w44YECllV1vGu2ToJUSzKl7NMI9gTJlfeZud4EGvnvcXe4e0x8vHvfTy99fiF4RJYZEgkJxtGY0pr6EQ8oLlw8E8hwO1mViVauNC8O91mXvUFHAYTpzpoTfo8",
+                'transaction_id' => "2e921197-9488-4c15-9f18-7edcecdc2daa",
+                'private_money_id' => "11b26127-1b6f-4b74-9bb3-1fd6fd92de7d",
+                'is_modified' => FALSE,
+                'transaction_types' => ["transfer"],
+                'transfer_types' => ["payment"]
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -150,7 +235,21 @@ class ListTransfers extends TestCase
     public function testListTransfers11()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['page' => 9610, 'per_page' => 516, 'shop_id' => "c4ce68be-e7ee-4509-b611-7c4d6875b9da", 'shop_name' => "DNPhzdGDZdR1TlpaXPICYZk5SP9nbem4gZGwGnDBn0yonpsFIsbApitN0UyuyeGBZPNWJSCOea7YJAbnDFO0rXd2RSqJTvlOQxcaxFOAIucfsZUodc6bAxWM0o8VXmWhyaKp6sJ0YnPTclwVFdCpXVhexPvgWwPFZRTILthlWcsrZR4nMATVNgE1BAhp5OMRqrm2zjgnCZEdU", 'customer_id' => "4d790a6f-00fd-48bf-860d-ab25756eebe2", 'customer_name' => "nP2v9qMi2Rsrwc7jBsW9PnXBfKL4WWJ0HrtoHqcoZHu3MlxYpSwmZwRbsiwUs6d9XTFSlhtNQjYE4GkIsT1KIppGP6H5mU8leQiBTOA", 'transaction_id' => "03dd4ff2-c1d2-4f1d-8c57-06fdd1e89051", 'private_money_id' => "a9b68b57-6f23-45b9-bae7-f4bdfcba80eb", 'is_modified' => TRUE, 'transaction_types' => ["exchange"], 'transfer_types' => ["transfer", "exchange", "payment", "topup"]]);
+        $request = new Request\ListTransfers(
+            [
+                'page' => 1117,
+                'per_page' => 9091,
+                'shop_id' => "7113d109-3d43-4e4e-bcfb-1452f91bfbe6",
+                'shop_name' => "8dNGhx3KHenk",
+                'customer_id' => "1b3b3c3d-ccbe-4a8d-a0bb-d9a4a9e9ad54",
+                'customer_name' => "THcTvWh82jGnvgo463XYA5VOUIEcwgNUXFSoCIT9MWo69C4",
+                'transaction_id' => "3942588a-655e-43f1-ad55-93ae4d4099c5",
+                'private_money_id' => "f188ec92-a0f6-4eeb-9d72-71d7501e8325",
+                'is_modified' => FALSE,
+                'transaction_types' => [],
+                'transfer_types' => ["payment", "exchange", "topup"]
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -163,7 +262,22 @@ class ListTransfers extends TestCase
     public function testListTransfers12()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['to' => "2017-09-12T18:44:20.000000+09:00", 'page' => 2095, 'per_page' => 1711, 'shop_id' => "b2e59562-abb3-41e5-9e3c-abd68aa29a38", 'shop_name' => "nTkKOnOoyAqzEiHhFLa6sU6RbF9jnv3KBoNP4aXN9qyUbTY11ox6AL8govHLG4nI1A5GdXbPkdN9wFPzFVOl5voYr3V5miFicMhdfOuHhagIW8kYVobF2VV7Tu0FVFmDjZ8YsCru1PwYlmuGUNzt2jMPhY3DENf89P8PJd8oTqpUknGWajUKHvPFMJBrA7XodrDXvQsbmRYty0tniKB9gSpnlsNP7oFgLd6vx6lFD", 'customer_id' => "5494b718-575d-47fe-9388-9bb19dd55a2d", 'customer_name' => "aY00H0IJ5pNYPREVkvptxD8H3KioXkZApXfT3m1eGDc1BqAT2TUjqPoFyhBl9esvV2AAnpi4CpUm89uO0uFzuYbPnm7pDdghL0W1RlJkne55aHpnLQ", 'transaction_id' => "e403cfac-b0b1-4d9b-bc19-1fc60b1366e6", 'private_money_id' => "1453b3df-f78c-4a3a-9e5b-545e029d41e4", 'is_modified' => FALSE, 'transaction_types' => ["exchange"], 'transfer_types' => ["topup", "transfer", "payment"]]);
+        $request = new Request\ListTransfers(
+            [
+                'to' => "2019-02-05T00:14:03.000000+09:00",
+                'page' => 6522,
+                'per_page' => 1967,
+                'shop_id' => "61c2ae23-0c4d-4e7b-b813-c0d1f0e75cb8",
+                'shop_name' => "R4bHNTAuvcSYuP5TmVhoMibTPD4WRrJdDiIzpMGCcPSz4XxyKHmHDE9mwiwteJN19TKhnEUWJJf0jhvGrR1HEWCom69oMfFzP2HH892QQGa",
+                'customer_id' => "fa24895b-a1f4-4b4e-893a-056b600b3334",
+                'customer_name' => "iiTfySaGVUK3o0GAGTmOvXVpeRSz9db22MPZ609MLPZFgU8Yq8uQZhuMByNH50uC3JdA9nzuKyvn5fqRSLkHe24O4IdE7XlJuF2ONDFb5kEwf2RJmkG5D4Ajyim0j9r8vP6vXYXvzc9nqjfq1qQNCVzzAqEaQqglvmNQXqJxAHvhmPpyN7TCWiFNSEPOhRvClKQTxleqm71QlPsW2PqlhybnFhO9AILSC",
+                'transaction_id' => "c69d9c85-192c-474b-a695-b3b07f47c277",
+                'private_money_id' => "200edfac-971a-4ea6-b189-c08247dc0aef",
+                'is_modified' => FALSE,
+                'transaction_types' => ["payment"],
+                'transfer_types' => []
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);
@@ -176,7 +290,23 @@ class ListTransfers extends TestCase
     public function testListTransfers13()
     {
         $client = $this->newClient();
-        $request = new Request\ListTransfers(['from' => "2016-12-27T12:17:27.000000+09:00", 'to' => "2021-02-16T21:22:58.000000+09:00", 'page' => 7185, 'per_page' => 1794, 'shop_id' => "50037ec6-e7b8-4c8d-bfec-599dc6ee9280", 'shop_name' => "P7BAtCuteH5jaSgx4AIKr9cB1ykFTHHIbNg21FCMUiS1KUl0LHqewta4eEkB4wK0KxxY6c376GvZ3nHKk1sHHhoMU1LcrhQxS6PlLas3dJRWfmDelvWTJb7FbVogSOu9D84NjZFuOGoz3CvwEiiO0MxU6vXI7avdZAp", 'customer_id' => "1dd8443b-32ed-458b-aa90-87e558dd0ff9", 'customer_name' => "xuP99aRGpmQ3vJ3YBdp0IkC046IZZYdixuXiq", 'transaction_id' => "40ae9a93-e31d-4c07-b110-c8e3e3c13477", 'private_money_id' => "77210359-f3ff-4d8d-8ef0-9a26589578dc", 'is_modified' => FALSE, 'transaction_types' => ["transfer", "payment", "topup"], 'transfer_types' => ["exchange", "payment", "topup", "transfer"]]);
+        $request = new Request\ListTransfers(
+            [
+                'from' => "2023-12-12T10:03:19.000000+09:00",
+                'to' => "2022-06-01T10:28:23.000000+09:00",
+                'page' => 970,
+                'per_page' => 3501,
+                'shop_id' => "961b1138-4d51-418f-a3a4-e935bd56fa18",
+                'shop_name' => "0RtC6MVrZGqhqPllgI4REXIuDLwfdtm09by2iAK80IMRJn3vsZMvRJXYW3gSxtCItEmDLrXQo3SxdFiKuyhRyAopRpn3ucoXpFARuIW4VJzxTEMSSH6buFPt6x4PbOAsYSq1bSU49mG6Y8s182UYa2VzaX0BzhrURCg6C1IWgxpnmLua0xdms2tP4ZcFJrQzFiacITwJ5eB64aUOjwRy56hGh9QdV1G7dofkyG0ibyT1RJdq36tY",
+                'customer_id' => "10f9f0d0-8a76-43e4-9d36-b1d83d548996",
+                'customer_name' => "Ls1edvl3Vwb67HJKDymHAvnrZESD4TyfdlGT7I8zlqYZvFoZdkRfH0I0RBMxjDMkvV4Cs7uJuoONmmNeMTXSCa1u06rH676QzhI4vMulhU245KExmvQmcGNZnjlifnbD2LaqujOlO2Z9CcvsXVTUupRhwMXSpfYlBwdFAomtAbCXOdh7XwlKBrNdlRknd74pGr4mTmADSvoMtETkVgN",
+                'transaction_id' => "7ac22a30-9a94-4067-a195-49da406d01ae",
+                'private_money_id' => "6fd5a218-f2c7-4769-bf59-55a4a0600fee",
+                'is_modified' => TRUE,
+                'transaction_types' => ["transfer", "topup"],
+                'transfer_types' => ["topup"]
+            ]
+        );
         try {
             $response = $client->send($request);
             $this->assertTrue(true);

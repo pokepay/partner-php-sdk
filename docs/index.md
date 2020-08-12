@@ -1,5 +1,4 @@
 # Partner API SDK for PHP
-
 ## Getting started
 
 Partner APIとの通信は `Pokepay\PartnerAPI` クラスを通じて行います。
@@ -112,142 +111,258 @@ $request->getCallId();
 // callId を設定する
 $request->setCallId($newCallId);
 ```
-
 <a name="api-operations"></a>
 ## API Operations
 
 ### Transaction
 
-<a name="get-transaction"></a>
 #### 取引情報を取得する
-
+取引を取得します。
 ```php
-$request = new Pokepay\Request\GetTransaction(
-    '0ace85e7.....'  // 取引ID
+$request = new Request\GetTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // transactionId: 取引ID
 );
 ```
 
-成功したときは以下のプロパティを含む `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。
+---
+`transaction_id`  
+取引IDです。
 
-- id (string): 取引ID
-- type (string): 取引種別 (チャージ=topup, 支払い=payment)
-- isModified (bool): 返金された取引かどうか
-- sender (Response\User): 送金者情報
-- receiver (Response\User): 受取者情報
-- senderAccount (Response\Account): 送金口座情報
-- receiverAccount (Response\Account): 受取口座情報
-- amount (double): 決済総額 (マネー額 + ポイント額)
-- moneyAmount (double): 決済マネー額
-- pointAmount (double): 決済ポイント額
-- doneAt (DateTime): 取引日時
-- description (string): 取引説明文
+フィルターとして使われ、指定した取引IDの取引を取得します。
 
-`sender` と `receiver` には `Pokepay\Response\User` オブジェクトが入ります。 以下にプロパティを示します。
-
-- id (string): ユーザー (または店舗) ID
-- name (string): ユーザー (または店舗) 名
-- isMerchant (bool): 店舗ユーザーかどうか
-
-`senderAccount` と `receiverAccount` は `Pokepay\Response\Account` オブジェクトです。以下にプロパティを示します。
-
-- id (string): 口座ID
-- name (string): 口座名
-- isSuspended (bool): 口座が凍結されているかどうか
-- privateMoney (Response\PrivateMoney): 設定マネー情報
-
-`privateMoney` は `Pokepay\Response\PrivateMoney` のオブジェクトです。以下にプロパティを示します。
-
-- id (string): マネーID
-- name (string): マネー名
-- unit (string): マネー単位 (例: 円)
-- isExclusive (bool): 会員制のマネーかどうか
-- description (string): マネー説明文
-- maxBalance (double): 口座の上限金額
-- transferLimit (double): マネーの取引上限額
-- type (string): マネー種別 (自家型=own, 第三者型=third-party)
-- expirationType (string): 有効期限種別 (チャージ日時起算=static, 最終利用日時起算=last-update)
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
 
 #### チャージする
-
+チャージ取引を作成します。
 ```php
-$request = new Pokepay\Request\CreateTopupTransaction(
-    'xxxxxxxxxxxxxxxxxxxxx',                            // 店舗ID
-    'yyyyyyyyyyyyyyyyyyyyy',                            // エンドユーザーのID
-    'zzzzzzzzzzzzzzzzzzzzz',                            // 送るマネーのID
-    array(
-        "money_amount" => 1000,                         // チャージマネー額
-        "point_amount" => 0                             // チャージするポイント額 (任意)
-        "description" => '初夏のチャージキャンペーン',  // 取引履歴に表示する説明文 (任意)
-    )
+$request = new Request\CreateTopupTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    [
+        'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
+        'money_amount' => 5913,                   // マネー額
+        'point_amount' => 6126,                   // ポイント額
+        'description' => "初夏のチャージキャンペーン"          // 取引履歴に表示する説明文
+    ]
 );
 ```
 
-成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
+---
+`shop_id`  
+マネー店舗IDです。
+
+送金元の店舗を指定します。
+
+---
+`customer_id`  
+エンドユーザーIDです。
+
+送金先のエンドユーザーを指定します。
+
+---
+`private_money_id`  
+マネーIDです。
+
+マネーを指定します。
+
+---
+`bear_point_shop_id`  
+ポイント支払時の負担店舗IDです。
+
+ポイント支払い時に実際お金を負担する店舗を指定します。
+
+---
+`money_amount`  
+マネー額です。
+
+送金するマネー額を指定します。
+
+---
+`point_amount`  
+ポイント額です。
+
+送金するポイント額を指定します。
+
+---
+`description`  
+取引説明文です。
+
+任意入力で、取引履歴に表示される説明文です。
+
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
 
 #### 支払いする
-
+支払取引を作成します。
 ```php
-$request = new Pokepay\Request\CreatePaymentTransaction(
-    'xxxxxxxxxxxxxxxxxxxxx',                            // 店舗ID
-    'yyyyyyyyyyyyyyyyyyyyy',                            // エンドユーザーID
-    'zzzzzzzzzzzzzzzzzzzzz',                            // 支払うマネーのID
-    1000,                                               // 支払い額
-    array(
-        "description" => 'たい焼き(小倉)',              // 取引履歴に表示する説明文 (任意)
-    )
+$request = new Request\CreatePaymentTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    5721,                                         // amount: 支払い額
+    [
+        'description' => "たい焼き(小倉)"               // 取引履歴に表示する説明文
+    ]
 );
 ```
 
-成功したときは `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
+---
+`shop_id`  
+マネー店舗IDです。
+
+送金先の店舗を指定します。
+
+---
+`customer_id`  
+エンドユーザーIDです。
+
+送金元のエンドユーザーを指定します。
+
+---
+`private_money_id`  
+マネーIDです。
+
+マネーを指定します。
+
+---
+`amount`  
+マネー額です。
+
+送金するマネー額を指定します。
+
+---
+`description`  
+取引説明文です。
+
+任意入力で、取引履歴に表示される説明文です。
+
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
 
 #### 取引履歴を取得する
-
+取引一覧を返します。
 ```php
-$request = new Pokepay\Request\ListTransactions(
-    array( // フィルタオプション (すべて任意)
-        // 期間指定 (ISO8601形式の文字列、またはDateTimeオブジェクト)
-        'from' => '2019-01-01T00:00:00+09:00',
-        'to'   => '2019-07-31T18:13:39+09:00',
-
-        // 検索オプション
-        'customer_id' => 'xxxxxxxxxxxxxxxxx', // エンドユーザーID
-        'customer_name'  => '福沢',           // エンドユーザー名
-        'transaction_id' => '24bba30c......', // 取引ID
-        'shop_id'        => '456a820b......', // 店舗ID
-        'terminal_id'    => 'd8023185......', // 端末ID
-        'organization'   => 'pocketchange',   // 組織コード
-        'private_money'  => '9ff644fc......', // マネーID
-        'is_modified'    => true,             // キャンセルされた取引のみ検索するか
-        'types'          => array('topup', 'payment'), // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-    )
+$request = new Request\ListTransactions(
+    [
+        'from' => "2024-10-30T08:01:07.000000+09:00", // 開始日時
+        'to' => "2024-06-23T18:19:24.000000+09:00", // 終了日時
+        'page' => 1,                              // ページ番号
+        'per_page' => 50,                         // 1ページ分の取引数
+        'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
+        'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
+        'customer_name' => "太郎",                  // エンドユーザー名
+        'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
+        'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
+        'organization_code' => "pocketchange",    // 組織コード
+        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
+        'is_modified' => TRUE,                    // キャンセルフラグ
+        'types' => ["topup", "payment"]           // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+    ]
 );
 ```
 
-成功したときは `Pokepay\Response\Transaction` を `rows` に含むページングオブジェクトを返します。詳細は [ページング](#paging) を参照してください。
+---
+`from`  
+抽出期間の開始日時です。
+
+フィルターとして使われ、開始日時以降に発生した取引のみ一覧に表示されます。
+
+---
+`to`  
+抽出期間の終了日時です。
+
+フィルターとして使われ、終了日時以前に発生した取引のみ一覧に表示されます。
+
+---
+`page`  
+取得したいページ番号です。
+
+---
+`per_page`  
+1ページ分の取引数です。
+
+---
+`shop_id`  
+店舗IDです。
+
+フィルターとして使われ、指定された店舗での取引のみ一覧に表示されます。
+
+---
+`customer_id`  
+エンドユーザーIDです。
+
+フィルターとして使われ、指定されたエンドユーザーでの取引のみ一覧に表示されます。
+
+---
+`customer_name`  
+エンドユーザー名です。
+
+フィルターとして使われ、入力された名前に部分一致するエンドユーザーでの取引のみ一覧に表示されます。
+
+---
+`terminal_id`  
+端末IDです。
+
+フィルターとして使われ、指定された端末での取引のみ一覧に表示されます。
+
+---
+`transaction_id`  
+取引IDです。
+
+フィルターとして使われ、指定された取引のみ一覧に表示されます。
+
+---
+`organization_code`  
+組織コードです。
+
+フィルターとして使われ、指定された組織での取引のみ一覧に表示されます。
+
+---
+`private_money_id`  
+マネーIDです。
+
+フィルターとして使われ、指定したマネーでの取引のみ一覧に表示されます。
+
+---
+`is_modified`  
+キャンセルフラグです。
+
+これにtrueを指定するとキャンセルされた取引のみ一覧に表示されます。
+デフォルト値はfalseで、キャンセルの有無にかかわらず一覧に表示されます。
+
+---
+`types`  
+取引の種類でフィルターします。
+
+以下の種類を指定できます。
+
+1. topup
+   店舗からエンドユーザーへの送金取引(チャージ)
+
+2. payment
+   エンドユーザーから店舗への送金取引(支払い)
+
+3. exchange-outflow
+　　他マネーへの流出
+
+4. exchange-inflow
+   他マネーからの流入
+
+---
+成功したときは[PaginatedTransaction](#paginated-transaction)オブジェクトを返します
 
 #### 返金する
-
 ```php
-$request = new Pokepay\Request\RefundTransaction(
-    '9f4781d6....', // 取引ID
-    array(
-        "description" => '返品対応のため' // 取引履歴に表示する返金事由 (任意)
-    )
+$request = new Request\RefundTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
+    [
+        'description' => "返品対応のため"                // 取引履歴に表示する返金事由
+    ]
 );
 ```
-
-成功したときは `Pokepay\Response\Transfer` のオブジェクトを返します。以下にプロパティを示します。
-
-- id (string): 送金ID
-- sender (Response\User): 送金者情報
-- receiver (Response\User): 受取者情報
-- senderAccount (Response\Account): 送金口座情報
-- receiverAccount (Response\Account): 受取口座情報
-- amount (double): 決済総額 (マネー額 + ポイント額)
-- moneyAmount (double): 決済マネー額
-- pointAmount (double): 決済ポイント額
-- doneAt (DateTime): 取引日時
-- description (string): 取引説明文
+成功したときは[Transfer](#transfer)オブジェクトを返します
 
 ### チャージQRコード
 
@@ -257,215 +372,384 @@ $request = new Pokepay\Request\RefundTransaction(
 
 `https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
 
-QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注意: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります)
-上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
+QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注意: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります) 上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
 
 #### チャージQRコードの発行
-
-チャージQRコードの発行は以下のように行ないます。
-
 ```php
-$request = new Pokepay\Request\CreateCheck(
-  'xxxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx', // 送金元の店舗アカウントID(必須)
-  array(
-    "money_amount" => 100, // 付与マネー額
-    "point_amount" => 20,  // 付与ポイント額
-    "description" => "test check", // 説明文(アプリ上で取引の説明文として表示される)
-    "is_onetime" => false, // ワンタイムかどうか。真の場合1度読み込まれた時点でそのチャージQRは失効する(デフォルト値は真)
-    "usage_limit" => 10,   // ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数
-    "expires_at" => '2021-01-01T00:00:00+09:00', // チャージQR自体の失効日時
-    "point_expires_at" => '2021-01-01T00:00:00+09:00', // チャージQRによって付与されるポイントの失効日時
-    "point_expires_in_days" => 60, // チャージQRによって付与されるポイントの有効期限(相対指定、単位は日)
-    // ポイントがエンドユーザによって消費されたときに負担が発生する店舗のアカウントID(デフォルトは本店アカウント)
-    "bear_point_account" => 'yyyyyyyyyyyyy-yyyy-yyyy-yyyyyyyyyyyy',
-  ));
+$request = new Request\CreateCheck(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: 送金元の店舗アカウントID
+    [
+        'money_amount' => 1377,                   // 付与マネー額
+        'point_amount' => 4721,                   // 付与ポイント額
+        'description' => "test check",            // 説明文(アプリ上で取引の説明文として表示される)
+        'is_onetime' => TRUE,                     // ワンタイムかどうか。真の場合1度読み込まれた時点でそのチャージQRは失効する(デフォルト値は真)
+        'usage_limit' => 9449,                    // ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数
+        'expires_at' => "2016-09-28T14:01:38.000000+09:00", // チャージQR自体の失効日時
+        'point_expires_at' => "2020-06-22T02:54:19.000000+09:00", // チャージQRによって付与されるポイントの失効日時
+        'point_expires_in_days' => 60,            // チャージQRによって付与されるポイントの有効期限(相対指定、単位は日)
+        'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント額を負担する店舗アカウントのID
+    ]
+);
 ```
+`money_amount`と`point_amount`の少なくとも一方は指定する必要があります。
 
-送金元となる店舗アカウントIDは必須で、残りはオプショナルですが、`money_amount`(付与マネー額)と`point_amount`(付与ポイント額)の少なくともどちらか一方は必要です。
-`is_onetime`はチャージQRコードが一度の読み取りで失効するときに`true`にします。デフォルト値は`true`です。
-`is_onetime`が`false`の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
-`usage_limit`は複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。省略すると無制限に読み取り可能なチャージQRコードになります。チャージQRコードは管理画面からいつでも無効化(有効化)することができます。
 
-成功時は `Pokepay\Response\Check` オブジェクトをレスポンスとして返します。以下にプロパティを示します。
+---
+`is_onetime`  
+チャージQRコードが一度の読み取りで失効するときに`true`にします。デフォルト値は`true`です。
+`false`の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
 
-- id (string): チャージQRコードのID
-- amount (double): チャージマネー額 (廃止予定)
-- moneyAmount (double): チャージマネー額
-- pointAmount (double): チャージポイント額
-- description (string): チャージQRコードの説明文(アプリ上で取引の説明文として表示される)
-- user (Response\User): 送金元ユーザ情報
-- isOnetime (bool): 使用回数が一回限りかどうか
-- isDisabled (bool): 無効化されているかどうか
-- expiresAt (DateTime): チャージQRコード自体の失効日時
-- privateMoney (Response\PrivateMoney): 対象マネー情報
-- usageLimit (integer): 一回限りでない場合の最大読み取り回数
-- usageCount (integer): 一回限りでない場合の現在までに読み取られた回数
-- token (string): チャージQRコードを解析したときに出てくるURL
+
+---
+`usage_limit`  
+複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。
+省略すると無制限に読み取り可能なチャージQRコードになります。
+チャージQRコードは管理画面からいつでも無効化(有効化)することができます。
+
+
+---
+成功したときは[Check](#check)オブジェクトを返します
 
 #### チャージQRコードを読み取ることでチャージする
+通常チャージQRコードはエンドユーザのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。 もしエンドユーザとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報をエンドユーザから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
 
-通常チャージQRコードはエンドユーザのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。
-もしエンドユーザとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報をエンドユーザから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
-
-エンドユーザから受け取ったチャージ用QRコードのIDを以下のようにエンドユーザIDと共に渡すことでチャージ取引が作られます。
+エンドユーザから受け取ったチャージ用QRコードのIDをエンドユーザIDと共に渡すことでチャージ取引が作られます。
 
 ```php
-$request = new Pokepay\Request\CreateTopupTransactionWithCheck(
-    'xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx',             // チャージ用QRコードのID
-    'yyyyyyyy-yyyy-yyyyyyyyy-yyyyyyyyyyyy',             // エンドユーザーのID
+$request = new Request\CreateTopupTransactionWithCheck(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // checkId: チャージ用QRコードのID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // customerId: エンドユーザーのID
 );
 ```
 
-成功時は `Pokepay\Response\Transaction` オブジェクトをレスポンスとして返します。プロパティは [取引情報を取得する](#get-transaction) を参照してください。
+---
+`check_id`  
+チャージ用QRコードのIDです。
+
+QRコード生成時に送金元店舗のウォレット情報や、送金額などが登録されています。
+
+---
+`customer_id`  
+エンドユーザーIDです。
+
+送金先のエンドユーザーを指定します。
+
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
 
 ### Customer
 
-#### 新規エンドユーザー口座を追加する
-
+#### 新規エンドユーザーウォレットを追加する
+指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも作成します。
 ```php
-$request = new Pokepay\Request\CreateCustomerAccount(
-    '0e0d6a42.....', // マネーID
-
-    // 追加データ (すべて任意)
-    array(
-        'user_name'    => 'ポケペイ太郎',             // ユーザー名
-        'account_name' => 'ポケペイ太郎のアカウント', // アカウント名
-    )
+$request = new Request\CreateCustomerAccount(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    [
+        'user_name' => "ポケペイ太郎",                  // ユーザー名
+        'account_name' => "ポケペイ太郎のアカウント"          // アカウント名
+    ]
 );
 ```
 
-成功したときは以下のプロパティを持つ `Pokepay\Response\AccountWithUser` のオブジェクトをレスポンスとして返します。
+---
+`private_money_id`  
+マネーIDです。
 
-- id (string): 口座ID
-- name (string): 口座名
-- isSuspended (bool): 口座が凍結されているかどうか
-- privateMoney (Response\PrivateMoney): 設定マネー情報
-- user (Response\User): ユーザーIDなどを含むユーザー情報
+これによって作成するウォレットのマネーを指定します。
 
-#### エンドユーザーの口座情報を表示する
+---
+`user_name`  
+ウォレットと共に作成するユーザ名です。省略した場合は空文字となります。
 
+---
+`account_name`  
+作成するウォレット名です。省略した場合は空文字となります。
+
+---
+成功したときは[AccountWithUser](#account-with-user)オブジェクトを返します
+
+#### エンドユーザーのウォレット情報を表示する
+ウォレットを取得します。
 ```php
-$request = new Pokepay\Request\GetAccount(
-    '8653fa08.....', // 口座ID
+$request = new Request\GetAccount(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // accountId: ウォレットID
 );
 ```
 
-成功したときは以下のプロパティを持つ `Pokepay\Response\AccountDetail` のオブジェクトをレスポンスとして返します。
+---
+`account_id`  
+ウォレットIDです。
 
-- id (string): 口座ID
-- name (string): 口座名
-- isSuspended (bool): 口座が凍結されているかどうか
-- balance (double): 総残高
-- moneyBalance (double): 総マネー残高
-- pointBalance (double): 総ポイント残高
-- privateMoney (Response\PrivateMoney): 設定マネー情報
+フィルターとして使われ、指定したウォレットIDのウォレットを取得します。
+
+---
+成功したときは[AccountDetail](#account-detail)オブジェクトを返します
 
 #### エンドユーザーの残高内訳を表示する
-
 エンドユーザーの残高は有効期限別のリストとして取得できます。
-
 ```php
-$request = new Pokepay\Request\ListAccountBalances(
-    '8653fa08.....', // 口座ID
+$request = new Request\ListAccountBalances(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
+    [
+        'page' => 8983,                           // ページ番号
+        'per_page' => 756                         // 1ページ分の取引数
+    ]
 );
 ```
 
-成功したときは `Pokepay\Response\AccountBalance` を `rows` に含むページングオブジェクトを返します。詳細は [ページング](#paging) を参照してください。
+---
+`account_id`  
+ウォレットIDです。
 
-`Pokepay\Response\AccountBalance` のプロパティは以下の通りです。
+フィルターとして使われ、指定したウォレットIDのウォレット残高を取得します。
 
-- expiresAt (DateTime): 失効日時
-- moneyAmount (double): マネー額
-- pointAmount (double): ポイント額
+---
+`page`  
+取得したいページ番号です。
+
+---
+`per_page`  
+1ページ分のウォレット残高数です。
+
+---
+成功したときは[PaginatedAccountBalance](#paginated-account-balance)オブジェクトを返します
 
 ### Organization
 
 #### 新規加盟店組織を追加する
-
 ```php
-$request = new Pokepay\Request\CreateOrganization(
-    'ox_supermarket',                   // 新規組織コード
-    '○×スーパー',                        // 新規組織名
-    'pay@xx-issuer-company.jp',         // 発行体担当者メールアドレス
-    'admin+pokepay@ox-supermarket.com', // 新規組織担当者メールアドレス
-
-    // 精算用追加データ (すべて任意)
-    array(
-        'bank_name' => 'XYZ銀行',               // 銀行名
-        'bank_code' => '999X',                  // 銀行金融機関コード
-        'bank_branch_name' => 'ABC支店',         // 銀行支店名
-        'bank_banch_code'  => '99X',            // 銀行支店コード
-        'bank_account_type' => 'saving',        // 銀行口座種別 (普通=saving, 当座=current, その他=other)
-        'bank_account' => '9999999',            // 銀行口座番号
-        'bank_account_holder_name' => 'ﾌｸｻﾞﾜﾕｷﾁ', // 口座名義人名
-    )
+$request = new Request\CreateOrganization(
+    "ox_supermarket",                             // code: 新規組織コード
+    "oxスーパー",                                     // name: 新規組織名
+    ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],     // privateMoneyIds: 加盟店組織で有効にするマネーIDの配列
+    "k1SqALeRW5@bPMO.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
+    "IGduo2H8EO@QLPo.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
+    [
+        'bank_name' => "XYZ銀行",                   // 銀行名
+        'bank_code' => "99X",                     // 銀行金融機関コード
+        'bank_branch_name' => "ABC支店",            // 銀行支店名
+        'bank_branch_code' => "99X",              // 銀行支店コード
+        'bank_account_type' => "current",         // 銀行口座種別 (普通=saving, 当座=current, その他=other)
+        'bank_account' => 9999999,                // 銀行口座番号
+        'bank_account_holder_name' => "ﾌｸｻﾞﾜﾕｷﾁ", // 口座名義人名
+        'contact_name' => "佐藤清"                   // 担当者名
+    ]
 );
 ```
-
-成功したときには以下のプロパティを持つ `Pokepay\Response\Organization` のオブジェクトをレスポンスとして返します。
-
-- code (string): 組織コード
-- name (string): 組織名
+成功したときは[Organization](#organization)オブジェクトを返します
 
 ### Shop
 
 #### 新規店舗を追加する
-
 ```php
-$request = new Pokepay\Request\CreateShop(
-    '○×スーパー三田店', /* 店舗名 */
-
-    // 追加データ (すべて任意)
-    array(
-        'shop_postal_code' => '108-0014',                // 店舗の郵便番号
-        'shop_address'     => '東京都港区芝...',           // 店舗の住所
-        'shop_tel'         => '03-xxxx...',              // 店舗の電話番号
-        'shop_email'       => 'mita@ox-supermarket.com', // 店舗のメールアドレス
-        'shop_external_id' => 'mita0309',                // 店舗の外部ID
-    )
+$request = new Request\CreateShop(
+    "oxスーパー三田店",                                  // shopName: 店舗名
+    [
+        'shop_postal_code' => "4128446",          // 店舗の郵便番号
+        'shop_address' => "東京都港区芝...",            // 店舗の住所
+        'shop_tel' => "05-7949-378",              // 店舗の電話番号
+        'shop_email' => "GK3firTH1F@Snfc.com",    // 店舗のメールアドレス
+        'shop_external_id' => "DobpHBBe1",        // 店舗の外部ID
+        'organization_code' => "ox-supermarket"   // 組織コード
+    ]
 );
 ```
-
-成功したときは以下のプロパティを持つ `Pokepay\Response\User` のオブジェクトをレスポンスとして返します。
-
-- id (string): 店舗ID
-- name (string): 店舗名
-- isMerchant (bool): 店舗かどうかのフラグ (この場合は常に真)
+成功したときは[User](#user)オブジェクトを返します
 
 ### Private Money
 
 #### 決済加盟店の取引サマリを取得する
-
 ```php
-$request = new Pokepay\Request\GetPrivateMoneyOrganizationSummaries(
-    '0e0d6a42.....', // マネーID
-
-    array( // フィルタオプション (すべて任意)
-        // 期間指定 (ISO8601形式の文字列、またはDateTimeオブジェクト)
-        // fromとtoを指定する場合は同時に指定する必要あり。
-        // デフォルトではfromは昨日0時、toは当日0時。
-        'from' => '2019-01-01T00:00:00+09:00',
-        'to'   => '2019-07-31T18:13:39+09:00',
-
-        // ページングオプション
-        'page' => 1,
-        'per_page' => 50,
-    )
+$request = new Request\GetPrivateMoneyOrganizationSummaries(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    [
+        'from' => "2023-06-01T09:45:21.000000+09:00", // 開始日時(toと同時に指定する必要有)
+        'to' => "2016-03-28T08:01:37.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'page' => 1,                              // ページ番号
+        'per_page' => 50                          // 1ページ分の取引数
+    ]
 );
 ```
+`from`と`to`は同時に指定する必要があります。
 
-成功したときは `Pokepay\Response\PrivateMoneyOrganizationSummary` を `rows` に含むページングオブジェクトを返します。以下にプロパティを示します。
+成功したときは[PaginatedPrivateMoneyOrganizationSummaries](#paginated-private-money-organization-summaries)オブジェクトを返します
 
-- organizationCode (string): 組織コード
-- topup (Response\OrganizationSummary): チャージのサマリ情報
-- payment (Response\OrganizationSummary): 支払いのサマリ情報
+## Responses
 
-`Pokepay\Response\OrganizationSummary` のプロパティを以下に示します。
+<a name="account-with-user"></a>
+## AccountWithUser
+* `id (string)`: 
+* `name (string)`: 
+* `isSuspended (boolean)`: 
+* `privateMoney (PrivateMoney)`: 
+* `user (User)`: 
 
-- count (integer): 取引数
-- moneyAmount (double): 取引マネー総額
-- moneyCount (integer): マネー取引数
-- pointAmount (double): 取引ポイント総額
-- pointCount (integer): ポイント取引数
+`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
 
-ページングについての詳細は [ページング](#paging) を参照してください。
+`user`は [User](#user) オブジェクトを返します。
+
+<a name="account-detail"></a>
+## AccountDetail
+* `id (string)`: 
+* `name (string)`: 
+* `isSuspended (boolean)`: 
+* `balance (double)`: 
+* `moneyBalance (double)`: 
+* `pointBalance (double)`: 
+* `privateMoney (PrivateMoney)`: 
+
+`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="check"></a>
+## Check
+* `id (string)`: チャージQRコードのID
+* `amount (double)`: チャージマネー額 (deprecated)
+* `moneyAmount (double)`: チャージマネー額
+* `pointAmount (double)`: チャージポイント額
+* `description (string)`: チャージQRコードの説明文(アプリ上で取引の説明文として表示される)
+* `user (User)`: 送金元ユーザ情報
+* `isOnetime (boolean)`: 使用回数が一回限りかどうか
+* `isDisabled (boolean)`: 無効化されているかどうか
+* `expiresAt (\DateTime)`: チャージQRコード自体の失効日時
+* `privateMoney (PrivateMoney)`: 対象マネー情報
+* `usageLimit (integer)`: 一回限りでない場合の最大読み取り回数
+* `usageCount (double)`: 一回限りでない場合の現在までに読み取られた回数
+* `token (string)`: チャージQRコードを解析したときに出てくるURL
+
+`user`は [User](#user) オブジェクトを返します。
+
+`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="user"></a>
+## User
+* `id (string)`: ユーザー (または店舗) ID
+* `name (string)`: ユーザー (または店舗) 名
+* `isMerchant (boolean)`: 店舗ユーザーかどうか
+
+<a name="organization"></a>
+## Organization
+* `code (string)`: 組織コード
+* `name (string)`: 組織名
+
+<a name="transaction"></a>
+## Transaction
+* `id (string)`: 取引ID
+* `type (string)`: 取引種別 (チャージ=topup, 支払い=payment)
+* `isModified (boolean)`: 返金された取引かどうか
+* `sender (User)`: 送金者情報
+* `senderAccount (Account)`: 送金ウォレット情報
+* `receiver (User)`: 受取者情報
+* `receiverAccount (Account)`: 受取ウォレット情報
+* `amount (double)`: 決済総額 (マネー額 + ポイント額)
+* `moneyAmount (double)`: 決済マネー額
+* `pointAmount (double)`: 決済ポイント額
+* `doneAt (\DateTime)`: 取引日時
+* `description (string)`: 取引説明文
+
+`receiver`と`sender`は [User](#user) オブジェクトを返します。
+
+`receiver_account`と`sender_account`は [Account](#account) オブジェクトを返します。
+
+<a name="transfer"></a>
+## Transfer
+* `id (string)`: 
+* `senderAccount (AccountWithoutPrivateMoneyDetail)`: 
+* `receiverAccount (AccountWithoutPrivateMoneyDetail)`: 
+* `amount (double)`: 
+* `moneyAmount (double)`: 
+* `pointAmount (double)`: 
+* `doneAt (\DateTime)`: 
+* `type (string)`: 
+* `description (string)`: 
+* `transactionId (string)`: 
+
+`receiver_account`と`sender_account`は [AccountWithoutPrivateMoneyDetail](#account-without-private-money-detail) オブジェクトを返します。
+
+<a name="paginated-private-money-organization-summaries"></a>
+## PaginatedPrivateMoneyOrganizationSummaries
+* `rows (PrivateMoneyOrganizationSummary[])`: 
+* `count (integer)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [PrivateMoneyOrganizationSummary](#private-money-organization-summary) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
+<a name="paginated-transaction"></a>
+## PaginatedTransaction
+* `rows (Transaction[])`: 
+* `count (integer)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [Transaction](#transaction) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
+<a name="paginated-account-balance"></a>
+## PaginatedAccountBalance
+* `rows (AccountBalance[])`: 
+* `count (integer)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [AccountBalance](#account-balance) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
+<a name="private-money"></a>
+## PrivateMoney
+* `id (string)`: マネーID
+* `name (string)`: マネー名
+* `unit (string)`: マネー単位 (例: 円)
+* `isExclusive (boolean)`: 会員制のマネーかどうか
+* `description (string)`: マネー説明文
+* `onelineMessage (string)`: マネーの要約
+* `organization (Organization)`: マネーを発行した組織
+* `maxBalance (double)`: ウォレットの上限金額
+* `transferLimit (double)`: マネーの取引上限額
+* `type (string)`: マネー種別 (自家型=own, 第三者型=third-party)
+* `expirationType (string)`: 有効期限種別 (チャージ日起算=static, 最終利用日起算=last-update, 最終チャージ日起算=last-topup-update)
+* `enableTopupByMember (boolean)`: 加盟店によるチャージが有効かどうか
+* `accountImage (string)`: マネーの画像URL
+
+`organization`は [Organization](#organization) オブジェクトを返します。
+
+<a name="account"></a>
+## Account
+* `id (string)`: ウォレットID
+* `name (string)`: ウォレット名
+* `isSuspended (boolean)`: ウォレットが凍結されているかどうか
+* `privateMoney (PrivateMoney)`: 設定マネー情報
+
+`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="account-without-private-money-detail"></a>
+## AccountWithoutPrivateMoneyDetail
+* `id (string)`: 
+* `name (string)`: 
+* `isSuspended (boolean)`: 
+* `privateMoneyId (string)`: 
+* `user (User)`: 
+
+`user`は [User](#user) オブジェクトを返します。
+
+<a name="private-money-organization-summary"></a>
+## PrivateMoneyOrganizationSummary
+* `organizationCode (string)`: 
+* `topup (OrganizationSummary)`: 
+* `payment (OrganizationSummary)`: 
+
+`payment`と`topup`は [OrganizationSummary](#organization-summary) オブジェクトを返します。
+
+<a name="pagination"></a>
+## Pagination
+* `current (integer)`: 
+* `perPage (integer)`: 
+* `maxPage (integer)`: 
+* `hasPrev (boolean)`: 
+* `hasNext (boolean)`: 
+
+<a name="account-balance"></a>
+## AccountBalance
+* `expiresAt (\DateTime)`: 
+* `moneyAmount (double)`: 
+* `pointAmount (double)`: 
