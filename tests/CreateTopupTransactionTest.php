@@ -8,9 +8,9 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
-            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
-            "236262df-8237-44e1-ae14-cf1c63bf7a86"
+            "559284c4-24d5-4f4d-a3e7-5a2199ee4c61",
+            "7b71e9b8-d9c8-455e-bb3d-751f52d0f5bd",
+            "256a4e50-dd15-4948-8c66-989036e6e0ea"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
-            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
-            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            "559284c4-24d5-4f4d-a3e7-5a2199ee4c61",
+            "7b71e9b8-d9c8-455e-bb3d-751f52d0f5bd",
+            "256a4e50-dd15-4948-8c66-989036e6e0ea",
             [
-                'description' => "PKVzLHamYdPvuGmcF568p5lRDfRuSQrtikn0SashETQGEnGpxpcwzcVzotTqJ96I1eDAKwZoSNMJvwIXn3UCWVXYmzirMVGcbk"
+                'description' => "8VAxLQCn6DppPY7uZ"
             ]
         );
         try {
@@ -45,12 +45,12 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
-            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
-            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            "559284c4-24d5-4f4d-a3e7-5a2199ee4c61",
+            "7b71e9b8-d9c8-455e-bb3d-751f52d0f5bd",
+            "256a4e50-dd15-4948-8c66-989036e6e0ea",
             [
-                'point_amount' => 5650,
-                'description' => "jtO1qXh1xkap4bBY5dTBG1YKGilfF9oAdY8fSUPOJJU2IqvIqEt4ns4k38vhmBtfXw3cuHKMMXmB4K0KdakyBsKfRjIpv90Q8goZsDR1Wvf9wkc0jQXbhNZ2AH791PqzNQpqthfWBM3g6xpt3fVousZf7SCV53NRgyruTSow2jke7JJIjYbeHLnjWbGoZjAwxSZssH9Z"
+                'point_amount' => 2725,
+                'description' => "s5wMf3MBYDCuFCMBOgtd28MFakoJp4sttlPyu0hLTf3LV1FvqM27O2bqybT3XFSWXNEvBDebROkI"
             ]
         );
         try {
@@ -66,13 +66,13 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
-            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
-            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            "559284c4-24d5-4f4d-a3e7-5a2199ee4c61",
+            "7b71e9b8-d9c8-455e-bb3d-751f52d0f5bd",
+            "256a4e50-dd15-4948-8c66-989036e6e0ea",
             [
-                'money_amount' => 4825,
-                'point_amount' => 9255,
-                'description' => "hVNJLNyZmZIF9xv8AuG395K8I7waL5E1HYmFw1Eiqo2c2hPrNMM7k38LkVxfycZZQmjPyYriveLJmWkfGyhmDFY37w8LgGbGqNXhjjkQgY9eCvn3P81fixep7hGSgnpH4nM48mbKq8fO"
+                'money_amount' => 53,
+                'point_amount' => 6281,
+                'description' => "8yn3vAdg2WzE6cQfJbdKVhYmdIeaGtyZiVBFtaHsVEu5jHLt1IIKsQ4"
             ]
         );
         try {
@@ -88,14 +88,14 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "2df34f1a-33a3-47e5-9cc4-a521cfbd0dea",
-            "f48e6a5d-0a4b-4eb5-a6d2-42edb03801dd",
-            "236262df-8237-44e1-ae14-cf1c63bf7a86",
+            "559284c4-24d5-4f4d-a3e7-5a2199ee4c61",
+            "7b71e9b8-d9c8-455e-bb3d-751f52d0f5bd",
+            "256a4e50-dd15-4948-8c66-989036e6e0ea",
             [
-                'bear_point_shop_id' => "7f284e04-d6d8-4a54-973c-33df1fec7d7d",
-                'money_amount' => 9005,
-                'point_amount' => 9007,
-                'description' => "MvtTaScM9KFvO0iTtFq4bZdQYryMMi2357m1cSui6TSahud96mULFhw7uPXu1izf6rwQ3ERUxioNTZzV4mQbMr5uieuamqD9LiME3KR5yWKAvVIulk98CzCw3lxnPwkcwCmI9LUK4uqfXcLfIdaW5JaY24bqUJa9fWBk"
+                'bear_point_shop_id' => "37a7c8b5-4c21-4c7b-b078-9a3e34ee27d5",
+                'money_amount' => 4320,
+                'point_amount' => 1627,
+                'description' => "O5hfI4vi32Rsgm"
             ]
         );
         try {
