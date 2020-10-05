@@ -5,7 +5,7 @@ namespace Pokepay\Request;
 
 use DateTime;
 
-class ListAccountBalances extends PagingBase
+class ListAccountExpiredBalances extends PagingBase
 {
     protected $method = 'GET';
     public $responseClass = \Pokepay\Response\PaginatedAccountBalance::class;
@@ -20,7 +20,7 @@ class ListAccountBalances extends PagingBase
 
     public function getPath()
     {
-        return '/accounts' . '/' . $this->accountId . '/balances';
+        return '/accounts' . '/' . $this->accountId . '/expired-balances';
     }
 
     public function getParams()
