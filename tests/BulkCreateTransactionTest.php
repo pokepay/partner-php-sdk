@@ -8,9 +8,9 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "CAhIxweHf",
-            "4m",
-            "hVFw56RKDemCYdfHKy6kNARZB0e7gSo7Ck5G"
+            "Ae43BTjYiVtdGDmgs4Vk2VUx2tI5N4bI",
+            "N",
+            "tWwRJ7taFGOOZNR9womkOYYXss1h0acoAUmA"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "CAhIxweHf",
-            "4m",
-            "hVFw56RKDemCYdfHKy6kNARZB0e7gSo7Ck5G",
+            "Ae43BTjYiVtdGDmgs4Vk2VUx2tI5N4bI",
+            "N",
+            "tWwRJ7taFGOOZNR9womkOYYXss1h0acoAUmA",
             [
-                'description' => "WL9QXL9sfwRokQiO2gJLOs7NWiVmOaSDg31Umvi1k0xZepHVlU5UCBk1mC260SZIPf7lUxpBEwOCUnBV1wl8i3xQfqNGTjhBSpAIG2GVjRL"
+                'description' => "E9DWtANH45sfx8Sg9q1O62IQSAJ63xgskw6yfFQPcXHRn98CcSXK5Zlq5PBZ9vRV0xb"
             ]
         );
         try {

@@ -22,7 +22,7 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'per_page' => 7068
+                'per_page' => 3616
             ]
         );
         try {
@@ -39,8 +39,8 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'page' => 1483,
-                'per_page' => 1744
+                'page' => 4202,
+                'per_page' => 177
             ]
         );
         try {
@@ -57,9 +57,9 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'private_money_id' => "1d21542d-b288-4810-846f-27427e0ef468",
-                'page' => 6854,
-                'per_page' => 2302
+                'external_id' => "bIXfazIWogjdxJNEfM7Zph",
+                'page' => 251,
+                'per_page' => 2784
             ]
         );
         try {
@@ -76,10 +76,151 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'organization_code' => "V7ovY",
-                'private_money_id' => "b0330ba6-8ac1-4d57-9979-9d05a0b9b2b2",
-                'page' => 5260,
-                'per_page' => 4684
+                'email' => "x62f8FNzaD@el7r.com",
+                'external_id' => "o4JT6XY3Y33ek4ahxmsrZJPb5B",
+                'page' => 7684,
+                'per_page' => 7244
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops5()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'tel' => "025-3743899",
+                'email' => "0D5go4dBLd@UCSZ.com",
+                'external_id' => "Vd4cTqnNfSRiXL",
+                'page' => 3355,
+                'per_page' => 6745
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops6()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'address' => "xof4N3bX72yEerLNEKMYsRf9vriYiP8HndtLKgFWIeB413C8zcpa0a0ipuLt3I",
+                'tel' => "011-467678",
+                'email' => "U3XBigR3jy@a01c.com",
+                'external_id' => "7edhmrVi5NIsb",
+                'page' => 4950,
+                'per_page' => 8995
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops7()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'postal_code' => "5414590",
+                'address' => "L8YRreNoLAWMJdywYSICtYcbHl2ktF16gpa54attROZcBbejZS9wdnnNKINI7vj8qEDPsdJ8JkL6K4fbUt",
+                'tel' => "0399394-305",
+                'email' => "vhUXmrc210@VozY.com",
+                'external_id' => "z4wR",
+                'page' => 7482,
+                'per_page' => 1244
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops8()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'name' => "Gfv1ooHMcqzJF0zVNZ8zHF5mnetJol0g7uhhZVwBBSB9NQuG198o4cE8ye8xiCptr8X3OQSs9cvMVMzYpfEHHq4AVCPhpF",
+                'postal_code' => "628-6437",
+                'address' => "2NE9OohrFLhvABt92YjeNGkeRyZCxDwnyuzPdWfYw482S6oHFsZh9ksnqTSKQYaLtgBF21Mao0iMx72McbAtuQfbwPK5Ol2Udeu5ClBnNsqGtwvAjO8SQrjpTlUKU7ix6vD3BTnNcaIv4Cy2qiGNeSDJueWNAF2iLhkB08mWoSEw",
+                'tel' => "033552184",
+                'email' => "ANGzSZe49q@KV1r.com",
+                'external_id' => "h",
+                'page' => 1687,
+                'per_page' => 9628
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops9()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'private_money_id' => "a234dbec-dc4c-4c28-ac8a-a5a3f83b86a4",
+                'name' => "fHAgpNJKDDEjuzSmETPUL6TDRxNmjKWPDEzen9VEh9JKwUlzsxb9tQKSZdMATJHlP3s2aiyvcn732KUYpvpwWJTv2DUcmsWBTf3SfgLVNlOhNoRUioebBno3HZhnyNZ5Q77U04aLs4hmy4C28WnCRfz2leovb1R7O6QOgboW2zpcaLxa2QZma6CRo8nyJO9Y3f9djMgk8QSZwJ1udEIb7zDJ6KZTEk0mDRGqd8jGihF2zo2",
+                'postal_code' => "7933713",
+                'address' => "YDG6CZS1PVe5LZzi2NmWBluHrzflOytNd3ROmH9nMfAHnX3LOs6P3dxLhDjrt4CFESWJnPCLUxGLtrgoghS3pPHE574eeX1ksH4R2MgyW6z149JBRZmQUgzecqWdDVSstoEtPVoykbtA6l7WDayqQLAKXyhWYdlIHfSBBKI1KQl4cK6HLesoN7AsxjaX4bkzo",
+                'tel' => "05-3136-165",
+                'email' => "E829PJZq44@v95w.com",
+                'external_id' => "TBAsM3ixdWcd35lz",
+                'page' => 2504,
+                'per_page' => 2536
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops10()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'organization_code' => "--6",
+                'private_money_id' => "625749dd-6e5c-40cc-b01c-10b52d65e7db",
+                'name' => "RSiRG2UPRPUxcw9rvtxOfCP20hUm1E2Nlz5V1CO5TSFyNtopqI6bCrDgQTiBz8hopleWuv10dzqDmxXKufPIjjJpzSXKPSRMVYMVxniANdM0yy6srRZNC9bYJUFWp4SJDd9Vw0ghvUwHY4GPMgqa4p3NBV6jnDEmNinmBAkCQlWqd4VgtaT7nx9nCCSGOYqsqY",
+                'postal_code' => "325-4012",
+                'address' => "7j8S1LcJM99jV6h5DQ4TL9sXbFiutZ4wFjGxBLsRpox6uXLc6he8Kxv6FPaZ8I6AxiybIUdjn2JlMSQ6V8dRYSFDiggsas4Nm4Pbqn0MLycuAIyd8Tc91YrDumA0BEPaxu5hz8quH88gYqQC45YQs",
+                'tel' => "05-3989808",
+                'email' => "VorEq6zLZy@g3cE.com",
+                'external_id' => "Ps9b",
+                'page' => 5756,
+                'per_page' => 7247
             ]
         );
         try {

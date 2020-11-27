@@ -8,9 +8,9 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678"
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678",
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840",
             [
-                'description' => "P1XNaA4tMwkt9CEIs7P52Qn8Ps6"
+                'description' => "QrvWUnk17KWAioiFIGH7shpxz5S2r82nr4Char2DsC6IOlQ3ZCa8lZmMT5mAFAIeN7EOzXnRCcbLOsM"
             ]
         );
         try {
@@ -45,12 +45,12 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678",
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840",
             [
-                'point_amount' => 2418,
-                'description' => "Gg4gxhQEPHlDMgzo7RyqyjDQCvIVLohtP7YX7LIJvkHIDHAM5JdvPW8u4K9jehE0FIX2d1fsIJRaq4cseT3Jr8x9EZ1qV4U"
+                'point_amount' => 6377,
+                'description' => "4tjoxBAROpiRc0j39oPNkDTFwGmGihFz2z0gAPfWDnSv3peMsqUtDBVf5JNWPBp"
             ]
         );
         try {
@@ -66,13 +66,13 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678",
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840",
             [
-                'money_amount' => 6690,
-                'point_amount' => 774,
-                'description' => "a8eDKBhpNX1jWPk8Z43B0y0B9mfs2NjGqIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL84SGwACEhVooVmB4cFvbTIGcXWAqG4BSfipEZMFGhk16I7iXigWOnUAkBWGfv1h3SdKWf7Mk6qxlTgasH11ZahWwt0KCw4FDQO05qLTqGDbzQDuaFv4Vsa"
+                'money_amount' => 2515,
+                'point_amount' => 6144,
+                'description' => "QtetKx5V0IU"
             ]
         );
         try {

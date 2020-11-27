@@ -8,10 +8,10 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "5022c102-04d2-45e0-bfb2-63628746d306",
-            "99117970-db43-4d3f-8ae2-14850acb7bd7",
-            "f5b06197-7d43-4573-80c6-1a31a63d5958",
-            9295
+            "156d5eb7-7a4d-476b-af36-8d2ab9a4c571",
+            "09176af8-cf6c-408d-897d-8054f41d78fd",
+            "8d7939a0-f115-4d67-bd08-408e9a14a861",
+            1580
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "5022c102-04d2-45e0-bfb2-63628746d306",
-            "99117970-db43-4d3f-8ae2-14850acb7bd7",
-            "f5b06197-7d43-4573-80c6-1a31a63d5958",
-            9295,
+            "156d5eb7-7a4d-476b-af36-8d2ab9a4c571",
+            "09176af8-cf6c-408d-897d-8054f41d78fd",
+            "8d7939a0-f115-4d67-bd08-408e9a14a861",
+            1580,
             [
-                'description' => "MwOMfbC"
+                'description' => "sH11ZahWwt0KCw4FDQO05qLTqGDb"
             ]
         );
         try {
