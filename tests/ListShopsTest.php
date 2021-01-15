@@ -57,9 +57,9 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'private_money_id' => "1d21542d-b288-4810-846f-27427e0ef468",
-                'page' => 6854,
-                'per_page' => 2302
+                'external_id' => "DoBhEEJFs",
+                'page' => 7613,
+                'per_page' => 9609
             ]
         );
         try {
@@ -76,10 +76,151 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'organization_code' => "V7ovY",
-                'private_money_id' => "b0330ba6-8ac1-4d57-9979-9d05a0b9b2b2",
-                'page' => 5260,
-                'per_page' => 4684
+                'email' => "7RURiJHf6m@nglg.com",
+                'external_id' => "A3t551AWYy2E",
+                'page' => 4684,
+                'per_page' => 8185
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops5()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'tel' => "0995484220",
+                'email' => "QKM3ivlyVY@A6fe.com",
+                'external_id' => "68jtm2G7nC3SW8MPeFKTYT7eEYLwv",
+                'page' => 6601,
+                'per_page' => 9298
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops6()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'address' => "FKDImV0W8uMWRziTXMumFeaEHdh8PePoMZwnAEmuUL6pb761IWS7zT3jmF3XMzgKDKO5o6UqQsbMF41dYUnemzRdROKbGph7rDrumGN6tQ3vZwFKRF7w7plclcWB9bNRwQ0LABzLS5AginlSJbgCOpN21EzYv53e8C68gL6nh3h",
+                'tel' => "0116113-3497",
+                'email' => "H8v5OYX2Bb@7kgj.com",
+                'external_id' => "pYtpWxkJ26TN1VktFjJy7P4SbKkoz4u",
+                'page' => 7927,
+                'per_page' => 1615
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops7()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'postal_code' => "1494502",
+                'address' => "XUyJ1V0r5CHRNT2ecfLdc33OSn94wpSCBGnb27KI1Ko9Ro9P2UOPHKcZd7kJ0a09BOfpTrIxahzBDxgf0eAPjokEVHRFLghiMn2sJjV2bGnLruRc9c27Gpu7iWb08",
+                'tel' => "0989977401",
+                'email' => "xJNEfM7Zph@Ezx6.com",
+                'external_id' => "2f8FNzaDe",
+                'page' => 5357,
+                'per_page' => 7962
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops8()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'name' => "4JT6XY3Y33ek4ahxmsrZJPb5B1K9ZLJjlQzrcG4cFx990D5go4dBLdUCSZVd4cTqnNfSRiXLw6IXxof4N3bX72yEerLNEKMYsRf9vriYiP8HndtL",
+                'postal_code' => "766-9592",
+                'address' => "13C8zcpa0a0ipuLt3IQKQQHb6fikVg8U3XBigR3jya01cL7edhmrVi5NIsblUeDquiQL8YRreNoLAWMJdywYSICtYcbHl2ktF16gpa54attROZcBbejZS9wdnnNKINI7vj8qEDPsdJ8JkL6K4fbUtzmymsdzvhUXmrc210VozYCz4wR9Gfv1o",
+                'tel' => "08-647964",
+                'email' => "Z8zHF5mnet@Jol0.com",
+                'external_id' => "hhZVwBBSB",
+                'page' => 4751,
+                'per_page' => 1234
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops9()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'private_money_id' => "860a6475-dac7-470b-bc7f-963b8a8fd109",
+                'name' => "198o4cE8ye8xiCptr8X3OQSs9cvMVMzYpfEHHq4AVCPhpFJVl2NE9OohrFLhvABt92YjeNGkeRyZCxDwnyuzPdWfYw482S6oHFsZh9ksnqTSKQYaLtgBF21Mao0iMx72McbAtuQf",
+                'postal_code' => "270-5962",
+                'address' => "Udeu5ClBnNsqGtwvAjO8SQrjpTlUKU7ix6vD3BTnNcaIv4Cy2qiGNeSDJueWNAF2iLhkB08mWoSEw4Yfnz5e3bjXKldANGzSZe49qKV1rholLnfHAgpNJKDDEjuzSmETPUL6TDRxNmjKWPDEzen9VEh9JKwUlzsxb9tQKSZdMATJHlP3s2a",
+                'tel' => "069375-525",
+                'email' => "YpvpwWJTv2@DUcm.com",
+                'external_id' => "sWBT",
+                'page' => 4618,
+                'per_page' => 8116
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListShops10()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListShops(
+            [
+                'organization_code' => "4f95R---7-LqbqNXr-W",
+                'private_money_id' => "7d16d33d-d134-4ce8-adf9-0b34490510c3",
+                'name' => "8WnCRfz2leovb1R7O6QOgboW2zpcaLxa2QZma6CRo8nyJO9Y3f9djMgk8QSZwJ1udEIb7zDJ6KZTEk0mDRGqd8jGihF2zo2GN3QYDG6CZS1PVe5LZzi2NmWBluHrzflOytNd3ROmH9nMfAHnX3LOs6P3dxLhDjrt4CFESWJnPCLUxGLtrgo",
+                'postal_code' => "708-3300",
+                'address' => "HE574eeX1ksH4R2MgyW6z149JBRZmQUgzecqWdDVSstoEtPVoykbtA6l7WDay",
+                'tel' => "011-18-4088",
+                'email' => "WYdlIHfSBB@KI1K.com",
+                'external_id' => "Ql4cK6HLesoN7Asxj",
+                'page' => 4905,
+                'per_page' => 4572
             ]
         );
         try {

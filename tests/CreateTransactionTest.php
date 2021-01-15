@@ -8,9 +8,9 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678"
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678",
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840",
             [
-                'description' => "P1XNaA4tMwkt9CEIs7P52Qn8Ps6"
+                'description' => "QrvWUnk17KWAioiFIGH7shpxz5S2r82nr4Char2DsC6IOlQ3ZCa8lZmMT5mAFAIeN7EOzXnRCcbLOsM"
             ]
         );
         try {
@@ -45,12 +45,12 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678",
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840",
             [
-                'point_amount' => 2418,
-                'description' => "Gg4gxhQEPHlDMgzo7RyqyjDQCvIVLohtP7YX7LIJvkHIDHAM5JdvPW8u4K9jehE0FIX2d1fsIJRaq4cseT3Jr8x9EZ1qV4U"
+                'point_expires_at' => "2022-01-21T08:45:58.000000+09:00",
+                'description' => "joxBAROpiRc0j39oPNkDTFwGmGihFz2z0gAPfWDnSv3peMsqUtDBVf5JNWPBpzSQtetKx5V0IU1H2quyHwM52367FRSK6ZN3dPGJYhssMJ1c81K9V4uwa"
             ]
         );
         try {
@@ -66,13 +66,36 @@ class CreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransaction(
-            "2d137e2c-2d3c-4463-804f-db4fe7280e31",
-            "9771b1f7-5d32-4cc7-97d3-12e8c7e7a98b",
-            "d732f05b-d31e-4ecd-ae86-61d1f844d678",
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840",
             [
-                'money_amount' => 6690,
-                'point_amount' => 774,
-                'description' => "a8eDKBhpNX1jWPk8Z43B0y0B9mfs2NjGqIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL84SGwACEhVooVmB4cFvbTIGcXWAqG4BSfipEZMFGhk16I7iXigWOnUAkBWGfv1h3SdKWf7Mk6qxlTgasH11ZahWwt0KCw4FDQO05qLTqGDbzQDuaFv4Vsa"
+                'point_amount' => 4046,
+                'point_expires_at' => "2022-10-05T06:58:18.000000+09:00",
+                'description' => "FqKGuMQEbIhSKLSxcJDAAH0jwIPbMhYlMMXruKsOetb8P3w3wpAlq46MRFhBa1KSFCImukjAtQPb0UOTifX7KrzTtAdseC51TTzGU05VTqLiAQDTT40IDYkIvu0sCcHMaDTHEOIiZjdOoQxmayWcgZvBQUAudiHvhALf0xr0YedjAtAhk4Q5ZEY"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateTransaction4()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateTransaction(
+            "49bff2c4-6ad4-4d89-8450-c0031314a294",
+            "87352198-3ed2-4548-9e29-338eb9f94f0c",
+            "899befc5-fe6c-4be0-ac9b-ccde0397b840",
+            [
+                'money_amount' => 6615,
+                'point_amount' => 8136,
+                'point_expires_at' => "2024-01-07T18:19:15.000000+09:00",
+                'description' => "c6DIDKem3xaXPio5o0q9x0iUyrfJOMPlYYA9d24g2qlkQeuW"
             ]
         );
         try {

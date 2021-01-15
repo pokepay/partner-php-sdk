@@ -8,10 +8,10 @@ class CreateTransferTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransferTransaction(
-            "71309062-2fd2-4d69-9a85-aabf2f6f5738",
-            "a09a754d-4511-4765-af9c-1b0dd8acedcf",
-            "3e8b0e3e-b662-4e6a-8051-fc0aaa6cdbc2",
-            9535
+            "4d6630bf-8582-4807-9309-77d8ac5a8908",
+            "85b8af0e-9318-4bcb-a500-21862bb622b5",
+            "7b359986-1e08-449c-9aec-ac23dc273ef1",
+            5840
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateTransferTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransferTransaction(
-            "71309062-2fd2-4d69-9a85-aabf2f6f5738",
-            "a09a754d-4511-4765-af9c-1b0dd8acedcf",
-            "3e8b0e3e-b662-4e6a-8051-fc0aaa6cdbc2",
-            9535,
+            "4d6630bf-8582-4807-9309-77d8ac5a8908",
+            "85b8af0e-9318-4bcb-a500-21862bb622b5",
+            "7b359986-1e08-449c-9aec-ac23dc273ef1",
+            5840,
             [
-                'description' => "5vivOmPF0WWyAe43BTjYiVtdGDmgs4Vk2VUx2tI5N4bIOpNtWwRJ7taFGOOZNR9womkOYYXss1h0acoAUmABE9DWtANH45sfx8Sg9q1O62IQSAJ63xgskw6yfFQPcXHRn98CcSXK5Zlq5PBZ9vRV0xbdBDEvdzHS5KI84n4B4JwtxMbsrynFzleqVzZvPQrwaZ5xf"
+                'description' => "Z9vRV0xbdBDEvdzHS5KI84n4B4JwtxMbsrynFzleqVzZvPQrwaZ5xfzumz05DAlrcpN"
             ]
         );
         try {

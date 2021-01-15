@@ -114,191 +114,42 @@ $request->setCallId($newCallId);
 <a name="api-operations"></a>
 ## API Operations
 
+- [ListTransactions](#list-transactions): 取引履歴を取得する
+- [CreateTransaction](#create-transaction): 
+- [CreateTopupTransaction](#create-topup-transaction): チャージする
+- [CreatePaymentTransaction](#create-payment-transaction): 支払いする
+- [CreateTransferTransaction](#create-transfer-transaction): 個人間送金
+- [CreateExchangeTransaction](#create-exchange-transaction): 
+- [GetTransaction](#get-transaction): 取引情報を取得する
+- [ListTransfers](#list-transfers): 
+- [CreateTopupTransactionWithCheck](#create-topup-transaction-with-check): チャージQRコードを読み取ることでチャージする
+- [ListBills](#list-bills): 支払いQRコード一覧を表示する
+- [CreateBill](#create-bill): 支払いQRコードの発行
+- [UpdateBill](#update-bill): 支払いQRコードの更新
+- [CreateCashtray](#create-cashtray): Cashtrayを作る
+- [GetCashtray](#get-cashtray): Cashtrayの情報を取得する
+- [CancelCashtray](#cancel-cashtray): Cashtrayを無効化する
+- [UpdateCashtray](#update-cashtray): Cashtrayの情報を更新する
+- [GetAccount](#get-account): ウォレット情報を表示する
+- [UpdateAccount](#update-account): ウォレット情報を更新する
+- [ListAccountBalances](#list-account-balances): エンドユーザーの残高内訳を表示する
+- [ListAccountExpiredBalances](#list-account-expired-balances): エンドユーザーの失効済みの残高内訳を表示する
+- [CreateCustomerAccount](#create-customer-account): 新規エンドユーザーウォレットを追加する
+- [ListCustomerTransactions](#list-customer-transactions): 取引履歴を取得する
+- [ListShops](#list-shops): 店舗一覧を取得する
+- [CreateShop](#create-shop): 新規店舗を追加する
+- [ListUserAccounts](#list-user-accounts): エンドユーザー、店舗ユーザーのウォレット一覧を表示する
+- [GetPrivateMoneyOrganizationSummaries](#get-private-money-organization-summaries): 決済加盟店の取引サマリを取得する
+- [BulkCreateTransaction](#bulk-create-transaction): CSVファイル一括取引
 ### Transaction
-
-#### 取引情報を取得する
-取引を取得します。
-```php
-$request = new Request\GetTransaction(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // transactionId: 取引ID
-);
-```
-
----
-`transaction_id`  
-取引IDです。
-
-フィルターとして使われ、指定した取引IDの取引を取得します。
-
----
-成功したときは[Transaction](#transaction)オブジェクトを返します
-
-#### チャージする
-チャージ取引を作成します。
-```php
-$request = new Request\CreateTopupTransaction(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    [
-        'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 6868,                   // マネー額
-        'point_amount' => 6431,                   // ポイント額
-        'description' => "初夏のチャージキャンペーン"          // 取引履歴に表示する説明文
-    ]
-);
-```
-
----
-`shop_id`  
-店舗IDです。
-
-送金元の店舗を指定します。
-
----
-`customer_id`  
-エンドユーザーIDです。
-
-送金先のエンドユーザーを指定します。
-
----
-`private_money_id`  
-マネーIDです。
-
-マネーを指定します。
-
----
-`bear_point_shop_id`  
-ポイント支払時の負担店舗IDです。
-
-ポイント支払い時に実際お金を負担する店舗を指定します。
-
----
-`money_amount`  
-マネー額です。
-
-送金するマネー額を指定します。
-
----
-`point_amount`  
-ポイント額です。
-
-送金するポイント額を指定します。
-
----
-`description`  
-取引説明文です。
-
-任意入力で、取引履歴に表示される説明文です。
-
----
-成功したときは[Transaction](#transaction)オブジェクトを返します
-
-#### 支払いする
-支払取引を作成します。
-支払い時には、エンドユーザーの残高のうち、ポイント残高から優先的に消費されます。
-
-```php
-$request = new Request\CreatePaymentTransaction(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8114,                                         // amount: 支払い額
-    [
-        'description' => "たい焼き(小倉)"               // 取引履歴に表示する説明文
-    ]
-);
-```
-
----
-`shop_id`  
-店舗IDです。
-
-送金先の店舗を指定します。
-
----
-`customer_id`  
-エンドユーザーIDです。
-
-送金元のエンドユーザーを指定します。
-
----
-`private_money_id`  
-マネーIDです。
-
-マネーを指定します。
-
----
-`amount`  
-マネー額です。
-
-送金するマネー額を指定します。
-
----
-`description`  
-取引説明文です。
-
-任意入力で、取引履歴に表示される説明文です。
-
----
-成功したときは[Transaction](#transaction)オブジェクトを返します
-
-#### 個人間送金
-エンドユーザー間での送金取引(個人間送金)を作成します。
-個人間送金で送れるのはマネーのみで、ポイントを送ることはできません。送金元のマネー残高のうち、有効期限が最も遠いものから順に送金されます。
-
-```php
-$request = new Request\CreateTransferTransaction(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    1703,                                         // amount: 送金額
-    [
-        'description' => "たい焼き(小倉)"               // 取引履歴に表示する説明文
-    ]
-);
-```
-
----
-`sender_id`  
-エンドユーザーIDです。
-
-送金元のエンドユーザー(送り主)を指定します。
-
----
-`receiver_id`  
-エンドユーザーIDです。
-
-送金先のエンドユーザー(受け取り人)を指定します。
-
----
-`private_money_id`  
-マネーIDです。
-
-マネーを指定します。
-
----
-`amount`  
-マネー額です。
-
-送金するマネー額を指定します。
-
----
-`description`  
-取引説明文です。
-
-任意入力で、取引履歴に表示される説明文です。
-
----
-成功したときは[Transaction](#transaction)オブジェクトを返します
-
+<a name="list-transactions"></a>
 #### 取引履歴を取得する
 取引一覧を返します。
 ```php
 $request = new Request\ListTransactions(
     [
-        'from' => "2017-12-05T11:36:12.000000+09:00", // 開始日時
-        'to' => "2022-02-28T10:32:20.000000+09:00", // 終了日時
+        'from' => "2024-08-12T19:39:14.000000+09:00", // 開始日時
+        'to' => "2022-12-02T08:24:08.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
@@ -308,7 +159,7 @@ $request = new Request\ListTransactions(
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'is_modified' => FALSE,                   // キャンセルフラグ
+        'is_modified' => TRUE,                    // キャンセルフラグ
         'types' => ["topup", "payment"]           // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
     ]
 );
@@ -403,21 +254,249 @@ $request = new Request\ListTransactions(
 
 ---
 成功したときは[PaginatedTransaction](#paginated-transaction)オブジェクトを返します
-
-#### 返金する
+<a name="create-transaction"></a>
+#### 
 ```php
-$request = new Request\RefundTransaction(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
+$request = new Request\CreateTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'description' => "返品対応のため"                // 取引履歴に表示する返金事由
+        'money_amount' => 6506,
+        'point_amount' => 7289,
+        'point_expires_at' => "2020-08-20T19:04:41.000000+09:00", // ポイント有効期限
+        'description' => "qeO19KhFrkxiVRAQ6FFjz1wnjIRjO9MofqJJncHBCR1qP1zId4mLJCzHpOgkhaasWI8ELqJwRA62Ghe0ne6pcNR1V7JprfFD47gNL9WM6cSeojzOZZrLxO3x6r1ViuOnspa8l8OxqMpLrB"
     ]
 );
 ```
-成功したときは[Transfer](#transfer)オブジェクトを返します
 
-### チャージQRコード
+---
+`point_expires_at`  
+ポイントをチャージした場合の、付与されるポイントの有効期限です。
+省略した場合はマネーに設定された有効期限と同じものがポイントの有効期限となります。
 
-店舗ユーザが発行し、エンドユーザがポケペイアプリから読み取ることでチャージ取引が発生するQRコードです。
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
+<a name="create-topup-transaction"></a>
+#### チャージする
+チャージ取引を作成します。
+```php
+$request = new Request\CreateTopupTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    [
+        'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
+        'money_amount' => 568,                    // マネー額
+        'point_amount' => 6186,                   // ポイント額
+        'point_expires_at' => "2020-12-19T15:50:00.000000+09:00", // ポイント有効期限
+        'description' => "初夏のチャージキャンペーン"          // 取引履歴に表示する説明文
+    ]
+);
+```
+
+---
+`shop_id`  
+店舗IDです。
+
+送金元の店舗を指定します。
+
+---
+`customer_id`  
+エンドユーザーIDです。
+
+送金先のエンドユーザーを指定します。
+
+---
+`private_money_id`  
+マネーIDです。
+
+マネーを指定します。
+
+---
+`bear_point_shop_id`  
+ポイント支払時の負担店舗IDです。
+
+ポイント支払い時に実際お金を負担する店舗を指定します。
+
+---
+`money_amount`  
+マネー額です。
+
+送金するマネー額を指定します。
+
+---
+`point_amount`  
+ポイント額です。
+
+送金するポイント額を指定します。
+
+---
+`point_expires_at`  
+ポイントをチャージした場合の、付与されるポイントの有効期限です。
+省略した場合はマネーに設定された有効期限と同じものがポイントの有効期限となります。
+
+---
+`description`  
+取引説明文です。
+
+任意入力で、取引履歴に表示される説明文です。
+
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
+<a name="create-payment-transaction"></a>
+#### 支払いする
+支払取引を作成します。
+支払い時には、エンドユーザーの残高のうち、ポイント残高から優先的に消費されます。
+
+```php
+$request = new Request\CreatePaymentTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    8448,                                         // amount: 支払い額
+    [
+        'description' => "たい焼き(小倉)"               // 取引履歴に表示する説明文
+    ]
+);
+```
+
+---
+`shop_id`  
+店舗IDです。
+
+送金先の店舗を指定します。
+
+---
+`customer_id`  
+エンドユーザーIDです。
+
+送金元のエンドユーザーを指定します。
+
+---
+`private_money_id`  
+マネーIDです。
+
+マネーを指定します。
+
+---
+`amount`  
+マネー額です。
+
+送金するマネー額を指定します。
+
+---
+`description`  
+取引説明文です。
+
+任意入力で、取引履歴に表示される説明文です。
+
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
+<a name="create-transfer-transaction"></a>
+#### 個人間送金
+エンドユーザー間での送金取引(個人間送金)を作成します。
+個人間送金で送れるのはマネーのみで、ポイントを送ることはできません。送金元のマネー残高のうち、有効期限が最も遠いものから順に送金されます。
+
+```php
+$request = new Request\CreateTransferTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    8458,                                         // amount: 送金額
+    [
+        'description' => "たい焼き(小倉)"               // 取引履歴に表示する説明文
+    ]
+);
+```
+
+---
+`sender_id`  
+エンドユーザーIDです。
+
+送金元のエンドユーザー(送り主)を指定します。
+
+---
+`receiver_id`  
+エンドユーザーIDです。
+
+送金先のエンドユーザー(受け取り人)を指定します。
+
+---
+`private_money_id`  
+マネーIDです。
+
+マネーを指定します。
+
+---
+`amount`  
+マネー額です。
+
+送金するマネー額を指定します。
+
+---
+`description`  
+取引説明文です。
+
+任意入力で、取引履歴に表示される説明文です。
+
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
+<a name="create-exchange-transaction"></a>
+#### 
+```php
+$request = new Request\CreateExchangeTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    6336,
+    [
+        'description' => "GSVgVcs3OQMdHqZLlv01wGqOn2jIsFsWbo7bpQq9anT6PszkN335U1t4DYsuiE88p3Hog0k8d"
+    ]
+);
+```
+成功したときは[Transaction](#transaction)オブジェクトを返します
+<a name="get-transaction"></a>
+#### 取引情報を取得する
+取引を取得します。
+```php
+$request = new Request\GetTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // transactionId: 取引ID
+);
+```
+
+---
+`transaction_id`  
+取引IDです。
+
+フィルターとして使われ、指定した取引IDの取引を取得します。
+
+---
+成功したときは[Transaction](#transaction)オブジェクトを返します
+<a name="list-transfers"></a>
+#### 
+```php
+$request = new Request\ListTransfers(
+    [
+        'from' => "2022-08-19T11:01:20.000000+09:00",
+        'to' => "2017-11-21T10:29:23.000000+09:00",
+        'page' => 4673,
+        'per_page' => 1192,
+        'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        'shop_name' => "CFI0Qv1brn8ATMTNMMEyVApkaDeYuOtBoCZgc4gwc8RSE7B5wsqfAkho5yO5EQGpb9AHk6UF1UjWUyw97H5Wi0UlM5hWRopq8fm3QjwrUJDS6QIEgbGEOQG1PZp7fjd91zgh1RHHtL55R7YEprCJ0U4QnLZWm",
+        'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        'customer_name' => "GvTqLQwaZ9vOnv67spoRoPKUgWvYVa3Gv9x",
+        'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        'is_modified' => TRUE,
+        'transaction_types' => ["transfer", "exchange", "topup"],
+        'transfer_types' => ["exchange", "payment", "topup"]
+    ]
+);
+```
+成功したときは[PaginatedTransfers](#paginated-transfers)オブジェクトを返します
+### Check
+店舗ユーザが発行し、エンドユーザーがポケペイアプリから読み取ることでチャージ取引が発生するQRコードです。
 
 チャージQRコードを解析すると次のようなURLになります(URLは環境によって異なります)。
 
@@ -425,46 +504,11 @@ $request = new Request\RefundTransaction(
 
 QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注意: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります) 上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
 
-#### チャージQRコードの発行
-```php
-$request = new Request\CreateCheck(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: 送金元の店舗アカウントID
-    [
-        'money_amount' => 7125,                   // 付与マネー額
-        'point_amount' => 1891,                   // 付与ポイント額
-        'description' => "test check",            // 説明文(アプリ上で取引の説明文として表示される)
-        'is_onetime' => FALSE,                    // ワンタイムかどうか。真の場合1度読み込まれた時点でそのチャージQRは失効する(デフォルト値は真)
-        'usage_limit' => 3843,                    // ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数
-        'expires_at' => "2023-03-24T03:47:01.000000+09:00", // チャージQR自体の失効日時
-        'point_expires_at' => "2020-02-18T14:19:36.000000+09:00", // チャージQRによって付与されるポイントの失効日時
-        'point_expires_in_days' => 60,            // チャージQRによって付与されるポイントの有効期限(相対指定、単位は日)
-        'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント額を負担する店舗アカウントのID
-    ]
-);
-```
-`money_amount`と`point_amount`の少なくとも一方は指定する必要があります。
-
-
----
-`is_onetime`  
-チャージQRコードが一度の読み取りで失効するときに`true`にします。デフォルト値は`true`です。
-`false`の場合、そのチャージQRコードは1ユーザについては1回きりですが、複数ユーザによって読み取り可能なQRコードになります。
-
-
----
-`usage_limit`  
-複数ユーザによって読み取り可能なチャージQRコードの読み取り回数に制限をつけるために指定します。
-省略すると無制限に読み取り可能なチャージQRコードになります。
-チャージQRコードは管理画面からいつでも無効化(有効化)することができます。
-
-
----
-成功したときは[Check](#check)オブジェクトを返します
-
+<a name="create-topup-transaction-with-check"></a>
 #### チャージQRコードを読み取ることでチャージする
-通常チャージQRコードはエンドユーザのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。 もしエンドユーザとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報をエンドユーザから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
+通常チャージQRコードはエンドユーザーのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。 もしエンドユーザーとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報をエンドユーザーから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
 
-エンドユーザから受け取ったチャージ用QRコードのIDをエンドユーザIDと共に渡すことでチャージ取引が作られます。
+エンドユーザーから受け取ったチャージ用QRコードのIDをエンドユーザーIDと共に渡すことでチャージ取引が作られます。
 
 ```php
 $request = new Request\CreateTopupTransactionWithCheck(
@@ -487,26 +531,26 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 
 ---
 成功したときは[Transaction](#transaction)オブジェクトを返します
-
-### 支払いQRコード
-
+### Bill
+支払いQRコード
+<a name="list-bills"></a>
 #### 支払いQRコード一覧を表示する
 支払いQRコード一覧を表示します。
 ```php
 $request = new Request\ListBills(
     [
-        'page' => 4675,                           // ページ番号
-        'per_page' => 2133,                       // 1ページの表示数
-        'bill_id' => "f3SfgLVNlO",                // 支払いQRコードのID
+        'page' => 4580,                           // ページ番号
+        'per_page' => 9220,                       // 1ページの表示数
+        'bill_id' => "v",                         // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "-LqbqNXr-WUnU-",  // 組織コード
+        'organization_code' => "5ov2Mfq-",        // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2021-12-24T13:34:31.000000+09:00", // 作成日時(起点)
-        'created_to' => "2024-06-08T16:21:35.000000+09:00", // 作成日時(終点)
+        'created_from' => "2022-11-18T07:24:11.000000+09:00", // 作成日時(起点)
+        'created_to' => "2024-09-10T04:32:32.000000+09:00", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 8760,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 7305,             // 金額の範囲によるフィルタ(上限)
+        'lower_limit_amount' => 3385,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 353,              // 金額の範囲によるフィルタ(上限)
         'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
     ]
 );
@@ -522,7 +566,7 @@ $request = new Request\ListBills(
 
 ---
 `bill_id`  
-支払いQRコードのIDを指定して検索します。IDは部分一致で検索できます。
+支払いQRコードのIDを指定して検索します。IDは前方一致で検索されます。
 
 ---
 `private_money_id`  
@@ -550,7 +594,7 @@ $request = new Request\ListBills(
 
 ---
 `shop_name`  
-支払いQRコードを作成した店舗名でフィルターします。
+支払いQRコードを作成した店舗名でフィルターします。店舗名は部分一致で検索されます。
 
 ---
 `shop_id`  
@@ -570,7 +614,7 @@ $request = new Request\ListBills(
 
 ---
 成功したときは[PaginatedBills](#paginated-bills)オブジェクトを返します
-
+<a name="create-bill"></a>
 #### 支払いQRコードの発行
 支払いQRコードの内容を更新します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
 ```php
@@ -578,7 +622,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 4264,                         // 支払い額
+        'amount' => 2469,                         // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -590,16 +634,16 @@ $request = new Request\CreateBill(
 
 ---
 成功したときは[Bill](#bill)オブジェクトを返します
-
+<a name="update-bill"></a>
 #### 支払いQRコードの更新
 支払いQRコードの内容を更新します。パラメータは全て省略可能で、指定したもののみ更新されます。
 ```php
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 5696,                         // 支払い額
+        'amount' => 6066,                         // 支払い額
         'description' => "test bill",             // 説明文
-        'is_disabled' => FALSE                    // 無効化されているかどうか
+        'is_disabled' => TRUE                     // 無効化されているかどうか
     ]
 );
 ```
@@ -622,38 +666,189 @@ $request = new Request\UpdateBill(
 
 ---
 成功したときは[Bill](#bill)オブジェクトを返します
+### Cashtray
+Cashtrayは支払いとチャージ両方に使えるQRコードで、店舗ユーザとエンドユーザーの間の主に店頭などでの取引のために用いられます。
+Cashtrayによる取引では、エンドユーザーがQRコードを読み取った時点で即時取引が作られ、ユーザに対して受け取り確認画面は表示されません。
+Cashtrayはワンタイムで、一度読み取りに成功するか、取引エラーになると失効します。
+また、Cashtrayには有効期限があり、デフォルトでは30分で失効します。
 
-### Customer
+<a name="create-cashtray"></a>
+#### Cashtrayを作る
+Cashtrayを作成します。
 
-#### 新規エンドユーザーウォレットを追加する
-指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも作成します。
+エンドユーザーに対して支払いまたはチャージを行う店舗ウォレットと、金額が必須項目です。
+店舗ウォレットの指定には、店舗ウォレットIDを直接指定する方法と、店舗ユーザーIDとマネーIDから店舗ウォレットを特定する方法があります。
+
+その他に、Cashtrayから作られる取引に対する説明文や失効時間を指定できます。
+
 ```php
-$request = new Request\CreateCustomerAccount(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+$request = new Request\CreateCashtray(
+    8025,                                         // amount: 金額
     [
-        'user_name' => "ポケペイ太郎",                  // ユーザー名
-        'account_name' => "ポケペイ太郎のアカウント"          // アカウント名
+        'shop_account_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ウォレットID
+        'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ユーザーID
+        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
+        'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
+        'expires_in' => 7870                      // 失効時間(秒)
     ]
 );
 ```
 
 ---
+`shop_account_id`  
+店舗のウォレットIDです。
+店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
+
+---
+`shop_id`  
+店舗のユーザーIDです。
+店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
+
+---
 `private_money_id`  
-マネーIDです。
-
-これによって作成するウォレットのマネーを指定します。
-
----
-`user_name`  
-ウォレットと共に作成するユーザ名です。省略した場合は空文字となります。
+取引対象のマネーのIDです。
+店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
 
 ---
-`account_name`  
-作成するウォレット名です。省略した場合は空文字となります。
+`amount`  
+マネー額です(必須項目)。
+正の値を与えるとチャージになり、負の値を与えると支払いとなります。
 
 ---
-成功したときは[AccountWithUser](#account-with-user)オブジェクトを返します
+`description`  
+Cashtrayを読み取ったときに作られる取引の説明文です(最大200文字、任意項目)。
+アプリや管理画面などの取引履歴に表示されます。デフォルトでは空文字になります。
 
+---
+`expires_in`  
+Cashtrayが失効するまでの時間を秒単位で指定します(任意項目、デフォルト値は1800秒(30分))。
+
+---
+成功したときは[Cashtray](#cashtray)オブジェクトを返します
+<a name="get-cashtray"></a>
+#### Cashtrayの情報を取得する
+Cashtrayの情報を取得します。
+
+Cashtrayの現在の状態に加え、エンドユーザーのCashtray読み取りの試行結果、Cashtray読み取りによって作られた取引情報が取得できます。
+
+レスポンス中の `attempt` には、このCashtrayをエンドユーザーが読み取った試行結果が入ります。
+`account` はエンドユーザーのウォレット情報です。
+成功時には `attempt` 内の `status_code` に200が入ります。
+
+まだCashtrayが読み取られていない場合は `attempt` の内容は `NULL` になります。
+エンドユーザーのCashtray読み取りの際には、様々なエラーが起き得ます。
+エラーの詳細は `attempt` 中の `error_type` と `error_message` にあります。主なエラー型と対応するステータスコードを以下に列挙します。
+
+- `cashtray_already_proceed (422)`
+  - 既に処理済みのCashtrayをエンドユーザーが再び読み取ったときに返されます
+- `cashtray_expired (422)`
+  - 読み取り時点でCashtray自体の有効期限が切れているときに返されます。Cashtrayが失効する時刻はレスポンス中の `expires_at` にあります
+- `cashtray_already_canceled (422)`
+  - 読み取り時点でCashtrayが無効化されているときに返されます
+- `account_balance_not_enough (422)`
+  - 支払い時に、エンドユーザーの残高が不足していて取引が完了できなかったときに返されます
+- `account_balance_exceeded`
+  - チャージ時に、エンドユーザーのウォレット上限を超えて取引が完了できなかったときに返されます
+- `account_transfer_limit_exceeded (422)`
+  - マネーに設定されている一度の取引金額の上限を超えたため、取引が完了できなかったときに返されます
+- `account_not_found (422)`
+  - Cashtrayに設定されたマネーのウォレットをエンドユーザーが持っていなかったときに返されます
+
+
+レスポンス中の `transaction` には、このCashtrayをエンドユーザーが読み取ることによって作られる取引データが入ります。まだCashtrayが読み取られていない場合は `NULL` になります。
+
+以上をまとめると、Cashtrayの状態は以下のようになります。
+
+- エンドユーザーのCashtray読み取りによって取引が成功した場合
+  - レスポンス中の `attempt` と `transaction` にそれぞれ値が入ります
+- 何らかの理由で取引が失敗した場合
+  - レスポンス中の `attempt` にエラー内容が入り、 `transaction` には `NULL` が入ります
+- まだCashtrayが読み取られていない場合
+  - レスポンス中の `attempt` と `transaction` にそれぞれ `NULL` が入ります。Cashtrayの `expires_at` が現在時刻より前の場合は有効期限切れ状態です。
+
+Cashtrayの取り得る全ての状態を擬似コードで記述すると以下のようになります。
+```
+if (attempt == null) {
+  // 状態は未確定
+  if (canceled_at != null) {
+    // 無効化済み
+  } else if (expires_at < now) {
+    // 失効済み
+  } else {
+    // まだ有効で読み取られていない
+  }
+} else if (transaction != null) {
+  // 取引成功確定。attempt で読み取ったユーザなどが分かる
+} else {
+  // 取引失敗確定。attempt で失敗理由などが分かる
+}
+```
+```php
+$request = new Request\GetCashtray(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // cashtrayId: CashtrayのID
+);
+```
+
+---
+`cashtray_id`  
+情報を取得するCashtrayのIDです。
+
+---
+成功したときは[CashtrayWithResult](#cashtray-with-result)オブジェクトを返します
+<a name="cancel-cashtray"></a>
+#### Cashtrayを無効化する
+Cashtrayを無効化します。
+
+これにより、 `GetCashtray` のレスポンス中の `canceled_at` に無効化時点での現在時刻が入るようになります。
+エンドユーザーが無効化されたQRコードを読み取ると `cashtray_already_canceled` エラーとなり、取引は失敗します。
+```php
+$request = new Request\CancelCashtray(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // cashtrayId: CashtrayのID
+);
+```
+
+---
+`cashtray_id`  
+無効化するCashtrayのIDです。
+
+---
+成功したときは[Cashtray](#cashtray)オブジェクトを返します
+<a name="update-cashtray"></a>
+#### Cashtrayの情報を更新する
+Cashtrayの内容を更新します。bodyパラメータは全て省略可能で、指定したもののみ更新されます。
+```php
+$request = new Request\UpdateCashtray(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
+    [
+        'amount' => 5911,                         // 金額
+        'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
+        'expires_in' => 3680                      // 失効時間(秒)
+    ]
+);
+```
+
+---
+`cashtray_id`  
+更新対象のCashtrayのIDです。
+
+---
+`amount`  
+マネー額です(任意項目)。
+正の値を与えるとチャージになり、負の値を与えると支払いとなります。
+
+---
+`description`  
+Cashtrayを読み取ったときに作られる取引の説明文です(最大200文字、任意項目)。
+アプリや管理画面などの取引履歴に表示されます。
+
+---
+`expires_in`  
+Cashtrayが失効するまでの時間を秒で指定します(任意項目、デフォルト値は1800秒(30分))。
+
+---
+成功したときは[Cashtray](#cashtray)オブジェクトを返します
+### Customer
+<a name="get-account"></a>
 #### ウォレット情報を表示する
 ウォレットを取得します。
 ```php
@@ -670,18 +865,42 @@ $request = new Request\GetAccount(
 
 ---
 成功したときは[AccountDetail](#account-detail)オブジェクトを返します
+<a name="update-account"></a>
+#### ウォレット情報を更新する
+ウォレットの状態を更新します。現在はウォレットの凍結/凍結解除の切り替えにのみ対応しています。
+```php
+$request = new Request\UpdateAccount(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
+    [
+        'is_suspended' => TRUE                    // ウォレットが凍結されているかどうか
+    ]
+);
+```
 
+---
+`account_id`  
+ウォレットIDです。
+
+指定したウォレットIDのウォレットの状態を更新します。
+
+---
+`is_suspended`  
+ウォレットの凍結状態です。真にするとウォレットが凍結され、そのウォレットでは新規取引ができなくなります。偽にすると凍結解除されます。
+
+---
+成功したときは[AccountDetail](#account-detail)オブジェクトを返します
+<a name="list-account-balances"></a>
 #### エンドユーザーの残高内訳を表示する
 エンドユーザーのウォレット毎の残高を有効期限別のリストとして取得します。
 ```php
 $request = new Request\ListAccountBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 4618,                           // ページ番号
-        'per_page' => 5871,                       // 1ページ分の取引数
-        'expires_at_from' => "2018-10-15T04:16:09.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2023-07-30T09:13:47.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
-        'direction' => "asc"                      // 有効期限によるソート順序
+        'page' => 1512,                           // ページ番号
+        'per_page' => 8228,                       // 1ページ分の取引数
+        'expires_at_from' => "2019-06-28T08:00:06.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2016-11-10T22:12:57.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'direction' => "desc"                     // 有効期限によるソート順序
     ]
 );
 ```
@@ -714,17 +933,17 @@ $request = new Request\ListAccountBalances(
 
 ---
 成功したときは[PaginatedAccountBalance](#paginated-account-balance)オブジェクトを返します
-
+<a name="list-account-expired-balances"></a>
 #### エンドユーザーの失効済みの残高内訳を表示する
 エンドユーザーのウォレット毎の失効済みの残高を有効期限別のリストとして取得します。
 ```php
 $request = new Request\ListAccountExpiredBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 2535,                           // ページ番号
-        'per_page' => 8845,                       // 1ページ分の取引数
-        'expires_at_from' => "2021-10-19T05:58:26.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2016-04-23T04:27:08.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'page' => 5884,                           // ページ番号
+        'per_page' => 5106,                       // 1ページ分の取引数
+        'expires_at_from' => "2019-12-18T10:45:05.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2023-08-16T05:58:15.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
         'direction' => "desc"                     // 有効期限によるソート順序
     ]
 );
@@ -758,7 +977,36 @@ $request = new Request\ListAccountExpiredBalances(
 
 ---
 成功したときは[PaginatedAccountBalance](#paginated-account-balance)オブジェクトを返します
+<a name="create-customer-account"></a>
+#### 新規エンドユーザーウォレットを追加する
+指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも作成します。
+```php
+$request = new Request\CreateCustomerAccount(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    [
+        'user_name' => "ポケペイ太郎",                  // ユーザー名
+        'account_name' => "ポケペイ太郎のアカウント"          // アカウント名
+    ]
+);
+```
 
+---
+`private_money_id`  
+マネーIDです。
+
+これによって作成するウォレットのマネーを指定します。
+
+---
+`user_name`  
+ウォレットと共に作成するユーザ名です。省略した場合は空文字となります。
+
+---
+`account_name`  
+作成するウォレット名です。省略した場合は空文字となります。
+
+---
+成功したときは[AccountWithUser](#account-with-user)オブジェクトを返します
+<a name="list-customer-transactions"></a>
 #### 取引履歴を取得する
 取引一覧を返します。
 ```php
@@ -767,10 +1015,10 @@ $request = new Request\ListCustomerTransactions(
     [
         'sender_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金エンドユーザーID
         'receiver_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
-        'type' => "ovb1R7",                       // 取引種別、チャージ=topup、支払い=payment、個人間送金=transfer
-        'is_modified' => FALSE,                   // キャンセル済みかどうか
-        'from' => "2020-08-03T06:12:34.000000+09:00", // 開始日時
-        'to' => "2016-08-07T00:12:13.000000+09:00", // 終了日時
+        'type' => "E",                            // 取引種別、チャージ=topup、支払い=payment、個人間送金=transfer
+        'is_modified' => TRUE,                    // キャンセル済みかどうか
+        'from' => "2019-01-27T00:57:18.000000+09:00", // 開始日時
+        'to' => "2020-01-29T05:40:54.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -839,55 +1087,21 @@ falseを指定するとキャンセルされていない取引のみ一覧に表
 
 ---
 成功したときは[PaginatedTransaction](#paginated-transaction)オブジェクトを返します
-
 ### Organization
-
-#### 新規加盟店組織を追加する
-```php
-$request = new Request\CreateOrganization(
-    "ox_supermarket",                             // code: 新規組織コード
-    "oxスーパー",                                     // name: 新規組織名
-    ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // privateMoneyIds: 加盟店組織で有効にするマネーIDの配列
-    "oW2zpcaLxa@2QZm.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
-    "a6CRo8nyJO@9Y3f.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
-    [
-        'bank_name' => "XYZ銀行",                   // 銀行名
-        'bank_code' => "99X",                     // 銀行金融機関コード
-        'bank_branch_name' => "ABC支店",            // 銀行支店名
-        'bank_branch_code' => "99X",              // 銀行支店コード
-        'bank_account_type' => "saving",          // 銀行口座種別 (普通=saving, 当座=current, その他=other)
-        'bank_account' => 9999999,                // 銀行口座番号
-        'bank_account_holder_name' => "ﾌｸｻﾞﾜﾕｷﾁ", // 口座名義人名
-        'contact_name' => "佐藤清"                   // 担当者名
-    ]
-);
-```
-成功したときは[Organization](#organization)オブジェクトを返します
-
 ### Shop
-
-#### 新規店舗を追加する
-```php
-$request = new Request\CreateShop(
-    "oxスーパー三田店",                                  // shopName: 店舗名
-    [
-        'shop_postal_code' => "9960474",          // 店舗の郵便番号
-        'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "08-3715957",               // 店舗の電話番号
-        'shop_email' => "Ib7zDJ6KZT@Ek0m.com",    // 店舗のメールアドレス
-        'shop_external_id' => "RGqd8",            // 店舗の外部ID
-        'organization_code' => "ox-supermarket"   // 組織コード
-    ]
-);
-```
-成功したときは[User](#user)オブジェクトを返します
-
+<a name="list-shops"></a>
 #### 店舗一覧を取得する
 ```php
 $request = new Request\ListShops(
     [
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
+        'name' => "oxスーパー三田店",                    // 店舗名
+        'postal_code' => "2539697",               // 店舗の郵便番号
+        'address' => "東京都港区芝...",                 // 店舗の住所
+        'tel' => "0984955-641",                   // 店舗の電話番号
+        'email' => "oUMWRj1sxt@SyQg.com",         // 店舗のメールアドレス
+        'external_id' => "1GkRhboXHY39x3Xs6KbKO", // 店舗の外部ID
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -905,6 +1119,36 @@ $request = new Request\ListShops(
 
 
 ---
+`name`  
+このパラメータを渡すとその名前の店舗のみが返されます。
+
+
+---
+`postal_code`  
+このパラメータを渡すとその郵便番号が登録された店舗のみが返されます。
+
+
+---
+`address`  
+このパラメータを渡すとその住所が登録された店舗のみが返されます。
+
+
+---
+`tel`  
+このパラメータを渡すとその電話番号が登録された店舗のみが返されます。
+
+
+---
+`email`  
+このパラメータを渡すとそのメールアドレスが登録された店舗のみが返されます。
+
+
+---
+`external_id`  
+このパラメータを渡すとその外部IDが登録された店舗のみが返されます。
+
+
+---
 `page`  
 取得したいページ番号です。
 
@@ -914,9 +1158,24 @@ $request = new Request\ListShops(
 
 ---
 成功したときは[PaginatedShops](#paginated-shops)オブジェクトを返します
-
+<a name="create-shop"></a>
+#### 新規店舗を追加する
+```php
+$request = new Request\CreateShop(
+    "oxスーパー三田店",                                  // shopName: 店舗名
+    [
+        'shop_postal_code' => "151-3308",         // 店舗の郵便番号
+        'shop_address' => "東京都港区芝...",            // 店舗の住所
+        'shop_tel' => "03-8354-5247",             // 店舗の電話番号
+        'shop_email' => "0KRGU02ETt@Me3p.com",    // 店舗のメールアドレス
+        'shop_external_id' => "ruF",              // 店舗の外部ID
+        'organization_code' => "ox-supermarket"   // 組織コード
+    ]
+);
+```
+成功したときは[User](#user)オブジェクトを返します
 ### Account
-
+<a name="list-user-accounts"></a>
 #### エンドユーザー、店舗ユーザーのウォレット一覧を表示する
 ユーザーIDを指定してそのユーザーのウォレット一覧を取得します。
 ```php
@@ -933,16 +1192,15 @@ $request = new Request\ListUserAccounts(
 
 ---
 成功したときは[PaginatedAccounts](#paginated-accounts)オブジェクトを返します
-
 ### Private Money
-
+<a name="get-private-money-organization-summaries"></a>
 #### 決済加盟店の取引サマリを取得する
 ```php
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2025-03-11T10:23:27.000000+09:00", // 開始日時(toと同時に指定する必要有)
-        'to' => "2020-06-18T21:44:33.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'from' => "2015-12-07T23:12:19.000000+09:00", // 開始日時(toと同時に指定する必要有)
+        'to' => "2017-12-28T03:32:07.000000+09:00", // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -951,7 +1209,60 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 `from`と`to`は同時に指定する必要があります。
 
 成功したときは[PaginatedPrivateMoneyOrganizationSummaries](#paginated-private-money-organization-summaries)オブジェクトを返します
+### Bulk
+<a name="bulk-create-transaction"></a>
+#### CSVファイル一括取引
+CSVファイルから一括取引をします。
+```php
+$request = new Request\BulkCreateTransaction(
+    "x8zwWTQtwhg",                                // name: 一括取引タスク名
+    "EUQrpqVt",                                   // content: 取引する情報のCSV
+    "FI20RqU84wWVej7KjR7PO79YOuc2btzI2HvK",       // requestId: リクエストID
+    [
+        'description' => "Iy1dRKuzOlLMmdBSZr220xtZpZdQ9ssluYJHAlylPpV6xWxt7f2oLFlgp2lLhVbHghg4lZSVxXqYiDQPFv2xIXmI4PlPvyiodi" // 一括取引の説明
+    ]
+);
+```
 
+---
+`name`  
+一括取引タスクの管理用の名前です。
+
+---
+`description`  
+一括取引タスクの管理用の説明文です。
+
+---
+`content`  
+一括取引する情報を書いたCSVの文字列です。
+1行目はヘッダ行で、2行目以降の各行にカンマ区切りの取引データを含みます。
+カラムは以下の7つです。任意のカラムには空文字を指定します。
+
+- `type`: 取引種別
+  - 必須。'topup' または 'payment'
+- `sender_id`: 送金ユーザーID
+  - 必須。UUID
+- `receiver_id`: 受取ユーザーID
+  - 必須。UUID
+- `private_money_id`: マネーID
+  - 必須。UUID
+- `money_amount`: マネー額
+  - 任意。ただし `point_amount` といずれかが必須。0以上の数字
+- `point_amount`: ポイント額
+  - 任意。ただし `money_amount` といずれかが必須。0以上の数字
+- `description`: 取引の説明文
+  - 任意。200文字以内。取引履歴に表示される文章
+- `bear_account_id`: ポイント負担ウォレットID
+  - `point_amount` があるときは必須。UUID
+- `point_expires_at`: ポイントの有効期限
+  - 任意。指定がないときはマネーに設定された有効期限を適用
+
+---
+`request_id`  
+重複したリクエストを判断するためのユニークID。ランダムな36字の文字列を生成して渡してください。
+
+---
+成功したときは[BulkTransaction](#bulk-transaction)オブジェクトを返します
 ## Responses
 
 
@@ -992,36 +1303,41 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 
 `account`は [AccountWithUser](#account-with-user) オブジェクトを返します。
 
-<a name="check"></a>
-## Check
-* `id (string)`: チャージQRコードのID
-* `amount (double)`: チャージマネー額 (deprecated)
-* `moneyAmount (double)`: チャージマネー額
-* `pointAmount (double)`: チャージポイント額
-* `description (string)`: チャージQRコードの説明文(アプリ上で取引の説明文として表示される)
-* `user (User)`: 送金元ユーザ情報
-* `isOnetime (boolean)`: 使用回数が一回限りかどうか
-* `isDisabled (boolean)`: 無効化されているかどうか
-* `expiresAt (\DateTime)`: チャージQRコード自体の失効日時
-* `privateMoney (PrivateMoney)`: 対象マネー情報
-* `usageLimit (integer)`: 一回限りでない場合の最大読み取り回数
-* `usageCount (double)`: 一回限りでない場合の現在までに読み取られた回数
-* `token (string)`: チャージQRコードを解析したときに出てくるURL
+<a name="cashtray"></a>
+## Cashtray
+* `id (string)`: Cashtray自体のIDです。
+* `amount (double)`: 取引金額
+* `description (string)`: Cashtrayの説明文
+* `account (AccountWithUser)`: 発行店舗のウォレット
+* `expiresAt (\DateTime)`: Cashtrayの失効日時
+* `canceledAt (\DateTime)`: Cashtrayの無効化日時。NULLの場合は無効化されていません
+* `token (string)`: 
 
-`user`は [User](#user) オブジェクトを返します。
+`account`は [AccountWithUser](#account-with-user) オブジェクトを返します。
 
-`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+<a name="cashtray-with-result"></a>
+## CashtrayWithResult
+* `id (string)`: CashtrayのID
+* `amount (double)`: 取引金額
+* `description (string)`: Cashtrayの説明文(アプリ上で取引の説明文として表示される)
+* `account (AccountWithUser)`: 発行店舗のウォレット
+* `expiresAt (\DateTime)`: Cashtrayの失効日時
+* `canceledAt (\DateTime)`: Cashtrayの無効化日時。NULLの場合は無効化されていません
+* `token (string)`: 
+* `attempt (CashtrayAttempt)`: Cashtray読み取り結果
+* `transaction (Transaction)`: 取引結果
+
+`account`は [AccountWithUser](#account-with-user) オブジェクトを返します。
+
+`attempt`は [CashtrayAttempt](#cashtray-attempt) オブジェクトを返します。
+
+`transaction`は [Transaction](#transaction) オブジェクトを返します。
 
 <a name="user"></a>
 ## User
 * `id (string)`: ユーザー (または店舗) ID
 * `name (string)`: ユーザー (または店舗) 名
 * `isMerchant (boolean)`: 店舗ユーザーかどうか
-
-<a name="organization"></a>
-## Organization
-* `code (string)`: 組織コード
-* `name (string)`: 組織名
 
 <a name="transaction"></a>
 ## Transaction
@@ -1042,20 +1358,14 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 
 `receiver_account`と`sender_account`は [Account](#account) オブジェクトを返します。
 
-<a name="transfer"></a>
-## Transfer
-* `id (string)`: 
-* `senderAccount (AccountWithoutPrivateMoneyDetail)`: 
-* `receiverAccount (AccountWithoutPrivateMoneyDetail)`: 
-* `amount (double)`: 
-* `moneyAmount (double)`: 
-* `pointAmount (double)`: 
-* `doneAt (\DateTime)`: 
-* `type (string)`: 
-* `description (string)`: 
-* `transactionId (string)`: 
-
-`receiver_account`と`sender_account`は [AccountWithoutPrivateMoneyDetail](#account-without-private-money-detail) オブジェクトを返します。
+<a name="bulk-transaction"></a>
+## BulkTransaction
+* `requestId (string)`: リクエストID
+* `name (string)`: バルクチャージ管理用の名前
+* `description (string)`: バルクチャージ管理用の説明文
+* `status (string)`: バルクチャージの状態
+* `submittedAt (\DateTime)`: バルクチャージが登録された日時
+* `updatedAt (\DateTime)`: バルクチャージが更新された日時
 
 <a name="paginated-private-money-organization-summaries"></a>
 ## PaginatedPrivateMoneyOrganizationSummaries
@@ -1074,6 +1384,16 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 * `pagination (Pagination)`: 
 
 `rows`は [Transaction](#transaction) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
+<a name="paginated-transfers"></a>
+## PaginatedTransfers
+* `rows (Transfer[])`: 
+* `count (integer)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [Transfer](#transfer) オブジェクトの配列を返します。
 
 `pagination`は [Pagination](#pagination) オブジェクトを返します。
 
@@ -1135,6 +1455,16 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 
 `organization`は [Organization](#organization) オブジェクトを返します。
 
+<a name="cashtray-attempt"></a>
+## CashtrayAttempt
+* `account (AccountWithUser)`: エンドユーザーのウォレット
+* `statusCode (double)`: ステータスコード
+* `errorType (string)`: エラー型
+* `errorMessage (string)`: エラーメッセージ
+* `createdAt (\DateTime)`: Cashtray読み取り記録の作成日時
+
+`account`は [AccountWithUser](#account-with-user) オブジェクトを返します。
+
 <a name="account"></a>
 ## Account
 * `id (string)`: ウォレットID
@@ -1143,16 +1473,6 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 * `privateMoney (PrivateMoney)`: 設定マネー情報
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
-
-<a name="account-without-private-money-detail"></a>
-## AccountWithoutPrivateMoneyDetail
-* `id (string)`: 
-* `name (string)`: 
-* `isSuspended (boolean)`: 
-* `privateMoneyId (string)`: 
-* `user (User)`: 
-
-`user`は [User](#user) オブジェクトを返します。
 
 <a name="private-money-organization-summary"></a>
 ## PrivateMoneyOrganizationSummary
@@ -1169,6 +1489,21 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 * `maxPage (integer)`: 
 * `hasPrev (boolean)`: 
 * `hasNext (boolean)`: 
+
+<a name="transfer"></a>
+## Transfer
+* `id (string)`: 
+* `senderAccount (AccountWithoutPrivateMoneyDetail)`: 
+* `receiverAccount (AccountWithoutPrivateMoneyDetail)`: 
+* `amount (double)`: 
+* `moneyAmount (double)`: 
+* `pointAmount (double)`: 
+* `doneAt (\DateTime)`: 
+* `type (string)`: 
+* `description (string)`: 
+* `transactionId (string)`: 
+
+`receiver_account`と`sender_account`は [AccountWithoutPrivateMoneyDetail](#account-without-private-money-detail) オブジェクトを返します。
 
 <a name="account-balance"></a>
 ## AccountBalance

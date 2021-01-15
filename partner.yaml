@@ -10,6 +10,33 @@ info:
   title:  Partner APIs
   version: 0.0.0
 
+tags:
+  - name: Transaction
+  - name: Check
+    description: |
+      店舗ユーザが発行し、エンドユーザーがポケペイアプリから読み取ることでチャージ取引が発生するQRコードです。
+
+      チャージQRコードを解析すると次のようなURLになります(URLは環境によって異なります)。
+
+      `https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
+
+      QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注意: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります) 上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
+  - name: Bill
+    description: 支払いQRコード
+  - name: Cashtray
+    description: |
+      Cashtrayは支払いとチャージ両方に使えるQRコードで、店舗ユーザとエンドユーザーの間の主に店頭などでの取引のために用いられます。
+      Cashtrayによる取引では、エンドユーザーがQRコードを読み取った時点で即時取引が作られ、ユーザに対して受け取り確認画面は表示されません。
+      Cashtrayはワンタイムで、一度読み取りに成功するか、取引エラーになると失効します。
+      また、Cashtrayには有効期限があり、デフォルトでは30分で失効します。
+
+  - name: Customer
+  - name: Organization
+  - name: Shop
+  - name: Account
+  - name: Private Money
+  - name: Bulk
+
 components:
   schemas:
     Pong:
@@ -216,6 +243,111 @@ components:
         token:
           type: string
           summary: チャージQRコードを解析したときに出てくるURL
+
+    Cashtray:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          summary: Cashtray自体のIDです。
+        amount:
+          type: number
+          format: decimal
+          summary: 取引金額
+          description: Cashtrayの取引金額です。正の数ならチャージ、負の数なら支払いとなります。
+        description:
+          type: string
+          summary: Cashtrayの説明文
+          description: Cashtrayの説明文です。アプリ上で取引の説明文として表示されます。
+        account:
+          $ref: '#/components/schemas/AccountWithUser'
+          summary: 発行店舗のウォレット
+          description: Cashtrayを発行した店舗ユーザーのウォレット情報です。ユーザやマネーの情報を含みます。
+        expires_at:
+          type: string
+          format: date-time
+          summary: Cashtrayの失効日時
+        canceled_at:
+          type: string
+          format: date-time
+          nullable: true
+          summary: Cashtrayの無効化日時。NULLの場合は無効化されていません
+        token:
+          type: string
+          description: CashtrayのQRコードを解析したときに出てくるURL
+
+    CashtrayWithResult:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          summary: CashtrayのID
+          description: Cashtray自体のIDです。
+        amount:
+          type: number
+          format: decimal
+          summary: 取引金額
+          description: Cashtrayの取引金額です。正の数ならチャージ、負の数なら支払いとなります。
+        description:
+          type: string
+          summary: Cashtrayの説明文(アプリ上で取引の説明文として表示される)
+        account:
+          $ref: '#/components/schemas/AccountWithUser'
+          summary: 発行店舗のウォレット
+          description: Cashtrayを発行した店舗ユーザーのウォレット情報です。ユーザやマネーの情報を含みます。
+        expires_at:
+          type: string
+          format: date-time
+          summary: Cashtrayの失効日時
+        canceled_at:
+          type: string
+          format: date-time
+          nullable: true
+          summary: Cashtrayの無効化日時。NULLの場合は無効化されていません
+        token:
+          type: string
+          description: CashtrayのQRコードを解析したときに出てくるURL
+        attempt:
+          $ref: '#/components/schemas/CashtrayAttempt'
+          summary: Cashtray読み取り結果
+          description: Cashtrayをエンドユーザーが読み取った結果です。Cashtrayがまだ誰にも読み取られていない場合はNULLになります。
+          nullable: true
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+          summary: 取引結果
+          description: Cashtrayをエンドユーザーが読み取った結果としてできた取引です。Cashtrayがまだ誰にも読み取られていない場合、またはエラーにより取引が完了しなかった場合はNULLになります。
+          nullable: true
+
+    CashtrayAttempt:
+      x-pokepay-schema-type: "response"
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountWithUser'
+          summary: エンドユーザーのウォレット
+          description: |-
+            Cashtrayを読み取ったエンドユーザーのウォレット情報です。ユーザやマネーの情報を含みます。
+            この際、エンドユーザーがCashtrayを発行した店舗ウォレットのマネーを持っていない場合、この値はNULLになります。
+          nullable: true
+        status_code:
+          type: number
+          summary: ステータスコード
+          description: エンドユーザーによるCashtrayの読み取りリクエストに対するレスポンスのHTTPステータスコードです。
+        error_type:
+          type: string
+          summary: エラー型
+          description: 取引中に発生したエラーの型名です。エラーが発生しなかった場合は空文字となります。
+        error_message:
+          type: string
+          summary: エラーメッセージ
+          description: 取引中に発生したエラーの説明文です。エラーが発生しなかった場合は空文字となります。
+        created_at:
+          type: string
+          format: date-time
+          summary: Cashtray読み取り記録の作成日時
+          description: エンドユーザーによるCashtrayの読み取りリクエストに対する記録(CashtrayAttempt)の作成日時です。これによりエンドユーザーがCashtrayをいつ読み取ったかが分かります。
+
     User:
       x-pokepay-schema-type: "response"
       properties:
@@ -419,6 +551,8 @@ components:
           type: string
           enum:
             - submitted
+            - examining
+            - queued
             - processing
             - error
             - done
@@ -601,6 +735,7 @@ components:
         - $ref: '#/components/schemas/PartnerRequestExpired'
         - $ref: '#/components/schemas/PartnerRequestAlreadyDone'
         - $ref: '#/components/schemas/InvalidParameters'
+        - $ref: '#/components/schemas/CashtrayInvalidParametersToFindAccount'
     PartnerClientNotFound:
       x-pokepay-schema-type: "response"
       properties:
@@ -660,6 +795,15 @@ components:
               nullable: true
               items:
                 type: string
+    CashtrayInvalidParametersToFindAccount:
+      x-pokepay-schema-type: "response"
+      properties:
+        type:
+          type: string
+          example: "cashtray_invalid_parameters_to_find_account"
+        message:
+          type: string
+          example: "Require either of shop_account_id or pair of shop_id and private_money_id"
     Forbidden:
       properties:
         type:
@@ -771,6 +915,8 @@ paths:
                 $ref: '#/components/schemas/AdminUserWithShopsAndPrivateMoneys'
   /users/{user_id}/accounts:
     get:
+      tags:
+        - Account
       summary: 'エンドユーザー、店舗ユーザーのウォレット一覧を表示する'
       description: ユーザーIDを指定してそのユーザーのウォレット一覧を取得します。
       x-pokepay-operator-name: "ListUserAccounts"
@@ -802,6 +948,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /accounts/{account_id}:
     get:
+      tags:
+        - Customer
       summary: 'ウォレット情報を表示する'
       description: ウォレットを取得します。
       x-pokepay-operator-name: "GetAccount"
@@ -832,6 +980,8 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
     patch:
+      tags:
+        - Customer
       summary: 'ウォレット情報を更新する'
       description: ウォレットの状態を更新します。現在はウォレットの凍結/凍結解除の切り替えにのみ対応しています。
       x-pokepay-operator-name: "UpdateAccount"
@@ -873,6 +1023,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /accounts/{account_id}/balances:
     get:
+      tags:
+        - Customer
       summary: 'エンドユーザーの残高内訳を表示する'
       description: エンドユーザーのウォレット毎の残高を有効期限別のリストとして取得します。
       x-pokepay-operator-name: "ListAccountBalances"
@@ -935,6 +1087,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /accounts/{account_id}/expired-balances:
     get:
+      tags:
+        - Customer
       summary: 'エンドユーザーの失効済みの残高内訳を表示する'
       description: エンドユーザーのウォレット毎の失効済みの残高を有効期限別のリストとして取得します。
       x-pokepay-operator-name: "ListAccountExpiredBalances"
@@ -997,6 +1151,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /accounts/customers:
     post:
+      tags:
+        - Customer
       summary: '新規エンドユーザーウォレットを追加する'
       description: |-
         指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも作成します。
@@ -1046,6 +1202,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /bills:
     get:
+      tags:
+        - Bill
       summary: '支払いQRコード一覧を表示する'
       description: 支払いQRコード一覧を表示します。
       x-pokepay-operator-name: "ListBills"
@@ -1069,7 +1227,7 @@ paths:
                 bill_id:
                   type: string
                   summary: '支払いQRコードのID'
-                  description: 支払いQRコードのIDを指定して検索します。IDは部分一致で検索できます。
+                  description: 支払いQRコードのIDを指定して検索します。IDは前方一致で検索されます。
                 private_money_id:
                   type: string
                   format: uuid
@@ -1107,7 +1265,7 @@ paths:
                   type: string
                   maxLength: 256
                   summary: '店舗名'
-                  description: 支払いQRコードを作成した店舗名でフィルターします。
+                  description: 支払いQRコードを作成した店舗名でフィルターします。店舗名は部分一致で検索されます。
                   example: 'bill test shop1'
                 shop_id:
                   type: string
@@ -1115,13 +1273,13 @@ paths:
                   summary: '店舗ID'
                   description: 支払いQRコードを作成した店舗IDでフィルターします。
                 lower_limit_amount:
-                  type: number
+                  type: integer
                   minimum: 0
                   format: decimal
                   summary: '金額の範囲によるフィルタ(下限)'
                   description: 支払いQRコードの金額の下限を指定してフィルターします。
                 upper_limit_amount:
-                  type: number
+                  type: integer
                   minimum: 0
                   format: decimal
                   summary: '金額の範囲によるフィルタ(上限)'
@@ -1142,6 +1300,8 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
     post:
+      tags:
+        - Bill
       summary: '支払いQRコードの発行'
       description: 支払いQRコードの内容を更新します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
       x-pokepay-operator-name: "CreateBill"
@@ -1189,6 +1349,8 @@ paths:
 
   /bills/{bill_id}:
     patch:
+      tags:
+        - Bill
       summary: '支払いQRコードの更新'
       description: 支払いQRコードの内容を更新します。パラメータは全て省略可能で、指定したもののみ更新されます。
       x-pokepay-operator-name: "UpdateBill"
@@ -1241,6 +1403,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /checks:
     post:
+      tags:
+        - Check
       summary: 'チャージQRコードの発行'
       x-pokepay-operator-name: "CreateCheck"
       requestBody:
@@ -1312,6 +1476,8 @@ paths:
           $ref: '#/components/responses/InvalidParameters'
   /transactions:
     get:
+      tags:
+        - Transaction
       summary: '取引履歴を取得する'
       description: 取引一覧を返します。
       x-pokepay-operator-name: "ListTransactions"
@@ -1450,6 +1616,8 @@ paths:
         '400':
           $ref: '#/components/responses/InvalidParameters'
     post:
+      tags:
+        - Transaction
       x-pokepay-operator-name: "CreateTransaction"
       x-pokepay-allow-server-side: true
       deprecated: true
@@ -1477,6 +1645,13 @@ paths:
                   type: integer
                   format: decimal
                   minimum: 0
+                point_expires_at:
+                  type: string
+                  format: date-time
+                  summary: 'ポイント有効期限'
+                  description: |-
+                    ポイントをチャージした場合の、付与されるポイントの有効期限です。
+                    省略した場合はマネーに設定された有効期限と同じものがポイントの有効期限となります。
                 description:
                   type: string
                   maxLength: 200
@@ -1495,6 +1670,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /transactions/topup:
     post:
+      tags:
+        - Transaction
       summary: 'チャージする'
       description: チャージ取引を作成します。
       x-pokepay-operator-name: "CreateTopupTransaction"
@@ -1554,6 +1731,13 @@ paths:
                     ポイント額です。
 
                     送金するポイント額を指定します。
+                point_expires_at:
+                  type: string
+                  format: date-time
+                  summary: 'ポイント有効期限'
+                  description: |-
+                    ポイントをチャージした場合の、付与されるポイントの有効期限です。
+                    省略した場合はマネーに設定された有効期限と同じものがポイントの有効期限となります。
                 description:
                   type: string
                   maxLength: 200
@@ -1578,11 +1762,13 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /transactions/topup/check:
     post:
+      tags:
+        - Check
       summary: 'チャージQRコードを読み取ることでチャージする'
       description: |
-        通常チャージQRコードはエンドユーザのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。 もしエンドユーザとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報をエンドユーザから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
+        通常チャージQRコードはエンドユーザーのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。 もしエンドユーザーとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがチャージQRの情報をエンドユーザーから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
 
-        エンドユーザから受け取ったチャージ用QRコードのIDをエンドユーザIDと共に渡すことでチャージ取引が作られます。
+        エンドユーザーから受け取ったチャージ用QRコードのIDをエンドユーザーIDと共に渡すことでチャージ取引が作られます。
       x-pokepay-operator-name: "CreateTopupTransactionWithCheck"
       x-pokepay-allow-server-side: true
       requestBody:
@@ -1625,6 +1811,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /transactions/payment:
     post:
+      tags:
+        - Transaction
       summary: '支払いする'
       description: |
         支払取引を作成します。
@@ -1694,6 +1882,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /transactions/transfer:
     post:
+      tags:
+        - Transaction
       summary: '個人間送金'
       description: |
         エンドユーザー間での送金取引(個人間送金)を作成します。
@@ -1763,6 +1953,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /transactions/exchange:
     post:
+      tags:
+        - Transaction
       x-pokepay-allow-server-side: true
       requestBody:
         required: true
@@ -1799,6 +1991,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /transactions/bulk:
     post:
+      tags:
+        - Bulk
       summary: CSVファイル一括取引
       description: CSVファイルから一括取引をします。
       x-pokepay-operator-name: "BulkCreateTransaction"
@@ -1827,6 +2021,27 @@ paths:
                   summary: 取引する情報のCSV
                   description: |-
                     一括取引する情報を書いたCSVの文字列です。
+                    1行目はヘッダ行で、2行目以降の各行にカンマ区切りの取引データを含みます。
+                    カラムは以下の7つです。任意のカラムには空文字を指定します。
+
+                    - `type`: 取引種別
+                      - 必須。'topup' または 'payment'
+                    - `sender_id`: 送金ユーザーID
+                      - 必須。UUID
+                    - `receiver_id`: 受取ユーザーID
+                      - 必須。UUID
+                    - `private_money_id`: マネーID
+                      - 必須。UUID
+                    - `money_amount`: マネー額
+                      - 任意。ただし `point_amount` といずれかが必須。0以上の数字
+                    - `point_amount`: ポイント額
+                      - 任意。ただし `money_amount` といずれかが必須。0以上の数字
+                    - `description`: 取引の説明文
+                      - 任意。200文字以内。取引履歴に表示される文章
+                    - `bear_account_id`: ポイント負担ウォレットID
+                      - `point_amount` があるときは必須。UUID
+                    - `point_expires_at`: ポイントの有効期限
+                      - 任意。指定がないときはマネーに設定された有効期限を適用
                 request_id:
                   type: string
                   minLength: 36
@@ -1849,6 +2064,8 @@ paths:
           $ref: '#/components/responses/Conflict'
   /transactions/{transaction_id}:
     get:
+      tags:
+        - Transaction
       summary: '取引情報を取得する'
       description: 取引を取得します。
       x-pokepay-operator-name: "GetTransaction"
@@ -1880,6 +2097,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /transactions/{transaction_id}/refund:
     post:
+      tags:
+        - Transaction
       summary: 返金する
       x-pokepay-operator-name: RefundTransaction
       parameters:
@@ -1916,6 +2135,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /transfers:
     get:
+      tags:
+        - Transaction
       x-pokepay-operator-name: "ListTransfers"
       x-pokepay-allow-server-side: true
       requestBody:
@@ -1978,6 +2199,8 @@ paths:
 
   /organizations:
     post:
+      tags:
+        - Organization
       summary: '新規加盟店組織を追加する'
       x-pokepay-operator-name: "CreateOrganization"
       requestBody:
@@ -2063,6 +2286,8 @@ paths:
                 $ref: '#/components/schemas/Organization'
   /shops:
     get:
+      tags:
+        - Shop
       summary: '店舗一覧を取得する'
       x-pokepay-operator-name: "ListShops"
       x-pokepay-allow-server-side: true
@@ -2086,6 +2311,46 @@ paths:
                   summary: 'マネーID'
                   description: |
                     このパラメータを渡すとそのマネーのウォレットを持つ店舗のみが返されます。
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 256
+                  summary: '店舗名'
+                  example: 'oxスーパー三田店'
+                  description: |
+                    このパラメータを渡すとその名前の店舗のみが返されます。
+                postal_code:
+                  type: string
+                  pattern: '^[0-9]{3}-?[0-9]{4}$'
+                  summary: '店舗の郵便番号'
+                  description: |
+                    このパラメータを渡すとその郵便番号が登録された店舗のみが返されます。
+                address:
+                  type: string
+                  maxLength: 256
+                  summary: '店舗の住所'
+                  example: '東京都港区芝...'
+                  description: |
+                    このパラメータを渡すとその住所が登録された店舗のみが返されます。
+                tel:
+                  type: string
+                  pattern: '^0[0-9]{1,3}-?[0-9]{2,4}-?[0-9]{3,4}$'
+                  summary: '店舗の電話番号'
+                  description: |
+                    このパラメータを渡すとその電話番号が登録された店舗のみが返されます。
+                email:
+                  type: string
+                  format: email
+                  maxLength: 256
+                  summary: '店舗のメールアドレス'
+                  description: |
+                    このパラメータを渡すとそのメールアドレスが登録された店舗のみが返されます。
+                external_id:
+                  type: string
+                  maxLength: 36
+                  summary: '店舗の外部ID'
+                  description: |
+                    このパラメータを渡すとその外部IDが登録された店舗のみが返されます。
                 page:
                   type: integer
                   minimum: 1
@@ -2114,6 +2379,8 @@ paths:
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
     post:
+      tags:
+        - Shop
       summary: '新規店舗を追加する'
       x-pokepay-operator-name: "CreateShop"
       x-pokepay-allow-server-side: true
@@ -2175,6 +2442,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /private-moneys/{private_money_id}/organization-summaries:
     get:
+      tags:
+        - Private Money
       summary: 決済加盟店の取引サマリを取得する
       x-pokepay-operator-name: "GetPrivateMoneyOrganizationSummaries"
       x-pokepay-allow-server-side: true
@@ -2226,6 +2495,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /customers/transactions:
     get:
+      tags:
+        - Customer
       summary: '取引履歴を取得する'
       description: '取引一覧を返します。'
       x-pokepay-operator-name: "ListCustomerTransactions"
@@ -2324,5 +2595,265 @@ paths:
           $ref: '#/components/responses/InvalidParameters'
         '403':
           $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /cashtrays:
+    post:
+      tags:
+        - Cashtray
+      summary: 'Cashtrayを作る'
+      description: |
+        Cashtrayを作成します。
+
+        エンドユーザーに対して支払いまたはチャージを行う店舗ウォレットと、金額が必須項目です。
+        店舗ウォレットの指定には、店舗ウォレットIDを直接指定する方法と、店舗ユーザーIDとマネーIDから店舗ウォレットを特定する方法があります。
+
+        その他に、Cashtrayから作られる取引に対する説明文や失効時間を指定できます。
+
+      x-pokepay-operator-name: "CreateCashtray"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["amount"]
+              properties:
+                shop_account_id:
+                  type: string
+                  format: uuid
+                  summary: '店舗ウォレットID'
+                  description: |-
+                    店舗のウォレットIDです。
+                    店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
+                shop_id:
+                  type: string
+                  format: uuid
+                  summary: '店舗ユーザーID'
+                  description: |-
+                    店舗のユーザーIDです。
+                    店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
+                private_money_id:
+                  type: string
+                  format: uuid
+                  summary: 'マネーID'
+                  description: |-
+                    取引対象のマネーのIDです。
+                    店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
+                amount:
+                  type: number
+                  summary: '金額'
+                  description: |-
+                    マネー額です(必須項目)。
+                    正の値を与えるとチャージになり、負の値を与えると支払いとなります。
+                description:
+                  type: string
+                  maxLength: 200
+                  summary: '取引履歴に表示する説明文'
+                  description:  |-
+                    Cashtrayを読み取ったときに作られる取引の説明文です(最大200文字、任意項目)。
+                    アプリや管理画面などの取引履歴に表示されます。デフォルトでは空文字になります。
+                  example: たい焼き(小倉)
+                expires_in:
+                  type: integer
+                  minimum: 1
+                  summary: '失効時間(秒)'
+                  description: |-
+                    Cashtrayが失効するまでの時間を秒単位で指定します(任意項目、デフォルト値は1800秒(30分))。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cashtray'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /cashtrays/{cashtray_id}:
+    get:
+      tags:
+        - Cashtray
+      summary: 'Cashtrayの情報を取得する'
+      description: |-
+        Cashtrayの情報を取得します。
+
+        Cashtrayの現在の状態に加え、エンドユーザーのCashtray読み取りの試行結果、Cashtray読み取りによって作られた取引情報が取得できます。
+
+        レスポンス中の `attempt` には、このCashtrayをエンドユーザーが読み取った試行結果が入ります。
+        `account` はエンドユーザーのウォレット情報です。
+        成功時には `attempt` 内の `status_code` に200が入ります。
+
+        まだCashtrayが読み取られていない場合は `attempt` の内容は `NULL` になります。
+        エンドユーザーのCashtray読み取りの際には、様々なエラーが起き得ます。
+        エラーの詳細は `attempt` 中の `error_type` と `error_message` にあります。主なエラー型と対応するステータスコードを以下に列挙します。
+
+        - `cashtray_already_proceed (422)`
+          - 既に処理済みのCashtrayをエンドユーザーが再び読み取ったときに返されます
+        - `cashtray_expired (422)`
+          - 読み取り時点でCashtray自体の有効期限が切れているときに返されます。Cashtrayが失効する時刻はレスポンス中の `expires_at` にあります
+        - `cashtray_already_canceled (422)`
+          - 読み取り時点でCashtrayが無効化されているときに返されます
+        - `account_balance_not_enough (422)`
+          - 支払い時に、エンドユーザーの残高が不足していて取引が完了できなかったときに返されます
+        - `account_balance_exceeded`
+          - チャージ時に、エンドユーザーのウォレット上限を超えて取引が完了できなかったときに返されます
+        - `account_transfer_limit_exceeded (422)`
+          - マネーに設定されている一度の取引金額の上限を超えたため、取引が完了できなかったときに返されます
+        - `account_not_found (422)`
+          - Cashtrayに設定されたマネーのウォレットをエンドユーザーが持っていなかったときに返されます
+
+
+        レスポンス中の `transaction` には、このCashtrayをエンドユーザーが読み取ることによって作られる取引データが入ります。まだCashtrayが読み取られていない場合は `NULL` になります。
+
+        以上をまとめると、Cashtrayの状態は以下のようになります。
+
+        - エンドユーザーのCashtray読み取りによって取引が成功した場合
+          - レスポンス中の `attempt` と `transaction` にそれぞれ値が入ります
+        - 何らかの理由で取引が失敗した場合
+          - レスポンス中の `attempt` にエラー内容が入り、 `transaction` には `NULL` が入ります
+        - まだCashtrayが読み取られていない場合
+          - レスポンス中の `attempt` と `transaction` にそれぞれ `NULL` が入ります。Cashtrayの `expires_at` が現在時刻より前の場合は有効期限切れ状態です。
+
+        Cashtrayの取り得る全ての状態を擬似コードで記述すると以下のようになります。
+        ```
+        if (attempt == null) {
+          // 状態は未確定
+          if (canceled_at != null) {
+            // 無効化済み
+          } else if (expires_at < now) {
+            // 失効済み
+          } else {
+            // まだ有効で読み取られていない
+          }
+        } else if (transaction != null) {
+          // 取引成功確定。attempt で読み取ったユーザなどが分かる
+        } else {
+          // 取引失敗確定。attempt で失敗理由などが分かる
+        }
+        ```
+
+      x-pokepay-operator-name: "GetCashtray"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: cashtray_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+          summary: 'CashtrayのID'
+          description: |-
+            情報を取得するCashtrayのIDです。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashtrayWithResult'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      tags:
+        - Cashtray
+      summary: 'Cashtrayを無効化する'
+      description: |-
+        Cashtrayを無効化します。
+
+        これにより、 `GetCashtray` のレスポンス中の `canceled_at` に無効化時点での現在時刻が入るようになります。
+        エンドユーザーが無効化されたQRコードを読み取ると `cashtray_already_canceled` エラーとなり、取引は失敗します。
+      x-pokepay-operator-name: "CancelCashtray"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: cashtray_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+          summary: 'CashtrayのID'
+          description: |-
+            無効化するCashtrayのIDです。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cashtray'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    patch:
+      tags:
+        - Cashtray
+      summary: 'Cashtrayの情報を更新する'
+      description: Cashtrayの内容を更新します。bodyパラメータは全て省略可能で、指定したもののみ更新されます。
+      x-pokepay-operator-name: "UpdateCashtray"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: cashtray_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+          summary: 'CashtrayのID'
+          description: |-
+            更新対象のCashtrayのIDです。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                amount:
+                  type: number
+                  summary: '金額'
+                  description: |-
+                    マネー額です(任意項目)。
+                    正の値を与えるとチャージになり、負の値を与えると支払いとなります。
+                description:
+                  type: string
+                  maxLength: 200
+                  summary: '取引履歴に表示する説明文'
+                  description:  |-
+                    Cashtrayを読み取ったときに作られる取引の説明文です(最大200文字、任意項目)。
+                    アプリや管理画面などの取引履歴に表示されます。
+                  example: たい焼き(小倉)
+                expires_in:
+                  type: integer
+                  minimum: 1
+                  summary: '失効時間(秒)'
+                  description: |-
+                    Cashtrayが失効するまでの時間を秒で指定します(任意項目、デフォルト値は1800秒(30分))。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cashtray'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
