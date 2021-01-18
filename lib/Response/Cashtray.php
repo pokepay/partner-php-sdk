@@ -3,25 +3,18 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
-class Bill extends Base
+class Cashtray extends Base
 {
     /**
      * @var string
      */
     public $id;
     /**
-     * @var double|null
+     * @var double
      */
     public $amount;
-    /**
-     * @var double|null
-     */
-    public $maxAmount;
-    /**
-     * @var double|null
-     */
-    public $minAmount;
     /**
      * @var string
      */
@@ -31,11 +24,21 @@ class Bill extends Base
      */
     public $account;
     /**
-     * @var boolean
+     * @var \DateTime
      */
-    public $isDisabled;
+    public $expiresAt;
+    /**
+     * @var \DateTime|null
+     */
+    public $canceledAt;
     /**
      * @var string
      */
     public $token;
+
+    protected function normalize($timezone)
+    {
+        $this->expiresAt->setTimezone(new DateTimeZone($timezone));
+        $this->canceledAt->setTimezone(new DateTimeZone($timezone));
+    }
 }

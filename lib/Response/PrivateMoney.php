@@ -51,11 +51,11 @@ class PrivateMoney extends Base
      */
     public $expirationType;
     /**
-     * @var boolean
+     * @var boolean|null
      */
     public $enableTopupByMember;
     /**
-     * @var string
+     * @var string|null
      */
     public $accountImage;
 }

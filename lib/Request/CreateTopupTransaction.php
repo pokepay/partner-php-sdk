@@ -3,6 +3,7 @@
 
 namespace Pokepay\Request;
 
+use DateTime;
 
 class CreateTopupTransaction extends Base
 {
@@ -36,7 +37,10 @@ class CreateTopupTransaction extends Base
 
         $params += $this->optionalParams;
 
-        
+        if (isset($params['pointExpiresAt']) && $params['pointExpiresAt'] instanceof DateTime) {
+            $params['pointExpiresAt'] = $params['pointExpiresAt']->format(DateTime::ATOM);
+        }
+
         return $params;
     }
 }

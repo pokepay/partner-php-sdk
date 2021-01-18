@@ -3,6 +3,7 @@
 
 namespace Pokepay\Request;
 
+use DateTime;
 
 class CreateTransaction extends Base
 {
@@ -36,7 +37,10 @@ class CreateTransaction extends Base
 
         $params += $this->optionalParams;
 
-        
+        if (isset($params['pointExpiresAt']) && $params['pointExpiresAt'] instanceof DateTime) {
+            $params['pointExpiresAt'] = $params['pointExpiresAt']->format(DateTime::ATOM);
+        }
+
         return $params;
     }
 }
