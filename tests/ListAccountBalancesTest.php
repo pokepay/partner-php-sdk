@@ -8,7 +8,7 @@ class ListAccountBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountBalances(
-            "cc450cba-668f-4380-854c-2e6dae6d9426"
+            "80f00988-9f4c-4cba-8f80-89c53640ac4c"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class ListAccountBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountBalances(
-            "cc450cba-668f-4380-854c-2e6dae6d9426",
+            "80f00988-9f4c-4cba-8f80-89c53640ac4c",
             [
                 'direction' => "desc"
             ]
@@ -41,7 +41,7 @@ class ListAccountBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountBalances(
-            "cc450cba-668f-4380-854c-2e6dae6d9426",
+            "80f00988-9f4c-4cba-8f80-89c53640ac4c",
             [
                 'expires_at_to' => "2023-12-04T19:51:42.000000+09:00",
                 'direction' => "desc"
@@ -60,7 +60,7 @@ class ListAccountBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountBalances(
-            "cc450cba-668f-4380-854c-2e6dae6d9426",
+            "80f00988-9f4c-4cba-8f80-89c53640ac4c",
             [
                 'expires_at_from' => "2023-01-15T03:20:22.000000+09:00",
                 'expires_at_to' => "2016-07-18T17:09:40.000000+09:00",
@@ -80,7 +80,7 @@ class ListAccountBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountBalances(
-            "cc450cba-668f-4380-854c-2e6dae6d9426",
+            "80f00988-9f4c-4cba-8f80-89c53640ac4c",
             [
                 'per_page' => 2394,
                 'expires_at_from' => "2025-01-10T04:46:02.000000+09:00",
@@ -101,7 +101,7 @@ class ListAccountBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountBalances(
-            "cc450cba-668f-4380-854c-2e6dae6d9426",
+            "80f00988-9f4c-4cba-8f80-89c53640ac4c",
             [
                 'page' => 5477,
                 'per_page' => 8394,

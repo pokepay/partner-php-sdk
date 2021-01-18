@@ -11,15 +11,15 @@ class Bill extends Base
      */
     public $id;
     /**
-     * @var double
+     * @var double|null
      */
     public $amount;
     /**
-     * @var double
+     * @var double|null
      */
     public $maxAmount;
     /**
-     * @var double
+     * @var double|null
      */
     public $minAmount;
     /**

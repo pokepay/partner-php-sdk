@@ -8,7 +8,11 @@ class CreateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCashtray(
-            9061
+            9061,
+            [
+                'private_money_id' => "a0225aca-c3ee-429e-abbc-a92f67640787",
+                'shop_id' => "66733a8c-959f-4a0b-b188-fd40adaedd45"
+            ]
         );
         try {
             $response = $client->send($request);
@@ -25,6 +29,8 @@ class CreateCashtray extends TestCase
         $request = new Request\CreateCashtray(
             9061,
             [
+                'private_money_id' => "a0225aca-c3ee-429e-abbc-a92f67640787",
+                'shop_id' => "66733a8c-959f-4a0b-b188-fd40adaedd45",
                 'expires_in' => 6091
             ]
         );
@@ -43,6 +49,8 @@ class CreateCashtray extends TestCase
         $request = new Request\CreateCashtray(
             9061,
             [
+                'shop_id' => "5c346ac3-b334-4b0c-91e4-314f858de70d",
+                'private_money_id' => "8e1cda68-9f3e-4c07-9ee3-ec18d9365758",
                 'description' => "iJLn1TOWVNqKCYgaN6maSZW",
                 'expires_in' => 7851
             ]
@@ -62,7 +70,8 @@ class CreateCashtray extends TestCase
         $request = new Request\CreateCashtray(
             9061,
             [
-                'private_money_id' => "a0225aca-c3ee-429e-abbc-a92f67640787",
+                'shop_id' => "5c346ac3-b334-4b0c-91e4-314f858de70d",
+                'private_money_id' => "8e1cda68-9f3e-4c07-9ee3-ec18d9365758",
                 'description' => "127yVjYZzSkjksojB4PnV9sBfF1BkHf1A87wLQ9bOIRS2WYI5ck8HRSP5FHw4UX4tGWi4N1WpwhPzDe8V1DYdcKn6nAl4cEX71br7jv7EDkwXN76HyKk1SGbd2fzw9nBiKXYeHN7",
                 'expires_in' => 4630
             ]

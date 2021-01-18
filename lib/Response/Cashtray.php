@@ -28,7 +28,7 @@ class Cashtray extends Base
      */
     public $expiresAt;
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     public $canceledAt;
     /**
