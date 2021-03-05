@@ -54,8 +54,4 @@ class PrivateMoney extends Base
      * @var boolean|null
      */
     public $enableTopupByMember;
-    /**
-     * @var string|null
-     */
-    public $accountImage;
 }
