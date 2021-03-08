@@ -8,11 +8,9 @@ class CreateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCashtray(
-            9061,
-            [
-                'private_money_id' => "a0225aca-c3ee-429e-abbc-a92f67640787",
-                'shop_id' => "66733a8c-959f-4a0b-b188-fd40adaedd45"
-            ]
+            "413e2b45-5e6f-4679-be27-58e609bc9916",
+            "39689ef0-f241-445c-a041-aabe7c3de7ce",
+            2067
         );
         try {
             $response = $client->send($request);
@@ -27,11 +25,11 @@ class CreateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCashtray(
-            9061,
+            "413e2b45-5e6f-4679-be27-58e609bc9916",
+            "39689ef0-f241-445c-a041-aabe7c3de7ce",
+            2067,
             [
-                'private_money_id' => "a0225aca-c3ee-429e-abbc-a92f67640787",
-                'shop_id' => "66733a8c-959f-4a0b-b188-fd40adaedd45",
-                'expires_in' => 6091
+                'expires_in' => 6671
             ]
         );
         try {
@@ -47,76 +45,12 @@ class CreateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCashtray(
-            9061,
+            "413e2b45-5e6f-4679-be27-58e609bc9916",
+            "39689ef0-f241-445c-a041-aabe7c3de7ce",
+            2067,
             [
-                'shop_id' => "5c346ac3-b334-4b0c-91e4-314f858de70d",
-                'private_money_id' => "8e1cda68-9f3e-4c07-9ee3-ec18d9365758",
-                'description' => "iJLn1TOWVNqKCYgaN6maSZW",
-                'expires_in' => 7851
-            ]
-        );
-        try {
-            $response = $client->send($request);
-            $this->assertTrue(true);
-        } catch (Error\HttpRequest $e) {
-            $this->assertNotSame(400, $e->code);
-        } catch (Error\ApiConnection $e) {
-            $this->assertTrue(false);
-        }
-    }
-    public function testCreateCashtray3()
-    {
-        $client = $this->newClient();
-        $request = new Request\CreateCashtray(
-            9061,
-            [
-                'shop_id' => "5c346ac3-b334-4b0c-91e4-314f858de70d",
-                'private_money_id' => "8e1cda68-9f3e-4c07-9ee3-ec18d9365758",
-                'description' => "127yVjYZzSkjksojB4PnV9sBfF1BkHf1A87wLQ9bOIRS2WYI5ck8HRSP5FHw4UX4tGWi4N1WpwhPzDe8V1DYdcKn6nAl4cEX71br7jv7EDkwXN76HyKk1SGbd2fzw9nBiKXYeHN7",
-                'expires_in' => 4630
-            ]
-        );
-        try {
-            $response = $client->send($request);
-            $this->assertTrue(true);
-        } catch (Error\HttpRequest $e) {
-            $this->assertNotSame(400, $e->code);
-        } catch (Error\ApiConnection $e) {
-            $this->assertTrue(false);
-        }
-    }
-    public function testCreateCashtray4()
-    {
-        $client = $this->newClient();
-        $request = new Request\CreateCashtray(
-            9061,
-            [
-                'shop_id' => "5c346ac3-b334-4b0c-91e4-314f858de70d",
-                'private_money_id' => "8e1cda68-9f3e-4c07-9ee3-ec18d9365758",
-                'description' => "yEVzhZku2OJwU",
-                'expires_in' => 2254
-            ]
-        );
-        try {
-            $response = $client->send($request);
-            $this->assertTrue(true);
-        } catch (Error\HttpRequest $e) {
-            $this->assertNotSame(400, $e->code);
-        } catch (Error\ApiConnection $e) {
-            $this->assertTrue(false);
-        }
-    }
-    public function testCreateCashtray5()
-    {
-        $client = $this->newClient();
-        $request = new Request\CreateCashtray(
-            9061,
-            [
-                'shop_account_id' => "a8bc2228-aa30-4e0b-ab3e-92aaf9e05bf4",
-                'shop_id' => "7e11363a-9aeb-479a-b179-4573a184ff65",
-                'private_money_id' => "0a12dd2d-bb34-4fc3-aee4-0502dbfefb4e",
-                'description' => "hZgpKbkXWC5tLF",
-                'expires_in' => 7119
+                'description' => "koel9aDgdNSfmE5De5bTvMyHpd2S",
+                'expires_in' => 817
             ]
         );
         try {

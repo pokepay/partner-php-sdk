@@ -115,7 +115,7 @@ $request->setCallId($newCallId);
 ## API Operations
 
 - [ListTransactions](#list-transactions): 取引履歴を取得する
-- [CreateTransaction](#create-transaction): 
+- [CreateTransaction](#create-transaction): チャージする(廃止予定)
 - [CreateTopupTransaction](#create-topup-transaction): チャージする
 - [CreatePaymentTransaction](#create-payment-transaction): 支払いする
 - [CreateTransferTransaction](#create-transfer-transaction): 個人間送金
@@ -137,8 +137,12 @@ $request->setCallId($newCallId);
 - [CreateCustomerAccount](#create-customer-account): 新規エンドユーザーウォレットを追加する
 - [ListCustomerTransactions](#list-customer-transactions): 取引履歴を取得する
 - [ListShops](#list-shops): 店舗一覧を取得する
-- [CreateShop](#create-shop): 新規店舗を追加する
+- [CreateShop](#create-shop): 新規店舗を追加する(廃止予定)
+- [CreateShopV2](#create-shop-v): 新規店舗を追加する
+- [GetShop](#get-shop): 店舗情報を表示する
+- [UpdateShop](#update-shop): 店舗情報を更新する
 - [ListUserAccounts](#list-user-accounts): エンドユーザー、店舗ユーザーのウォレット一覧を表示する
+- [GetPrivateMoneys](#get-private-moneys): マネー一覧を取得する
 - [GetPrivateMoneyOrganizationSummaries](#get-private-money-organization-summaries): 決済加盟店の取引サマリを取得する
 - [BulkCreateTransaction](#bulk-create-transaction): CSVファイル一括取引
 ### Transaction
@@ -148,8 +152,8 @@ $request->setCallId($newCallId);
 ```php
 $request = new Request\ListTransactions(
     [
-        'from' => "2024-08-12T19:39:14.000000+09:00", // 開始日時
-        'to' => "2022-12-02T08:24:08.000000+09:00", // 終了日時
+        'from' => "2021-03-07T22:47:08.000000+09:00", // 開始日時
+        'to' => "2022-03-08T10:30:46.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
@@ -255,17 +259,18 @@ $request = new Request\ListTransactions(
 ---
 成功したときは[PaginatedTransaction](#paginated-transaction)オブジェクトを返します
 <a name="create-transaction"></a>
-#### 
+#### チャージする(廃止予定)
+チャージ取引を作成します。このAPIは廃止予定です。以降は `CreateTopupTransaction` を使用してください。
 ```php
 $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 6506,
-        'point_amount' => 7289,
-        'point_expires_at' => "2020-08-20T19:04:41.000000+09:00", // ポイント有効期限
-        'description' => "qeO19KhFrkxiVRAQ6FFjz1wnjIRjO9MofqJJncHBCR1qP1zId4mLJCzHpOgkhaasWI8ELqJwRA62Ghe0ne6pcNR1V7JprfFD47gNL9WM6cSeojzOZZrLxO3x6r1ViuOnspa8l8OxqMpLrB"
+        'money_amount' => 1421,
+        'point_amount' => 2284,
+        'point_expires_at' => "2024-09-29T14:09:13.000000+09:00", // ポイント有効期限
+        'description' => "dnW1ooZFRDSiyltrhPzNi7jenj4X3xdXKxR7POl5XLEB6rdcoyFq3Dy2RXyPUAe3PgOIxNaz33MDlMm45c417ClVPZadCz21oTLg0Zh082rSUmgTJgltXUvopMAE6nKVgCC79b4Ei190OQ71CLczodkHUHlo8UiDVjyL"
     ]
 );
 ```
@@ -287,9 +292,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 568,                    // マネー額
-        'point_amount' => 6186,                   // ポイント額
-        'point_expires_at' => "2020-12-19T15:50:00.000000+09:00", // ポイント有効期限
+        'money_amount' => 8760,                   // マネー額
+        'point_amount' => 2312,                   // ポイント額
+        'point_expires_at' => "2023-08-31T03:26:11.000000+09:00", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン"          // 取引履歴に表示する説明文
     ]
 );
@@ -354,7 +359,7 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8448,                                         // amount: 支払い額
+    3693,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)"               // 取引履歴に表示する説明文
     ]
@@ -403,7 +408,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8458,                                         // amount: 送金額
+    6392,                                         // amount: 送金額
     [
         'description' => "たい焼き(小倉)"               // 取引履歴に表示する説明文
     ]
@@ -449,9 +454,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    6336,
+    9228,
     [
-        'description' => "GSVgVcs3OQMdHqZLlv01wGqOn2jIsFsWbo7bpQq9anT6PszkN335U1t4DYsuiE88p3Hog0k8d"
+        'description' => "NxSNDBAB21jRDnDfUt4YgIyZaTsiHOmcCShoExxXDzwmu0NmtxroKVUk7sDu4lw8ZxL5ooBCUmbexHlOYPdRDRXfcFEKebPAHiatKRmL7K8IMJIBW1vB1RC8WQ75Zq2CPEph5LyiHrKKZHYeA6K"
     ]
 );
 ```
@@ -478,19 +483,19 @@ $request = new Request\GetTransaction(
 ```php
 $request = new Request\ListTransfers(
     [
-        'from' => "2022-08-19T11:01:20.000000+09:00",
-        'to' => "2017-11-21T10:29:23.000000+09:00",
-        'page' => 4673,
-        'per_page' => 1192,
+        'from' => "2017-10-07T19:44:21.000000+09:00",
+        'to' => "2018-06-17T19:03:29.000000+09:00",
+        'page' => 4180,
+        'per_page' => 4035,
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'shop_name' => "CFI0Qv1brn8ATMTNMMEyVApkaDeYuOtBoCZgc4gwc8RSE7B5wsqfAkho5yO5EQGpb9AHk6UF1UjWUyw97H5Wi0UlM5hWRopq8fm3QjwrUJDS6QIEgbGEOQG1PZp7fjd91zgh1RHHtL55R7YEprCJ0U4QnLZWm",
+        'shop_name' => "kbfNhFw",
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'customer_name' => "GvTqLQwaZ9vOnv67spoRoPKUgWvYVa3Gv9x",
+        'customer_name' => "jSSUkqouGV2ULftf3KLiOm0u6OdTYvY1WMa6BMdHbor9Bi8VjYjeAF8N8XvRYyNjj6LzPNoFY0NPc7gW3tdaerbfAUj6MGuDCQRgbbh69IfOOqdFvcvTYHWhMSc2JtDSCuxpXIBKjX0wbEINtuhWyJmxhctiEpL1KlL20SY28CEIpXvCz2lX0WFgkUTJYHHOr63hjnglJCcSZdRjCOwyap0lsb8d4Dc5yMU1TN0yX6wxY6IPoPyEr8klncfG",
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'is_modified' => TRUE,
-        'transaction_types' => ["transfer", "exchange", "topup"],
-        'transfer_types' => ["exchange", "payment", "topup"]
+        'is_modified' => FALSE,
+        'transaction_types' => ["exchange", "transfer", "payment", "topup"],
+        'transfer_types' => ["topup", "transfer", "exchange", "payment"]
     ]
 );
 ```
@@ -539,19 +544,19 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 ```php
 $request = new Request\ListBills(
     [
-        'page' => 4580,                           // ページ番号
-        'per_page' => 9220,                       // 1ページの表示数
-        'bill_id' => "v",                         // 支払いQRコードのID
+        'page' => 1083,                           // ページ番号
+        'per_page' => 8979,                       // 1ページの表示数
+        'bill_id' => "OqOmjPQj",                  // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "5ov2Mfq-",        // 組織コード
+        'organization_code' => "v-n",             // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2022-11-18T07:24:11.000000+09:00", // 作成日時(起点)
-        'created_to' => "2024-09-10T04:32:32.000000+09:00", // 作成日時(終点)
+        'created_from' => "2022-01-25T23:24:31.000000+09:00", // 作成日時(起点)
+        'created_to' => "2016-11-01T22:58:21.000000+09:00", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 3385,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 353,              // 金額の範囲によるフィルタ(上限)
-        'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
+        'lower_limit_amount' => 5690,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 7721,             // 金額の範囲によるフィルタ(上限)
+        'is_disabled' => TRUE                     // 支払いQRコードが無効化されているかどうか
     ]
 );
 ```
@@ -622,7 +627,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 2469,                         // 支払い額
+        'amount' => 4286,                         // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -641,7 +646,7 @@ $request = new Request\CreateBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 6066,                         // 支払い額
+        'amount' => 3562,                         // 支払い額
         'description' => "test bill",             // 説明文
         'is_disabled' => TRUE                     // 無効化されているかどうか
     ]
@@ -676,38 +681,30 @@ Cashtrayはワンタイムで、一度読み取りに成功するか、取引エ
 #### Cashtrayを作る
 Cashtrayを作成します。
 
-エンドユーザーに対して支払いまたはチャージを行う店舗ウォレットと、金額が必須項目です。
-店舗ウォレットの指定には、店舗ウォレットIDを直接指定する方法と、店舗ユーザーIDとマネーIDから店舗ウォレットを特定する方法があります。
+エンドユーザーに対して支払いまたはチャージを行う店舗の情報(店舗ユーザーIDとマネーID)と、取引金額が必須項目です。
+店舗ユーザーIDとマネーIDから店舗ウォレットを特定します。
 
 その他に、Cashtrayから作られる取引に対する説明文や失効時間を指定できます。
 
 ```php
 $request = new Request\CreateCashtray(
-    8025,                                         // amount: 金額
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
+    3128,                                         // amount: 金額
     [
-        'shop_account_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ウォレットID
-        'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ユーザーID
-        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 7870                      // 失効時間(秒)
+        'expires_in' => 8103                      // 失効時間(秒)
     ]
 );
 ```
 
 ---
-`shop_account_id`  
-店舗のウォレットIDです。
-店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
+`private_money_id`  
+取引対象のマネーのIDです(必須項目)。
 
 ---
 `shop_id`  
-店舗のユーザーIDです。
-店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
-
----
-`private_money_id`  
-取引対象のマネーのIDです。
-店舗のウォレットIDを指定するか、店舗のユーザIDとマネーIDを両方指定するかのいずれかが必須です。
+店舗のユーザーIDです(必須項目)。
 
 ---
 `amount`  
@@ -815,14 +812,14 @@ $request = new Request\CancelCashtray(
 成功したときは[Cashtray](#cashtray)オブジェクトを返します
 <a name="update-cashtray"></a>
 #### Cashtrayの情報を更新する
-Cashtrayの内容を更新します。bodyパラメータは全て省略可能で、指定したもののみ更新されます。
+Cashtrayの内容を更新します。bodyパラメーターは全て省略可能で、指定したもののみ更新されます。
 ```php
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 5911,                         // 金額
+        'amount' => 9905,                         // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 3680                      // 失効時間(秒)
+        'expires_in' => 2635                      // 失効時間(秒)
     ]
 );
 ```
@@ -872,7 +869,7 @@ $request = new Request\GetAccount(
 $request = new Request\UpdateAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'is_suspended' => TRUE                    // ウォレットが凍結されているかどうか
+        'is_suspended' => FALSE                   // ウォレットが凍結されているかどうか
     ]
 );
 ```
@@ -896,11 +893,11 @@ $request = new Request\UpdateAccount(
 $request = new Request\ListAccountBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 1512,                           // ページ番号
-        'per_page' => 8228,                       // 1ページ分の取引数
-        'expires_at_from' => "2019-06-28T08:00:06.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2016-11-10T22:12:57.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
-        'direction' => "desc"                     // 有効期限によるソート順序
+        'page' => 6492,                           // ページ番号
+        'per_page' => 8200,                       // 1ページ分の取引数
+        'expires_at_from' => "2023-02-10T06:31:24.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2015-10-25T22:32:38.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'direction' => "asc"                      // 有効期限によるソート順序
     ]
 );
 ```
@@ -940,10 +937,10 @@ $request = new Request\ListAccountBalances(
 $request = new Request\ListAccountExpiredBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 5884,                           // ページ番号
-        'per_page' => 5106,                       // 1ページ分の取引数
-        'expires_at_from' => "2019-12-18T10:45:05.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2023-08-16T05:58:15.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'page' => 6728,                           // ページ番号
+        'per_page' => 2052,                       // 1ページ分の取引数
+        'expires_at_from' => "2022-12-01T19:24:55.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2017-01-20T20:17:45.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
         'direction' => "desc"                     // 有効期限によるソート順序
     ]
 );
@@ -1015,10 +1012,10 @@ $request = new Request\ListCustomerTransactions(
     [
         'sender_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金エンドユーザーID
         'receiver_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
-        'type' => "E",                            // 取引種別、チャージ=topup、支払い=payment、個人間送金=transfer
-        'is_modified' => TRUE,                    // キャンセル済みかどうか
-        'from' => "2019-01-27T00:57:18.000000+09:00", // 開始日時
-        'to' => "2020-01-29T05:40:54.000000+09:00", // 終了日時
+        'type' => "Srp",                          // 取引種別、チャージ=topup、支払い=payment、個人間送金=transfer
+        'is_modified' => FALSE,                   // キャンセル済みかどうか
+        'from' => "2017-07-25T12:50:19.000000+09:00", // 開始日時
+        'to' => "2016-03-31T11:27:56.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -1097,11 +1094,11 @@ $request = new Request\ListShops(
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "2539697",               // 店舗の郵便番号
+        'postal_code' => "5102030",               // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0984955-641",                   // 店舗の電話番号
-        'email' => "oUMWRj1sxt@SyQg.com",         // 店舗のメールアドレス
-        'external_id' => "1GkRhboXHY39x3Xs6KbKO", // 店舗の外部ID
+        'tel' => "02-200-2918",                   // 店舗の電話番号
+        'email' => "fbLwdjVaS9@Jydp.com",         // 店舗のメールアドレス
+        'external_id' => "qXjqW7D3u",             // 店舗の外部ID
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -1159,21 +1156,130 @@ $request = new Request\ListShops(
 ---
 成功したときは[PaginatedShops](#paginated-shops)オブジェクトを返します
 <a name="create-shop"></a>
-#### 新規店舗を追加する
+#### 新規店舗を追加する(廃止予定)
+新規店舗を追加します。このAPIは廃止予定です。以降は `CreateShopV2` を使用してください。
 ```php
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
-        'shop_postal_code' => "151-3308",         // 店舗の郵便番号
+        'shop_postal_code' => "373-4054",         // 店舗の郵便番号
         'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "03-8354-5247",             // 店舗の電話番号
-        'shop_email' => "0KRGU02ETt@Me3p.com",    // 店舗のメールアドレス
-        'shop_external_id' => "ruF",              // 店舗の外部ID
+        'shop_tel' => "083-779-345",              // 店舗の電話番号
+        'shop_email' => "dPl4JIrQmL@FWJx.com",    // 店舗のメールアドレス
+        'shop_external_id' => "GB9NLriuIsMTYyCUoOEa9YZaUNPTMagDSPeH", // 店舗の外部ID
         'organization_code' => "ox-supermarket"   // 組織コード
     ]
 );
 ```
 成功したときは[User](#user)オブジェクトを返します
+<a name="create-shop-v"></a>
+#### 新規店舗を追加する
+```php
+$request = new Request\CreateShopV(
+    "oxスーパー三田店",                                  // name: 店舗名
+    [
+        'postal_code' => "9873173",               // 店舗の郵便番号
+        'address' => "東京都港区芝...",                 // 店舗の住所
+        'tel' => "0097712-9463",                  // 店舗の電話番号
+        'email' => "oPTyGfjAlv@bOwB.com",         // 店舗のメールアドレス
+        'external_id' => "ftL3mTfJhTjDs9c8QNU",   // 店舗の外部ID
+        'organization_code' => "ox-supermarket",  // 組織コード
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
+    ]
+);
+```
+
+---
+`name`  
+店舗名です。
+
+同一組織内に同名の店舗があった場合は`name_conflict`エラーが返ります。
+
+---
+`private_money_ids`  
+店舗で有効にするマネーIDの配列を指定します。
+
+店舗が所属する組織が発行または加盟しているマネーのみが指定できます。利用できないマネーが指定された場合は`unavailable_private_money`エラーが返ります。
+このパラメータを省略したときは、店舗が所属する組織が発行または加盟している全てのマネーのウォレットができます。
+
+---
+`can_topup_private_money_ids`  
+店舗でチャージ可能にするマネーIDの配列を指定します。
+
+このパラメータは発行体のみが指定でき、自身が発行しているマネーのみを指定できます。加盟店が他発行体のマネーに加盟している場合でも、そのチャージ可否を変更することはできません。
+省略したときは対象店舗のその発行体の全てのマネーのアカウントがチャージ不可となります。
+
+---
+成功したときは[ShopWithAccounts](#shop-with-accounts)オブジェクトを返します
+<a name="get-shop"></a>
+#### 店舗情報を表示する
+店舗情報を表示します。
+
+権限に関わらず自組織の店舗情報は表示可能です。それに加え、発行体は自組織の発行しているマネーの加盟店組織の店舗情報を表示できます。
+```php
+$request = new Request\GetShop(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // shopId: 店舗ユーザーID
+);
+```
+成功したときは[ShopWithAccounts](#shop-with-accounts)オブジェクトを返します
+<a name="update-shop"></a>
+#### 店舗情報を更新する
+店舗情報を更新します。bodyパラメーターは全て省略可能で、指定したもののみ更新されます。
+```php
+$request = new Request\UpdateShop(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
+    [
+        'name' => "oxスーパー三田店",                    // 店舗名
+        'postal_code' => "841-5932",              // 店舗の郵便番号
+        'address' => "東京都港区芝...",                 // 店舗の住所
+        'tel' => "0870057651",                    // 店舗の電話番号
+        'email' => "6qe5BUa3mr@tCxk.com",         // 店舗のメールアドレス
+        'external_id' => "ktMbdZ0Ff5nebRZC0vDYNEW", // 店舗の外部ID
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => []       // 店舗でチャージ可能にするマネーIDの配列
+    ]
+);
+```
+
+---
+`name`  
+店舗名です。
+
+同一組織内に同名の店舗があった場合は`shop_name_conflict`エラーが返ります。
+
+---
+`postal_code`  
+店舗住所の郵便番号(7桁の数字)です。ハイフンは無視されます。明示的に空の値を設定するにはNULLを指定します。
+
+---
+`tel`  
+店舗の電話番号です。ハイフンは無視されます。明示的に空の値を設定するにはNULLを指定します。
+
+---
+`email`  
+店舗の連絡先メールアドレスです。明示的に空の値を設定するにはNULLを指定します。
+
+---
+`external_id`  
+店舗の外部IDです(最大36文字)。明示的に空の値を設定するにはNULLを指定します。
+
+---
+`private_money_ids`  
+店舗で有効にするマネーIDの配列を指定します。
+
+店舗が所属する組織が発行または加盟しているマネーのみが指定できます。利用できないマネーが指定された場合は`unavailable_private_money`エラーが返ります。
+店舗が既にウォレットを持っている場合に、ここでそのウォレットのマネーIDを指定しないで更新すると、そのマネーのウォレットは凍結(無効化)されます。
+
+---
+`can_topup_private_money_ids`  
+店舗でチャージ可能にするマネーIDの配列を指定します。
+
+このパラメータは発行体のみが指定でき、発行しているマネーのみを指定できます。加盟店が他発行体のマネーに加盟している場合でも、そのチャージ可否を変更することはできません。
+省略したときは対象店舗のその発行体の全てのマネーのアカウントがチャージ不可となります。
+
+---
+成功したときは[ShopWithAccounts](#shop-with-accounts)オブジェクトを返します
 ### Account
 <a name="list-user-accounts"></a>
 #### エンドユーザー、店舗ユーザーのウォレット一覧を表示する
@@ -1193,14 +1299,35 @@ $request = new Request\ListUserAccounts(
 ---
 成功したときは[PaginatedAccounts](#paginated-accounts)オブジェクトを返します
 ### Private Money
+<a name="get-private-moneys"></a>
+#### マネー一覧を取得する
+マネーの一覧を取得します。
+パートナーキーの管理者が発行体組織に属している場合、自組織が加盟または発行しているマネーの一覧を返します。また、`organization_code`として決済加盟店の組織コードを指定した場合、発行マネーのうち、その決済加盟店組織が加盟しているマネーの一覧を返します。
+パートナーキーの管理者が決済加盟店組織に属している場合は、自組織が加盟しているマネーの一覧を返します。
+```php
+$request = new Request\GetPrivateMoneys(
+    [
+        'organization_code' => "ox-supermarket",  // 組織コード
+        'page' => 1,                              // ページ番号
+        'per_page' => 50                          // 1ページ分の取得数
+    ]
+);
+```
+
+---
+`organization_code`  
+パートナーキーの管理者が発行体組織に属している場合、発行マネーのうち、この組織コードで指定した決済加盟店組織が加盟しているマネーの一覧を返します。決済加盟店組織の管理者は自組織以外を指定することはできません。
+
+---
+成功したときは[PaginatedPrivateMoneys](#paginated-private-moneys)オブジェクトを返します
 <a name="get-private-money-organization-summaries"></a>
 #### 決済加盟店の取引サマリを取得する
 ```php
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2015-12-07T23:12:19.000000+09:00", // 開始日時(toと同時に指定する必要有)
-        'to' => "2017-12-28T03:32:07.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'from' => "2021-10-16T13:57:56.000000+09:00", // 開始日時(toと同時に指定する必要有)
+        'to' => "2019-06-24T18:12:50.000000+09:00", // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -1215,11 +1342,11 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 CSVファイルから一括取引をします。
 ```php
 $request = new Request\BulkCreateTransaction(
-    "x8zwWTQtwhg",                                // name: 一括取引タスク名
-    "EUQrpqVt",                                   // content: 取引する情報のCSV
-    "FI20RqU84wWVej7KjR7PO79YOuc2btzI2HvK",       // requestId: リクエストID
+    "XSVHRY4YZdsEswklf9tWgAr9K",                  // name: 一括取引タスク名
+    "jsUzeefEv",                                  // content: 取引する情報のCSV
+    "U98BI4BdtnYVFOF5IXA6lNw66Yqs62ry4EX0",       // requestId: リクエストID
     [
-        'description' => "Iy1dRKuzOlLMmdBSZr220xtZpZdQ9ssluYJHAlylPpV6xWxt7f2oLFlgp2lLhVbHghg4lZSVxXqYiDQPFv2xIXmI4PlPvyiodi" // 一括取引の説明
+        'description' => "5SsjBGi2vt3IVLujfoeXIyA6Ao821XE55hc29pv4sZBooZY5wA4Og2kdAYLVTxSOsaSsUmdY0" // 一括取引の説明
     ]
 );
 ```
@@ -1299,7 +1426,7 @@ $request = new Request\BulkCreateTransaction(
 * `description (string)`: 支払いQRコードの説明文(アプリ上で取引の説明文として表示される)
 * `account (AccountWithUser)`: 支払いQRコード発行ウォレット
 * `isDisabled (boolean)`: 無効化されているかどうか
-* `token (string)`: 
+* `token (string)`: 支払いQRコードを解析したときに出てくるURL
 
 `account`は [AccountWithUser](#account-with-user) オブジェクトを返します。
 
@@ -1311,7 +1438,7 @@ $request = new Request\BulkCreateTransaction(
 * `account (AccountWithUser)`: 発行店舗のウォレット
 * `expiresAt (\DateTime)`: Cashtrayの失効日時
 * `canceledAt (\DateTime|null)`: Cashtrayの無効化日時。NULLの場合は無効化されていません
-* `token (string)`: 
+* `token (string)`: CashtrayのQRコードを解析したときに出てくるURL
 
 `account`は [AccountWithUser](#account-with-user) オブジェクトを返します。
 
@@ -1323,7 +1450,7 @@ $request = new Request\BulkCreateTransaction(
 * `account (AccountWithUser)`: 発行店舗のウォレット
 * `expiresAt (\DateTime)`: Cashtrayの失効日時
 * `canceledAt (\DateTime|null)`: Cashtrayの無効化日時。NULLの場合は無効化されていません
-* `token (string)`: 
+* `token (string)`: CashtrayのQRコードを解析したときに出てくるURL
 * `attempt (CashtrayAttempt)`: Cashtray読み取り結果
 * `transaction (Transaction)`: 取引結果
 
@@ -1358,14 +1485,31 @@ $request = new Request\BulkCreateTransaction(
 
 `receiver_account`と`sender_account`は [Account](#account) オブジェクトを返します。
 
+<a name="shop-with-accounts"></a>
+## ShopWithAccounts
+* `id (string)`: 店舗ID
+* `name (string)`: 店舗名
+* `organizationCode (string)`: 組織コード
+* `postalCode (string|null)`: 店舗の郵便番号
+* `address (string|null)`: 店舗の住所
+* `tel (string|null)`: 店舗の電話番号
+* `email (string|null)`: 店舗のメールアドレス
+* `externalId (string|null)`: 店舗の外部ID
+* `accounts (ShopAccount[])`: 
+
+`accounts`は [ShopAccount](#shop-account) オブジェクトの配列を返します。
+
 <a name="bulk-transaction"></a>
 ## BulkTransaction
+* `id (string)`: 
 * `requestId (string)`: リクエストID
-* `name (string)`: バルクチャージ管理用の名前
-* `description (string)`: バルクチャージ管理用の説明文
-* `status (string)`: バルクチャージの状態
-* `submittedAt (\DateTime)`: バルクチャージが登録された日時
-* `updatedAt (\DateTime)`: バルクチャージが更新された日時
+* `name (string)`: バルク取引管理用の名前
+* `description (string)`: バルク取引管理用の説明文
+* `status (string)`: バルク取引の状態
+* `error (string|null)`: バルク取引のエラー種別
+* `errorLineno (integer|null)`: バルク取引のエラーが発生した行番号
+* `submittedAt (\DateTime)`: バルク取引が登録された日時
+* `updatedAt (\DateTime)`: バルク取引が更新された日時
 
 <a name="paginated-private-money-organization-summaries"></a>
 ## PaginatedPrivateMoneyOrganizationSummaries
@@ -1437,6 +1581,16 @@ $request = new Request\BulkCreateTransaction(
 
 `pagination`は [Pagination](#pagination) オブジェクトを返します。
 
+<a name="paginated-private-moneys"></a>
+## PaginatedPrivateMoneys
+* `rows (PrivateMoney[])`: 
+* `count (integer)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [PrivateMoney](#private-money) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
 <a name="private-money"></a>
 ## PrivateMoney
 * `id (string)`: マネーID
@@ -1451,7 +1605,6 @@ $request = new Request\BulkCreateTransaction(
 * `type (string)`: マネー種別 (自家型=own, 第三者型=third-party)
 * `expirationType (string)`: 有効期限種別 (チャージ日起算=static, 最終利用日起算=last-update, 最終チャージ日起算=last-topup-update)
 * `enableTopupByMember (boolean|null)`: 加盟店によるチャージが有効かどうか
-* `accountImage (string|null)`: マネーの画像URL
 
 `organization`は [Organization](#organization) オブジェクトを返します。
 
@@ -1470,6 +1623,16 @@ $request = new Request\BulkCreateTransaction(
 * `id (string)`: ウォレットID
 * `name (string)`: ウォレット名
 * `isSuspended (boolean)`: ウォレットが凍結されているかどうか
+* `privateMoney (PrivateMoney)`: 設定マネー情報
+
+`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="shop-account"></a>
+## ShopAccount
+* `id (string)`: ウォレットID
+* `name (string)`: ウォレット名
+* `isSuspended (boolean)`: ウォレットが凍結されているかどうか
+* `canTransferTopup (boolean)`: チャージ可能かどうか
 * `privateMoney (PrivateMoney)`: 設定マネー情報
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。

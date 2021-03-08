@@ -10,6 +10,10 @@ class BulkTransaction extends Base
     /**
      * @var string
      */
+    public $id;
+    /**
+     * @var string
+     */
     public $requestId;
     /**
      * @var string
@@ -23,6 +27,14 @@ class BulkTransaction extends Base
      * @var string
      */
     public $status;
+    /**
+     * @var string|null
+     */
+    public $error;
+    /**
+     * @var integer|null
+     */
+    public $errorLineno;
     /**
      * @var \DateTime
      */
