@@ -8,10 +8,10 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "127e7540-96e5-4f7a-b8dc-87d48d84ec94",
-            "2babfc75-9b75-4d73-aa4c-d07f247bd4c3",
-            "c0e5e224-5158-4593-b5f1-8694495bcc11",
-            9231
+            "be2c6fbc-56cb-4ae1-a64e-68313ab4ac47",
+            "be3fd11b-76d3-440a-822a-4b6b883a19af",
+            "2c9179d4-da6d-4373-ae20-5e826ef29402",
+            5919
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "127e7540-96e5-4f7a-b8dc-87d48d84ec94",
-            "2babfc75-9b75-4d73-aa4c-d07f247bd4c3",
-            "c0e5e224-5158-4593-b5f1-8694495bcc11",
-            9231,
+            "be2c6fbc-56cb-4ae1-a64e-68313ab4ac47",
+            "be3fd11b-76d3-440a-822a-4b6b883a19af",
+            "2c9179d4-da6d-4373-ae20-5e826ef29402",
+            5919,
             [
-                'description' => "q9aXt2RyxOmHZB8Yd9TYL0bkCAVqSRIdac4BtBwC2bbOKrqEvtHSmLf6gZqSXb2Lr55RtyiR"
+                'description' => "ZgON7wI25XD4LDGgtc1eHQx1a38fcy9G2ru7CIugZBUKc64A8KJDFHDE0sPhVLSmxr0FU3DnW6KqsDEeelMkJ"
             ]
         );
         try {

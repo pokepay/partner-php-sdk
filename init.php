@@ -17,7 +17,9 @@ require_once __DIR__ . '/lib/Request/GetAccount.php';
 require_once __DIR__ . '/lib/Request/UpdateAccount.php';
 require_once __DIR__ . '/lib/Request/ListAccountBalances.php';
 require_once __DIR__ . '/lib/Request/ListAccountExpiredBalances.php';
+require_once __DIR__ . '/lib/Request/GetCustomerAccounts.php';
 require_once __DIR__ . '/lib/Request/CreateCustomerAccount.php';
+require_once __DIR__ . '/lib/Request/GetShopAccounts.php';
 require_once __DIR__ . '/lib/Request/ListBills.php';
 require_once __DIR__ . '/lib/Request/CreateBill.php';
 require_once __DIR__ . '/lib/Request/UpdateBill.php';
@@ -77,6 +79,7 @@ require_once __DIR__ . '/lib/Response/PaginatedPrivateMoneyOrganizationSummaries
 require_once __DIR__ . '/lib/Response/PaginatedTransaction.php';
 require_once __DIR__ . '/lib/Response/PaginatedTransfers.php';
 require_once __DIR__ . '/lib/Response/PaginatedAccounts.php';
+require_once __DIR__ . '/lib/Response/PaginatedAccountWithUsers.php';
 require_once __DIR__ . '/lib/Response/PaginatedAccountBalance.php';
 require_once __DIR__ . '/lib/Response/PaginatedShops.php';
 require_once __DIR__ . '/lib/Response/PaginatedBills.php';
