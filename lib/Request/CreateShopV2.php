@@ -4,7 +4,7 @@
 namespace Pokepay\Request;
 
 
-class CreateShopV extends Base
+class CreateShopV2 extends Base
 {
     protected $method = 'POST';
     public $responseClass = \Pokepay\Response\ShopWithAccounts::class;
