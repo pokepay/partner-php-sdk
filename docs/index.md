@@ -151,7 +151,7 @@ $request->setCallId($newCallId);
 <a name="list-transactions"></a>
 #### 取引履歴を取得する
 取引一覧を返します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListTransactions(
     [
         'from' => "2018-02-03T23:49:00.000000+09:00", // 開始日時
@@ -358,7 +358,7 @@ $request = new Request\ListTransactions(
 <a name="create-transaction"></a>
 #### チャージする(廃止予定)
 チャージ取引を作成します。このAPIは廃止予定です。以降は `CreateTopupTransaction` を使用してください。
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -388,7 +388,7 @@ $request = new Request\CreateTransaction(
 <a name="create-topup-transaction"></a>
 #### チャージする
 チャージ取引を作成します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
@@ -505,7 +505,7 @@ $request = new Request\CreateTopupTransaction(
 支払取引を作成します。
 支払い時には、エンドユーザーの残高のうち、ポイント残高から優先的に消費されます。
 
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
@@ -584,7 +584,7 @@ $request = new Request\CreatePaymentTransaction(
 エンドユーザー間での送金取引(個人間送金)を作成します。
 個人間送金で送れるのはマネーのみで、ポイントを送ることはできません。送金元のマネー残高のうち、有効期限が最も遠いものから順に送金されます。
 
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
@@ -660,7 +660,7 @@ $request = new Request\CreateTransferTransaction(
 成功したときは[Transaction](#transaction)オブジェクトを返します
 <a name="create-exchange-transaction"></a>
 #### 
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -675,7 +675,7 @@ $request = new Request\CreateExchangeTransaction(
 <a name="get-transaction"></a>
 #### 取引情報を取得する
 取引を取得します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // transactionId: 取引ID
 );
@@ -697,7 +697,7 @@ $request = new Request\GetTransaction(
 成功したときは[Transaction](#transaction)オブジェクトを返します
 <a name="list-transfers"></a>
 #### 
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListTransfers(
     [
         'from' => "2022-12-02T11:03:00.000000+09:00",
@@ -747,7 +747,7 @@ QRコードを読み取る方法以外にも、このURLリンクを直接スマ
 
 エンドユーザーから受け取ったチャージ用QRコードのIDをエンドユーザーIDと共に渡すことでチャージ取引が作られます。
 
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateTopupTransactionWithCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // checkId: チャージ用QRコードのID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // customerId: エンドユーザーのID
@@ -785,7 +785,7 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 <a name="list-bills"></a>
 #### 支払いQRコード一覧を表示する
 支払いQRコード一覧を表示します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListBills(
     [
         'page' => 46,                             // ページ番号
@@ -941,7 +941,7 @@ $request = new Request\ListBills(
 <a name="create-bill"></a>
 #### 支払いQRコードの発行
 支払いQRコードの内容を更新します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
@@ -968,7 +968,7 @@ $request = new Request\CreateBill(
 <a name="update-bill"></a>
 #### 支払いQRコードの更新
 支払いQRコードの内容を更新します。パラメータは全て省略可能で、指定したもののみ更新されます。
-```language-syntax-highlighting-name
+```php
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
@@ -1034,7 +1034,7 @@ Cashtrayを作成します。
 
 その他に、Cashtrayから作られる取引に対する説明文や失効時間を指定できます。
 
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
@@ -1155,7 +1155,7 @@ if (attempt == null) {
   // 取引失敗確定。attempt で失敗理由などが分かる
 }
 ```
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // cashtrayId: CashtrayのID
 );
@@ -1179,7 +1179,7 @@ Cashtrayを無効化します。
 
 これにより、 `GetCashtray` のレスポンス中の `canceled_at` に無効化時点での現在時刻が入るようになります。
 エンドユーザーが無効化されたQRコードを読み取ると `cashtray_already_canceled` エラーとなり、取引は失敗します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\CancelCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // cashtrayId: CashtrayのID
 );
@@ -1200,7 +1200,7 @@ $request = new Request\CancelCashtray(
 <a name="update-cashtray"></a>
 #### Cashtrayの情報を更新する
 Cashtrayの内容を更新します。bodyパラメーターは全て省略可能で、指定したもののみ更新されます。
-```language-syntax-highlighting-name
+```php
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
@@ -1256,7 +1256,7 @@ Cashtrayが失効するまでの時間を秒で指定します(任意項目、�
 <a name="get-account"></a>
 #### ウォレット情報を表示する
 ウォレットを取得します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // accountId: ウォレットID
 );
@@ -1279,7 +1279,7 @@ $request = new Request\GetAccount(
 <a name="update-account"></a>
 #### ウォレット情報を更新する
 ウォレットの状態を更新します。現在はウォレットの凍結/凍結解除の切り替えにのみ対応しています。
-```language-syntax-highlighting-name
+```php
 $request = new Request\UpdateAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
@@ -1312,7 +1312,7 @@ $request = new Request\UpdateAccount(
 <a name="list-account-balances"></a>
 #### エンドユーザーの残高内訳を表示する
 エンドユーザーのウォレット毎の残高を有効期限別のリストとして取得します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListAccountBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
@@ -1392,7 +1392,7 @@ $request = new Request\ListAccountBalances(
 <a name="list-account-expired-balances"></a>
 #### エンドユーザーの失効済みの残高内訳を表示する
 エンドユーザーのウォレット毎の失効済みの残高を有効期限別のリストとして取得します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListAccountExpiredBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
@@ -1472,7 +1472,7 @@ $request = new Request\ListAccountExpiredBalances(
 <a name="get-customer-accounts"></a>
 #### エンドユーザーのウォレット一覧を表示する
 マネーを指定してエンドユーザーのウォレット一覧を取得します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetCustomerAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
@@ -1549,7 +1549,7 @@ $request = new Request\GetCustomerAccounts(
 <a name="create-customer-account"></a>
 #### 新規エンドユーザーウォレットを追加する
 指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも作成します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateCustomerAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
@@ -1596,7 +1596,7 @@ $request = new Request\CreateCustomerAccount(
 <a name="get-shop-accounts"></a>
 #### 店舗ユーザーのウォレット一覧を表示する
 マネーを指定して店舗ユーザーのウォレット一覧を取得します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetShopAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
@@ -1673,7 +1673,7 @@ $request = new Request\GetShopAccounts(
 <a name="list-customer-transactions"></a>
 #### 取引履歴を取得する
 取引一覧を返します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListCustomerTransactions(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
@@ -1803,7 +1803,7 @@ falseを指定するとキャンセルされていない取引のみ一覧に表
 ### Shop
 <a name="list-shops"></a>
 #### 店舗一覧を取得する
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListShops(
     [
         'organization_code' => "pocketchange",    // 組織コード
@@ -1936,7 +1936,7 @@ $request = new Request\ListShops(
 <a name="create-shop"></a>
 #### 新規店舗を追加する(廃止予定)
 新規店舗を追加します。このAPIは廃止予定です。以降は `CreateShopV2` を使用してください。
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
@@ -1952,7 +1952,7 @@ $request = new Request\CreateShop(
 成功したときは[User](#user)オブジェクトを返します
 <a name="create-shop-v2"></a>
 #### 新規店舗を追加する
-```language-syntax-highlighting-name
+```php
 $request = new Request\CreateShopV2(
     "oxスーパー三田店",                                  // name: 店舗名
     [
@@ -2022,7 +2022,7 @@ $request = new Request\CreateShopV2(
 店舗情報を表示します。
 
 権限に関わらず自組織の店舗情報は表示可能です。それに加え、発行体は自組織の発行しているマネーの加盟店組織の店舗情報を表示できます。
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // shopId: 店舗ユーザーID
 );
@@ -2031,7 +2031,7 @@ $request = new Request\GetShop(
 <a name="update-shop"></a>
 #### 店舗情報を更新する
 店舗情報を更新します。bodyパラメーターは全て省略可能で、指定したもののみ更新されます。
-```language-syntax-highlighting-name
+```php
 $request = new Request\UpdateShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
     [
@@ -2141,7 +2141,7 @@ $request = new Request\UpdateShop(
 <a name="list-user-accounts"></a>
 #### エンドユーザー、店舗ユーザーのウォレット一覧を表示する
 ユーザーIDを指定してそのユーザーのウォレット一覧を取得します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\ListUserAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // userId: ユーザーID
 );
@@ -2167,7 +2167,7 @@ $request = new Request\ListUserAccounts(
 マネーの一覧を取得します。
 パートナーキーの管理者が発行体組織に属している場合、自組織が加盟または発行しているマネーの一覧を返します。また、`organization_code`として決済加盟店の組織コードを指定した場合、発行マネーのうち、その決済加盟店組織が加盟しているマネーの一覧を返します。
 パートナーキーの管理者が決済加盟店組織に属している場合は、自組織が加盟しているマネーの一覧を返します。
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetPrivateMoneys(
     [
         'organization_code' => "ox-supermarket",  // 組織コード
@@ -2192,7 +2192,7 @@ $request = new Request\GetPrivateMoneys(
 成功したときは[PaginatedPrivateMoneys](#paginated-private-moneys)オブジェクトを返します
 <a name="get-private-money-organization-summaries"></a>
 #### 決済加盟店の取引サマリを取得する
-```language-syntax-highlighting-name
+```php
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
@@ -2210,7 +2210,7 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 <a name="bulk-create-transaction"></a>
 #### CSVファイル一括取引
 CSVファイルから一括取引をします。
-```language-syntax-highlighting-name
+```php
 $request = new Request\BulkCreateTransaction(
     "lwWZKuWWf4n5wNPq2rjN28",                     // name: 一括取引タスク名
     "QfQLnQ9Qr",                                  // content: 取引する情報のCSV
