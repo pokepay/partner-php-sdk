@@ -674,7 +674,7 @@ components:
           format: date-time
         type:
           type: string
-          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow]
+          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow, campaign-topup, refund-campaign, use-coupon, refund-coupon]
         description:
           type: string
         transaction_id:
@@ -2311,8 +2311,9 @@ paths:
     post:
       tags:
         - Transaction
-      summary: 返金する
-      x-pokepay-operator-name: RefundTransaction
+      summary: '返金する'
+      x-pokepay-operator-name: "RefundTransaction"
+      x-pokepay-allow-server-side: true
       parameters:
         - in: path
           name: transaction_id
@@ -2338,11 +2339,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transfer'
+                $ref: '#/components/schemas/Transaction'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
   /transfers:
@@ -2396,9 +2395,28 @@ paths:
                     enum: [topup, payment, transfer, exchange]
                 transfer_types:
                   type: array
+                  description: |-
+                    取引明細の種類でフィルターします。
+
+                    以下の種類を指定できます。
+
+                    1. topup
+                    店舗からエンドユーザーへの送金取引(チャージ)、またはそのキャンセル取引
+
+                    2. payment
+                    エンドユーザーから店舗への送金取引(支払い)、またはそのキャンセル取引
+
+                    3. exchange
+                    他マネーへの流出/流入
+
+                    4. campaign
+                    取引に対するポイント還元キャンペーンによるポイント付与、またはそのキャンセル取引
+
+                    5. coupon
+                    クーポンによる値引き処理、またはそのキャンセル取引
                   items:
                     type: string
-                    enum: [topup, payment, exchange, transfer]
+                    enum: [topup, payment, exchange, transfer, coupon, campaign]
                 description:
                   type: string
                   maxLength: 200
