@@ -8,10 +8,10 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "c886ca86-59bb-4598-bba9-8ba267d61a1c",
-            "6bad8b5b-d2df-46fc-83aa-f4d437b660c3",
-            "e0845d6f-f797-48c2-91a1-fa7aab2b1c63",
-            6275
+            "7f35485f-53c3-4f41-bf9d-9e33b1d415f1",
+            "93cc8961-0be2-42f0-a8fc-6d79e7879700",
+            "a0cd1f40-75ea-47d8-9033-dca08d56be14",
+            4654
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,34 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "c886ca86-59bb-4598-bba9-8ba267d61a1c",
-            "6bad8b5b-d2df-46fc-83aa-f4d437b660c3",
-            "e0845d6f-f797-48c2-91a1-fa7aab2b1c63",
-            6275,
+            "7f35485f-53c3-4f41-bf9d-9e33b1d415f1",
+            "93cc8961-0be2-42f0-a8fc-6d79e7879700",
+            "a0cd1f40-75ea-47d8-9033-dca08d56be14",
+            4654,
             [
-                'description' => "PolsdbrxUTbpTkQr9CA458OFUiC0xNjD1g6ausYOsWjmgSVes0LvRpIOKLgAa2m76DTKceEBbKe1QbzWrTYvHigdBYvKVDdotVdsHD1HarFGRZ0Q28LywVGUz2sIRxtNbAYMzHePlwRHJLPebYCA3qabphyjXP3xuhhy9uGRsNNOdzmZ5nbPQzPRirLmp"
+                'request_id' => "dcdd1b78-cb75-4413-a8e8-7279c66b08b9"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreatePaymentTransaction2()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreatePaymentTransaction(
+            "7f35485f-53c3-4f41-bf9d-9e33b1d415f1",
+            "93cc8961-0be2-42f0-a8fc-6d79e7879700",
+            "a0cd1f40-75ea-47d8-9033-dca08d56be14",
+            4654,
+            [
+                'description' => "RsNNOdzmZ5nbPQzPRirLmp7HiQajpl09d6QIiaL5c40GPi4ivBi3eJhDgAiQ5RhXwEfmyakw",
+                'request_id' => "1f1618df-3a43-4fe9-a832-89a7ab8b750c"
             ]
         );
         try {

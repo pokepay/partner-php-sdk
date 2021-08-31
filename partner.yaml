@@ -674,7 +674,7 @@ components:
           format: date-time
         type:
           type: string
-          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow]
+          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow, campaign-topup, refund-campaign, use-coupon, refund-coupon]
         description:
           type: string
         transaction_id:
@@ -1959,6 +1959,17 @@ paths:
 
                     任意入力で、取引履歴に表示される説明文です。
                   example: 初夏のチャージキャンペーン
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
       responses:
         '200':
           description: OK
@@ -2079,6 +2090,17 @@ paths:
 
                     任意入力で、取引履歴に表示される説明文です。
                   example: たい焼き(小倉)
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
       responses:
         '200':
           description: OK
@@ -2150,6 +2172,17 @@ paths:
 
                     任意入力で、取引履歴に表示される説明文です。
                   example: たい焼き(小倉)
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
       responses:
         '200':
           description: OK
@@ -2190,6 +2223,17 @@ paths:
                 description:
                   type: string
                   maxLength: 200
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
       responses:
         '200':
           description: OK
@@ -2311,8 +2355,9 @@ paths:
     post:
       tags:
         - Transaction
-      summary: 返金する
-      x-pokepay-operator-name: RefundTransaction
+      summary: '返金する'
+      x-pokepay-operator-name: "RefundTransaction"
+      x-pokepay-allow-server-side: true
       parameters:
         - in: path
           name: transaction_id
@@ -2338,11 +2383,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transfer'
+                $ref: '#/components/schemas/Transaction'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
   /transfers:
@@ -2396,9 +2439,28 @@ paths:
                     enum: [topup, payment, transfer, exchange]
                 transfer_types:
                   type: array
+                  description: |-
+                    取引明細の種類でフィルターします。
+
+                    以下の種類を指定できます。
+
+                    1. topup
+                    店舗からエンドユーザーへの送金取引(チャージ)、またはそのキャンセル取引
+
+                    2. payment
+                    エンドユーザーから店舗への送金取引(支払い)、またはそのキャンセル取引
+
+                    3. exchange
+                    他マネーへの流出/流入
+
+                    4. campaign
+                    取引に対するポイント還元キャンペーンによるポイント付与、またはそのキャンセル取引
+
+                    5. coupon
+                    クーポンによる値引き処理、またはそのキャンセル取引
                   items:
                     type: string
-                    enum: [topup, payment, exchange, transfer]
+                    enum: [topup, payment, exchange, transfer, coupon, campaign]
                 description:
                   type: string
                   maxLength: 200
