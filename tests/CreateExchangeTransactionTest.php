@@ -8,10 +8,10 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "be2c6fbc-56cb-4ae1-a64e-68313ab4ac47",
-            "be3fd11b-76d3-440a-822a-4b6b883a19af",
-            "2c9179d4-da6d-4373-ae20-5e826ef29402",
-            5919
+            "06a5d2f3-24ff-4667-bc8c-65ce1140d986",
+            "da109100-e2fa-4783-9783-8f2f87ea64e6",
+            "f970404d-f9bd-4e3e-8b56-45d980d67ece",
+            6534
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,34 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "be2c6fbc-56cb-4ae1-a64e-68313ab4ac47",
-            "be3fd11b-76d3-440a-822a-4b6b883a19af",
-            "2c9179d4-da6d-4373-ae20-5e826ef29402",
-            5919,
+            "06a5d2f3-24ff-4667-bc8c-65ce1140d986",
+            "da109100-e2fa-4783-9783-8f2f87ea64e6",
+            "f970404d-f9bd-4e3e-8b56-45d980d67ece",
+            6534,
             [
-                'description' => "ZgON7wI25XD4LDGgtc1eHQx1a38fcy9G2ru7CIugZBUKc64A8KJDFHDE0sPhVLSmxr0FU3DnW6KqsDEeelMkJ"
+                'request_id' => "367806f4-330f-45a5-9195-2ba133f57846"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateExchangeTransaction2()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateExchangeTransaction(
+            "06a5d2f3-24ff-4667-bc8c-65ce1140d986",
+            "da109100-e2fa-4783-9783-8f2f87ea64e6",
+            "f970404d-f9bd-4e3e-8b56-45d980d67ece",
+            6534,
+            [
+                'description' => "ORiCKaN1GSBkTmsnETZgON7wI25X",
+                'request_id' => "87cb461b-ae44-4a7e-b4cc-0117b77b58c4"
             ]
         );
         try {

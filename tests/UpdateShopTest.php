@@ -8,7 +8,7 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b"
+            "3728d47f-c5f5-496a-a6ef-556538da78bc"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'can_topup_private_money_ids' => ["e4c32796-5cac-49d7-8f0c-ace0a3e37cb5", "23097e7b-08b5-4711-9537-2c7efa4647a1", "a2066044-b953-4abd-a685-8ad95fb37133", "1aa2a04c-8012-41e7-bf3e-75d705f459b5", "8514e04d-b15e-46a6-b2c9-2e200c904040", "dcdf26f6-2ea4-4b52-b5dd-253aec051e32"]
+                'can_topup_private_money_ids' => ["d3301f2d-71ff-4eae-9349-40a6609bfaf9", "5f505541-8736-4941-bdfd-4c89bbe6d96f", "08b73f2b-782b-4ab8-9c3f-df7bbb8a1c3a", "04d8339c-0632-40b1-98c5-f23ec65ce703", "7ffd962d-3bdd-4a04-b535-970adf92c283", "1e2ee80a-7be8-4ce3-b239-7d8b4abd38fc", "6fd09e5d-b870-467f-a776-71aea637d91d", "b90a0efe-5d88-4b34-a0f3-2f5acac61bc2"]
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'private_money_ids' => ["3508177b-d9c3-4b67-8993-bcc2057f9ca7", "4fc82894-5cf9-4d25-b388-8faf48df5765", "67604323-f67b-4187-8c95-04a14ef46154", "e6b165f9-2a73-4ba9-b1b2-6a9c01fc4302", "7f829dc8-a02d-478b-8f2a-00fd0e92bb2b", "dea1b9ba-d3c8-4590-8483-ab8f3bdadd46", "9fd33d1b-9519-4646-a5f1-1a01de1d3c4c", "4a28db5b-3c3f-4683-af27-a9d58a6d9374"],
-                'can_topup_private_money_ids' => ["9e38166d-dfe6-4e4d-bc30-50df1ab71f58", "d63838cc-6c9c-41ab-9963-6de5580f0c22", "5cb7e001-fc60-4751-b8e8-6b3edbcd1975", "9fbb3c95-6b62-49d9-b3fe-beea672d3cd6", "64a0b0a8-5d1c-40d9-a8e2-5ce8d2e01834", "16a08f52-da8d-4aac-800c-6fd7a610f6a4", "247d36b4-6253-4c6a-8a93-9e8d1f5d381c", "ecc14663-4550-45fb-ba11-e902cb2525c8", "c8d9e640-ba75-4eb2-a7ab-2349b7c11470"]
+                'private_money_ids' => ["c745440d-0d8a-4793-99b5-28778d9bb58e", "35f3aca2-243d-4d41-9e34-d74f78d1e5e7", "6aff83b2-72ff-4698-83eb-fd9f9bb962e4", "32e616dc-7712-47c1-99cc-f9dbc403b1d6", "d8a16754-a81d-4003-b8bb-06882133c31a", "4fd5670f-b153-464f-b3e1-ef3df748833d", "bec4b37c-a98d-4c53-b31e-add5c5c62e6d", "65886f64-2c16-4b5e-99fb-6b8d8458ed96", "b76dc0b0-76a5-4743-8c9f-cae315705c66", "abbc3d97-d63f-4f1c-af21-3a5f8ddef3d5"],
+                'can_topup_private_money_ids' => ["1dd9a7a2-f40b-4b53-892f-eae4d85eecad", "4b14cac5-8c4a-41cd-87fb-409953f2c323", "fcfd5891-195c-4ba9-b908-b42a9840ef80", "1f67e313-96b8-48fa-9402-f0dfb5decf1b", "a9ab9843-2b8d-4a40-b604-e82317f692ef", "2fd9a974-b893-4697-8c86-d67098605753"]
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'external_id' => "HlCgxYlFZzBuHZ8t",
-                'private_money_ids' => ["cdd5fcba-2373-4a68-803e-9d36754cf938", "81d5edd3-5663-4add-bcda-5f845c0563aa", "aa05ebba-84e7-4533-bf61-85acf3669d14", "60a91509-d1c1-439c-8da0-e71bf308b2c5", "ed3df872-f1d0-41df-ade3-1e2c8a4a2bba", "df69343b-a0d6-4d1b-91aa-b9b9d118fb26", "4a5afa6f-5030-4754-8082-198502cd7763", "6e4fd8c7-07a7-484a-a460-45261f704607", "2c485deb-99c9-464a-a704-27035d837452", "cff630cd-7913-44e1-a10b-782770f635e8"],
-                'can_topup_private_money_ids' => ["39aab013-ea07-46d4-aad9-20aae00ccf34", "ffcc2442-da38-49a1-b34b-3843cc6bc4e2", "0b4fa473-f573-4964-ae63-7e690e862142", "e219184b-5932-4398-b98f-6ccb6bf948d5"]
+                'external_id' => "w3LnpbrPkZnN",
+                'private_money_ids' => ["b8ec109f-d0a5-4250-ac9b-3916e4c32796", "0ae15cac-29d7-47cf-8ce0-7cb523097e7b", "a1fa08b5-a711-4a55-b77e-47a1a2066044", "a9d0b953-cabd-4c66-85d9-71331aa2a04c", "204f8012-d1e7-4a3f-bed7-59b58514e04d", "1baab15e-26a6-4bb2-8920-4040dcdf26f6", "fe592ea4-eb52-47b5-9d3a-1e32d6b54e2d", "fa768c88-177b-49c3-a7c9-d3936996bcc2", "057f9ca7-2894-4cf9-a5b3-4b88829f8faf", "48df5765-4323-467b-87cc-9695b7f804a1"],
+                'can_topup_private_money_ids' => ["e6b165f9-2a73-4ba9-b1b2-6a9c01fc4302", "7f829dc8-a02d-478b-8f2a-00fd0e92bb2b", "dea1b9ba-d3c8-4590-8483-ab8f3bdadd46", "9fd33d1b-9519-4646-a5f1-1a01de1d3c4c"]
             ]
         );
         try {
@@ -80,12 +80,12 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'email' => "yBpazsFHLy@PhoC.com",
-                'external_id' => "WrzikH0DrThI9ndCARX9iZhU",
-                'private_money_ids' => ["83673a77-0ad5-443d-b273-5b517775a689", "953bf0e0-b40e-4a9b-bb9d-26b8fc8ecf55", "d7d5c222-84e9-4c6a-9f05-390f483a3693", "c4fe4126-295e-4f6f-b58f-b12137b9c735", "b745fd91-9b3a-432e-a4f9-d5284d9b993b", "ae8c5709-9a3e-4469-a08a-53c2cdbe40f8", "34d08a58-f6e2-4a4b-9759-9e0da227ea06", "af78f8fd-d33a-4f68-acf1-c7c9d521ccd1", "e8f35163-9841-4644-a641-912ee649e923"],
-                'can_topup_private_money_ids' => ["abff721a-a93c-40e8-97c6-5b7c3b9d9ff7", "1eae83a3-a13b-4341-86d3-0baaacd7da5b", "82165317-cd6c-4a6c-b268-18acbf8312fe", "bfa17847-bceb-4bbb-85fa-a31615a0beba", "cd06e73f-a7ea-4cde-a131-fea9d8050b0d", "c0efe1ff-7c4e-4fa9-bda1-a7853e30bb00", "e819296d-f851-4c85-a7c8-cc2e10fe717c", "5f79c8c3-037b-4ad5-81d4-d1c7e56cdcc7", "59fb1bfc-747a-4a7b-ac91-eb35f80476b9", "16adceb0-6164-439c-b4c2-8a245d38423f"]
+                'email' => "oUtYmfM0XL@YceQ.com",
+                'external_id' => "bY3jVYhbh4RW4SjcPHu2gI",
+                'private_money_ids' => [],
+                'can_topup_private_money_ids' => ["f92ffa0f-4c48-4890-8490-636cb33c8493", "e8565392-e39f-4943-a7f8-80bcda9efed9", "ecd8ee6c-9196-4346-9a5a-251a00f8aa7a", "52f0a0c2-ca24-4575-a4c8-e21e57cf88da", "672f7509-2838-46f4-9e7e-b0eacdd5fcba", "29722373-da68-4600-be36-f93881d5edd3", "de2f5663-aadd-43fc-9a84-63aaaa05ebba"]
             ]
         );
         try {
@@ -101,13 +101,13 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'tel' => "05-4844-0217",
-                'email' => "y80f2MmxJU@nd92.com",
-                'external_id' => "rjDmsbpR1t9xme9U0GR",
-                'private_money_ids' => ["4478ce60-f8b2-4ff0-bf87-1f529b6f3c98", "af225aab-5a3d-4976-9abb-06afe7b03481", "cd434e4e-be2f-4517-94f0-48a084d55680", "f1ed2f55-dacc-4bc5-8d6f-2c546bdd7972", "9848eaff-9336-4748-b5a0-5d19f4909570", "3b9a37b2-3dd9-4707-9d35-285934b866c2", "101f3ee1-b05d-419b-be14-46cfc91fa402", "a07ed6da-fe64-4694-93b1-e2ad76b3bf05", "d156808f-7ef3-472e-9920-731d8a63bebb"],
-                'can_topup_private_money_ids' => ["e9e1806f-ce6c-4c4e-895f-63cc45b7fa1e", "0385a24e-05bd-4ea3-a2a1-348027840f08", "6fce7756-2b2f-4d2f-bbdf-258c2d8d7d23", "d2bf4d91-4c7b-45f0-9bde-57c6bb10eb8d", "ee5be500-89c7-45f6-ba5a-e5b3c60424ad"]
+                'tel' => "049-05361",
+                'email' => "9o0TcGJkIJ@gRMa.com",
+                'external_id' => "hTjY4B83KCbssdnciBK2yKUyBpazsFHLyP",
+                'private_money_ids' => ["3691a03d-81ef-4243-b12a-6cbfb7121957", "e7b8f193-1657-4af2-ba1d-e0e96c3d0912", "f0e284eb-73c8-4bb0-bf44-54f2dd789ea7", "d33a6b54-21a3-4be8-9f7c-88c95c430fa1", "4d759039-09ee-4664-8b09-78c3a33f61ff", "365cc841-a9d2-4158-87b9-67e907a125da", "7afd2ae8-1a80-458d-9549-3a776cc20ad5", "03c6943d-ba72-4973-9189-f0e0edffb40e"],
+                'can_topup_private_money_ids' => ["fc8ecf55-c222-44e9-aa1f-7c0560e5390f", "483a3693-4126-495e-afb5-2d8f21d5b121", "37b9c735-fd91-4b3a-aee4-ddf97342d528", "4d9b993b-5709-4a3e-a9a0-3a8adc6a53c2", "cdbe40f8-8a58-46e2-8bd7-4859defd9e0d", "a227ea06-f8fd-433a-a8ac-e2f115b0c7c9", "d521ccd1-5163-4841-8426-de416244912e", "e649e923-9aca-421a-bce8-95d72ef834c6"]
             ]
         );
         try {
@@ -123,14 +123,14 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'address' => "4x3uvaLnbw12Ii4C82SzJJG4lODNS2Ij7U5b72UTWbjXGfzCmZ2vkYmrCrWwA7IkDmk9acr8tX9JQSH",
-                'tel' => "062-755-801",
-                'email' => "YyK8GIOW0P@GU45.com",
-                'external_id' => "uzPdd0dJeNNvUC0bqs1hvmd5I8evbrAQ",
-                'private_money_ids' => ["a5be9cf0-b3ee-49d9-9def-61ddb0abff6d", "f51b3b22-b0ae-462e-942b-241aec023edd", "12302445-fa81-4aa9-8ddb-3032a7ac43e3", "6595e8bf-3f70-4d3e-9899-d21d7c5524c4", "fcf360de-3b1d-4f03-90b4-b7e36850c854", "a17954e8-6b24-4f6b-92c9-d24fddc62bae", "d60add4f-82b2-4ecc-9729-8b60a7502186"],
-                'can_topup_private_money_ids' => ["116a3e30-bebb-402b-a594-99b32b33217c", "148b9706-b6c7-4688-b1f3-e21fb9ab8686", "ac0a1d9a-24d4-4f6d-bbba-6b2685cd9a8c", "76ad8229-316a-476a-8840-d563cbd49b1d", "d4345e4e-a98f-42b5-b787-fbda362280e2", "78439d0b-c32c-49c1-9269-fb99dcc780a0", "66b56cdc-f96b-494a-b2ef-08705fe906c7"]
+                'address' => "wASll2hGkEzja1NmQHCUATGGz590dtBhucZ4e0BzAWy80f2MmxJUnd92RrjDmsbpR1t9xme9U0GR2pRvNpULEoTr6H5p2Y5YBaOZdS1seolNILNbVpFGvZ3N4x3uv",
+                'tel' => "04571208",
+                'email' => "Ii4C82SzJJ@G4lO.com",
+                'external_id' => "DNS2Ij7U5b72UTWbjXGfzCm",
+                'private_money_ids' => [],
+                'can_topup_private_money_ids' => ["f00f597d-de32-4c3f-9c0b-191ebc78a176", "64ec1ceb-f259-472b-ad86-b925c20f2b72", "55c31543-87f2-429b-977f-707e2e8182f7", "b0eff541-03b7-47c9-a2eb-e55c4be2b644", "fcbc166d-0cdf-40eb-bf27-5517899fa02d", "591f66b9-bf87-4ce1-9bbb-d2638e9443f2", "38929b0f-5afd-46fd-b874-20fdde07b2d8", "e08ed103-cb39-42fb-8a51-e614fa5782d3", "8325ccc8-e2f9-4169-862b-4f22fde3c66f", "bdcf9ef3-8ebd-42dc-8765-dea5d682c415"]
             ]
         );
         try {
@@ -146,15 +146,15 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'postal_code' => "9091135",
-                'address' => "mve771kQ7mwZnfGMQasC1yb1Dq2UL9Kx0jYk7sZRicOTg23f5GXrX6ozTzm0HG0TosxKz4jitwHtujKhwCFGwiyv4vlRBRxfHZeKBVf4jVtecQNubIdHetIBPUrvpeN86f46",
-                'tel' => "077-389-820",
-                'email' => "KTwWOYBSX4@Ezfs.com",
-                'external_id' => "iIDCSxoowq",
-                'private_money_ids' => ["34fea4ef-6762-4201-be90-9c126b730215", "f012cf4d-2fd2-4b6a-b491-ff4bed527938", "13c9de70-37a3-4a6c-8bf5-9481f41904eb", "9385a89b-4216-44ab-b4fa-4206e8b8464f", "6a5b739e-59ce-4103-b6ec-9473fa342da7", "53edaf88-c60e-4f5b-8b9c-1f5fcdb44304", "127ad82e-aec3-44fd-9841-3f6b390fe83d"],
-                'can_topup_private_money_ids' => ["7de09510-1c8c-4aeb-b037-5a9036fbf6d1", "52f76e2c-af3c-4ab9-bf14-01d9ede1b291", "d0c82075-3ad6-48b2-b778-410c4ad48982", "d7189432-af5a-4885-bfda-9977cf20ef4a", "30d839ce-f629-449a-af50-19bd643c578c", "a189bf4a-8430-47bf-a1d8-d65ea3e2c326", "79159b0d-d522-4f48-9731-8df5f367cc52", "5e35aed7-782c-4bc3-99ad-fb73e56153f7", "3a4ea6df-3f85-4736-9652-edc26b2c0f95"]
+                'postal_code' => "880-9595",
+                'address' => "K8GIOW0PGU45uzPdd0dJeNNvUC0bqs1h",
+                'tel' => "0846-4950-984",
+                'email' => "evbrAQGpnY@omE2.com",
+                'external_id' => "pD4cThkIOO2LW0e3G1sTmjjHcN57ZbAikJ2o",
+                'private_money_ids' => [],
+                'can_topup_private_money_ids' => ["07b75d79-57e0-451b-8972-7031b8ea0f6a", "04bd31e1-acb3-479e-baf5-6b83d541de81", "35ee8012-226d-4e8a-b69e-fc1755f1f0e5", "5b13e937-8237-40bb-b11d-d96b06bc832e", "e11522d1-a837-489e-ada2-017c8d771777", "f0426010-b25a-4bee-8a66-79c7f926b4cd", "f9c2a0d1-ec61-43f3-8331-24fff9f37179"]
             ]
         );
         try {
@@ -170,16 +170,16 @@ class UpdateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateShop(
-            "6342224e-63ea-409f-a550-22ac41279b9b",
+            "3728d47f-c5f5-496a-a6ef-556538da78bc",
             [
-                'name' => "XAF7xeoT0y6lNlDnKEOyMV89HUL5OwvTmfkSpdcLQvsJQRiuvWpRkphzntqbTr2vHF1iF0Y7dBxe8hiTzwkLtzBfAa7kaQm6vULSy1F",
-                'postal_code' => "944-4455",
-                'address' => "3N0tnRGbdpbMjOs6NsjUaiDroY6Q3IK7BQ6AmswdAM3IJrwVbs9pMxfMC",
-                'tel' => "08614-565",
-                'email' => "HFmQw4OmJs@XraA.com",
-                'external_id' => "GliEBPmHrH76ocsr7yZptwOIMGRxZLk",
-                'private_money_ids' => ["325d040b-35f4-4824-8c64-43d6ae6842b7", "da112f75-1105-4b97-94a1-27e90dc2a2a0"],
-                'can_topup_private_money_ids' => ["40438761-18af-48f2-8672-538e21afc393", "d7285db5-6547-4ad0-8cb0-98f7c5ce1570", "6fcb410c-dc83-45b4-8fec-9db7171410b0", "3966e75a-48bf-4d73-8708-e0f988dbed50", "98816005-696c-4996-8ba4-0d0772fd22bd", "5efcac79-7a9c-4b0a-865a-bb594255c85b", "71750d40-aca8-4652-95be-b95216a21ce7"]
+                'name' => "b1Dq2UL9Kx0jYk7sZRicOTg23f5GXrX6ozTzm0HG0TosxKz4jitwHtujKhwCFGwiyv4vlRBRxfHZeKBVf4jVtecQNubIdHetIBPUrvpeN86f46tWgyM43AJZ0KTwWOYBSX4EzfsIiIDCSxoowqwobMRj4K8plKu",
+                'postal_code' => "1646363",
+                'address' => "KCXAkk07Q9YuV27x2ZZwJNPJ0aXH1uRWCYsw6VRBfXAF7xeoT0y6lNlDnKEOyMV89HUL5OwvTmfkSpdcLQvsJQRiuvWpRkphzntqbTr2vHF1iF0Y7dBxe8hiTzwkLtzBfAa7kaQm6vULSy1FKdTtu83N0tnRGbdpbMjOs6Ns",
+                'tel' => "0521-29103",
+                'email' => "IK7BQ6Amsw@dAM3.com",
+                'external_id' => "JrwVbs9pMx",
+                'private_money_ids' => ["ad6d4501-57cd-48c3-b4bf-ea6857fa1c8c", "6d131169-d3fd-4bf6-bbb1-8f24d91c78e1", "020de332-0745-4e16-85c8-cb469e4cd36d", "60840aae-a29b-4add-9177-b1345a296e4f", "8fa8a9ed-544a-47f3-9c58-76dcdf310baf", "1c8a9886-9e72-4f61-815e-cda7dcdf0fa7"],
+                'can_topup_private_money_ids' => ["20394f08-06ec-4e69-a292-ffc5ce8c1aff", "61f66ac2-fc05-4b19-96bb-3fd07c1f73ed", "6b2148c8-827f-4572-88b7-a2b6ca4e4640", "942fa36f-d2fe-4501-971c-7c0f59c9ff88", "840dd463-4891-4073-b293-e10edbaab9a9", "68454c37-8cf9-47bf-9af0-1c884d4025bc", "72e1d49f-2574-4d77-94cf-66c92ac534a6"]
             ]
         );
         try {

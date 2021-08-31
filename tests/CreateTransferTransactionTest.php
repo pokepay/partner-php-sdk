@@ -8,10 +8,10 @@ class CreateTransferTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransferTransaction(
-            "6c56e337-f4af-4f03-a3c8-e25cd9a48cbd",
-            "98041a69-7551-4883-81ad-0de195cbc08d",
-            "4691646a-8b29-49aa-98f0-7e5ee5bcd06c",
-            5552
+            "5d743523-864b-4d1f-a9b4-f5b1e4b3804d",
+            "555e5ecb-47f2-4f4a-9d38-1e758febb733",
+            "6b57a04a-4623-48f4-800b-5d07452a8a19",
+            4040
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,34 @@ class CreateTransferTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransferTransaction(
-            "6c56e337-f4af-4f03-a3c8-e25cd9a48cbd",
-            "98041a69-7551-4883-81ad-0de195cbc08d",
-            "4691646a-8b29-49aa-98f0-7e5ee5bcd06c",
-            5552,
+            "5d743523-864b-4d1f-a9b4-f5b1e4b3804d",
+            "555e5ecb-47f2-4f4a-9d38-1e758febb733",
+            "6b57a04a-4623-48f4-800b-5d07452a8a19",
+            4040,
             [
-                'description' => "9d6QIiaL5c40GPi4ivBi3eJhDgAiQ5RhXwEfmyakwCi2K41MKrJ8u3JtJHw13BJLqURa9CDG8z1r52NxmvSo3IMgKOG9RqgqLtsxscDVj4qDxwlIsjYdDsgNzWfMVYN8tFORiC"
+                'request_id' => "e52b4877-2ab1-4533-820a-294a04452a4c"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateTransferTransaction2()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateTransferTransaction(
+            "5d743523-864b-4d1f-a9b4-f5b1e4b3804d",
+            "555e5ecb-47f2-4f4a-9d38-1e758febb733",
+            "6b57a04a-4623-48f4-800b-5d07452a8a19",
+            4040,
+            [
+                'description' => "qURa9CDG8z1r52NxmvSo3IMgKOG9RqgqLtsxscDVj4qDxwlI",
+                'request_id' => "a9001573-4cdb-4a6a-a359-51644f40ebc4"
             ]
         );
         try {

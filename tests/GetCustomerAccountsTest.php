@@ -8,7 +8,7 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "7f94c950-6ed6-47a1-b8d4-2c8895d41b68"
+            "fb4c9fe6-5ef0-47b6-a0e1-07f0a50f49f3"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "7f94c950-6ed6-47a1-b8d4-2c8895d41b68",
+            "fb4c9fe6-5ef0-47b6-a0e1-07f0a50f49f3",
             [
-                'is_suspended' => FALSE
+                'is_suspended' => TRUE
             ]
         );
         try {
@@ -41,10 +41,10 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "7f94c950-6ed6-47a1-b8d4-2c8895d41b68",
+            "fb4c9fe6-5ef0-47b6-a0e1-07f0a50f49f3",
             [
-                'created_at_to' => "2023-02-11T07:47:16.000000+09:00",
-                'is_suspended' => FALSE
+                'created_at_to' => "2020-11-13T00:30:47.000000+09:00",
+                'is_suspended' => TRUE
             ]
         );
         try {
@@ -60,10 +60,10 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "7f94c950-6ed6-47a1-b8d4-2c8895d41b68",
+            "fb4c9fe6-5ef0-47b6-a0e1-07f0a50f49f3",
             [
-                'created_at_from' => "2020-01-01T12:00:03.000000+09:00",
-                'created_at_to' => "2019-11-19T15:40:21.000000+09:00",
+                'created_at_from' => "2016-02-20T10:16:46.000000+09:00",
+                'created_at_to' => "2021-01-16T16:31:25.000000+09:00",
                 'is_suspended' => FALSE
             ]
         );
@@ -80,11 +80,11 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "7f94c950-6ed6-47a1-b8d4-2c8895d41b68",
+            "fb4c9fe6-5ef0-47b6-a0e1-07f0a50f49f3",
             [
-                'per_page' => 834,
-                'created_at_from' => "2018-07-13T05:22:58.000000+09:00",
-                'created_at_to' => "2023-08-30T00:52:57.000000+09:00",
+                'per_page' => 6461,
+                'created_at_from' => "2022-01-01T22:46:18.000000+09:00",
+                'created_at_to' => "2017-11-27T09:29:59.000000+09:00",
                 'is_suspended' => TRUE
             ]
         );
@@ -101,12 +101,12 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "7f94c950-6ed6-47a1-b8d4-2c8895d41b68",
+            "fb4c9fe6-5ef0-47b6-a0e1-07f0a50f49f3",
             [
-                'page' => 9263,
-                'per_page' => 4380,
-                'created_at_from' => "2024-01-01T10:34:58.000000+09:00",
-                'created_at_to' => "2019-09-03T13:00:52.000000+09:00",
+                'page' => 4557,
+                'per_page' => 9555,
+                'created_at_from' => "2022-10-10T09:32:01.000000+09:00",
+                'created_at_to' => "2019-01-29T09:46:09.000000+09:00",
                 'is_suspended' => TRUE
             ]
         );
