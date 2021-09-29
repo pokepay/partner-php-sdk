@@ -8,7 +8,7 @@ class ListUserAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListUserAccounts(
-            "64147fff-2434-4d85-9ffd-99820f7b0a12"
+            "f7badafa-54a1-4511-b337-e4aa1c1fe652"
         );
         try {
             $response = $client->send($request);

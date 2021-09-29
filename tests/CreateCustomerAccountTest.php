@@ -8,7 +8,7 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "e6417027-95a7-45cd-9a6e-9146e838454a"
+            "13fc31f4-ab13-4552-8970-52a788378b0f"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "e6417027-95a7-45cd-9a6e-9146e838454a",
+            "13fc31f4-ab13-4552-8970-52a788378b0f",
             [
-                'account_name' => "MuPuu"
+                'external_id' => "MZnFJMuPuuYDxHZdnik"
             ]
         );
         try {
@@ -41,10 +41,30 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "e6417027-95a7-45cd-9a6e-9146e838454a",
+            "13fc31f4-ab13-4552-8970-52a788378b0f",
             [
-                'user_name' => "YDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29",
-                'account_name' => "tqbzIUCtrgI5GH6wQi2f3OojTDEk0fitYgKzfXu0N7ZPQ6Ey6Tu3BU56A0DovC2AWlgsj8AO1bqHH"
+                'account_name' => "AchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtr",
+                'external_id' => "I5GH6wQi2f3OojTDEk0fitYgKzfXu0N7ZPQ6Ey6T"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateCustomerAccount3()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateCustomerAccount(
+            "13fc31f4-ab13-4552-8970-52a788378b0f",
+            [
+                'user_name' => "u3BU56A0DovC2AWlgsj8",
+                'account_name' => "O1bqHH9NHpqZwH1tkpyNDcuWxfr4xKRRC5UPfddKJfLPJmxAhDpkltxfpGBgKzLBWM",
+                'external_id' => "YifX"
             ]
         );
         try {

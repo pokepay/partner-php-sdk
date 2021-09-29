@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class ListUserAccounts extends Base
 {
     protected $method = 'GET';
-    public $responseClass = \Pokepay\Response\PaginatedAccounts::class;
+    public $responseClass = \Pokepay\Response\PaginatedAccountDetails::class;
     private $userId;
     public function __construct($userId)
     {

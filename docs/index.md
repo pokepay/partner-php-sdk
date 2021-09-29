@@ -1588,7 +1588,10 @@ $request = new Request\GetCustomerAccounts(
         'per_page' => 2772,                       // 1ページ分のウォレット数
         'created_at_from' => "2023-12-25T19:33:57.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
         'created_at_to' => "2020-11-16T21:21:47.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
-        'is_suspended' => TRUE                    // ウォレットが凍結状態かどうかでフィルターする
+        'is_suspended' => TRUE,                   // ウォレットが凍結状態かどうかでフィルターする
+        'external_id' => "vjsqVkcSInvOjFPIL9qlVM", // 外部ID
+        'tel' => "07018335-9579",                 // エンドユーザーの電話番号
+        'email' => "805Swtsg2N@kJBD.com"          // エンドユーザーのメールアドレス
     ]
 );
 ```
@@ -1653,6 +1656,36 @@ $request = new Request\GetCustomerAccounts(
 このパラメータが指定されている場合、ウォレットの凍結状態で結果がフィルターされます。デフォルトでは未指定です。
 
 ---
+`external_id`  
+```json
+{
+  "type": "string",
+  "maxLength": 50
+}
+```
+外部IDでのフィルタリングです。デフォルトでは未指定です。
+
+---
+`tel`  
+```json
+{
+  "type": "string",
+  "pattern": "^0[0-9]{1,3}-?[0-9]{2,4}-?[0-9]{3,4}$"
+}
+```
+エンドユーザーの電話番号でのフィルタリングです。デフォルトでは未指定です。
+
+---
+`email`  
+```json
+{
+  "type": "string",
+  "format": "email"
+}
+```
+エンドユーザーのメールアドレスでのフィルタリングです。デフォルトでは未指定です。
+
+---
 成功したときは[PaginatedAccountWithUsers](#paginated-account-with-users)オブジェクトを返します
 <a name="create-customer-account"></a>
 #### 新規エンドユーザーウォレットを追加する
@@ -1662,7 +1695,8 @@ $request = new Request\CreateCustomerAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'user_name' => "ポケペイ太郎",                  // ユーザー名
-        'account_name' => "ポケペイ太郎のアカウント"          // アカウント名
+        'account_name' => "ポケペイ太郎のアカウント",         // アカウント名
+        'external_id' => "WoqdLq3QmHRbZpwbP"      // 外部ID
     ]
 );
 ```
@@ -1700,6 +1734,16 @@ $request = new Request\CreateCustomerAccount(
 作成するウォレット名です。省略した場合は空文字となります。
 
 ---
+`external_id`  
+```json
+{
+  "type": "string",
+  "maxLength": 50
+}
+```
+PAPIクライアントシステムから利用するPokepayユーザーのIDです。デフォルトでは未指定です。
+
+---
 成功したときは[AccountWithUser](#account-with-user)オブジェクトを返します
 <a name="get-shop-accounts"></a>
 #### 店舗ユーザーのウォレット一覧を表示する
@@ -1708,11 +1752,11 @@ $request = new Request\CreateCustomerAccount(
 $request = new Request\GetShopAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 3073,                           // ページ番号
-        'per_page' => 3488,                       // 1ページ分のウォレット数
-        'created_at_from' => "2018-02-08T21:16:14.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2023-06-11T07:51:21.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
-        'is_suspended' => TRUE                    // ウォレットが凍結状態かどうかでフィルターする
+        'page' => 83,                             // ページ番号
+        'per_page' => 5866,                       // 1ページ分のウォレット数
+        'created_at_from' => "2021-03-18T09:33:18.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2019-10-15T23:24:49.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
+        'is_suspended' => FALSE                   // ウォレットが凍結状態かどうかでフィルターする
     ]
 );
 ```
@@ -1787,10 +1831,10 @@ $request = new Request\ListCustomerTransactions(
     [
         'sender_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金エンドユーザーID
         'receiver_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
-        'type' => "SInv",                         // 取引種別、チャージ=topup、支払い=payment、個人間送金=transfer
-        'is_modified' => FALSE,                   // キャンセル済みかどうか
-        'from' => "2023-10-04T19:51:42.000000+09:00", // 開始日時
-        'to' => "2022-04-07T01:54:09.000000+09:00", // 終了日時
+        'type' => "B6hajGJrCJ",                   // 取引種別、チャージ=topup、支払い=payment、個人間送金=transfer
+        'is_modified' => TRUE,                    // キャンセル済みかどうか
+        'from' => "2019-02-13T12:10:46.000000+09:00", // 開始日時
+        'to' => "2017-02-20T06:05:40.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -1917,11 +1961,11 @@ $request = new Request\ListShops(
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "1667701",               // 店舗の郵便番号
+        'postal_code' => "800-9576",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "05559-5798",                    // 店舗の電話番号
-        'email' => "05Swtsg2Nk@JBDv.com",         // 店舗のメールアドレス
-        'external_id' => "WoqdLq3QmHRbZpwbP",     // 店舗の外部ID
+        'tel' => "089682-5023",                   // 店舗の電話番号
+        'email' => "jlaztijN3v@ebjT.com",         // 店舗のメールアドレス
+        'external_id' => "69RjYRPCqvnZ1YzdrhGH7XKNoGDpqqjY", // 店舗の外部ID
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -2048,11 +2092,11 @@ $request = new Request\ListShops(
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
-        'shop_postal_code' => "2944779",          // 店舗の郵便番号
+        'shop_postal_code' => "5142087",          // 店舗の郵便番号
         'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "068572-930",               // 店舗の電話番号
-        'shop_email' => "JBxTKH0YUW@8iwJ.com",    // 店舗のメールアドレス
-        'shop_external_id' => "uJPCjlaztij",      // 店舗の外部ID
+        'shop_tel' => "0074-18354932",            // 店舗の電話番号
+        'shop_email' => "YdhYyR9ZtW@hMAK.com",    // 店舗のメールアドレス
+        'shop_external_id' => "ZHQ2Tjahc0hASAcEibjk", // 店舗の外部ID
         'organization_code' => "ox-supermarket"   // 組織コード
     ]
 );
@@ -2064,14 +2108,14 @@ $request = new Request\CreateShop(
 $request = new Request\CreateShopV2(
     "oxスーパー三田店",                                  // name: 店舗名
     [
-        'postal_code' => "136-5224",              // 店舗の郵便番号
+        'postal_code' => "5184159",               // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0292921619",                    // 店舗の電話番号
-        'email' => "zdrhGH7XKN@oGDp.com",         // 店舗のメールアドレス
-        'external_id' => "jYUa42NN7jWbTA8sT9CjYdhYy", // 店舗の外部ID
+        'tel' => "07-97912",                      // 店舗の電話番号
+        'email' => "FrkXVihIdQ@Wu7J.com",         // 店舗のメールアドレス
+        'external_id' => "4NYirXryPP6taqbm6hsnA9hELka", // 店舗の外部ID
         'organization_code' => "ox-supermarket",  // 組織コード
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => []       // 店舗でチャージ可能にするマネーIDの配列
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
     ]
 );
 ```
@@ -2144,13 +2188,13 @@ $request = new Request\UpdateShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
     [
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "947-8418",              // 店舗の郵便番号
+        'postal_code' => "376-2080",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0121-8441-308",                 // 店舗の電話番号
-        'email' => "ASAcEibjku@1fdQ.com",         // 店舗のメールアドレス
-        'external_id' => "tgL0O7DlAFrkXVihIdQWu7J4NY", // 店舗の外部ID
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
+        'tel' => "041115489",                     // 店舗の電話番号
+        'email' => "VIgVP7fIz1@xemn.com",         // 店舗のメールアドレス
+        'external_id' => "x9P7H",                 // 店舗の外部ID
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => []       // 店舗でチャージ可能にするマネーIDの配列
     ]
 );
 ```
@@ -2268,7 +2312,7 @@ $request = new Request\ListUserAccounts(
 指定したユーザーIDのウォレット一覧を取得します。パートナーキーと紐づく組織が発行しているマネーのウォレットのみが表示されます。
 
 ---
-成功したときは[PaginatedAccounts](#paginated-accounts)オブジェクトを返します
+成功したときは[PaginatedAccountDetails](#paginated-account-details)オブジェクトを返します
 ### Private Money
 <a name="get-private-moneys"></a>
 #### マネー一覧を取得する
@@ -2304,8 +2348,8 @@ $request = new Request\GetPrivateMoneys(
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2023-01-15T18:21:28.000000+09:00", // 開始日時(toと同時に指定する必要有)
-        'to' => "2025-05-11T12:00:32.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'from' => "2016-05-21T23:00:33.000000+09:00", // 開始日時(toと同時に指定する必要有)
+        'to' => "2021-05-24T13:34:12.000000+09:00", // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -2320,11 +2364,11 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 CSVファイルから一括取引をします。
 ```php
 $request = new Request\BulkCreateTransaction(
-    "PP6taqbm6hsnA9hELkacVB4dzD",                 // name: 一括取引タスク名
-    "Q1",                                         // content: 取引する情報のCSV
-    "LbTyVIgVP7fIz1xemnrDx9P7HPwLX5lwWZKu",       // requestId: リクエストID
+    "lwWZKuWWf4n5wNPq2rjN28",                     // name: 一括取引タスク名
+    "QfQLnQ9Qr",                                  // content: 取引する情報のCSV
+    "2gs4rAyEVt2ws7WkJzpgGUX4mtxobZ9ZCpNJ",       // requestId: リクエストID
     [
-        'description' => "Wf4n5wNPq2rjN28QfQLnQ9Qr2gs4rAyEVt2ws7WkJzpgGUX4mtxobZ9ZCpNJGZG6LzTWIbd8ZNVrafdiivNn4NbN" // 一括取引の説明
+        'description' => "ZG6LzTWIbd8ZNVrafdiivNn4NbNLXIdoiqtrelImUNmLeKEfXUc2dQExu22E4bXnTsrAuXzc" // 一括取引の説明
     ]
 );
 ```
@@ -2414,8 +2458,11 @@ $request = new Request\BulkCreateTransaction(
 * `moneyBalance (double)`: 
 * `pointBalance (double)`: 
 * `privateMoney (PrivateMoney)`: 
+* `user (User)`: 
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+`user`は [User](#user) オブジェクトを返します。
 
 <a name="bill"></a>
 ## Bill
@@ -2541,16 +2588,6 @@ $request = new Request\BulkCreateTransaction(
 
 `pagination`は [Pagination](#pagination) オブジェクトを返します。
 
-<a name="paginated-accounts"></a>
-## PaginatedAccounts
-* `rows (Account[])`: 
-* `count (integer)`: 
-* `pagination (Pagination)`: 
-
-`rows`は [Account](#account) オブジェクトの配列を返します。
-
-`pagination`は [Pagination](#pagination) オブジェクトを返します。
-
 <a name="paginated-account-with-users"></a>
 ## PaginatedAccountWithUsers
 * `rows (AccountWithUser[])`: 
@@ -2558,6 +2595,16 @@ $request = new Request\BulkCreateTransaction(
 * `pagination (Pagination)`: 
 
 `rows`は [AccountWithUser](#account-with-user) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
+<a name="paginated-account-details"></a>
+## PaginatedAccountDetails
+* `rows (AccountDetail[])`: 
+* `count (integer)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [AccountDetail](#account-detail) オブジェクトの配列を返します。
 
 `pagination`は [Pagination](#pagination) オブジェクトを返します。
 
