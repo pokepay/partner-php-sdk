@@ -34,4 +34,8 @@ class AccountDetail extends Base
      * @var PrivateMoney
      */
     public $privateMoney;
+    /**
+     * @var User
+     */
+    public $user;
 }
