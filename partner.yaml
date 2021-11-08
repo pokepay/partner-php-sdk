@@ -264,6 +264,40 @@ components:
         token:
           type: string
           title: チャージQRコードを解析したときに出てくるURL
+    CpmToken:
+      x-pokepay-schema-type: "response"
+      type: object
+      properties:
+        cpm_token:
+          type: string
+          minLength: 22
+          maxLength: 22
+        account:
+          $ref: '#/components/schemas/AccountDetail'
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+          nullable: true
+        event:
+          $ref: '#/components/schemas/ExternalTransaction'
+          nullable: true
+        scopes:
+          type: array
+          title: 許可された取引種別
+          description: エンドユーザーがCPMトークンを生成する際に指定する、CPMトークンに許可された取引の種別。
+          items:
+            type: string
+            enum: [payment, topup, external-transaction]
+        expires_at:
+          type: string
+          format: date-time
+          title: CPMトークンの失効日時
+        metadata:
+          type: string
+          format: json
+          title: エンドユーザー側メタデータ
+          description: |-
+            取引作成時に店舗側から指定されるメタデータです。
+            全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列です。
 
     Cashtray:
       x-pokepay-schema-type: "response"
@@ -682,6 +716,58 @@ components:
         transaction_id:
           type: string
           format: uuid
+    ExternalTransaction:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: ポケペイ外部取引ID
+        is_modified:
+          type: boolean
+          title: 返金された取引かどうか
+        sender:
+          $ref: '#/components/schemas/User'
+          title: 送金者情報
+        sender_account:
+          $ref: '#/components/schemas/Account'
+          title: 送金ウォレット情報
+        receiver:
+          $ref: '#/components/schemas/User'
+          title: 受取者情報
+        receiver_account:
+          $ref: '#/components/schemas/Account'
+          title: 受取ウォレット情報
+        amount:
+          type: number
+          title: 決済額
+        done_at:
+          type: string
+          format: date-time
+          title: 取引日時
+        description:
+          type: string
+          title: 取引説明文
+    Product:
+      x-pokepay-schema-type: "response"
+      properties:
+        jan_code:
+          type: string
+          maxLength: 64
+        name:
+          type: string
+          maxLength: 256
+        unit_price:
+          type: number
+          minimum: 0
+        price:
+          type: number
+          minimum: 0
+        is_discounted:
+          type: boolean
+        other:
+          type: string
+          format: json
 
     OrganizationSummary:
       x-pokepay-schema-type: "response"
@@ -1042,6 +1128,22 @@ paths:
             ユーザーIDです。
 
             指定したユーザーIDのウォレット一覧を取得します。パートナーキーと紐づく組織が発行しているマネーのウォレットのみが表示されます。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                page:
+                  type: integer
+                  minimum: 1
+                  title: 'ページ番号'
+                  description: 取得したいページ番号です。デフォルト値は1です。
+                per_page:
+                  type: integer
+                  minimum: 1
+                  title: '1ページ分の取引数'
+                  description: 1ページ当たりのウォレット数です。デフォルト値は50です。
       responses:
         '200':
           description: OK
@@ -1055,6 +1157,54 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+    post:
+      tags:
+        - Account
+      summary: 'エンドユーザーのウォレットを作成する'
+      x-pokepay-operator-name: "CreateUserAccount"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: 'ユーザーID'
+          description: |-
+            ユーザーIDです。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["private_money_id"]
+              properties:
+                private_money_id:
+                  title: 'マネーID'
+                  description: |-
+                    マネーIDです。
+
+                    作成するウォレットのマネーを指定します。このパラメータは必須です。
+                  type: string
+                  format: uuid
+                name:
+                  title: 'ウォレット名'
+                  type: string
+                  maxLength: 256
+                external_id:
+                  title: '外部ID'
+                  type: string
+                  maxLength: 50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDetail'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /accounts/{account_id}:
     get:
       tags:
@@ -1723,6 +1873,37 @@ paths:
                 $ref: '#/components/schemas/Check'
         '400':
           $ref: '#/components/responses/InvalidParameters'
+  /cpm/{cpm_token}:
+    get:
+      tags:
+        - Transaction
+      summary: 'CPMトークンの状態取得'
+      description: CPMトークンの現在の状態を取得します。CPMトークンの有効期限やCPM取引の状態を返します。
+      x-pokepay-operator-name: "GetCpmToken"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: cpm_token
+          required: true
+          schema:
+            type: string
+            minLength: 22
+            maxLength: 22
+            title: CPMトークン
+          description: CPM取引時にエンドユーザーが店舗に提示するバーコードを解析して得られる22桁の文字列です。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CpmToken'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /transactions:
     get:
       tags:
@@ -2008,6 +2189,16 @@ paths:
 
                     任意入力で、取引履歴に表示される説明文です。
                   example: 初夏のチャージキャンペーン
+                metadata:
+                  type: string
+                  format: json
+                  title: '取引メタデータ'
+                  description:  |-
+                    取引作成時に指定されるメタデータです。
+
+                    任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
+                  example: |-
+                    {"key":"value"}
                 request_id:
                   type: string
                   format: uuid
@@ -2139,6 +2330,56 @@ paths:
 
                     任意入力で、取引履歴に表示される説明文です。
                   example: たい焼き(小倉)
+                metadata:
+                  type: string
+                  format: json
+                  title: '取引メタデータ'
+                  description:  |-
+                    取引作成時に指定されるメタデータです。
+
+                    任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
+                  example: |-
+                    {"key":"value"}
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      jan_code:
+                        type: string
+                        maxLength: 64
+                      name:
+                        type: string
+                        maxLength: 256
+                      unit_price:
+                        type: number
+                        minimum: 0
+                      price:
+                        type: number
+                        minimum: 0
+                      is_discounted:
+                        type: boolean
+                      other:
+                        type: string
+                        format: json
+                    example: |-
+                      {"jan_code":"abc",
+                       "name":"name1",
+                       "unit_price":100,
+                       "price": 100,
+                       "is_discounted": false,
+                       "other":"{}"}
+                  title: '商品情報データ'
+                  description:  |-
+                    一つの取引に含まれる商品情報データです。
+                    以下の内容からなるJSONオブジェクトの配列で指定します。
+
+                    - `jan_code`: JANコード。64字以下の文字列
+                    - `name`: 商品名。256字以下の文字列
+                    - `unit_price`: 商品単価。0以上の数値
+                    - `price`: 全体の金額(例: 商品単価 × 個数)。0以上の数値
+                    - `is_discounted`: 賞味期限が近いなどの理由で商品が値引きされているかどうかのフラグ。boolean
+                    - `other`: その他商品に関する情報。JSONオブジェクトで指定します。
                 request_id:
                   type: string
                   format: uuid
@@ -2157,6 +2398,187 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transaction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /transactions/cpm:
+    post:
+      tags:
+        - Transaction
+      summary: 'CPMトークンによる取引作成'
+      description: |
+        CPMトークンにより取引を作成します。
+        CPMトークンに設定されたスコープの取引を作ることができます。
+      x-pokepay-operator-name: "CreateCpmTransaction"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["cpm_token", "shop_id", "amount"]
+              properties:
+                cpm_token:
+                  type: string
+                  minLength: 22
+                  maxLength: 22
+                  title: 'CPMトークン'
+                  description: |-
+                    エンドユーザーによって作られ、アプリなどに表示され、店舗に対して提示される22桁の文字列です。
+
+                    エンドユーザーによって許可された取引のスコープを持っています。
+                shop_id:
+                  type: string
+                  format: uuid
+                  title: '店舗ID'
+                  description: |-
+                    店舗IDです。
+
+                    支払いやチャージを行う店舗を指定します。
+                amount:
+                  type: number
+                  title: '取引金額'
+                  description: |-
+                    取引金額を指定します。
+
+                    正の値を与えるとチャージになり、負の値を与えると支払いとなります。
+                description:
+                  type: string
+                  maxLength: 200
+                  title: '取引説明文'
+                  description:  |-
+                    取引説明文です。
+
+                    エンドユーザーアプリの取引履歴などに表示されます。
+                  example: たい焼き(小倉)
+                metadata:
+                  type: string
+                  format: json
+                  title: '店舗側メタデータ'
+                  description:  |-
+                    取引作成時に店舗側から指定されるメタデータです。
+
+                    任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
+                  example: |-
+                    {"key":"value"}
+                products:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      jan_code:
+                        type: string
+                        maxLength: 64
+                      name:
+                        type: string
+                        maxLength: 256
+                      unit_price:
+                        type: number
+                        minimum: 0
+                      price:
+                        type: number
+                        minimum: 0
+                      is_discounted:
+                        type: boolean
+                      other:
+                        type: string
+                        format: json
+                    example: |-
+                      {"jan_code":"abc",
+                       "name":"name1",
+                       "unit_price":100,
+                       "price": 100,
+                       "is_discounted": false,
+                       "other":"{}"}
+                  title: 商品情報データ
+                  description:  |-
+                    一つの取引に含まれる商品情報データです。
+                    以下の内容からなるJSONオブジェクトの配列で指定します。
+
+                    - `jan_code`: JANコード。64字以下の文字列
+                    - `name`: 商品名。256字以下の文字列
+                    - `unit_price`: 商品単価。0以上の数値
+                    - `price`: 全体の金額(例: 商品単価 × 個数)。0以上の数値
+                    - `is_discounted`: 賞味期限が近いなどの理由で商品が値引きされているかどうかのフラグ。boolean
+                    - `other`: その他商品に関する情報。JSONオブジェクトで指定します。
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+              examples:
+                example-1:
+                  value:
+                    id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                    type: string
+                    is_modified: true
+                    sender:
+                      id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      name: string
+                      is_merchant: true
+                    sender_account:
+                      id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      name: string
+                      is_suspended: true
+                      private_money:
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        name: string
+                        unit: string
+                        is_exclusive: true
+                        description: string
+                        oneline_message: string
+                        organization:
+                          code: string
+                          name: string
+                        max_balance: 0
+                        transfer_limit: 0
+                        type: own
+                        expiration_type: static
+                        enable_topup_by_member: true
+                    receiver:
+                      id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      name: string
+                      is_merchant: true
+                    receiver_account:
+                      id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                      name: string
+                      is_suspended: true
+                      private_money:
+                        id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+                        name: string
+                        unit: string
+                        is_exclusive: true
+                        description: string
+                        oneline_message: string
+                        organization:
+                          code: string
+                          name: string
+                        max_balance: 0
+                        transfer_limit: 0
+                        type: own
+                        expiration_type: static
+                        enable_topup_by_member: true
+                    amount: 0
+                    money_amount: 0
+                    point_amount: 0
+                    done_at: '2019-08-24T14:15:22Z'
+                    description: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -2212,6 +2634,16 @@ paths:
                     マネー額です。
 
                     送金するマネー額を指定します。
+                metadata:
+                  type: string
+                  format: json
+                  title: '取引メタデータ'
+                  description:  |-
+                    取引作成時に指定されるメタデータです。
+
+                    任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
+                  example: |-
+                    {"key":"value"}
                 description:
                   type: string
                   maxLength: 200
@@ -2404,8 +2836,16 @@ paths:
     post:
       tags:
         - Transaction
-      summary: '返金する'
-      x-pokepay-operator-name: "RefundTransaction"
+      summary: '取引をキャンセルする'
+      description: |-
+        取引IDを指定して取引をキャンセルします。
+
+        発行体の管理者は自組織の直営店、または発行しているマネーの決済加盟店組織での取引をキャンセルできます。
+        キャンセル対象の取引に付随するポイント還元キャンペーンやクーポン適用も取り消されます。
+
+        チャージ取引のキャンセル時に返金すべき残高が足りないときは `account_balance_not_enough (422)` エラーが返ります。
+        取引をキャンセルできるのは1回きりです。既にキャンセルされた取引を重ねてキャンセルしようとすると `transaction_already_refunded (422)` エラーが返ります。
+      x-pokepay-operator-name: RefundTransaction
       x-pokepay-allow-server-side: true
       parameters:
         - in: path
@@ -2546,7 +2986,7 @@ paths:
                   type: string
                   maxLength: 32
                   title: '新規組織コード'
-                  example: ox_supermarket
+                  example: ox-supermarket
                 name:
                   type: string
                   maxLength: 256
@@ -2576,7 +3016,7 @@ paths:
                   type: string
                   pattern: '^$|^[0-9]{4}$'
                   title: '銀行金融機関コード'
-                  example: 99X
+                  example: '1234'
                 bank_branch_name:
                   type: string
                   maxLength: 64
@@ -2586,7 +3026,7 @@ paths:
                   type: string
                   pattern: '^(|[0-9]{3})$'
                   title: '銀行支店コード'
-                  example: 99X
+                  example: '123'
                 bank_account_type:
                   type: string
                   enum: [saving, current, other]
@@ -2596,7 +3036,7 @@ paths:
                   maxLength: 7
                   pattern: '[0-9]{0,7}'
                   title: '銀行口座番号'
-                  example: 9999999
+                  example: '1234567'
                 bank_account_holder_name:
                   # TODO: flico
                   type: string
