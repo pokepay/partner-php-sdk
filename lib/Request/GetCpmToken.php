@@ -4,22 +4,22 @@
 namespace Pokepay\Request;
 
 
-class ListUserAccounts extends PagingBase
+class GetCpmToken extends Base
 {
     protected $method = 'GET';
-    public $responseClass = \Pokepay\Response\PaginatedAccountDetails::class;
-    private $userId;
-    public function __construct($userId, $optionalParams = array())
+    public $responseClass = \Pokepay\Response\CpmToken::class;
+    private $cpmToken;
+    public function __construct($cpmToken)
     {
         parent::__construct();
-        $this->userId = $userId;
+        $this->cpmToken = $cpmToken;
 
-        $this->optionalParams = $optionalParams;
+        $this->optionalParams = array();
     }
 
     public function getPath()
     {
-        return '/users' . '/' . $this->userId . '/accounts';
+        return '/cpm' . '/' . $this->cpmToken;
     }
 
     public function getParams()

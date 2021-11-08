@@ -8,7 +8,7 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "1cca797a-a4ae-4807-a9ad-4bab80f00988"
+            "8936c521-802a-423a-b8c1-dc97cdd6b2b1"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
+            "8936c521-802a-423a-b8c1-dc97cdd6b2b1",
             [
-                'is_suspended' => TRUE
+                'is_suspended' => FALSE
             ]
         );
         try {

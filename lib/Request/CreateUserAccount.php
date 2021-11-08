@@ -4,15 +4,17 @@
 namespace Pokepay\Request;
 
 
-class ListUserAccounts extends PagingBase
+class CreateUserAccount extends Base
 {
-    protected $method = 'GET';
-    public $responseClass = \Pokepay\Response\PaginatedAccountDetails::class;
+    protected $method = 'POST';
+    public $responseClass = \Pokepay\Response\AccountDetail::class;
     private $userId;
-    public function __construct($userId, $optionalParams = array())
+    private $privateMoneyId;
+    public function __construct($userId, $privateMoneyId, $optionalParams = array())
     {
         parent::__construct();
         $this->userId = $userId;
+        $this->privateMoneyId = $privateMoneyId;
 
         $this->optionalParams = $optionalParams;
     }
@@ -25,7 +27,7 @@ class ListUserAccounts extends PagingBase
     public function getParams()
     {
         $params = array(
-            
+            'private_money_id' => $this->privateMoneyId,
         );
 
         $params += $this->optionalParams;

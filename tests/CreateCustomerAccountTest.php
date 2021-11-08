@@ -8,7 +8,7 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "13fc31f4-ab13-4552-8970-52a788378b0f"
+            "6b4fbefc-b207-4f95-8e90-d86f19533a35"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "13fc31f4-ab13-4552-8970-52a788378b0f",
+            "6b4fbefc-b207-4f95-8e90-d86f19533a35",
             [
-                'external_id' => "MZnFJMuPuuYDxHZdnik"
+                'external_id' => "GvB"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "13fc31f4-ab13-4552-8970-52a788378b0f",
+            "6b4fbefc-b207-4f95-8e90-d86f19533a35",
             [
-                'account_name' => "AchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtr",
-                'external_id' => "I5GH6wQi2f3OojTDEk0fitYgKzfXu0N7ZPQ6Ey6T"
+                'account_name' => "iHKw3I5f57jFE45d3P21Pzx2jnlKrw0LdNS4VtkXCDrt0LJOE3QgwrCcszhfH09Y5OthVwPmvHXBFS5mnHJDaN7ByqCBViT8YJSc5gafw5E7JxTvjUc1aT5EbGpCQn",
+                'external_id' => "B7l65BYMvNkhEwbRq7C0zj85JoEScisdzkhxn"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "13fc31f4-ab13-4552-8970-52a788378b0f",
+            "6b4fbefc-b207-4f95-8e90-d86f19533a35",
             [
-                'user_name' => "u3BU56A0DovC2AWlgsj8",
-                'account_name' => "O1bqHH9NHpqZwH1tkpyNDcuWxfr4xKRRC5UPfddKJfLPJmxAhDpkltxfpGBgKzLBWM",
-                'external_id' => "YifX"
+                'user_name' => "XFFT7CXS50vaovkROQbPFa2Q0QZFPxPWcwwu3uh9fDL3S3NHvBIxMXxVOS8aVOpi",
+                'account_name' => "S1EeKe2EnvF9kW30yXFj5pEZQNOtIwcrR2Tap7tnXzfq7vVXcZZXkAjYTEO65NQtFJaRQvj5yyqZjpM3EGDvxc2vHpfKAFMK87o5EDfCnjGchqfzXJGnbGhZsKdVrETxLEt4GFvxAKZGN2hkrp4AuDVFN5fAvBVJFsjezB3YP3w02S",
+                'external_id' => "MN6p0E72qWtOk3QUVbESEWPtcFyu37VMAkI2ylOPtFP"
             ]
         );
         try {

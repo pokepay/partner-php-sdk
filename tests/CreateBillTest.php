@@ -8,8 +8,8 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "10b38e5a-a0a2-4643-b978-0431d3fe12c5",
-            "6be77097-48f0-43b4-96fd-0f6bfa0ed65f"
+            "2a11ce27-df83-479d-afb6-698133d23743",
+            "2f94eff6-ddda-4c2c-ade9-687456e1ff5d"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "10b38e5a-a0a2-4643-b978-0431d3fe12c5",
-            "6be77097-48f0-43b4-96fd-0f6bfa0ed65f",
+            "2a11ce27-df83-479d-afb6-698133d23743",
+            "2f94eff6-ddda-4c2c-ade9-687456e1ff5d",
             [
-                'description' => "AmGgvgI7Yg"
+                'description' => "6sG22LWplDlWahPig9MKERKZGyJip4Qp4t6WiXG"
             ]
         );
         try {
@@ -43,11 +43,11 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "10b38e5a-a0a2-4643-b978-0431d3fe12c5",
-            "6be77097-48f0-43b4-96fd-0f6bfa0ed65f",
+            "2a11ce27-df83-479d-afb6-698133d23743",
+            "2f94eff6-ddda-4c2c-ade9-687456e1ff5d",
             [
-                'amount' => 7044,
-                'description' => "C9RfQiSpTWZrd0hVSBtTuiSKN3fmfJoVUvvyWz4acD4YN5"
+                'amount' => 9436,
+                'description' => "4TxH2FAjMtbi1KGeJyFNO2KrkgbsXcbEbgPoZFbPh9J838rL1gDfq3VsJIZMJTMvIMK26sORVFvF51NUOj8RI7n9XLkQqGxRA"
             ]
         );
         try {
