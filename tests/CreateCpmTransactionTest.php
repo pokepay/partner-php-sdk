@@ -8,9 +8,9 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "v56q9t5VGuIJJqB3hC6IgJ",
-            "0c66feff-24a4-456c-aaf0-9011bc900680",
-            4657
+            "XijHIyMGxrgTxrmP2c2b7A",
+            "87d69bf1-dee4-4740-a13e-b9f1346792fe",
+            8830
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "v56q9t5VGuIJJqB3hC6IgJ",
-            "0c66feff-24a4-456c-aaf0-9011bc900680",
-            4657,
+            "XijHIyMGxrgTxrmP2c2b7A",
+            "87d69bf1-dee4-4740-a13e-b9f1346792fe",
+            8830,
             [
-                'request_id' => "d37ad720-2c07-4f15-b9b8-174b487c8dff"
+                'request_id' => "98764ff2-d829-4e19-99d2-a0bc4399c61b"
             ]
         );
         try {
@@ -45,22 +45,18 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "v56q9t5VGuIJJqB3hC6IgJ",
-            "0c66feff-24a4-456c-aaf0-9011bc900680",
-            4657,
+            "XijHIyMGxrgTxrmP2c2b7A",
+            "87d69bf1-dee4-4740-a13e-b9f1346792fe",
+            8830,
             [
-                'products' => [array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
+                'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "a28b4483-b867-4712-bd66-1f750a8418b4"
+                'request_id' => "9486b2e1-d355-4a21-b474-13f30de0e74e"
             ]
         );
         try {
@@ -76,19 +72,20 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "v56q9t5VGuIJJqB3hC6IgJ",
-            "0c66feff-24a4-456c-aaf0-9011bc900680",
-            4657,
+            "XijHIyMGxrgTxrmP2c2b7A",
+            "87d69bf1-dee4-4740-a13e-b9f1346792fe",
+            8830,
             [
                 'metadata' => "{\"key\":\"value\"}",
-                'products' => [array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
+                'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "8c8de28b-2a57-4bc6-94db-4cb3c4fd330a"
+                'request_id' => "e72f260f-4171-4180-994f-ab11e386d6a2"
             ]
         );
         try {
@@ -104,19 +101,18 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "v56q9t5VGuIJJqB3hC6IgJ",
-            "0c66feff-24a4-456c-aaf0-9011bc900680",
-            4657,
+            "XijHIyMGxrgTxrmP2c2b7A",
+            "87d69bf1-dee4-4740-a13e-b9f1346792fe",
+            8830,
             [
-                'description' => "sPLKGiMRgfz5jiMdvRW63Z9043h9SU3fTD5o4Kn6TQ",
+                'description' => "thYSxSa5qYfKcdpEzIZoGgQ8JT7nM2XSRS8qzeJVaYua2WPHw1UTjf1quigD2l2JnK33Y2PKkmhgdj1RbwEdGA",
                 'metadata' => "{\"key\":\"value\"}",
-                'products' => [array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
-        , array("jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}")
+                'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "3094f193-1dd0-4618-9c73-e6c8375eb67e"
+                'request_id' => "79b3254b-5214-4fa4-a421-056b56a3282e"
             ]
         );
         try {

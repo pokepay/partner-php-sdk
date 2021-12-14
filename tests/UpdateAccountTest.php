@@ -8,7 +8,7 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "8936c521-802a-423a-b8c1-dc97cdd6b2b1"
+            "9dc40517-0dc7-4bbf-a1a3-3d4ef252e312"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,48 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "8936c521-802a-423a-b8c1-dc97cdd6b2b1",
+            "9dc40517-0dc7-4bbf-a1a3-3d4ef252e312",
             [
-                'is_suspended' => FALSE
+                'can_transfer_topup' => FALSE
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testUpdateAccount2()
+    {
+        $client = $this->newClient();
+        $request = new Request\UpdateAccount(
+            "9dc40517-0dc7-4bbf-a1a3-3d4ef252e312",
+            [
+                'status' => "pre-closed",
+                'can_transfer_topup' => FALSE
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testUpdateAccount3()
+    {
+        $client = $this->newClient();
+        $request = new Request\UpdateAccount(
+            "9dc40517-0dc7-4bbf-a1a3-3d4ef252e312",
+            [
+                'is_suspended' => FALSE,
+                'status' => "pre-closed",
+                'can_transfer_topup' => TRUE
             ]
         );
         try {
