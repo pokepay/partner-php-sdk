@@ -19,6 +19,10 @@ class AccountDetail extends Base
      */
     public $isSuspended;
     /**
+     * @var AccountStatus
+     */
+    public $status;
+    /**
      * @var double
      */
     public $balance;

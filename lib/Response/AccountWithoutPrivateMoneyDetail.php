@@ -19,6 +19,10 @@ class AccountWithoutPrivateMoneyDetail extends Base
      */
     public $isSuspended;
     /**
+     * @var AccountStatus
+     */
+    public $status;
+    /**
      * @var string
      */
     public $privateMoneyId;

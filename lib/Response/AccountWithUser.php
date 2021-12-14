@@ -19,6 +19,10 @@ class AccountWithUser extends Base
      */
     public $isSuspended;
     /**
+     * @var AccountStatus
+     */
+    public $status;
+    /**
      * @var PrivateMoney
      */
     public $privateMoney;
