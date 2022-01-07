@@ -8,8 +8,8 @@ class CreateUserAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserAccount(
-            "3ddf7ae4-249c-4940-9c7f-0ca221c90078",
-            "7d84661c-3a21-4b41-ab3b-ded2c1ebc21f"
+            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
+            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateUserAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserAccount(
-            "3ddf7ae4-249c-4940-9c7f-0ca221c90078",
-            "7d84661c-3a21-4b41-ab3b-ded2c1ebc21f",
+            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
+            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
             [
-                'external_id' => "cCtKjz1M2kusM3cVDMOGM"
+                'external_id' => "FBMnn24Y00BddIYIaGsnHTfyj3vGhpYs6lE3PVx"
             ]
         );
         try {
@@ -43,11 +43,11 @@ class CreateUserAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserAccount(
-            "3ddf7ae4-249c-4940-9c7f-0ca221c90078",
-            "7d84661c-3a21-4b41-ab3b-ded2c1ebc21f",
+            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
+            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
             [
-                'name' => "pxWNvKR6Gcp6PWCiNymBaUIu6lQIyVNDYRttS46oTXBYnbHbMuAdnXANiixumuncg7egxc7L05i8jkZ1Waa6h6AAgB9jXehhbgsnyiHZ1n3qwk3r3QhfS",
-                'external_id' => "Ahy6Q6NsE0G4ETHn0hBw4No1Y"
+                'name' => "hCRcEAVa4JmfjoJZ9ajsO39BqxPDSP5BpfA0dYcuMmHpa4aDHWm32hBFhI0DxRhz83lKq4Wp1hKlNvpHM0s7Dd9Uu6qWqC0qUtLag9adxARTcCtKjz1M2kusM3cVDMOGMtpxWNvKR6Gcp6PWCiNymBaUIu6lQIyVNDYRttS46oTXBYnbHbMuAdnXANiixumuncg7egxc7L05i8jkZ1Waa",
+                'external_id' => "h6AAgB9jXehhbgs"
             ]
         );
         try {

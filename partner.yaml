@@ -98,7 +98,7 @@ components:
     AccountStatus:
       x-pokepay-schema-type: "response"
       type: string
-      enum: [active, suspended, pre-closed]
+      enum: [active, suspended, pre-closed, closed]
       title: 'ウォレット状態'
     Account:
       x-pokepay-schema-type: "response"
@@ -178,6 +178,9 @@ components:
         private_money:
           $ref: '#/components/schemas/PrivateMoney'
           title: '設定マネー情報'
+    AccountDeleted:
+      x-pokepay-schema-type: "response"
+      properties: {}
     AccountBalance:
       x-pokepay-schema-type: "response"
       properties:
@@ -636,7 +639,7 @@ components:
           format: date-time
         type:
           type: string
-          enum: [topup, payment, transfer, exchange]
+          enum: [topup, payment, transfer, exchange, cashback]
         is_modified:
           type: boolean
     BulkTransaction:
@@ -724,7 +727,7 @@ components:
           format: date-time
         type:
           type: string
-          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow, campaign-topup, refund-campaign, use-coupon, refund-coupon]
+          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow, campaign-topup, refund-campaign, use-coupon, refund-coupon, cashback]
         description:
           type: string
         transaction_id:
@@ -1303,6 +1306,51 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+        - Customer
+      summary: 'ウォレットを退会する'
+      description: ウォレットを退会します。一度ウォレットを退会した後は、そのウォレットを再び利用可能な状態に戻すことは出来ません。
+      x-pokepay-operator-name: "DeleteAccount"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: 'ウォレットID'
+          description: |-
+            ウォレットIDです。
+
+            指定したウォレットIDのウォレットを退会します。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                cashback:
+                  type: boolean
+                  title: '返金有無'
+                  description: 退会時の返金有無です。エンドユーザに返金を行う場合、真を指定して下さい。現在のマネー残高を全て現金で返金したものとして記録されます。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDeleted'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
   /accounts/{account_id}/balances:
     get:
       tags:
@@ -2113,13 +2161,16 @@ paths:
                        エンドユーザーから店舗への送金取引(支払い)
 
                     3. exchange-outflow
-                    　　他マネーへの流出
+                       他マネーへの流出
 
                     4. exchange-inflow
                        他マネーからの流入
+
+                    5. cashback
+                       退会時返金取引
                   items:
                     type: string
-                    enum: [topup, payment, exchange_outflow, exchange_inflow]
+                    enum: [topup, payment, exchange_outflow, exchange_inflow, cashback]
                 description:
                   type: string
                   maxLength: 200
@@ -3030,6 +3081,8 @@ paths:
                     ポケペイ外部取引作成時に指定され、取引と紐付けられるメタデータです。
 
                     任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSONで指定します。
+                  example: |-
+                    {"key":"value"}
                 products:
                   type: array
                   items:
@@ -3186,7 +3239,7 @@ paths:
                   type: array
                   items:
                     type: string
-                    enum: [topup, payment, transfer, exchange]
+                    enum: [topup, payment, transfer, exchange, cashback]
                 transfer_types:
                   type: array
                   description: |-
@@ -3208,9 +3261,12 @@ paths:
 
                     5. coupon
                     クーポンによる値引き処理、またはそのキャンセル取引
+
+                    6. cashback
+                    退会時の返金取引
                   items:
                     type: string
-                    enum: [topup, payment, exchange, transfer, coupon, campaign]
+                    enum: [topup, payment, exchange, transfer, coupon, campaign, cashback]
                 description:
                   type: string
                   maxLength: 200
@@ -3851,7 +3907,8 @@ paths:
                     フィルターとして使われ、指定された受取ユーザーでの取引のみ一覧に表示されます。
                 type:
                   type: string
-                  title: '取引種別、チャージ=topup、支払い=payment、個人間送金=transfer'
+                  enum: [topup, payment, exchange, transfer, cashback]
+                  title: '取引種別'
                   description: |-
                     取引の種類でフィルターします。
 
@@ -3865,6 +3922,8 @@ paths:
                        他マネーへの流出(outflow)/他マネーからの流入(inflow)
                     4. transfer
                        個人間送金
+                    5. cashback
+                       ウォレット退会時返金
                 is_modified:
                   type: boolean
                   title: 'キャンセル済みかどうか'
