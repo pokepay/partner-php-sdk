@@ -8,7 +8,7 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "e6417027-95a7-45cd-9a6e-9146e838454a"
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "e6417027-95a7-45cd-9a6e-9146e838454a",
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'external_id' => "MuPuu"
+                'external_id' => "eZjSIQORsTn19Lt83IRfp6apsZzw"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "e6417027-95a7-45cd-9a6e-9146e838454a",
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'account_name' => "YDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29",
-                'external_id' => "tqbzIUCtrgI5G"
+                'account_name' => "Ugb2qqrLtRpMZnFJMuPuuYDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtrgI5GH6",
+                'external_id' => "i2f3OojTDEk0fitYgK"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "e6417027-95a7-45cd-9a6e-9146e838454a",
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
                 'status' => "suspended",
-                'account_name' => "6wQi2f3OojTDEk0fitYgKzfXu0N7ZPQ6Ey6Tu3BU56A0DovC2AWlgsj8AO1bqHH9NHpqZwH1t",
-                'external_id' => "pyNDcuWxfr4xKRRC5UPfddKJfLPJmxAhDpkltxfpGBgK"
+                'account_name' => "zfXu0N7ZPQ6Ey6Tu3B",
+                'external_id' => "U56A0DovC2AWlgsj8AO1bqHH9NHpqZwH1tkpyND"
             ]
         );
         try {

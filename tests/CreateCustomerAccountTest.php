@@ -8,7 +8,7 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "7a0e33b6-d787-49e1-ae80-a734f35b6e15"
+            "c2634781-e592-4c94-87e6-1be01b1d99a9"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "7a0e33b6-d787-49e1-ae80-a734f35b6e15",
+            "c2634781-e592-4c94-87e6-1be01b1d99a9",
             [
-                'external_id' => "P1AnQALadFsAzgfKjbt"
+                'external_id' => "LabY2vDzXzQx3sP8V6IT9VFC5bo0KXfPASw8"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "7a0e33b6-d787-49e1-ae80-a734f35b6e15",
+            "c2634781-e592-4c94-87e6-1be01b1d99a9",
             [
-                'account_name' => "uXgZDedIJqTHGgnOhGiwZBj5",
-                'external_id' => "vH"
+                'account_name' => "PQ0hMJ4nPgNJOUuVI3xkUSOX0vTgyFK1FOp7pl9MWii2exAarzlUllrgsQZQAnUYeKIbZQuPYAKNLvTyMcIYlLoYSz5jRHNPv9LO3MtPyt1",
+                'external_id' => "nktL8AYkBvD7caRgncONv"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "7a0e33b6-d787-49e1-ae80-a734f35b6e15",
+            "c2634781-e592-4c94-87e6-1be01b1d99a9",
             [
-                'user_name' => "dO2AtfcLabY2vDzXzQx3sP8V6IT9VFC5bo0KXfPASw8jPQ0hMJ4nPgNJOUuVI3xkUSOX0vTgyFK1FOp7pl9MWii2exAarzlUllrgsQZQAnUYeKIbZQuPYAKNLvTyMcIYlLoYSz5jRHNPv9LO3MtPyt1wTnkt",
-                'account_name' => "8AYkBvD7caRgncONv8Kje2pUTWzADNDe87oiAkJDB6ZsUUsk6umIdkjysmBoCy1Ud1e5PrxfXmPZX1VlVfqebv0ckwSJ4e9e0pY47yGoAwg28Msl4sq96mAewFZHEg2RF0uEHwK5Jbwu9JRSn5a7ymUxn4mfvD7ycun86BZW4IWD5GZy4J15w0ovSrq2HjQnZoVWhOdLDSpe9",
-                'external_id' => "EjTApY38vZyrfHaX2ePxiTIXhf26BicGgC0Q3onqPmyIzF"
+                'user_name' => "8Kje2pUTWzADNDe87oiAkJDB6ZsUUsk6umIdkjysmBoCy1",
+                'account_name' => "d1e5PrxfXmPZX1VlVfqebv0ckwSJ4e9e0pY47yGoAwg28Msl4sq96mAewFZHEg2RF0uEHwK5Jbwu9JRSn5a7ymUxn4mfvD7ycun86BZW4IWD5GZy4J15w0ovSrq2HjQnZoVWhOdLDSpe9mEjTApY38vZyrfHaX2ePxiTIXhf26BicGgC0Q3onqPmyIzFPAF7SEHME8DlS2m5Kv5IbgTWsj",
+                'external_id' => "inGr0IGEeLzU5m"
             ]
         );
         try {
