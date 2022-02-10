@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class CreateExchangeTransaction extends Base
 {
     protected $method = 'POST';
-    public $responseClass = \Pokepay\Response\Transaction::class;
+    public $responseClass = \Pokepay\Response\TransactionDetail::class;
     private $userId;
     private $senderPrivateMoneyId;
     private $receiverPrivateMoneyId;

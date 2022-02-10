@@ -37,6 +37,7 @@ tags:
   - name: Private Money
   - name: Bulk
   - name: Event
+  - name: Campaign
 
 components:
   schemas:
@@ -477,6 +478,9 @@ components:
           type: boolean
           nullable: true
           title: '加盟店によるチャージが有効かどうか'
+        display_money_and_point:
+          type: string
+          enum: [both, money-only, point-only]
     Organization:
       x-pokepay-schema-type: "response"
       properties:
@@ -529,6 +533,51 @@ components:
         description:
           type: string
           title: '取引説明文'
+    TransactionDetail:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: '取引ID'
+        type:
+          type: string
+          title: '取引種別 (チャージ=topup, 支払い=payment)'
+        is_modified:
+          type: boolean
+          title: '返金された取引かどうか'
+        sender:
+          $ref: '#/components/schemas/User'
+          title: '送金者情報'
+        sender_account:
+          $ref: '#/components/schemas/Account'
+          title: '送金ウォレット情報'
+        receiver:
+          $ref: '#/components/schemas/User'
+          title: '受取者情報'
+        receiver_account:
+          $ref: '#/components/schemas/Account'
+          title: '受取ウォレット情報'
+        amount:
+          type: number
+          title: '決済総額 (マネー額 + ポイント額)'
+        money_amount:
+          type: number
+          title: '決済マネー額'
+        point_amount:
+          type: number
+          title: '決済ポイント額'
+        done_at:
+          type: string
+          format: date-time
+          title: '取引日時'
+        description:
+          type: string
+          title: '取引説明文'
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transfer'
     ShopWithMetadata:
       x-pokepay-schema-type: "response"
       properties:
@@ -639,7 +688,7 @@ components:
           format: date-time
         type:
           type: string
-          enum: [topup, payment, transfer, exchange, cashback]
+          enum: [topup, payment, transfer, exchange, cashback, expire]
         is_modified:
           type: boolean
     BulkTransaction:
@@ -727,7 +776,7 @@ components:
           format: date-time
         type:
           type: string
-          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow, campaign-topup, refund-campaign, use-coupon, refund-coupon, cashback]
+          enum: [topup, payment, refund-topup, refund-payment, transfer, exchange-inflow, exchange-outflow, campaign-topup, refund-campaign, use-coupon, refund-coupon, cashback, expire]
         description:
           type: string
         transaction_id:
@@ -934,7 +983,68 @@ components:
           minimum: 0
         pagination:
           $ref: '#/components/schemas/Pagination'
-
+    Campaign:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: 'キャンペーンID'
+        name:
+          type: string
+          maxLength: 256
+          title: 'キャペーン名'
+        applicable_shops:
+          type: array
+          title: 'キャンペーン適用対象の店舗リスト'
+          nullable: true
+          items:
+            $ref: '#/components/schemas/User'
+        is_exclusive:
+          type: boolean
+          title: 'キャンペーンの重複を許すかどうかのフラグ'
+        starts_at:
+          type: string
+          format: date-time
+          title: 'キャンペーン開始日時'
+        ends_at:
+          type: string
+          format: date-time
+          title: 'キャンペーン終了日時'
+        point_expires_at:
+          type: string
+          format: date-time
+          title: 'キャンペーンによって付与されるポイントの失効日時'
+          nullable: true
+        point_expires_in_days:
+          type: integer
+          minimum: 1
+          title: 'キャンペーンによって付与されるポイントの有効期限(相対指定、単位は日)'
+          nullable: true
+        priority:
+          type: integer
+          title: 'キャンペーンの優先順位'
+        description:
+          type: string
+          maxLength: 200
+          title: 'キャンペーン説明文'
+        bear_point_shop:
+          title: 'ポイントを負担する店舗'
+          $ref: '#/components/schemas/User'
+        private_money:
+          title: 'キャンペーンを適用するマネー'
+          $ref: '#/components/schemas/PrivateMoney'
+        point_calculation_rule:
+          type: string
+          title: 'ポイント計算ルール (banklisp表記)'
+        point_calculation_rule_object:
+          type: string
+          format: json
+          title: 'ポイント計算ルール (JSON文字列による表記)'
+        status:
+          type: string
+          enum: [enabled, disabled]
+          title: 'キャンペーンの現在の状態'
     BadRequest:
       x-pokepay-schema-type: "response"
       oneOf:
@@ -1299,7 +1409,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountDetail'
+                $ref: '#/components/schemas/Account'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -1938,6 +2048,7 @@ paths:
         - Check
       summary: 'チャージQRコードの発行'
       x-pokepay-operator-name: "CreateCheck"
+      x-pokepay-allow-server-side: true
       requestBody:
         required: true
         content:
@@ -2168,9 +2279,12 @@ paths:
 
                     5. cashback
                        退会時返金取引
+
+                    6. expire
+                       退会時失効取引
                   items:
                     type: string
-                    enum: [topup, payment, exchange_outflow, exchange_inflow, cashback]
+                    enum: [topup, payment, exchange_outflow, exchange_inflow, cashback, expire]
                 description:
                   type: string
                   maxLength: 200
@@ -2238,7 +2352,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -2300,6 +2414,7 @@ paths:
                     マネー額です。
 
                     送金するマネー額を指定します。
+                    デフォルト値は0で、money_amountとpoint_amountの両方が0のときにはinvalid_parameter_both_point_and_money_are_zero(エラーコード400)が返ります。
                 point_amount:
                   type: integer
                   minimum: 0
@@ -2308,6 +2423,7 @@ paths:
                     ポイント額です。
 
                     送金するポイント額を指定します。
+                    デフォルト値は0で、money_amountとpoint_amountの両方が0のときにはinvalid_parameter_both_point_and_money_are_zero(エラーコード400)が返ります。
                 point_expires_at:
                   type: string
                   format: date-time
@@ -2351,7 +2467,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -2398,7 +2514,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -2532,7 +2648,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -2656,7 +2772,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
               examples:
                 example-1:
                   value:
@@ -2805,7 +2921,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -2856,7 +2972,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '400':
           $ref: '#/components/responses/BadRequest'
         '422':
@@ -2960,7 +3076,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '400':
           $ref: '#/components/responses/InvalidParameters'
         '403':
@@ -3007,7 +3123,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/TransactionDetail'
         '403':
           $ref: '#/components/responses/Forbidden'
         '422':
@@ -3239,7 +3355,7 @@ paths:
                   type: array
                   items:
                     type: string
-                    enum: [topup, payment, transfer, exchange, cashback]
+                    enum: [topup, payment, transfer, exchange, cashback, expire]
                 transfer_types:
                   type: array
                   description: |-
@@ -3264,9 +3380,12 @@ paths:
 
                     6. cashback
                     退会時の返金取引
+
+                    7. expire
+                    退会時失効取引
                   items:
                     type: string
-                    enum: [topup, payment, exchange, transfer, coupon, campaign, cashback]
+                    enum: [topup, payment, exchange, transfer, coupon, campaign, cashback, expire]
                 description:
                   type: string
                   maxLength: 200
@@ -3907,7 +4026,7 @@ paths:
                     フィルターとして使われ、指定された受取ユーザーでの取引のみ一覧に表示されます。
                 type:
                   type: string
-                  enum: [topup, payment, exchange, transfer, cashback]
+                  enum: [topup, payment, exchange, transfer, cashback, expire]
                   title: '取引種別'
                   description: |-
                     取引の種類でフィルターします。
@@ -3924,6 +4043,8 @@ paths:
                        個人間送金
                     5. cashback
                        ウォレット退会時返金
+                    6. expire
+                       ウォレット退会時失効
                 is_modified:
                   type: boolean
                   title: 'キャンセル済みかどうか'
@@ -4250,5 +4371,411 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /campaigns:
+    post:
+      tags:
+        - Campaign
+      summary: 'ポイント付与キャンペーンを作る'
+      description: |
+        ポイント付与キャンペーンを作成します。
+      x-pokepay-operator-name: "CreateCampaign"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["name", "private_money_id", "starts_at", "ends_at","priority", "event"]
+              properties:
+                name:
+                  title: 'キャンペーン名'
+                  type: string
+                  maxLength: 256
+                  description: |-
+                    キャンペーン名です(必須項目)。
+
+                    ポイント付与によってできるチャージ取引の説明文に転記されます。取引説明文はエンドユーザーからも確認できます。
+                private_money_id:
+                  type: string
+                  format: uuid
+                  title: 'マネーID'
+                  description: |-
+                    キャンペーン対象のマネーのIDです(必須項目)。
+                starts_at:
+                  type: string
+                  format: date-time
+                  title: 'キャンペーン開始日時'
+                  description: |-
+                    キャンペーン開始日時です(必須項目)。
+                    キャンペーン期間中のみポイントが付与されます。
+                    開始日時よりも終了日時が前のときはcampaign_invalid_periodエラー(422)になります。
+                ends_at:
+                  type: string
+                  format: date-time
+                  title: 'キャンペーン終了日時'
+                  description: |-
+                    キャンペーン終了日時です(必須項目)。
+                    キャンペーン期間中のみポイントが付与されます。
+                    開始日時よりも終了日時が前のときはcampaign_invalid_periodエラー(422)になります。
+                priority:
+                  type: integer
+                  title: 'キャンペーンの適用優先度'
+                  description: |-
+                    キャンペーンの適用優先度です。
+
+                    優先度が大きいものから順に適用判定されていきます。
+                    キャンペーン期間が重なっている同一の優先度のキャンペーンが存在するとcampaign_period_overlapsエラー(422)になります。
+                event:
+                  type: string
+                  enum: [topup, payment, external-transaction]
+                  title: 'イベント種別'
+                  description: |-
+                    キャンペーンのトリガーとなるイベントの種類を指定します(必須項目)。
+
+                    以下のいずれかを指定できます。
+
+                    1. topup
+                       店舗からエンドユーザーへの送金取引(チャージ)
+                    2. payment
+                       エンドユーザーから店舗への送金取引(支払い)
+                    3. external-transaction
+                       ポケペイ外の取引(現金決済など)
+                bear_point_shop_id:
+                  type: string
+                  format: uuid
+                  title: 'ポイント負担先店舗ID'
+                  description: |-
+                    ポイントを負担する店舗のIDです。デフォルトではマネー発行体の本店が設定されます。
+                description:
+                  type: string
+                  maxLength: 200
+                  title: 'キャンペーンの説明文'
+                  description:  |-
+                    キャンペーンの内容を記載します。管理画面などでキャンペーンを管理するための説明文になります。
+                status:
+                  type: string
+                  enum: [enabled, disabled]
+                  title: 'キャンペーン作成時の状態'
+                  description: |-
+                    キャンペーン作成時の状態を指定します。デフォルトではenabledです。
+
+                    以下のいずれかを指定できます。
+
+                    1. enabled
+                       有効
+                    2. disabled
+                       無効
+                point_expires_at:
+                  type: string
+                  format: date-time
+                  title: 'ポイント有効期限(絶対日時指定)'
+                  description: |-
+                    キャンペーンによって付与されるポイントの有効期限を絶対日時で指定します。
+                    省略した場合はマネーに設定された有効期限と同じものがポイントの有効期限となります。
+                point_expires_in_days:
+                  type: integer
+                  minimum: 1
+                  title: 'ポイント有効期限(相対日数指定)'
+                  description: |-
+                    キャンペーンによって付与されるポイントの有効期限を相対日数で指定します。
+                    省略した場合はマネーに設定された有効期限と同じものがポイントの有効期限となります。
+                is_exclusive:
+                  type: boolean
+                  title: 'キャンペーンの重複設定'
+                  description: |-
+                    キャンペーンの重ね掛けを行うかどうかのフラグです。
+
+                    これにtrueを指定すると他のキャンペーンと同時適用されません。デフォルト値はtrueです。
+                    falseを指定すると次の優先度の重ね掛け可能なキャンペーンの適用判定に進みます。
+                subject:
+                  type: string
+                  enum: [money, all]
+                  title: 'ポイント付与の対象金額の種別'
+                  description: |-
+                    ポイント付与額を計算する対象となる金額の種類を指定します。デフォルト値はallです。
+                    eventとしてexternal-transactionを指定した場合はポイントとマネーの区別がないためsubjectの指定に関わらず常にallとなります。
+
+                    以下のいずれかを指定できます。
+
+                    1. money
+                    moneyを指定すると決済額の中で「マネー」を使って支払った額を対象にします
+
+                    2. all
+                    all を指定すると決済額全体を対象にします (「ポイント」での取引額を含む)
+                    注意: event を topup にしたときはポイントの付与に対しても適用されます
+                amount_based_point_rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      point_amount:
+                        type: number
+                        format: decimal
+                        minimum: 0
+                        title: '付与ポイント量'
+                        description: |-
+                          キャンペーンにより付与するポイント量。(必須項目)
+
+                          point_amount_unitにより指定される単位が絶対額のときは小数点以下が切り捨てられ整数として扱われます。
+                          パーセント指定の時は小数を許容し、割合計算後に小数点以下が切り捨てられます。
+                          いずれの場合も実際に付与されるポイントは整数のみです。
+                      point_amount_unit:
+                        type: string
+                        enum: [percent, absolute]
+                        title: '付与ポイント量の単位'
+                        description: |-
+                          キャンペーンにより付与するポイント量の単位を指定します。(必須項目)
+
+                          以下のいずれかを指定できます。
+
+                          1. percent
+                          付与するポイント量が元取引の取引額に応じて割合で変化するときに指定します。
+
+                          2. absolute
+                          付与するポイント量が元取引の取引額に依存しない絶対額であるときに指定します。
+                      subject_more_than:
+                        type: integer
+                        minimum: 0
+                        title: '対象金額の下限値 (x <)'
+                        description: |-
+                          対象金額の下限値 (x <) を指定します (ただし、指定された金額は含まない)。
+                          subject_more_than_or_equal といずれかのみ指定できます。
+                      subject_more_than_or_equal:
+                        type: integer
+                        minimum: 0
+                        title: '対象金額の下限値 (x <=)'
+                        description: |-
+                          対象金額の下限値 (x <=) を指定します。
+                          subject_more_than といずれかのみ指定できます。
+                      subject_less_than:
+                        type: integer
+                        minimum: 0
+                        title: '対象金額の上限値 (< x)'
+                        description: |-
+                          対象金額の上限値 (< x) を指定します (ただし、指定された金額は含まない)。
+                          subject_less_than_or_equal といずれかのみ指定できます。
+                      subject_less_than_or_equal:
+                        type: integer
+                        minimum: 0
+                        title: '対象金額の上限値 (<= x)'
+                        description: |-
+                          対象金額の上限値 (<= x) を指定します。
+                          subject_less_than といずれかのみ指定できます。
+                    example: |-
+                      {
+                        "point_amount": 5,
+                        "point_amount_unit": "percent",
+                        "subject_more_than_or_equal": 1000,
+                        "subject_less_than": 5000
+                      }
+
+                  title: '取引金額ベースのポイント付与ルール'
+                  description:  |-
+                    金額をベースとしてポイント付与を行うルールを指定します。
+                    amount_based_point_rules と product_based_point_rules はどちらか一方しか指定できません。
+                    各ルールは一つのみ適用され、条件に重複があった場合は先に記載されたものが優先されます。
+
+                    例:
+                    ```javascript
+                    [
+                      // 1000円以上、5000円未満の決済には 5％
+                      {
+                        "point_amount": 5,
+                        "point_amount_unit": "percent",
+                        "subject_more_than_or_equal": 1000,
+                        "subject_less_than": 5000
+                      },
+                      // 5000円以上の決済には 10%
+                      {
+                        "point_amount": 10,
+                        "point_amount_unit": "percent",
+                        "subject_more_than_or_equal": 5000
+                      },
+                    ]
+                    ```
+
+                product_based_point_rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      point_amount:
+                        type: number
+                        format: decimal
+                        minimum: 0
+                        title: '付与ポイント量'
+                        description: |-
+                          キャンペーンにより付与するポイント量。単位は point_amount_unit で指定します。(必須項目)
+
+                          point_amount_unitにより指定される単位が絶対額のときは小数点以下が切り捨てられ整数として扱われます。
+                          パーセント指定の時は小数を許容し、割合計算後に小数点以下が切り捨てられます。
+                          いずれの場合も実際に付与されるポイントは整数のみです。
+                      point_amount_unit:
+                        type: string
+                        enum: [percent, absolute]
+                        title: '付与ポイント量の単位'
+                        description: |-
+                          キャンペーンにより付与するポイント量の単位を指定します。(必須項目)
+
+                          以下のいずれかを指定できます。
+
+                          1. percent
+                          付与するポイント量が元取引の取引額に応じて割合で変化するときに指定します。
+
+                          2. absolute
+                          付与するポイント量が元取引の取引額に依存しない絶対額であるときに指定します。
+                      product_code:
+                        type: string
+                        maxLength: 64
+                        title: '対象の製品コード'
+                        description: |-
+                          対象の製品コード (JANコードやISBNコードなど) を指定します。(必須項目)
+
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (例: 978-% でISBNコード)
+                        items:
+                          type: string
+                      required_count:
+                        type: integer
+                        minimum: 1
+                        title: '必要購入個数'
+                        description: |-
+                          キャンペーン適用のための対象商品の必要購入個数を指定します (例:商品Aを2個以上購入するとn%ポイント)。
+                          デフォルト値は1です。
+                      is_multiply_by_count:
+                        type: boolean
+                        title: '複数個購入したときにポイント付与額に個数を掛けるかどうか'
+                        description: |-
+                          キャンペーン対象の商品を複数個購入したときに、個数に応じてポイント付与額を増やすかどうかのフラグです。
+                          デフォルト値は false です。
+                      starts_at:
+                        type: string
+                        format: date-time
+                        title: '商品個別のキャンペーン開始日時'
+                        description: |-
+                          このルールを適用する開始日時を指定します。
+                          デフォルトではキャンペーン全体の開始日時が指定されます。
+                          商品個別にキャンペーン期間指定をする場合は、キャンペーン全体の期間指定の範囲内に入っている必要があります。
+                      ends_at:
+                        type: string
+                        format: date-time
+                        title: '商品個別のキャンペーン終了日時'
+                        description: |-
+                          このルールを適用する終了日時を指定します。
+                          デフォルトではキャンペーン全体の終了日時が指定されます。
+                          商品個別にキャンペーン期間指定をする場合は、キャンペーン全体の期間指定の範囲内に入っている必要があります。
+                    example: |-
+                      {
+                        "point_amount": 5,
+                        "point_amount_unit": "percent",
+                        "product_code": "4912345678904",
+                        "is_multiply_by_count": true,
+                        "required_count": 2
+                      }
+
+                  title: '商品情報ベースのポイント付与ルール'
+                  description:  |-
+                    商品情報をベースとしてポイント付与を行うルールを指定します。
+                    ルールは商品ごとに設定可能で、ルールの配列として指定します。
+                    amount_based_point_rules と product_based_point_rules はどちらか一方しか指定できません。
+                    event が payment か external-transaction の時のみ有効です。
+                    各ルールの順序は問わず、適用可能なものは全て適用されます。
+                    一つの決済の中で複数の商品がキャンペーン適用可能な場合はそれぞれの商品についてのルールが適用され、ポイント付与額はその合算になります。
+
+                    例:
+                    ```javascript
+                    [
+                      // 対象商品の購入額から5%ポイント付与。複数購入時は単価の5%が付与される。
+                      {
+                        "point_amount": 5,
+                        "point_amount_unit": "percent",
+                        "product_code": "4912345678904",
+                      },
+                      // 対象商品の購入額から5%ポイント付与。複数購入時は購入総額の5%が付与される。
+                      {
+                        "point_amount": 5,
+                        "point_amount_unit": "percent",
+                        "product_code": "4912345678904",
+                        "is_multiply_by_count": true,
+                      },
+                      // 対象商品を2つ以上購入したら500ポイント付与(固定額付与)
+                      {
+                        "point_amount": 500,
+                        "point_amount_unit": absolute",
+                        "product_code": "4912345678904",
+                        "required_count": 2
+                      },
+                      // 書籍は10%ポイント付与
+                      // ※ISBNの形式はレジがポケペイに送信する形式に準じます
+                      {
+                        "point_amount": 10,
+                        "point_amount_unit": "percent",
+                        "product_code": "978-%",
+                      },
+                      // 一部の出版社の書籍は10%ポイント付与
+                      {
+                        "point_amount": 10,
+                        "point_amount_unit": "percent",
+                        "product_code": "978-4-01-%", // 旺文社
+                      }
+                    ]
+                    ```
+
+                applicable_days_of_week:
+                  type: array
+                  items:
+                    type: integer
+                    minimun: 0
+                    maximum: 6
+                  title: 'キャンペーンを適用する曜日 (複数指定)'
+                  describe: |-
+                    キャンペーンを適用する曜日を指定します (複数指定)。
+                    曜日は整数で表します。月曜を 0 とし、日曜を 6 とします。
+                    指定しなかった場合は全日を対象にします (曜日による適用条件なし)
+                applicable_time_ranges:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      from:
+                        type: string
+                        description: |-
+                          時間帯の開始時刻 (HH:mmの形式)
+                      to:
+                        type: string
+                        description: |-
+                          時間帯の終了時刻 (HH:mmの形式)
+                    example: |-
+                      {
+                        "from": "12:00",
+                        "to": "23:59"
+                      }
+
+                  title: 'キャンペーンを適用する時間帯 (複数指定)'
+                  describe: |-
+                    キャンペーンを適用する時間帯を指定します (複数指定可)。
+                    時間帯はfromとtoからなるオブジェクトで指定します。
+                    fromとtoは両方必要です。
+                applicable_shop_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                  title: 'キャンペーン適用対象となる店舗IDのリスト'
+                  describe: |-
+                    キャンペーンを適用する店舗IDを指定します (複数指定)。
+                    指定しなかった場合は全店舗が対象になります。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'

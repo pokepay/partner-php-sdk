@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class GetTransaction extends Base
 {
     protected $method = 'GET';
-    public $responseClass = \Pokepay\Response\Transaction::class;
+    public $responseClass = \Pokepay\Response\TransactionDetail::class;
     private $transactionId;
     public function __construct($transactionId)
     {

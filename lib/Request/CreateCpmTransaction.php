@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class CreateCpmTransaction extends Base
 {
     protected $method = 'POST';
-    public $responseClass = \Pokepay\Response\Transaction::class;
+    public $responseClass = \Pokepay\Response\TransactionDetail::class;
     private $cpmToken;
     private $shopId;
     private $amount;

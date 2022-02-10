@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class UpdateAccount extends Base
 {
     protected $method = 'PATCH';
-    public $responseClass = \Pokepay\Response\AccountDetail::class;
+    public $responseClass = \Pokepay\Response\Account::class;
     private $accountId;
     public function __construct($accountId, $optionalParams = array())
     {
