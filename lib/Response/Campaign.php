@@ -16,7 +16,7 @@ class Campaign extends Base
      */
     public $name;
     /**
-     * @var User[]
+     * @var User[]|null
      */
     public $applicableShops;
     /**
