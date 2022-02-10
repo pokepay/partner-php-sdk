@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "48edf62e-d67e-41b2-a800-d3646fd5f78d"
+            "92eb1935-f558-41f0-ae52-8975ae9d805d"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "48edf62e-d67e-41b2-a800-d3646fd5f78d",
+            "92eb1935-f558-41f0-ae52-8975ae9d805d",
             [
-                'expires_in' => 3659
+                'expires_in' => 7158
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "48edf62e-d67e-41b2-a800-d3646fd5f78d",
+            "92eb1935-f558-41f0-ae52-8975ae9d805d",
             [
-                'description' => "Ws83eoAqvgg01zZW75gRDgWRTNwobRsB1baR1aePdc9fGHLcwyelAg5Jr7zEeO7nUDqxXj74j643AIOVakyq8QHWKNric3MBQYWsKtvnxoQJLloM94TQVFchkaVLnKXq1JcpZfZUH2UsKCxnRcuSoLNAly4QR5kzfucn7LZFZwhy5RIJ",
-                'expires_in' => 6789
+                'description' => "9q3NykiRPYO2oQiAYMcKkXBWEu4RSjxgCW3jFlgob7yobgqdqFleVhpCe",
+                'expires_in' => 3756
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "48edf62e-d67e-41b2-a800-d3646fd5f78d",
+            "92eb1935-f558-41f0-ae52-8975ae9d805d",
             [
-                'amount' => 815,
-                'description' => "bFSZ2qU3L9frpqlrETgz3O9wlyQ0TWfR4Gx21zM7WIQGDsPsJyAShBlCJPjtVj6RA58jW2j8noWbhryHKQAP2bBeZkmIh2UeN7Z047tEp9MnaMKkPTTOh4KlFXKgtixsqVTYrrSHZ1a0tz4EzkuhUCHWp85qyAYWUJWst1yIlHOt0XiM6Qkur8SbZd3wcuCe",
-                'expires_in' => 3071
+                'amount' => 7943,
+                'description' => "dmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQ",
+                'expires_in' => 4391
             ]
         );
         try {

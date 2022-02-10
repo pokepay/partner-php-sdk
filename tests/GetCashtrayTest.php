@@ -8,7 +8,7 @@ class GetCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCashtray(
-            "de9d1086-b524-4ef9-948a-952bd31a390a"
+            "18d8bc57-f605-4db8-ba59-b5bbcb4581aa"
         );
         try {
             $response = $client->send($request);

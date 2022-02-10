@@ -8,7 +8,7 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
-            "33400855-ca51-4bfb-bac9-8326f57f9f02"
+            "954a1a42-bb02-42b8-afac-d208cd431c96"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
-            "33400855-ca51-4bfb-bac9-8326f57f9f02",
+            "954a1a42-bb02-42b8-afac-d208cd431c96",
             [
-                'page' => 659
+                'page' => 5073
             ]
         );
         try {
@@ -41,10 +41,10 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
-            "33400855-ca51-4bfb-bac9-8326f57f9f02",
+            "954a1a42-bb02-42b8-afac-d208cd431c96",
             [
-                'per_page' => 3135,
-                'page' => 5528
+                'per_page' => 4363,
+                'page' => 2476
             ]
         );
         try {
@@ -60,10 +60,10 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
-            "33400855-ca51-4bfb-bac9-8326f57f9f02",
+            "954a1a42-bb02-42b8-afac-d208cd431c96",
             [
-                'from' => "2020-03-30T09:38:19.000000+09:00",
-                'to' => "2020-03-05T03:13:44.000000+09:00"
+                'from' => "2016-08-21T21:18:35.000000+09:00",
+                'to' => "2019-08-30T00:03:15.000000+09:00"
             ]
         );
         try {
@@ -79,11 +79,11 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
-            "33400855-ca51-4bfb-bac9-8326f57f9f02",
+            "954a1a42-bb02-42b8-afac-d208cd431c96",
             [
-                'from' => "2023-09-02T03:16:30.000000+09:00",
-                'to' => "2018-07-03T09:40:57.000000+09:00",
-                'page' => 231
+                'from' => "2023-05-30T01:51:45.000000+09:00",
+                'to' => "2023-12-15T23:05:37.000000+09:00",
+                'page' => 4101
             ]
         );
         try {
@@ -99,12 +99,12 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
-            "33400855-ca51-4bfb-bac9-8326f57f9f02",
+            "954a1a42-bb02-42b8-afac-d208cd431c96",
             [
-                'from' => "2024-05-22T21:02:51.000000+09:00",
-                'to' => "2019-01-23T00:43:06.000000+09:00",
-                'per_page' => 8969,
-                'page' => 7584
+                'from' => "2017-11-22T08:31:47.000000+09:00",
+                'to' => "2016-07-30T11:00:48.000000+09:00",
+                'per_page' => 6246,
+                'page' => 2212
             ]
         );
         try {

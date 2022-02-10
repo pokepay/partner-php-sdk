@@ -8,7 +8,7 @@ use DateTime;
 class CreateTransaction extends Base
 {
     protected $method = 'POST';
-    public $responseClass = \Pokepay\Response\Transaction::class;
+    public $responseClass = \Pokepay\Response\TransactionDetail::class;
     private $shopId;
     private $customerId;
     private $privateMoneyId;
