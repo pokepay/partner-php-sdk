@@ -4,28 +4,28 @@
 namespace Pokepay\Request;
 
 
-class UpdateAccount extends Base
+class ListCampaigns extends PagingBase
 {
-    protected $method = 'PATCH';
-    public $responseClass = \Pokepay\Response\AccountDetail::class;
-    private $accountId;
-    public function __construct($accountId, $optionalParams = array())
+    protected $method = 'GET';
+    public $responseClass = \Pokepay\Response\PaginatedCampaigns::class;
+    private $privateMoneyId;
+    public function __construct($privateMoneyId, $optionalParams = array())
     {
         parent::__construct();
-        $this->accountId = $accountId;
+        $this->privateMoneyId = $privateMoneyId;
 
         $this->optionalParams = $optionalParams;
     }
 
     public function getPath()
     {
-        return '/accounts' . '/' . $this->accountId;
+        return '/campaigns';
     }
 
     public function getParams()
     {
         $params = array(
-            
+            'private_money_id' => $this->privateMoneyId,
         );
 
         $params += $this->optionalParams;
