@@ -117,6 +117,7 @@ $request->setCallId($newCallId);
 - [GetCpmToken](#get-cpm-token): CPMトークンの状態取得
 - [ListTransactions](#list-transactions): 取引履歴を取得する
 - [CreateTransaction](#create-transaction): チャージする(廃止予定)
+- [ListTransactionsV2](#list-transactions-v2): 取引履歴を取得する
 - [CreateTopupTransaction](#create-topup-transaction): チャージする
 - [CreatePaymentTransaction](#create-payment-transaction): 支払いする
 - [CreateCpmTransaction](#create-cpm-transaction): CPMトークンによる取引作成
@@ -166,7 +167,7 @@ $request->setCallId($newCallId);
 CPMトークンの現在の状態を取得します。CPMトークンの有効期限やCPM取引の状態を返します。
 ```php
 $request = new Request\GetCpmToken(
-    "vZBp0zzwPN5DIhcy9tg03X"                      // cpmToken: CPMトークン
+    "Um4FbQucsmz0GYwY85K8kF"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -189,8 +190,8 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 ```php
 $request = new Request\ListTransactions(
     [
-        'from' => "2016-09-22T18:12:21.000000+09:00", // 開始日時
-        'to' => "2025-03-02T04:07:25.000000+09:00", // 終了日時
+        'from' => "2017-07-12T17:24:31.000000+09:00", // 開始日時
+        'to' => "2019-03-04T10:14:11.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
@@ -406,10 +407,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 523,
-        'point_amount' => 6613,
-        'point_expires_at' => "2020-04-04T23:50:34.000000+09:00", // ポイント有効期限
-        'description' => "sKl9fYJxmaO84WKiqpzyFwc0O5qDH6cAdyVZn4o55A5DSTN7FZ8Y8t8MIK7GdyM50XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNhhqnfBQjVsClPPd45bUBovESo5O7DwwlNZPFf6xG0YeVkLQLhc7"
+        'money_amount' => 5528,
+        'point_amount' => 9487,
+        'point_expires_at' => "2019-07-01T17:11:09.000000+09:00", // ポイント有効期限
+        'description' => "CZ7wQECuEigH9T54l9EXWThBhNBtq0Hlr5VUDcRjPWhcWE5Ed0Dp6qm5enNIYlp4WuULLQB"
     ]
 );
 ```
@@ -427,6 +428,231 @@ $request = new Request\CreateTransaction(
 
 ---
 成功したときは[TransactionDetail](#transaction-detail)オブジェクトを返します
+<a name="list-transactions-v2"></a>
+#### 取引履歴を取得する
+取引一覧を返します。
+```php
+$request = new Request\ListTransactionsV2(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
+    [
+        'organization_code' => "pocketchange",    // 組織コード
+        'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
+        'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
+        'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
+        'customer_name' => "太郎",                  // エンドユーザー名
+        'description' => "店頭QRコードによる支払い",         // 取引説明文
+        'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
+        'is_modified' => TRUE,                    // キャンセルフラグ
+        'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+        'from' => "2016-11-08T22:40:44.000000+09:00", // 開始日時
+        'to' => "2019-05-19T07:06:14.000000+09:00", // 終了日時
+        'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次のページへ遷移する際に起点となるtransactionのuuid
+        'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前のページへ遷移する際に起点となるtransactionのuuid
+        'per_page' => 50                          // 1ページ分の取引数
+    ]
+);
+```
+
+---
+`private_money_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+マネーIDです。
+
+指定したマネーでの取引が一覧に表示されます。
+
+---
+`organization_code`  
+```json
+{
+  "type": "string",
+  "maxLength": 32,
+  "pattern": "^[a-zA-Z0-9-]*$"
+}
+```
+組織コードです。
+
+フィルターとして使われ、指定された組織での取引のみ一覧に表示されます。
+
+---
+`shop_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+店舗IDです。
+
+フィルターとして使われ、指定された店舗での取引のみ一覧に表示されます。
+
+---
+`terminal_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+端末IDです。
+
+フィルターとして使われ、指定された端末での取引のみ一覧に表示されます。
+
+---
+`customer_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+エンドユーザーIDです。
+
+フィルターとして使われ、指定されたエンドユーザーでの取引のみ一覧に表示されます。
+
+---
+`customer_name`  
+```json
+{
+  "type": "string",
+  "maxLength": 256
+}
+```
+エンドユーザー名です。
+
+フィルターとして使われ、入力された名前に部分一致するエンドユーザーでの取引のみ一覧に表示されます。
+
+---
+`description`  
+```json
+{
+  "type": "string",
+  "maxLength": 200
+}
+```
+取引を指定の取引説明文でフィルターします。
+
+取引説明文が完全一致する取引のみ抽出されます。取引説明文は最大200文字で記録されています。
+
+---
+`transaction_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+取引IDです。
+
+フィルターとして使われ、指定された取引のみ一覧に表示されます。
+
+---
+`is_modified`  
+```json
+{ "type": "boolean" }
+```
+キャンセルフラグです。
+
+これにtrueを指定するとキャンセルされた取引のみ一覧に表示されます。
+デフォルト値はfalseで、キャンセルの有無にかかわらず一覧に表示されます。
+
+---
+`types`  
+```json
+{
+  "type": "array",
+  "items": {
+    "type": "string",
+    "enum": [ "topup", "payment", "exchange_outflow", "exchange_inflow", "cashback" ]
+  }
+}
+```
+取引の種類でフィルターします。
+
+以下の種類を指定できます。
+
+1. topup
+   店舗からエンドユーザーへの送金取引(チャージ)
+
+2. payment
+   エンドユーザーから店舗への送金取引(支払い)
+
+3. exchange-outflow
+   他マネーへの流出
+
+4. exchange-inflow
+   他マネーからの流入
+
+5. cashback
+   退会時返金取引
+
+---
+`from`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+抽出期間の開始日時です。
+
+フィルターとして使われ、開始日時以降に発生した取引のみ一覧に表示されます。
+
+---
+`to`  
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+抽出期間の終了日時です。
+
+フィルターとして使われ、終了日時以前に発生した取引のみ一覧に表示されます。
+
+---
+`next_page_cursor_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+次のページへ遷移する際に起点となるtransactionのuuid(前のページの末尾の要素のuuid)です。
+
+prev_page_cursor_idのtransaction自体は次のページには含まれない。
+
+---
+`prev_page_cursor_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+前のページへ遷移する際に起点となるtransactionのuuid(次のページの先頭の要素のuuid)です。
+
+next_page_cursor_idのtransaction自体は前のページには含まれない。
+
+---
+`per_page`  
+```json
+{
+  "type": "integer",
+  "minimum": 1,
+  "maximum": 100
+}
+```
+1ページ分の取引数です。
+
+デフォルト値は50です。
+
+---
+成功したときは[PaginatedTransactionV2](#paginated-transaction-v2)オブジェクトを返します
 <a name="create-topup-transaction"></a>
 #### チャージする
 チャージ取引を作成します。
@@ -437,9 +663,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 799,                    // マネー額
-        'point_amount' => 2402,                   // ポイント額
-        'point_expires_at' => "2017-04-06T23:00:04.000000+09:00", // ポイント有効期限
+        'money_amount' => 9084,                   // マネー額
+        'point_amount' => 3977,                   // ポイント額
+        'point_expires_at' => "2021-03-31T21:26:08.000000+09:00", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -582,7 +808,7 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    4275,                                         // amount: 支払い額
+    9338,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
@@ -708,9 +934,9 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```php
 $request = new Request\CreateCpmTransaction(
-    "B8S8pH3eqOx8cOR3TFR9a8",                     // cpmToken: CPMトークン
+    "ZG357PPnWlMQlOO65IFrI1",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    9320,                                         // amount: 取引金額
+    1035,                                         // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
@@ -824,7 +1050,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    4693,                                         // amount: 送金額
+    6474,                                         // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -928,9 +1154,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    914,
+    4523,
     [
-        'description' => "Mtt7RdIKeKSciqwdkkgvqZQpEwqxxIpXTryBWY7YmTtJYjps5n0FjmTFvO6PZjVX87PLzR29oTCv16fPXjhVlLpKgtr0aXml0I8A7sPYx7KWs9GrfkcGFxlkTYjYgPlxnzpf9XcHDiw8sqMTw9",
+        'description' => "iWPv5dAbUBWta68v79KNgsodWT1kP64chZLEzZTeXAsCUOeSILicKJugPMhkbNW44x5lpizelx6Zw3ANkreMSnigb4Yb3t6kmvyhjD7Y1lgzqIh5MLpUpAeuRnJqWXlTPA3BNnPJo0CH10GQb96Jzcef7f3He1f0QYEkgJnc",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -998,19 +1224,19 @@ $request = new Request\RefundTransaction(
 ```php
 $request = new Request\ListTransfers(
     [
-        'from' => "2016-06-18T01:29:16.000000+09:00",
-        'to' => "2016-05-25T19:38:19.000000+09:00",
-        'page' => 5128,
-        'per_page' => 8435,
+        'from' => "2019-05-09T09:42:55.000000+09:00",
+        'to' => "2016-07-15T03:39:33.000000+09:00",
+        'page' => 8623,
+        'per_page' => 9025,
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'shop_name' => "upnZP3tXLGdI4BQeMKNjNC6v4LdJ9q0nifAUuGHUnCvc4A5HlCo2a7OllUlOCGYapVIyu0AtoOYT3d8xXDGe31wijgcuuWSuuP7qXIDVYzNjNiLWA",
+        'shop_name' => "3NDVFkNizSfk2HEbXxayxzM2cghdc2Ljaj2GsuiV9UsDnl2m8nhmhWmlD5AgJ4dO8VEt3hyN01xWKpyfSJX1OiNUbqHXuSEWeM8VLmM8qznKIn9uBoqN3XKkwmXFnLL0vhZmz7rucmF8n8VnjFoEs5f64mvXKC0yIYDrOmfZvcfCdES8HHJf50TC5y2HNrP34hD1uxIbudP",
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'customer_name' => "DYEWxDRpy5o7rEN4eiDqYJVEg5UZOhJAbHwNLgu8Nky9WURMByjAKTzdQ2llGcXl5Cw9ahtSHvWHxDbu1GOKxoKM3BkiQ5JCNLUQPpDOoGNkBoKxTvABwe33UWeSzKCZwv4PwJOyIcULWzrNeMACItmOkY1pUONfZUthj8CTdPw",
+        'customer_name' => "gKcAH4LqtvnYdJrsgVxWy0PirB5ccKSjPsnaJy0xSUaUZ3KYipGveNp11WiSr08uCzB0JSt7hZNL6cvcqBnhGnyRs1ZbgEX46DL0EY9Dfg2K2KSBJ32yceHkpeJS53rQY",
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'is_modified' => FALSE,
-        'transaction_types' => ["exchange", "expire", "payment"],
-        'transfer_types' => ["expire"],           // 取引明細の種類でフィルターします。
+        'is_modified' => TRUE,
+        'transaction_types' => ["transfer", "topup", "exchange", "expire", "cashback"],
+        'transfer_types' => ["coupon", "payment", "campaign", "exchange", "transfer", "cashback", "expire", "topup"], // 取引明細の種類でフィルターします。
         'description' => "店頭QRコードによる支払い"          // 取引詳細説明文
     ]
 );
@@ -1086,13 +1312,13 @@ QRコードを読み取る方法以外にも、このURLリンクを直接スマ
 $request = new Request\CreateCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: 送金元の店舗アカウントID
     [
-        'money_amount' => 6342,                   // 付与マネー額
-        'point_amount' => 5877,                   // 付与ポイント額
+        'money_amount' => 590,                    // 付与マネー額
+        'point_amount' => 8482,                   // 付与ポイント額
         'description' => "test check",            // 説明文(アプリ上で取引の説明文として表示される)
         'is_onetime' => TRUE,                     // ワンタイムかどうか。真の場合1度読み込まれた時点でそのチャージQRは失効する(デフォルト値は真)
-        'usage_limit' => 7767,                    // ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数
-        'expires_at' => "2018-05-25T03:42:03.000000+09:00", // チャージQR自体の失効日時
-        'point_expires_at' => "2021-12-14T06:12:03.000000+09:00", // チャージQRによって付与されるポイントの失効日時
+        'usage_limit' => 5045,                    // ワンタイムでない場合、複数ユーザから読み取られ得る。その場合の最大読み取り回数
+        'expires_at' => "2017-07-05T19:22:01.000000+09:00", // チャージQR自体の失効日時
+        'point_expires_at' => "2022-09-09T14:01:42.000000+09:00", // チャージQRによって付与されるポイントの失効日時
         'point_expires_in_days' => 60,            // チャージQRによって付与されるポイントの有効期限(相対指定、単位は日)
         'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント額を負担する店舗アカウントのID
     ]
@@ -1169,18 +1395,18 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 ```php
 $request = new Request\ListBills(
     [
-        'page' => 220,                            // ページ番号
-        'per_page' => 287,                        // 1ページの表示数
-        'bill_id' => "x2",                        // 支払いQRコードのID
+        'page' => 3283,                           // ページ番号
+        'per_page' => 5660,                       // 1ページの表示数
+        'bill_id' => "sdmSnnsKF",                 // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "arMfR4-ty6-rf",   // 組織コード
+        'organization_code' => "u6-",             // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2019-08-27T04:06:23.000000+09:00", // 作成日時(起点)
-        'created_to' => "2016-09-27T13:09:49.000000+09:00", // 作成日時(終点)
+        'created_from' => "2024-02-29T07:36:46.000000+09:00", // 作成日時(起点)
+        'created_to' => "2019-08-28T22:19:02.000000+09:00", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 5255,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 2178,             // 金額の範囲によるフィルタ(上限)
+        'lower_limit_amount' => 2375,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 1379,             // 金額の範囲によるフィルタ(上限)
         'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
     ]
 );
@@ -1327,7 +1553,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 6561,                         // 支払い額
+        'amount' => 2823,                         // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -1353,9 +1579,9 @@ $request = new Request\CreateBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 7110,                         // 支払い額
+        'amount' => 2419,                         // 支払い額
         'description' => "test bill",             // 説明文
-        'is_disabled' => FALSE                    // 無効化されているかどうか
+        'is_disabled' => TRUE                     // 無効化されているかどうか
     ]
 );
 ```
@@ -1419,10 +1645,10 @@ Cashtrayを作成します。
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    2856,                                         // amount: 金額
+    4676,                                         // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 8858                      // 失効時間(秒)
+        'expires_in' => 501                       // 失効時間(秒)
     ]
 );
 ```
@@ -1585,9 +1811,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 4744,                         // 金額
+        'amount' => 1702,                         // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 6315                      // 失効時間(秒)
+        'expires_in' => 1540                      // 失効時間(秒)
     ]
 );
 ```
@@ -1664,8 +1890,8 @@ $request = new Request\GetAccount(
 $request = new Request\UpdateAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'is_suspended' => TRUE,                   // ウォレットが凍結されているかどうか
-        'status' => "suspended",                  // ウォレット状態
+        'is_suspended' => FALSE,                  // ウォレットが凍結されているかどうか
+        'status' => "active",                     // ウォレット状態
         'can_transfer_topup' => FALSE             // チャージ可能かどうか
     ]
 );
@@ -1716,7 +1942,7 @@ $request = new Request\UpdateAccount(
 $request = new Request\DeleteAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'cashback' => TRUE                        // 返金有無
+        'cashback' => FALSE                       // 返金有無
     ]
 );
 ```
@@ -1749,11 +1975,11 @@ $request = new Request\DeleteAccount(
 $request = new Request\ListAccountBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 6491,                           // ページ番号
-        'per_page' => 211,                        // 1ページ分の取引数
-        'expires_at_from' => "2020-01-14T02:00:40.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2016-05-29T14:59:55.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
-        'direction' => "desc"                     // 有効期限によるソート順序
+        'page' => 4909,                           // ページ番号
+        'per_page' => 7448,                       // 1ページ分の取引数
+        'expires_at_from' => "2016-05-30T14:57:12.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2023-09-13T02:23:16.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'direction' => "asc"                      // 有効期限によるソート順序
     ]
 );
 ```
@@ -1829,10 +2055,10 @@ $request = new Request\ListAccountBalances(
 $request = new Request\ListAccountExpiredBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 3206,                           // ページ番号
-        'per_page' => 9906,                       // 1ページ分の取引数
-        'expires_at_from' => "2022-04-18T00:01:12.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2016-12-02T20:30:39.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'page' => 7252,                           // ページ番号
+        'per_page' => 9762,                       // 1ページ分の取引数
+        'expires_at_from' => "2019-09-30T12:22:03.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2020-11-26T14:55:29.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
         'direction' => "desc"                     // 有効期限によるソート順序
     ]
 );
@@ -1910,8 +2136,8 @@ $request = new Request\UpdateCustomerAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
         'status' => "active",                     // ウォレット状態
-        'account_name' => "LgGU5oSrsDCn36n92LJoBnxVWA0Bmx0P3sSh52djDx2E8q2Tl06IVYw4zb7KKLj26g9D4jd9Fi73fT2ekfbMypSoZArmvOOmVqy7LHITpCScM5po6zQrUB5yHtoGfycJYa2GIKQCGBFwcqnjKtXS", // アカウント名
-        'external_id' => "tb0sUDamQiJFavfIlsQjs1Uxv98uoxa9cfqd" // 外部ID
+        'account_name' => "Oy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1xfUftI30JyBIPqdCDvWnTRvriMMqT8Y2wPxWWXEUoqg0zXsuvc8LF4mbP1hyPDbNVjct5yQNjVn35rDh040vhQYw5VlT5PtGoiFuhhxPNxJedAo6IB1JwI4HtHPlHFEuPGo3GkdygOOVSyzQqeTxBrSdGB4t2pP3KohbOZsA", // アカウント名
+        'external_id' => "8epkaCTJpPbbkDn1ZrOBafUzNTBXIV1wGp1Rn3U4" // 外部ID
     ]
 );
 ```
@@ -1967,15 +2193,15 @@ $request = new Request\UpdateCustomerAccount(
 $request = new Request\GetCustomerAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 1219,                           // ページ番号
-        'per_page' => 7263,                       // 1ページ分のウォレット数
-        'created_at_from' => "2021-05-11T17:45:46.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2020-07-30T03:50:31.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
+        'page' => 5143,                           // ページ番号
+        'per_page' => 1228,                       // 1ページ分のウォレット数
+        'created_at_from' => "2019-05-09T03:53:46.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2022-07-25T04:58:35.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
         'is_suspended' => FALSE,                  // ウォレットが凍結状態かどうかでフィルターする
         'status' => "suspended",                  // ウォレット状態
-        'external_id' => "PsLgc14jRH1daAJWkWpeGV", // 外部ID
-        'tel' => "0474047-9166",                  // エンドユーザーの電話番号
-        'email' => "wbUSgXIGfD@PEPw.com"          // エンドユーザーのメールアドレス
+        'external_id' => "mdVQrUihNu2f4606Zw3X",  // 外部ID
+        'tel' => "067911-332",                    // エンドユーザーの電話番号
+        'email' => "qaG2p9irVN@MOOM.com"          // エンドユーザーのメールアドレス
     ]
 );
 ```
@@ -2090,7 +2316,7 @@ $request = new Request\CreateCustomerAccount(
     [
         'user_name' => "ポケペイ太郎",                  // ユーザー名
         'account_name' => "ポケペイ太郎のアカウント",         // アカウント名
-        'external_id' => "ED0KtmDzx"              // 外部ID
+        'external_id' => "Eypf2sbMz5sG"           // 外部ID
     ]
 );
 ```
@@ -2146,10 +2372,10 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 $request = new Request\GetShopAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 6605,                           // ページ番号
-        'per_page' => 4397,                       // 1ページ分のウォレット数
-        'created_at_from' => "2021-09-13T20:51:03.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2017-01-12T21:58:59.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
+        'page' => 1714,                           // ページ番号
+        'per_page' => 9383,                       // 1ページ分のウォレット数
+        'created_at_from' => "2024-11-30T01:15:02.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2020-11-16T00:31:11.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
         'is_suspended' => FALSE                   // ウォレットが凍結状態かどうかでフィルターする
     ]
 );
@@ -2226,9 +2452,9 @@ $request = new Request\ListCustomerTransactions(
         'sender_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金エンドユーザーID
         'receiver_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
         'type' => "payment",                      // 取引種別
-        'is_modified' => TRUE,                    // キャンセル済みかどうか
-        'from' => "2018-01-02T11:34:05.000000+09:00", // 開始日時
-        'to' => "2016-09-28T12:43:55.000000+09:00", // 終了日時
+        'is_modified' => FALSE,                   // キャンセル済みかどうか
+        'from' => "2020-02-18T21:03:18.000000+09:00", // 開始日時
+        'to' => "2019-03-14T15:05:53.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -2366,11 +2592,11 @@ $request = new Request\ListShops(
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "659-5875",              // 店舗の郵便番号
+        'postal_code' => "5311219",               // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0105-4688",                     // 店舗の電話番号
-        'email' => "3041czvU7t@iTGN.com",         // 店舗のメールアドレス
-        'external_id' => "YlDyRk3aGMps1HN2Oi8GzW", // 店舗の外部ID
+        'tel' => "077230-1715",                   // 店舗の電話番号
+        'email' => "Rc96wfmVrW@rKd8.com",         // 店舗のメールアドレス
+        'external_id' => "ZckndPnp3nLoMele3ppOb8vOALeCaVZzJ", // 店舗の外部ID
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -2497,11 +2723,11 @@ $request = new Request\ListShops(
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
-        'shop_postal_code' => "2256993",          // 店舗の郵便番号
+        'shop_postal_code' => "217-9278",         // 店舗の郵便番号
         'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "0753-6243",                // 店舗の電話番号
-        'shop_email' => "MWtvAOdqc6@t46b.com",    // 店舗のメールアドレス
-        'shop_external_id' => "4EgFIpDVk2s",      // 店舗の外部ID
+        'shop_tel' => "04673990",                 // 店舗の電話番号
+        'shop_email' => "0YkfqArkVO@xtHa.com",    // 店舗のメールアドレス
+        'shop_external_id' => "bqrekxj6KVFbsIqYgB", // 店舗の外部ID
         'organization_code' => "ox-supermarket"   // 組織コード
     ]
 );
@@ -2513,13 +2739,13 @@ $request = new Request\CreateShop(
 $request = new Request\CreateShopV2(
     "oxスーパー三田店",                                  // name: 店舗名
     [
-        'postal_code' => "560-2180",              // 店舗の郵便番号
+        'postal_code' => "998-8399",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "060-12-542",                    // 店舗の電話番号
-        'email' => "7WSGlsT24m@zzvf.com",         // 店舗のメールアドレス
-        'external_id' => "uixfzgMS7DAxRVXjpoYOkLYbJM", // 店舗の外部ID
+        'tel' => "0633358-091",                   // 店舗の電話番号
+        'email' => "EdpqCcPOpW@jivo.com",         // 店舗のメールアドレス
+        'external_id' => "nvdw0Yvld3IeJyhT",      // 店舗の外部ID
         'organization_code' => "ox-supermarket",  // 組織コード
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
         'can_topup_private_money_ids' => []       // 店舗でチャージ可能にするマネーIDの配列
     ]
 );
@@ -2593,13 +2819,13 @@ $request = new Request\UpdateShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
     [
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "689-2041",              // 店舗の郵便番号
+        'postal_code' => "227-4422",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "061-8465488",                   // 店舗の電話番号
-        'email' => "VcsouxX3xI@9CHd.com",         // 店舗のメールアドレス
-        'external_id' => "GkENDSkRyfWKAxjQWjCB8nFcqmE", // 店舗の外部ID
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
+        'tel' => "083942290",                     // 店舗の電話番号
+        'email' => "oLjMmLSHQh@e4tH.com",         // 店舗のメールアドレス
+        'external_id' => "Pdlv",                  // 店舗の外部ID
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => []       // 店舗でチャージ可能にするマネーIDの配列
     ]
 );
 ```
@@ -2702,8 +2928,8 @@ $request = new Request\UpdateShop(
 $request = new Request\ListUserAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     [
-        'page' => 3737,                           // ページ番号
-        'per_page' => 5711                        // 1ページ分の取引数
+        'page' => 7801,                           // ページ番号
+        'per_page' => 3214                        // 1ページ分の取引数
     ]
 );
 ```
@@ -2749,8 +2975,8 @@ $request = new Request\CreateUserAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'name' => "fDor1z",                       // ウォレット名
-        'external_id' => "gwF9x3xZsR5bLJPhH3FEHzbfU4cD6smAeqngifjNikqDE" // 外部ID
+        'name' => "8QojNKN0zqICt7BPEIsHw9iaxaPzoaDv6U6SXLkHad9cOSRej1Twb2rvpiwJLSyhoqY6", // ウォレット名
+        'external_id' => "nwMWmZEdo3TtkAPfziyB2HYxaSu" // 外部ID
     ]
 );
 ```
@@ -2814,8 +3040,8 @@ $request = new Request\GetPrivateMoneys(
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2025-04-14T10:05:11.000000+09:00", // 開始日時(toと同時に指定する必要有)
-        'to' => "2015-10-12T07:10:21.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'from' => "2015-11-09T10:18:06.000000+09:00", // 開始日時(toと同時に指定する必要有)
+        'to' => "2018-04-13T16:39:30.000000+09:00", // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -2830,11 +3056,11 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 CSVファイルから一括取引をします。
 ```php
 $request = new Request\BulkCreateTransaction(
-    "dXpYhNwFWUAKOnWlhna0lY",                     // name: 一括取引タスク名
-    "NQbE",                                       // content: 取引する情報のCSV
-    "nbMVdbi9G5aE3q4gTN93gHJA1FfneXYRV1FB",       // requestId: リクエストID
+    "evcj",                                       // name: 一括取引タスク名
+    "sU2Q",                                       // content: 取引する情報のCSV
+    "n83gWH7hF0T8Nh7eoO6asjOox0RRzWzgJ8ql",       // requestId: リクエストID
     [
-        'description' => "9VqwmK2QWEkaIk3Nf304AeRoMBnYRrC4cXtKQ0a4OPrt2tro65RM4SYyWPQ4b5EvFhF0JaiWpiphXqNgzf5XFTYAHJdFeGZi1JIa9NTrkMeAKNU2qNMrw4" // 一括取引の説明
+        'description' => "mxnkMgshIHzbucfDhID3qemlo7JMNmGUe8JtqofMq1TyFcW0Uuc5ug2SpDoeGryI5OQQ9GoRehaS9O2M3fskqX8WbkxbWTp66iGj1lRR9XuMV" // 一括取引の説明
     ]
 );
 ```
@@ -2912,11 +3138,13 @@ $request = new Request\CreateExternalTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8778,                                         // amount: 取引額
+    4140,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
@@ -3051,33 +3279,33 @@ $request = new Request\RefundExternalTransaction(
 
 ```php
 $request = new Request\CreateCampaign(
-    "y2YBOfulEIFK5T7Dc8oOst1MM9PmjRDk75J779k3qO5Tt2uQGKACRqDnzgekX1v8dvD0ApeDNVXLZhDHmMPohPl8jvZE0kmWyBRnvtcRhoAfyfPvqbgkbgVyEBxJxS2dp5fON6g3h5b1QYmVCtk78JxdSgtNZkgpDcQrvPvYu9rBGsdWvnLspaw0X1BOuUcrgAIrlVAxUxxoJ3m2cOYFN3fJYwkLiuasNI", // name: キャンペーン名
+    "s2zeQQbQwb51zUDjfyGpNkIiUDvsd07Li3GyEdt6GGJ1GXo5UPiFJuScrEGcY5I6vYJqEcansSsP2ceIvKP9bgYanQbVQM9Z6RG0", // name: キャンペーン名
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    "2017-07-28T21:58:08.000000+09:00",           // startsAt: キャンペーン開始日時
-    "2023-09-02T00:22:49.000000+09:00",           // endsAt: キャンペーン終了日時
-    6229,                                         // priority: キャンペーンの適用優先度
-    "external-transaction",                       // event: イベント種別
+    "2021-05-23T02:26:59.000000+09:00",           // startsAt: キャンペーン開始日時
+    "2020-12-25T01:43:39.000000+09:00",           // endsAt: キャンペーン終了日時
+    7064,                                         // priority: キャンペーンの適用優先度
+    "topup",                                      // event: イベント種別
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント負担先店舗ID
-        'description' => "8U4LoGEUFzMVQ4l9WdfwN1GBXrbSDIYZlYLOi", // キャンペーンの説明文
-        'status' => "enabled",                    // キャンペーン作成時の状態
-        'point_expires_at' => "2019-07-03T11:22:43.000000+09:00", // ポイント有効期限(絶対日時指定)
-        'point_expires_in_days' => 9135,          // ポイント有効期限(相対日数指定)
+        'description' => "PdzwEr5mXGzuLW3FkWi9ZhIojVZoApe0VcAXVJN", // キャンペーンの説明文
+        'status' => "disabled",                   // キャンペーン作成時の状態
+        'point_expires_at' => "2019-05-01T08:57:47.000000+09:00", // ポイント有効期限(絶対日時指定)
+        'point_expires_in_days' => 7069,          // ポイント有効期限(相対日数指定)
         'is_exclusive' => FALSE,                  // キャンペーンの重複設定
-        'subject' => "money",                     // ポイント付与の対象金額の種別
+        'subject' => "all",                       // ポイント付与の対象金額の種別
         'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-, ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
 , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
 ],                                                // 取引金額ベースのポイント付与ルール
         'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
 , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+, ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
 ],                                                // 商品情報ベースのポイント付与ルール
-        'applicable_days_of_week' => [4],         // キャンペーンを適用する曜日 (複数指定)
+        'applicable_days_of_week' => [0],         // キャンペーンを適用する曜日 (複数指定)
         'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-, ["from" => "12:00", "to" => "23:59"]
-, ["from" => "12:00", "to" => "23:59"]
 ],                                                // キャンペーンを適用する時間帯 (複数指定)
-        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // キャンペーン適用対象となる店舗IDのリスト
+        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象となる店舗IDのリスト
+        'minimum_number_for_combination_purchase' => 10, // 複数種類の商品を同時購入するときの商品種別数の下限
+        'dest_private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント付与先となるマネーID
     ]
 );
 ```
@@ -3166,6 +3394,7 @@ $request = new Request\CreateCampaign(
 }
 ```
 ポイントを負担する店舗のIDです。デフォルトではマネー発行体の本店が設定されます。
+ポイント負担先店舗は後から更新することはできません。
 
 ---
 `description`  
@@ -3311,7 +3540,7 @@ event が payment か external-transaction の時のみ有効です。
   // 対象商品を2つ以上購入したら500ポイント付与(固定額付与)
   {
     "point_amount": 500,
-    "point_amount_unit": absolute",
+    "point_amount_unit": "absolute",
     "product_code": "4912345678904",
     "required_count": 2
   },
@@ -3330,6 +3559,104 @@ event が payment か external-transaction の時のみ有効です。
   }
 ]
 ```
+
+---
+`minimum_number_for_combination_purchase`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+複数種別の商品を同時購入したとき、同時購入キャンペーンの対象となる商品種別数の下限です。デフォルトでは未指定で、指定する場合は1以上の整数を指定します。
+
+このパラメータを指定するときは product_based_point_rules で商品毎のルールが指定されている必要があります。
+例えば、A商品とB商品とC商品のうち、キャンペーンの発火のために2商品以上が同時購入される必要があるときは 2 を指定します。
+
+例1: 商品A, Bが同時購入されたときに固定ポイント額(200ポイント)付与
+```javascript
+{
+  minimum_number_for_combination_purchase: 2,
+  product_based_point_rules: [
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Aの商品コード"
+    },
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Bの商品コード"
+    }
+  ]
+}
+```
+
+例2: 商品A, Bが3個ずつ以上同時購入されたときに固定ポイント額(200ポイント)付与
+```javascript
+{
+  minimum_number_for_combination_purchase: 2,
+  product_based_point_rules: [
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Aの商品コード",
+      "required_count": 3
+    },
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Bの商品コード",
+      "required_count": 3
+    }
+  ]
+}
+```
+
+例2: 商品A, B, Cのうち2商品以上が同時購入されたときに総額の10%ポイントが付与
+```javascript
+{
+  minimum_number_for_combination_purchase: 2,
+  product_based_point_rules: [
+    {
+      "point_amount": 10,
+      "point_amount_unit": "percent",
+      "product_code": "商品Aの商品コード",
+      "is_multiply_by_count": true,
+    },
+    {
+      "point_amount": 10,
+      "point_amount_unit": "percent",
+      "product_code": "商品Bの商品コード",
+      "is_multiply_by_count": true,
+    },
+    {
+      "point_amount": 10,
+      "point_amount_unit": "percent",
+      "product_code": "商品Cの商品コード",
+      "is_multiply_by_count": true,
+    }
+  ]
+}
+```
+
+---
+`dest_private_money_id`  
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+キャンペーンを駆動するイベントのマネーとは「別のマネー」に対してポイントを付けたいときに、そのマネーIDを指定します。
+
+ポイント付与先のマネーはキャンペーンを駆動するイベントのマネーと同一発行体が発行しているものに限ります。その他のマネーIDが指定された場合は private_money_not_found (422) が返ります。
+エンドユーザー、店舗、ポイント負担先店舗はポイント付与先マネーのウォレットを持っている必要があります。持っていない場合はポイントは付きません。
+元のイベントのマネーと異なる複数のマネーに対して同時にポイントを付与することはできません。重複可能に設定されている複数のキャンペーンで別々のポイント付与先マネーを指定した場合は最も優先度の高いものが処理され、残りは無視されます。
+キャンペーンのポイント付与先マネーは後から更新することはできません。
+デフォルトではポイント付与先はキャンペーンを駆動するイベントのマネー(private_money_idで指定したマネー)になります。
+
+別マネーに対するポイント付与は別のtransactionとなります。 RefundTransaction で元のイベントをキャンセルしたときはポイント付与のtransactionもキャンセルされ、逆にポイント付与のtransactionをキャンセルしたときは連動して元のイベントがキャンセルされます。
 
 ---
 成功したときは[Campaign](#campaign)オブジェクトを返します
@@ -3415,29 +3742,28 @@ $request = new Request\GetCampaign(
 $request = new Request\UpdateCampaign(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // campaignId: キャンペーンID
     [
-        'name' => "50E243Lt7Q0CkQGlHLmFUomkHrvNClWFSWTgMn5wd60p6qorRSF9NZATmhqoWmfQbT09Lp665rg0d7eGITtIklkYFTO7OJe9dSEOGALN8S7z1KForIQgwx8oosJLK5Rq67VXMpZGMSz7kvOMHYRjzAZw05Ty0nenwzHOaIVwMTjPFMGevwVMeZt8EqIvyxvlj5KalqxA7HuqvdSNveWzWI5L6stQvZvRJLln3CmVmPz2bcH2xVBHTbiOHYbzW7E", // キャンペーン名
-        'starts_at' => "2019-05-19T13:21:33.000000+09:00", // キャンペーン開始日時
-        'ends_at' => "2019-01-02T22:17:29.000000+09:00", // キャンペーン終了日時
-        'priority' => 6830,                       // キャンペーンの適用優先度
+        'name' => "I44xL3mfrFPuEOVKpPzDCyUBg3VaVg5lQKirhrBQImBbFTGr24vRn0V1KmKqNhpuD1AS4IxvpFPGaTF6gXtd3nJyyNe74Q2bvFtDokudzPS7PJ09whlF6CVlMKFHkTHEGRWUBVUZa1rmAxzFUF6ihvlI4uoOEnKraNjpsN9SjDxtxrgs7e0dkiAAa8jwX6FLCB1XlvzBazSCE", // キャンペーン名
+        'starts_at' => "2019-10-29T04:43:12.000000+09:00", // キャンペーン開始日時
+        'ends_at' => "2024-06-27T18:03:47.000000+09:00", // キャンペーン終了日時
+        'priority' => 9287,                       // キャンペーンの適用優先度
         'event' => "external-transaction",        // イベント種別
-        'description' => "76ToHcl8dtzcqD6rqwGDVRdojGjigHpZl8InHQBhMIrdZJT9MnQgGfElkSct56tB3QvYjy8mUgDyXQYOSshpGMCke10fApKjBHnAmdlKiUj9JqianI8FqIXqzelGZDONUAJfl2HMto7yaW0Gkt1pOBZosxcU6W1vFMKN952V", // キャンペーンの説明文
+        'description' => "2EkkP2VIPy7HW7Ee7skB9BB1YNClE0n87A30l6vspNWH9u8x4Yq2mxjIub5W9d4fa79SnOHSfjKkp3QkI11kPUOWIOCC9XRXSkWvgwMdC6YsQVBM615BSLRTB4phpjbt6QHeDKxXdEg3OxGlsZaVSpjoQ6ffYAe6k", // キャンペーンの説明文
         'status' => "disabled",                   // キャンペーン作成時の状態
-        'point_expires_at' => "2016-09-29T12:29:24.000000+09:00", // ポイント有効期限(絶対日時指定)
-        'point_expires_in_days' => 7220,          // ポイント有効期限(相対日数指定)
-        'is_exclusive' => FALSE,                  // キャンペーンの重複設定
-        'subject' => "money",                     // ポイント付与の対象金額の種別
+        'point_expires_at' => "2022-05-10T18:23:50.000000+09:00", // ポイント有効期限(絶対日時指定)
+        'point_expires_in_days' => 6525,          // ポイント有効期限(相対日数指定)
+        'is_exclusive' => TRUE,                   // キャンペーンの重複設定
+        'subject' => "all",                       // ポイント付与の対象金額の種別
         'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-, ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-, ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
 ],                                                // 取引金額ベースのポイント付与ルール
         'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
 , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-, ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
 ],                                                // 商品情報ベースのポイント付与ルール
-        'applicable_days_of_week' => [3],         // キャンペーンを適用する曜日 (複数指定)
+        'applicable_days_of_week' => [5, 1, 5],   // キャンペーンを適用する曜日 (複数指定)
         'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
+, ["from" => "12:00", "to" => "23:59"]
 ],                                                // キャンペーンを適用する時間帯 (複数指定)
-        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // キャンペーン適用対象となる店舗IDのリスト
+        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象となる店舗IDのリスト
+        'minimum_number_for_combination_purchase' => 2674 // 複数種類の商品を同時購入するときの商品種別数の下限
     ]
 );
 ```
@@ -3684,6 +4010,86 @@ event が payment か external-transaction の時のみ有効です。
 ```
 
 ---
+`minimum_number_for_combination_purchase`  
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+複数種別の商品を同時購入したとき、同時購入キャンペーンの対象となる商品種別数の下限です。
+
+このパラメータを指定するときは product_based_point_rules で商品毎のルールが指定されている必要があります。
+例えば、A商品とB商品とC商品のうち、キャンペーンの発火のために2商品以上が同時購入される必要があるときは 2 を指定します。
+
+例1: 商品A, Bが同時購入されたときに固定ポイント額(200ポイント)付与
+```javascript
+{
+  minimum_number_for_combination_purchase: 2,
+  product_based_point_rules: [
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Aの商品コード"
+    },
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Bの商品コード"
+    }
+  ]
+}
+```
+
+例2: 商品A, Bが3個ずつ以上同時購入されたときに固定ポイント額(200ポイント)付与
+```javascript
+{
+  minimum_number_for_combination_purchase: 2,
+  product_based_point_rules: [
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Aの商品コード",
+      "required_count": 3
+    },
+    {
+      "point_amount": 100,
+      "point_amount_unit": "absolute",
+      "product_code": "商品Bの商品コード",
+      "required_count": 3
+    }
+  ]
+}
+```
+
+例2: 商品A, B, Cのうち2商品以上が同時購入されたときに総額の10%ポイントが付与
+```javascript
+{
+  minimum_number_for_combination_purchase: 2,
+  product_based_point_rules: [
+    {
+      "point_amount": 10,
+      "point_amount_unit": "percent",
+      "product_code": "商品Aの商品コード",
+      "is_multiply_by_count": true,
+    },
+    {
+      "point_amount": 10,
+      "point_amount_unit": "percent",
+      "product_code": "商品Bの商品コード",
+      "is_multiply_by_count": true,
+    },
+    {
+      "point_amount": 10,
+      "point_amount_unit": "percent",
+      "product_code": "商品Cの商品コード",
+      "is_multiply_by_count": true,
+    }
+  ]
+}
+```
+
+---
 成功したときは[Campaign](#campaign)オブジェクトを返します
 ## Responses
 
@@ -3714,6 +4120,7 @@ event が payment か external-transaction の時のみ有効です。
 * `pointBalance (double)`: 
 * `privateMoney (PrivateMoney)`: 
 * `user (User)`: 
+* `externalId (string|null)`: 
 
 `status`は [AccountStatus](#account-status) オブジェクトを返します。
 
@@ -3893,6 +4300,16 @@ event が payment か external-transaction の時のみ有効です。
 
 `pagination`は [Pagination](#pagination) オブジェクトを返します。
 
+<a name="paginated-transaction-v2"></a>
+## PaginatedTransactionV2
+* `rows (Transaction[])`: 
+* `perPage (integer)`: 
+* `count (integer)`: 
+* `nextPageCursorId (string|null)`: 
+* `prevPageCursorId (string|null)`: 
+
+`rows`は [Transaction](#transaction) オブジェクトの配列を返します。
+
 <a name="paginated-transfers"></a>
 ## PaginatedTransfers
 * `rows (Transfer[])`: 
@@ -3977,6 +4394,7 @@ event が payment か external-transaction の時のみ有効です。
 * `description (string)`: キャンペーン説明文
 * `bearPointShop (User)`: ポイントを負担する店舗
 * `privateMoney (PrivateMoney)`: キャンペーンを適用するマネー
+* `destPrivateMoney (PrivateMoney)`: ポイントを付与するマネー
 * `pointCalculationRule (string)`: ポイント計算ルール (banklisp表記)
 * `pointCalculationRuleObject (string)`: ポイント計算ルール (JSON文字列による表記)
 * `status (string)`: キャンペーンの現在の状態
@@ -3985,7 +4403,7 @@ event が payment か external-transaction の時のみ有効です。
 
 `bear_point_shop`は [User](#user) オブジェクトを返します。
 
-`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+`dest_private_money`と`private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
 
 <a name="paginated-campaigns"></a>
 ## PaginatedCampaigns

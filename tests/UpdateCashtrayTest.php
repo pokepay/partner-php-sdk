@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "92eb1935-f558-41f0-ae52-8975ae9d805d"
+            "f09e1530-e2c9-4938-be95-36aa615b347d"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "92eb1935-f558-41f0-ae52-8975ae9d805d",
+            "f09e1530-e2c9-4938-be95-36aa615b347d",
             [
-                'expires_in' => 7158
+                'expires_in' => 4749
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "92eb1935-f558-41f0-ae52-8975ae9d805d",
+            "f09e1530-e2c9-4938-be95-36aa615b347d",
             [
-                'description' => "9q3NykiRPYO2oQiAYMcKkXBWEu4RSjxgCW3jFlgob7yobgqdqFleVhpCe",
-                'expires_in' => 3756
+                'description' => "7sPYx7KWs9GrfkcGFxlkTYjYgPlxnzpf9XcHDiw8sqMTw9CGMrpupnZP3tXLGdI4BQeMKNjNC6v4LdJ9q0nifAUuGHUnCvc4A5HlCo2a7OllUlOCGYapVIyu0AtoOYT3d8xXDGe31wijgcuuWSuuP7qXIDVYzNjNiLWADYEWxDRpy5o7rEN4eiDqYJVEg5UZOh",
+                'expires_in' => 9547
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "92eb1935-f558-41f0-ae52-8975ae9d805d",
+            "f09e1530-e2c9-4938-be95-36aa615b347d",
             [
-                'amount' => 7943,
-                'description' => "dmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQ",
-                'expires_in' => 4391
+                'amount' => 6190,
+                'description' => "AbHwNLgu8Nky9WURMByjAKTzdQ2llGcXl5Cw9ahtSHvWHxDbu1GOKxoKM3BkiQ5JCNLUQPpDOoGNkBoKxTvABwe33UWeSzKCZwv4PwJOyIcULWzrNeMACItmOkY1pUONfZUthj8CTdPwk2g7DYhFuXWtax2gH7mosTYAgSjd1Lu4N1G4DllEfWLsx2f1Pj",
+                'expires_in' => 1866
             ]
         );
         try {

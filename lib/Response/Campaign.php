@@ -56,6 +56,10 @@ class Campaign extends Base
      */
     public $privateMoney;
     /**
+     * @var PrivateMoney
+     */
+    public $destPrivateMoney;
+    /**
      * @var string
      */
     public $pointCalculationRule;

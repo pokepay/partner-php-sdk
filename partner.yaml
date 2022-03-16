@@ -160,6 +160,10 @@ components:
           $ref: '#/components/schemas/PrivateMoney'
         user:
           $ref: '#/components/schemas/User'
+        external_id:
+          type: string
+          nullable: true
+          maxLength: 50
     ShopAccount:
       x-pokepay-schema-type: "response"
       properties:
@@ -887,6 +891,33 @@ components:
           minimum: 0
         pagination:
           $ref: '#/components/schemas/Pagination'
+    PaginatedTransactionV2:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        per_page:
+          type: integer
+        count:
+          type: integer
+        next_page_cursor_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: |-
+            次ページ取得するためのID。
+
+            実際にはrows末尾
+        prev_page_cursor_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: |-
+            前ページ取得するためのID。
+
+            実際にはrows先頭
     PaginatedTransfers:
       x-pokepay-schema-type: "response"
       properties:
@@ -1033,6 +1064,9 @@ components:
           $ref: '#/components/schemas/User'
         private_money:
           title: 'キャンペーンを適用するマネー'
+          $ref: '#/components/schemas/PrivateMoney'
+        dest_private_money:
+          title: 'ポイントを付与するマネー'
           $ref: '#/components/schemas/PrivateMoney'
         point_calculation_rule:
           type: string
@@ -2371,6 +2405,174 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+  /transactions-v2:
+    get:
+      tags:
+        - Transaction
+      summary: '取引履歴を取得する'
+      description: 取引一覧を返します。
+      x-pokepay-operator-name: "ListTransactionsV2"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["private_money_id"]
+              properties:
+                private_money_id:
+                  type: string
+                  format: uuid
+                  title: 'マネーID'
+                  description: |-
+                    マネーIDです。
+
+                    指定したマネーでの取引が一覧に表示されます。
+                organization_code:
+                  type: string
+                  pattern: '^[a-zA-Z0-9-]*$'
+                  maxLength: 32
+                  title: '組織コード'
+                  description: |-
+                    組織コードです。
+
+                    フィルターとして使われ、指定された組織での取引のみ一覧に表示されます。
+                  example: 'pocketchange'
+                shop_id:
+                  type: string
+                  format: uuid
+                  title: '店舗ID'
+                  description: |-
+                    店舗IDです。
+                    
+                    フィルターとして使われ、指定された店舗での取引のみ一覧に表示されます。
+                terminal_id:
+                  type: string
+                  format: uuid
+                  title: '端末ID'
+                  description: |-
+                    端末IDです。
+
+                    フィルターとして使われ、指定された端末での取引のみ一覧に表示されます。
+                customer_id:
+                  type: string
+                  format: uuid
+                  title: 'エンドユーザーID'
+                  description: |-
+                    エンドユーザーIDです。
+
+                    フィルターとして使われ、指定されたエンドユーザーでの取引のみ一覧に表示されます。
+                customer_name:
+                  type: string
+                  maxLength: 256
+                  title: 'エンドユーザー名'
+                  description: |-
+                    エンドユーザー名です。
+
+                    フィルターとして使われ、入力された名前に部分一致するエンドユーザーでの取引のみ一覧に表示されます。
+                  example: 太郎
+                description:
+                  type: string
+                  maxLength: 200
+                  title: '取引説明文'
+                  description: |-
+                    取引を指定の取引説明文でフィルターします。
+
+                    取引説明文が完全一致する取引のみ抽出されます。取引説明文は最大200文字で記録されています。
+                  example: 店頭QRコードによる支払い
+                transaction_id:
+                  type: string
+                  format: uuid
+                  title: '取引ID'
+                  description: |-
+                    取引IDです。
+
+                    フィルターとして使われ、指定された取引のみ一覧に表示されます。
+                is_modified:
+                  type: boolean
+                  title: 'キャンセルフラグ'
+                  description: |-
+                    キャンセルフラグです。
+
+                    これにtrueを指定するとキャンセルされた取引のみ一覧に表示されます。
+                    デフォルト値はfalseで、キャンセルの有無にかかわらず一覧に表示されます。
+                types:
+                  type: array
+                  title: '取引種別 (複数指定可)、チャージ=topup、支払い=payment'
+                  example: '["topup", "payment"]'
+                  description: |-
+                    取引の種類でフィルターします。
+
+                    以下の種類を指定できます。
+
+                    1. topup
+                       店舗からエンドユーザーへの送金取引(チャージ)
+
+                    2. payment
+                       エンドユーザーから店舗への送金取引(支払い)
+
+                    3. exchange-outflow
+                       他マネーへの流出
+
+                    4. exchange-inflow
+                       他マネーからの流入
+
+                    5. cashback
+                       退会時返金取引
+                  items:
+                    type: string
+                    enum: [topup, payment, exchange_outflow, exchange_inflow, cashback]
+                from:
+                  type: string
+                  format: date-time
+                  title: '開始日時'
+                  description: |-
+                    抽出期間の開始日時です。
+
+                    フィルターとして使われ、開始日時以降に発生した取引のみ一覧に表示されます。
+                to:
+                  type: string
+                  format: date-time
+                  title: '終了日時'
+                  description: |-
+                    抽出期間の終了日時です。
+
+                    フィルターとして使われ、終了日時以前に発生した取引のみ一覧に表示されます。
+                next_page_cursor_id:
+                  type: string
+                  format: uuid
+                  title: '次のページへ遷移する際に起点となるtransactionのuuid'
+                  description: |-
+                    次のページへ遷移する際に起点となるtransactionのuuid(前のページの末尾の要素のuuid)です。
+
+                    prev_page_cursor_idのtransaction自体は次のページには含まれない。
+                prev_page_cursor_id:
+                  type: string
+                  format: uuid
+                  title: '前のページへ遷移する際に起点となるtransactionのuuid'
+                  description: |-
+                    前のページへ遷移する際に起点となるtransactionのuuid(次のページの先頭の要素のuuid)です。
+
+                    next_page_cursor_idのtransaction自体は前のページには含まれない。
+                per_page:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                  title: '1ページ分の取引数'
+                  description: |-
+                    1ページ分の取引数です。
+
+                    デフォルト値は50です。
+                  example: 50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionV2'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
   /transactions/topup:
     post:
       tags:
@@ -4460,6 +4662,7 @@ paths:
                   title: 'ポイント負担先店舗ID'
                   description: |-
                     ポイントを負担する店舗のIDです。デフォルトではマネー発行体の本店が設定されます。
+                    ポイント負担先店舗は後から更新することはできません。
                 description:
                   type: string
                   maxLength: 200
@@ -4714,7 +4917,7 @@ paths:
                       // 対象商品を2つ以上購入したら500ポイント付与(固定額付与)
                       {
                         "point_amount": 500,
-                        "point_amount_unit": absolute",
+                        "point_amount_unit": "absolute",
                         "product_code": "4912345678904",
                         "required_count": 2
                       },
@@ -4778,6 +4981,96 @@ paths:
                   describe: |-
                     キャンペーンを適用する店舗IDを指定します (複数指定)。
                     指定しなかった場合は全店舗が対象になります。
+                minimum_number_for_combination_purchase:
+                  type: integer
+                  minimum: 1
+                  title: '複数種類の商品を同時購入するときの商品種別数の下限'
+                  description: |-
+                    複数種別の商品を同時購入したとき、同時購入キャンペーンの対象となる商品種別数の下限です。デフォルトでは未指定で、指定する場合は1以上の整数を指定します。
+
+                    このパラメータを指定するときは product_based_point_rules で商品毎のルールが指定されている必要があります。
+                    例えば、A商品とB商品とC商品のうち、キャンペーンの発火のために2商品以上が同時購入される必要があるときは 2 を指定します。
+
+                    例1: 商品A, Bが同時購入されたときに固定ポイント額(200ポイント)付与
+                    ```javascript
+                    {
+                      minimum_number_for_combination_purchase: 2,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Aの商品コード"
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Bの商品コード"
+                        }
+                      ]
+                    }
+                    ```
+
+                    例2: 商品A, Bが3個ずつ以上同時購入されたときに固定ポイント額(200ポイント)付与
+                    ```javascript
+                    {
+                      minimum_number_for_combination_purchase: 2,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Aの商品コード",
+                          "required_count": 3
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Bの商品コード",
+                          "required_count": 3
+                        }
+                      ]
+                    }
+                    ```
+
+                    例2: 商品A, B, Cのうち2商品以上が同時購入されたときに総額の10%ポイントが付与
+                    ```javascript
+                    {
+                      minimum_number_for_combination_purchase: 2,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 10,
+                          "point_amount_unit": "percent",
+                          "product_code": "商品Aの商品コード",
+                          "is_multiply_by_count": true,
+                        },
+                        {
+                          "point_amount": 10,
+                          "point_amount_unit": "percent",
+                          "product_code": "商品Bの商品コード",
+                          "is_multiply_by_count": true,
+                        },
+                        {
+                          "point_amount": 10,
+                          "point_amount_unit": "percent",
+                          "product_code": "商品Cの商品コード",
+                          "is_multiply_by_count": true,
+                        }
+                      ]
+                    }
+                    ```
+                dest_private_money_id:
+                  type: string
+                  format: uuid
+                  title: 'ポイント付与先となるマネーID'
+                  description: |-
+                    キャンペーンを駆動するイベントのマネーとは「別のマネー」に対してポイントを付けたいときに、そのマネーIDを指定します。
+
+                    ポイント付与先のマネーはキャンペーンを駆動するイベントのマネーと同一発行体が発行しているものに限ります。その他のマネーIDが指定された場合は private_money_not_found (422) が返ります。
+                    エンドユーザー、店舗、ポイント負担先店舗はポイント付与先マネーのウォレットを持っている必要があります。持っていない場合はポイントは付きません。
+                    元のイベントのマネーと異なる複数のマネーに対して同時にポイントを付与することはできません。重複可能に設定されている複数のキャンペーンで別々のポイント付与先マネーを指定した場合は最も優先度の高いものが処理され、残りは無視されます。
+                    キャンペーンのポイント付与先マネーは後から更新することはできません。
+                    デフォルトではポイント付与先はキャンペーンを駆動するイベントのマネー(private_money_idで指定したマネー)になります。
+
+                    別マネーに対するポイント付与は別のtransactionとなります。 RefundTransaction で元のイベントをキャンセルしたときはポイント付与のtransactionもキャンセルされ、逆にポイント付与のtransactionをキャンセルしたときは連動して元のイベントがキャンセルされます。
       responses:
         '200':
           description: OK
@@ -5273,6 +5566,83 @@ paths:
                   describe: |-
                     キャンペーンを適用する店舗IDを指定します (複数指定)。
                     指定しなかった場合は全店舗が対象になります。
+                minimum_number_for_combination_purchase:
+                  type: integer
+                  minimum: 1
+                  nullable: true
+                  title: '複数種類の商品を同時購入するときの商品種別数の下限'
+                  description: |-
+                    複数種別の商品を同時購入したとき、同時購入キャンペーンの対象となる商品種別数の下限です。
+
+                    このパラメータを指定するときは product_based_point_rules で商品毎のルールが指定されている必要があります。
+                    例えば、A商品とB商品とC商品のうち、キャンペーンの発火のために2商品以上が同時購入される必要があるときは 2 を指定します。
+
+                    例1: 商品A, Bが同時購入されたときに固定ポイント額(200ポイント)付与
+                    ```javascript
+                    {
+                      minimum_number_for_combination_purchase: 2,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Aの商品コード"
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Bの商品コード"
+                        }
+                      ]
+                    }
+                    ```
+
+                    例2: 商品A, Bが3個ずつ以上同時購入されたときに固定ポイント額(200ポイント)付与
+                    ```javascript
+                    {
+                      minimum_number_for_combination_purchase: 2,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Aの商品コード",
+                          "required_count": 3
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "商品Bの商品コード",
+                          "required_count": 3
+                        }
+                      ]
+                    }
+                    ```
+
+                    例2: 商品A, B, Cのうち2商品以上が同時購入されたときに総額の10%ポイントが付与
+                    ```javascript
+                    {
+                      minimum_number_for_combination_purchase: 2,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 10,
+                          "point_amount_unit": "percent",
+                          "product_code": "商品Aの商品コード",
+                          "is_multiply_by_count": true,
+                        },
+                        {
+                          "point_amount": 10,
+                          "point_amount_unit": "percent",
+                          "product_code": "商品Bの商品コード",
+                          "is_multiply_by_count": true,
+                        },
+                        {
+                          "point_amount": 10,
+                          "point_amount_unit": "percent",
+                          "product_code": "商品Cの商品コード",
+                          "is_multiply_by_count": true,
+                        }
+                      ]
+                    }
+                    ```
       responses:
         '200':
           description: OK

@@ -42,4 +42,8 @@ class AccountDetail extends Base
      * @var User
      */
     public $user;
+    /**
+     * @var string|null
+     */
+    public $externalId;
 }
