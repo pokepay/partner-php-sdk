@@ -10,7 +10,7 @@ class PartnerAPI
     private $clientSecret;
     private $apiBase;
 
-    const VERSION = '0.4.5';
+    const VERSION = '0.4.6';
 
     private $config = array();
 
