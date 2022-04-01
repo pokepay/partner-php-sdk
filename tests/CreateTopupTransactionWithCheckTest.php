@@ -8,8 +8,8 @@ class CreateTopupTransactionWithCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransactionWithCheck(
-            "00e01673-a362-46c3-84c8-54472ab7fa7f",
-            "08c7a3c4-b1c9-416d-9c9b-8eea79df1319"
+            "a13bbe70-3d36-42ec-89a6-ca0a1cf531ea",
+            "375e0e3f-d49f-4d1b-8364-25e1c287d7f7"
         );
         try {
             $response = $client->send($request);

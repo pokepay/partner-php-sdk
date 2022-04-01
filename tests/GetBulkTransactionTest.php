@@ -8,7 +8,7 @@ class GetBulkTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetBulkTransaction(
-            "751c8860-9b85-45d3-afb5-e1afffd34e4f"
+            "26b52019-50be-4e92-b908-4349d77741dc"
         );
         try {
             $response = $client->send($request);

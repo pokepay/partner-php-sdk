@@ -8,11 +8,11 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com"
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com"
         );
         try {
             $response = $client->send($request);
@@ -27,13 +27,13 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
-                'contact_name' => "0WD3FaqRKAgoYEGpNOGzwWmNqL0QHxylFWlu94S8FVSDMY5BU7ZXRTfnNFoNra90XKkUB3tuq1X9Hm0SHBKC"
+                'contact_name' => "7K8IMJIBW1vB1RC8WQ75Zq2CPEph5LyiHrKKZHYeA6KMsRSBkbfNhFwjSSUkqouGV2ULftf3KLiOm0u6OdTYvY1WMa6BMdHbor9Bi8VjYjeAF8N8XvRYyNjj6LzPNoFY0NPc7gW3tdaerbfAUj6MGuDC"
             ]
         );
         try {
@@ -49,14 +49,14 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
-                'bank_account_holder_name' => "(",
-                'contact_name' => "ruJxi1ST1WXtfeKSzrq1Zc5Ju53UYOCwl5C8rEq5yNfh8NoRe5rX0rVCmpqdlLHNNlbdnW1ooZFRDSiyltrhPzNi7jenj4X3xdXKxR7POl5XLEB6rdcoyFq3Dy2RXyPUA"
+                'bank_account_holder_name' => "\\",
+                'contact_name' => "Rgbbh69IfOOqdFvcvTYHWhMSc2JtDSCuxpXIBKjX0wbEINtuhWyJmxhctiEpL1KlL20SY28CEIpXvCz2lX0WFgkUTJYHHOr63hjnglJCcSZdRjCOwyap0lsb8d4Dc5yMU1TN0yX6wxY6IPoPyEr8klncfGkEwHBWOqOmjPQjCJIqduyEzfF4ihEMnqIdNLL8T5msTmgqj81RXJ34GF"
             ]
         );
         try {
@@ -72,15 +72,15 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
-                'bank_account' => "797",
-                'bank_account_holder_name' => "｣",
-                'contact_name' => "az33MDlMm45c417ClVPZadCz21oTLg0Zh082rSUmgTJgltXUvopMAE6nKVgCC79b4Ei190OQ71CLczodkHUHlo8UiDVjyL8K2mxNxSNDBAB21jRDnDfUt4YgIyZaTsiHOmcCShoExxXDzwmu0NmtxroKVUk7sDu4lw8ZxL5ooBCUmbexHlOYPdRDRXfcFEKebPAHiatKRmL7K8I"
+                'bank_account' => "1306",
+                'bank_account_holder_name' => ",",
+                'contact_name' => "e0rSPWlrPa8fbLwdjVaS9JydpHqXjqW7D3uCGCdE3Z7gIcLSudPl4JIrQmLFWJxcGB9NLriuIsMTYyCUoOEa9YZaUNPTMagDSPeHLGCGYvgqbqCIdoPTyGfjAlvb"
             ]
         );
         try {
@@ -96,16 +96,16 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
-                'bank_account_type' => "other",
-                'bank_account' => "171",
-                'bank_account_holder_name' => "I",
-                'contact_name' => "B1RC8WQ75Zq2CPEph5LyiHrKKZHYeA6KMsRSBkbfNhFwjSSUkqouGV2ULftf3KLiOm0u6OdTYvY1WMa6BMdHbor9Bi8VjYjeAF8N8XvRYyNjj6LzPNoFY0NPc7gW3tdaerbfAUj6MGuDCQRgbbh69IfOOqdFvcvTYHWhMSc2JtDSCuxpXIBKjX0wbEINtuhWyJmxhctiEpL1KlL20SY28CEIpXvCz2lX0WFgkUTJYHHOr63hjnglJCc"
+                'bank_account_type' => "saving",
+                'bank_account' => "",
+                'bank_account_holder_name' => ",",
+                'contact_name' => "L3mTfJhTjDs9c8QNUGvnht1UycVdhwjqe7Rve16qe5BUa3mrtCxkktMbdZ0Ff5nebRZC0vDYNEWMfxXSVHRY4YZdsEswklf9tWgAr9KxjsUzeefEvU98BI4BdtnYVFOF5IXA6lNw66Yqs62ry4EX0H5Ssj"
             ]
         );
         try {
@@ -121,17 +121,17 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
                 'bank_branch_code' => "",
-                'bank_account_type' => "saving",
-                'bank_account' => "",
-                'bank_account_holder_name' => "ｼ",
-                'contact_name' => "wyap0lsb8d4Dc5yMU1TN0yX6wxY6IPoPyEr8klncfGkEwHBWOqOmjPQjCJIqduyEzfF4ihEMnqIdNLL8"
+                'bank_account_type' => "other",
+                'bank_account' => "395",
+                'bank_account_holder_name' => "6",
+                'contact_name' => "LujfoeXIyA6Ao82"
             ]
         );
         try {
@@ -147,18 +147,18 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
-                'bank_branch_name' => "T5msTmgqj81RXJ34GFY2SrpQfm9Le",
-                'bank_branch_code' => "002",
-                'bank_account_type' => "saving",
-                'bank_account' => "920",
-                'bank_account_holder_name' => "3",
-                'contact_name' => "a8fbLwdjVaS9JydpHqXjqW7D3uCGCdE3Z7gIcLSudPl4JIrQmLFWJxcGB9NLriuIsMTYyCUoOEa9YZaUNPTMagDSPeHLGCGYvgqbqCIdoPTyGfjAlvbOwBRftL3mTfJhTjDs9c8QNUGvnht1UycVdhwjqe7Rve16qe5BUa3mrtCx"
+                'bank_branch_name' => "XE55hc29pv4sZBooZY5wA4Og2kdAYLVTxSOsaSsUmdY0CLcfoU",
+                'bank_branch_code' => "",
+                'bank_account_type' => "current",
+                'bank_account' => "579319",
+                'bank_account_holder_name' => "｢",
+                'contact_name' => "8zC6otpSw3LnpbrPkZnNjPWO55U7DSfY3LgW5M2IvR52CgIBy3eLTys12HHDFFeqLoUtYmfM0XLYceQxhubY3jVYhbh4RW4SjcPHu2gIp7HlCgxYlFZzBuHZ8tjsh68Sc"
             ]
         );
         try {
@@ -174,19 +174,19 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
-                'bank_code' => "6429",
-                'bank_branch_name' => "dZ0Ff5nebRZC0vDYNEWMfxXSVHRY4YZdsEswklf9tWgAr",
-                'bank_branch_code' => "692",
-                'bank_account_type' => "saving",
-                'bank_account' => "55",
-                'bank_account_holder_name' => "A",
-                'contact_name' => "vU98BI4BdtnYVFOF5IXA6lNw66Yqs62ry4EX0H5SsjBGi2vt3IVLujfoeXIyA6Ao821XE55hc29pv4sZBooZY5wA4Og2kdAYLVTxSOsaSsUmdY0CLcfoUMFSIdEJMG98zC6otpSw3Lnpb"
+                'bank_code' => "4731",
+                'bank_branch_name' => "AMErPcV9o0TcGJkIJgRMahTjY4B83KCbssdnciBK2yKUy",
+                'bank_branch_code' => "204",
+                'bank_account_type' => "current",
+                'bank_account' => "89",
+                'bank_account_holder_name' => "8",
+                'contact_name' => "oCqWWrzikH0DrThI9ndCARX9iZhUIwUrsQ8Uijo55dyiBxXbKWYhqIQcADAJhW"
             ]
         );
         try {
@@ -202,20 +202,20 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "O8JUS6TcMNwfudd0OcDN26kE",
-            "ZNJtfvLzUTMMVxGv3INa5f54YI1Ph3OUBAsVaG6TxK3slQw2Vv1qEnKcaw1pz9vX015UD9qqTdXnkHVwtuWRPDBo28vDsYr2EOFyjAKpCpIzZXmsoGSwaJTi7OUK0vKQ13gfO1QSAIUcA7AjSSLuHYzu2Ra1BMEr62gevnEoyfpA",
-            ["a5797d41-aabe-47ce-98ba-f724e23d8813"],
-            "nkoel9aDgd@NSfm.com",
-            "E5De5bTvMy@Hpd2.com",
+            "N",
+            "mtxroKVUk7sDu4lw8ZxL5",
+            ["c0c4b41f-38c2-4291-befc-5a43aba020d5", "ddb2bca6-73ab-416d-a28b-24e5607f7f21"],
+            "xHlOYPdRDR@XfcF.com",
+            "EKebPAHiat@KRmL.com",
             [
-                'bank_name' => "rPkZnNjPWO55U7DSfY3LgW5M2IvR52CgIBy3eLTys12HHDFFeqLoUtYmfM0X",
+                'bank_name' => "wASll2h",
                 'bank_code' => "",
-                'bank_branch_name' => "YceQxhubY3jVYhbh4RW4SjcPHu2gI",
-                'bank_branch_code' => "",
-                'bank_account_type' => "saving",
+                'bank_branch_name' => "GkEzja1NmQHCUATGGz590dtBhucZ4e0BzAWy80f2MmxJUnd92RrjDmsbpR1t9xm",
+                'bank_branch_code' => "595",
+                'bank_account_type' => "current",
                 'bank_account' => "",
-                'bank_account_holder_name' => "ﾘ",
-                'contact_name' => "YlFZzBuHZ8tjsh68ScZg3aAMErPcV9o0TcGJkIJgRMahTjY4B83KCbssdnciBK2yKUyBpazsFHLyPhoCqWWrzikH0DrThI9ndCARX9iZhUIwUrsQ8Uijo55dyiBxXbKWYhqIQcADAJhWFwASll2hGkEzja1NmQHCUATGGz590dtBhucZ4e0BzAWy80f2MmxJUnd92RrjDmsbpR1t9xme9U0GR2pRvNpULEoTr6H5p2Y5YBaOZdS1seolN"
+                'bank_account_holder_name' => "7",
+                'contact_name' => "vNpULEoTr6H5p2Y5YBaOZdS1seolNILNbVpFGvZ3N4x3uvaLnbw12Ii4C82SzJJG4lODNS2Ij7U5b72UTWb"
             ]
         );
         try {

@@ -8,7 +8,7 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "15e45ce2-4a91-493f-974d-792c077afaf5"
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "15e45ce2-4a91-493f-974d-792c077afaf5",
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'external_id' => "dn"
+                'external_id' => "eZjSIQORsTn19Lt83IRfp6apsZzw"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "15e45ce2-4a91-493f-974d-792c077afaf5",
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'account_name' => "ANiixumuncg7egxc7L05i8jkZ1Waa6h6AAgB9jXehhbgsnyiHZ1n3qwk3r3QhfSXAhy6Q6NsE0G4ETHn0hBw4No1Y",
-                'external_id' => "XyGaN9eZjSIQORsTn19Lt83IRfp6apsZz"
+                'account_name' => "Ugb2qqrLtRpMZnFJMuPuuYDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtrgI5GH6",
+                'external_id' => "i2f3OojTDEk0fitYgK"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "15e45ce2-4a91-493f-974d-792c077afaf5",
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'status' => "active",
-                'account_name' => "Ugb2qqrLtRpMZnFJMuPuuYDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29Ltqbz",
-                'external_id' => "IUCtrgI5GH6wQi2f3"
+                'status' => "suspended",
+                'account_name' => "zfXu0N7ZPQ6Ey6Tu3B",
+                'external_id' => "U56A0DovC2AWlgsj8AO1bqHH9NHpqZwH1tkpyND"
             ]
         );
         try {

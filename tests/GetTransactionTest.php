@@ -8,7 +8,7 @@ class GetTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetTransaction(
-            "dd8b7c9d-2ae7-4385-afb4-927e2e032664"
+            "1aa41810-9951-44ab-9d0a-e10f2d61c84c"
         );
         try {
             $response = $client->send($request);
