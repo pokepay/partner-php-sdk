@@ -879,6 +879,35 @@ components:
           minimum: 0
         pagination:
           $ref: '#/components/schemas/Pagination'
+    PrivateMoneySummary:
+      x-pokepay-schema-type: "response"
+      properties:
+        topup_amount:
+          type: number
+          format: decimal
+        refunded_topup_amount:
+          type: number
+          format: decimal
+        payment_amount:
+          type: number
+          format: decimal
+        refunded_payment_amount:
+          type: number
+          format: decimal
+        added_point_amount:
+          type: number
+          format: decimal
+        refunded_added_point_amount:
+          type: number
+          format: decimal
+        exchange_inflow_amount:
+          type: number
+          format: decimal
+        exchange_outflow_amount:
+          type: number
+          format: decimal
+        transaction_count:
+          type: integer
     PaginatedTransaction:
       x-pokepay-schema-type: "response"
       properties:
@@ -4200,6 +4229,50 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+  /private-moneys/{private_money_id}/summary:
+    get:
+      tags:
+        - Private Money
+      summary: 取引サマリを取得する
+      x-pokepay-operator-name: "GetPrivateMoneySummary"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                from:
+                  type: string
+                  format: date-time
+                  title: '開始日時'
+                to:
+                  type: string
+                  format: date-time
+                  title: '終了日時'
+      parameters:
+        - in: path
+          name: private_money_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: マネーID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrivateMoneySummary'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /customers/transactions:
     get:
       tags:

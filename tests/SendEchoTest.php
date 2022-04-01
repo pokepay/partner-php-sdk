@@ -8,7 +8,7 @@ class SendEcho extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\SendEcho(
-            "4Y0"
+            "acDgdY"
         );
         try {
             $response = $client->send($request);

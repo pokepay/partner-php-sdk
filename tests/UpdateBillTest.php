@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "78ca3bcf-d397-49a7-9f86-e2c7002bf11a"
+            "011b504d-9950-476f-89b5-74640faf5c82"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "78ca3bcf-d397-49a7-9f86-e2c7002bf11a",
+            "011b504d-9950-476f-89b5-74640faf5c82",
             [
-                'is_disabled' => TRUE
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -41,9 +41,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "78ca3bcf-d397-49a7-9f86-e2c7002bf11a",
+            "011b504d-9950-476f-89b5-74640faf5c82",
             [
-                'description' => "Jj5BoyL1MgjctfisLuYo4aorOwFrhmbs26EDkzDLnAr7NHvMDZLOk3Kn6N9IKA2DQ0UDl0RkGXqQRpkGArTGUPugetKJLdESdgB4DMlPhuAgx6J23S5a4KJH2dJnXOeAy8xYgmSSWd6nFdHza9f0TF30iljDxgSpyfoek",
+                'description' => "tAEAC8MN1MIRbysguh0xXqdkQK8VGfHRzulBqoPAVuBC2EUluqb81O3ZagKE8LcCa8bz2nHShe5EoHVudmx1iMacSt3whWHQ5cbR62Eyf",
                 'is_disabled' => TRUE
             ]
         );
@@ -60,11 +60,11 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "78ca3bcf-d397-49a7-9f86-e2c7002bf11a",
+            "011b504d-9950-476f-89b5-74640faf5c82",
             [
-                'amount' => 2329,
-                'description' => "UtYXnQ6dyRqDXbojqilSXXfgL13rI1kMYSkzLYWcqyBEPqq6jXoMPoI5dYhtAEAC8MN1MIRbysguh0xXqdkQK8VGfHRzulBqoPAVuBC2EUluqb81O3ZagKE8LcCa8bz2nHShe5EoHVudmx1iMa",
-                'is_disabled' => FALSE
+                'amount' => 2605,
+                'description' => "yRxoXmZ8au8D4esSHy55WYfHfvN0QEBe9OUmuQoNyAxdhT65YfaNVM2xjqlPxxy8RqwFWTQ1hvVt9bN2zIxNZx4eE9mHPjq6XCvYjxbcuNA5AOQHru6gAXocPu4UpOUbFxl1xg8SX1voG8Gydqo4fQ7D47J36mgyKf2pL",
+                'is_disabled' => TRUE
             ]
         );
         try {
