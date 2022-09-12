@@ -10,7 +10,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 6406
+                'money_amount' => 6406.0
             ]
         );
         try {
@@ -28,7 +28,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 7560,
+                'money_amount' => 7560.0,
                 'description' => "6TYPgxIzfeirgwWnuJKugM3OQh2JHBnxbiEM0oFGnnvKX9mW4mLe"
             ]
         );
@@ -47,7 +47,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 8205,
+                'money_amount' => 8205.0,
                 'is_onetime' => TRUE,
                 'description' => "HweV"
             ]
@@ -67,7 +67,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 2950,
+                'money_amount' => 2950.0,
                 'usage_limit' => 4601,
                 'is_onetime' => FALSE,
                 'description' => "DqMFurm2HyY5rxBRsFTyEvnewbYd4rNZJsCq7m7arw2NKYH12xHXaAOFqIwxrvxkxwVYBDQiRCyVTR3czNdwQ9LziqjK5MdQ1lZMyARXVB9A32ESqVUKE1GN9JqLEvyRdA5j20ws4Z1pnjZ8xWKeN3WKGyHXCKD"
@@ -88,7 +88,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 9233,
+                'money_amount' => 9233.0,
                 'expires_at' => "2024-08-13T01:01:15.000000+09:00",
                 'usage_limit' => 8368,
                 'is_onetime' => FALSE,
@@ -110,7 +110,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 721,
+                'money_amount' => 721.0,
                 'point_expires_at' => "2023-06-18T12:50:23.000000+09:00",
                 'expires_at' => "2022-06-13T19:26:25.000000+09:00",
                 'usage_limit' => 7698,
@@ -133,7 +133,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 7086,
+                'money_amount' => 7086.0,
                 'point_expires_in_days' => 9379,
                 'point_expires_at' => "2018-12-03T12:37:48.000000+09:00",
                 'expires_at' => "2024-08-24T00:57:08.000000+09:00",
@@ -157,7 +157,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 5780,
+                'money_amount' => 5780.0,
                 'bear_point_account' => "c1af4784-46d4-4052-9fd1-04a3fa8985d6",
                 'point_expires_in_days' => 6945,
                 'point_expires_at' => "2023-07-25T12:28:26.000000+09:00",
@@ -182,8 +182,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 7999,
-                'point_amount' => 6753
+                'money_amount' => 7999.0,
+                'point_amount' => 6753.0
             ]
         );
         try {
@@ -201,8 +201,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 8837,
-                'point_amount' => 7734,
+                'money_amount' => 8837.0,
+                'point_amount' => 7734.0,
                 'description' => "9IRy95uKnYj6aDVb3qDkr4z"
             ]
         );
@@ -221,8 +221,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 2007,
-                'point_amount' => 5825,
+                'money_amount' => 2007.0,
+                'point_amount' => 5825.0,
                 'is_onetime' => FALSE,
                 'description' => "7t4NS9wkdOXwioDpfXuzoNbRpuKefj9znX2XonFzQcO5QEOmdgUm73I2kFchNQksZB6ByT3lVRQ7O823WFeXCsADfveWv5SetJLuZcB6tdcwibyPvTHbjOWbqqVGNOP2f7Fmc6XSXXM3Y5XPxnjFhfkfYgvABxRhj"
             ]
@@ -242,8 +242,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 9899,
-                'point_amount' => 9349,
+                'money_amount' => 9899.0,
+                'point_amount' => 9349.0,
                 'usage_limit' => 8408,
                 'is_onetime' => FALSE,
                 'description' => "6F6onhtgkbe1I3fnSrAjiMpnuQgQNZWqLAFAWqZBqyjs43AAjNChMERBnJER6lOBQBwAgsTow2Z3Uka1wds9TY9Bp5VDJiBPB1XeTNJcIKtWyeNc1zzlxW2hgOK8NI225RAsUHuuLFS"
@@ -264,8 +264,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 9908,
-                'point_amount' => 8704,
+                'money_amount' => 9908.0,
+                'point_amount' => 8704.0,
                 'expires_at' => "2019-04-26T10:28:52.000000+09:00",
                 'usage_limit' => 8888,
                 'is_onetime' => TRUE,
@@ -287,8 +287,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 2375,
-                'point_amount' => 1634,
+                'money_amount' => 2375.0,
+                'point_amount' => 1634.0,
                 'point_expires_at' => "2019-01-28T23:19:44.000000+09:00",
                 'expires_at' => "2017-04-01T10:05:47.000000+09:00",
                 'usage_limit' => 8306,
@@ -311,8 +311,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 59,
-                'point_amount' => 6448,
+                'money_amount' => 59.0,
+                'point_amount' => 6448.0,
                 'point_expires_in_days' => 3901,
                 'point_expires_at' => "2019-05-31T03:19:07.000000+09:00",
                 'expires_at' => "2023-03-07T18:36:03.000000+09:00",
@@ -336,8 +336,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'money_amount' => 5589,
-                'point_amount' => 4338,
+                'money_amount' => 5589.0,
+                'point_amount' => 4338.0,
                 'bear_point_account' => "a334af1a-2e28-4ac2-9f0d-d5c86ad58a8e",
                 'point_expires_in_days' => 1744,
                 'point_expires_at' => "2024-08-25T06:38:19.000000+09:00",
@@ -362,7 +362,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 653
+                'point_amount' => 653.0
             ]
         );
         try {
@@ -380,7 +380,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 5893,
+                'point_amount' => 5893.0,
                 'description' => "ntTDK9f1O2csoG3F55uy56fVMl4ovKtbbNMLWzz4xf72tklHyikvXSu1xVqKMzKtPMLBX6YLvmDqPAbWtHJHRtQBqCHsxk71k"
             ]
         );
@@ -399,7 +399,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 9193,
+                'point_amount' => 9193.0,
                 'is_onetime' => TRUE,
                 'description' => "HcZ37iojnk7j2j33qMA4N2evwLBNS7QyCEhtgNDuAnxydB9u3o7ZMeTosoRh4S0mExQI1uCwHXvSS9xqXNJM"
             ]
@@ -419,7 +419,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 6236,
+                'point_amount' => 6236.0,
                 'usage_limit' => 1020,
                 'is_onetime' => FALSE,
                 'description' => "qv2rRxx8SeYgA5RTAZIE0d3whSKLF4xWXCgQOdSsQVPrApoltrzZbMjGbqCaDUv1CsWTy6z2FdXbfXavW2HwaVVWGcOvRgfjTir1eeHpnGAvFN5uVHKI7mM3plgJR5fwzKIFQcpGZZVlRU03Fa2F6"
@@ -440,7 +440,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 6692,
+                'point_amount' => 6692.0,
                 'expires_at' => "2024-02-12T12:16:30.000000+09:00",
                 'usage_limit' => 7484,
                 'is_onetime' => FALSE,
@@ -462,7 +462,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 9270,
+                'point_amount' => 9270.0,
                 'point_expires_at' => "2018-07-24T11:01:23.000000+09:00",
                 'expires_at' => "2017-09-13T10:22:26.000000+09:00",
                 'usage_limit' => 4324,
@@ -485,7 +485,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 8165,
+                'point_amount' => 8165.0,
                 'point_expires_in_days' => 3911,
                 'point_expires_at' => "2017-07-19T23:16:18.000000+09:00",
                 'expires_at' => "2023-11-29T12:55:51.000000+09:00",
@@ -509,7 +509,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "17f5f16e-bd5c-4601-b52f-f3f2794c20bc",
             [
-                'point_amount' => 320,
+                'point_amount' => 320.0,
                 'bear_point_account' => "4533aa8a-86c5-4415-bea8-1969ccba28df",
                 'point_expires_in_days' => 3002,
                 'point_expires_at' => "2021-06-16T18:57:59.000000+09:00",

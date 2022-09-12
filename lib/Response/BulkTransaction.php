@@ -46,7 +46,8 @@ class BulkTransaction extends Base
 
     protected function normalize($timezone)
     {
-        $this->submittedAt->setTimezone(new DateTimeZone($timezone));
-        $this->updatedAt->setTimezone(new DateTimeZone($timezone));
+        $tz = new DateTimeZone($timezone);
+        $this->submittedAt->setTimezone($tz);
+        $this->updatedAt->setTimezone($tz);
     }
 }

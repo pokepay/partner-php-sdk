@@ -22,6 +22,7 @@ class AccountBalance extends Base
 
     protected function normalize($timezone)
     {
-        $this->expiresAt->setTimezone(new DateTimeZone($timezone));
+        $tz = new DateTimeZone($timezone);
+        $this->expiresAt->setTimezone($tz);
     }
 }

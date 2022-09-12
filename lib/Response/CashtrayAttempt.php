@@ -8,7 +8,7 @@ use DateTimeZone;
 class CashtrayAttempt extends Base
 {
     /**
-     * @var AccountWithUser
+     * @var AccountWithUser|null
      */
     public $account;
     /**
@@ -30,6 +30,7 @@ class CashtrayAttempt extends Base
 
     protected function normalize($timezone)
     {
-        $this->createdAt->setTimezone(new DateTimeZone($timezone));
+        $tz = new DateTimeZone($timezone);
+        $this->createdAt->setTimezone($tz);
     }
 }

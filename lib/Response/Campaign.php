@@ -74,11 +74,11 @@ class Campaign extends Base
 
     protected function normalize($timezone)
     {
-      $tz = new DateTimeZone($timezone);
-      $this->startsAt->setTimezone($tz);
-      $this->endsAt->setTimezone($tz);
-      if (isset($this->pointExpiresAt)){
-        $this->pointExpiresAt->setTimezone($tz);
-      }
+        $tz = new DateTimeZone($timezone);
+        $this->startsAt->setTimezone($tz);
+        $this->endsAt->setTimezone($tz);
+        if (isset($this->pointExpiresAt)){
+            $this->~A->setTimezone($tz);
+        }
     }
 }

@@ -10,7 +10,7 @@ class CreateCashtray extends TestCase
         $request = new Request\CreateCashtray(
             "aa0e20bd-a563-47d5-8cd7-577a16995380",
             "5841b09a-cef2-45ce-a527-e7cd70e25541",
-            191
+            191.0
         );
         try {
             $response = $client->send($request);
@@ -27,7 +27,7 @@ class CreateCashtray extends TestCase
         $request = new Request\CreateCashtray(
             "aa0e20bd-a563-47d5-8cd7-577a16995380",
             "5841b09a-cef2-45ce-a527-e7cd70e25541",
-            191,
+            191.0,
             [
                 'expires_in' => 2640
             ]
@@ -47,7 +47,7 @@ class CreateCashtray extends TestCase
         $request = new Request\CreateCashtray(
             "aa0e20bd-a563-47d5-8cd7-577a16995380",
             "5841b09a-cef2-45ce-a527-e7cd70e25541",
-            191,
+            191.0,
             [
                 'description' => "Y1pUONfZUthj8CTdPwk2g7DYhFuXWtax2gH7mosTYAgSjd1Lu4N1G4DllEfWLsx2f1PjIk5LFEcZYZR1K1ULgGU5oSrsDCn36n92LJoBnxVW",
                 'expires_in' => 9538
