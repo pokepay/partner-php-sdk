@@ -62,7 +62,7 @@ class UpdateCashtray extends TestCase
         $request = new Request\UpdateCashtray(
             "ddef8a3f-e564-466a-abc4-9978ecd612b2",
             [
-                'amount' => 1685,
+                'amount' => 1685.0,
                 'description' => "7BTtK3VwbUSgXIGfDPEPwHED0KtmDzxLUbUeg7w8cIU7UKhxLe1FMHoh3041czvU7tiTGNYlDyRk3aGMps1HN2Oi8GzWre6yIHCge3KvTMWtvAOdqc6t46b4EgFIpDVk2sqQhlAUNF0Kr6ekdB7WSGlsT24mzzvf0uixfzgMS7DAxR",
                 'expires_in' => 9371
             ]

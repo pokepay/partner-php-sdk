@@ -9,12 +9,11 @@ class ListTransactionsV2 extends Base
 {
     protected $method = 'GET';
     public $responseClass = \Pokepay\Response\PaginatedTransactionV2::class;
-    private $privateMoneyId;
-    public function __construct($privateMoneyId, $optionalParams = array())
+    
+    public function __construct($optionalParams = array())
     {
         parent::__construct();
-        $this->privateMoneyId = $privateMoneyId;
-
+        
         $this->optionalParams = $optionalParams;
     }
 
@@ -26,7 +25,7 @@ class ListTransactionsV2 extends Base
     public function getParams()
     {
         $params = array(
-            'private_money_id' => $this->privateMoneyId,
+            
         );
 
         $params += $this->optionalParams;

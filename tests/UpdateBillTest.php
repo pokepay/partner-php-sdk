@@ -62,7 +62,7 @@ class UpdateBill extends TestCase
         $request = new Request\UpdateBill(
             "011b504d-9950-476f-89b5-74640faf5c82",
             [
-                'amount' => 2605,
+                'amount' => 2605.0,
                 'description' => "yRxoXmZ8au8D4esSHy55WYfHfvN0QEBe9OUmuQoNyAxdhT65YfaNVM2xjqlPxxy8RqwFWTQ1hvVt9bN2zIxNZx4eE9mHPjq6XCvYjxbcuNA5AOQHru6gAXocPu4UpOUbFxl1xg8SX1voG8Gydqo4fQ7D47J36mgyKf2pL",
                 'is_disabled' => TRUE
             ]

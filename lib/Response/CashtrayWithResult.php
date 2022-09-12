@@ -36,17 +36,20 @@ class CashtrayWithResult extends Base
      */
     public $token;
     /**
-     * @var CashtrayAttempt
+     * @var CashtrayAttempt|null
      */
     public $attempt;
     /**
-     * @var Transaction
+     * @var Transaction|null
      */
     public $transaction;
 
     protected function normalize($timezone)
     {
-        $this->expiresAt->setTimezone(new DateTimeZone($timezone));
-        $this->canceledAt->setTimezone(new DateTimeZone($timezone));
+        $tz = new DateTimeZone($timezone);
+        $this->expiresAt->setTimezone($tz);
+        if (isset($this->canceledAt)){
+            $this->~A->setTimezone($tz);
+        }
     }
 }

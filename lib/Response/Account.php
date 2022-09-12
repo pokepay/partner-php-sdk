@@ -19,7 +19,7 @@ class Account extends Base
      */
     public $isSuspended;
     /**
-     * @var AccountStatus
+     * @var string
      */
     public $status;
     /**

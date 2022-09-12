@@ -56,4 +56,24 @@ class ListCampaigns extends TestCase
             $this->assertTrue(false);
         }
     }
+    public function testListCampaigns3()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListCampaigns(
+            "c9028f2a-d2bf-40e2-9301-9754e5d4a830",
+            [
+                'is_ongoing' => TRUE,
+                'page' => 5303,
+                'per_page' => 5491
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
 }

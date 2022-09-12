@@ -16,11 +16,11 @@ class CpmToken extends Base
      */
     public $account;
     /**
-     * @var Transaction
+     * @var Transaction|null
      */
     public $transaction;
     /**
-     * @var ExternalTransaction
+     * @var ExternalTransaction|null
      */
     public $event;
     /**
@@ -38,6 +38,7 @@ class CpmToken extends Base
 
     protected function normalize($timezone)
     {
-        $this->expiresAt->setTimezone(new DateTimeZone($timezone));
+        $tz = new DateTimeZone($timezone);
+        $this->expiresAt->setTimezone($tz);
     }
 }
