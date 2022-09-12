@@ -49,7 +49,7 @@ class CashtrayWithResult extends Base
         $tz = new DateTimeZone($timezone);
         $this->expiresAt->setTimezone($tz);
         if (isset($this->canceledAt)){
-            $this->~A->setTimezone($tz);
+            $this->canceledAt->setTimezone($tz);
         }
     }
 }

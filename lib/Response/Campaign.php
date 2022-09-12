@@ -78,7 +78,7 @@ class Campaign extends Base
         $this->startsAt->setTimezone($tz);
         $this->endsAt->setTimezone($tz);
         if (isset($this->pointExpiresAt)){
-            $this->~A->setTimezone($tz);
+            $this->pointExpiresAt->setTimezone($tz);
         }
     }
 }
