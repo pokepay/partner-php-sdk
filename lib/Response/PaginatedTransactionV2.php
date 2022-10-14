@@ -26,4 +26,11 @@ class PaginatedTransactionV2 extends Base
      * @var string|null
      */
     public $prevPageCursorId;
+
+    protected function normalize($timezone)
+    {
+        foreach ($this->rows as $row) {
+            $row->normalize($timezone);
+        }
+    }
 }
