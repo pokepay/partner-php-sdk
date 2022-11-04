@@ -3,6 +3,7 @@
 
 namespace Pokepay\Request;
 
+use DateTime;
 
 class RefundTransaction extends Base
 {
@@ -30,7 +31,10 @@ class RefundTransaction extends Base
 
         $params += $this->optionalParams;
 
-        
+        if (isset($params['returningPointExpiresAt']) && $params['returningPointExpiresAt'] instanceof DateTime) {
+            $params['returningPointExpiresAt'] = $params['returningPointExpiresAt']->format(DateTime::ATOM);
+        }
+
         return $params;
     }
 }

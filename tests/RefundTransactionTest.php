@@ -25,7 +25,26 @@ class RefundTransaction extends TestCase
         $request = new Request\RefundTransaction(
             "7d58adfc-e78a-4f25-bffa-91e9d54f3e5f",
             [
-                'description' => "2NmWBluHrzflOytNd3ROmH9nMfAHnX3LOs6P3dxLhDjrt4CF"
+                'returning_point_expires_at' => "2024-08-02T18:38:47.000000+09:00"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testRefundTransaction2()
+    {
+        $client = $this->newClient();
+        $request = new Request\RefundTransaction(
+            "7d58adfc-e78a-4f25-bffa-91e9d54f3e5f",
+            [
+                'description' => "mWBluHrzflOytNd3ROmH9nMfAHnX3LOs6P3dxLhDjrt4CFESWJnPCLUxGLtrgoghS3pPHE574eeX1ksH4R2MgyW6z149JBRZmQUgzecqWdDVSstoEtPVoykbtA6l7WDayqQLAKXyhWYd",
+                'returning_point_expires_at' => "2024-07-09T11:25:15.000000+09:00"
             ]
         );
         try {
