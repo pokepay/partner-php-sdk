@@ -8,7 +8,7 @@ class GetTransactionByRequestId extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetTransactionByRequestId(
-            "147b01bc-2fc5-4e7c-9e16-f45300e56d57"
+            "0dd1c06c-8bdc-4501-86c9-eb2e75225c94"
         );
         try {
             $response = $client->send($request);

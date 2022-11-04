@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ddef8a3f-e564-466a-abc4-9978ecd612b2"
+            "7bff8809-3fed-4076-bcd8-094bdba92a0e"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ddef8a3f-e564-466a-abc4-9978ecd612b2",
+            "7bff8809-3fed-4076-bcd8-094bdba92a0e",
             [
-                'expires_in' => 3782
+                'expires_in' => 958
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ddef8a3f-e564-466a-abc4-9978ecd612b2",
+            "7bff8809-3fed-4076-bcd8-094bdba92a0e",
             [
-                'description' => "8q2Tl06IVYw4zb7KKLj26g9D4jd9Fi73fT2ekfbMypSoZArmvOOmVqy7LHITpCScM5po6zQrUB5yHtoGfycJYa2GIKQCGBFwcqnjKtXS5ctb0sUDamQiJFavfIlsQjs1Uxv98uoxa9cfqdBZBSSyuPsLgc14jRH1daAJWkWpeG",
-                'expires_in' => 3543
+                'description' => "0yIYDrOmfZvcfCdES8HHJf50TC5y2HNrP34hD1uxIbudPgKcAH4LqtvnYdJrsgVxWy0PirB5ccKSjPsnaJy0xSUaUZ3KYipGveNp11WiSr08uCzB0JSt7hZNL6cvcqBnhGnyRs1ZbgEX46DL0EY9Dfg2K2KSBJ32yceHkpeJS53rQYrIERvl0KriuNlhP5RwfRsd",
+                'expires_in' => 212
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ddef8a3f-e564-466a-abc4-9978ecd612b2",
+            "7bff8809-3fed-4076-bcd8-094bdba92a0e",
             [
-                'amount' => 1685.0,
-                'description' => "7BTtK3VwbUSgXIGfDPEPwHED0KtmDzxLUbUeg7w8cIU7UKhxLe1FMHoh3041czvU7tiTGNYlDyRk3aGMps1HN2Oi8GzWre6yIHCge3KvTMWtvAOdqc6t46b4EgFIpDVk2sqQhlAUNF0Kr6ekdB7WSGlsT24mzzvf0uixfzgMS7DAxR",
-                'expires_in' => 9371
+                'amount' => 4590.0,
+                'description' => "nsKFojcLOuuurZaaP5z",
+                'expires_in' => 599
             ]
         );
         try {

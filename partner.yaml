@@ -12,6 +12,7 @@ info:
 
 tags:
   - name: Transaction
+  - name: Transfer
   - name: Check
     description: |
       店舗ユーザが発行し、エンドユーザーがポケペイアプリから読み取ることでチャージ取引が発生するQRコードです。
@@ -958,6 +959,35 @@ components:
           minimum: 0
         pagination:
           $ref: '#/components/schemas/Pagination'
+
+    PaginatedTransfersV2:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transfer'
+        per_page:
+          type: integer
+        count:
+          type: integer
+        next_page_cursor_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: |-
+            次ページ取得するためのID。
+
+            実際にはrows末尾
+        prev_page_cursor_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: |-
+            前ページ取得するためのID。
+
+            実際にはrows先頭
+
     PaginatedAccounts:
       x-pokepay-schema-type: "response"
       properties:
@@ -3367,6 +3397,12 @@ paths:
                   maxLength: 200
                   title: '取引履歴に表示する返金事由'
                   example: '返品対応のため'
+                returning_point_expires_at:
+                  type: string
+                  format: date-time
+                  title: '返却ポイントの有効期限'
+                  description: |-
+                    ポイント支払いを含む支払い取引をキャンセルする際にユーザへ返却されるポイントの有効期限です。デフォルトでは未指定です。
       responses:
         '200':
           description: OK
@@ -3593,7 +3629,7 @@ paths:
   /transfers:
     get:
       tags:
-        - Transaction
+        - Transfer
       x-pokepay-operator-name: "ListTransfers"
       x-pokepay-allow-server-side: true
       requestBody:
@@ -3687,6 +3723,206 @@ paths:
                 $ref: '#/components/schemas/PaginatedTransfers'
         '400':
           $ref: '#/components/responses/InvalidParameters'
+
+  /transfers-v2:
+    get:
+      tags:
+        - Transfer
+      x-pokepay-operator-name: "ListTransfersV2"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                shop_id:
+                  type: string
+                  format: uuid
+                  title: '店舗ID'
+                  description: |-
+                    店舗IDです。
+
+                    フィルターとして使われ、指定された店舗での取引のみ一覧に表示されます。
+                shop_name:
+                  type: string
+                  maxLength: 256
+                  title: '店舗名'
+                  description: |-
+                    店舗名です。
+
+                    フィルターとして使われ、入力された名前に部分一致する店舗での取引のみ一覧に表示されます。
+                customer_id:
+                  type: string
+                  format: uuid
+                  title: 'エンドユーザーID'
+                  description: |-
+                    エンドユーザーIDです。
+
+                    フィルターとして使われ、指定されたエンドユーザーの取引のみ一覧に表示されます。
+                customer_name:
+                  type: string
+                  maxLength: 256
+                  title: 'エンドユーザー名'
+                  description: |-
+                    エンドユーザー名です。
+
+                    フィルターとして使われ、入力された名前に部分一致するエンドユーザーでの取引のみ一覧に表示されます。
+                transaction_id:
+                  type: string
+                  format: uuid
+                  title: '取引ID'
+                  description: |-
+                    取引IDです。
+
+                    フィルターとして使われ、指定された取引IDに部分一致(前方一致)する取引のみが一覧に表示されます。
+                private_money_id:
+                  type: string
+                  format: uuid
+                  title: 'マネーID'
+                  description: |-
+                    マネーIDです。
+
+                    指定したマネーでの取引が一覧に表示されます。
+                is_modified:
+                  type: boolean
+                  title: 'キャンセルフラグ'
+                  description: |-
+                    キャンセルフラグです。
+
+                    これにtrueを指定するとキャンセルされた取引のみ一覧に表示されます。
+                    デフォルト値はfalseで、キャンセルの有無にかかわらず一覧に表示されます。
+                transaction_types:
+                  type: array
+                  title: '取引種別 (複数指定可)、チャージ=topup、支払い=payment'
+                  description: |-
+                    取引の種類でフィルターします。
+
+                    以下の種類を指定できます。
+
+                    1. topup
+                       店舗からエンドユーザーへの送金取引(チャージ)
+
+                    2. payment
+                       エンドユーザーから店舗への送金取引(支払い)
+
+                    3. exchange-outflow
+                       他マネーへの流出
+                       private_money_idが指定されたとき、そのマネーから見て流出方向の交換取引が抽出されます。
+                       private_money_idを省略した場合は表示されません。
+
+                    4. exchange-inflow
+                       他マネーからの流入
+                       private_money_idが指定されたとき、そのマネーから見て流入方向の交換取引が抽出されます。
+                       private_money_idを省略した場合は表示されません。
+
+                    5. cashback
+                       退会時返金取引
+
+                    6. expire
+                       退会時失効取引
+                  items:
+                    type: string
+                    enum: [topup, payment, transfer, exchange, cashback, expire]
+                next_page_cursor_id:
+                  type: string
+                  format: uuid
+                  title: '次ページへ遷移する際に起点となるtransferのID'
+                  description: |-
+                    次ページへ遷移する際に起点となるtransferのID(前ページの末尾要素のID)です。
+                    本APIのレスポンスにもnext_page_cursor_idが含まれており、これがnull値の場合は最後のページであることを意味します。
+                    UUIDである場合は次のページが存在することを意味し、このnext_page_cursor_idをリクエストパラメータに含めることで次ページに遷移します。
+
+                    next_page_cursor_idのtransfer自体は次のページには含まれません。
+                prev_page_cursor_id:
+                  type: string
+                  format: uuid
+                  title: '前ページへ遷移する際に起点となるtransferのID'
+                  description: |-
+                    前ページへ遷移する際に起点となるtransferのID(次ページの先頭要素のID)です。
+
+                    本APIのレスポンスにもprev_page_cursor_idが含まれており、これがnull値の場合は先頭のページであることを意味します。
+                    UUIDである場合は前のページが存在することを意味し、このprev_page_cursor_idをリクエストパラメータに含めることで前ページに遷移します。
+
+                    prev_page_cursor_idのtransfer自体は前のページには含まれません。
+                per_page:
+                  type: integer
+                  minimum: 1
+                  maximum: 1000
+                  title: '1ページ分の取引数'
+                  description: |-
+                    1ページ分の取引数です。
+
+                    デフォルト値は50です。
+                  example: 50
+                transfer_types:
+                  type: array
+                  title: '取引明細種別 (複数指定可)'
+                  description: |-
+                    取引明細の種類でフィルターします。
+
+                    以下の種類を指定できます。
+
+                    1. topup
+                    店舗からエンドユーザーへの送金取引(チャージ)、またはそのキャンセル取引
+
+                    2. payment
+                    エンドユーザーから店舗への送金取引(支払い)、またはそのキャンセル取引
+
+                    3. exchange
+                    他マネーへの流出/流入
+
+                    4. campaign
+                    取引に対するポイント還元キャンペーンによるポイント付与、またはそのキャンセル取引
+
+                    5. coupon
+                    クーポンによる値引き処理、またはそのキャンセル取引
+
+                    6. cashback
+                    退会時の返金取引
+
+                    7. expire
+                    退会時失効取引
+                  items:
+                    type: string
+                    enum: [topup, payment, exchange, transfer, coupon, campaign, cashback, expire]
+                description:
+                  type: string
+                  maxLength: 200
+                  title: '取引詳細説明文'
+                  description: |-
+                    取引詳細を指定の取引詳細説明文でフィルターします。
+
+                    取引詳細説明文が完全一致する取引のみ抽出されます。取引詳細説明文は最大200文字で記録されています。
+                  example: 店頭QRコードによる支払い
+                from:
+                  type: string
+                  format: date-time
+                  title: '開始日時'
+                  description: |-
+                    抽出期間の開始日時です。
+
+                    フィルターとして使われ、開始日時以降に発生した取引のみ一覧に表示されます。
+                to:
+                  type: string
+                  format: date-time
+                  title: '終了日時'
+                  description: |-
+                    抽出期間の終了日時です。
+
+                    フィルターとして使われ、終了日時以前に発生した取引のみ一覧に表示されます。
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransfersV2'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
 
   /organizations:
     post:
@@ -4993,6 +5229,14 @@ paths:
                           このルールを適用する終了日時を指定します。
                           デフォルトではキャンペーン全体の終了日時が指定されます。
                           商品個別にキャンペーン期間指定をする場合は、キャンペーン全体の期間指定の範囲内に入っている必要があります。
+                      group_id:
+                        type: integer
+                        minimum: 1
+                        title: '商品グループID'
+                        description: |-
+                          複数の商品グループからの組み合わせ購入によって発火するキャンペーンで使用する商品グループIDです。
+                          キャンペーンのパラメータ exist_in_each_product_groups を真に設定し、product_based_point_rules中の全てのルールでgroup_idを指定する必要があります。
+                          デフォルトでは未指定です。
                     example: |-
                       {
                         "point_amount": 5,
@@ -5170,6 +5414,97 @@ paths:
                       ]
                     }
                     ```
+                exist_in_each_product_groups:
+                  type: boolean
+                  title: '複数の商品グループにつき1種類以上の商品購入によって発火するキャンペーンの指定フラグ'
+                  description: |-
+                    複数の商品グループの各グループにつき1種類以上の商品が購入されることによって発火するキャンペーンであるときに真を指定します。デフォルトは偽です。
+
+                    このパラメータを指定するときは product_based_point_rules で商品毎のルールが指定され、さらにその中でgroup_idが指定されている必要があります。group_idは正の整数です。
+                    exist_in_each_product_groupsが指定されているにも関わらず商品毎のルールでgroup_idが指定されていないものが含まれている場合はinvalid_parametersエラー(missing group_id, エラーコード400)が返ります。
+
+                    例えば、商品グループA(商品コードa1, a2)、商品グループB(商品コードb1, b2)の2つの商品グループがあるとします。
+                    このとき、各商品グループからそれぞれ少なくとも1種類以上の商品が購入されることにより発火するキャンペーンに対するリクエストパラメータは以下のようなものになります。
+
+                    ```javascript
+                    {
+                      exist_in_each_product_groups: true,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a1",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a2",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 200,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b1",
+                          "group_id": 2
+                        },
+                        {
+                          "point_amount": 200,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b2",
+                          "group_id": 2
+                        }
+                      ]
+                    }
+                    ```
+
+                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になります。つまり100 + 200=300がポイント付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
+
+                    ポイント付与値を各商品毎のルールの総和ではなく固定値にしたい場合には、max_point_amountを指定します。
+                    例えば以下のようなリクエストパラメータ指定の場合を考えます。
+
+                    ```javascript
+                    {
+                      max_point_amount: 100,
+                      exist_in_each_product_groups: true,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a1",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a2",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b1",
+                          "group_id": 2
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b2",
+                          "group_id": 2
+                        }
+                      ]
+                    }
+                    ```
+
+                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になりますが、付与値の上限が100ポイントになります。つまり100 + 200=300が100ですが上限額の100ポイントが付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600ですが上限額の100がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
+                max_point_amount:
+                  type: integer
+                  minimum: 1
+                  title: 'キャンペーンによって付与されるポイントの上限'
+                  description: |-
+                    キャンペーンによって付与されるポイントの上限を指定します。デフォルトは未指定です。
+
+                    このパラメータが指定されている場合、amount_based_point_rules や product_based_point_rules によって計算されるポイント付与値がmax_point_amountを越えている場合、max_point_amountの値がポイント付与値となり、越えていない場合はその値がポイント付与値となります。
                 dest_private_money_id:
                   type: string
                   format: uuid
@@ -5763,6 +6098,98 @@ paths:
                       ]
                     }
                     ```
+                exist_in_each_product_groups:
+                  type: boolean
+                  title: '複数の商品グループにつき1種類以上の商品購入によって発火するキャンペーンの指定フラグ'
+                  description: |-
+                    複数の商品グループの各グループにつき1種類以上の商品が購入されることによって発火するキャンペーンであるときに真を指定します。デフォルトは偽です。
+
+                    このパラメータを指定するときは product_based_point_rules で商品毎のルールが指定され、さらにその中でgroup_idが指定されている必要があります。group_idは正の整数です。
+                    exist_in_each_product_groupsが指定されているにも関わらず商品毎のルールでgroup_idが指定されていないものが含まれている場合はinvalid_parametersエラー(missing group_id, エラーコード400)が返ります。
+
+                    例えば、商品グループA(商品コードa1, a2)、商品グループB(商品コードb1, b2)の2つの商品グループがあるとします。
+                    このとき、各商品グループからそれぞれ少なくとも1種類以上の商品が購入されることにより発火するキャンペーンに対するリクエストパラメータは以下のようなものになります。
+
+                    ```javascript
+                    {
+                      exist_in_each_product_groups: true,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a1",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a2",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 200,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b1",
+                          "group_id": 2
+                        },
+                        {
+                          "point_amount": 200,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b2",
+                          "group_id": 2
+                        }
+                      ]
+                    }
+                    ```
+
+                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になります。つまり100 + 200=300がポイント付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
+
+                    ポイント付与値を各商品毎のルールの総和ではなく固定値にしたい場合には、max_point_amountを指定します。
+                    例えば以下のようなリクエストパラメータ指定の場合を考えます。
+
+                    ```javascript
+                    {
+                      max_point_amount: 100,
+                      exist_in_each_product_groups: true,
+                      product_based_point_rules: [
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a1",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "a2",
+                          "group_id": 1
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b1",
+                          "group_id": 2
+                        },
+                        {
+                          "point_amount": 100,
+                          "point_amount_unit": "absolute",
+                          "product_code": "b2",
+                          "group_id": 2
+                        }
+                      ]
+                    }
+                    ```
+
+                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になりますが、付与値の上限が100ポイントになります。つまり100 + 200=300が100ですが上限額の100ポイントが付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600ですが上限額の100がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
+                max_point_amount:
+                  type: integer
+                  minimum: 1
+                  nullable: true
+                  title: 'キャンペーンによって付与されるポイントの上限'
+                  description: |-
+                    キャンペーンによって付与されるポイントの上限を指定します。デフォルトは未指定です。
+
+                    このパラメータが指定されている場合、amount_based_point_rules や product_based_point_rules によって計算されるポイント付与値がmax_point_amountを越えている場合、max_point_amountの値がポイント付与値となり、越えていない場合はその値がポイント付与値となります。
       responses:
         '200':
           description: OK
