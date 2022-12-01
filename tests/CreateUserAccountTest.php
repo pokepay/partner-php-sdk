@@ -27,7 +27,7 @@ class CreateUserAccount extends TestCase
             "1cca797a-a4ae-4807-a9ad-4bab80f00988",
             "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
             [
-                'external_id' => "FBMnn24Y00BddIYIaGsnHTfyj3vGhpYs6lE3PVx"
+                'metadata' => "'{\"key1\":\"foo\",\"key2\":\"bar\"}'"
             ]
         );
         try {
@@ -46,8 +46,29 @@ class CreateUserAccount extends TestCase
             "1cca797a-a4ae-4807-a9ad-4bab80f00988",
             "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
             [
+                'external_id' => "FBMnn24Y00BddIYIaGsnHTfyj3vGhpYs6lE3PVx",
+                'metadata' => "'{\"key1\":\"foo\",\"key2\":\"bar\"}'"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateUserAccount3()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateUserAccount(
+            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
+            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
+            [
                 'name' => "hCRcEAVa4JmfjoJZ9ajsO39BqxPDSP5BpfA0dYcuMmHpa4aDHWm32hBFhI0DxRhz83lKq4Wp1hKlNvpHM0s7Dd9Uu6qWqC0qUtLag9adxARTcCtKjz1M2kusM3cVDMOGMtpxWNvKR6Gcp6PWCiNymBaUIu6lQIyVNDYRttS46oTXBYnbHbMuAdnXANiixumuncg7egxc7L05i8jkZ1Waa",
-                'external_id' => "h6AAgB9jXehhbgs"
+                'external_id' => "h6AAgB9jXehhbgs",
+                'metadata' => "'{\"key1\":\"foo\",\"key2\":\"bar\"}'"
             ]
         );
         try {

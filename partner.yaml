@@ -908,6 +908,46 @@ components:
           format: decimal
         transaction_count:
           type: integer
+    UserStatsOperation:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          title: '集計処理ID'
+          type: string
+          format: uuid
+        from:
+          title: '集計期間の開始時刻'
+          type: string
+          format: date-time
+        to:
+          title: '集計期間の終了時刻'
+          type: string
+          format: date-time
+        status:
+          title: '集計処理の実行ステータス'
+          type: string
+          enum: [submitted, preprocessing, pending, processing, successed, error]
+        error_reason:
+          title: 'エラーとなった理由'
+          type: string
+          nullable: true
+          example: null
+        done_at:
+          title: '集計処理の完了時刻'
+          type: string
+          format: date-time
+          nullable: true
+          example: null
+        file_url:
+          title: '集計結果のCSVのダウンロードURL'
+          type: string
+          nullable: true
+          example: 'https://pokepay.s3.ap-northeast-1.amazonaws.com/user-stats/1CB9DC40-788F-423F-A2BF-6A5D72FB5B81.csv'
+        requested_at:
+          title: '集計リクエストを行った時刻'
+          type: string
+          format: date-time
+
     PaginatedTransaction:
       x-pokepay-schema-type: "response"
       properties:
@@ -1224,6 +1264,14 @@ components:
         message:
           type: string
           example: Forbidden
+    UnpermittedAdminUser:
+      x-pokepay-schema-type: "response"
+      properties:
+        type:
+          type: string
+          pattern: '^unpermitted_admin_user$'
+        message:
+          type: string
     NotFound:
       properties:
         type:
@@ -1243,6 +1291,21 @@ components:
       properties:
         type:
           type: string
+        message:
+          type: string
+    TemporarilyUnavailable:
+      properties:
+        type:
+          type: string
+          pattern: '^temporarily_unavailable$'
+        message:
+          type: string
+    UserStatsOperationServiceUnavailable:
+      x-pokepay-schema-type: "response"
+      properties:
+        type:
+          type: string
+          pattern: '^user_stats_operation_service_unavailable$'
         message:
           type: string
 
@@ -1279,6 +1342,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Forbidden'
+    UnpermittedAdminUser:
+      description: Unpermitted Admin User
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnpermittedAdminUser'
     NotFound:
       description: Not Found
       content:
@@ -1297,6 +1366,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Conflict'
+    UserStatsOperationServiceUnavailable:
+      description: User stats operation service is temporarily unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserStatsOperationServiceUnavailable'
 
 paths:
   /ping:
@@ -1392,6 +1467,8 @@ paths:
       tags:
         - Account
       summary: 'エンドユーザーのウォレットを作成する'
+      description: |-
+        既存のエンドユーザーに対して、指定したマネーのウォレットを新規作成します
       x-pokepay-operator-name: "CreateUserAccount"
       x-pokepay-allow-server-side: true
       parameters:
@@ -1427,6 +1504,18 @@ paths:
                   title: '外部ID'
                   type: string
                   maxLength: 50
+                metadata:
+                  type: string
+                  format: json
+                  title: 'ウォレットに付加するメタデータ'
+                  description: |-
+                    ウォレットに付加するメタデータをJSON文字列で指定します。
+                    指定できるJSON文字列には以下のような制約があります。
+                    - フラットな構造のJSONを文字列化したものであること。
+                    - keyは最大32文字の文字列(同じkeyを複数指定することはできません)
+                    - valueには128文字以下の文字列が指定できます
+                  example: |-
+                    '{"key1":"foo","key2":"bar"}'
       responses:
         '200':
           description: OK
@@ -1473,7 +1562,14 @@ paths:
       tags:
         - Customer
       summary: 'ウォレット情報を更新する'
-      description: ウォレットの状態を更新します。現在はウォレットの凍結/凍結解除の切り替えにのみ対応しています。
+      description: |-
+        ウォレットの状態を更新します。
+        以下の項目が変更できます。
+
+        - ウォレットの凍結/凍結解除の切り替え(エンドユーザー、店舗ユーザー共通)
+        - 店舗でチャージ可能かどうか(店舗ユーザのみ)
+
+        エンドユーザーのウォレット情報更新には UpdateCustomerAccount が使用できます。
       x-pokepay-operator-name: "UpdateAccount"
       x-pokepay-allow-server-side: true
       parameters:
@@ -1697,8 +1793,8 @@ paths:
     patch:
       tags:
         - Customer
-      summary: 'ウォレット情報を更新する'
-      description: ウォレットの状態を更新します。
+      summary: 'エンドユーザーのウォレット情報を更新する'
+      description: エンドユーザーのウォレットの状態を更新します。
       x-pokepay-operator-name: "UpdateCustomerAccount"
       x-pokepay-allow-server-side: true
       parameters:
@@ -1734,6 +1830,30 @@ paths:
                   type: string
                   maxLength: 50
                   description: 変更する外部IDです。
+                metadata:
+                  type: string
+                  format: json
+                  title: 'ウォレットに付加するメタデータ'
+                  description: |-
+                    ウォレットに付加するメタデータをJSON文字列で指定します。
+                    指定できるJSON文字列には以下のような制約があります。
+                    - フラットな構造のJSONを文字列化したものであること。
+                    - keyは最大32文字の文字列(同じkeyを複数指定することはできません)
+                    - valueには128文字以下の文字列が指定できます
+
+                    更新時に指定した内容でメタデータ全体が置き換えられることに注意してください。
+                    例えば、元々のメタデータが以下だったときに、
+
+                    '{"key1":"foo","key2":"bar"}'
+
+                    更新APIで以下のように更新するとします。
+
+                    '{"key1":"baz"}'
+
+                    このときkey1はfooからbazに更新され、key2に対するデータは消去されます。
+
+                  example: |-
+                    '{"key1":"foo",key2":"bar"}'
       responses:
         '200':
           description: OK
@@ -1832,9 +1952,12 @@ paths:
     post:
       tags:
         - Customer
-      summary: '新規エンドユーザーウォレットを追加する'
+      summary: '新規エンドユーザーをウォレットと共に追加する'
       description: |-
-        指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも作成します。
+        指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも新規に作成します。
+        このAPIにより作成されたユーザは認証情報を持たないため、モバイルSDKやポケペイ標準アプリからはログインすることはできません。
+        Partner APIのみから操作可能な特殊なユーザになります。
+        システム全体をPartner APIのみで構成する場合にのみ使用してください。
       x-pokepay-operator-name: "CreateCustomerAccount"
       x-pokepay-allow-server-side: true
       requestBody:
@@ -2729,7 +2852,7 @@ paths:
 
                     任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
                   example: |-
-                    {"key":"value"}
+                    '{"key":"value"}'
                 request_id:
                   type: string
                   format: uuid
@@ -2870,7 +2993,7 @@ paths:
 
                     任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
                   example: |-
-                    {"key":"value"}
+                    '{"key":"value"}'
                 products:
                   type: array
                   items:
@@ -2994,7 +3117,7 @@ paths:
 
                     任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
                   example: |-
-                    {"key":"value"}
+                    '{"key":"value"}'
                 products:
                   type: array
                   items:
@@ -3174,7 +3297,7 @@ paths:
 
                     任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
                   example: |-
-                    {"key":"value"}
+                    '{"key":"value"}'
                 description:
                   type: string
                   maxLength: 200
@@ -3317,6 +3440,12 @@ paths:
                   title: リクエストID
                   description: |-
                     重複したリクエストを判断するためのユニークID。ランダムな36字の文字列を生成して渡してください。
+                private_money_id:
+                  type: string
+                  format: uuid
+                  title: 'マネーID'
+                  description: |-
+                    マネーIDです。 マネーを指定します。
       responses:
         '200':
           description: OK
@@ -3330,6 +3459,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /transactions/{transaction_id}:
     get:
       tags:
@@ -3517,7 +3648,7 @@ paths:
 
                     任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSONで指定します。
                   example: |-
-                    {"key":"value"}
+                    '{"key":"value"}'
                 products:
                   type: array
                   items:
@@ -5519,6 +5650,49 @@ paths:
                     デフォルトではポイント付与先はキャンペーンを駆動するイベントのマネー(private_money_idで指定したマネー)になります。
 
                     別マネーに対するポイント付与は別のtransactionとなります。 RefundTransaction で元のイベントをキャンセルしたときはポイント付与のtransactionもキャンセルされ、逆にポイント付与のtransactionをキャンセルしたときは連動して元のイベントがキャンセルされます。
+                applicable_account_metadata:
+                  description: |-
+                    ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+                    メタデータの属性名 key とメタデータの値 value の組をオブジェクトとして指定します。
+                    ウォレットのメタデータはCreateUserAccountやUpdateCustomerAccountで登録できます。
+
+                    オプショナルパラメータtestによって比較方法を指定することができます。
+                    デフォルトは equal で、その他に not-equalを指定可能です。
+
+                    例1: 取引が行なわれたウォレットのメタデータに住所として東京が指定されているときのみ発火
+                    {
+                      "key": "prefecture",
+                      "value": "tokyo"
+                    }
+
+                    例2: 取引が行なわれたウォレットのメタデータに住所として東京以外が指定されているときのみ発火
+                    {
+                      "key": "prefecture",
+                      "value": "tokyo",
+                      "test": "not-equal"
+                    }
+
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                      description: |-
+                        メタデータの属性名
+                    value:
+                      type: string
+                      description: |-
+                        メタデータの値
+                    test:
+                      type: string
+                      enum: [equal, not-equal]
+                      description: |-
+                        メタデータの値の比較方法。デフォルトはequal
+                  example: |-
+                    {
+                      "key": "sex",
+                      "value": "male"
+                    }
+
       responses:
         '200':
           description: OK
@@ -5916,6 +6090,14 @@ paths:
                           このルールを適用する終了日時を指定します。
                           デフォルトではキャンペーン全体の終了日時が指定されます。
                           商品個別にキャンペーン期間指定をする場合は、キャンペーン全体の期間指定の範囲内に入っている必要があります。
+                      group_id:
+                        type: integer
+                        minimum: 1
+                        title: '商品グループID'
+                        description: |-
+                          複数の商品グループからの組み合わせ購入によって発火するキャンペーンで使用する商品グループIDです。
+                          キャンペーンのパラメータ exist_in_each_product_groups を真に設定し、product_based_point_rules中の全てのルールでgroup_idを指定する必要があります。
+                          デフォルトでは未指定です。
                     example: |-
                       {
                         "point_amount": 5,
@@ -6190,6 +6372,50 @@ paths:
                     キャンペーンによって付与されるポイントの上限を指定します。デフォルトは未指定です。
 
                     このパラメータが指定されている場合、amount_based_point_rules や product_based_point_rules によって計算されるポイント付与値がmax_point_amountを越えている場合、max_point_amountの値がポイント付与値となり、越えていない場合はその値がポイント付与値となります。
+                applicable_account_metadata:
+                  description: |-
+                    ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+                    メタデータの属性名 key とメタデータの値 value の組をオブジェクトとして指定します。
+                    ウォレットのメタデータはCreateUserAccountやUpdateCustomerAccountで登録できます。
+
+                    オプショナルパラメータtestによって比較方法を指定することができます。
+                    デフォルトは equal で、その他に not-equalを指定可能です。
+
+                    例1: 取引が行なわれたウォレットのメタデータに住所として東京が指定されているときのみ発火
+                    {
+                      "key": "prefecture",
+                      "value": "tokyo"
+                    }
+
+                    例2: 取引が行なわれたウォレットのメタデータに住所として東京以外が指定されているときのみ発火
+                    {
+                      "key": "prefecture",
+                      "value": "tokyo",
+                      "test": "not-equal"
+                    }
+
+                  type: object
+                  nullable: true
+                  properties:
+                    key:
+                      type: string
+                      description: |-
+                        メタデータの属性名
+                    value:
+                      type: string
+                      description: |-
+                        メタデータの値
+                    test:
+                      type: string
+                      enum: [equal, not-equal]
+                      description: |-
+                        メタデータの値の比較方法。デフォルトはequal
+                  example: |-
+                    {
+                      "key": "sex",
+                      "value": "male"
+                    }
+
       responses:
         '200':
           description: OK
@@ -6205,3 +6431,59 @@ paths:
           $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+  /user-stats:
+    post:
+      summary: '指定期間内の顧客が行った取引の統計情報をCSVでダウンロードする'
+      description: |-
+        期間を指定して、期間内に発行マネーの全顧客が行った取引の総額・回数などをCSVでダウンロードする機能です。
+        CSVの作成は非同期で行われるため完了まで少しの間待つ必要がありますが、完了時にダウンロードできるURLをレスポンスとして返します。
+        このURLの有効期限はリクエスト日時から7日間です。
+
+        ダウンロードできるCSVのデータは以下のものです。
+
+        * organization_code: 取引を行った組織コード
+        * private_money_id: 取引されたマネーのID
+        * private_money_name: 取引されたマネーの名前
+        * user_id: 決済したユーザーID
+        * user_external_id: 決済したユーザーの外部ID
+        * payment_money_amount: 指定期間内に決済に使ったマネーの総額
+        * payment_point_amount: 指定期間内に決済に使ったポイントの総額
+        * payment_transaction_count: 指定期間内に決済した回数。キャンセルされた取引は含まない
+
+        また、指定期間より前の決済を時間をおいてキャンセルした場合などには payment_money_amount, payment_point_amount, payment_transaction_count が負の値になることもあることに留意してください。
+      x-pokepay-operator-name: "RequestUserStats"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["from", "to"]
+              properties:
+                from:
+                  title: '集計期間の開始時刻'
+                  type: string
+                  format: date-time
+                  description: |-
+                    集計する期間の開始時刻をISO8601形式で指定します。
+                    時刻は現在時刻、及び `to` で指定する時刻以前である必要があります。
+                to:
+                  title: '集計期間の終了時刻'
+                  type: string
+                  format: date-time
+                  description: |-
+                    集計する期間の終了時刻をISO8601形式で指定します。
+                    時刻は現在時刻、及び `from` で指定する時刻の間である必要があります。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserStatsOperation'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/UnpermittedAdminUser'
+        '503':
+          $ref: '#/components/responses/UserStatsOperationServiceUnavailable'
