@@ -74,7 +74,7 @@ class CreateTransferTransaction extends TestCase
             "4e5dc0eb-2bad-4bbd-af86-d5148cdec5ac",
             7027.0,
             [
-                'metadata' => "{\"key\":\"value\"}",
+                'metadata' => "'{\"key\":\"value\"}'",
                 'description' => "Cy2qiGNeSDJueWNAF2iLhkB08mWoSEw4Yfnz5e3bjXKldANGzSZe49qKV1rholLnfHAgpNJKDDEjuzSmETPUL6TDRxNmjKWPDEzen9VEh9JKwUlzsxb9tQKSZdMATJHlP3s2aiyvcn732KUYpvpwWJ",
                 'request_id' => "781f9ad4-bdf6-491f-b244-06a7b533eedc"
             ]

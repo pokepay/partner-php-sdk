@@ -25,7 +25,7 @@ class UpdateCustomerAccount extends TestCase
         $request = new Request\UpdateCustomerAccount(
             "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'external_id' => "eZjSIQORsTn19Lt83IRfp6apsZzw"
+                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
             ]
         );
         try {
@@ -43,8 +43,8 @@ class UpdateCustomerAccount extends TestCase
         $request = new Request\UpdateCustomerAccount(
             "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'account_name' => "Ugb2qqrLtRpMZnFJMuPuuYDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtrgI5GH6",
-                'external_id' => "i2f3OojTDEk0fitYgK"
+                'external_id' => "eZjSIQORsTn19Lt83IRfp6apsZzw",
+                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
             ]
         );
         try {
@@ -62,9 +62,30 @@ class UpdateCustomerAccount extends TestCase
         $request = new Request\UpdateCustomerAccount(
             "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
+                'account_name' => "Ugb2qqrLtRpMZnFJMuPuuYDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtrgI5GH6",
+                'external_id' => "i2f3OojTDEk0fitYgK",
+                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testUpdateCustomerAccount4()
+    {
+        $client = $this->newClient();
+        $request = new Request\UpdateCustomerAccount(
+            "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
+            [
                 'status' => "suspended",
                 'account_name' => "zfXu0N7ZPQ6Ey6Tu3B",
-                'external_id' => "U56A0DovC2AWlgsj8AO1bqHH9NHpqZwH1tkpyND"
+                'external_id' => "U56A0DovC2AWlgsj8AO1bqHH9NHpqZwH1tkpyND",
+                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
             ]
         );
         try {

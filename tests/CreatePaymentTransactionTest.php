@@ -78,7 +78,7 @@ class CreatePaymentTransaction extends TestCase
             "6118cef5-daad-4acc-b4b3-4349e3dd7dd1",
             5707,
             [
-                'metadata' => "{\"key\":\"value\"}",
+                'metadata' => "'{\"key\":\"value\"}'",
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
@@ -108,7 +108,7 @@ class CreatePaymentTransaction extends TestCase
             5707,
             [
                 'description' => "igR3jya01cL7edhmrVi5NIsblUeDquiQL8YRreNoLAWMJdywYSICtYcbHl2ktF16gpa",
-                'metadata' => "{\"key\":\"value\"}",
+                'metadata' => "'{\"key\":\"value\"}'",
                 'products' => [],
                 'request_id' => "65ad82b5-601e-4eb4-a198-e961c7cbc9a2"
             ]
