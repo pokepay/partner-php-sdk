@@ -1189,6 +1189,29 @@ components:
           minimum: 0
         pagination:
           $ref: '#/components/schemas/Pagination'
+    AccountTransferSummaryElement:
+      x-pokepay-schema-type: "response"
+      properties:
+        transfer_type:
+          type: string
+          enum: [payment, topup, campaign-topup, use-coupon, refund-payment, refund-topup, refund-campaign, refund-coupon, exchange-inflow, exchange-outflow, refund-exchange-inflow, refund-exchange-outflow]
+        money_amount:
+          type: number
+          format: decimal
+        point_amount:
+          type: number
+          format: decimal
+        count:
+          type: number
+          format: decimal
+    AccountTransferSummary:
+      x-pokepay-schema-type: "response"
+      properties:
+        summaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountTransferSummaryElement'
+
     BadRequest:
       x-pokepay-schema-type: "response"
       oneOf:
@@ -1869,6 +1892,88 @@ paths:
           $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+  /accounts/{account_id}/transfers/summary:
+    get:
+      tags:
+        - Transfer
+      summary: ''
+      description: ウォレットを指定して取引明細種別毎の集計を返す
+      x-pokepay-operator-name: "GetAccountTransferSummary"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: 'ウォレットID'
+          description: |-
+            ウォレットIDです。
+
+            ここで指定したウォレットIDの取引明細レベルでの集計を取得します。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                from:
+                  type: string
+                  format: date-time
+                  title: '集計期間の開始時刻'
+                to:
+                  type: string
+                  format: date-time
+                  title: '集計期間の終了時刻'
+                transfer_types:
+                  type: array
+                  title: '取引明細種別 (複数指定可)'
+                  example: '["topup", "payment"]'
+                  description: |-
+                    取引明細の種別でフィルターします。
+                    以下の種別を指定できます。
+
+                    - payment
+                      エンドユーザーから店舗への送金取引(支払い取引)
+                    - topup
+                      店舗からエンドユーザーへの送金取引(チャージ取引)
+                    - campaign-topup
+                      キャンペーンによるエンドユーザーへのポイント付与取引(ポイントチャージ)
+                    - use-coupon
+                      支払い時のクーポン使用による値引き取引
+                    - refund-payment
+                      支払い取引に対するキャンセル取引
+                    - refund-topup
+                      チャージ取引に対するキャンセル取引
+                    - refund-campaign
+                      キャンペーンによるポイント付与取引に対するキャンセル取引
+                    - refund-coupon
+                      クーポン使用による値引き取引に対するキャンセル取引
+                    - exchange-inflow
+                      交換による他マネーからの流入取引
+                    - exchange-outflow
+                      交換による他マネーへの流出取引
+                    - refund-exchange-inflow
+                      交換による他マネーからの流入取引に対するキャンセル取引
+                    - refund-exchange-outflow
+                      交換による他マネーへの流出取引に対するキャンセル取引
+                  items:
+                    type: string
+                    enum: [payment, topup, campaign-topup, use-coupon, refund-payment, refund-topup, refund-campaign, refund-coupon, exchange-inflow, exchange-outflow, refund-exchange-inflow, refund-exchange-outflow]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTransferSummary'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/UnpermittedAdminUser'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /accounts/customers:
     get:
       tags:
@@ -5627,7 +5732,7 @@ paths:
                     }
                     ```
 
-                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になりますが、付与値の上限が100ポイントになります。つまり100 + 200=300が100ですが上限額の100ポイントが付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600ですが上限額の100がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
+                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になりますが、付与値の上限が100ポイントになります。つまり100 + 200=300と計算されますが上限額の100ポイントが実際の付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600ですが上限額の100がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
                 max_point_amount:
                   type: integer
                   minimum: 1
@@ -5660,17 +5765,23 @@ paths:
                     デフォルトは equal で、その他に not-equalを指定可能です。
 
                     例1: 取引が行なわれたウォレットのメタデータに住所として東京が指定されているときのみ発火
+
+                    ```javascript
                     {
                       "key": "prefecture",
                       "value": "tokyo"
                     }
+                    ```
 
                     例2: 取引が行なわれたウォレットのメタデータに住所として東京以外が指定されているときのみ発火
+
+                    ```javascript
                     {
                       "key": "prefecture",
                       "value": "tokyo",
                       "test": "not-equal"
                     }
+                    ```
 
                   type: object
                   properties:
@@ -6362,7 +6473,7 @@ paths:
                     }
                     ```
 
-                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になりますが、付与値の上限が100ポイントになります。つまり100 + 200=300が100ですが上限額の100ポイントが付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600ですが上限額の100がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
+                    このキャンペーンが設定された状態で、商品a1、b1が同時に購入された場合、各商品に対する個別のルールが適用された上での総和がポイント付与値になりますが、付与値の上限が100ポイントになります。つまり100 + 200=300と計算されますが上限額の100ポイントが実際の付与値になります。商品a1、a2、 b1、b2が同時に購入された場合は100 + 100 + 200 + 200=600ですが上限額の100がポイント付与値になります。 商品a1、a2が同時に購入された場合は全商品グループから1種以上購入されるという条件を満たしていないためポイントは付与されません。
                 max_point_amount:
                   type: integer
                   minimum: 1
@@ -6382,17 +6493,23 @@ paths:
                     デフォルトは equal で、その他に not-equalを指定可能です。
 
                     例1: 取引が行なわれたウォレットのメタデータに住所として東京が指定されているときのみ発火
+
+                    ```javascript
                     {
                       "key": "prefecture",
                       "value": "tokyo"
                     }
+                    ```
 
                     例2: 取引が行なわれたウォレットのメタデータに住所として東京以外が指定されているときのみ発火
+
+                    ```javascript
                     {
                       "key": "prefecture",
                       "value": "tokyo",
                       "test": "not-equal"
                     }
+                    ```
 
                   type: object
                   nullable: true
@@ -6433,6 +6550,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /user-stats:
     post:
+      tags:
+        - Transaction
       summary: '指定期間内の顧客が行った取引の統計情報をCSVでダウンロードする'
       description: |-
         期間を指定して、期間内に発行マネーの全顧客が行った取引の総額・回数などをCSVでダウンロードする機能です。

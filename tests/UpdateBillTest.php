@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "011b504d-9950-476f-89b5-74640faf5c82"
+            "e23c9bf5-7751-4b89-a17e-4bef457df04e"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "011b504d-9950-476f-89b5-74640faf5c82",
+            "e23c9bf5-7751-4b89-a17e-4bef457df04e",
             [
                 'is_disabled' => FALSE
             ]
@@ -41,9 +41,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "011b504d-9950-476f-89b5-74640faf5c82",
+            "e23c9bf5-7751-4b89-a17e-4bef457df04e",
             [
-                'description' => "tAEAC8MN1MIRbysguh0xXqdkQK8VGfHRzulBqoPAVuBC2EUluqb81O3ZagKE8LcCa8bz2nHShe5EoHVudmx1iMacSt3whWHQ5cbR62Eyf",
+                'description' => "xdhT65YfaNVM2xjqlPxxy8RqwFWTQ1hvVt9bN2zIxNZx4eE9mHPjq6XCvYjxbcuNA5AOQHru6gAXocPu4UpOUbFxl1xg8SX1voG8Gydqo4fQ7D47J36mgyKf2pLnur36TYPgxIzfeirgwWnuJKugM3OQh2JHBnxbiEM0oFGnnvKX9mW4mLerHweV6yDqMFurm2",
                 'is_disabled' => TRUE
             ]
         );
@@ -60,11 +60,11 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "011b504d-9950-476f-89b5-74640faf5c82",
+            "e23c9bf5-7751-4b89-a17e-4bef457df04e",
             [
-                'amount' => 2605.0,
-                'description' => "yRxoXmZ8au8D4esSHy55WYfHfvN0QEBe9OUmuQoNyAxdhT65YfaNVM2xjqlPxxy8RqwFWTQ1hvVt9bN2zIxNZx4eE9mHPjq6XCvYjxbcuNA5AOQHru6gAXocPu4UpOUbFxl1xg8SX1voG8Gydqo4fQ7D47J36mgyKf2pL",
-                'is_disabled' => TRUE
+                'amount' => 7673.0,
+                'description' => "Y5rxBRsFTyEvnewbYd4rNZJsCq7m7ar",
+                'is_disabled' => FALSE
             ]
         );
         try {
