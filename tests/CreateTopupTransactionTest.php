@@ -49,7 +49,7 @@ class CreateTopupTransaction extends TestCase
             "d12132d4-f487-431c-ab7c-5c521e36d1da",
             "cc1506a9-0f9a-4d2e-bcab-6995d32b835d",
             [
-                'metadata' => "'{\"key\":\"value\"}'",
+                'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "ccc4567c-f19c-474f-ae90-89c5cc365ed1"
             ]
         );
@@ -71,7 +71,7 @@ class CreateTopupTransaction extends TestCase
             "cc1506a9-0f9a-4d2e-bcab-6995d32b835d",
             [
                 'description' => "FC19Wtss23YjQBhHozeYJjV02y90GWowMI3ASCsApxBJptaJJRDQ6YTYkiFE",
-                'metadata' => "'{\"key\":\"value\"}'",
+                'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "c616b05f-b049-471f-8953-798ef5f450bb"
             ]
         );
@@ -94,7 +94,7 @@ class CreateTopupTransaction extends TestCase
             [
                 'point_expires_at' => "2018-04-01T17:51:18.000000+09:00",
                 'description' => "cmpI6bh8YrVsWGSghDCw1Un7nnaTSFczRArCskatgTSAk3a8TcT0",
-                'metadata' => "'{\"key\":\"value\"}'",
+                'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "9a3600a5-9232-444a-b668-49bca79330e0"
             ]
         );
@@ -118,7 +118,7 @@ class CreateTopupTransaction extends TestCase
                 'point_amount' => 3834,
                 'point_expires_at' => "2019-11-13T00:59:25.000000+09:00",
                 'description' => "AvEGRwH1gqt79bzapcrIrLur4lrAgRY4qmYCDpX8Ny7Ex4zLyYmVuuwRZjnfSOf90ILh1FnEv5pCv1ztILSktq1cNxb1w0fAXCRcSE6z5QHSLVITcWyXkWwNeThLpKI",
-                'metadata' => "'{\"key\":\"value\"}'",
+                'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "df87b1b1-52ad-490c-a94e-fb97f9f23903"
             ]
         );
@@ -143,7 +143,7 @@ class CreateTopupTransaction extends TestCase
                 'point_amount' => 4150,
                 'point_expires_at' => "2023-12-17T21:32:10.000000+09:00",
                 'description' => "MY7t0u9TuR54ZsbCHGDImjW34z4jE8W9hhkpYWEzZLn5uyvbNkfkqdGOYba42tK1ETZVrimXQx",
-                'metadata' => "'{\"key\":\"value\"}'",
+                'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "af9fab8c-da10-4232-96bc-2adbca638d74"
             ]
         );
@@ -169,7 +169,7 @@ class CreateTopupTransaction extends TestCase
                 'point_amount' => 5535,
                 'point_expires_at' => "2019-11-28T07:43:42.000000+09:00",
                 'description' => "M6fgx4uEjyIUvTVKqmlOa23scUcryj4GBWTbDzAVeKXVTyNRuvNAUp6ljdawfubjQ03lDRu1dHypEu4pqRk9KXyywxfAsvQQw8eNXwtPfKAW4UwDxtqXzHNdytk1inQrWiktMK0FHLyL",
-                'metadata' => "'{\"key\":\"value\"}'",
+                'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "ee78db99-4b6e-4d1e-b6dc-5dfae699e054"
             ]
         );

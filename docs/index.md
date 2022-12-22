@@ -681,7 +681,7 @@ $request = new Request\CreateTopupTransaction(
         'point_amount' => 8125,                   // ポイント額
         'point_expires_at' => "2017-08-11T22:29:18.000000+09:00", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
-        'metadata' => "'{\"key\":\"value\"}'",    // 取引メタデータ
+        'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -825,7 +825,7 @@ $request = new Request\CreatePaymentTransaction(
     2320,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'metadata' => "'{\"key\":\"value\"}'",    // 取引メタデータ
+        'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
@@ -953,7 +953,7 @@ $request = new Request\CreateCpmTransaction(
     809.0,                                        // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
-        'metadata' => "'{\"key\":\"value\"}'",    // 店舗側メタデータ
+        'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -1065,7 +1065,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     4550.0,                                       // amount: 送金額
     [
-        'metadata' => "'{\"key\":\"value\"}'",    // 取引メタデータ
+        'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
@@ -2543,7 +2543,7 @@ $request = new Request\UpdateCustomerAccount(
         'status' => "suspended",                  // ウォレット状態
         'account_name' => "2ThdFR4ZGmC3lYSdkRdIHlBo7iMGslQeLzTg9FCP6boJkANEWZ0xko5rtXdkjCZ6KXkiMx1kHTVbpRx79qoFTViWGk7rsKgu2ihoMxDsfU3TC1A8fV5nkzyaMo6HNFjN16Mt1NNT0LSnWyLCIiaSmxOiabyCFBUZkKwMvzRhZdC9PIbxRIokrSMcAe6DLpfhwjho9qAj035em2B0e1zQxL4LWrEkUrKU", // アカウント名
         'external_id' => "ADYaUMS4V1",            // 外部ID
-        'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'" // ウォレットに付加するメタデータ
+        'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );
 ```
@@ -3412,7 +3412,7 @@ $request = new Request\CreateUserAccount(
     [
         'name' => "wzvGv5tXB9341AdQSvr2jD2CPBEg6qDXhSH8hafJy0sDTnMPtA7T3E2nC8JZcqIcqZB2nkhw5Vunnh29qWQZz14xB891rPV7FcdDeB61vcOZ1uNBAdr6lfzbfqKlnsG40wZo0RT90mTv", // ウォレット名
         'external_id' => "9",                     // 外部ID
-        'metadata' => "'{\"key1\":\"foo\",\"key2\":\"bar\"}'" // ウォレットに付加するメタデータ
+        'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );
 ```
@@ -3614,7 +3614,7 @@ $request = new Request\CreateExternalTransaction(
     5865,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
-        'metadata' => "'{\"key\":\"value\"}'",    // ポケペイ外部取引メタデータ
+        'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
