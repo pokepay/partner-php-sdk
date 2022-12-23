@@ -8,9 +8,9 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "ttROZcBbejZS9wdnnNKINI",
-            "0ce42737-4af6-45ea-9c2b-ebc0f2480a0f",
-            1336.0
+            "3SW8MPeFKTYT7eEYLwvHQF",
+            "5b1d334b-c9c4-49c9-8d11-428cc3531a8c",
+            854.0
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "ttROZcBbejZS9wdnnNKINI",
-            "0ce42737-4af6-45ea-9c2b-ebc0f2480a0f",
-            1336.0,
+            "3SW8MPeFKTYT7eEYLwvHQF",
+            "5b1d334b-c9c4-49c9-8d11-428cc3531a8c",
+            854.0,
             [
-                'request_id' => "02df57f1-b0fc-4ac5-848c-010637a40950"
+                'request_id' => "f46522b0-d491-4857-9eb8-56bfb8ee710a"
             ]
         );
         try {
@@ -45,15 +45,12 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "ttROZcBbejZS9wdnnNKINI",
-            "0ce42737-4af6-45ea-9c2b-ebc0f2480a0f",
-            1336.0,
+            "3SW8MPeFKTYT7eEYLwvHQF",
+            "5b1d334b-c9c4-49c9-8d11-428cc3531a8c",
+            854.0,
             [
-                'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        ],
-                'request_id' => "3e83fc64-62ca-41b8-8e4a-c46be14f1a83"
+                'products' => [],
+                'request_id' => "2e55de75-44cd-411d-9ed7-71d22b5accaf"
             ]
         );
         try {
@@ -69,19 +66,16 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "ttROZcBbejZS9wdnnNKINI",
-            "0ce42737-4af6-45ea-9c2b-ebc0f2480a0f",
-            1336.0,
+            "3SW8MPeFKTYT7eEYLwvHQF",
+            "5b1d334b-c9c4-49c9-8d11-428cc3531a8c",
+            854.0,
             [
-                'metadata' => "'{\"key\":\"value\"}'",
+                'metadata' => "{\"key\":\"value\"}",
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "83ea744b-2e24-4e1d-b466-01bc66f4fa62"
+                'request_id' => "b430797a-3369-41d4-9801-32043cec35cd"
             ]
         );
         try {
@@ -97,12 +91,12 @@ class CreateCpmTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCpmTransaction(
-            "ttROZcBbejZS9wdnnNKINI",
-            "0ce42737-4af6-45ea-9c2b-ebc0f2480a0f",
-            1336.0,
+            "3SW8MPeFKTYT7eEYLwvHQF",
+            "5b1d334b-c9c4-49c9-8d11-428cc3531a8c",
+            854.0,
             [
-                'description' => "UtzmymsdzvhUXmrc210VozYCz4wR9Gfv1ooHMcqzJF0zVNZ8zHF5mnetJol0g7uhhZVwBBSB9NQuG198o4cE8ye8xiCptr8X3OQSs9cvMVMzYpfEHHq4AVCPhpFJVl2NE9OohrFLhvABt92YjeNGkeRyZCxDwnyuzPdWfY",
-                'metadata' => "'{\"key\":\"value\"}'",
+                'description' => "umFeaEHdh8PePoMZwnAEmuUL6pb761IWS7zT3jmF3XMzgKDKO5o6UqQsbMF41dYUnemzRdROKbGph7rDrumGN6tQ3vZwFKRF7w7plclcWB9bNRwQ0LABzLS5AginlSJbgCOpN21Ez",
+                'metadata' => "{\"key\":\"value\"}",
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
@@ -110,8 +104,10 @@ class CreateCpmTransaction extends TestCase
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "2d0a4134-83b8-41b2-931f-7d0cc93529a3"
+                'request_id' => "504d2cfd-ac1a-4af6-8597-459870cc1635"
             ]
         );
         try {

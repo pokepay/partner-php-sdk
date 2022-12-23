@@ -25,7 +25,7 @@ class UpdateCustomerAccount extends TestCase
         $request = new Request\UpdateCustomerAccount(
             "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
-                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
+                'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
         try {
@@ -44,7 +44,7 @@ class UpdateCustomerAccount extends TestCase
             "f39e0dc7-ebbf-4161-a34e-e312bce444b9",
             [
                 'external_id' => "eZjSIQORsTn19Lt83IRfp6apsZzw",
-                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
+                'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
         try {
@@ -64,7 +64,7 @@ class UpdateCustomerAccount extends TestCase
             [
                 'account_name' => "Ugb2qqrLtRpMZnFJMuPuuYDxHZdnikAchiJbVP3ZTnJxIJTqpbj9hQa29LtqbzIUCtrgI5GH6",
                 'external_id' => "i2f3OojTDEk0fitYgK",
-                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
+                'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
         try {
@@ -85,7 +85,7 @@ class UpdateCustomerAccount extends TestCase
                 'status' => "suspended",
                 'account_name' => "zfXu0N7ZPQ6Ey6Tu3B",
                 'external_id' => "U56A0DovC2AWlgsj8AO1bqHH9NHpqZwH1tkpyND",
-                'metadata' => "'{\"key1\":\"foo\",key2\":\"bar\"}'"
+                'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
         try {
