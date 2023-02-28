@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "b702e380-a697-488d-b6f3-30f4d42f12af"
+            "fa824d8e-95aa-4e18-81d3-7073bca5ddae"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "b702e380-a697-488d-b6f3-30f4d42f12af",
+            "fa824d8e-95aa-4e18-81d3-7073bca5ddae",
             [
-                'expires_in' => 1302
+                'expires_in' => 6169
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "b702e380-a697-488d-b6f3-30f4d42f12af",
+            "fa824d8e-95aa-4e18-81d3-7073bca5ddae",
             [
-                'description' => "QvZvRJLln3CmVmPz2bcH2xVBHTbiO",
-                'expires_in' => 6307
+                'description' => "pGMCke10fApKjBHnAmdlKiUj9J",
+                'expires_in' => 9074
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "b702e380-a697-488d-b6f3-30f4d42f12af",
+            "fa824d8e-95aa-4e18-81d3-7073bca5ddae",
             [
-                'amount' => 2578.0,
-                'description' => "bzW7EYCf76ToHcl8dtzcqD6rqwGDVRdojGjigHpZl8InHQBhMIrdZJT9MnQgGfElkSct56tB3QvYjy8mUgDyXQYOSs",
-                'expires_in' => 7599
+                'amount' => 1385.0,
+                'description' => "anI8FqIXqzelGZDONUAJfl2",
+                'expires_in' => 6089
             ]
         );
         try {

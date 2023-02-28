@@ -155,6 +155,9 @@ components:
         point_balance:
           type: number
           format: decimal
+        point_debt:
+          type: number
+          format: decimal
         private_money:
           $ref: '#/components/schemas/PrivateMoney'
         user:
@@ -242,6 +245,10 @@ components:
           type: string
           format: uuid
           title: チャージQRコードのID
+        created_at:
+          type: string
+          format: date-time
+          title: チャージQRコードの作成日時
         amount:
           type: number
           format: decimal
@@ -276,10 +283,23 @@ components:
           title: 対象マネー情報
         usage_limit:
           type: integer
+          minimum: 1
+          nullable: true
           title: 一回限りでない場合の最大読み取り回数
         usage_count:
           type: number
+          nullable: true
           title: 一回限りでない場合の現在までに読み取られた回数
+        point_expires_at:
+          type: string
+          format: date-time
+          nullable: true
+          title: ポイント有効期限(絶対日数指定)
+        point_expires_in_days:
+          type: integer
+          minimum: 0
+          nullable: true
+          title: ポイント有効期限(相対日数指定)
         token:
           type: string
           title: チャージQRコードを解析したときに出てくるURL
@@ -735,6 +755,84 @@ components:
           type: string
           format: date-time
           title: バルク取引が更新された日時
+    BulkTransactionJob:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: integer
+        bulk_transaction:
+          $ref: '#/components/schemas/BulkTransaction' 
+        type:
+          type: string
+          enum:
+            - payment
+            - topup
+          title: 取引種別
+        sender_account_id:
+          type: string
+          format: uuid
+        receiver_account_id:
+          type: string
+          format: uuid
+        money_amount:
+          type: number
+          format: decimal
+          minimum: 0
+        point_amount:
+          type: number
+          format: decimal
+          minimum: 0
+        description:
+          type: string
+          title: バルク取引ジョブ管理用の説明文
+        bear_point_account_id:
+          type: string
+          format: uuid
+        point_expires_at:
+          type: string
+          format: date-time
+          nullable: true
+          title: ポイント有効期限
+        status:
+          type: string
+          enum:
+            - queued
+            - processing
+            - done
+            - error
+          title: バルク取引ジョブの状態
+        error:
+          type: string
+          nullable: true
+          title: バルク取引のエラー種別
+        lineno:
+          type: integer
+          nullable: true
+          title: バルク取引のエラーが発生した行番号
+        transaction_id:
+          type: string
+          format: uuid
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          title: バルク取引ジョブが登録された日時
+        updated_at:
+          type: string
+          format: date-time
+          title: バルク取引ジョブが更新された日時
+    PaginatedBulkTransactionJob:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkTransactionJob'
+        count:
+          type: integer
+          minimum: 0
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     AccountWithoutPrivateMoneyDetail:
       x-pokepay-schema-type: "response"
       properties:
@@ -1166,6 +1264,11 @@ components:
         dest_private_money:
           title: 'ポイントを付与するマネー'
           $ref: '#/components/schemas/PrivateMoney'
+        max_total_point_amount:
+          title: '一人当たりの累計ポイント上限'
+          type: integer
+          minimum: 1
+          nullable: true
         point_calculation_rule:
           type: string
           title: 'ポイント計算ルール (banklisp表記)'
@@ -2380,6 +2483,7 @@ paths:
         - Check
       summary: 'チャージQRコードの発行'
       x-pokepay-operator-name: "CreateCheck"
+      x-pokepay-allow-server-side: true
       requestBody:
         required: true
         content:
@@ -2447,6 +2551,10 @@ paths:
                 $ref: '#/components/schemas/Check'
         '400':
           $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /cpm/{cpm_token}:
     get:
       tags:
@@ -3107,6 +3215,9 @@ paths:
                       jan_code:
                         type: string
                         maxLength: 64
+                      classification_code:
+                        type: string
+                        maxLength: 64
                       name:
                         type: string
                         maxLength: 256
@@ -3229,6 +3340,9 @@ paths:
                     type: object
                     properties:
                       jan_code:
+                        type: string
+                        maxLength: 64
+                      classification_code:
                         type: string
                         maxLength: 64
                       name:
@@ -3760,6 +3874,9 @@ paths:
                     type: object
                     properties:
                       jan_code:
+                        type: string
+                        maxLength: 64
+                      classification_code:
                         type: string
                         maxLength: 64
                       name:
@@ -4921,6 +5038,53 @@ paths:
           $ref: '#/components/responses/InvalidParameters'
         '404':
           $ref: '#/components/responses/NotFound'
+  /bulk-transactions/{bulk_transaction_id}/jobs:
+    get:
+      summary: バルク取引ジョブの詳細情報一覧を取得する
+      x-pokepay-operator-name: "ListBulkTransactionJobs"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                page:
+                  type: integer
+                  minimum: 1
+                  title: 'ページ番号'
+                  description: 取得したいページ番号です。
+                  example: 1
+                per_page:
+                  type: integer
+                  minimum: 1
+                  title: '1ページ分の取得数'
+                  description: 1ページ分の取得数です。デフォルトでは 50 になっています。
+                  example: 50
+      parameters:
+        - in: path
+          name: bulk_transaction_id
+          schema:
+            type: string
+            format: uuid
+            title: 'バルク取引ジョブID'
+          description: |-
+            バルク取引ジョブIDです。
+            バルク取引ジョブ登録時にレスポンスに含まれます。
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBulkTransactionJob'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /cashtrays:
     post:
       tags:
@@ -5433,7 +5597,17 @@ paths:
                         description: |-
                           対象の製品コード (JANコードやISBNコードなど) を指定します。(必須項目)
 
-                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (例: 978-% でISBNコード)
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (_ で任意の1文字にマッチし、 % で任意文字列にマッチします。 例: 978-% でISBNコード)
+                        items:
+                          type: string
+                      classification_code:
+                        type: string
+                        maxLength: 64
+                        title: '対象の商品分類コード'
+                        description: |-
+                          対象の商品分類コード (書籍のCコードなど) を指定します。(任意項目)
+
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (_ で任意の1文字にマッチし、 % で任意文字列にマッチします。 例: 978-% でISBNコード)
                         items:
                           type: string
                       required_count:
@@ -5741,6 +5915,15 @@ paths:
                     キャンペーンによって付与されるポイントの上限を指定します。デフォルトは未指定です。
 
                     このパラメータが指定されている場合、amount_based_point_rules や product_based_point_rules によって計算されるポイント付与値がmax_point_amountを越えている場合、max_point_amountの値がポイント付与値となり、越えていない場合はその値がポイント付与値となります。
+                max_total_point_amount:
+                  type: integer
+                  minimum: 1
+                  title: 'キャンペーンによって付与されるの1人当たりの累計ポイントの上限'
+                  description: |-
+                    キャンペーンによって付与される1人当たりの累計ポイント数の上限を指定します。デフォルトは未指定です。
+
+                    このパラメータが指定されている場合、各ユーザに対してそのキャンペーンによって過去付与されたポイントの累積値が記録されるようになります。
+                    累積ポイント数がmax_total_point_amountを超えない限りにおいてキャンペーンで算出されたポイントが付与されます。
                 dest_private_money_id:
                   type: string
                   format: uuid
@@ -6172,6 +6355,16 @@ paths:
                           SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (例: 978-% でISBNコード)
                         items:
                           type: string
+                      classification_code:
+                        type: string
+                        maxLength: 64
+                        title: '対象の商品分類コード'
+                        description: |-
+                          対象の商品分類コード (書籍のCコードなど) を指定します。(任意項目)
+
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (_ で任意の1文字にマッチし、 % で任意文字列にマッチします。 例: 978-% でISBNコード)
+                        items:
+                          type: string
                       required_count:
                         type: integer
                         minimum: 1
@@ -6480,9 +6673,19 @@ paths:
                   nullable: true
                   title: 'キャンペーンによって付与されるポイントの上限'
                   description: |-
-                    キャンペーンによって付与されるポイントの上限を指定します。デフォルトは未指定です。
+                    キャンペーンによって付与される1取引当たりのポイント数の上限を指定します。デフォルトは未指定です。
 
                     このパラメータが指定されている場合、amount_based_point_rules や product_based_point_rules によって計算されるポイント付与値がmax_point_amountを越えている場合、max_point_amountの値がポイント付与値となり、越えていない場合はその値がポイント付与値となります。
+                max_total_point_amount:
+                  type: integer
+                  minimum: 1
+                  nullable: true
+                  title: 'キャンペーンによって付与されるの1人当たりの累計ポイントの上限'
+                  description: |-
+                    キャンペーンによって付与される1人当たりの累計ポイント数の上限を指定します。デフォルトは未指定です。
+
+                    このパラメータが指定されている場合、各ユーザに対してそのキャンペーンによって過去付与されたポイントの累積値が記録されるようになります。
+                    累積ポイント数がmax_total_point_amountを超えない限りにおいてキャンペーンで算出されたポイントが付与されます。
                 applicable_account_metadata:
                   description: |-
                     ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。

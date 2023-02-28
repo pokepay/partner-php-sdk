@@ -35,6 +35,10 @@ class AccountDetail extends Base
      */
     public $pointBalance;
     /**
+     * @var double
+     */
+    public $pointDebt;
+    /**
      * @var PrivateMoney
      */
     public $privateMoney;

@@ -60,6 +60,10 @@ class Campaign extends Base
      */
     public $destPrivateMoney;
     /**
+     * @var integer|null
+     */
+    public $maxTotalPointAmount;
+    /**
      * @var string
      */
     public $pointCalculationRule;
