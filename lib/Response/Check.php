@@ -12,6 +12,10 @@ class Check extends Base
      */
     public $id;
     /**
+     * @var \DateTime
+     */
+    public $createdAt;
+    /**
      * @var double
      */
     public $amount;
@@ -48,13 +52,21 @@ class Check extends Base
      */
     public $privateMoney;
     /**
-     * @var integer
+     * @var integer|null
      */
     public $usageLimit;
     /**
-     * @var double
+     * @var double|null
      */
     public $usageCount;
+    /**
+     * @var \DateTime|null
+     */
+    public $pointExpiresAt;
+    /**
+     * @var integer|null
+     */
+    public $pointExpiresInDays;
     /**
      * @var string
      */
@@ -63,6 +75,10 @@ class Check extends Base
     protected function normalize($timezone)
     {
         $tz = new DateTimeZone($timezone);
+        $this->createdAt->setTimezone($tz);
         $this->expiresAt->setTimezone($tz);
+        if (isset($this->pointExpiresAt)){
+            $this->pointExpiresAt->setTimezone($tz);
+        }
     }
 }

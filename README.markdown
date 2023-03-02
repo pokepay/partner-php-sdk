@@ -30,7 +30,7 @@ If it's not given, the file location is set from an environment variable `POKEPA
 ## Running tests
 
 ```
-$ ./vendor/phpunit/phpunit/phpunit
+$ POKEPAY_PARTNER_CONFIG_FILE=/path/to/config.ini ./vendor/phpunit/phpunit/phpunit
 ```
 
 ## Documentation

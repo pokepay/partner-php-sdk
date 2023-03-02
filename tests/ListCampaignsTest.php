@@ -8,7 +8,7 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "8710fa67-9e7a-41f1-8982-0fe8c88d4cb5"
+            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "8710fa67-9e7a-41f1-8982-0fe8c88d4cb5",
+            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972",
             [
-                'per_page' => 5198
+                'per_page' => 7632
             ]
         );
         try {
@@ -41,10 +41,10 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "8710fa67-9e7a-41f1-8982-0fe8c88d4cb5",
+            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972",
             [
-                'page' => 3988,
-                'per_page' => 7793
+                'page' => 2286,
+                'per_page' => 4740
             ]
         );
         try {
@@ -60,11 +60,11 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "8710fa67-9e7a-41f1-8982-0fe8c88d4cb5",
+            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972",
             [
-                'is_ongoing' => FALSE,
-                'page' => 4977,
-                'per_page' => 3394
+                'is_ongoing' => TRUE,
+                'page' => 219,
+                'per_page' => 5263
             ]
         );
         try {
