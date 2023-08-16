@@ -8,7 +8,7 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972"
+            "e6344f05-84e1-4e0f-9035-4e96e13460a4"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972",
+            "e6344f05-84e1-4e0f-9035-4e96e13460a4",
             [
-                'per_page' => 7632
+                'per_page' => 10
             ]
         );
         try {
@@ -41,10 +41,10 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972",
+            "e6344f05-84e1-4e0f-9035-4e96e13460a4",
             [
-                'page' => 2286,
-                'per_page' => 4740
+                'page' => 8059,
+                'per_page' => 23
             ]
         );
         try {
@@ -60,11 +60,54 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "ce6c9e2f-c03a-4f08-93d9-3644ce6c5972",
+            "e6344f05-84e1-4e0f-9035-4e96e13460a4",
             [
-                'is_ongoing' => TRUE,
-                'page' => 219,
-                'per_page' => 5263
+                'available_to' => "2016-08-24T08:32:19.000000+09:00",
+                'page' => 3160,
+                'per_page' => 3
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListCampaigns4()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListCampaigns(
+            "e6344f05-84e1-4e0f-9035-4e96e13460a4",
+            [
+                'available_from' => "2019-07-03T20:50:34.000000+09:00",
+                'available_to' => "2019-04-26T09:07:00.000000+09:00",
+                'page' => 9,
+                'per_page' => 4
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testListCampaigns5()
+    {
+        $client = $this->newClient();
+        $request = new Request\ListCampaigns(
+            "e6344f05-84e1-4e0f-9035-4e96e13460a4",
+            [
+                'is_ongoing' => FALSE,
+                'available_from' => "2019-12-31T10:29:42.000000+09:00",
+                'available_to' => "2023-05-12T11:15:32.000000+09:00",
+                'page' => 2485,
+                'per_page' => 11
             ]
         );
         try {

@@ -39,6 +39,15 @@ tags:
   - name: Bulk
   - name: Event
   - name: Campaign
+  - name: Webhook
+    description: |
+      Webhookは特定のワーカータスクでの処理が完了した事を通知します。
+      WebHookにはURLとタスク名、有効化されているかを設定することが出来ます。
+      通知はタスク完了時、事前に設定したURLにPOSTリクエストを行います。
+  - name: Coupon
+    description: |
+      Couponは支払い時に指定し、支払い処理の前にCouponに指定の方法で値引き処理を行います。
+      Couponは特定店舗で利用できるものや利用可能期間、配信条件などを設定できます。
 
 components:
   schemas:
@@ -489,6 +498,10 @@ components:
           type: number
           format: decimal
           title: 'マネーの取引上限額'
+        money_topup_transfer_limit:
+          type: number
+          format: decimal
+          title: 'マネーチャージ取引上限額'
         type:
           type: string
           enum: [own, third-party]
@@ -500,7 +513,8 @@ components:
         enable_topup_by_member:
           type: boolean
           nullable: true
-          title: '加盟店によるチャージが有効かどうか'
+          deprecated: true
+          description: 'このパラメータは未使用につき廃止されます'
         display_money_and_point:
           type: string
           enum: [both, money-only, point-only]
@@ -524,7 +538,16 @@ components:
           title: '取引ID'
         type:
           type: string
-          title: '取引種別 (チャージ=topup, 支払い=payment)'
+          title: '取引種別'
+          description: |
+            各取引種別の値の意味は以下の通りです。
+            - topup: チャージ
+            - payment: 支払い
+            - transfer: 個人間送金
+            - exchange: マネー間交換
+            - cashback: ウォレット退会時の払い戻し処理
+            - expire: ウォレット退会時の残高失効処理
+          enum: [topup, payment, transfer, exchange, cashback, expire]
         is_modified:
           type: boolean
           title: '返金された取引かどうか'
@@ -542,13 +565,28 @@ components:
           title: '受取ウォレット情報'
         amount:
           type: number
-          title: '決済総額 (マネー額 + ポイント額)'
+          title: '取引総額 (マネー額 + ポイント額)'
         money_amount:
           type: number
-          title: '決済マネー額'
+          title: '取引マネー額'
         point_amount:
           type: number
-          title: '決済ポイント額'
+          title: '取引ポイント額(キャンペーン付与ポイント合算)'
+          description: |
+            取引のポイント額です。
+            キャンペーンによるポイント付与額との合算値なので、元々の取引のポイント額のみを取り出したいときは `raw_point_amount` を参照してください。
+            チャージ取引の場合、point_amount = raw_point_amount + campaign_point_amount
+            支払い取引の場合、point_amount = raw_point_amount - campaign_point_amount
+            が成立します。
+        raw_point_amount:
+          type: number
+          title: '取引ポイント額'
+          description: |
+            取引のポイント額です。
+            キャンペーンによるポイント付与額を含まない、元々の取引で支払われたポイント額を表します。
+        campaign_point_amount:
+          type: number
+          title: 'キャンペーンによるポイント付与額'
         done_at:
           type: string
           format: date-time
@@ -565,7 +603,16 @@ components:
           title: '取引ID'
         type:
           type: string
-          title: '取引種別 (チャージ=topup, 支払い=payment)'
+          title: '取引種別'
+          description: |
+            各取引種別の値の意味は以下の通りです。
+            - topup: チャージ
+            - payment: 支払い
+            - transfer: 個人間送金
+            - exchange: マネー間交換
+            - cashback: ウォレット退会時の払い戻し処理
+            - expire: ウォレット退会時の残高失効処理
+          enum: [topup, payment, transfer, exchange, cashback, expire]
         is_modified:
           type: boolean
           title: '返金された取引かどうか'
@@ -583,13 +630,28 @@ components:
           title: '受取ウォレット情報'
         amount:
           type: number
-          title: '決済総額 (マネー額 + ポイント額)'
+          title: '取引総額 (マネー額 + ポイント額)'
         money_amount:
           type: number
-          title: '決済マネー額'
+          title: '取引マネー額'
         point_amount:
           type: number
-          title: '決済ポイント額'
+          title: '取引ポイント額(キャンペーン付与ポイント合算)'
+          description: |
+            取引のポイント額です。
+            キャンペーンによるポイント付与額との合算値なので、元々の取引のポイント額のみを取り出したいときは `raw_point_amount` を参照してください。
+            チャージ取引の場合、point_amount = raw_point_amount + campaign_point_amount
+            支払い取引の場合、point_amount = raw_point_amount - campaign_point_amount
+            が成立します。
+        raw_point_amount:
+          type: number
+          title: '取引ポイント額'
+          description: |
+            取引のポイント額です。
+            キャンペーンによるポイント付与額を含まない、元々の取引で支払われたポイント額を表します。
+        campaign_point_amount:
+          type: number
+          title: 'キャンペーンによるポイント付与額'
         done_at:
           type: string
           format: date-time
@@ -615,6 +677,10 @@ components:
           type: string
           maxLength: 256
           title: 組織コード
+        status:
+          type: string
+          enum: [active, disabled]
+          title: '店舗の状態'
         postal_code:
           type: string
           nullable: true
@@ -652,6 +718,10 @@ components:
           type: string
           maxLength: 256
           title: 組織コード
+        status:
+          type: string
+          enum: [active, disabled]
+          title: '店舗の状態'
         postal_code:
           type: string
           nullable: true
@@ -679,41 +749,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ShopAccount'
-    UserTransaction:
-      x-pokepay-schema-type: "response"
-      properties:
-        id:
-          type: string
-          format: uuid
-        user:
-          $ref: '#/components/schemas/User'
-        balance:
-          type: number
-          format: decimal
-        amount:
-          type: number
-          format: decimal
-          minimum: 0
-        money_amount:
-          type: number
-          format: decimal
-          minimum: 0
-        point_amount:
-          type: number
-          format: decimal
-          minimum: 0
-        account:
-          $ref: '#/components/schemas/Account'
-        description:
-          type: string
-        done_at:
-          type: string
-          format: date-time
-        type:
-          type: string
-          enum: [topup, payment, transfer, exchange, cashback, expire]
-        is_modified:
-          type: boolean
     BulkTransaction:
       x-pokepay-schema-type: "response"
       properties:
@@ -761,7 +796,7 @@ components:
         id:
           type: integer
         bulk_transaction:
-          $ref: '#/components/schemas/BulkTransaction' 
+          $ref: '#/components/schemas/BulkTransaction'
         type:
           type: string
           enum:
@@ -1314,6 +1349,206 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AccountTransferSummaryElement'
+    OrganizationWorkerTaskWebhook:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_code:
+          type: string
+        task:
+          type: string
+        url:
+          type: string
+        content_type:
+          type: string
+        is_active:
+          type: boolean
+    PaginatedOrganizationWorkerTaskWebhook:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationWorkerTaskWebhook'
+        count:
+          type: integer
+          minimum: 0
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Coupon:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: 'クーポンID'
+        name:
+          type: string
+          title: 'クーポン名'
+        issued_shop:
+          $ref: '#/components/schemas/User'
+          title: 'クーポン発行店舗'
+        description:
+          type: string
+          title: 'クーポンの説明文'
+        discount_amount:
+          type: integer
+          nullable: true
+          title: 'クーポンによる値引き額(絶対値指定)'
+        discount_percentage:
+          type: number
+          nullable: true
+          title: 'クーポンによる値引き率'
+        discount_upper_limit:
+          type: integer
+          nullable: true
+          title: 'クーポンによる値引き上限(値引き率が指定された場合の値引き上限額)'
+        starts_at:
+          type: string
+          format: date-time
+          title: 'クーポンの利用可能期間(開始日時)'
+        ends_at:
+          type: string
+          format: date-time
+          title: 'クーポンの利用可能期間(終了日時)'
+        display_starts_at:
+          type: string
+          format: date-time
+          title: 'クーポンの掲載期間(開始日時)'
+        display_ends_at:
+          type: string
+          format: date-time
+          title: 'クーポンの掲載期間(終了日時)'
+        usage_limit:
+          type: integer
+          nullable: true
+          title: 'ユーザごとの利用可能回数(NULLの場合は無制限)'
+        min_amount:
+          type: integer
+          nullable: true
+          title: 'クーポン適用可能な最小取引額'
+        is_shop_specified:
+          type: boolean
+          title: '特定店舗限定のクーポンかどうか'
+        is_hidden:
+          type: boolean
+          title: 'クーポン一覧に掲載されるかどうか'
+          description: |
+            アプリに表示されるクーポン一覧に掲載されるかどうか。
+            主に一時的に掲載から外したいときに用いられる。そのためis_publicの設定よりも優先される。
+        is_public:
+          type: boolean
+          title: 'アプリ配信なしで受け取れるかどうか'
+        code:
+          type: string
+          nullable: true
+          title: 'クーポン受け取りコード'
+        is_disabled:
+          type: boolean
+          title: '無効化フラグ'
+        token:
+          type: string
+          title: 'クーポンを特定するためのトークン'
+    CouponDetail:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: 'クーポンID'
+        name:
+          type: string
+          title: 'クーポン名'
+        issued_shop:
+          $ref: '#/components/schemas/User'
+          title: 'クーポン発行店舗'
+        description:
+          type: string
+          title: 'クーポンの説明文'
+        discount_amount:
+          type: integer
+          nullable: true
+          title: 'クーポンによる値引き額(絶対値指定)'
+        discount_percentage:
+          type: number
+          nullable: true
+          title: 'クーポンによる値引き率'
+        discount_upper_limit:
+          type: integer
+          nullable: true
+          title: 'クーポンによる値引き上限(値引き率が指定された場合の値引き上限額)'
+        starts_at:
+          type: string
+          format: date-time
+          title: 'クーポンの利用可能期間(開始日時)'
+        ends_at:
+          type: string
+          format: date-time
+          title: 'クーポンの利用可能期間(終了日時)'
+        display_starts_at:
+          type: string
+          format: date-time
+          title: 'クーポンの掲載期間(開始日時)'
+        display_ends_at:
+          type: string
+          format: date-time
+          title: 'クーポンの掲載期間(終了日時)'
+        usage_limit:
+          type: integer
+          nullable: true
+          title: 'ユーザごとの利用可能回数(NULLの場合は無制限)'
+        min_amount:
+          type: integer
+          nullable: true
+          title: 'クーポン適用可能な最小取引額'
+        is_shop_specified:
+          type: boolean
+          title: '特定店舗限定のクーポンかどうか'
+        is_hidden:
+          type: boolean
+          title: 'クーポン一覧に掲載されるかどうか'
+          description: |
+            アプリに表示されるクーポン一覧に掲載されるかどうか。
+            主に一時的に掲載から外したいときに用いられる。そのためis_publicの設定よりも優先される。
+        is_public:
+          type: boolean
+          title: 'アプリ配信なしで受け取れるかどうか'
+        code:
+          type: string
+          nullable: true
+          title: 'クーポン受け取りコード'
+        is_disabled:
+          type: boolean
+          title: '無効化フラグ'
+        token:
+          type: string
+          title: 'クーポンを特定するためのトークン'
+        coupon_image:
+          type: string
+          nullable: true
+          title: 'クーポン画像のURL'
+        available_shops:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+          title: '利用可能店舗リスト'
+        private_money:
+          $ref: '#/components/schemas/PrivateMoney'
+          title: 'クーポンのマネー'
+    PaginatedCoupons:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coupon'
+        count:
+          type: integer
+          minimum: 0
+        pagination:
+          $ref: '#/components/schemas/Pagination'
 
     BadRequest:
       x-pokepay-schema-type: "response"
@@ -3124,6 +3359,17 @@ paths:
                     エンドユーザーIDです。
 
                     送金先のエンドユーザーを指定します。
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
       responses:
         '200':
           description: OK
@@ -3421,9 +3667,9 @@ paths:
                           name: string
                         max_balance: 0
                         transfer_limit: 0
+                        money_topup_transfer_limit: 0
                         type: own
                         expiration_type: static
-                        enable_topup_by_member: true
                     receiver:
                       id: 497f6eca-6276-4993-bfeb-53cbbbba6f08
                       name: string
@@ -3444,9 +3690,9 @@ paths:
                           name: string
                         max_balance: 0
                         transfer_limit: 0
+                        money_topup_transfer_limit: 0
                         type: own
                         expiration_type: static
-                        enable_topup_by_member: true
                     amount: 0
                     money_amount: 0
                     point_amount: 0
@@ -4431,6 +4677,11 @@ paths:
                   title: '店舗の外部ID'
                   description: |
                     このパラメータを渡すとその外部IDが登録された店舗のみが返されます。
+                with_disabled:
+                  type: boolean
+                  title: '無効な店舗を含める'
+                  description: |
+                    このパラメータを渡すと無効にされた店舗を含めて返されます。デフォルトでは無効にされた店舗は返されません。
                 page:
                   type: integer
                   minimum: 1
@@ -4742,6 +4993,12 @@ paths:
 
                     このパラメータは発行体のみが指定でき、発行しているマネーのみを指定できます。加盟店が他発行体のマネーに加盟している場合でも、そのチャージ可否を変更することはできません。
                     省略したときは対象店舗のその発行体の全てのマネーのアカウントがチャージ不可となります。
+                status:
+                  type: string
+                  enum: [active, disabled]
+                  title: '店舗の状態'
+                  description: |-
+                    店舗の状態です。activeを指定すると有効となり、disabledを指定するとリスト表示から除外されます。
       responses:
         '200':
           description: OK
@@ -5182,6 +5439,8 @@ paths:
           - チャージ時に、エンドユーザーのウォレット上限を超えて取引が完了できなかったときに返されます
         - `account_transfer_limit_exceeded (422)`
           - マネーに設定されている一度の取引金額の上限を超えたため、取引が完了できなかったときに返されます
+        - `account_money_topup_transfer_limit_exceeded (422)`
+          - マネーに設定されている一度のマネーチャージ金額の上限を超えたため、取引が完了できなかったときに返されます
         - `account_not_found (422)`
           - Cashtrayに設定されたマネーのウォレットをエンドユーザーが持っていなかったときに返されます
 
@@ -5708,7 +5967,7 @@ paths:
                   type: array
                   items:
                     type: integer
-                    minimun: 0
+                    minimum: 0
                     maximum: 6
                   title: 'キャンペーンを適用する曜日 (複数指定)'
                   describe: |-
@@ -6032,6 +6291,20 @@ paths:
                     有効化されており、現在キャンペーン期間内にあるキャンペーンをフィルターするために使われます。
                     真であれば適用可能なもののみを抽出し、偽であれば適用不可なもののみを抽出します。
                     デフォルトでは未指定(フィルターなし)です。
+                available_from:
+                  type: string
+                  format: date-time
+                  title: '指定された日時以降に適用可能期間が含まれているか'
+                  description: |-
+                    キャンペーン終了日時が指定された日時以降であるキャンペーンをフィルターするために使われます。
+                    デフォルトでは未指定(フィルターなし)です。
+                available_to:
+                  type: string
+                  format: date-time
+                  title: '指定された日時以前に適用可能期間が含まれているか'
+                  description: |-
+                    キャンペーン開始日時が指定された日時以前であるキャンペーンをフィルターするために使われます。
+                    デフォルトでは未指定(フィルターなし)です。
                 page:
                   type: integer
                   minimum: 1
@@ -6041,9 +6314,10 @@ paths:
                 per_page:
                   type: integer
                   minimum: 1
+                  maximum: 50
                   title: '1ページ分の取得数'
                   description: 1ページ分の取得数です。デフォルトでは 20 になっています。
-                  example: 50
+                  example: 20
       responses:
         '200':
           description: OK
@@ -6440,7 +6714,7 @@ paths:
                       // 対象商品を2つ以上購入したら500ポイント付与(固定額付与)
                       {
                         "point_amount": 500,
-                        "point_amount_unit": absolute",
+                        "point_amount_unit": "absolute",
                         "product_code": "4912345678904",
                         "required_count": 2
                       },
@@ -6464,7 +6738,7 @@ paths:
                   type: array
                   items:
                     type: integer
-                    minimun: 0
+                    minimum: 0
                     maximum: 6
                   nullable: true
                   title: 'キャンペーンを適用する曜日 (複数指定)'
@@ -6809,3 +7083,250 @@ paths:
           $ref: '#/components/responses/UnpermittedAdminUser'
         '503':
           $ref: '#/components/responses/UserStatsOperationServiceUnavailable'
+  /webhooks:
+    post:
+      x-pokepay-operator-name: "CreateWebhook"
+      x-pokepay-allow-server-side: true
+      tags:
+        - Webhook
+      summary: webhookの作成
+      description: |-
+        ワーカータスクの処理が終了したことを通知するためのWebhookを登録します
+        このAPIにより指定したタスクの終了時に、指定したURLにPOSTリクエストを送信します。
+        このとき、リクエストボディは `{"task": <タスク名>}` という値になります。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["task", "url"]
+              properties:
+                task:
+                  type: string
+                  enum: ["bulk_shops", "process_user_stats_operation"]
+                  title: タスク名
+                  description: ワーカータスク名を指定します
+                url:
+                  type: string
+                  title: URL
+                  description: 通知先のURLを指定します
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationWorkerTaskWebhook'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+    get:
+      x-pokepay-operator-name: "ListWebhooks"
+      x-pokepay-allow-server-side: true
+      tags:
+        - Webhook
+      summary: 作成したWebhookの一覧を返す
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: []
+              properties:
+                page:
+                  type: integer
+                  default: 1
+                  minimum: 1
+                  title: 'ページ番号'
+                  description: 取得したいページ番号です。
+                  example: 1
+                per_page:
+                  type: integer
+                  default: 50
+                  minimum: 1
+                  title: '1ページ分の取得数'
+                  description: 1ページ分の取得数です。デフォルトでは 50 になっています。
+                  example: 50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrganizationWorkerTaskWebhook'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /webhooks/{webhook_id}:
+    patch:
+      x-pokepay-operator-name: "UpdateWebhook"
+      x-pokepay-allow-server-side: true
+      tags:
+        - Webhook
+      summary: Webhookの更新
+      description: 指定したWebhookの内容を更新します
+      parameters:
+        - in: path
+          name: webhook_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: 'Webhook ID'
+          description: |-
+            更新するWebhookのIDです。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: []
+              properties:
+                url:
+                  type: string
+                  title: URL
+                  description: 変更するURLを指定します
+                is_active:
+                  type: boolean
+                  title: 有効/無効
+                  description: trueならWebhookによる通知が有効になり、falseなら無効になります
+                task:
+                  type: string
+                  enum: ["bulk_shops", "process_user_stats_operation"]
+                  title: タスク名
+                  description: 指定したタスクが終了したときにWebhookによる通知がされます
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationWorkerTaskWebhook'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /coupons:
+    get:
+      x-pokepay-operator-name: "ListCoupons"
+      x-pokepay-allow-server-side: true
+      tags:
+        - Coupon
+      summary: クーポン一覧の取得
+      description: 指定したマネーのクーポン一覧を取得します
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: [private_money_id]
+              properties:
+                private_money_id:
+                  type: string
+                  format: uuid
+                  title: '対象クーポンのマネーID'
+                  description: |
+                    対象クーポンのマネーIDです(必須項目)。
+                    存在しないマネーIDを指定した場合はprivate_money_not_foundエラー(422)が返ります。
+                coupon_id:
+                  type: string
+                  title: 'クーポンID'
+                  description: |
+                    指定されたクーポンIDで結果をフィルターします。
+                    部分一致(前方一致)します。
+                coupon_name:
+                  type: string
+                  title: 'クーポン名'
+                  description: |
+                    指定されたクーポン名で結果をフィルターします。
+                issued_shop_name:
+                  type: string
+                  title: '発行店舗名'
+                  description: |
+                    指定された発行店舗で結果をフィルターします。
+                available_shop_name:
+                  type: string
+                  title: '利用可能店舗名'
+                  description: |
+                    指定された利用可能店舗で結果をフィルターします。
+                available_from:
+                  type: string
+                  format: date-time
+                  title: '利用可能期間 (開始日時)'
+                  description: |
+                    利用可能期間でフィルターします。フィルターの開始日時をISO8601形式で指定します。
+                available_to:
+                  type: string
+                  format: date-time
+                  title: '利用可能期間 (終了日時)'
+                  description: |
+                    利用可能期間でフィルターします。フィルターの終了日時をISO8601形式で指定します。
+                page:
+                  type: integer
+                  default: 1
+                  minimum: 1
+                  title: 'ページ番号'
+                  description: 取得したいページ番号です。
+                  example: 1
+                per_page:
+                  type: integer
+                  default: 50
+                  minimum: 1
+                  title: '1ページ分の取得数'
+                  description: 1ページ分の取得数です。デフォルトでは 50 になっています。
+                  example: 50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCoupons'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/UnpermittedAdminUser'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /coupons/{coupon-id}:
+    get:
+      x-pokepay-operator-name: "GetCoupon"
+      x-pokepay-allow-server-side: true
+      tags:
+        - Coupon
+      summary: クーポンの取得
+      description: 指定したIDを持つクーポンを取得します
+      parameters:
+        - in: path
+          name: coupon-id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: 'クーポンID'
+          description: |-
+            取得するクーポンのIDです。
+            UUIDv4フォーマットである必要があり、フォーマットが異なる場合は InvalidParametersエラー(400)が返ります。
+            指定したIDのクーポンが存在しない場合はCouponNotFoundエラー(422)が返ります。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CouponDetail'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/UnpermittedAdminUser'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'

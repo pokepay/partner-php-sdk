@@ -48,6 +48,14 @@ class Transaction extends Base
      */
     public $pointAmount;
     /**
+     * @var double
+     */
+    public $rawPointAmount;
+    /**
+     * @var double
+     */
+    public $campaignPointAmount;
+    /**
      * @var \DateTime
      */
     public $doneAt;

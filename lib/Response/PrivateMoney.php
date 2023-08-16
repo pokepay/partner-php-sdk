@@ -43,6 +43,10 @@ class PrivateMoney extends Base
      */
     public $transferLimit;
     /**
+     * @var double
+     */
+    public $moneyTopupTransferLimit;
+    /**
      * @var string
      */
     public $type;

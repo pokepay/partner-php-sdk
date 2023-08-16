@@ -10,13 +10,13 @@ class CreateTopupTransactionWithCheck extends Base
     public $responseClass = \Pokepay\Response\TransactionDetail::class;
     private $checkId;
     private $customerId;
-    public function __construct($checkId, $customerId)
+    public function __construct($checkId, $customerId, $optionalParams = array())
     {
         parent::__construct();
         $this->checkId = $checkId;
         $this->customerId = $customerId;
 
-        $this->optionalParams = array();
+        $this->optionalParams = $optionalParams;
     }
 
     public function getPath()
