@@ -20,4 +20,23 @@ class CreateTopupTransactionWithCheck extends TestCase
             $this->assertTrue(false);
         }
     }
+    public function testCreateTopupTransactionWithCheck1()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateTopupTransactionWithCheck(
+            "ed2904e4-23df-4046-a63d-39b000bd405e",
+            "95f56e59-fb8a-4731-9bca-2b167cad46cf",
+            [
+                'request_id' => "1d21542d-b288-4810-846f-27427e0ef468"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
 }

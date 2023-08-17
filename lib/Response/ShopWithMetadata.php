@@ -19,6 +19,10 @@ class ShopWithMetadata extends Base
      */
     public $organizationCode;
     /**
+     * @var string
+     */
+    public $status;
+    /**
      * @var string|null
      */
     public $postalCode;

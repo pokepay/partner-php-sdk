@@ -5,10 +5,10 @@ namespace Pokepay\Request;
 
 use DateTime;
 
-class ListCampaigns extends PagingBase
+class ListCoupons extends PagingBase
 {
     protected $method = 'GET';
-    public $responseClass = \Pokepay\Response\PaginatedCampaigns::class;
+    public $responseClass = \Pokepay\Response\PaginatedCoupons::class;
     private $privateMoneyId;
     public function __construct($privateMoneyId, $optionalParams = array())
     {
@@ -20,7 +20,7 @@ class ListCampaigns extends PagingBase
 
     public function getPath()
     {
-        return '/campaigns';
+        return '/coupons';
     }
 
     public function getParams()
