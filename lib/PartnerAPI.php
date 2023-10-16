@@ -17,14 +17,14 @@ class PartnerAPI
     private $clientInstance;
     private $curlOptions = array();
 
-    public function __construct($iniFile = null)
+    public function __construct($iniFile = null, $_clientId = null, $_clientSecret = null)
     {
         $iniFile = isset($iniFile) ? $iniFile : getenv('POKEPAY_PARTNER_CONFIG_FILE');
 
         if ($iniFile) {
             $config = parse_ini_file($iniFile);
-            $this->clientId = $config['CLIENT_ID'];
-            $this->clientSecret = $config['CLIENT_SECRET'];
+            $this->clientId = isset($_clientId) ? $_clientId : $config['CLIENT_ID'];
+            $this->clientSecret = isset($_clientSecret) ? $_clientSecret : $config['CLIENT_SECRET'];
             $this->apiBase = $config['API_BASE_URL'];
             if (array_key_exists('SSL_KEY_FILE', $config)) {
                 $this->curlOptions[CURLOPT_SSLKEY] = $config['SSL_KEY_FILE'];
