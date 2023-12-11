@@ -8,10 +8,10 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "a3a3a397-2b0a-4fdf-962b-b65524f446a7",
-            "451fb425-d1a1-4343-93da-4b8d5acb45a3",
-            "aba0c4bc-8956-4382-a45f-5434bc75ede3",
-            3570.0
+            "30b38e54-4701-472a-adc8-338abe2450b8",
+            "34660935-2a17-4e8e-8561-3152c73e38d7",
+            "3540d404-0202-4cce-91c3-677e911de18e",
+            5489.0
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "a3a3a397-2b0a-4fdf-962b-b65524f446a7",
-            "451fb425-d1a1-4343-93da-4b8d5acb45a3",
-            "aba0c4bc-8956-4382-a45f-5434bc75ede3",
-            3570.0,
+            "30b38e54-4701-472a-adc8-338abe2450b8",
+            "34660935-2a17-4e8e-8561-3152c73e38d7",
+            "3540d404-0202-4cce-91c3-677e911de18e",
+            5489.0,
             [
-                'request_id' => "4d70948e-0eee-4106-8e8d-bc6649c47b53"
+                'request_id' => "3dc8685a-08c2-4571-836b-189ab51cd4fc"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "a3a3a397-2b0a-4fdf-962b-b65524f446a7",
-            "451fb425-d1a1-4343-93da-4b8d5acb45a3",
-            "aba0c4bc-8956-4382-a45f-5434bc75ede3",
-            3570.0,
+            "30b38e54-4701-472a-adc8-338abe2450b8",
+            "34660935-2a17-4e8e-8561-3152c73e38d7",
+            "3540d404-0202-4cce-91c3-677e911de18e",
+            5489.0,
             [
-                'description' => "RiXLw6IXxof4N3bX72yEerLNEKMYsRf9vriYiP8HndtLKgFWIeB413C8zcpa0a0",
-                'request_id' => "2b803869-f1aa-4ebc-b0f5-daad85ca0acc"
+                'description' => "7vG2G1CPe6nCJXdPXSavMIC7L1PXkbArWdy4rqV1OR9dYbWBsymVxL6raa9lStAWIjI7",
+                'request_id' => "baef03c0-d712-46f1-aeed-963c63c48945"
             ]
         );
         try {

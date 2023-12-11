@@ -8,7 +8,7 @@ class ListBulkTransactionJobs extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListBulkTransactionJobs(
-            "370e4c3f-9576-4059-be3e-40f0c8aff2bf"
+            "37e6b5bf-c9c1-4956-90e7-702118fa21fa"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListBulkTransactionJobs extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListBulkTransactionJobs(
-            "370e4c3f-9576-4059-be3e-40f0c8aff2bf",
+            "37e6b5bf-c9c1-4956-90e7-702118fa21fa",
             [
-                'per_page' => 1216
+                'per_page' => 5273
             ]
         );
         try {
@@ -41,10 +41,10 @@ class ListBulkTransactionJobs extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListBulkTransactionJobs(
-            "370e4c3f-9576-4059-be3e-40f0c8aff2bf",
+            "37e6b5bf-c9c1-4956-90e7-702118fa21fa",
             [
-                'page' => 5407,
-                'per_page' => 2866
+                'page' => 9518,
+                'per_page' => 7800
             ]
         );
         try {

@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class RefundExternalTransaction extends Base
 {
     protected $method = 'POST';
-    public $responseClass = \Pokepay\Response\ExternalTransaction::class;
+    public $responseClass = \Pokepay\Response\ExternalTransactionDetail::class;
     private $eventId;
     public function __construct($eventId, $optionalParams = array())
     {

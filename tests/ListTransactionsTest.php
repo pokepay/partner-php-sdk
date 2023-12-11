@@ -22,7 +22,7 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'description' => "pU0js5rsIZ4cWpER3UtPkG2eq1I6SZr9Xo8DUROCVDxPSk72x92MmliF75MFhbZKuKGU7dTPisUgKnCVzFujd5tp1lylHobnm6HycWppeOG5c4bSqVBGp3Ank6BTTvgxHzzgdLIxgPMdYrCUsTg7mFB"
+                'description' => "EI8cjLLBoqoV"
             ]
         );
         try {
@@ -39,8 +39,8 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'types' => ["exchange_inflow", "expire", "topup", "exchange_outflow", "payment"],
-                'description' => "JyTl3OSbQF6o9LFFmkiVCdqahnfY1HR9DfMzD3LCASqee9bY3sHOGNF3Mai4m7no77RN8AasCH56gnyuHFpFsNPJmzuH1GHYOOmiUvKwyiQYSSoPK3N5ZGrmU0unMptspEioBBqGcJLaXcepDTPRHElLNQr"
+                'types' => ["exchange_inflow", "payment", "expire"],
+                'description' => "dhKqmTdgwXwMpJw50Q3VTdAB"
             ]
         );
         try {
@@ -57,9 +57,9 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'is_modified' => TRUE,
-                'types' => ["exchange_inflow", "topup"],
-                'description' => "nk17KWAio"
+                'is_modified' => FALSE,
+                'types' => ["exchange_inflow"],
+                'description' => "7hTT9HCzul8iDs8KAJEGJF87JDA6uSd0jxZZsgytd9WV0wcdGbZR5mcKD1FIW9jMXGzKKUYeDLAySV4gboNzfTMfmtIYmACb86jZYYG4AQEE7YldDcYw5vxxcIAfyveQ5PmlpTaUM0LabSmPeA8j5vHTq9eUYB"
             ]
         );
         try {
@@ -76,10 +76,10 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'private_money_id' => "40911c0e-5329-44e9-86c9-5e8e34fa8a47",
-                'is_modified' => TRUE,
-                'types' => [],
-                'description' => "xz5S2r82nr4Char2DsC6IOlQ3ZCa8lZmMT5mAFAIeN7EOzX"
+                'private_money_id' => "d568956f-453f-41e3-8497-639a6c7fa5fc",
+                'is_modified' => FALSE,
+                'types' => ["exchange_inflow", "exchange_outflow", "topup", "expire"],
+                'description' => "zKam"
             ]
         );
         try {
@@ -96,11 +96,11 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'organization_code' => "e5",
-                'private_money_id' => "d5982ee3-3830-4fea-9333-055c8b2e27b9",
+                'organization_code' => "J-jS0XZx--xX9ANBX--50R16-",
+                'private_money_id' => "8d620ae4-0237-46de-82bf-b50d54aff0a7",
                 'is_modified' => FALSE,
-                'types' => ["topup", "payment", "expire", "cashback"],
-                'description' => "FwGmGihFz2z0gAPfWDnSv3peMsqUtDBVf5JNWPBpzSQtetKx5V0IU1H2quyHwM52367FRSK6ZN3dPGJYhssMJ"
+                'types' => ["expire", "payment", "exchange_outflow", "topup", "cashback", "exchange_inflow"],
+                'description' => "Cg6cI8OqqzDclIHxJ4kYp5Y1GrAV4hfinhcHTlnLRIFWZGkaygUJKW7BPj5Kh2IVBntToYfhLHYxlMI48p8PqiqKHU7q35Va7x52D8zAMS5dpsSXrrhcwu9y84v0KIozYmNqMU4j4f180fP5c1L5nGfS00wrDtFm6jbMqVAxCFSfj1txkr"
             ]
         );
         try {
@@ -117,12 +117,12 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'transaction_id' => "c8",
-                'organization_code' => "e83m-6eBI05",
-                'private_money_id' => "78897277-c349-4394-bc27-f4d051efd7e2",
-                'is_modified' => FALSE,
-                'types' => ["cashback", "exchange_outflow", "exchange_inflow"],
-                'description' => "hYlMMXruKsOetb8P3w3wpAlq46MRF"
+                'transaction_id' => "X",
+                'organization_code' => "-m--n--4-",
+                'private_money_id' => "42f18213-79bf-4c68-bd12-cbc90042591f",
+                'is_modified' => TRUE,
+                'types' => ["cashback", "payment", "expire"],
+                'description' => "f2G4wIjrclsbDSrRpMr6g1byJ6zLQH6XRXfjWfobqzBBH6GPQv6F6elMe4dfdTB4gKnewjIg"
             ]
         );
         try {
@@ -139,13 +139,13 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'terminal_id' => "268c45e8-9d42-4885-981d-e9611bdd582f",
-                'transaction_id' => "1KSFCI",
-                'organization_code' => "bhtDRbU7-a--Qv4rj-2-18EjuPj-iLW",
-                'private_money_id' => "09d64e1b-74f5-4130-b3c3-4de35c3e21c8",
-                'is_modified' => TRUE,
-                'types' => ["expire", "exchange_outflow", "payment", "exchange_inflow"],
-                'description' => "EOIiZjdOoQxmayWcgZvBQUAudiHvhALf0xr0YedjAtAhk4Q5ZEYWHc6DIDKem3"
+                'terminal_id' => "6108cc7c-ff03-4e8d-b80a-61ce9c0dd5bb",
+                'transaction_id' => "yfmbE",
+                'organization_code' => "lM9b5J-",
+                'private_money_id' => "345ebeac-76df-4f81-a3da-102935fa3e2f",
+                'is_modified' => FALSE,
+                'types' => ["exchange_inflow", "topup", "payment", "exchange_outflow", "expire"],
+                'description' => "5jBfSeBTBvHCxU1NvYfVESMB97pRR1FDoaYRXkvCXPPl24Azk"
             ]
         );
         try {
@@ -162,14 +162,14 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'customer_name' => "xaXPio5o0q9x0iUyrfJOMPlYYA9d24g2qlkQeuW1v6Ot04JjRtKJ3Y50yRgOZb7LyYKRMPV8lVcOO1w2GShMQxP1XNaA4tMwkt9CEIs7P52Qn8Ps6rGg4gxhQEPHlDMgzo7RyqyjDQCvIVLohtP7YX7LIJvkHIDHAM5JdvPW8u4K9jehE0FIX2d1fsIJRa",
-                'terminal_id' => "120cd1dc-82f1-40db-b4e3-d8738f704eaf",
-                'transaction_id' => "eT3",
-                'organization_code' => "---28o8K-q",
-                'private_money_id' => "4ad45008-de6b-4238-9a2d-df1db7d01334",
+                'customer_name' => "f4IW4knrGHl0TR1xxEjRkzP55FkN9KaqhLJYNFjdQdDPcKYswz1KGIIQxemmGSBfFVG7yS1x9e65CkFUPSZdnC8Nbd0GAMDtpExjAOL9txxvBDq74Zcv4lxbZkZAsxqjGZZnD30rTzVwJllk7AmnUWAZFPyOt3pktOJBQNvyxNd81mETXBAwcDbgRS83ISSTE08jfX2Omd3NMjFlRLJvC6KKEtPK2YiWIn9hnlpuWkv9vCC",
+                'terminal_id' => "d66695c6-5ec1-4064-bfd2-0815539cebce",
+                'transaction_id' => "gGRk28xaBN",
+                'organization_code' => "hAWAlEfiC028L-gWc-",
+                'private_money_id' => "830b6e97-a606-443f-a2f0-ad4e56b65b68",
                 'is_modified' => FALSE,
-                'types' => ["payment", "exchange_inflow", "exchange_outflow"],
-                'description' => "B9mfs2NjGqIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL"
+                'types' => ["exchange_outflow"],
+                'description' => "o6JGjFLLOGZO0oAllJiZr4re6LWLgSkk2ZDUPdz1BhJvWNhb1UlY8gVa2hXfzW4DNhu8v9wZu0fWkZyfAZKnUDFE99Mnwnu5OtOf4ilY3NpmdcwanlDlu0IrmsH8EsDeezi4jYkSH918X0jGAYz0AuaoOoyLPqw51DmjCWv1MDES09bsjDJFkIb5xAqDpTjFMPKMQ"
             ]
         );
         try {
@@ -186,15 +186,15 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'customer_id' => "d4e25038-9eb4-4e13-9453-2a922f7b431d",
-                'customer_name' => "GwACEhVooVmB4cFvbTIGcXWAqG4BSfipEZMFGh",
-                'terminal_id' => "806a9e14-6918-466b-a718-96a1c4514fba",
-                'transaction_id' => "16I7iXig",
-                'organization_code' => "YnUAHI1a",
-                'private_money_id' => "290b4c1b-411e-4d83-bd73-9d13437e2202",
-                'is_modified' => TRUE,
-                'types' => ["topup", "payment"],
-                'description' => "ahWwt0KCw4FDQO05qLTqGD"
+                'customer_id' => "a652adb1-beb3-4343-8f17-34d236fc45ee",
+                'customer_name' => "g41h3amcuul1yByCRpmXDgHNBQaoIMR9zPGyYm63xUyy5Lv7oTqtem0CnZ3EEZw55Gboo5hpfF1Hpb0RbR7D8yvhSwIzpaQ4KzL2meWNVVwDgpJqef1CpLupibRMoXLp8MHMfUv2FJIgMo734XdeCG",
+                'terminal_id' => "68d4ee13-9437-499e-96c2-c4689ba96185",
+                'transaction_id' => "wLeeL",
+                'organization_code' => "3WI4s",
+                'private_money_id' => "f3458455-807a-4b13-ad09-651f71574997",
+                'is_modified' => FALSE,
+                'types' => ["exchange_outflow", "expire", "exchange_inflow", "topup", "cashback"],
+                'description' => "djRhGfa0yLPBNXYOJzOncitmbWDPrz6d"
             ]
         );
         try {
@@ -211,16 +211,16 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'shop_id' => "24873215-c062-4581-ba1f-47d11e7f6e04",
-                'customer_id' => "d08b52c4-0875-4061-86f6-d63426154156",
-                'customer_name' => "aDUMga8HPHLfj8VAxLQCn6DppPY7uZKs5wMf3MBYDCuFCMBOgtd28MFakoJp4sttlPyu0hLTf3LV1FvqM27O2bqybT3XFSWXNEvBDebROkI568yn3vAdg2WzE6cQfJbdKVhYmdIeaGtyZiVBFtaHsVEu5jHLt1IIKsQ450xUM6O5hfI4vi32RsgmtpDzruBR2bpCJbWCsF1XOMwOMfbCbRi8MeoObjQBbD5vivOmPF0WWyAe43BT",
-                'terminal_id' => "d4f41d2f-41ea-4cd9-a9d6-ed9543f0b474",
-                'transaction_id' => "GDmgs",
-                'organization_code' => "8-sG---7KiosX3L-FY--",
-                'private_money_id' => "c32ad231-9f8e-443a-a830-60e1b89f3de3",
-                'is_modified' => FALSE,
-                'types' => ["payment", "cashback", "expire", "exchange_inflow"],
-                'description' => "mABE9DWtANH45sfx8Sg9q1O62IQSAJ63xgs"
+                'shop_id' => "4c010da9-d02a-4a7a-8f9d-fdb385fbc6b7",
+                'customer_id' => "2d95d23d-b1c1-4e60-9ad9-2e654e6d3069",
+                'customer_name' => "F76ZwhFQ3FAy9yso4lFSwRswxdTAQ9WC0cvkqgXkR",
+                'terminal_id' => "d06e9265-54f1-4672-9dd3-80b26bcd55ff",
+                'transaction_id' => "Si",
+                'organization_code' => "gL",
+                'private_money_id' => "7f942225-c41d-4c91-9d83-0e7a5a9b22f6",
+                'is_modified' => TRUE,
+                'types' => ["exchange_outflow", "cashback"],
+                'description' => "kWfbEr5omA7L0OesKnaA2925CICFc9Yi"
             ]
         );
         try {
@@ -237,17 +237,17 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'per_page' => 8707,
-                'shop_id' => "3881c78c-c226-4da4-a495-0aebaa5f348f",
-                'customer_id' => "adc5fef7-75b6-4179-9ce6-c485fd90fe1e",
-                'customer_name' => "QPcXHRn98CcSXK5Zlq5PBZ9vRV0xbdBDEvdzHS5KI84n4B4JwtxMbsrynFzleqVzZvPQrwa",
-                'terminal_id' => "7088258d-f319-4dda-b5f8-d4e6f5129f7a",
-                'transaction_id' => "mz05DA",
-                'organization_code' => "Lu-4s9aY825YEG",
-                'private_money_id' => "13405826-69aa-49d4-82d9-1bcc96880c1b",
-                'is_modified' => TRUE,
-                'types' => ["cashback", "exchange_inflow", "expire"],
-                'description' => "AVqSRIdac4BtBwC2bbOKrqEvtHSmLf6gZqSXb2Lr55RtyiRtGJ1HUxolj1KPz6vAaVd6Sg4zOt2LPb0nLBvCfu5QWsdUnRrH9KHVuXFGKt4lw9lRVMCAhIxweHf4mhVFw56RKDemCYdfHKy6kNARZB0e7gSo7Ck5GjWL9QXL9sfw"
+                'per_page' => 4104,
+                'shop_id' => "119a56a8-f825-4d91-87fe-825e1d9f2a8f",
+                'customer_id' => "8dec7160-1fae-4afc-a214-1046a4e2a0e8",
+                'customer_name' => "HuxZx0kErjYhFF8L0s3HmTbCv0vs46AUUu2pfmS3y8rWkeGY78TmLpJkbnvg7derUWKSNpuLl7xZYDZsabSpc0uKpcBQAXHmzjFH8x6CDzw9SQwogUY2AjilRovHayz8YyL84tSBRirOjWywMKpR0ZNHTQzlWhqAUDLyUjiL5h79b8Mq1iCGeBaSpQPD6dBfbbaTLCXXwtnmblF81hLyHqrkno1IRdYmotXWqYy5cWhC8K9",
+                'terminal_id' => "19f2ea68-52f1-43b9-8ed6-596b0c2bc7b7",
+                'transaction_id' => "eiqBVcclw",
+                'organization_code' => "ZBv0-p0rM18476D0-UAj1-",
+                'private_money_id' => "dbc6071e-ee6f-4886-b723-5b3318e14cea",
+                'is_modified' => FALSE,
+                'types' => ["exchange_inflow", "expire", "cashback", "payment", "topup", "exchange_outflow"],
+                'description' => "lnP2oKpAkp8PiItR1sKyYoCMNif5QP3KXDpCVGLWGOHFEzapKvNXPC1CkiwHqFmPHg1nDo4oueFOj023vS0mewatHnea0dCU94sWp47O7C5wT4wYrVN1K9mYldOQjsir5CqIfO5L8Zq3bTMBqwr9Z5qKSziS34atNThxJhMGQiNXxPc9"
             ]
         );
         try {
@@ -264,18 +264,18 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'page' => 3283,
-                'per_page' => 7330,
-                'shop_id' => "cb55afef-5ceb-4d51-a669-569201701a4f",
-                'customer_id' => "bb7fefbd-e432-4694-a7ca-7f82507a0cbe",
-                'customer_name' => "LOs7NWiVmOaSDg31Umvi1k0xZepHVlU5UCBk1mC260SZIP",
-                'terminal_id' => "ee283a66-481d-4701-b7a7-cf8d3c03556c",
-                'transaction_id' => "xpBEwO",
-                'organization_code' => "HLH",
-                'private_money_id' => "3ed91754-72ea-4528-88a1-73dcd2996c68",
-                'is_modified' => TRUE,
-                'types' => ["exchange_outflow"],
-                'description' => "IG2GVjRLCF7S26ypTzMExe5LQXN3tfMMeaiTEdRlgPRLO6iu4xB9p9hHVjuFskSUixLpvflY8MFYZJvlfPZ9XRs2DjUex8FZcru468uiy2IBQsKNbECUonyUv3nTPZ7"
+                'page' => 8793,
+                'per_page' => 1320,
+                'shop_id' => "5bea61a9-11b2-4c7b-b42f-cc59261188a7",
+                'customer_id' => "9585f239-db18-49df-a39a-601ae0fa8784",
+                'customer_name' => "063jeiC0sEMTifXwPUAwxE0V3AioYGgiTWexQGgsWhjEbcteNrFFjyWUeOcoTl6khkqH4OC72gKD",
+                'terminal_id' => "fcd6038b-2362-4506-8f91-3603c30c50c8",
+                'transaction_id' => "xfd9c8VQaX",
+                'organization_code' => "023G7Jp--R-7ZMoNt2vH95t3tIwt-k-",
+                'private_money_id' => "746933c8-733c-435e-bcc7-6f01bb4252f3",
+                'is_modified' => FALSE,
+                'types' => ["exchange_inflow", "cashback"],
+                'description' => "6p9JGwN67nitnvEXl7HTtWDnKgmYJWOFJqIru7u3eDlXpCUVae0iDE64cm6yBcfdcJkiXTqWHPGya4deZm0fSDTtTOJ1ul4n4rd80SnO9JMQZQOi46n24N1Vd6UWqHbjbEB2k2UV3XLhESUPHX6wvpRKl2rU5wN9oKicMImC5FkW3NN6hqssLEbEWPKl9WkWniNMe"
             ]
         );
         try {
@@ -292,19 +292,19 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'to' => "2018-12-06T06:44:40.000000+09:00",
-                'page' => 4402,
-                'per_page' => 1197,
-                'shop_id' => "d856d797-347f-4ab3-a294-d2232a2494d6",
-                'customer_id' => "bf985d7f-4435-4ad1-84f9-7ef787621213",
-                'customer_name' => "2pn04JUSx27eVHz2wOx9gOffBCzdPD5lY5ruzs73QnlHzwGBVLp2Vmg3eprOU7ktZcHWsZTpEtZX9770nlSO8H2DCl6imPJgn2XjYsZUpQvLebh65Hdtxmvs4SwxRthVVayjO1th3s3e6fayZ2E32vm3RMvvWttu1PJb3d04IfskzbRh2KXDkJqy1UyPaGHVkyMSdmemZcovbEUc9TiM3DTSa7pJlo8JS6mIVfCl8O",
-                'terminal_id' => "d6078836-9e1c-42d8-949b-b8f003f460a5",
-                'transaction_id' => "UPEJOaNn",
-                'organization_code' => "sWNR-R41m-81cRE-a-4Y7rs8D6-O-5t",
-                'private_money_id' => "493788d6-7cde-417e-87a2-a3f53eaa32a6",
-                'is_modified' => FALSE,
-                'types' => ["topup", "exchange_outflow", "exchange_inflow", "expire", "payment"],
-                'description' => "xLQqoj9SXP9EgDJcoagTJNb42JvVKNsj3zA7Dw0uibv6O0nFaLFwVLIZnC6rDyYuuG1XnlSIVaCTCoBzc3Po"
+                'to' => "2023-01-22T05:35:49.000000+09:00",
+                'page' => 9360,
+                'per_page' => 6216,
+                'shop_id' => "3e38e961-8bac-4227-ba12-f429ecda3301",
+                'customer_id' => "70f3ffa1-8255-4a86-936f-db6554875c46",
+                'customer_name' => "UhuzR92flJna3o8lSubVHDQKnCMFBUToCMNtZ6d7oqX5HAjEgFXSsN9r5fYqwBwIeFwCdwWTHBvTSeC4v5viv0SuTrdZ8q3Q4Tuionr4icEoYIZ8TnBORlevStTpTvNkwGTx4XeaHsbnASQL7dNbIjKdxZ4qw5diKtbXpwhzV4pZWBByF0VHHSTDwDvpGuPijQkiZTa2NELJ",
+                'terminal_id' => "9e469a82-11e6-48c4-b896-caecf0a510dd",
+                'transaction_id' => "kJ0",
+                'organization_code' => "qM-fhT--mqzW0tdVsqXb-",
+                'private_money_id' => "d2507ba4-9bf3-4860-b585-a5c6131d46d9",
+                'is_modified' => TRUE,
+                'types' => ["expire"],
+                'description' => "yRsnB2locmdC25l11LJOUFzokJVd8OkaH3pU0UTPkjH2EeDBk3SW"
             ]
         );
         try {
@@ -321,20 +321,20 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'from' => "2022-06-09T09:40:04.000000+09:00",
-                'to' => "2024-01-21T10:13:05.000000+09:00",
-                'page' => 7796,
-                'per_page' => 2661,
-                'shop_id' => "32d4c003-a3e2-487b-b217-018aecfa7812",
-                'customer_id' => "1b984778-0255-4354-a2fe-f113e9606a70",
-                'customer_name' => "kQr9CA458OFUiC0xNjD1g6ausYOsWjmgSVes0LvRpIOKLgAa2m76DTKceEBbKe1QbzWrTYvHigdBYvKVDdotV",
-                'terminal_id' => "9a784064-d673-47ae-88c4-6c21bce9089c",
-                'transaction_id' => "1Har",
-                'organization_code' => "IaQ-xN80f0DTB0za8tu8TiZH341O--Cq",
-                'private_money_id' => "b6d3fb16-c1d1-45fa-8cdc-25dbdcfb20d0",
-                'is_modified' => FALSE,
-                'types' => [],
-                'description' => "mp7HiQajpl09d6QIiaL5c40GPi4ivBi3eJhDgAiQ5RhXwEfmyakwCi2K41MKrJ8u3JtJHw13BJLqU"
+                'from' => "2023-04-23T10:30:25.000000+09:00",
+                'to' => "2022-10-06T03:08:53.000000+09:00",
+                'page' => 4059,
+                'per_page' => 759,
+                'shop_id' => "f4d31960-e10f-47d7-b9a4-441b8cb97957",
+                'customer_id' => "f191d142-e7db-44a1-b168-d0c22dd19c73",
+                'customer_name' => "sdQo5TGlUVEpfdZcZJP7Ea9bKCEuCZ8sxLvuEzvUjczHKQJ2OEy7zncPwNBhQSRj705CVd4KAEoApqec4dEMKO5v8HWsixFIF8iFDKY3dOtpIK1j0atj5IE8OtyLejHxzmskBv5sCGJVI5vigrnBOvsvNbTMAapoK9cesWNuBTobNIUTM2MqFf1wXtcs0hGfv7Mj342OhHjs52XI9OKxIYAe1odvgMkIbgg9tQV2tX5VlEtOvgX",
+                'terminal_id' => "ad87f041-14e9-4731-80ca-576f1387342b",
+                'transaction_id' => "vlinmF8qXh",
+                'organization_code' => "-w--7g9uhM8",
+                'private_money_id' => "a5523875-8a3c-4201-ae45-5d35979c4c02",
+                'is_modified' => TRUE,
+                'types' => ["expire", "exchange_outflow"],
+                'description' => "xT1hjIB3fppTw7PI6djkQm8QO1knSl3QgsavXpLvUzXwfBc2NAmqBiiUjxGuutIttifWQdg1mtC4VYuGN7COPHcRjPzJyNNlPvzxgNBAx3CrIdIQ4A6upZuluJRm2nGpQyVF10EF7PaNv8ZkW5JwYZcZzH1gITdb"
             ]
         );
         try {
