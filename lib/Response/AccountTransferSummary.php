@@ -3,6 +3,7 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
 class AccountTransferSummary extends Base
 {
@@ -10,4 +11,12 @@ class AccountTransferSummary extends Base
      * @var AccountTransferSummaryElement[]
      */
     public $summaries;
+
+    protected function normalize($timezone)
+    {
+        $tz = new DateTimeZone($timezone);
+        foreach ($this->summaries as $item) {
+            $item->normalize($timezone);
+        }
+    }
 }

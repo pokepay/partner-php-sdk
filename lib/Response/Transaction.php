@@ -48,11 +48,11 @@ class Transaction extends Base
      */
     public $pointAmount;
     /**
-     * @var double
+     * @var double|null
      */
     public $rawPointAmount;
     /**
-     * @var double
+     * @var double|null
      */
     public $campaignPointAmount;
     /**

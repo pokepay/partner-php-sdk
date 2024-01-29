@@ -23,6 +23,14 @@ class OrganizationSummary extends Base
      */
     public $pointAmount;
     /**
+     * @var double
+     */
+    public $rawPointAmount;
+    /**
+     * @var double
+     */
+    public $campaignPointAmount;
+    /**
      * @var integer
      */
     public $pointCount;

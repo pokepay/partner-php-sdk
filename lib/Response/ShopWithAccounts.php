@@ -3,6 +3,7 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
 class ShopWithAccounts extends Base
 {
@@ -46,4 +47,12 @@ class ShopWithAccounts extends Base
      * @var ShopAccount[]
      */
     public $accounts;
+
+    protected function normalize($timezone)
+    {
+        $tz = new DateTimeZone($timezone);
+        foreach ($this->accounts as $item) {
+            $item->normalize($timezone);
+        }
+    }
 }

@@ -8,11 +8,11 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com"
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com"
         );
         try {
             $response = $client->send($request);
@@ -27,13 +27,13 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
-                'contact_name' => "KLiOrRKq3qxtTGifN6KrraD5uojwDmQdLNOKHIlDiaOh78QfhNbZ3YfGhlbqaOElvScjtjkG1WEjltqaYkhp7caXjUtBcNe9XyY4wthFo0glXBErIUB1p7aPMzXnAdDrY96Gn0OAQ9xSN0zfKx7ivixiVqjgvBNcsQLQxAtJmVTcXWtKUzkNd3"
+                'contact_name' => "8aPvdrDNWOGxtfu1Zr0QUTjYKzaO4wCcCedvLZCz4UyBOBLSlgAjrLpW8nYBAT0ovLowo7zTFkBTuqEfiB8Cmk3VFCDHd6tOAY1J0t56WI7khAQt8AmasDckb9SP6KZAzQ3fzYC3rnxUPpUO6v15tqcxYPQe9Qk4m1bF8NqNeOtXjzLSlmRAKtzseP0lry1LQy4ci3DBXG9NFb85fgKwlRvSahouSUECDBxbNSxI3"
             ]
         );
         try {
@@ -49,14 +49,14 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
-                'bank_account_holder_name' => "｣",
-                'contact_name' => "5gyuBKlwozbM8BIp6WWFtoNM3mKKWyb"
+                'bank_account_holder_name' => " ",
+                'contact_name' => "8PBnMnsxuZo9DLHS7RvBKtcMglcTv2RdenSqPNmzGSqsiF8rOKFDLqE47T3Mo3VQqQk0XBMMsRANGFsmxFAPdQe"
             ]
         );
         try {
@@ -72,15 +72,15 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
-                'bank_account' => "2393",
-                'bank_account_holder_name' => ",",
-                'contact_name' => "EDw10SY48ZoA8oj9alrEKYDjBWPKC"
+                'bank_account' => "420",
+                'bank_account_holder_name' => "ｦ",
+                'contact_name' => "V9bR1b6zR4KpP8wEvHo3H2N7aP4CFlFvKws8c7VkxFbI58o51EGV85EdywWergGkExKibkKy3RejQOMdNmIpzzClabej0YwfKA4oqIyODxMjZ4EdVsJs2WdUf4m4zb1fBtYacQojtASK2u7vkPQjErbUiACxapHuVmLtkIXK57kLp9ruO3lTijY7xgdqe4qtR6aoPkYb5qttaKmuQ9JtYnSOy8snQOZW3qoZXOs11aIqQm3t"
             ]
         );
         try {
@@ -96,16 +96,16 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
                 'bank_account_type' => "other",
-                'bank_account' => "366350",
-                'bank_account_holder_name' => ".",
-                'contact_name' => "qVkcSInvOjFPIL9qlVMwg0ANEHCj5eM805Swtsg2NkJBDvuxWoqdLq3QmHRbZpwbPRidVG7B6hajGJrCJBxTKH0YUW8iwJJuJPCjlaztijN3vebjT869"
+                'bank_account' => "5",
+                'bank_account_holder_name' => "ｦ",
+                'contact_name' => "HQWidDuyrC1Tuiifwz7OtFfEj4h2NvOmZg978q3YSYiWf7PiH0ioDcW7TRKX8muXM"
             ]
         );
         try {
@@ -121,17 +121,17 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
-                'bank_branch_code' => "",
-                'bank_account_type' => "other",
-                'bank_account' => "6197413",
-                'bank_account_holder_name' => "ｦ",
-                'contact_name' => "GH7XKNoGDpqqjYUa42NN7jWbTA8sT9CjYdhYyR9ZtWhMAKSZHQ2Tjahc0hASAcEibjku1fdQetgL0O7DlAFrkXVihIdQWu7J4NYirXryP"
+                'bank_branch_code' => "911",
+                'bank_account_type' => "saving",
+                'bank_account' => "",
+                'bank_account_holder_name' => " ",
+                'contact_name' => "jhJV2eXWgBFtH2H2R9iS2UWNrs7jeeMHVto27SKsDiuo58LdKZiud9fRWJHrUFsjgoIUOKjoql7uBAoF3YBBqQQ5BnbRWzyYK9uMTcaGwobLKBpjeMzco56Yhm8oESs5D79aCqLnIbZLp6uu0sbYwMBgtckjFlrSEYfy099M5YcXc4F1C1y0T2PAUKZatRmco7eXzZ2fj9kX1ddQWfZTwHSUn93qQUuNVoMLh"
             ]
         );
         try {
@@ -147,18 +147,18 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
-                'bank_branch_name' => "P6taqbm6hsnA9hELkacVB4dzDqQ1LbTyVIgVP7fIz1xemnrDx9P7HPwLX5lwWZ",
-                'bank_branch_code' => "577",
-                'bank_account_type' => "other",
-                'bank_account' => "0122",
-                'bank_account_holder_name' => "ｦ",
-                'contact_name' => "8QfQLnQ9Qr2gs4rAyEVt2ws7WkJzpgGUX4mtxobZ9ZCpNJGZG6LzTWIbd8ZNVrafdiivNn4NbNLXIdoiqtrelImUNmLeKEfXUc2dQExu22E4bXnTsrAuXzcUztcjpDcIzv8TjKb1dIcQKtgPEpt9Ynsu0LI4T70lQwB"
+                'bank_branch_name' => "OpFVWt3WXwwmww2D4gaqfncChDF7F4QUCBCkjFpBiN9LqRETc",
+                'bank_branch_code' => "065",
+                'bank_account_type' => "current",
+                'bank_account' => "8061",
+                'bank_account_holder_name' => "(",
+                'contact_name' => "Elxi5PoNUEUQCD4knwN7ykOt0qInAWHILW4hDmkjYhDA25WetpXGN5swd9TFMERuGZnE71A7RJEDOYg5xrsvS7EeeVNqkxLAHY9EkAUdHxEJEAEUrC3PBazAH2lK0IPvkhqSQAo9Fl5Cynh1kvV38C6J3fbYqLsM8kJ2B6ez5wkIXxU83tZzuYLdsxDB2Q58xTef6HNAolO01G5rfx"
             ]
         );
         try {
@@ -174,19 +174,19 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
-                'bank_code' => "4559",
-                'bank_branch_name' => "YpOK96EoFGxVJNTeRlFM4Xw2YneFRtau24yc1kusN7qW2yhhPFbH",
-                'bank_branch_code' => "082",
-                'bank_account_type' => "other",
-                'bank_account' => "195579",
-                'bank_account_holder_name' => "｢",
-                'contact_name' => "4JbOrMj5jFwrAdcz57ZOWsDr0Djt9M12BOno1AcjM96oftC7mHhiSDgXKvVy5paxKD2XcOfyMo26iqol80j1t4n3lpnoezOx6Ov6eGwjQCqxdtQnDY4S9N4HhJ5rCsXRcUZY47cpIh"
+                'bank_code' => "",
+                'bank_branch_name' => "sfeiqfFXUsi2hWgCJdHfw2rlGHKfclzGtYDj",
+                'bank_branch_code' => "",
+                'bank_account_type' => "current",
+                'bank_account' => "7107790",
+                'bank_account_holder_name' => "｣",
+                'contact_name' => "9Snj8wFzzqqy6ZvWmZbSdLfVrvMi1HEGxQeNuLWSRe3JlBLhnyMkrDnoNuVnBeD4P4lSCklyyRXsVdEDVd8pwuC5RHysf7Kfswny6cDyQdsqZfjn9eZQZ0Bi2AaqfA9OQvfhRpQqurcTxwTxvoFz1HffqoI6Ud57ReYgy8UZuKP4siqCMYmhrQD4JsYycNnwNZJdZzc2RrBdXuC0ApemBWsYAwgsFZfEb47CB0hRF7QSvSy"
             ]
         );
         try {
@@ -202,20 +202,20 @@ class CreateOrganization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateOrganization(
-            "cDGU85LATApz",
-            "Q2dQG1XtK0UfX1fzmKZw4jAX5TdVMZA3FsBWHTaR7q8iHovbTWoPNbCUX3WmvU0lnYW7MWulxJqejEoXiemEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sl",
-            ["a90703b8-10b8-4b01-9673-1b0a6f58a9ec", "13246a37-41f2-40d3-9240-d5ae28938dd7", "ae0d5b9a-ca9c-41cb-8e5d-e40e3ceae04e", "0523fa39-0213-406f-90fd-7f5139553d01", "c369776a-0dc8-4e89-8d2e-41f31a3bf73e", "1f484c94-d8bf-4c4e-9834-41b89cc1c5d6"],
-            "kSyiuzE1L2@wv36.com",
-            "YuE4jwp0Ii@R44I.com",
+            "RmZc",
+            "bAGKVTnRfFLTGF03wp5KqbZXMJDu4NIDcqd8lvJ3BzGsewspsrhiIJg9QsEqbuCDShZQi8XeFG2WkDrMcx6O0EMEkOlHzUKY1h98TKEQxTYsyOhzsrr9Wp7pwP0KLi8GVryePsryAv8nHXXn6BccJMjizTnFajO69HrYbQTn3C76qB1MbchYRGOgPfAW7LndSvITV",
+            ["739ed2d8-235c-4ddc-b73a-649c32ade44e", "384d191c-d5cf-40bc-a9d4-7be36bce3451", "f135e1c1-67c6-4ae2-a95e-da8638d99b5b", "6002aabb-b491-4690-906b-98231608e33c", "f9c561bf-b12e-4dfc-aa73-a954334ba9d7", "923b8a0f-c9b8-45ed-bf19-1994a2436e78", "77389a89-9015-4bd0-86e6-b3bf35879f1b", "a9424fc6-c155-404f-8c20-35547f116f7d", "55d027e0-082b-468c-b1fd-b9a3890e7f07", "0a3dd24d-46d1-4eab-ac4c-2e7d8c2630d1"],
+            "7VLZEmWNLN@OVRI.com",
+            "WohvEVAYfl@zQDI.com",
             [
-                'bank_name' => "03BvqB7CzLjYHoO28zEE65UlKtMCe12",
+                'bank_name' => "WvmekX0Pc7uNt69MAlCPFb",
                 'bank_code' => "",
-                'bank_branch_name' => "UV2dxrA2428zEW",
+                'bank_branch_name' => "765NIHok2Rm7EX2uQ1keoQ",
                 'bank_branch_code' => "",
-                'bank_account_type' => "other",
-                'bank_account' => "68",
+                'bank_account_type' => "saving",
+                'bank_account' => "295",
                 'bank_account_holder_name' => "\\",
-                'contact_name' => "qtedPzV8NdiYCurcmVOPZzwMWHgQ0"
+                'contact_name' => "c7QgT2YSew35NJfMJscUhrvZIzQetmHnWtS29nfLkSc8sqrJFsUR5zU2YAIzNFCqZKFMOKzlx9wHWWhq"
             ]
         );
         try {

@@ -3,6 +3,7 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
 class PaginatedAccountBalance extends PaginatedRows
 {
@@ -18,4 +19,12 @@ class PaginatedAccountBalance extends PaginatedRows
      * @var Pagination
      */
     public $pagination;
+
+    protected function normalize($timezone)
+    {
+        $tz = new DateTimeZone($timezone);
+        foreach ($this->rows as $item) {
+            $item->normalize($timezone);
+        }
+    }
 }

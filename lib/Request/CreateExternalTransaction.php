@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class CreateExternalTransaction extends Base
 {
     protected $method = 'POST';
-    public $responseClass = \Pokepay\Response\ExternalTransaction::class;
+    public $responseClass = \Pokepay\Response\ExternalTransactionDetail::class;
     private $shopId;
     private $customerId;
     private $privateMoneyId;

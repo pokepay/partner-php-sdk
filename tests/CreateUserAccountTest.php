@@ -8,8 +8,8 @@ class CreateUserAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserAccount(
-            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
-            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d"
+            "6d6e6c35-e6fa-40a7-98ab-f4747c55362e",
+            "05fd6984-028c-4abc-90dd-473e300b7d4a"
         );
         try {
             $response = $client->send($request);
@@ -24,8 +24,8 @@ class CreateUserAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserAccount(
-            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
-            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
+            "6d6e6c35-e6fa-40a7-98ab-f4747c55362e",
+            "05fd6984-028c-4abc-90dd-473e300b7d4a",
             [
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
@@ -43,10 +43,10 @@ class CreateUserAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserAccount(
-            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
-            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
+            "6d6e6c35-e6fa-40a7-98ab-f4747c55362e",
+            "05fd6984-028c-4abc-90dd-473e300b7d4a",
             [
-                'external_id' => "FBMnn24Y00BddIYIaGsnHTfyj3vGhpYs6lE3PVx",
+                'external_id' => "dkneiHnWfRHXwaVdZ9",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
@@ -63,11 +63,11 @@ class CreateUserAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserAccount(
-            "1cca797a-a4ae-4807-a9ad-4bab80f00988",
-            "a7de9f4c-0cba-468f-80c5-ac4cef1a2e6d",
+            "6d6e6c35-e6fa-40a7-98ab-f4747c55362e",
+            "05fd6984-028c-4abc-90dd-473e300b7d4a",
             [
-                'name' => "hCRcEAVa4JmfjoJZ9ajsO39BqxPDSP5BpfA0dYcuMmHpa4aDHWm32hBFhI0DxRhz83lKq4Wp1hKlNvpHM0s7Dd9Uu6qWqC0qUtLag9adxARTcCtKjz1M2kusM3cVDMOGMtpxWNvKR6Gcp6PWCiNymBaUIu6lQIyVNDYRttS46oTXBYnbHbMuAdnXANiixumuncg7egxc7L05i8jkZ1Waa",
-                'external_id' => "h6AAgB9jXehhbgs",
+                'name' => "ESeIYaALZlUxqYURHPXFm3hQfxaj0ju24QHRwnRSUVHvotugr8LJMEVNkjZ3sNQFUaJg40ufIYUpD1LdqVMyDMeCBBJ5iHzckauT7AhG3vOIlrnxLjcIuDg9O6tPNPcZPO0HiD1b",
+                'external_id' => "0m9lpo7QFFv7Vw9XvByCUNfqDDTuV",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );

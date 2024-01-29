@@ -3,6 +3,7 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
 class PaginatedTransactionV2 extends Base
 {
@@ -29,8 +30,9 @@ class PaginatedTransactionV2 extends Base
 
     protected function normalize($timezone)
     {
-        foreach ($this->rows as $row) {
-            $row->normalize($timezone);
+        $tz = new DateTimeZone($timezone);
+        foreach ($this->rows as $item) {
+            $item->normalize($timezone);
         }
     }
 }

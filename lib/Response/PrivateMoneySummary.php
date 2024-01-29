@@ -29,6 +29,14 @@ class PrivateMoneySummary extends Base
     /**
      * @var double
      */
+    public $topupPointAmount;
+    /**
+     * @var double
+     */
+    public $campaignPointAmount;
+    /**
+     * @var double
+     */
     public $refundedAddedPointAmount;
     /**
      * @var double
