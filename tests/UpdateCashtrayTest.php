@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "9161fbec-7697-485e-a0e1-3666d02c06c0"
+            "e93ad4b3-ddb3-4120-b51e-f5a445d8ee8c"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "9161fbec-7697-485e-a0e1-3666d02c06c0",
+            "e93ad4b3-ddb3-4120-b51e-f5a445d8ee8c",
             [
-                'expires_in' => 8832
+                'expires_in' => 3382
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "9161fbec-7697-485e-a0e1-3666d02c06c0",
+            "e93ad4b3-ddb3-4120-b51e-f5a445d8ee8c",
             [
-                'description' => "AaoLGt4pe6BC2Sel2QniqdOC9my1YOO8CjR0YFmv40UM5wZgue67e0YlrO8E3L7gW6pVOxZ4jRFNa6hoBOihdHvejLf7HUNUhMpEnczyOhMWAPbHXytdjUT8FkE6WXDem2rgSzz35aQ4D94kR9S0XTdmHcC0cGFAfEKgLlOIWqFFofKhzWzCAqp2",
-                'expires_in' => 8573
+                'description' => "A",
+                'expires_in' => 4480
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "9161fbec-7697-485e-a0e1-3666d02c06c0",
+            "e93ad4b3-ddb3-4120-b51e-f5a445d8ee8c",
             [
-                'amount' => 7212.0,
-                'description' => "nhrL16oNA3cZ4NnyIEjaN6dYZY4p9bZgscBV3pXiPPiW2qUm4FbQucsmz0GYwY85K8kF9CcO2FCZ7wQECuEigH9T54l9EXWThB",
-                'expires_in' => 6761
+                'amount' => 9617.0,
+                'description' => "7L9n5pt27lUVoJbeb8Sb5GCrsQXTPdyEsxjTX1KrFydX2sy0ogwFISfldrqNx7JBcNpnlW7ArzXaTlBXNpc",
+                'expires_in' => 6282
             ]
         );
         try {

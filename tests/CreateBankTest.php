@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "ce27ae52-5154-4042-b49c-9ef0df91e49c",
-            "e6683d68-9bf0-436a-a2de-d674ccb14c02",
-            "6Q",
-            "HeDKxXdEg3OxGlsZaVSpjoQ6ffYAe6"
+            "ef253ad6-8d87-4db8-8a0f-b616012ecbf0",
+            "25236552-989a-4dd2-ba34-b6e5a7669d6c",
+            "5MngZh2YQRBMHjXOgayoJ8tr79m",
+            "fr"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "ce27ae52-5154-4042-b49c-9ef0df91e49c",
-            "e6683d68-9bf0-436a-a2de-d674ccb14c02",
-            "6Q",
-            "HeDKxXdEg3OxGlsZaVSpjoQ6ffYAe6",
+            "ef253ad6-8d87-4db8-8a0f-b616012ecbf0",
+            "25236552-989a-4dd2-ba34-b6e5a7669d6c",
+            "5MngZh2YQRBMHjXOgayoJ8tr79m",
+            "fr",
             [
-                'birthdate' => "kpXiCT"
+                'birthdate' => "Dr"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "ce27ae52-5154-4042-b49c-9ef0df91e49c",
-            "e6683d68-9bf0-436a-a2de-d674ccb14c02",
-            "6Q",
-            "HeDKxXdEg3OxGlsZaVSpjoQ6ffYAe6",
+            "ef253ad6-8d87-4db8-8a0f-b616012ecbf0",
+            "25236552-989a-4dd2-ba34-b6e5a7669d6c",
+            "5MngZh2YQRBMHjXOgayoJ8tr79m",
+            "fr",
             [
-                'email' => "iSBUIe5iqI@MOcj.com",
-                'birthdate' => "qB"
+                'email' => "Epc5WdP3gw@3k1x.com",
+                'birthdate' => "fOUWt"
             ]
         );
         try {

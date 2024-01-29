@@ -91,6 +91,9 @@ class Campaign extends Base
     protected function normalize($timezone)
     {
         $tz = new DateTimeZone($timezone);
+        foreach ($this->applicableShops as $item) {
+            $item->normalize($timezone);
+        }
         $this->startsAt->setTimezone($tz);
         $this->endsAt->setTimezone($tz);
         if (isset($this->pointExpiresAt)){

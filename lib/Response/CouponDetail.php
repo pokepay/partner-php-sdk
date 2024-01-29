@@ -103,5 +103,8 @@ class CouponDetail extends Base
         $this->endsAt->setTimezone($tz);
         $this->displayStartsAt->setTimezone($tz);
         $this->displayEndsAt->setTimezone($tz);
+        foreach ($this->availableShops as $item) {
+            $item->normalize($timezone);
+        }
     }
 }

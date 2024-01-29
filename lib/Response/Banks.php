@@ -3,6 +3,7 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
 class Banks extends Base
 {
@@ -14,4 +15,12 @@ class Banks extends Base
      * @var integer
      */
     public $count;
+
+    protected function normalize($timezone)
+    {
+        $tz = new DateTimeZone($timezone);
+        foreach ($this->rows as $item) {
+            $item->normalize($timezone);
+        }
+    }
 }

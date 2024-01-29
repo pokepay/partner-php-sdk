@@ -72,5 +72,8 @@ class TransactionDetail extends Base
     {
         $tz = new DateTimeZone($timezone);
         $this->doneAt->setTimezone($tz);
+        foreach ($this->transfers as $item) {
+            $item->normalize($timezone);
+        }
     }
 }
