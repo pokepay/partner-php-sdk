@@ -75,6 +75,18 @@ class Campaign extends Base
      * @var string
      */
     public $status;
+    /**
+     * @var integer|null
+     */
+    public $budgetCapsAmount;
+    /**
+     * @var integer|null
+     */
+    public $budgetCurrentAmount;
+    /**
+     * @var \DateTime|null
+     */
+    public $budgetCurrentTime;
 
     protected function normalize($timezone)
     {
@@ -83,6 +95,9 @@ class Campaign extends Base
         $this->endsAt->setTimezone($tz);
         if (isset($this->pointExpiresAt)){
             $this->pointExpiresAt->setTimezone($tz);
+        }
+        if (isset($this->budgetCurrentTime)){
+            $this->budgetCurrentTime->setTimezone($tz);
         }
     }
 }

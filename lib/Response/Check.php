@@ -48,6 +48,10 @@ class Check extends Base
      */
     public $expiresAt;
     /**
+     * @var \DateTime|null
+     */
+    public $lastUsedAt;
+    /**
      * @var PrivateMoney
      */
     public $privateMoney;
@@ -77,6 +81,9 @@ class Check extends Base
         $tz = new DateTimeZone($timezone);
         $this->createdAt->setTimezone($tz);
         $this->expiresAt->setTimezone($tz);
+        if (isset($this->lastUsedAt)){
+            $this->lastUsedAt->setTimezone($tz);
+        }
         if (isset($this->pointExpiresAt)){
             $this->pointExpiresAt->setTimezone($tz);
         }

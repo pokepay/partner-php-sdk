@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "18813a8a-6d45-41ba-ae96-7b2e782ea488"
+            "9161fbec-7697-485e-a0e1-3666d02c06c0"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "18813a8a-6d45-41ba-ae96-7b2e782ea488",
+            "9161fbec-7697-485e-a0e1-3666d02c06c0",
             [
-                'expires_in' => 8932
+                'expires_in' => 8832
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "18813a8a-6d45-41ba-ae96-7b2e782ea488",
+            "9161fbec-7697-485e-a0e1-3666d02c06c0",
             [
-                'description' => "OhMWAPbHXytdjUT8FkE6WXDem2rgSzz35aQ4D94kR9S0XT",
-                'expires_in' => 3557
+                'description' => "AaoLGt4pe6BC2Sel2QniqdOC9my1YOO8CjR0YFmv40UM5wZgue67e0YlrO8E3L7gW6pVOxZ4jRFNa6hoBOihdHvejLf7HUNUhMpEnczyOhMWAPbHXytdjUT8FkE6WXDem2rgSzz35aQ4D94kR9S0XTdmHcC0cGFAfEKgLlOIWqFFofKhzWzCAqp2",
+                'expires_in' => 8573
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "18813a8a-6d45-41ba-ae96-7b2e782ea488",
+            "9161fbec-7697-485e-a0e1-3666d02c06c0",
             [
-                'amount' => 6125.0,
-                'description' => "cC0cGFAfEKgLlOIWqFFofKhzWzCAqp2ZanhrL16oNA3cZ4NnyIEjaN6dYZY4p9bZgscBV3pXi",
-                'expires_in' => 3665
+                'amount' => 7212.0,
+                'description' => "nhrL16oNA3cZ4NnyIEjaN6dYZY4p9bZgscBV3pXiPPiW2qUm4FbQucsmz0GYwY85K8kF9CcO2FCZ7wQECuEigH9T54l9EXWThB",
+                'expires_in' => 6761
             ]
         );
         try {
