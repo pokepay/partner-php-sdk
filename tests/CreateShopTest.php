@@ -8,7 +8,7 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "wHdA2tNWdkwBXLBKMObgY2jC9AhIjfkZP5VF0pNRWGtJqlvMBLCwIhcKYXzQ8B2Ui4z8Pgn8A71WDoSK39LWGUeszBuiLYM8u9UsL6SpVQShMZXFUCtgQ4gHGRUu2IpU2hc0i7iHPi8rCfnaVcTdwGuwOsHCcSzx6tTfmnlkmXTAWPiP1NLTTJG6cmmzwb6T3zDhcudqHJqg2P9OYR"
+            "i1ClvttEIW4WiKD4kPucyoLXTeXnbsucX4ztl0qZJ5MRz65QQ"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "wHdA2tNWdkwBXLBKMObgY2jC9AhIjfkZP5VF0pNRWGtJqlvMBLCwIhcKYXzQ8B2Ui4z8Pgn8A71WDoSK39LWGUeszBuiLYM8u9UsL6SpVQShMZXFUCtgQ4gHGRUu2IpU2hc0i7iHPi8rCfnaVcTdwGuwOsHCcSzx6tTfmnlkmXTAWPiP1NLTTJG6cmmzwb6T3zDhcudqHJqg2P9OYR",
+            "i1ClvttEIW4WiKD4kPucyoLXTeXnbsucX4ztl0qZJ5MRz65QQ",
             [
-                'organization_code' => "I4Z4---m-0U7-t-4-"
+                'organization_code' => "QI8U75-C3f-9G-bD-"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "wHdA2tNWdkwBXLBKMObgY2jC9AhIjfkZP5VF0pNRWGtJqlvMBLCwIhcKYXzQ8B2Ui4z8Pgn8A71WDoSK39LWGUeszBuiLYM8u9UsL6SpVQShMZXFUCtgQ4gHGRUu2IpU2hc0i7iHPi8rCfnaVcTdwGuwOsHCcSzx6tTfmnlkmXTAWPiP1NLTTJG6cmmzwb6T3zDhcudqHJqg2P9OYR",
+            "i1ClvttEIW4WiKD4kPucyoLXTeXnbsucX4ztl0qZJ5MRz65QQ",
             [
-                'shop_external_id' => "LF8cD0mtpwpw",
-                'organization_code' => "nM---g--lUEa-s66y-a75-T7UW"
+                'shop_external_id' => "GTqK06O",
+                'organization_code' => "4a-r65D7gP9a-33ERR-1X"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "wHdA2tNWdkwBXLBKMObgY2jC9AhIjfkZP5VF0pNRWGtJqlvMBLCwIhcKYXzQ8B2Ui4z8Pgn8A71WDoSK39LWGUeszBuiLYM8u9UsL6SpVQShMZXFUCtgQ4gHGRUu2IpU2hc0i7iHPi8rCfnaVcTdwGuwOsHCcSzx6tTfmnlkmXTAWPiP1NLTTJG6cmmzwb6T3zDhcudqHJqg2P9OYR",
+            "i1ClvttEIW4WiKD4kPucyoLXTeXnbsucX4ztl0qZJ5MRz65QQ",
             [
-                'shop_email' => "FJAXsmWosx@rDpS.com",
-                'shop_external_id' => "XV6A795DeALyO8uGkZ3OQN1x6JHHnS2yZm",
-                'organization_code' => "--63n-s-wU-v-YG-9-Jl-mo2-"
+                'shop_email' => "nagC2UqWsc@d4sB.com",
+                'shop_external_id' => "F6BK5hwAML1u6rwIwmrfRyOc6BQ9zUKz",
+                'organization_code' => "0L4u7YgZZNqccwW0T-F9Vw0gxE-JK"
             ]
         );
         try {
@@ -80,12 +80,12 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "wHdA2tNWdkwBXLBKMObgY2jC9AhIjfkZP5VF0pNRWGtJqlvMBLCwIhcKYXzQ8B2Ui4z8Pgn8A71WDoSK39LWGUeszBuiLYM8u9UsL6SpVQShMZXFUCtgQ4gHGRUu2IpU2hc0i7iHPi8rCfnaVcTdwGuwOsHCcSzx6tTfmnlkmXTAWPiP1NLTTJG6cmmzwb6T3zDhcudqHJqg2P9OYR",
+            "i1ClvttEIW4WiKD4kPucyoLXTeXnbsucX4ztl0qZJ5MRz65QQ",
             [
-                'shop_tel' => "09990-661",
-                'shop_email' => "85gT1bInzY@C4oA.com",
-                'shop_external_id' => "ifr8",
-                'organization_code' => "-PenhaC5-v6zqON-1---e7-n2IB"
+                'shop_tel' => "0248642",
+                'shop_email' => "54BQFv1VeP@P5fK.com",
+                'shop_external_id' => "nFos7evju5wpYw5pRravTTG0U5W9Jt",
+                'organization_code' => "Rz1oy78Sz7Aw1"
             ]
         );
         try {
@@ -101,13 +101,13 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "wHdA2tNWdkwBXLBKMObgY2jC9AhIjfkZP5VF0pNRWGtJqlvMBLCwIhcKYXzQ8B2Ui4z8Pgn8A71WDoSK39LWGUeszBuiLYM8u9UsL6SpVQShMZXFUCtgQ4gHGRUu2IpU2hc0i7iHPi8rCfnaVcTdwGuwOsHCcSzx6tTfmnlkmXTAWPiP1NLTTJG6cmmzwb6T3zDhcudqHJqg2P9OYR",
+            "i1ClvttEIW4WiKD4kPucyoLXTeXnbsucX4ztl0qZJ5MRz65QQ",
             [
-                'shop_address' => "MZb21kDF977owb6fOiMKyxfPXcBAkjQEpTUxEEqsmVTwI81FwQIgDQk0zXCa7B",
-                'shop_tel' => "0606-9100-977",
-                'shop_email' => "Ij1vxwuAGp@ol4a.com",
-                'shop_external_id' => "ugL8j1XFjbw",
-                'organization_code' => "-CO--2-71HN--ooYDZ-0-Xm-ZZ"
+                'shop_address' => "OBWhW52qWb3s6JMgLJVkFOGYKUtNgwR73H8hurhPLaQJgVpIoHJOyVriCiTQL",
+                'shop_tel' => "073-18396642",
+                'shop_email' => "ImbTloYynk@ECbC.com",
+                'shop_external_id' => "JKpntYj3jHzcLe7NxNVmHG4AskecxdT",
+                'organization_code' => "t-"
             ]
         );
         try {
@@ -123,14 +123,14 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "wHdA2tNWdkwBXLBKMObgY2jC9AhIjfkZP5VF0pNRWGtJqlvMBLCwIhcKYXzQ8B2Ui4z8Pgn8A71WDoSK39LWGUeszBuiLYM8u9UsL6SpVQShMZXFUCtgQ4gHGRUu2IpU2hc0i7iHPi8rCfnaVcTdwGuwOsHCcSzx6tTfmnlkmXTAWPiP1NLTTJG6cmmzwb6T3zDhcudqHJqg2P9OYR",
+            "i1ClvttEIW4WiKD4kPucyoLXTeXnbsucX4ztl0qZJ5MRz65QQ",
             [
-                'shop_postal_code' => "692-0175",
-                'shop_address' => "QbUkxaG6vyxznLa9j1q9tyUEU9GthKnm56aBc5gQVdeVT91lMLq35xmRffYLdwqVfms4DKk9DTnDxHhWHHxNRy8hzBxqob",
-                'shop_tel' => "0431-6267",
-                'shop_email' => "Y0fvE5YVwH@yiz8.com",
-                'shop_external_id' => "D1b5N1sy3FH",
-                'organization_code' => "992"
+                'shop_postal_code' => "8784972",
+                'shop_address' => "Ewy07zGYGse86QVmAIAzpaTLGhHYXIQJEdy9MnDc2Q1cUwtCJjHBQcMSWPfn53pLk4CcOlPrxYagWz0TMEPLciI1R53LieU3rkLg8oQcgQvhw2nC",
+                'shop_tel' => "0735507299",
+                'shop_email' => "5uZBsN7n32@UZzk.com",
+                'shop_external_id' => "5q6rZMFHJek2Mlt6lX12hmATOqiBQnO",
+                'organization_code' => "L-33K----276--M1Uv-5JP-63Z-0CT"
             ]
         );
         try {

@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8"
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8",
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac",
             [
-                'is_disabled' => FALSE
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8",
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac",
             [
-                'description' => "TVTzp5gfVB6vaq4pEYhUbKEmfQtP3RTgjjyyYWDjLjiIoV6IE7I3Ip8jUmEFjDYS0jZlwZ8s",
-                'is_disabled' => TRUE
+                'description' => "dloktm8w2Wc2W5bRjoFy6qH4Y4XGyngL1gHk3wLwzSgvUq6idc4iQTPMDJWcSlA7VAiw8IAqb30eIcwgTGhyaAodw7BIcxTeYcHjwgbwP6cFOnmE3w6SJl2ySoLBGUkGh4kR3Obxw8DPGTjbgB9c4UvjHxKvyoo6eR2rETO0esrJASWnWsIzeMEDmTVH4LPt",
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8",
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac",
             [
-                'amount' => 6803.0,
-                'description' => "MELfS6NSOnEkES2AeDOkDx2AXZsqhs21n2lGOPfIwmrLsiPVl7JDGzfnw4ZW98Tv6q38xS",
-                'is_disabled' => FALSE
+                'amount' => 9756.0,
+                'description' => "XwZDgC1GcDgWzD",
+                'is_disabled' => TRUE
             ]
         );
         try {

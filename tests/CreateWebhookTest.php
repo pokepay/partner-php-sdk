@@ -9,7 +9,7 @@ class CreateWebhook extends TestCase
         $client = $this->newClient();
         $request = new Request\CreateWebhook(
             "process_user_stats_operation",
-            "yReT"
+            "b6"
         );
         try {
             $response = $client->send($request);

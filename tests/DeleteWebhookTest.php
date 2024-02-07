@@ -8,7 +8,7 @@ class DeleteWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\DeleteWebhook(
-            "3998d528-dca1-4bdb-932a-461c1d2aa08a"
+            "58ba487e-1b02-4740-ac6b-cc45dc5e08e6"
         );
         try {
             $response = $client->send($request);
