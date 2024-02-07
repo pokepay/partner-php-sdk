@@ -4976,6 +4976,7 @@ paths:
       tags:
         - Organization
       summary: '加盟店組織の一覧を取得する'
+      x-pokepay-allow-server-side: true
       x-pokepay-operator-name: "ListOrganizations"
       requestBody:
         required: true

@@ -8,7 +8,7 @@ class ActivateUserDevice extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ActivateUserDevice(
-            "753e652d-de77-4193-88e5-e834f851eaad"
+            "eabdb329-1563-4490-9744-230c8d2d3992"
         );
         try {
             $response = $client->send($request);

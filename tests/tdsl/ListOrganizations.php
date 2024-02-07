@@ -21,6 +21,6 @@ class ListOrganizations extends TestCase
                 "per_page" => 3,
             ]
         ));
-        print $response;
+        $this->assertEquals(3, $response->pagination->perPage);
     }
 }
