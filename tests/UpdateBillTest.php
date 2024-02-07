@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8"
+            "e6ba5e10-ed7a-4846-b44f-a8890f235a19"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8",
+            "e6ba5e10-ed7a-4846-b44f-a8890f235a19",
             [
                 'is_disabled' => FALSE
             ]
@@ -41,10 +41,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8",
+            "e6ba5e10-ed7a-4846-b44f-a8890f235a19",
             [
-                'description' => "TVTzp5gfVB6vaq4pEYhUbKEmfQtP3RTgjjyyYWDjLjiIoV6IE7I3Ip8jUmEFjDYS0jZlwZ8s",
-                'is_disabled' => TRUE
+                'description' => "oglYXN3jyBxQhxvADEIPHWOLzibtHTFSroieEzMD3yH56bHzgUR2vMkINT7x8XBDjDfbqT5S8QJOvPR0A7pJG2XNoXhnn",
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "30607f64-2f78-4ff0-83d2-d97f90ab6ae8",
+            "e6ba5e10-ed7a-4846-b44f-a8890f235a19",
             [
-                'amount' => 6803.0,
-                'description' => "MELfS6NSOnEkES2AeDOkDx2AXZsqhs21n2lGOPfIwmrLsiPVl7JDGzfnw4ZW98Tv6q38xS",
-                'is_disabled' => FALSE
+                'amount' => 6747.0,
+                'description' => "9p2LEBl9y0eqR71mX6BEGp8zZiTHFPbTBqqmWwVfKXqK801If5PFnrIq0aQymKZNNPJDerhYZLwwsHjt6oS17iy7ZnnDiXzCblNWDUACkZVrFDlDFLvqjs9cuaOl9XBeCVeRGoSmaNdKffetD7DeRoE6VyU0p28Wmm89qUta7DPSv",
+                'is_disabled' => TRUE
             ]
         );
         try {

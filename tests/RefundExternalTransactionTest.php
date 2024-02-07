@@ -8,7 +8,7 @@ class RefundExternalTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundExternalTransaction(
-            "07000fa8-1068-4eba-a5fe-dd0b961a9b7e"
+            "67ec1659-037f-45c5-9988-08fa42cdeca7"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class RefundExternalTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundExternalTransaction(
-            "07000fa8-1068-4eba-a5fe-dd0b961a9b7e",
+            "67ec1659-037f-45c5-9988-08fa42cdeca7",
             [
-                'description' => "dgUGCahCGZ3rvnqasyTw0YHYs9W8cqfVC9OFm6KBWjk6FManhve4tCfLqoeOEDbcDkAXTZlMwsZAijJ3vNE7QLHmqGeCqUVExnPy"
+                'description' => "RwGMcnoMIx2DGcYTgqWcyKj7AaZOfsYSyeeckdWD6AmukIbvyJRzO0owQXK0VfdA"
             ]
         );
         try {

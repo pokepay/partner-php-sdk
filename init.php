@@ -49,6 +49,7 @@ require_once __DIR__ . '/lib/Request/CreateExternalTransaction.php';
 require_once __DIR__ . '/lib/Request/RefundExternalTransaction.php';
 require_once __DIR__ . '/lib/Request/ListTransfers.php';
 require_once __DIR__ . '/lib/Request/ListTransfersV2.php';
+require_once __DIR__ . '/lib/Request/ListOrganizations.php';
 require_once __DIR__ . '/lib/Request/CreateOrganization.php';
 require_once __DIR__ . '/lib/Request/ListShops.php';
 require_once __DIR__ . '/lib/Request/CreateShop.php';
@@ -145,6 +146,7 @@ require_once __DIR__ . '/lib/Response/PaginatedOrganizationWorkerTaskWebhook.php
 require_once __DIR__ . '/lib/Response/Coupon.php';
 require_once __DIR__ . '/lib/Response/CouponDetail.php';
 require_once __DIR__ . '/lib/Response/PaginatedCoupons.php';
+require_once __DIR__ . '/lib/Response/PaginatedOrganizations.php';
 require_once __DIR__ . '/lib/Response/BadRequest.php';
 require_once __DIR__ . '/lib/Response/PartnerClientNotFound.php';
 require_once __DIR__ . '/lib/Response/PartnerDecryptionFailed.php';

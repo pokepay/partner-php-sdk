@@ -1707,6 +1707,18 @@ components:
           minimum: 0
         pagination:
           $ref: '#/components/schemas/Pagination'
+    PaginatedOrganizations:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
+        count:
+          type: integer
+          minimum: 0
+        pagination:
+          $ref: '#/components/schemas/Pagination'
 
     BadRequest:
       x-pokepay-schema-type: "response"
@@ -4960,6 +4972,65 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
 
   /organizations:
+    get:
+      tags:
+        - Organization
+      summary: '加盟店組織の一覧を取得する'
+      x-pokepay-operator-name: "ListOrganizations"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["private_money_id"]
+              properties:
+                private_money_id:
+                  type: string
+                  format: uuid
+                  title: 'マネーID'
+                  description: |-
+                    マネーIDです。
+                    このマネーに加盟している加盟組織がフィルターされます。
+                page:
+                  type: integer
+                  minimum: 1
+                  title: 'ページ番号'
+                  description: 取得したいページ番号です。
+                  example: 1
+                per_page:
+                  type: integer
+                  minimum: 1
+                  title: '1ページ分の取引数'
+                  description: 1ページ分の取引数です。
+                  example: 50
+                name:
+                  type: string
+                  title: '組織名'
+                code:
+                  type: string
+                  title: '組織コード'
+                #これらのパラメータは管理画面のユースケースに特化してそうなので一旦コメントアウトしておく
+                #with_issuer_org:
+                #  type: boolean
+                #with_details:
+                #  type: boolean
+                #with_disabled_member_orgs:
+                #  type: boolean
+                #with_all_members:
+                #  type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrganizations'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
     post:
       tags:
         - Organization
