@@ -8,7 +8,7 @@ class GetShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetShop(
-            "37f63119-19dc-4b31-a55d-3d47a5826b36"
+            "b314d781-3b8d-4fb4-aceb-9d16b6ee0c1d"
         );
         try {
             $response = $client->send($request);

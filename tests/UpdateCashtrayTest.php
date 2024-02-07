@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "93e484e9-0c71-4de2-85bc-c3efa0b802b4"
+            "931046a9-0056-4e6a-a929-9e7f7a878001"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "93e484e9-0c71-4de2-85bc-c3efa0b802b4",
+            "931046a9-0056-4e6a-a929-9e7f7a878001",
             [
-                'expires_in' => 5884
+                'expires_in' => 4425
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "93e484e9-0c71-4de2-85bc-c3efa0b802b4",
+            "931046a9-0056-4e6a-a929-9e7f7a878001",
             [
-                'description' => "9Y",
-                'expires_in' => 6937
+                'description' => "qO1OToomGXyw7qk2DIJM8AhArP4D8wQVUv0Izvao2vedRz5Rr5ZAw8kV9ePosTic8pUXqXhqbYvbrbwkQSFM3axtTEd7Wl2VRPJxNbfaffcymGdGjX2HTTdaut",
+                'expires_in' => 4219
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "93e484e9-0c71-4de2-85bc-c3efa0b802b4",
+            "931046a9-0056-4e6a-a929-9e7f7a878001",
             [
-                'amount' => 574.0,
-                'description' => "uYkIYRIq52HgJVnQllpxtQzNAwJc36FUVQ1pZ1xfI966fkRJwEQplzkQOR0FB6TahYhDW0JUkIFUsKKq7tMTM748pl9He2DVokSBqaEip32bSlBVRHUtV3F9R4ZLGDOcDq0YLRezhvrHJzTq2LSI8ktZx4tB88I2OTtohOzU61vSI29jkLAWm",
-                'expires_in' => 6112
+                'amount' => 5351.0,
+                'description' => "99kBtkdr0VHFRrerR0OfWtsGXEEjyTRIHnR9U1e7FtHbyUFu4q9qtcuhM8ObigPTj5",
+                'expires_in' => 5178
             ]
         );
         try {

@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "cc9eb0e9-4fc4-4a6b-9113-596b3ce1dc1c"
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "cc9eb0e9-4fc4-4a6b-9113-596b3ce1dc1c",
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac",
             [
                 'is_disabled' => TRUE
             ]
@@ -41,10 +41,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "cc9eb0e9-4fc4-4a6b-9113-596b3ce1dc1c",
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac",
             [
-                'description' => "MAwEiyOwsJvId4MRYrwKRJcKiFfYvJPLZqxU2AeWcUTVWYXYqkO5m59jmmh07Ru5pzycclmjqtXERvKfA1tq9YXYb9LuSWvZWYTJD9vLQIreao8r665JVixsj6ycQ3CFloQbEK7H7q9gSys1QtydxtFg7kafBywtPLePC7rD7jXuNw9tOqtS",
-                'is_disabled' => TRUE
+                'description' => "dloktm8w2Wc2W5bRjoFy6qH4Y4XGyngL1gHk3wLwzSgvUq6idc4iQTPMDJWcSlA7VAiw8IAqb30eIcwgTGhyaAodw7BIcxTeYcHjwgbwP6cFOnmE3w6SJl2ySoLBGUkGh4kR3Obxw8DPGTjbgB9c4UvjHxKvyoo6eR2rETO0esrJASWnWsIzeMEDmTVH4LPt",
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "cc9eb0e9-4fc4-4a6b-9113-596b3ce1dc1c",
+            "6966a595-2aea-4bb8-b6c5-62775dcfe0ac",
             [
-                'amount' => 2761.0,
-                'description' => "WWzGelQfvVU7mVKNhGgEcbjZOyb7W9UhxR4WwGXq30nYR31zMz8y6mEZIMP3nzpgzbWq9kpPGb3h6pFSWwF",
-                'is_disabled' => FALSE
+                'amount' => 9756.0,
+                'description' => "XwZDgC1GcDgWzD",
+                'is_disabled' => TRUE
             ]
         );
         try {

@@ -8,7 +8,7 @@ class GetCpmToken extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCpmToken(
-            "qA7KxZFPFOHSMJgzdzX3uR"
+            "qf64cqIQsMc3a2DXgP7knn"
         );
         try {
             $response = $client->send($request);
