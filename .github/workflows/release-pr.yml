@@ -1,0 +1,18 @@
+name: release PR
+
+on:
+  push:
+    branches:
+      - release/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a multi-line script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create -B master -t ${{ github.ref }} -b ''
