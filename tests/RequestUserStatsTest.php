@@ -8,8 +8,8 @@ class RequestUserStats extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RequestUserStats(
-            "2022-01-12T10:18:26.000000+09:00",
-            "2023-08-27T13:40:54.000000+09:00"
+            "2023-11-17T15:01:05.000000Z",
+            "2024-01-10T09:29:09.000000Z"
         );
         try {
             $response = $client->send($request);

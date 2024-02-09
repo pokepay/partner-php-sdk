@@ -8,8 +8,8 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "3df6220f-4121-422c-b576-477994e189ef",
-            "8fddf8ba-f243-4a42-a0ca-0ac503bb39f0"
+            "0c713354-c78c-4e7c-9a93-bcdc32aa3bd5",
+            "460688ba-b35d-4d0f-af63-7640929518b5"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "3df6220f-4121-422c-b576-477994e189ef",
-            "8fddf8ba-f243-4a42-a0ca-0ac503bb39f0",
+            "0c713354-c78c-4e7c-9a93-bcdc32aa3bd5",
+            "460688ba-b35d-4d0f-af63-7640929518b5",
             [
-                'description' => "vwWowpPuaeqrDTqXOu5brxlUkXvWlc5ew5Ojoavi176IuFKvYiBn3X05V7bL5tfUcfRap44ub2K45YocbqOxTREdzQ28ULiSr5jm"
+                'description' => "HWI6lY3NxA2Qq6LVyn2dOGJj5BoyL1MgjctfisLuYo4aorOwFrhmbs26EDkzDLnAr7NHvMDZLOk3Kn6N9IKA2DQ0UDl0RkGXqQRpkGArTGUPugetKJLdESdgB4DMlPhuAgx6J23S5a4KJH2dJnXOeAy8xYgmSSWd6nFdHza9f0TF30iljDxgS"
             ]
         );
         try {
@@ -43,11 +43,11 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "3df6220f-4121-422c-b576-477994e189ef",
-            "8fddf8ba-f243-4a42-a0ca-0ac503bb39f0",
+            "0c713354-c78c-4e7c-9a93-bcdc32aa3bd5",
+            "460688ba-b35d-4d0f-af63-7640929518b5",
             [
-                'amount' => 9547.0,
-                'description' => "HCYONzcBwRWSDLiCOz0KGMFbnI549FWLsTpMw28xCwnnHcZy5ZCD2kKhhra4xQnJwkp6gLz1Yi4rTB3cva3bAZviVkAJwPInLqt6bfWJr9PmHvPgxdHtcOyQM1tRBg8wDHjDN8h0TykW83hWffg4C3Rn2YaF1GNK6a0"
+                'amount' => 8640.0,
+                'description' => "pyfoekUtYXnQ6dyRqDXbojqilSXXfgL13rI1kMYSkzLYWcqyBEPqq6jXoMPoI5dYhtAEAC8MN1MIRbysguh0xXqdkQK8VGfHRzulBqoPAVuBC2EUluqb81O3ZagKE8LcCa8bz2nHShe5EoHVudmx1iMacSt3whWHQ5cbR62EyfrAyRxoXmZ8au8D4esSHy55W"
             ]
         );
         try {
