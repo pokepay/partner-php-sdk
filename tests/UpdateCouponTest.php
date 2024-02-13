@@ -636,12 +636,12 @@ class UpdateCoupon extends TestCase
                 'discount_percentage' => 1990.0,
                 'is_disabled' => FALSE,
                 'display_ends_at' => "2020-02-28T03:47:20.000000Z",
-                'display_starts_at' => "2023-08-07T02:47:43.000000Z",
-                'ends_at' => "2021-01-22T02:10:35.000000Z",
-                'starts_at' => "2022-09-22T22:47:56.000000Z",
-                'discount_upper_limit' => 8028,
-                'description' => "gIb0heOl2hQPfOiPoRxRiCop5Q0A9gBKU33EhyGU9Sc7TWphUCFQOlhJCzSIu3L4oB0QKjjVXdg6wCnP4F0PUy8JyZq3ofPUU0rY2rRd10bnDEPKoSGRnM40Adb2lsHFBNfL0ieognilvSR4pMoCwkxpSpqKLDrvgRvBVvAYQP0NP5o8oIbQ6bcvTH9KRHlq0wqM01LRxPcYJN00R6J1knyJeLDqePaGS57qQUn9Qotexnhe",
-                'name' => "cBro7jHBJHSTWFK0aJRYTf"
+                'display_starts_at' => "2024-02-09T11:43:54.000000Z",
+                'ends_at' => "2023-08-07T02:47:43.000000Z",
+                'starts_at' => "2021-01-22T02:10:35.000000Z",
+                'discount_upper_limit' => 1308,
+                'description' => "gogIb0heOl2hQPfOiPoRxRiCop5Q0A9gBKU33EhyGU9Sc7TWphUCFQOlhJCzSIu3L4oB0QKjjVXdg6wCnP4F0PUy8JyZq3ofPUU0rY2rRd10bnDEPKoSGRnM40Adb2lsHFBNfL0ieognilvSR4pMoCwkxpSpqKLDrvgRvBVvAYQP0NP5o8oIbQ6bcvTH9KRHlq0wqM01LRxPcYJN00R6J1knyJeLDqePaGS57qQU",
+                'name' => "9QotexnhecBro7jHBJHSTWFK0aJRYTfxgM2RajM6sQRgc1VEyXHMXBj8otEAcFy5ooXoXuzlRpCyCoZoaTfbTmVX0XqqL2DDCdNGv9QaNMmxX2S"
             ]
         );
         try {
@@ -659,17 +659,17 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 3205,
-                'discount_percentage' => 3175.0,
-                'is_hidden' => FALSE,
+                'discount_amount' => 358,
+                'discount_percentage' => 4560.0,
+                'is_hidden' => TRUE,
                 'is_disabled' => TRUE,
-                'display_ends_at' => "2022-03-04T23:59:14.000000Z",
-                'display_starts_at' => "2020-07-29T22:26:48.000000Z",
-                'ends_at' => "2020-07-31T21:06:41.000000Z",
-                'starts_at' => "2020-11-29T09:17:03.000000Z",
-                'discount_upper_limit' => 2026,
-                'description' => "M6sQRgc1VEyXHMXBj8otEAcFy5ooXoXuzlRpCyCoZoaTfbTmVX0XqqL2DDCdN",
-                'name' => "Gv9QaNMmxX2S2fPh6fy135I5"
+                'display_ends_at' => "2023-07-25T03:35:04.000000Z",
+                'display_starts_at' => "2021-10-04T01:56:11.000000Z",
+                'ends_at' => "2022-01-26T08:17:29.000000Z",
+                'starts_at' => "2020-08-08T01:13:26.000000Z",
+                'discount_upper_limit' => 2278,
+                'description' => "y135I5DGGggnvkdWrHaspAw5Vcp7CE78JSe44PvWgrDoffEic8syvxPXUni2oM8QHA7lWY5GLHqITj0UgJwxmfaF0gGfg",
+                'name' => "lG67XOfGi887nNv1eh26ZZWkeJQym7n7CGmjd25iFSdny2rQSPU5tCjVy8COfDZrZRHs0hjVGtY7fDH"
             ]
         );
         try {
@@ -687,18 +687,18 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 452,
-                'discount_percentage' => 5642.0,
-                'is_public' => FALSE,
+                'discount_amount' => 3879,
+                'discount_percentage' => 6597.0,
+                'is_public' => TRUE,
                 'is_hidden' => FALSE,
                 'is_disabled' => TRUE,
-                'display_ends_at' => "2024-01-12T08:43:51.000000Z",
-                'display_starts_at' => "2022-04-28T20:20:36.000000Z",
-                'ends_at' => "2023-10-08T03:05:33.000000Z",
-                'starts_at' => "2021-05-12T19:30:15.000000Z",
-                'discount_upper_limit' => 4327,
-                'description' => "nvkdWrHaspAw5Vcp7CE78JSe44PvWgrDoffEic8syvxPXUni2oM8QHA7lWY5GLHqITj0UgJwxmfaF0gGfgNlG67XOfGi887nNv1eh26ZZWkeJQym7n7CGmjd25iFSdny2rQSPU5tCjVy8COfDZrZRHs0hjVGtY7fDHExM6iUcBW9LDUejJe4laTFkcJAyP9v3lR5fJ1SCFuFJVqCc62CsLVYKPyOwySSjaFxy00I",
-                'name' => "CXmzsObY8JjUm176PqMxSejYJwKQkQhcSsOlDNZZsSWHBkBrsiXhCnZzamORmWcssL2FF3HA"
+                'display_ends_at' => "2021-06-24T10:33:33.000000Z",
+                'display_starts_at' => "2022-04-30T18:44:41.000000Z",
+                'ends_at' => "2020-02-22T20:20:16.000000Z",
+                'starts_at' => "2022-04-05T13:58:19.000000Z",
+                'discount_upper_limit' => 4901,
+                'description' => "UcBW9LDUejJe4laTFkcJAyP9v3lR5fJ1SCFuFJVqCc62CsLVYKPyOwySSjaFxy00IGCXmzsObY8JjUm176PqMxSejYJwKQkQhcSsOlDNZZsSWHBkBrsiXhCnZzamORmWcssL2FF3HAzhtt18u7MooUueVWo8T9dRNvfu3qkwBDNVzugQpgEVipsMl1opS6XVL1U8vfTPgZQoGXLb8hT5vzbbFysLVW03Q8sgkwbt7b",
+                'name' => "cdIa6s2OiS448zYYuSerVgt5xpThqkxWuN4OkYmUnkAFHrW518DEhvGfJFhBLPIWgGXu2FRRBCtapsc2OJEtIYHTkPMCnHWRhGK3T2O4zTKZrpJNYtglnu99On"
             ]
         );
         try {
@@ -716,19 +716,19 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 8954,
-                'discount_percentage' => 8168.0,
-                'code' => "t",
-                'is_public' => TRUE,
-                'is_hidden' => FALSE,
-                'is_disabled' => FALSE,
-                'display_ends_at' => "2023-03-04T05:42:16.000000Z",
-                'display_starts_at' => "2023-10-11T08:06:13.000000Z",
-                'ends_at' => "2020-01-07T12:18:39.000000Z",
-                'starts_at' => "2020-10-10T16:37:18.000000Z",
-                'discount_upper_limit' => 9006,
-                'description' => "7MooUueVWo8T9dRNvfu3qkwBDNVzugQpgEVipsMl1opS6XVL1U8vfTPgZQoGXLb8hT5vzbbFysLVW03Q8sgkwbt7bycdIa6s2OiS448zYYuSerVgt5xpThqkxWuN4OkYmUnkAFHrW518DEhvGfJFh",
-                'name' => "LPIWgGXu2FRRBCtapsc2OJEtIYHTkPMCnHWRhGK3T2O4zTKZrpJNYtglnu99Onqaf5i"
+                'discount_amount' => 8689,
+                'discount_percentage' => 6241.0,
+                'code' => "5iTxaKH",
+                'is_public' => FALSE,
+                'is_hidden' => TRUE,
+                'is_disabled' => TRUE,
+                'display_ends_at' => "2021-07-06T05:01:40.000000Z",
+                'display_starts_at' => "2022-04-30T02:17:19.000000Z",
+                'ends_at' => "2023-12-14T21:37:33.000000Z",
+                'starts_at' => "2021-12-08T04:36:24.000000Z",
+                'discount_upper_limit' => 8664,
+                'description' => "xpMz5eg3TFJnOMXlccrSM4NeRkShSKYnhr8JJ6rqJ58uKWhjJEVfg4kmmGr3fEZnBlmzkrtoyKm38BDyuj1U15iB0VVURHNCTBSkvCAJURQ0xc8v3XGoxNYBzQF26RRnLKM2vajHzuhk8mM7y90MUBMqpZFx6CyPOvMtoUIDYTTb",
+                'name' => "YLUK2ZY6omFZc6c5lAiaH7ksthq2qt1fISbJLQ2IGy7A4O5EuFDi3ep7E8"
             ]
         );
         try {
@@ -746,20 +746,20 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 7953,
-                'discount_percentage' => 7721.0,
-                'usage_limit' => 1600,
-                'code' => "t4HXxpMz5",
+                'discount_amount' => 9861,
+                'discount_percentage' => 8122.0,
+                'usage_limit' => 2123,
+                'code' => "wqzGZ",
                 'is_public' => TRUE,
-                'is_hidden' => TRUE,
+                'is_hidden' => FALSE,
                 'is_disabled' => FALSE,
-                'display_ends_at' => "2020-08-30T01:35:35.000000Z",
-                'display_starts_at' => "2020-07-06T20:29:39.000000Z",
-                'ends_at' => "2021-09-28T07:48:36.000000Z",
-                'starts_at' => "2021-02-26T04:02:14.000000Z",
-                'discount_upper_limit' => 3530,
-                'description' => "OMXlccrSM4NeRkShSKYnhr8JJ6rqJ58uKWhjJEVfg4kmmGr3fEZnBlmzkrtoyKm38BDyuj1U15iB0VVURHNCTBSkvCAJURQ0xc8v3XGoxNYBzQF",
-                'name' => "6RRnLKM2vajHzuhk8mM7y90MUBMqpZFx6CyPOvMtoUIDYTTb9YL"
+                'display_ends_at' => "2023-01-08T01:54:59.000000Z",
+                'display_starts_at' => "2020-09-20T15:59:46.000000Z",
+                'ends_at' => "2023-01-28T03:10:24.000000Z",
+                'starts_at' => "2022-02-05T00:48:30.000000Z",
+                'discount_upper_limit' => 8266,
+                'description' => "TtHeL1jl3TaroJ97KS7PIYmqHtFEvZxOLgNEFPzTNAeMR2CvVgTRCY2rEPprVjp",
+                'name' => "NeaYJXDFnN5l443TmOvQLPfQxkSjhKrHXePF1aNsQcGEPe2hgvk3yuDeTC8XzXR9"
             ]
         );
         try {
@@ -777,21 +777,21 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 2430,
-                'discount_percentage' => 8124.0,
-                'min_amount' => 3838,
-                'usage_limit' => 1877,
-                'code' => "ZY6",
+                'discount_amount' => 3244,
+                'discount_percentage' => 4783.0,
+                'min_amount' => 2050,
+                'usage_limit' => 2538,
+                'code' => "n",
                 'is_public' => TRUE,
                 'is_hidden' => FALSE,
                 'is_disabled' => FALSE,
-                'display_ends_at' => "2021-05-02T06:05:58.000000Z",
-                'display_starts_at' => "2020-11-14T02:18:02.000000Z",
-                'ends_at' => "2020-09-02T12:17:39.000000Z",
-                'starts_at' => "2023-11-15T17:09:17.000000Z",
-                'discount_upper_limit' => 8317,
-                'description' => "6c5lAiaH7ksthq2qt1fISbJLQ2IGy7A4O5EuFDi3ep7E8KTwqzGZlqsrJTtHeL1jl3TaroJ97KS7PIYmqHtFEvZxOLgNEFPzTNAeMR2CvVgTRCY2rEPprVjpNeaYJXDFnN5l443TmOvQLPfQxkSjhKrHXePF1aNsQcGEPe2hgvk3yuDeTC8XzXR9jncya31KgghsgYe3TbLJN21a8hZtm5so8Mz8sE9uDmHdcukVhdalQqRPyTvG2tPeRbQcNOD",
-                'name' => "a3IhebkRxi8kuGoSk8mmCPAG5TaOSJrFwT6IMSTQQD3aZSLuV5KvsCMKR5EbTWV4WWsRyRXg"
+                'display_ends_at' => "2021-12-29T19:59:33.000000Z",
+                'display_starts_at' => "2022-07-16T17:40:09.000000Z",
+                'ends_at' => "2020-11-14T20:24:01.000000Z",
+                'starts_at' => "2021-07-06T09:38:59.000000Z",
+                'discount_upper_limit' => 2353,
+                'description' => "KgghsgYe3TbLJN21a8hZtm5so8Mz8sE9uDmHdcukVhdalQqRPyTvG2tPeRbQcNODGa3IhebkRxi8kuGoSk8mmCPAG5TaOSJrFwT6IMSTQQD3aZSLuV5KvsCMKR5EbTWV4WWsRyR",
+                'name' => "XgRYVg4CYuzSBW4stkoPc7UXRyRiV8Pax53IDmwuQOCW"
             ]
         );
         try {
@@ -809,22 +809,22 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 5165,
-                'discount_percentage' => 8219.0,
-                'is_shop_specified' => FALSE,
-                'min_amount' => 5037,
-                'usage_limit' => 3520,
-                'code' => "g4CYuzS",
-                'is_public' => FALSE,
-                'is_hidden' => TRUE,
-                'is_disabled' => TRUE,
-                'display_ends_at' => "2021-09-18T18:13:43.000000Z",
-                'display_starts_at' => "2022-03-01T00:57:56.000000Z",
-                'ends_at' => "2020-03-04T07:03:16.000000Z",
-                'starts_at' => "2022-10-12T08:21:07.000000Z",
-                'discount_upper_limit' => 8846,
-                'description' => "tkoPc7UXRyRiV8Pax53IDmwuQOCWjbIPmFGWkh7DMCSqp4SWi3zPKlO0ubMaaWt2sfRwBothNvTY3vFr4ELRXyBW70oqJ1JP1EYwzYF5YE8jQgUzmyBkd9RsSiJlXzLN5312aQsa3khCQuI0KxC45PIbfMDQsr0",
-                'name' => "TvhXVGg9hnQlyenzuwrO3gGQmGe09eXlKtPgqSA0ERaGz46vIiA4hbe1yI3CGp5lj6m5fgOCupwcIPxBzhbkfELKrUPd9GpW6Q92PXWpLmGFM1Prn"
+                'discount_amount' => 8861,
+                'discount_percentage' => 2922.0,
+                'is_shop_specified' => TRUE,
+                'min_amount' => 2093,
+                'usage_limit' => 639,
+                'code' => "PmFGWkh7DM",
+                'is_public' => TRUE,
+                'is_hidden' => FALSE,
+                'is_disabled' => FALSE,
+                'display_ends_at' => "2022-05-29T16:12:03.000000Z",
+                'display_starts_at' => "2020-07-01T14:25:53.000000Z",
+                'ends_at' => "2021-08-14T22:25:52.000000Z",
+                'starts_at' => "2023-05-21T06:48:20.000000Z",
+                'discount_upper_limit' => 1491,
+                'description' => "Wi3zPKlO0ubMaaWt2sfRwBothNvTY3vFr4ELRXyBW70oqJ1JP1EYwzYF5YE8jQgUzmyBkd9RsSiJlXzLN5312aQsa3khCQuI0KxC45PIbfMDQsr0pTvhXVGg9hnQlyenzuwrO3gGQmGe09eXlKtPgqSA0ERaGz46vIiA4hbe1yI3CGp",
+                'name' => "lj6m5fgOCupwcIPxBzhbkfELKrUPd9GpW6Q92PXWpLmGFM1PrngLs4"
             ]
         );
         try {
@@ -842,23 +842,23 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 8295,
-                'discount_percentage' => 7425.0,
-                'available_shop_ids' => ["9f5df334-20c0-4725-9a5f-8daeb737ecf1", "780583b6-fef2-46ea-a160-9046d15644cb", "5e3cd67e-178b-4ace-94c8-ae933b155491", "dd704355-efd0-446a-9f38-61cfe7e5c261"],
-                'is_shop_specified' => TRUE,
-                'min_amount' => 2605,
-                'usage_limit' => 9676,
-                'code' => "D3inc4",
-                'is_public' => TRUE,
-                'is_hidden' => FALSE,
+                'discount_amount' => 8384,
+                'discount_percentage' => 2778.0,
+                'available_shop_ids' => ["780583b6-fef2-46ea-a160-9046d15644cb", "5e3cd67e-178b-4ace-94c8-ae933b155491"],
+                'is_shop_specified' => FALSE,
+                'min_amount' => 1130,
+                'usage_limit' => 7224,
+                'code' => "HL",
+                'is_public' => FALSE,
+                'is_hidden' => TRUE,
                 'is_disabled' => FALSE,
-                'display_ends_at' => "2021-08-18T05:01:39.000000Z",
-                'display_starts_at' => "2020-06-19T09:03:27.000000Z",
-                'ends_at' => "2020-02-11T14:16:51.000000Z",
-                'starts_at' => "2023-08-09T09:22:31.000000Z",
-                'discount_upper_limit' => 508,
-                'description' => "p4s7jMjS5PtJzYsdA5qhl1QGqEwjgkrGn0uAn0iqI2b5rxtzGOZhKJMKwzvYsbBzTdo6bpAqcWNJrNTsv2Llex1ejGQ2ugzGxu81Sx50Yf2M71M8zENOSGlzUlDTz33P2rJ14YHcAJKWHCf11oIN1lhxfCtQoWt3KCnkWzy38cC0E7gsSEITDei3yOkB642y5M6ZGKLNmOSXPLkVgGHidiNxSMbU65iFGAAyuGpPep5Ml",
-                'name' => "LDDmy5H5WNxLWXFOkEFZiHMkNkDC4XjA"
+                'display_ends_at' => "2021-12-05T22:07:16.000000Z",
+                'display_starts_at' => "2022-08-13T06:41:44.000000Z",
+                'ends_at' => "2022-01-05T08:14:20.000000Z",
+                'starts_at' => "2020-10-24T02:22:33.000000Z",
+                'discount_upper_limit' => 7320,
+                'description' => "c4333SWlp4s7jMjS5PtJzYsdA5qhl1QGqEwjgkrGn0uAn0iqI2b5rxtzGOZhKJMKwzvYsbBzTdo6bpAqcWNJrNTsv2Llex1ejGQ2ugzGxu81Sx5",
+                'name' => "0Yf2M71M8zENOSGlzUlDT"
             ]
         );
         try {
@@ -876,24 +876,24 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_amount' => 1664,
-                'discount_percentage' => 7168.0,
-                'storage_id' => "41377912-9f99-4b83-aea8-dedcb4645ace",
-                'available_shop_ids' => ["548de50d-4dd0-481b-b954-6a98ef7f3761", "414931f3-20a7-4cf1-b149-cc2caa3f61c6", "e94e7191-01e5-4e78-8af8-9919c1e50648", "aa68976f-2da4-46cf-bd73-a7147a409559", "5ab17d17-8533-4ad8-932f-a7ed13f41ce6", "8b3fff53-088f-412b-834d-e0cddb9a8ddb", "33cdbec0-a8c9-4d07-b0dc-35059caf39e8", "6a024150-328a-49fb-bc49-f9cf0c989163"],
+                'discount_amount' => 1203,
+                'discount_percentage' => 1595.0,
+                'storage_id' => "61fb7933-9e0b-4615-905d-0f9650173d83",
+                'available_shop_ids' => ["2b06e5b2-2d72-454a-b134-eafbcbe61959"],
                 'is_shop_specified' => TRUE,
-                'min_amount' => 1904,
-                'usage_limit' => 6823,
-                'code' => "kBjff",
+                'min_amount' => 4323,
+                'usage_limit' => 3118,
+                'code' => "JK",
                 'is_public' => TRUE,
-                'is_hidden' => TRUE,
-                'is_disabled' => FALSE,
-                'display_ends_at' => "2021-01-16T23:01:45.000000Z",
-                'display_starts_at' => "2023-09-13T23:58:06.000000Z",
-                'ends_at' => "2021-08-22T22:44:37.000000Z",
-                'starts_at' => "2022-02-13T19:16:31.000000Z",
-                'discount_upper_limit' => 7621,
-                'description' => "4zrJepcLNjePvmbsJ6aAodX3lOsSzeTfXuUhrzyKZN2IpvZDbUGNbf92zGejiy7b3srgm7LVnhxTyAZfZDkQ2r2xXuIalmcupP8PaFubqXmo0h47ayHi8sXxsnC42wCpyAiBnUBLAV97YftKTMpHhWMUK3SCmPb9BXoLZ7wKHtX23HwTLkUG7zxtQPL0ebUOhv3B3t2DzpE",
-                'name' => "8r"
+                'is_hidden' => FALSE,
+                'is_disabled' => TRUE,
+                'display_ends_at' => "2020-12-24T19:28:03.000000Z",
+                'display_starts_at' => "2021-08-20T19:25:24.000000Z",
+                'ends_at' => "2022-02-12T01:20:38.000000Z",
+                'starts_at' => "2022-05-08T16:43:29.000000Z",
+                'discount_upper_limit' => 945,
+                'description' => "IN1lhxfCtQoWt3KCnkWzy38cC0E7gsSEITDei3yOkB642y5M6ZGKLNmOSXPLkVgGHidiNxSMbU65iFGAAyuGpPep5MlLDDmy5H5WNxLWXFOkEFZiHMkNkDC4XjAgnNgPyTasq1IFexxHoOsY3XmfSCMMI0hPIOcfptkBjffHuYKUEJ4zrJepcLNjePvmbsJ6aAodX3lOsSzeTfXuUhrzyKZN2IpvZDbUGNbf92zGejiy7b3s",
+                'name' => "rgm7LVnhxTyAZfZDkQ2r2xXuIalmcupP8PaFubqXmo0h47ayHi8sXxsnC42wCpyA"
             ]
         );
         try {
@@ -911,7 +911,7 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 6177.0
+                'discount_percentage' => 5818.0
             ]
         );
         try {
@@ -929,8 +929,8 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 4453.0,
-                'name' => "7vFyo7eM4dNHW25nKJYDvzM004QSYdkecoFJzr3brOZ5f3RQvkhtySJKYRUQ3NzIgBoxko0Q38"
+                'discount_percentage' => 1188.0,
+                'name' => "BnUBLAV97YftKTMpHhWMUK3SCmPb9BXoLZ7wKHtX23HwTLkUG7zxtQPL0ebUOhv3B3t2DzpE8reI7vFyo7eM4dNHW25nKJYDvzM004QSYd"
             ]
         );
         try {
@@ -948,9 +948,9 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 7286.0,
-                'description' => "iglT3j7uK9FEO8wpTMbUo34OhjcbIFy00bHfPtADraHJBywFUVQhJIvCWpCXLp2gUnx8oHUCw9IDU8v5tebk72bnq5V1PYuyQsrCeZvlknHwyCYeoTGD6IVelM1xkQHIURZCUVG9E4BcH9vh8Qcd9Qr1jGxJh75seT2MlMasdJCSgZ4n",
-                'name' => "16A08HMuzRKVjoY87iExdEHTNDtgEpdMlXJAKinvVKW5jNBic0lbP5i9pPDb3qItRRs3FY6lAlrydgPmYNQmdCCSHSb7PeqbGNNyGMxdwCiRwJp"
+                'discount_percentage' => 7935.0,
+                'description' => "ecoFJzr3brOZ5f3RQvkhtySJKYRUQ3NzIgBoxko0Q38viglT3j7uK9FEO8wpTMbUo34OhjcbIFy00bHfPtADraHJBywFUVQhJIvCWpCXLp2g",
+                'name' => "nx8oHUCw9IDU8v5tebk72bnq5V1PYuyQsrCeZvlknHwyCYeoTGD6IVelM1xkQHIURZCUVG9E4BcH9vh8Qcd9Qr"
             ]
         );
         try {
@@ -968,10 +968,10 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 2261.0,
-                'discount_upper_limit' => 5314,
-                'description' => "S7wM2sjFT50Pr6H3Lr5Vqadi7ItSc4oUdi9EYp8oXZ4d1DUqCUDmWqMmM9IYmurAkMd4wDsAO01hvmpIXnG4Vdq7gNAtqrqKm6uKQNQH3PDcRwUCecSBjOParYUfATbiJrkxUEwT3M91XjHrTG7fMCl81IJPQuSHXTmEReE1YV9ebnUBpzD7d9DsGnOvPtZOQ7wRQgMzlEQYhb78oA0LE9nGzso",
-                'name' => "IqSCZEncCQxjIhrUeBMFsGSoFMs14cvovqZ6GQpcxkL1iWim0Xpy9XRR4FHqayBd9Y6"
+                'discount_percentage' => 5922.0,
+                'discount_upper_limit' => 4714,
+                'description' => "GxJh75seT2MlMasdJCSgZ4nn16A08HMuzRKVjoY87iExdEHTNDtgEpdMlXJAKinvVKW5jNBic0lbP5i9pPDb3qItRRs3FY6lAlrydgPmYNQmdCCSHSb7PeqbGNNyG",
+                'name' => "MxdwCiRwJpoUBZS7wM2sjFT50Pr6H3Lr5Vqadi7ItSc4"
             ]
         );
         try {
@@ -989,11 +989,11 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 3822.0,
-                'starts_at' => "2023-10-27T14:23:58.000000Z",
-                'discount_upper_limit' => 9568,
-                'description' => "DnCaj1IshUK5sOcLMoSdluvLDw0rIOalhSCHrt5J1YKxmhpIQaAHuF1XqBsQEc2YHzb0v51JNexx20BlobdlTY6n3LbK6Vu4m4",
-                'name' => "hE7PkEzPYVXfzwtjxI8n9Z0CQKMUdsLKbKLcaV6nH18WcZidvZ55mAgOE16AnmYbzCLHYWconVaiJFwoOHJhs1D1kk2Z65xpUZ28FCmVx3QLXn5K0uj"
+                'discount_percentage' => 8815.0,
+                'starts_at' => "2020-11-01T22:01:57.000000Z",
+                'discount_upper_limit' => 8638,
+                'description' => "di9EYp8oXZ4d1DUqCUDmWqMmM9IYmurAkMd4wDsAO01hvmpIXnG4Vdq7gNAtqrqKm6uKQNQH3PDcRwUCecSBjOParYUfATbiJrkxUEwT3M91XjHrTG7fMCl81IJPQuSHXTmEReE1YV9ebnUBpzD7d9DsGnOvPtZOQ",
+                'name' => "wRQgMzlEQYhb78oA0LE9nGzsoBIqSCZEncCQxjIhrUeBMFsGSoFMs14c"
             ]
         );
         try {
@@ -1011,12 +1011,12 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 4838.0,
-                'ends_at' => "2021-10-29T01:08:59.000000Z",
-                'starts_at' => "2022-05-26T05:56:27.000000Z",
-                'discount_upper_limit' => 7508,
-                'description' => "EebumDwnUvtTuwE1P6w3jvuc6WVynWZlMwTGtLKHNv0GHMA8YNVctqn0HylBE",
-                'name' => "aWFtKmGqTMRGGhLK4md8CvDRXJmyMUq3nONdNUldEzZzYqTFGHLldYwHPZ5GyoY"
+                'discount_percentage' => 7296.0,
+                'ends_at' => "2021-09-20T03:31:47.000000Z",
+                'starts_at' => "2022-06-02T05:56:55.000000Z",
+                'discount_upper_limit' => 7542,
+                'description' => "vqZ6GQpcxkL1iWim0Xpy9XRR4FHqayBd9Y6naDnCaj1IshUK5sOcLMoSdluvLDw0rIOalhSCHrt5J1YKxmhpIQaAHuF1XqBsQEc2YHzb0v51JNexx20BlobdlTY6n3LbK6Vu4m4rhE7PkEzPYVXfzwtjxI8n9Z0CQKMUdsLKbKLcaV6nH18WcZidvZ55mAgOE16AnmYbzCLHYWconVaiJFwoOHJhs1D1kk2Z65xpUZ28FCmV",
+                'name' => "3QLXn5K0ujHfTEebumDwnUvtTuwE1P6w3jvuc6WVynWZlMwTGtLKHNv0GHMA8YNVctqn0HylBEaWFtKmGqTMRGGhLK4md8CvDRXJmyMUq3nONdNUldEzZzYqT"
             ]
         );
         try {
@@ -1034,13 +1034,13 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 6233.0,
-                'display_starts_at' => "2021-08-19T13:32:54.000000Z",
-                'ends_at' => "2021-02-17T07:03:04.000000Z",
-                'starts_at' => "2022-04-21T23:18:59.000000Z",
-                'discount_upper_limit' => 5351,
-                'description' => "PK3Dchqik562nQJ7JN9nEMDfH9ZULXMKOjFu2fGiShoySflnRPKvTH4Qb4HK1DE5zpHipftSBuuUyajKD4UG1MO97nrik73QyiaNKms0iFYGrWxxlKwOlCibtq2e0nqtXLNITG9Gffmmox8hwqx5x7fQZGPMXFo6oIvZGxUJAAeHeUyg78eCpqwfbVaGI8MUg6pkTJeF4LA5VGWml",
-                'name' => "55tLRhXfPthFrTbvP80JDs4TLAvvWwguBec41EmwzzFrgc709a7P9KtTHr3zG8NnPjRfIRrqy3FohrRi"
+                'discount_percentage' => 2330.0,
+                'display_starts_at' => "2020-07-22T21:57:26.000000Z",
+                'ends_at' => "2024-02-06T10:43:19.000000Z",
+                'starts_at' => "2020-01-29T15:22:48.000000Z",
+                'discount_upper_limit' => 8,
+                'description' => "ldYwHPZ5GyoYYcgPPK3Dchqik562nQJ7JN9nEMDfH9ZULXMKOjFu2fGiShoySflnRPKvTH4Qb4HK1DE5zpHipftSBuuUyajKD4UG1MO97nrik73QyiaNKms0iFYGrWxxlKwOlCibtq2e0nqtXLNITG9Gffmmox8hwqx5x7fQ",
+                'name' => "ZGPMXFo6oI"
             ]
         );
         try {
@@ -1058,14 +1058,14 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 2204.0,
-                'display_ends_at' => "2022-02-20T22:32:39.000000Z",
-                'display_starts_at' => "2021-10-01T23:48:24.000000Z",
-                'ends_at' => "2023-06-06T08:40:02.000000Z",
-                'starts_at' => "2023-07-15T08:29:26.000000Z",
-                'discount_upper_limit' => 924,
-                'description' => "tN77E9sKP2LWTHQkvbYQTkmfSmGSFmTTeLGAy7h6m0YyagUC0Ij3N9K7EVH4f0IDf80jI5hMMqGagepFcb0C3pMehBLw9uhZslxpk65zsLMOaWLvqiZty5Zp232IvDDPPtMusem1WSPOdAkWLCHhP",
-                'name' => "7q7jyjEo8V3Di9DtzhzAGKUtsDdhPal5eEvQkTNVI1DbDv2ICSa1fLqeRzw"
+                'discount_percentage' => 8478.0,
+                'display_ends_at' => "2022-10-07T01:23:27.000000Z",
+                'display_starts_at' => "2020-11-03T09:46:30.000000Z",
+                'ends_at' => "2022-05-11T18:45:46.000000Z",
+                'starts_at' => "2020-09-04T22:22:21.000000Z",
+                'discount_upper_limit' => 7232,
+                'description' => "xUJAAeHeUyg78eCpqwfbVaGI8MUg6pkTJeF4LA5VGWmlO55tLRhXfPthFrTbvP80JDs4TLAvvWwguBec41EmwzzFrgc709a7P9KtTHr3zG8NnPjRfIRrqy3FohrRiHbftN77E9sKP2LWTHQkvbYQTkmfSmGSFmTTeLGAy7h6m0YyagUC0Ij3N9K7EVH4f0IDf80jI5hM",
+                'name' => "qGagepFcb0C3pMehBLw9uhZslxpk65zsLMOaWLvqiZty5Zp232IvDDPPtMusem1WSPOdAkWLCHhP7q"
             ]
         );
         try {
@@ -1083,15 +1083,15 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 9497.0,
+                'discount_percentage' => 6199.0,
                 'is_disabled' => TRUE,
-                'display_ends_at' => "2022-05-26T11:53:50.000000Z",
-                'display_starts_at' => "2023-03-05T10:35:52.000000Z",
-                'ends_at' => "2021-10-31T13:19:42.000000Z",
-                'starts_at' => "2021-05-09T08:15:36.000000Z",
-                'discount_upper_limit' => 3285,
-                'description' => "Hy7seU6TPp7YTcvCbmuWQvyjmdKhWFzroFJfg0zCih9qHu842U5SnXNqipKVsIIUjVYx3ZiMVPZEq0xgguEtAXJ6WozfUGo1oVRA1PV2JD5SjzUvS2Jlq6P89tC2Mi1PRe6ex8zQnoMXPxIs0d6X24reGHeQvAPqGMsA1rgfPu4olvC1KDDE1G2mG",
-                'name' => "U9YeDH"
+                'display_ends_at' => "2020-12-02T01:56:58.000000Z",
+                'display_starts_at' => "2020-08-12T00:00:14.000000Z",
+                'ends_at' => "2022-02-15T18:53:30.000000Z",
+                'starts_at' => "2023-01-08T07:25:15.000000Z",
+                'discount_upper_limit' => 4089,
+                'description' => "jEo8V3Di9DtzhzAGKUtsDdhPal5eEvQkTNVI1DbDv2ICSa1fLqeRzwnNnU8Hy7seU6TPp7YTcvCbmuWQvyjmdKhWFzroFJfg0zCih9qHu842U5SnXNqipKVsIIUjVYx3ZiMVPZEq0xgguEtAXJ6WozfUGo1oVRA1PV2JD5SjzUvS2Jlq6P89tC2Mi1PRe6ex8zQnoMXPxIs0d6X24reGHeQvAPqGMs",
+                'name' => "A1rgfPu4olvC1KDDE1G2mGU9YeDH5Tysjz5v4HW6eqkSkn"
             ]
         );
         try {
@@ -1109,16 +1109,16 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 9141.0,
+                'discount_percentage' => 6019.0,
                 'is_hidden' => TRUE,
-                'is_disabled' => TRUE,
-                'display_ends_at' => "2022-02-08T23:04:25.000000Z",
-                'display_starts_at' => "2023-07-04T15:47:08.000000Z",
-                'ends_at' => "2021-05-02T16:53:33.000000Z",
-                'starts_at' => "2021-10-30T23:58:56.000000Z",
-                'discount_upper_limit' => 6974,
-                'description' => "jz5v4HW6eqkSknjWS4aW80Xp5YCo9TXEMx6Q3N4lydCpBzThmgOIjIatpE7508LaYMNkxpSQqkfWLu8WbqqwjfwNPVeBo88egFulBO0tWJ93Y52C590AS7UiB0DiDGREmImyJDbbC2wEGBfcAGc0EsTxqnb80BRFYcLTC4xCABLekowD1pN0MSUSSu62wEl3iPUkIv4a2NsBAg7OoWmbOWXvcqkH6OCG8bjnFs6Wxag7kVTYLZtj",
-                'name' => "qA6blCNXCxB23NKDv"
+                'is_disabled' => FALSE,
+                'display_ends_at' => "2021-02-23T18:14:02.000000Z",
+                'display_starts_at' => "2022-10-22T07:05:19.000000Z",
+                'ends_at' => "2022-02-17T16:54:47.000000Z",
+                'starts_at' => "2021-01-29T00:52:35.000000Z",
+                'discount_upper_limit' => 5428,
+                'description' => "aW80Xp5YCo9TXEMx6Q3N4lydCpBzThmgOIjIatpE7508LaYMNkxpSQqkfWLu8WbqqwjfwNPVeBo88egFulBO0tWJ93Y52C590AS7UiB0DiDGREmImyJDbbC2wEGBfcAGc0EsT",
+                'name' => "xqnb80BRFYcLTC4xCABLekowD1pN0MSUSSu62wEl3iPUkIv4a2NsBAg7OoWmbOWXvcqkH6OCG8bjnFs6Wxag7kVTYLZtjq"
             ]
         );
         try {
@@ -1136,17 +1136,17 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 8485.0,
-                'is_public' => FALSE,
-                'is_hidden' => FALSE,
-                'is_disabled' => TRUE,
-                'display_ends_at' => "2021-12-01T04:54:19.000000Z",
-                'display_starts_at' => "2023-08-26T06:04:20.000000Z",
-                'ends_at' => "2023-11-01T17:05:06.000000Z",
-                'starts_at' => "2021-12-03T18:52:53.000000Z",
-                'discount_upper_limit' => 4843,
-                'description' => "6rCZ5MRu3n3kWR611LhXRF1WjDXemYssWVQAa0S9OWEqIPoWhsZ81p0D8THD4dpuhxNvhxjPfdLCMpGSOhV764tKT9oHgjnPne51YZOU0zGq4PpZBc0rJPOstD7C9IM7suB5w40dZFTsuKZGsFElmQpA4RSTaTlLaqlkU49OXmcM1eYLCIvDzYzwAtEksQWSl6Am3gCBrhM35EfmrtOFWMml5EKRiDsWg9ZcujQMFm",
-                'name' => "4vZ2HzNm8wdK6sB9HsuClaKx3AfzVa9lboQsNDBH1uzKMqlEF94aThPURq2Q4ZM2ZH2d8EggWOOiiO67HWQCePWkLnY7y5P2vTc"
+                'discount_percentage' => 9743.0,
+                'is_public' => TRUE,
+                'is_hidden' => TRUE,
+                'is_disabled' => FALSE,
+                'display_ends_at' => "2023-07-24T23:18:14.000000Z",
+                'display_starts_at' => "2021-04-22T12:28:18.000000Z",
+                'ends_at' => "2022-09-23T16:27:24.000000Z",
+                'starts_at' => "2021-01-24T12:52:37.000000Z",
+                'discount_upper_limit' => 606,
+                'description' => "NXCxB23NKDv8dBki6rCZ5MRu3n3kWR611LhXRF1WjDXemYssWVQAa0S9OWEqIPoWhsZ8",
+                'name' => "p0D8THD4dpuhxNvhxjPfdLCMpGSOhV764tKT9oHgjnPne51YZO"
             ]
         );
         try {
@@ -1164,18 +1164,18 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 9898.0,
-                'code' => "DF85U",
-                'is_public' => TRUE,
+                'discount_percentage' => 8405.0,
+                'code' => "0zGq4PpZBc",
+                'is_public' => FALSE,
                 'is_hidden' => FALSE,
-                'is_disabled' => FALSE,
-                'display_ends_at' => "2020-10-30T12:50:32.000000Z",
-                'display_starts_at' => "2022-07-04T05:18:43.000000Z",
-                'ends_at' => "2020-02-02T16:47:45.000000Z",
-                'starts_at' => "2022-01-04T12:45:48.000000Z",
-                'discount_upper_limit' => 1671,
-                'description' => "RLtjhMxgRT9FEddBtVan5HyW6Uan9MoY",
-                'name' => "beeBKUXDDy014vqgIch5W6XuTL0vlIdvdIMbz7wUi6BXoKUl0tR07369wBiPR32MXZafz3jffpT8lg"
+                'is_disabled' => TRUE,
+                'display_ends_at' => "2023-08-26T05:56:22.000000Z",
+                'display_starts_at' => "2023-09-30T11:22:26.000000Z",
+                'ends_at' => "2023-01-31T10:52:46.000000Z",
+                'starts_at' => "2021-06-22T23:31:22.000000Z",
+                'discount_upper_limit' => 848,
+                'description' => "stD7C9IM7suB5w40dZFTsuKZGsFElmQpA4RSTaTlLaqlkU49OXmcM1eYLCIvDzYzwAtEksQWSl6Am3gCBrhM35EfmrtOFWMml5EKRiDsWg9ZcujQMFmb4vZ2HzNm8wdK6sB9HsuClaKx3AfzVa9lboQsNDBH1uzKMqlEF94aThPURq2Q4ZM2ZH2d8EggWOOiiO67HWQCePWkLnY7",
+                'name' => "5P2vTc2kTDF85U9g31HpRLtjhMxgRT9FEddBtVan5HyW6Uan9MoYMbeeBKUXDDy014vqgIch5W6XuTL0vlIdvdIMbz7wUi6BXoKUl0tR07369wBiPR32MXZafz"
             ]
         );
         try {
@@ -1193,19 +1193,19 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 1949.0,
-                'usage_limit' => 3853,
-                'code' => "ERnFdcWh",
+                'discount_percentage' => 9651.0,
+                'usage_limit' => 3352,
+                'code' => "fpT8lgG",
                 'is_public' => TRUE,
                 'is_hidden' => FALSE,
-                'is_disabled' => TRUE,
-                'display_ends_at' => "2021-03-14T08:37:16.000000Z",
-                'display_starts_at' => "2022-07-02T22:09:21.000000Z",
-                'ends_at' => "2022-08-04T10:08:23.000000Z",
-                'starts_at' => "2023-01-15T22:21:48.000000Z",
-                'discount_upper_limit' => 4193,
-                'description' => "fJ60D0H2T0aKhnL3FlnAD82QrpYaKuslNraOesyAiawWiyWkSV3bs4OkWhHFx3P67yxFmxWAZtU",
-                'name' => "oiVrIFnb7w6ZClkoqVajvuG5cGcBP5wA9GwSB8bfxMId7hFKERGvYa7vbD1cIywVpXocQ5N98CAVKuKRC5FL"
+                'is_disabled' => FALSE,
+                'display_ends_at' => "2021-06-02T05:42:42.000000Z",
+                'display_starts_at' => "2021-01-25T22:40:46.000000Z",
+                'ends_at' => "2022-03-01T13:27:34.000000Z",
+                'starts_at' => "2022-02-25T10:45:56.000000Z",
+                'discount_upper_limit' => 3159,
+                'description' => "SdaJfJ60D0H2T0aKhnL3FlnAD82QrpYaKuslNraOesyAiawWiyWkSV3bs4OkWhHFx3P67yxFmxWAZtUSoiVrIFnb7w6ZClkoqVajvuG5c",
+                'name' => "GcBP5wA9GwSB8bfxMId7hFKERGvYa"
             ]
         );
         try {
@@ -1223,20 +1223,20 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 6047.0,
-                'min_amount' => 1601,
-                'usage_limit' => 7881,
-                'code' => "iGK",
+                'discount_percentage' => 9149.0,
+                'min_amount' => 2231,
+                'usage_limit' => 6653,
+                'code' => "bD1cIyw",
                 'is_public' => TRUE,
                 'is_hidden' => FALSE,
-                'is_disabled' => FALSE,
-                'display_ends_at' => "2021-09-03T11:23:53.000000Z",
-                'display_starts_at' => "2021-10-05T09:36:56.000000Z",
-                'ends_at' => "2022-12-25T05:12:59.000000Z",
-                'starts_at' => "2020-09-24T20:30:53.000000Z",
-                'discount_upper_limit' => 419,
-                'description' => "NBTqLCZ99AjVbK3l31NeAICSoLJdEVZoJB0H5I2jNmYRtpCMs9TezTj3A085y5hWQ3gd",
-                'name' => "DOWFExGORRYNLJdsZ6n3IGoF44i0499bTqwmusaHN4dAo0kcMwrj6lsuth9pSzmqVAxW3BZh2UFG0NdobuyCqKAyF8XBloHn7nUM7l"
+                'is_disabled' => TRUE,
+                'display_ends_at' => "2023-07-03T17:15:20.000000Z",
+                'display_starts_at' => "2021-08-20T09:11:22.000000Z",
+                'ends_at' => "2021-06-13T20:21:16.000000Z",
+                'starts_at' => "2022-12-19T18:04:08.000000Z",
+                'discount_upper_limit' => 1549,
+                'description' => "cQ5N98CAVKuKRC5FLAIRiGKuI8CNBTqLCZ99AjVbK3l31NeAICSoLJdEVZoJB0H5I2jNmYRtpCMs9TezTj3A085y5hWQ3gdeDOWFExGORRYNLJdsZ6n3IGoF44i0499bTqwmusaHN4dAo0kcMwrj6lsuth9pSzmqVAxW3BZh2UFG0NdobuyCqKAyF8XBloHn7nUM7l934bPMQ7DIwFMXGuPCrmdUDxKggDFfFvOJkxhc8IPv",
+                'name' => "tQD4QxNm6tX3Guvbo2vDNfvQpElqxJKgNyOMeXS2rUoCJ5iH"
             ]
         );
         try {
@@ -1254,21 +1254,21 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 1021.0,
-                'is_shop_specified' => TRUE,
-                'min_amount' => 2838,
-                'usage_limit' => 5561,
-                'code' => "4bPM",
+                'discount_percentage' => 4770.0,
+                'is_shop_specified' => FALSE,
+                'min_amount' => 7922,
+                'usage_limit' => 9929,
+                'code' => "swPc2",
                 'is_public' => TRUE,
                 'is_hidden' => FALSE,
                 'is_disabled' => TRUE,
-                'display_ends_at' => "2020-12-20T15:37:32.000000Z",
-                'display_starts_at' => "2022-08-15T22:41:05.000000Z",
-                'ends_at' => "2020-06-18T05:25:37.000000Z",
-                'starts_at' => "2020-05-03T09:41:11.000000Z",
-                'discount_upper_limit' => 9668,
-                'description' => "wFMXGuPCrmdUDxKggDFfFvOJkxhc8IPvtQD4QxNm6tX3Guvbo2vDNfvQpElqxJKgNyOMeXS2rU",
-                'name' => "oCJ5iHqorIswPc2cBsLEwskU0m8hSr1melepO9LnwIsUcSmvb4GOUqCz9cG"
+                'display_ends_at' => "2020-03-27T12:54:11.000000Z",
+                'display_starts_at' => "2020-05-10T02:22:04.000000Z",
+                'ends_at' => "2020-04-17T04:38:29.000000Z",
+                'starts_at' => "2022-03-25T04:16:14.000000Z",
+                'discount_upper_limit' => 4958,
+                'description' => "kU0m8hSr1melepO9LnwIsUcSmvb4GOUqCz9cGDIhlPt52zP7YS2DWusWLcKpd2P335Nv6jpCTg7cImjgcPmkAEumRe3ajMg8VGC0KZL7VMaMEGv2NsNR",
+                'name' => "CHkqW6b190Xf2yHeAyBqIIySMiYLD3kq3Znz8pepfEmpSiLZTFdERWScAwFtubDUWmymMiDw"
             ]
         );
         try {
@@ -1286,22 +1286,22 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 4130.0,
-                'available_shop_ids' => ["1a89a5c9-2ce8-49bc-be06-50fde05e2fec", "83bb16d0-bd89-4c74-88b5-253b718fe387", "8006550f-e0b2-417a-9037-2c59101d3453", "bfb8ba32-12c4-4e28-91a1-12d71c5c5f14", "24b4821a-fd75-4ff3-a4d7-3acc8085c863", "e2b6cfbc-efcb-4d7b-a5f0-63e43c32a532", "044b272d-318f-4ca5-9d50-b8332afa748c", "547fc533-38b5-4ace-b6b6-ae923d41adea"],
+                'discount_percentage' => 6342.0,
+                'available_shop_ids' => ["42761e86-170f-4746-a5dd-1166e55ee0a2", "da1330e3-754e-48ce-8c41-1d7ff794db93", "3f6cf7e6-fb07-49d4-b036-3e60ae980196", "678f86c7-1933-48ed-b29e-8453f9a41db1", "285bb3ba-1fb1-479c-9f80-01c8d1134c1b", "7b416a00-e792-402f-9744-192e78c7af69", "4fc6c6ce-da91-48c3-b25f-b0547fa396b6", "86db4725-51da-4f31-bb03-52084a666b85"],
                 'is_shop_specified' => TRUE,
-                'min_amount' => 9456,
-                'usage_limit' => 1827,
-                'code' => "C",
+                'min_amount' => 9374,
+                'usage_limit' => 2246,
+                'code' => "Wi9xNJq",
                 'is_public' => TRUE,
                 'is_hidden' => FALSE,
                 'is_disabled' => TRUE,
-                'display_ends_at' => "2022-10-26T23:25:08.000000Z",
-                'display_starts_at' => "2023-03-14T20:11:39.000000Z",
-                'ends_at' => "2021-04-24T00:56:28.000000Z",
-                'starts_at' => "2022-06-27T03:47:51.000000Z",
-                'discount_upper_limit' => 6153,
-                'description' => "cImjgcPmkAEumRe3ajMg8VGC0KZL7VMaMEGv2NsNRGCHkqW6b190Xf2y",
-                'name' => "eAyBqIIySMiYLD3kq3Znz8pepfEmpSiLZTFdERWScAwFtubDUWmymMiDwFFfcNNLAfTp6G3m2"
+                'display_ends_at' => "2021-02-22T21:43:44.000000Z",
+                'display_starts_at' => "2022-08-14T04:38:13.000000Z",
+                'ends_at' => "2023-08-01T15:33:49.000000Z",
+                'starts_at' => "2022-09-08T13:08:36.000000Z",
+                'discount_upper_limit' => 7305,
+                'description' => "G4qAHZdsob31RGFcTjCHIRk6EOKDYDfh7IyYBfSv2V1UV4oPfCtFaYiWkYeLppJ33CkMXXFMJbGPqbgq29Gzz59vVOvin5VZAtZIBDPoHNl5n64I544K0pgRwqKcwLRpyfhv",
+                'name' => "p3huvf9ISSZ1V5b6lHxDKXrcl2EVGtJV2Ntce9IqiVZ5m5eyekXLeKtBuImxNnX45R5ZNIieikdp8w9LWlkr"
             ]
         );
         try {
@@ -1319,23 +1319,23 @@ class UpdateCoupon extends TestCase
         $request = new Request\UpdateCoupon(
             "0141503f-c0ce-43b5-953d-d98d85dd6745",
             [
-                'discount_percentage' => 4510.0,
-                'storage_id' => "52c58453-1db1-43ba-b19c-e2df93cfb180",
-                'available_shop_ids' => ["d1134c1b-6a00-4792-af17-1a44a9e3192e", "78c7af69-c6ce-4a91-83b2-975f1be5b054", "7fa396b6-4725-41da-b1fb-f303582c5208", "4a666b85-f7ce-4fd2-9ec6-2f261f6a5bbe", "62360857-9d69-45b9-b8ce-f5caf1e8f6fc", "0bd2112d-fff1-4ac8-a976-44908cec9b35", "56bd44dd-0854-490e-8983-1c0388d6bc2b", "b17913c7-6134-4baf-9d71-1921a14b472d", "e21b8593-ef88-4528-9e94-4f41783cef48"],
-                'is_shop_specified' => TRUE,
-                'min_amount' => 3075,
-                'usage_limit' => 356,
-                'code' => "ob31",
+                'discount_percentage' => 7309.0,
+                'storage_id' => "15dcc571-fa3b-4727-ae82-bd92b528c9ba",
+                'available_shop_ids' => ["6160df3a-d2a1-4b0d-9363-007aa169cba4", "405f6334-0db3-4aa3-9daa-795de6a959e4", "265693ac-b5a9-472f-82a3-b06d681948b2", "ec9dfab6-8506-4b8e-8f9a-503a3d7cd78f", "cb34a0f2-1a37-4960-86a4-102d93d03b45", "e255b237-eeef-4e78-98f7-0311f60f4509"],
+                'is_shop_specified' => FALSE,
+                'min_amount' => 6385,
+                'usage_limit' => 2847,
+                'code' => "eP95WFsrDT",
                 'is_public' => TRUE,
                 'is_hidden' => FALSE,
-                'is_disabled' => TRUE,
-                'display_ends_at' => "2021-05-02T11:04:15.000000Z",
-                'display_starts_at' => "2020-06-01T05:11:51.000000Z",
-                'ends_at' => "2020-06-12T12:23:35.000000Z",
-                'starts_at' => "2021-10-30T18:42:50.000000Z",
-                'discount_upper_limit' => 7710,
-                'description' => "cTjCHIRk6EOKDYDfh7IyYBfSv2V1UV4oPfCtFaYiWkYeLppJ33CkMXXFMJbGPqbgq29Gzz59vVOvin5VZAtZIBDPoHNl5n64I544K0pgRwqKcwLRpyfhvSp3huvf9ISSZ1V5b6lHxDKXrcl2EVGtJV2Ntce9IqiVZ5m5eyekXLeKtBuImxNnX45R5ZNIieikdp8w9LW",
-                'name' => "lkrqUcz43dBm26Or7FE7oxXwqyeP95WFsrDTZsTHaLMAx4xhJmPNb2Vt3kMgTzAxm3nuCtm4tM4rQ7TMWwQQegAiqW5Gh3EedIVkoAN4R6PBgm1bgbkQVRY8MuhwDyk"
+                'is_disabled' => FALSE,
+                'display_ends_at' => "2024-02-03T06:31:48.000000Z",
+                'display_starts_at' => "2020-08-15T14:35:18.000000Z",
+                'ends_at' => "2021-10-31T14:42:36.000000Z",
+                'starts_at' => "2022-04-12T10:51:52.000000Z",
+                'discount_upper_limit' => 8652,
+                'description' => "Ax4xhJmPNb2Vt3kMgTzAxm3nuCtm4tM4rQ7TMWwQQegAiqW5Gh3EedIVkoAN4R6PBgm1bgbkQVRY8M",
+                'name' => "hwDykulFo5mDyJw8V3XaTOkFDFDXkJRYuzmNrD0IPFMYcPpoEqcZqYNWKYupHW3vkZPbupwOmpLyfcnvR24ekndSEuijqLz34cJjz9WzSXV2waIpnDEjnP"
             ]
         );
         try {
