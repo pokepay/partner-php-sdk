@@ -1,0 +1,794 @@
+method,path,status_code,type,ja,en
+GET,/user,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+GET,/dashboard,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
+GET,/transfers,403,,,
+GET,/transfers-v2,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+GET,/transactions,403,,,
+GET,/transactions-v2,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
+,,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,,,
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,customer_user_not_found,,The customer user is not found
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/transactions/:uuid,403,,,
+,,404,,,
+GET,/transactions/requests/:request-id,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,transaction_not_found,"取引が見つかりません",Transaction not found
+POST,/transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,card_not_found,"カードが見つかりません",
+,,409,already_registered_veritrans_card,"このカードは既に登録されています",
+,,409,already_registered_veritrans_account,"この会員は既に登録されています",
+,,422,transaction_not_found,"取引が見つかりません",Transaction not found
+,,422,can_not_refund_bank_transaction,"銀行取引はキャンセルできません",Bank transactions cannot be cancelled.
+,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
+,,422,unacceptable_card,,Card is not acceptable for some reason
+,,422,veritrans_membership_not_registered,"会員登録をしていません",
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,transaction_already_refunded,"取引は既に払い戻されています",Transaction already refunded.
+,,422,not_refundable_transaction_type,"キャンセルできるのは取引種別が支払いかチャージのときのみです。",The transaction can refund when its type is payment or topup only
+,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
+,,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,private_money_not_found,,Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/topup/check,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,customer_user_not_found,,The customer user is not found
+,,422,check_not_found,"これはチャージQRコードではありません",This is not a topup QR code
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,check_already_received,"このチャージQRコードは既に受取済みの為、チャージ出来ませんでした",Check is already received
+,,422,check_unavailable,"このチャージQRコードは利用できません",The topup QR code is not available
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/payment,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,private_money_not_found,,Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/transfer,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,customer_user_not_found,,The customer user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/exchange,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,transaction_restricted,,Transaction is not allowed
+,,422,can_not_exchange_between_same_private_money,"同じマネーとの交換はできません",
+,,422,can_not_exchange_between_users,"異なるユーザー間での交換は出来ません",
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/cpm,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,cpm_unacceptable_amount,"このCPMトークンに対して許可されていない金額です。",The amount is unacceptable for the CPM token
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,cpm_token_already_proceed,"このCPMトークンは既に処理されています。",The CPM token is already proceed
+,,422,cpm_token_already_expired,"このCPMトークンは既に失効しています。",The CPM token is already expired
+,,422,cpm_token_not_found,"CPMトークンが見つかりませんでした。",The CPM token is not found.
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/bulk,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,403,organization_not_issuer,"発行体以外に許可されていない操作です",Unpermitted operation except for issuer organizations.
+,,409,,,
+,,422,private_money_not_found,,Private money not found
+,,422,bulk_transaction_invalid_csv_format,"入力されたCSVデータに誤りがあります",Invalid csv format
+POST,/external-transactions,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,customer_user_not_found,,The customer user is not found
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/external-transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,card_not_found,"カードが見つかりません",
+,,409,already_registered_veritrans_card,"このカードは既に登録されています",
+,,409,already_registered_veritrans_account,"この会員は既に登録されています",
+,,422,event_not_found,"イベントが見つかりません",Event not found
+,,422,can_not_refund_bank_transaction,"銀行取引はキャンセルできません",Bank transactions cannot be cancelled.
+,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
+,,422,unacceptable_card,,Card is not acceptable for some reason
+,,422,veritrans_membership_not_registered,"会員登録をしていません",
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,transaction_already_refunded,"取引は既に払い戻されています",Transaction already refunded.
+,,422,not_refundable_transaction_type,"キャンセルできるのは取引種別が支払いかチャージのときのみです。",The transaction can refund when its type is payment or topup only
+,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/bulk-transactions/:uuid,404,notfound,,Not found
+GET,/bulk-transactions/:uuid/jobs,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,bulk_transaction_not_found,"Bulk取引が見つかりません",Bulk transaction not found
+GET,/bills,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+POST,/bills,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,shop_account_not_found,,The shop account is not found
+,,422,private_money_not_found,,Private money not found
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+PATCH,/bills/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+GET,/checks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,organization_not_found,,Organization not found
+,,422,private_money_not_found,,Private money not found
+POST,/checks,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
+,,400,invalid_parameter_only_merchants_can_attach_points_to_check,,Only merchants can attach points to check
+,,400,invalid_parameter_combination_usage_limit_and_is_onetime,,'usage_limit' can not be specified if 'is_onetime' is true.
+,,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,400,invalid_parameter_expires_at,,'expires_at' must be in the future
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+GET,/checks/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
+PATCH,/checks/:uuid,400,invalid_parameter_combination_usage_limit_and_is_onetime,,'usage_limit' can not be specified if 'is_onetime' is true.
+,,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,400,invalid_parameter_expires_at,,'expires_at' must be in the future
+,,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,onetime_check_cannot_reenabled,"使用済みのワンタイムチャージQRコードは再度有効化できません",One-time check already used and disabled cannot be re-enabled
+,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
+GET,/users,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+POST,/users,400,user_invalid_email,"入力されたメールアドレスが間違っています。入力内容をご確認ください",
+,,400,not_shop_admin_user_must_not_be_linked_to_any_shops,,Admin user who does not have shop-authority must not be linked to any shops
+,,400,shop_admin_user_requires_shop,,Admin user who has shop-authority requires at least one shop
+,,403,,,
+,,403,forbidden,,Forbidden
+,,409,email_conflict,"このメールアドレスは既に使われています",The E-mail address is already registered
+,,422,organization_not_found,,Organization not found
+,,503,failed_to_send_email,,Failed to send an E-mail.
+GET,/users/invitations,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,,,
+,,422,organization_not_found,,Organization not found
+PATCH,/users/invitations/:uuid,403,,,
+,,404,,,
+,,409,admin_user_conflict,,The Admin-user is already registered
+,,503,failed_to_send_email,,Failed to send an E-mail.
+POST,/users/:uuid/accounts,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,user_not_found,,The user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,user_attributes_external_id_not_match,"ユーザー属性情報の外部IDが一致しません",Not match external id of user attributes
+,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_can_not_create,"このマネーに新規アカウントを作る事は出来ません",Can not create an account with this money
+GET,/users/:uuid,403,,,
+,,404,,,
+PATCH,/users/:uuid,400,not_shop_admin_user_must_not_be_linked_to_any_shops,,Admin user who does not have shop-authority must not be linked to any shops
+,,400,shop_admin_user_requires_shop,,Admin user who has shop-authority requires at least one shop
+,,403,,,
+,,404,,,
+,,503,temporarily_unavailable,,Service Unavailable
+DELETE,/users/:uuid,403,,,
+,,404,,,
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/private-moneys,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,organization_not_found,,Organization not found
+GET,/private-moneys/:uuid,403,,,
+,,404,,,
+GET,/private-moneys/:uuid/summary,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,,,
+,,422,private_money_not_found,,Private money not found
+GET,/private-moneys/:uuid/clearings,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
+GET,/private-moneys/:uuid/organization-summaries,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,,,
+,,404,,,
+POST,/private-moneys,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,,,
+,,409,private_money_conflict,"このマネーは既に登録されています。",The money is already used
+,,422,organization_not_found,,Organization not found
+,,422,only_one_of_months_and_days_can_be_selected,"月と日のどちらか1つだけを選択できます",Only one of months and days can be selected
+,,422,private_money_topup_transaction_limit_exceeded,"一回のチャージ取引の最大チャージ可能額がウォレットの最大マネー残高を越えています",The money amount for the transaction exceeds the maximum balance
+GET,/terminals,403,,,
+GET,/organizations,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
+POST,/organizations,403,,,
+,,409,organization_conflict,,The organization code is already used
+,,409,shop_name_conflict,,The shop name is already used
+,,422,organization_private_money_not_found,,Issuer organization does not have private-money
+,,422,unavailable_private_money,,Given private money(s) is/are not available
+,,503,failed_to_send_email,,Failed to send an E-mail.
+GET,/organizations/:code,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,organization_not_found,,Organization not found
+,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
+,,422,organization_third_party_private_money_not_found,,Issuer organization does not have third-party private-money
+PUT,/organizations/:code,403,,,
+,,404,,,
+,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
+,,422,organization_third_party_private_money_not_found,,Issuer organization does not have third-party private-money
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/organizations/:code/shops,403,,,
+GET,/shops,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
+,,422,organization_not_found,,Organization not found
+POST,/shops,403,,,
+,,409,email_conflict,"このメールアドレスは既に使われています",The E-mail address is already registered
+,,409,shop_name_conflict,,The shop name is already used
+,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
+,,422,organization_not_found,,Organization not found
+,,422,unavailable_private_money,,Given private money(s) is/are not available
+POST,/shops-v2,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,409,shop_name_conflict,,The shop name is already used
+,,422,organization_not_found,,Organization not found
+,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
+,,422,unavailable_private_money,,Given private money(s) is/are not available
+,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
+GET,/shops/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+PATCH,/shops/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,409,shop_name_conflict,,The shop name is already used
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,unavailable_private_money,,Given private money(s) is/are not available
+,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/customers,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+GET,/customers/transactions,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,customer_user_not_found,,The customer user is not found
+,,422,private_money_not_found,,Private money not found
+GET,/customers/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,private_money_not_found,,Private money not found
+PATCH,/clearings/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,clearing_not_found,"精算が見つかりません",Clearing not found
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/clearings,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+GET,/clearings/preview,400,clearing_to_should_be_past_date,"締め日は過去の日付を指定してください",Should set past date for 'closing_date'
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
+POST,/clearings,400,clearing_to_should_be_past_date,"締め日は過去の日付を指定してください",Should set past date for 'closing_date'
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
+GET,/clearings/flico,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+GET,/clearings/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,clearing_not_found,"精算が見つかりません",Clearing not found
+GET,/messaging-operations,403,,,
+POST,/messaging-operations,400,messaging_operation_over_transfer_limit,,The messaging operation's amount is over transfer limit
+,,400,messaging_operation_sender_account_not_exist,,The account of sender user does not exist
+,,400,messaging_operation_is_draft,,The messaging operation is draft
+,,400,messaging_attachment_user_not_exist,,The user does not exist
+,,403,,,
+,,409,messaging_operation_already_done,,The messaging operation is already done
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,shop_account_not_found,,The shop account is not found
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/messaging-operations/receivers,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,,,
+GET,/messaging-operations/:uuid,403,,,
+,,404,notfound,,Not found
+PATCH,/messaging-operations/:uuid,400,messaging_operation_over_transfer_limit,,The messaging operation's amount is over transfer limit
+,,400,messaging_operation_sender_account_not_exist,,The account of sender user does not exist
+,,400,messaging_operation_is_draft,,The messaging operation is draft
+,,400,messaging_attachment_user_not_exist,,The user does not exist
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,,,
+,,409,messaging_operation_already_done,,The messaging operation is already done
+,,503,temporarily_unavailable,,Service Unavailable
+DELETE,/messaging-operations/:uuid,403,,,
+,,404,,,
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/user-stats,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,invalid_promotional_operation_user,"ユーザーの指定に不正な値が含まれています",Invalid user data is specified
+,,422,invalid_promotional_operation_status,"不正な処理ステータスです",Invalid operation status is specified
+,,503,user_stats_operation_service_unavailable,"一時的にユーザー統計サービスが利用不能です",User stats service is temporarily unavailable
+POST,/device/pokeregis,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,,,
+,,409,hardware_id_conflict,,Hardware id is already registered
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+PUT,/device/pokeregis/:serial-number,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,,,
+,,404,,,
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,500,,,
+GET,/device/pokeregis/:serial-number,403,,,
+,,404,,,
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,500,,,
+POST,/device/pokeregis/:serial-number,400,terminal_is_already_invalidated,,The terminal the Hardware id has is already invalidated
+,,403,,,
+,,404,,,
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,500,,,
+GET,/device/kiosks,400,,,
+,,403,,,
+,,422,private_money_not_found,,Private money not found
+,,422,organization_not_found,,Organization not found
+GET,/device/kiosk-maintenances,403,,,
+GET,/device/kiosks/:kiosk-id,400,,,
+,,403,,,
+,,404,,,
+,,422,private_money_not_found,,Private money not found
+,,422,organization_not_found,,Organization not found
+POST,/merchandise-tag,403,,,
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/merchandise-tag,403,,,
+,,404,,,
+POST,/tokens,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,organization_not_found,,Organization not found
+GET,/tokens,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+DELETE,/tokens/:token,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/accounts/customers,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
+POST,/accounts/customers,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,user_not_found,,The user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,user_attributes_external_id_not_match,"ユーザー属性情報の外部IDが一致しません",Not match external id of user attributes
+,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,account_can_not_create,"このマネーに新規アカウントを作る事は出来ません",Can not create an account with this money
+PATCH,/accounts/:uuid/customers,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/accounts/shops,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
+GET,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+PATCH,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
+DELETE,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,account_not_pre_closed,"アカウントが退会準備中ではありません",The account is not pre-closed
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/accounts/:uuid/balances,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+GET,/accounts/:uuid/expired-balances,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+GET,/accounts/:uuid/transfers/summary,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+GET,/users/:uuid/accounts,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+GET,/cashtrays/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+DELETE,/cashtrays/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,422,cashtray_already_proceed,"この決済QRコードは既に処理されています",Cashtray is already proceed
+,,422,cashtray_expired,"この決済QRコードは有効期限が切れています",Cashtray is expired
+,,422,cashtray_already_canceled,"この決済QRコードは既に無効化されています",Cashtray is already canceled
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+POST,/cashtrays,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+PATCH,/cashtrays/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,422,cashtray_already_proceed,"この決済QRコードは既に処理されています",Cashtray is already proceed
+,,422,cashtray_expired,"この決済QRコードは有効期限が切れています",Cashtray is expired
+,,422,cashtray_already_canceled,"この決済QRコードは既に無効化されています",Cashtray is already canceled
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+GET,/cpm/:cpm-token,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,cpm_token_not_found,"CPMトークンが見つかりませんでした。",The CPM token is not found.
+GET,/seven-bank-atm-sessions/:qr-info,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+PATCH,/seven-bank-atm-sessions/:qr-info,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+POST,/campaigns,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,campaign_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
+,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,campaign_period_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
+,,422,campaign_invalid_period,,Invalid campaign period starts_at later than ends_at
+GET,/campaigns,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+PATCH,/campaigns/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,campaign_budget_caps_exceeded,"キャンペーン予算上限額を越えています",The campaign budget caps exceeded
+GET,/campaigns/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+POST,/webhooks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,409,organization_worker_task_finish_webhook_conflict,"そのwebhookは既に登録されています",The webhook is already registered
+GET,/webhooks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+PATCH,/webhooks/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,409,organization_worker_task_finish_webhook_conflict,"そのwebhookは既に登録されています",The webhook is already registered
+,,503,temporarily_unavailable,,Service Unavailable
+DELETE,/webhooks/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
+GET,/coupons,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
+POST,/coupons,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,partner_storage_not_found,"指定したIDのデータは保存されていません",Not found by storage_id
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
+,,422,coupon_image_storage_conflict,"クーポン画像のストレージIDは既に存在します",The coupon image storage_id is already exists
+GET,/coupons/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+PATCH,/coupons/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,partner_storage_not_found,"指定したIDのデータは保存されていません",Not found by storage_id
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,coupon_image_storage_conflict,"クーポン画像のストレージIDは既に存在します",The coupon image storage_id is already exists
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/storage/v1,400,partner_decryption_failed,"リクエスト中の暗号データを復号化することができませんでした。",Could not decrypt the data.
+,,400,partner_client_not_found,"partner_clientが見つかりません。",The partner client is not found.
+,,422,formats_not_supported_by_storage,"このフォーマットは対応していません",This format is not supported
+POST,/user-devices,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,user_not_found,,The user is not found
+GET,/user-devices/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,user_device_not_found,,The user-device not found
+POST,/user-devices/:uuid/activate,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,user_device_not_found,,The user-device not found
+POST,/user-devices/:uuid/banks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,403,forbidden,,Forbidden
+,,422,user_device_is_disabled,"このデバイスは無効化されています",The user-device is disabled
+,,422,user_device_not_found,,The user-device not found
+,,422,bank_registration_limit_error,"8口座を越えて登録できません",Can not register more than 8 accounts.
+,,422,private_money_not_found,,Private money not found
+,,422,paytree_disabled_private_money,"このマネーは銀行から引き落とし出来ません",This money cannot be charged from the bank
+,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
+,,503,incomplete_configration_for_organization_bank,"現状、このマネーは銀行からのチャージを行えません。システム管理者へお問合せ下さい","Currently, this money cannot be topup from this bank. Please contact your system administrator."
+GET,/user-devices/:uuid/banks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,403,forbidden,,Forbidden
+,,422,private_money_not_found,,Private money not found
+,,422,user_device_not_found,,The user-device not found
+POST,/user-devices/:uuid/banks/topup,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,403,forbidden,,Forbidden
+,,403,user_bank_disabled_error,"現在、このユーザーは銀行からのチャージは利用できません",Topup from this user's bank have now been stopped.
+,,404,user_bank_not_found,"登録された銀行が見つかりません",Bank not found
+,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+,,422,private_money_not_found,,Private money not found
+,,422,user_device_is_disabled,"このデバイスは無効化されています",The user-device is disabled
+,,422,user_device_not_found,,The user-device not found
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,,The shop account is not found
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,paytree_disabled_private_money,"このマネーは銀行から引き落とし出来ません",This money cannot be charged from the bank
+,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
+,,503,paytree_request_failure,"銀行口座の残高不足または、銀行の外部サービス起因により、チャージに失敗しました",Failure to topup due to external services of the bank
+,,503,temporarily_unavailable,,Service Unavailable
+,,503,incomplete_configration_for_organization_bank,"現状、このマネーは銀行からのチャージを行えません。システム管理者へお問合せ下さい","Currently, this money cannot be topup from this bank. Please contact your system administrator."
