@@ -39,7 +39,7 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'upper_limit_amount' => 3996,
+                'upper_limit_amount' => 4292,
                 'is_disabled' => TRUE
             ]
         );
@@ -57,9 +57,9 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'lower_limit_amount' => 9948,
-                'upper_limit_amount' => 9540,
-                'is_disabled' => TRUE
+                'lower_limit_amount' => 9614,
+                'upper_limit_amount' => 2895,
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -76,10 +76,10 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'shop_id' => "d596c138-f577-4417-84b0-b454c17f6125",
-                'lower_limit_amount' => 387,
-                'upper_limit_amount' => 2392,
-                'is_disabled' => TRUE
+                'shop_id' => "36d226a8-ef48-4efc-a985-655891530765",
+                'lower_limit_amount' => 2398,
+                'upper_limit_amount' => 5490,
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -96,10 +96,10 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'shop_name' => "AwbYoIveuOWNz55UcSSl8lGzueuvJgXARAQrLzMUPoRJABgAfunP4CQPGE6uFjikMywLfdPQOnKd57D7Dbs76e4SgXWeYTMkVgw9ImEdzHfkLGLS2Y30mybaRki05",
-                'shop_id' => "6ab9421e-567d-4b57-afd1-f819babb8fe6",
-                'lower_limit_amount' => 9118,
-                'upper_limit_amount' => 1173,
+                'shop_name' => "mNCchRvQIE2L4CaVcTYJ1U",
+                'shop_id' => "d45d833d-bf13-421f-ba22-4d958d0ce507",
+                'lower_limit_amount' => 5402,
+                'upper_limit_amount' => 950,
                 'is_disabled' => TRUE
             ]
         );
@@ -117,11 +117,11 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'created_to' => "2021-09-04T18:16:33.000000+09:00",
-                'shop_name' => "wCc9LCZ7C83L4qquXmtfpYHXBMw4CmD3iKYRNZbhWLZKqjgpm3R9r7hQqMu82q7czV3hWB4N7U76i9WMakBHYQwuPL",
-                'shop_id' => "3b5ccf8f-48f7-4c2a-b4c8-6aac0939ba8f",
-                'lower_limit_amount' => 6432,
-                'upper_limit_amount' => 454,
+                'created_to' => "2020-10-21T23:26:06.000000+09:00",
+                'shop_name' => "uyPnK2YBNe58Th2ANby0H3hGO2DnDi1aBAVufQfSU8a9heUT7NyopFGD9L4iGixiOPnGAgOK1uvieVHeByMJSi1FWmROYD0Gp9GQgGfgKt",
+                'shop_id' => "f8a8634d-58a6-4103-bde0-b70fcfed2664",
+                'lower_limit_amount' => 6184,
+                'upper_limit_amount' => 6694,
                 'is_disabled' => TRUE
             ]
         );
@@ -139,12 +139,12 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'created_from' => "2020-03-24T21:42:58.000000+09:00",
-                'created_to' => "2023-07-28T17:55:49.000000+09:00",
-                'shop_name' => "bPWyiflLn625BIbhyzxSbe5fwqxJBr6KLmOOh3WcEIWfXu4YNcSurT16fnQTxjtiU8qSnQv7IwYgTSO2eIHLe7QB8QQJuktcDnYegHk8OPQkxQU24p0znEFIp2pM1QimIf5A",
-                'shop_id' => "69a01ce2-3c66-45fa-953b-4c5adc8be043",
-                'lower_limit_amount' => 815,
-                'upper_limit_amount' => 1950,
+                'created_from' => "2024-02-11T03:37:28.000000+09:00",
+                'created_to' => "2020-02-03T01:38:48.000000+09:00",
+                'shop_name' => "n64klEHgG3kUtkEOmOH618GvlU0JyiaxQ35mRfn5oEQK2fWrTdGSPLa4uTWe4Yu6igqBZO2IxfJ1bhgQ5ApjetyFvprLmVndIaewvrnWZrQ0WcllSeAx37KjP",
+                'shop_id' => "dab94b64-ce6d-43b4-920b-2d1cc4205c72",
+                'lower_limit_amount' => 6181,
+                'upper_limit_amount' => 4815,
                 'is_disabled' => FALSE
             ]
         );
@@ -162,13 +162,13 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'description' => "vonoo29B7JMvI5FZt126j3sGZh201II9R6YV1VE4yVfuLi1IwOQB0wR6132YJ8apHSsFnRVMH9KFAVyl3WC4ppfIwX02VNe4owz5LWOudegPltXzUQq3qYb25F",
-                'created_from' => "2020-02-15T07:29:02.000000+09:00",
-                'created_to' => "2021-11-11T20:03:41.000000+09:00",
-                'shop_name' => "SZIIs5E0EPbCfxyV5efYnt6xqz4t6hdEiDcgZLlTY86HUeN3QzdfLVtcnZZJFQGHkTv9Hv2xaZS5MEhN5OcngsVsw4ppTCfDoZSnClUeplIHeSRGoWr1QWyXisccfi6IpvEiWujYUIsguMYqQcxdEjL1jS2KAFsqgd5mpUXqZZM067Kg9wFupOzECB7KIlMDwlXveyi7Ys9g1OYsdM1E8RGCyY8UBm68zADdb6mv",
-                'shop_id' => "7844caeb-3856-438f-bdc1-8b70aa1075e3",
-                'lower_limit_amount' => 4400,
-                'upper_limit_amount' => 527,
+                'description' => "hsnNxazPo2E3lF7yeASkNhg6Idcru36jWHrZz6cmlZO2q0ThUx0lAoXuEXeIvKnPVSdBcdJSf7HumQNnLDpJDFSGOJGhi79fZJNXzpqVQwnIaVAxFXEtWxmUU",
+                'created_from' => "2021-05-18T01:32:10.000000+09:00",
+                'created_to' => "2021-06-02T21:13:09.000000+09:00",
+                'shop_name' => "oJEb00ixvkvvvID0CPHWd1MFTOZSFSLLS7bz6Ur0uKJUYIFrwYNQx6c71KDMPHS1idVCik7ofL1npeh1amO1dp2y9DuXLAliQCxkO1ox5X00b3WWtzCMLgBo3OSbIRjBUrVbyoPNenSH912PhAhJzzFAANOZmbWhSIsdKXdWu44ydIX7tBnYxkHuD",
+                'shop_id' => "9cace83a-661c-41a1-8b66-6586d2484e3a",
+                'lower_limit_amount' => 566,
+                'upper_limit_amount' => 5523,
                 'is_disabled' => FALSE
             ]
         );
@@ -186,15 +186,15 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'organization_code' => "V",
-                'description' => "Gx40DbDWUERDSuXHRdlyxUoQdYwwfEYFrBOw3DX39pcD8RACl74yDoeYdPNTHBinKjzBtIN12qbKgjDqiLMlAHZOfU5uqSyk9E4xIm004ufQLBEN9Iyx5TrGdQdyTsMnaqokvnjh5l",
-                'created_from' => "2023-12-23T16:40:00.000000+09:00",
-                'created_to' => "2020-08-19T15:55:22.000000+09:00",
-                'shop_name' => "EIhmBliZvJlZBX4mHN628myOtikKDRTfPPfzg2huvHkLNG9wHHFGULJxyTT",
-                'shop_id' => "2d528510-ebd4-401a-aa53-df7ba9bd9dc4",
-                'lower_limit_amount' => 5430,
-                'upper_limit_amount' => 7395,
-                'is_disabled' => TRUE
+                'organization_code' => "w1-7-00I4-1-",
+                'description' => "utGMc18iUh9EZwdo8ecMN4N0vJWdtACqKT3EoloTZ7QknmUhm1s3DWcpi750p8TDXrXBjhOVbu9ONdu",
+                'created_from' => "2023-11-02T09:21:36.000000+09:00",
+                'created_to' => "2020-08-19T03:38:01.000000+09:00",
+                'shop_name' => "SxoywJZXy3ivSDcADrqMNd5AecFo0IcD4agW3MXZOwbARm7sWWFAfVcKAmga8F8qwbqyG4axgmo6dxkxT6iwgiQxJjCgpWqaNyqBkro4eZt9pDzmhOvqznuxtEubYpYW4kw8nj9j0bj33FKVY",
+                'shop_id' => "a339843f-6a2e-4470-ae71-b9facefd4ed7",
+                'lower_limit_amount' => 9514,
+                'upper_limit_amount' => 8543,
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -211,16 +211,16 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'private_money_id' => "70d24975-ddca-4598-a4c9-90f35d38b2fe",
-                'organization_code' => "--d1",
-                'description' => "btoMjgxczzxQB4cNW9d2iBsZ",
-                'created_from' => "2023-12-17T23:03:58.000000+09:00",
-                'created_to' => "2021-07-25T17:12:28.000000+09:00",
-                'shop_name' => "TVaBNcJmnxgQzA1cmrvBt5Y1FIJavmyW798hiL97cEOYpbQGD6y4DHGIi5DtZav5zFhZgxR2BJ45Ngjnfu9HYEU8WNwzq",
-                'shop_id' => "1080456b-9ee6-49e8-af88-1fdd3b2f4ffa",
-                'lower_limit_amount' => 388,
-                'upper_limit_amount' => 159,
-                'is_disabled' => FALSE
+                'private_money_id' => "d211b1a3-831c-49b5-906d-92f82b07ec39",
+                'organization_code' => "-8Xk-e5-A3D-5k-qB-M1-j",
+                'description' => "CU8PcWr2",
+                'created_from' => "2020-09-18T11:47:33.000000+09:00",
+                'created_to' => "2023-05-21T18:45:21.000000+09:00",
+                'shop_name' => "FrjZNnu0jOEJCEbBpGHjBvZQop5vQWVVil9v9cssI1JiFvpAnstbeNwrlARtrETwx3Mcm9JDjejqNeXpNakcKRUl92KzzV3i9PNgVX6ySc0KTuf281MXlgE5cFZMiB3cJzvc1yYdiZuH8IntWqxZSiGmXctEIyEtW6hG3ZtsYJr70sguwXvBVUkvV5oL7OE0EzOQBlqCKf05ch6TvsAPgRMbyYMNFo",
+                'shop_id' => "6f0c5cd1-dc74-4c08-9e59-85e84879a504",
+                'lower_limit_amount' => 1795,
+                'upper_limit_amount' => 9886,
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -237,16 +237,16 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'bill_id' => "Vr",
-                'private_money_id' => "705fb96f-75c6-4ec5-9bf2-7e2b0ccb140d",
-                'organization_code' => "3Sph73pZC9-Z",
-                'description' => "zyJke8wH4f5p4FioC6hVmssJBZ5KjXblRSJkv6CI1C2JY2Ys2De6m3FRNbPPkkfVq5MMWy1XRor4SKngEO24299nWhrei2iOYGNtwezIrNxS5H5dD3zetw0ss3RyAE9ntYcawEBBUI8t0VNV5Zpa8ATXYFaUFbNqmIt",
-                'created_from' => "2021-01-22T14:13:31.000000+09:00",
-                'created_to' => "2021-05-16T09:52:38.000000+09:00",
-                'shop_name' => "OyV0CoNPkYFMcZTHLtjfYc4MQnumeNepoNVbge1PpOLkP8jLhqUiKP6t0gVXHn9YpSXwdVI51LkAfkNXc58E40Rm4",
-                'shop_id' => "3ea37f07-2584-4d89-b69b-6745e6a68bb9",
-                'lower_limit_amount' => 2112,
-                'upper_limit_amount' => 2591,
+                'bill_id' => "7p4MPGdic4",
+                'private_money_id' => "7e2f008f-5f69-4011-960d-1a0398d0ab9a",
+                'organization_code' => "123a6A--E6BS6T---",
+                'description' => "LTyc0qzd1bpnMyhYtChN3r2JZVJXLgOzNEmTrQ7",
+                'created_from' => "2023-04-01T23:54:03.000000+09:00",
+                'created_to' => "2022-02-22T00:26:06.000000+09:00",
+                'shop_name' => "CChykQ",
+                'shop_id' => "56d2418c-10fd-463c-a2eb-a01ac47ecaa0",
+                'lower_limit_amount' => 8961,
+                'upper_limit_amount' => 7886,
                 'is_disabled' => TRUE
             ]
         );
@@ -264,17 +264,17 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'per_page' => 5594,
-                'bill_id' => "NPXsOP7sf",
-                'private_money_id' => "33ad7d8b-b1e3-4f46-a83c-fd364f8248af",
-                'organization_code' => "",
-                'description' => "vwgVS0sUYZfm0vW07qWBNi72C89j6VxSSEfntGB3VEhzvfBtRSg2UxGH5pa7lDaKh3tQu9Rh",
-                'created_from' => "2020-05-20T01:29:15.000000+09:00",
-                'created_to' => "2023-02-07T20:51:33.000000+09:00",
-                'shop_name' => "T5ZR4bBCwUooBETOL1Aqu89Od0rbXc2tNpIaBMJZJgli0YZfYqyQjVdj1zAi3GOuMHiJNrNvxFCxfzFdcKc8Cr3BCWud80d88qifznDAMu6dwhJFvAEuzm8Pq52WpVOVVaXLO6APYKijcWTZQ0Zg36llI87fVSEn0VVxDt5wSBZ3AECr4kBSBpt",
-                'shop_id' => "c4689135-5771-4dd2-99a3-5b3497e32d4f",
-                'lower_limit_amount' => 6615,
-                'upper_limit_amount' => 1446,
+                'per_page' => 8719,
+                'bill_id' => "Gdi",
+                'private_money_id' => "d7a7c4db-8fd6-425b-9e97-42f0a11be5bb",
+                'organization_code' => "jFUNVu1Zu8Nydyl--4",
+                'description' => "2bJwGUoBypXSNEqb9xYUfVnYvlM12FPntyAyyXgd4aHfnTDpH1htkldLwxkiGRmZAShHb4NDDTcUXfCxaDs2tQuWfG53OwRQKwo9bF2JNLS9e5P0HQgrLCbq4mkWMyveF8EkN9S08JpJEbl49WNEF3dT",
+                'created_from' => "2023-01-29T10:52:44.000000+09:00",
+                'created_to' => "2023-07-25T08:58:05.000000+09:00",
+                'shop_name' => "cyRylUx9xCg56Dmqi9kCmTFg5VBI81TyUPXkjUitkJc",
+                'shop_id' => "7e7a703f-b0dc-4ccd-8ff4-af92dc37cb08",
+                'lower_limit_amount' => 5321,
+                'upper_limit_amount' => 1120,
                 'is_disabled' => TRUE
             ]
         );
@@ -292,19 +292,19 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'page' => 8226,
-                'per_page' => 1996,
-                'bill_id' => "OLvCtN",
-                'private_money_id' => "44643953-e060-4f01-b4de-237fa6b2238f",
-                'organization_code' => "W3V-dW-IP88j--21",
-                'description' => "JpN2mrr7UnfoNKV8qNF5aOfavjA1QuOHfUwfGrQY1s119Tyq1fi26FH21hnxvjlL3R8CYia6FCN5RqMiWqNnW44z7DNrPzL81Tm5OXMHY3W0Q0O69lM4rIDgb8v6dDevyD3wfoY3HcBtDsuH2mDRb7JroDDumjAV0FWLnA5EgKN7AtJ7o1hqE",
-                'created_from' => "2022-11-14T04:01:02.000000+09:00",
-                'created_to' => "2022-12-15T18:47:34.000000+09:00",
-                'shop_name' => "V95nQLowhJke2PbTdTbYxhHf5dr5wiEGin3VM1tjZ24bOIlItnLoeEm9DStGboKdKKQmDXVxXjiu5V6RvbHv3j9oyqS6xLrv6xjeZHmq6xhlJ3K6y",
-                'shop_id' => "b04ee0f2-1049-4c93-ba9a-215ded3176c6",
-                'lower_limit_amount' => 983,
-                'upper_limit_amount' => 5879,
-                'is_disabled' => FALSE
+                'page' => 771,
+                'per_page' => 7062,
+                'bill_id' => "wcj1F",
+                'private_money_id' => "34baf4af-d816-4d45-9d6d-efb2a041d139",
+                'organization_code' => "--0NlM-",
+                'description' => "EGmGIOu67PwK1d8YqM",
+                'created_from' => "2021-11-29T06:06:25.000000+09:00",
+                'created_to' => "2021-03-23T04:09:53.000000+09:00",
+                'shop_name' => "64nV6CaoB0uBtmVOeHe3JSE0cThVagQpbuSbuXqeyT2UjMATPKDrp81hEGvD0tereaaOwKF0Obim8cRIFgFUUUcrQ3NkbWvGaSESHgJEnBdondQoiJToSs1pyr4Zf9PoiC3i03KTBjCjvFVOjlc4LW3dKG6hfV6jSWJ8ET671VYzGSizmvcvP2X19O9Pbs8ZmpXPFFitq0snr83l0ywgO54",
+                'shop_id' => "94135fe0-aac9-49c7-9bb8-a890e428fee6",
+                'lower_limit_amount' => 8552,
+                'upper_limit_amount' => 9379,
+                'is_disabled' => TRUE
             ]
         );
         try {

@@ -71,8 +71,8 @@ $request = new Request\GetPrivateMoneys(
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2020-03-29T13:01:01.000000+09:00", // 開始日時(toと同時に指定する必要有)
-        'to' => "2021-10-14T23:36:53.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'from' => "2021-01-26T16:20:47.000000+09:00", // 開始日時(toと同時に指定する必要有)
+        'to' => "2023-11-06T14:05:15.000000+09:00", // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -155,8 +155,8 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 $request = new Request\GetPrivateMoneySummary(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2024-02-06T14:39:28.000000+09:00", // 開始日時
-        'to' => "2022-02-16T09:21:53.000000+09:00" // 終了日時
+        'from' => "2021-02-04T02:29:24.000000+09:00", // 開始日時
+        'to' => "2021-04-18T03:50:43.000000+09:00" // 終了日時
     ]
 );
 ```

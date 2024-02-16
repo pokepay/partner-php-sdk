@@ -8,10 +8,10 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "fd0b6e38-028f-4907-bc10-93e0a357dba8",
-            "7c7f67fe-c845-4916-a875-368459247c7b",
-            "8cd49678-0d12-4d4c-92f5-86cac56619a7",
-            1200
+            "a7ce657c-f8cb-4268-8818-8608d66e6829",
+            "d3cbb6bd-cd61-4670-9a94-e9d5b5d6786c",
+            "6f0de247-eccb-4836-ae41-12e4f3c645be",
+            5311
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "fd0b6e38-028f-4907-bc10-93e0a357dba8",
-            "7c7f67fe-c845-4916-a875-368459247c7b",
-            "8cd49678-0d12-4d4c-92f5-86cac56619a7",
-            1200,
+            "a7ce657c-f8cb-4268-8818-8608d66e6829",
+            "d3cbb6bd-cd61-4670-9a94-e9d5b5d6786c",
+            "6f0de247-eccb-4836-ae41-12e4f3c645be",
+            5311,
             [
-                'request_id' => "579eeac7-2efc-4865-b2a3-876fcac4d67a"
+                'request_id' => "35f081db-78d6-4a53-a675-5411ed447d22"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "fd0b6e38-028f-4907-bc10-93e0a357dba8",
-            "7c7f67fe-c845-4916-a875-368459247c7b",
-            "8cd49678-0d12-4d4c-92f5-86cac56619a7",
-            1200,
+            "a7ce657c-f8cb-4268-8818-8608d66e6829",
+            "d3cbb6bd-cd61-4670-9a94-e9d5b5d6786c",
+            "6f0de247-eccb-4836-ae41-12e4f3c645be",
+            5311,
             [
-                'description' => "OkBm5gGWlF4HXR4PVPmGwRT62STGf6pwIdD1fPTyzR5SDsUJGy1NDKM3Q4KoVy0L9pXDMgyKLPzeeuz9D7HNUqDfAmpMIs3QBH67kbG063uSe7vP6kx16SGlK47t8LDx8fQb19iNCe07J0pl9C",
-                'request_id' => "e9a4debd-b39a-4054-8920-9f6fcc606368"
+                'description' => "NRvkQDqQyfbYx3gZkoJmFbE7IwGQAXumt4TYBnTYocgLaCvNLdfQm2C877PZfFXFvMCPfX4FUbJ7Z0wLyp",
+                'request_id' => "dc5bfc98-f6e1-4caf-a6cc-58b0b58e92f5"
             ]
         );
         try {

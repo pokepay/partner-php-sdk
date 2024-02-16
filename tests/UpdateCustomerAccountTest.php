@@ -8,7 +8,7 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "43714e35-4e69-442b-9614-cfbe0b56065f"
+            "2d3ad674-3dae-4f56-bbd8-f02075023b95"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "43714e35-4e69-442b-9614-cfbe0b56065f",
+            "2d3ad674-3dae-4f56-bbd8-f02075023b95",
             [
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
@@ -41,9 +41,9 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "43714e35-4e69-442b-9614-cfbe0b56065f",
+            "2d3ad674-3dae-4f56-bbd8-f02075023b95",
             [
-                'external_id' => "pi9sRFfIml3aYSt3lpRaxglgDgXt4Q1YY5",
+                'external_id' => "AFjGW4lKSROU2q4u3DqBL9oyShV23oUr27pkotF",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
@@ -60,10 +60,10 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "43714e35-4e69-442b-9614-cfbe0b56065f",
+            "2d3ad674-3dae-4f56-bbd8-f02075023b95",
             [
-                'account_name' => "fWlN5IEcyvL9OdFiSRfpsKvPQzGbA6g2YR2hQwUokjq4CNqWm4wU2XWZICwiX8Vu8XTvPlsafW3tZSHCvl1FWSv5xufJiRfxQTxfgN8Ey8uf2vig2tww3AigGthsy9FDSMyBr7l5UWRt05EJZwR4APkXF8jZEmpaplXHrhF465A00Gz1MCpPYG",
-                'external_id' => "LGIfkJkalVwd3AiZaxy5MrE5oHjCODqondVQ",
+                'account_name' => "8hA563nGqqMF0wC8OHgo0Dt1hf7L50I1ibMaSfSqpMmVsg1QoQlG5nhrhldy9prkAsFXQAcPbOinGKYQcLox7vDm72r4RbeZdFZUdSijhqYs4xkWRkjpPmtrBwkm05CZ0hfoUwFKxC7ZAHG7pURpDrHLfFAMu1f4oK6Su71Cb72w5X36QEQ4qb0bujAZYxdklznbNJ051LMCKaUxtHMG9ffate2ygPT6oLAXVXEz6CkKLCFtG4OQrwm",
+                'external_id' => "UAh",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
@@ -80,11 +80,11 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "43714e35-4e69-442b-9614-cfbe0b56065f",
+            "2d3ad674-3dae-4f56-bbd8-f02075023b95",
             [
-                'status' => "suspended",
-                'account_name' => "YUFHHnJRWWmhXoGSYECxwtZKIfQ26X0AxuvQLEW078N1",
-                'external_id' => "ZHbGcBAfb5h09hT0SwvP1DT4rS7F3fT9tBU",
+                'status' => "active",
+                'account_name' => "XgTDGCzz5QuzejCuQ6WJssMyE6an5McLtsa4ffyJBGqy0q0nuxMV9w5mJUuIoskWZ6Ai35ObwLgT3kCtgRnqnEGJ71oVwMq4H55VRHOTYOdPLLzjf2XDMFOwu1R08AmBs3eyZ9jRbtfMgqL4CYkbqjQPcvrzHqRGYf5bPTJ82eaXSgPnPlH",
+                'external_id' => "HmOcXlokuAWdL4kT58oAMWzXJzpTQT1MC6XWFLdA",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );

@@ -15,13 +15,13 @@ QRコードを読み取る方法以外にも、このURLリンクを直接スマ
 $request = new Request\CreateCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: 送金元の店舗アカウントID
     [
-        'money_amount' => 4124.0,                 // 付与マネー額
-        'point_amount' => 7382.0,                 // 付与ポイント額
+        'money_amount' => 5195.0,                 // 付与マネー額
+        'point_amount' => 4840.0,                 // 付与ポイント額
         'description' => "test check",            // 説明文(アプリ上で取引の説明文として表示される)
-        'is_onetime' => TRUE,                     // ワンタイムかどうかのフラグ
-        'usage_limit' => 2613,                    // ワンタイムでない場合の最大読み取り回数
-        'expires_at' => "2021-05-04T16:31:52.000000+09:00", // チャージQRコード自体の失効日時
-        'point_expires_at' => "2022-03-10T09:20:10.000000+09:00", // チャージQRコードによって付与されるポイント残高の有効期限
+        'is_onetime' => FALSE,                    // ワンタイムかどうかのフラグ
+        'usage_limit' => 9786,                    // ワンタイムでない場合の最大読み取り回数
+        'expires_at' => "2023-05-09T17:53:46.000000+09:00", // チャージQRコード自体の失効日時
+        'point_expires_at' => "2022-12-23T16:26:13.000000+09:00", // チャージQRコードによって付与されるポイント残高の有効期限
         'point_expires_in_days' => 60,            // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
         'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント額を負担する店舗のウォレットID
     ]
@@ -190,17 +190,17 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 ```PHP
 $request = new Request\ListChecks(
     [
-        'page' => 8654,                           // ページ番号
+        'page' => 9432,                           // ページ番号
         'per_page' => 50,                         // 1ページの表示数
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "cMzIF4UuT89SYgjMr27MmJBj2k7D", // 組織コード
-        'expires_from' => "2021-10-26T01:04:48.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_to' => "2020-06-25T08:17:20.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
-        'created_from' => "2023-01-16T11:22:07.000000+09:00", // 作成日時の期間によるフィルター(開始時点)
-        'created_to' => "2024-02-06T15:22:52.000000+09:00", // 作成日時の期間によるフィルター(終了時点)
+        'organization_code' => "4ljrqlYiW7c26LkUQTCMgUFdHuT", // 組織コード
+        'expires_from' => "2021-06-14T21:02:39.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_to' => "2020-01-05T10:54:34.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'created_from' => "2023-01-26T02:56:04.000000+09:00", // 作成日時の期間によるフィルター(開始時点)
+        'created_to' => "2023-11-06T19:50:10.000000+09:00", // 作成日時の期間によるフィルター(終了時点)
         'issuer_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 発行店舗ID
-        'description' => "M",                     // チャージQRコードの説明文
-        'is_onetime' => FALSE,                    // ワンタイムのチャージQRコードかどうか
+        'description' => "5Z",                    // チャージQRコードの説明文
+        'is_onetime' => TRUE,                     // ワンタイムのチャージQRコードかどうか
         'is_disabled' => TRUE                     // 無効化されたチャージQRコードかどうか
     ]
 );
@@ -423,16 +423,16 @@ $request = new Request\GetCheck(
 $request = new Request\UpdateCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // checkId: チャージQRコードのID
     [
-        'money_amount' => 3816.0,                 // 付与マネー額
-        'point_amount' => 8551.0,                 // 付与ポイント額
+        'money_amount' => 5673.0,                 // 付与マネー額
+        'point_amount' => 5704.0,                 // 付与ポイント額
         'description' => "test check",            // チャージQRコードの説明文
-        'is_onetime' => TRUE,                     // ワンタイムかどうかのフラグ
-        'usage_limit' => 9752,                    // ワンタイムでない場合の最大読み取り回数
-        'expires_at' => "2022-06-11T23:15:05.000000+09:00", // チャージQRコード自体の失効日時
-        'point_expires_at' => "2020-04-28T11:53:18.000000+09:00", // チャージQRコードによって付与されるポイント残高の有効期限
+        'is_onetime' => FALSE,                    // ワンタイムかどうかのフラグ
+        'usage_limit' => 9590,                    // ワンタイムでない場合の最大読み取り回数
+        'expires_at' => "2021-02-11T21:34:02.000000+09:00", // チャージQRコード自体の失効日時
+        'point_expires_at' => "2021-07-28T10:47:32.000000+09:00", // チャージQRコードによって付与されるポイント残高の有効期限
         'point_expires_in_days' => 60,            // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
         'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント額を負担する店舗のウォレットID
-        'is_disabled' => FALSE                    // 無効化されているかどうかのフラグ
+        'is_disabled' => TRUE                     // 無効化されているかどうかのフラグ
     ]
 );
 ```

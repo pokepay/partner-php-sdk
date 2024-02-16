@@ -34,6 +34,7 @@ tags:
   - name: Customer
   - name: Organization
   - name: Shop
+  - name: User
   - name: Account
   - name: Private Money
   - name: Bulk
@@ -1938,6 +1939,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
   /user:
     get:
+      tags:
+        - User
       responses:
         '200':
           description: OK
@@ -5778,6 +5781,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /bulk-transactions/{bulk_transaction_id}:
     get:
+      tags:
+        - Transaction
       summary: バルク取引ジョブの実行状況を取得する
       x-pokepay-operator-name: "GetBulkTransaction"
       x-pokepay-allow-server-side: true
@@ -5805,6 +5810,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /bulk-transactions/{bulk_transaction_id}/jobs:
     get:
+      tags:
+        - Transaction
       summary: バルク取引ジョブの詳細情報一覧を取得する
       x-pokepay-operator-name: "ListBulkTransactionJobs"
       x-pokepay-allow-server-side: true

@@ -8,18 +8,18 @@
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 1922,                           // ページ番号
-        'per_page' => 980,                        // 1ページの表示数
-        'bill_id' => "n7rEAcU6",                  // 支払いQRコードのID
+        'page' => 4811,                           // ページ番号
+        'per_page' => 13,                         // 1ページの表示数
+        'bill_id' => "J7WqMQWA",                  // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "-u8-edK-B71R6T",  // 組織コード
+        'organization_code' => "---f--tPS38a-Pa8uT-G327-Nf--", // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2022-03-15T12:19:43.000000+09:00", // 作成日時(起点)
-        'created_to' => "2020-05-22T06:12:15.000000+09:00", // 作成日時(終点)
+        'created_from' => "2023-02-13T13:40:27.000000+09:00", // 作成日時(起点)
+        'created_to' => "2021-10-24T01:47:14.000000+09:00", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 4346,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 5416,             // 金額の範囲によるフィルタ(上限)
+        'lower_limit_amount' => 8073,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 3453,             // 金額の範囲によるフィルタ(上限)
         'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
     ]
 );
@@ -208,7 +208,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 4948.0,                       // 支払い額
+        'amount' => 2199.0,                       // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -281,7 +281,7 @@ $request = new Request\CreateBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 1842.0,                       // 支払い額
+        'amount' => 5449.0,                       // 支払い額
         'description' => "test bill",             // 説明文
         'is_disabled' => TRUE                     // 無効化されているかどうか
     ]

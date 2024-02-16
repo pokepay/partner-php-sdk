@@ -1,4 +1,21 @@
 # Responses
+<a name="admin-user-with-shops-and-private-moneys"></a>
+## AdminUserWithShopsAndPrivateMoneys
+* `id (string)`: 
+* `role (string)`: 
+* `email (string)`: 
+* `name (string)`: 
+* `isActive (boolean)`: 
+* `organization (Organization)`: 
+* `shops (User[])`: 
+* `privateMoneys (PrivateMoney[])`: 
+
+`organization`は [Organization](#organization) オブジェクトを返します。
+
+`shops`は [User](#user) オブジェクトの配列を返します。
+
+`private-moneys`は [PrivateMoney](#private-money) オブジェクトの配列を返します。
+
 <a name="account-with-user"></a>
 ## AccountWithUser
 * `id (string)`: 
@@ -187,6 +204,16 @@
 * `errorLineno (integer|null)`: バルク取引のエラーが発生した行番号
 * `submittedAt (\DateTime)`: バルク取引が登録された日時
 * `updatedAt (\DateTime)`: バルク取引が更新された日時
+
+<a name="paginated-bulk-transaction-job"></a>
+## PaginatedBulkTransactionJob
+* `rows (BulkTransactionJob[])`: 
+* `count (integer)`: 
+* `pagination (Pagination)`: 
+
+`rows`は [BulkTransactionJob](#bulk-transaction-job) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
 
 <a name="external-transaction-detail"></a>
 ## ExternalTransactionDetail
@@ -586,6 +613,27 @@
 * `privateMoney (PrivateMoney)`: 設定マネー情報
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="bulk-transaction-job"></a>
+## BulkTransactionJob
+* `id (integer)`: 
+* `bulkTransaction (BulkTransaction)`: 
+* `type (string)`: 取引種別
+* `senderAccountId (string)`: 
+* `receiverAccountId (string)`: 
+* `moneyAmount (double)`: 
+* `pointAmount (double)`: 
+* `description (string)`: バルク取引ジョブ管理用の説明文
+* `bearPointAccountId (string)`: 
+* `pointExpiresAt (\DateTime|null)`: ポイント有効期限
+* `status (string)`: バルク取引ジョブの状態
+* `error (string|null)`: バルク取引のエラー種別
+* `lineno (integer|null)`: バルク取引のエラーが発生した行番号
+* `transactionId (string|null)`: 
+* `createdAt (\DateTime)`: バルク取引ジョブが登録された日時
+* `updatedAt (\DateTime)`: バルク取引ジョブが更新された日時
+
+`bulk_transaction`は [BulkTransaction](#bulk-transaction) オブジェクトを返します。
 
 <a name="private-money-organization-summary"></a>
 ## PrivateMoneyOrganizationSummary

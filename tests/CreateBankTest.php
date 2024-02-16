@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "e2613e4d-b0d5-45a8-8ae7-edc30e6aa1f6",
-            "2378b859-80a4-432e-bdd5-891eef7af850",
-            "GWSN7HO67h2N1MrWZJwfYONwKjp6exIycidChnfNnkHcwDk7CWjiZHQs9AMN2MXYNQzpQCMvjaFkDZjOgMh9Lnb3Z1LET8ZBSrnWolKqdc",
-            "PkcymgMZ3aM7"
+            "490277a3-b7a7-4f22-9c71-8161431950a4",
+            "0e073aa2-ba0f-4c44-b795-1ff81fce4dab",
+            "9IF8lyaARwfaDFO0tciAkc3KHpsjcgOiSK9UREsuaqoe3iURZ8xR7ttZ9BflW96xRzBfapoCFrPypFli3YVIjXKUJmGMYRIIHlJP2PNnovSah3BWriLbAJZBkkSlXfWVmbt5nuVbIP2haZ9QE15QfRjmWH7OIonZP83gFfkIpFPkxpCp2HLBWPemjqdRkOuVoHg6uZrTx3Bo8zB0bpAXnCVQvZdQJRnotbkRxQ86SdjpZXGBQy",
+            "NO1ryLmdu7p59o65NWtZHarji6AB6"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "e2613e4d-b0d5-45a8-8ae7-edc30e6aa1f6",
-            "2378b859-80a4-432e-bdd5-891eef7af850",
-            "GWSN7HO67h2N1MrWZJwfYONwKjp6exIycidChnfNnkHcwDk7CWjiZHQs9AMN2MXYNQzpQCMvjaFkDZjOgMh9Lnb3Z1LET8ZBSrnWolKqdc",
-            "PkcymgMZ3aM7",
+            "490277a3-b7a7-4f22-9c71-8161431950a4",
+            "0e073aa2-ba0f-4c44-b795-1ff81fce4dab",
+            "9IF8lyaARwfaDFO0tciAkc3KHpsjcgOiSK9UREsuaqoe3iURZ8xR7ttZ9BflW96xRzBfapoCFrPypFli3YVIjXKUJmGMYRIIHlJP2PNnovSah3BWriLbAJZBkkSlXfWVmbt5nuVbIP2haZ9QE15QfRjmWH7OIonZP83gFfkIpFPkxpCp2HLBWPemjqdRkOuVoHg6uZrTx3Bo8zB0bpAXnCVQvZdQJRnotbkRxQ86SdjpZXGBQy",
+            "NO1ryLmdu7p59o65NWtZHarji6AB6",
             [
-                'birthdate' => "qG1B"
+                'birthdate' => "s"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "e2613e4d-b0d5-45a8-8ae7-edc30e6aa1f6",
-            "2378b859-80a4-432e-bdd5-891eef7af850",
-            "GWSN7HO67h2N1MrWZJwfYONwKjp6exIycidChnfNnkHcwDk7CWjiZHQs9AMN2MXYNQzpQCMvjaFkDZjOgMh9Lnb3Z1LET8ZBSrnWolKqdc",
-            "PkcymgMZ3aM7",
+            "490277a3-b7a7-4f22-9c71-8161431950a4",
+            "0e073aa2-ba0f-4c44-b795-1ff81fce4dab",
+            "9IF8lyaARwfaDFO0tciAkc3KHpsjcgOiSK9UREsuaqoe3iURZ8xR7ttZ9BflW96xRzBfapoCFrPypFli3YVIjXKUJmGMYRIIHlJP2PNnovSah3BWriLbAJZBkkSlXfWVmbt5nuVbIP2haZ9QE15QfRjmWH7OIonZP83gFfkIpFPkxpCp2HLBWPemjqdRkOuVoHg6uZrTx3Bo8zB0bpAXnCVQvZdQJRnotbkRxQ86SdjpZXGBQy",
+            "NO1ryLmdu7p59o65NWtZHarji6AB6",
             [
-                'email' => "ZoNH7g1pev@zs3l.com",
-                'birthdate' => "RQ"
+                'email' => "YIlUvnESXL@HiX0.com",
+                'birthdate' => "11Mc9X"
             ]
         );
         try {

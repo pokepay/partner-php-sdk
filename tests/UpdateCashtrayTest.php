@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "10b5342f-652c-446e-8865-bbe7ceaa9e5c"
+            "8a6573cf-0ac3-448b-b6bd-c54610c72225"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "10b5342f-652c-446e-8865-bbe7ceaa9e5c",
+            "8a6573cf-0ac3-448b-b6bd-c54610c72225",
             [
-                'expires_in' => 5905
+                'expires_in' => 568
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "10b5342f-652c-446e-8865-bbe7ceaa9e5c",
+            "8a6573cf-0ac3-448b-b6bd-c54610c72225",
             [
-                'description' => "nH1F6bWsEUyGv3ilTDnpugekj7KWkTPtE2WpxWQfc13veibvNLZPUHoKi4opinAXyE3QW1V2ujVHNxW2jtEE4jtNiKM2Tpcn070Tpyz6EXYYha",
-                'expires_in' => 6304
+                'description' => "szpLBCzZvc5fG4zVEKVZy",
+                'expires_in' => 8305
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "10b5342f-652c-446e-8865-bbe7ceaa9e5c",
+            "8a6573cf-0ac3-448b-b6bd-c54610c72225",
             [
-                'amount' => 1769.0,
-                'description' => "XaCsmXK2zYzNryqMYz91FaygKz3tlaRsmjmBUxOxewUTxkNnRumL5ONiDenlZ7AMPc3zwNdlYAiU78EWXPW3EJWOkKDZ1yeMr2XUx689YNca2JfgM2vQSfdZZ35V32lacf4rbRUBi4gTwLq1rqQuaPQzrtJTYfsUqYUbTztU4ijusC2VsOTxCHzH4jsMooyjOAKRX",
-                'expires_in' => 1999
+                'amount' => 1716.0,
+                'description' => "tWo4jR5uhFDvrUflclBthpsqkvAEKN57T1aoo6WSzVvAZ7migUXefUaaZwXenmxWT8gqJwEZcMe8rTCQUwtBs4nIi",
+                'expires_in' => 6865
             ]
         );
         try {
