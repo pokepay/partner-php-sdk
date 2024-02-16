@@ -6,11 +6,11 @@ CSVファイルから一括取引をします。
 
 ```PHP
 $request = new Request\BulkCreateTransaction(
-    "SEKvNBsiLTmRsG1pcv",                         // name: 一括取引タスク名
-    "f",                                          // content: 取引する情報のCSV
-    "SNlMjgyCm3l36NNuyyweAXXanZiLS6lbj9JX",       // requestId: リクエストID
+    "U8t42VtyQp6X3sreR2rjvFYMuXvf",               // name: 一括取引タスク名
+    "gDaAo",                                      // content: 取引する情報のCSV
+    "w8vUsTTTTMZwlNoBcsMWPPGRf52AKdkKYeKl",       // requestId: リクエストID
     [
-        'description' => "VWEOjNWcJ8Pqob8ZBDc2LIkAJFpX3tMiPvkskrBs7cZNQht6pUXt6QkeG9pRp1c5EcN6nLJcb0NEcuMnzKSDbJDSeKRyRniwPaN0afN8mRVY0r2k", // 一括取引の説明
+        'description' => "VbOIFgOV4D4OUQFcME9TZhHQmmRCaf49aVarhKKutJMJVVzSpeZW5KuvocdgC4ItpEQ3F9nFFKDShol8Z5CgI", // 一括取引の説明
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // マネーID
     ]
 );

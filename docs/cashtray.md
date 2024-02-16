@@ -19,10 +19,10 @@ Cashtrayを作成します。
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    6869.0,                                       // amount: 金額
+    8714.0,                                       // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 3655                      // 失効時間(秒)
+        'expires_in' => 7822                      // 失効時間(秒)
     ]
 );
 ```
@@ -239,9 +239,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 5236.0,                       // 金額
+        'amount' => 8894.0,                       // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 6303                      // 失効時間(秒)
+        'expires_in' => 3376                      // 失効時間(秒)
     ]
 );
 ```

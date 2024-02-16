@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "e313491a-dd0b-41fe-acbc-31ffc78608e6",
-            "1d24ee19-477a-4162-a6f1-389da60ac0cb",
-            "nsG40wZo0RT90mTv9imeNiY62Bc0n5yxxXvKDa0c2v5NvERR1ovUoSMxuwois43hKOtAoX7opuae7lO58Ae6hTnrFSjbB1hiRjTNSU46DKPvyktKcWCyKm4tG2FzeWXxPN6RiMVhZmmGj0TMjPFLM0DLdwVX1nfPZtzGunVJbtCnsdFVcjFxpkr7nBijaa4uqZKlbpHQT4mZQDB6u1kMJt8otXLMwiqJK6MisPTXvJ9AP",
-            "WVf0nkI2cpiZrwht02dhTsSxNXBuh"
+            "e33bb56d-4d06-496d-806d-1d4740086498",
+            "beaebe56-8ece-4f5a-a19e-02928617948d",
+            "4ojpzpaL4FnJp6zyDadJ1sStlggTI7YOMAb9dk5tlMTtf3giQXXA63AYSJ5B7Hb2l230txEdY",
+            "G"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "e313491a-dd0b-41fe-acbc-31ffc78608e6",
-            "1d24ee19-477a-4162-a6f1-389da60ac0cb",
-            "nsG40wZo0RT90mTv9imeNiY62Bc0n5yxxXvKDa0c2v5NvERR1ovUoSMxuwois43hKOtAoX7opuae7lO58Ae6hTnrFSjbB1hiRjTNSU46DKPvyktKcWCyKm4tG2FzeWXxPN6RiMVhZmmGj0TMjPFLM0DLdwVX1nfPZtzGunVJbtCnsdFVcjFxpkr7nBijaa4uqZKlbpHQT4mZQDB6u1kMJt8otXLMwiqJK6MisPTXvJ9AP",
-            "WVf0nkI2cpiZrwht02dhTsSxNXBuh",
+            "e33bb56d-4d06-496d-806d-1d4740086498",
+            "beaebe56-8ece-4f5a-a19e-02928617948d",
+            "4ojpzpaL4FnJp6zyDadJ1sStlggTI7YOMAb9dk5tlMTtf3giQXXA63AYSJ5B7Hb2l230txEdY",
+            "G",
             [
-                'birthdate' => "AxPxL"
+                'birthdate' => "4WZfW"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "e313491a-dd0b-41fe-acbc-31ffc78608e6",
-            "1d24ee19-477a-4162-a6f1-389da60ac0cb",
-            "nsG40wZo0RT90mTv9imeNiY62Bc0n5yxxXvKDa0c2v5NvERR1ovUoSMxuwois43hKOtAoX7opuae7lO58Ae6hTnrFSjbB1hiRjTNSU46DKPvyktKcWCyKm4tG2FzeWXxPN6RiMVhZmmGj0TMjPFLM0DLdwVX1nfPZtzGunVJbtCnsdFVcjFxpkr7nBijaa4uqZKlbpHQT4mZQDB6u1kMJt8otXLMwiqJK6MisPTXvJ9AP",
-            "WVf0nkI2cpiZrwht02dhTsSxNXBuh",
+            "e33bb56d-4d06-496d-806d-1d4740086498",
+            "beaebe56-8ece-4f5a-a19e-02928617948d",
+            "4ojpzpaL4FnJp6zyDadJ1sStlggTI7YOMAb9dk5tlMTtf3giQXXA63AYSJ5B7Hb2l230txEdY",
+            "G",
             [
-                'email' => "gPF7PH9jsP@o3qR.com",
-                'birthdate' => "XC0"
+                'email' => "e7prIpg4qh@XSxK.com",
+                'birthdate' => "UW"
             ]
         );
         try {

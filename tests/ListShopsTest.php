@@ -22,7 +22,7 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'per_page' => 2642
+                'per_page' => 9701
             ]
         );
         try {
@@ -39,8 +39,8 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'page' => 7164,
-                'per_page' => 807
+                'page' => 9552,
+                'per_page' => 2182
             ]
         );
         try {
@@ -58,8 +58,8 @@ class ListShops extends TestCase
         $request = new Request\ListShops(
             [
                 'with_disabled' => TRUE,
-                'page' => 659,
-                'per_page' => 3135
+                'page' => 6888,
+                'per_page' => 6078
             ]
         );
         try {
@@ -76,10 +76,10 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'external_id' => "r7fsBnFuG56tOVY8vi9Z9lrbTG",
-                'with_disabled' => FALSE,
-                'page' => 2467,
-                'per_page' => 1897
+                'external_id' => "xILn3ZLQNFYMnZYXATzfvSAUqnF5sc5hx",
+                'with_disabled' => TRUE,
+                'page' => 4634,
+                'per_page' => 5730
             ]
         );
         try {
@@ -96,11 +96,11 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'email' => "4QbdPS2DfL@ew9j.com",
-                'external_id' => "cXjFRqAsdyU0E",
+                'email' => "D58Roj4ZzK@SiOg.com",
+                'external_id' => "eKeL0",
                 'with_disabled' => TRUE,
-                'page' => 6790,
-                'per_page' => 8997
+                'page' => 5853,
+                'per_page' => 7566
             ]
         );
         try {
@@ -117,12 +117,12 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'tel' => "0896-96-5661",
-                'email' => "09yrlyTlHc@xkp2.com",
-                'external_id' => "d",
+                'tel' => "066942066",
+                'email' => "9y5r1xPgqR@veTe.com",
+                'external_id' => "LJf0Lw8EA7nPi",
                 'with_disabled' => FALSE,
-                'page' => 3659,
-                'per_page' => 5040
+                'page' => 5362,
+                'per_page' => 1576
             ]
         );
         try {
@@ -139,13 +139,13 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'address' => "s83eoAqvgg01zZW75gRDgWRTNwobRsB1baR1aePdc9fGHLcwyelAg5Jr7zEeO7nUDqxXj74j643AIOVakyq8QHWKNric3MBQYWsKtvnxoQJLloM94TQVFchkaVLnKXq1JcpZfZUH2UsKCxnRcuSoLNAly4QR5kzfucn7LZFZwhy5RIJGwbFSZ2qU3L9frpqlrETgz3O9wlyQ0TWfR4Gx21zM",
-                'tel' => "091-03463",
-                'email' => "yAShBlCJPj@tVj6.com",
-                'external_id' => "A58jW2j8noWbhryHKQA",
-                'with_disabled' => TRUE,
-                'page' => 9827,
-                'per_page' => 1799
+                'address' => "kmjLTFRVf2UbtGitQsqmDTJqn3hjw3FEUdi6S9JaKFypIFwGVp46cd0LXYAWcqWGau4EiC1M90ZGQBuM6GFOH9KJ8E4EwNOgjvbWStPtuYi4g9EtWaqzkTQDkEjfHTSX0IpUD0Q0z8XNlF7pt3tQh51LHjFI3T5QOgWrpLW0NrHcbJvahW2xgF6aV701Kd8",
+                'tel' => "0414405",
+                'email' => "ixVmcZ8Rzs@S2qR.com",
+                'external_id' => "tJlogvb21hVbfiqLW92UebnknfwUns4VihSv",
+                'with_disabled' => FALSE,
+                'page' => 3238,
+                'per_page' => 4728
             ]
         );
         try {
@@ -162,14 +162,14 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'postal_code' => "362-6999",
-                'address' => "h2UeN7Z047tEp9MnaMKkPTTOh4KlFXKgtix",
-                'tel' => "006203-8111",
-                'email' => "0tz4EzkuhU@CHWp.com",
-                'external_id' => "5qyAYWUJWst1yIlHOt0",
+                'postal_code' => "712-3988",
+                'address' => "gaDVlMhHxpkdDn4jLog2u5kPcHcEQR6ZV9F2F9IvspgHfC0pl6Ua92W5DHUK79UTEbAuRHkmB1wWlDVaO3gBL96KyCymScNHe1YR2GDRkXyWezCW6sgPK1bBRBeMqF1aRfZ6xRs4uRXFbBtlT1WwapWUyWAUHcJWlMlEJ",
+                'tel' => "051302973334",
+                'email' => "sGkgB8RQ7f@zpHm.com",
+                'external_id' => "0mUOpbGy",
                 'with_disabled' => FALSE,
-                'page' => 4700,
-                'per_page' => 6417
+                'page' => 8397,
+                'per_page' => 6875
             ]
         );
         try {
@@ -186,15 +186,15 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'name' => "XiM6Qkur8SbZd3wcuCesxkTgeUlIAlQvL5t780R8L5VrLxzRQlVu0ZdkmHWdPUiVDqeHPcQVtlOjSB31Mxq8SXpxSHJRZi52y7KvoeklIR5ig74Fkbtbb0SlK2KbT8BQ8WxG",
-                'postal_code' => "0488969",
-                'address' => "0cuW1ZhxLtCHCm7yUfJm7Fg98YgjSKRGLQpNx8ciNrKweGJtnGqdSp90ci6D0iGddOVzLT6tirwJLurByrAGwszVwlQAuTXTWtKg2YB",
-                'tel' => "089081-725",
-                'email' => "VYsbDyysRi@sRQ9.com",
-                'external_id' => "ectqoj4yKOsEPCrpQPvSjUDltH57",
+                'name' => "asnsWEFnLkS2af",
+                'postal_code' => "520-5927",
+                'address' => "f0nZKZTTsxsstQarYzxYQ3YXGfzrKP7CC02aJP8LwcaVOkEjbyQkIe9YCDLFUjYRm7bayPmrSQwd53d7v7Njk3K2gVXUTl14rsCZMfGKYOO3NDIP7lvOnoU2xZ6zUeErTHpVh5KL4pCpIKEPNwQy",
+                'tel' => "0882-373155",
+                'email' => "dIZaJlQVwt@FGxc.com",
+                'external_id' => "jYWWQezx6kR2C89REZJHilgV2Vacs9dj",
                 'with_disabled' => TRUE,
-                'page' => 4251,
-                'per_page' => 1967
+                'page' => 8305,
+                'per_page' => 2244
             ]
         );
         try {
@@ -211,16 +211,16 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'private_money_id' => "0f619cdb-6882-4a79-b39c-6ac4d59ea4bf",
-                'name' => "pO4lTbJ9dqwKn5NSHIJ7mbc5qbOnYCYxA4AjI",
-                'postal_code' => "470-8763",
-                'address' => "tIsaCpt80GzH1FRWe6zLcwMHaeJGFXqwAY75stQD6SAh41fZii84vybd1Jsf0jR3rzbwtxyn2FAh1zUedGEpNztrZH4AytTHxVvHVgjPvTnTRbAGxJ",
-                'tel' => "0962274594",
-                'email' => "rH7Ml90Eeu@ZgaP.com",
-                'external_id' => "20pyyEjfyZnRCBHpzVqBZqNRFUo9BhqQxq",
-                'with_disabled' => FALSE,
-                'page' => 3137,
-                'per_page' => 6059
+                'private_money_id' => "39eca9a5-40d8-469a-a81a-b7a84d9478f4",
+                'name' => "UItvH8muDgY8DbOMbu7gFnDPSnUQweXRr1run6DnkuVql6jcyzsYAPsPeClkxnKs9WSIUIth688BPnEphd3VLop6g167dKcProumxR8Xpb0XbOsIlSayyzJAWB0fa3gn0ape9",
+                'postal_code' => "051-4085",
+                'address' => "TyLKVQsIENplKFiwpkCRcUNa3SOslnvxdZWZKCBsOaCYuPIiNTnhIqw78mGrDWR7d6UNqRB8qLIsoqz4xCDnIz2liezEqPLQMg1UzuA",
+                'tel' => "056688-7485",
+                'email' => "afacW1Huft@fQV3.com",
+                'external_id' => "Rf7h6UYpw",
+                'with_disabled' => TRUE,
+                'page' => 4533,
+                'per_page' => 6202
             ]
         );
         try {
@@ -237,17 +237,17 @@ class ListShops extends TestCase
         $client = $this->newClient();
         $request = new Request\ListShops(
             [
-                'organization_code' => "-325e-",
-                'private_money_id' => "1246ac4e-2bb0-4a00-9438-e8822439b330",
-                'name' => "aLvrKoRyTXgPVT4AzeoZEOYu",
-                'postal_code' => "5179201",
-                'address' => "lWwyCNVezTDDCUN00F2Vhn3XqmCSMDzeEDKcNHBIUBy90",
-                'tel' => "092612595",
-                'email' => "yLgJllatyS@0exo.com",
-                'external_id' => "ZwnX2Y3MjJVkSKFu78PD8Ns",
+                'organization_code' => "XjIp--fWuc--DoeWu-062",
+                'private_money_id' => "db52d076-60a7-4ed7-88a1-8be8eff25835",
+                'name' => "4lexWZFw5AeuN6ZJ6NMGxJb9JyxzwcUdIYcuYVsOh6qIfjJzZnkQ63VHVRcCocBcmEDi5b",
+                'postal_code' => "721-9405",
+                'address' => "kRZZsuWKVe3X6kAOXXna5VlHhKUU0rREtH1Cll2Eb0rLZQfWb5dGJNEKbZJb5z",
+                'tel' => "07-77-189",
+                'email' => "kRJBUSIWu1@TeJg.com",
+                'external_id' => "T3nwyE",
                 'with_disabled' => TRUE,
-                'page' => 177,
-                'per_page' => 5901
+                'page' => 9087,
+                'per_page' => 4625
             ]
         );
         try {

@@ -12,8 +12,8 @@ WebHookにはURLとタスク名、有効化されているかを設定するこ�
 
 ```PHP
 $request = new Request\CreateWebhook(
-    "bulk_shops",                                 // task: タスク名
-    "n8"                                          // url: URL
+    "process_user_stats_operation",               // task: タスク名
+    "bu0Jw"                                       // url: URL
 );
 ```
 
@@ -113,8 +113,8 @@ $request = new Request\ListWebhooks(
 $request = new Request\UpdateWebhook(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // webhookId: Webhook ID
     [
-        'url' => "B7l65",                         // URL
-        'is_active' => TRUE,                      // 有効/無効
+        'url' => "Qd3WDEJaSD",                    // URL
+        'is_active' => FALSE,                     // 有効/無効
         'task' => "process_user_stats_operation"  // タスク名
     ]
 );

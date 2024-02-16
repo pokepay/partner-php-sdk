@@ -8,8 +8,8 @@
 $request = new Request\ListUserAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     [
-        'page' => 4395,                           // ページ番号
-        'per_page' => 5442                        // 1ページ分の取引数
+        'page' => 1925,                           // ページ番号
+        'per_page' => 6362                        // 1ページ分の取引数
     ]
 );
 ```
@@ -74,8 +74,8 @@ $request = new Request\CreateUserAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'name' => "qWcD5ADFBSPh7o2MC5sMNAQhF0HCoj9Dj4ZpJqp2buSHK5WKI86hTWo47qb9nSKNBR3LjzCdQo4GwTY7y2Am8ZcyGh3BczuQ1HmAT4U7cCHORIBupKF2LGLWlWRqEU1R3HVfumJrkxA1RBhkJnrKn6T4", // ウォレット名
-        'external_id' => "UBYf7XzEp3cMOeoQItbJApNFN", // 外部ID
+        'name' => "uEi5vYJUD8gEZ12Jx0E0On80Cm37Y5ojakBIddZcsvGY5B6uIsJQ3GsQQKaCYR2UBguySF0CsAaGUbV7lsUbJIhzZTHJupCgSD0v1uQCTXkmzSPoucB8WmDgDjREEFmffbLTNxLqWxrNVRt7swt36REvVQvZ6rbQD71nYhyW2U33o9XzyRfU0RnfRrqWuvoFuoe8OLanNfa9xeRgTDc172x16OuulyC4TjFQg3c", // ウォレット名
+        'external_id' => "ZPdC2mOrWkfnXLAdP7V",   // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );

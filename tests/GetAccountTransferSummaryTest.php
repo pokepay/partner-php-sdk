@@ -8,7 +8,7 @@ class GetAccountTransferSummary extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetAccountTransferSummary(
-            "713aed7a-4b05-4a1c-a31a-855f6c9f8c13"
+            "2296689b-2026-40e9-b641-4bc2459ff5a3"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class GetAccountTransferSummary extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetAccountTransferSummary(
-            "713aed7a-4b05-4a1c-a31a-855f6c9f8c13",
+            "2296689b-2026-40e9-b641-4bc2459ff5a3",
             [
-                'transfer_types' => ["campaign-topup", "exchange-inflow", "payment", "refund-campaign", "exchange-outflow", "topup", "refund-coupon"]
+                'transfer_types' => ["refund-payment", "refund-exchange-inflow", "campaign-topup", "exchange-inflow", "refund-topup"]
             ]
         );
         try {
@@ -41,10 +41,10 @@ class GetAccountTransferSummary extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetAccountTransferSummary(
-            "713aed7a-4b05-4a1c-a31a-855f6c9f8c13",
+            "2296689b-2026-40e9-b641-4bc2459ff5a3",
             [
-                'to' => "2023-11-04T20:47:20.000000+09:00",
-                'transfer_types' => ["payment", "refund-topup", "exchange-outflow"]
+                'to' => "2022-06-23T05:52:00.000000+09:00",
+                'transfer_types' => ["refund-topup", "refund-exchange-inflow", "use-coupon", "refund-coupon"]
             ]
         );
         try {
@@ -60,11 +60,11 @@ class GetAccountTransferSummary extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetAccountTransferSummary(
-            "713aed7a-4b05-4a1c-a31a-855f6c9f8c13",
+            "2296689b-2026-40e9-b641-4bc2459ff5a3",
             [
-                'from' => "2022-01-16T08:50:16.000000+09:00",
-                'to' => "2020-04-03T14:19:44.000000+09:00",
-                'transfer_types' => ["payment", "refund-campaign"]
+                'from' => "2022-07-29T06:52:28.000000+09:00",
+                'to' => "2023-02-12T18:36:27.000000+09:00",
+                'transfer_types' => ["refund-payment", "campaign-topup", "topup", "refund-exchange-inflow", "refund-coupon", "exchange-inflow", "refund-topup", "refund-campaign", "payment", "exchange-outflow", "use-coupon", "refund-exchange-outflow"]
             ]
         );
         try {
