@@ -62,7 +62,7 @@ class ListCoupons extends TestCase
         $request = new Request\ListCoupons(
             "ce18681e-5c83-427d-b862-0de280711893",
             [
-                'available_to' => "2023-12-24T18:42:20.000000Z",
+                'available_to' => "2023-12-24T18:42:20.000000+09:00",
                 'page' => 369,
                 'per_page' => 1597
             ]
@@ -82,8 +82,8 @@ class ListCoupons extends TestCase
         $request = new Request\ListCoupons(
             "ce18681e-5c83-427d-b862-0de280711893",
             [
-                'available_from' => "2023-12-02T09:22:37.000000Z",
-                'available_to' => "2021-07-05T19:20:23.000000Z",
+                'available_from' => "2023-12-02T09:22:37.000000+09:00",
+                'available_to' => "2021-07-05T19:20:23.000000+09:00",
                 'page' => 804,
                 'per_page' => 537
             ]
@@ -104,8 +104,8 @@ class ListCoupons extends TestCase
             "ce18681e-5c83-427d-b862-0de280711893",
             [
                 'available_shop_name' => "NkX1wbt",
-                'available_from' => "2020-05-03T12:17:12.000000Z",
-                'available_to' => "2021-09-16T20:37:30.000000Z",
+                'available_from' => "2020-05-03T12:17:12.000000+09:00",
+                'available_to' => "2021-09-16T20:37:30.000000+09:00",
                 'page' => 7209,
                 'per_page' => 8097
             ]
@@ -127,8 +127,8 @@ class ListCoupons extends TestCase
             [
                 'issued_shop_name' => "h4XHkBbx",
                 'available_shop_name' => "0Rn",
-                'available_from' => "2021-05-10T03:01:31.000000Z",
-                'available_to' => "2020-05-26T09:28:44.000000Z",
+                'available_from' => "2021-05-10T03:01:31.000000+09:00",
+                'available_to' => "2020-05-26T09:28:44.000000+09:00",
                 'page' => 117,
                 'per_page' => 1374
             ]
@@ -151,8 +151,8 @@ class ListCoupons extends TestCase
                 'coupon_name' => "rGJS2N5S6E",
                 'issued_shop_name' => "EO5Bp0T",
                 'available_shop_name' => "aBrmndiCNx",
-                'available_from' => "2023-10-31T02:15:52.000000Z",
-                'available_to' => "2022-11-25T09:52:24.000000Z",
+                'available_from' => "2023-10-31T02:15:52.000000+09:00",
+                'available_to' => "2022-11-25T09:52:24.000000+09:00",
                 'page' => 5377,
                 'per_page' => 9080
             ]
@@ -176,8 +176,8 @@ class ListCoupons extends TestCase
                 'coupon_name' => "0YQCHz",
                 'issued_shop_name' => "OG8zcqkOx",
                 'available_shop_name' => "GcWZjjM6j3",
-                'available_from' => "2022-02-02T14:30:51.000000Z",
-                'available_to' => "2022-08-14T20:03:11.000000Z",
+                'available_from' => "2022-02-02T14:30:51.000000+09:00",
+                'available_to' => "2022-08-14T20:03:11.000000+09:00",
                 'page' => 5094,
                 'per_page' => 2991
             ]

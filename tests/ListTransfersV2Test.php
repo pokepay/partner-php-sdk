@@ -22,7 +22,7 @@ class ListTransfersV2 extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransfersV2(
             [
-                'to' => "2021-08-19T09:40:54.000000Z"
+                'to' => "2021-08-19T09:40:54.000000+09:00"
             ]
         );
         try {
@@ -39,8 +39,8 @@ class ListTransfersV2 extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransfersV2(
             [
-                'from' => "2021-06-29T12:37:03.000000Z",
-                'to' => "2021-12-08T00:35:28.000000Z"
+                'from' => "2021-06-29T12:37:03.000000+09:00",
+                'to' => "2021-12-08T00:35:28.000000+09:00"
             ]
         );
         try {
@@ -58,8 +58,8 @@ class ListTransfersV2 extends TestCase
         $request = new Request\ListTransfersV2(
             [
                 'description' => "yGfjAlvbOwBRftL3mTfJhTjDs9c8QNUGvnht1Uy",
-                'from' => "2023-05-04T18:11:47.000000Z",
-                'to' => "2021-03-13T04:02:07.000000Z"
+                'from' => "2023-05-04T18:11:47.000000+09:00",
+                'to' => "2021-03-13T04:02:07.000000+09:00"
             ]
         );
         try {
@@ -78,8 +78,8 @@ class ListTransfersV2 extends TestCase
             [
                 'transfer_types' => ["exchange"],
                 'description' => "e7Rve16qe5BUa3mrtCxkktMbdZ0Ff5nebRZC0vDYNEWMfxXSVHRY4YZdsEswklf9tWgAr9KxjsUzeefEvU98BI4BdtnYVFOF5IXA6lNw66Yqs62ry4",
-                'from' => "2020-06-04T08:56:37.000000Z",
-                'to' => "2020-09-02T23:21:56.000000Z"
+                'from' => "2020-06-04T08:56:37.000000+09:00",
+                'to' => "2020-09-02T23:21:56.000000+09:00"
             ]
         );
         try {
@@ -99,8 +99,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 297,
                 'transfer_types' => ["payment", "topup", "transfer", "exchange"],
                 'description' => "jBGi2vt3IVLujfoeXIyA6Ao821XE55hc29pv4sZBooZY5wA4Og2kdAYLVTxSOsaSs",
-                'from' => "2022-06-21T00:34:38.000000Z",
-                'to' => "2023-01-26T05:28:13.000000Z"
+                'from' => "2022-06-21T00:34:38.000000+09:00",
+                'to' => "2023-01-26T05:28:13.000000+09:00"
             ]
         );
         try {
@@ -121,8 +121,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 177,
                 'transfer_types' => ["campaign", "coupon"],
                 'description' => "UMFSIdEJMG98zC6otpSw3LnpbrPkZnNjPWO55U7DSfY3LgW5M2IvR52CgIBy3eLTys12HHDFFeqLoUtYmfM0XLYceQxhubY3",
-                'from' => "2022-01-05T07:30:06.000000Z",
-                'to' => "2022-09-20T11:11:38.000000Z"
+                'from' => "2022-01-05T07:30:06.000000+09:00",
+                'to' => "2022-09-20T11:11:38.000000+09:00"
             ]
         );
         try {
@@ -144,8 +144,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 677,
                 'transfer_types' => ["coupon", "topup", "payment", "campaign"],
                 'description' => "Hu2gIp7HlCgxYlFZzBuHZ8tjsh68ScZg3aAMErPcV9o0TcGJkIJgRMahTjY4B83KCbssdnciBK2yKUyBp",
-                'from' => "2021-12-11T01:14:52.000000Z",
-                'to' => "2023-07-19T13:57:18.000000Z"
+                'from' => "2021-12-11T01:14:52.000000+09:00",
+                'to' => "2023-07-19T13:57:18.000000+09:00"
             ]
         );
         try {
@@ -168,8 +168,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 496,
                 'transfer_types' => ["transfer", "exchange", "coupon", "cashback", "expire", "payment"],
                 'description' => "kH0DrThI9ndCARX9iZh",
-                'from' => "2023-04-15T01:18:56.000000Z",
-                'to' => "2020-06-27T04:09:49.000000Z"
+                'from' => "2023-04-15T01:18:56.000000+09:00",
+                'to' => "2020-06-27T04:09:49.000000+09:00"
             ]
         );
         try {
@@ -193,8 +193,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 351,
                 'transfer_types' => ["expire", "cashback"],
                 'description' => "iBxXbKWYhqIQcADAJhWFwASll2hGkEzja1NmQHCUA",
-                'from' => "2022-06-10T13:23:32.000000Z",
-                'to' => "2022-04-23T08:03:19.000000Z"
+                'from' => "2022-06-10T13:23:32.000000+09:00",
+                'to' => "2022-04-23T08:03:19.000000+09:00"
             ]
         );
         try {
@@ -219,8 +219,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 957,
                 'transfer_types' => ["topup", "expire"],
                 'description' => "0f2MmxJUnd92RrjDmsbpR1t9xme9U0GR2pRvNpULEoTr6H5p2Y5YBaOZdS1seolNILNbVpFGvZ3N4x3uvaLnbw12Ii4C82SzJJG4lODNS2Ij7U5b72UTWbjXGfzCmZ2vkYmrCrWwA7IkDmk9acr8tX9JQSHyiFoseHqYyK8GIOW0PGU45uzPdd0dJ",
-                'from' => "2023-02-21T18:00:02.000000Z",
-                'to' => "2020-05-02T07:51:01.000000Z"
+                'from' => "2023-02-21T18:00:02.000000+09:00",
+                'to' => "2020-05-02T07:51:01.000000+09:00"
             ]
         );
         try {
@@ -246,8 +246,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 185,
                 'transfer_types' => ["coupon", "cashback"],
                 'description' => "GpnYomE2cpD4cThkIOO2LW0e3G1sTmjjHcN57ZbAikJ2opGyr1ja3zumve771kQ7mwZnfGMQasC1yb1Dq2UL9Kx0jYk7sZRicOTg23f5GXrX6ozTzm0HG0TosxKz4jitwHtujKhwCFGwi",
-                'from' => "2021-12-13T09:20:57.000000Z",
-                'to' => "2022-07-11T16:53:15.000000Z"
+                'from' => "2021-12-13T09:20:57.000000+09:00",
+                'to' => "2022-07-11T16:53:15.000000+09:00"
             ]
         );
         try {
@@ -274,8 +274,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 109,
                 'transfer_types' => ["cashback", "topup", "payment", "expire", "exchange", "campaign"],
                 'description' => "yMV89HUL5OwvTmfkSpdcLQvsJQRiuvWpRkphzntqbTr2vHF1iF0Y7dBxe8hiTzwkLtzBfAa7kaQm6vUL",
-                'from' => "2020-04-15T05:25:39.000000Z",
-                'to' => "2023-08-01T18:44:38.000000Z"
+                'from' => "2020-04-15T05:25:39.000000+09:00",
+                'to' => "2023-08-01T18:44:38.000000+09:00"
             ]
         );
         try {
@@ -303,8 +303,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 838,
                 'transfer_types' => ["cashback", "topup", "exchange", "payment", "campaign"],
                 'description' => "mJsXraAGliEBPmHrH76ocsr7yZptwOIMGRxZLktLdV7uiWarFr5GP0wp4l70ZsGyPlyZYRURgUMf0P5o",
-                'from' => "2023-02-06T21:30:34.000000Z",
-                'to' => "2021-07-10T19:40:56.000000Z"
+                'from' => "2023-02-06T21:30:34.000000+09:00",
+                'to' => "2021-07-10T19:40:56.000000+09:00"
             ]
         );
         try {
@@ -333,8 +333,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 681,
                 'transfer_types' => ["coupon", "cashback"],
                 'description' => "he3TxnuKac7CS1DK4Gnrr3oBLGMXHrz9mqfRhRmUp8pN9pjtBKEK15Dd3XxCT0Zmu6u7tOxquneNatGolCf6SjeF7SeZXyMS6WkNJ2GvSwQUcruYP4H5cCw5ExNqh41OXXFwVmaHYw6oEFbK8qER1LlAIi5qYTqeIN9jftsBTkZDKCnQigIBcgyeHE0tecRrYBgXoYNa",
-                'from' => "2021-09-22T02:26:26.000000Z",
-                'to' => "2023-06-20T15:39:02.000000Z"
+                'from' => "2021-09-22T02:26:26.000000+09:00",
+                'to' => "2023-06-20T15:39:02.000000+09:00"
             ]
         );
         try {
@@ -364,8 +364,8 @@ class ListTransfersV2 extends TestCase
                 'per_page' => 921,
                 'transfer_types' => ["campaign", "cashback", "coupon"],
                 'description' => "TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sle88sl7rSWKN9oQjHsNX48VkSyiuzE1L2wv36YuE4jwp0IiR44I5KLiOrRKq3qxtTGifN6K",
-                'from' => "2023-04-01T18:42:52.000000Z",
-                'to' => "2022-12-31T00:33:54.000000Z"
+                'from' => "2023-04-01T18:42:52.000000+09:00",
+                'to' => "2022-12-31T00:33:54.000000+09:00"
             ]
         );
         try {

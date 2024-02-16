@@ -292,7 +292,7 @@ class ListTransfers extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransfers(
             [
-                'to' => "2022-04-04T13:09:11.000000Z",
+                'to' => "2022-04-04T13:09:11.000000+09:00",
                 'page' => 622,
                 'per_page' => 5213,
                 'shop_id' => "84ad7475-84bd-4aaa-9f30-bd4020d89d8a",
@@ -321,8 +321,8 @@ class ListTransfers extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransfers(
             [
-                'from' => "2021-06-05T17:48:04.000000Z",
-                'to' => "2020-12-26T02:42:27.000000Z",
+                'from' => "2021-06-05T17:48:04.000000+09:00",
+                'to' => "2020-12-26T02:42:27.000000+09:00",
                 'page' => 218,
                 'per_page' => 6793,
                 'shop_id' => "66729419-18d7-478c-8d83-149b011f45e1",

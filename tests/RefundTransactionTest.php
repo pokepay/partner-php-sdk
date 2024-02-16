@@ -25,7 +25,7 @@ class RefundTransaction extends TestCase
         $request = new Request\RefundTransaction(
             "2af43fc3-7bfd-4ed1-a6ec-b0d747bdc8f1",
             [
-                'returning_point_expires_at' => "2021-05-18T00:32:02.000000Z"
+                'returning_point_expires_at' => "2021-05-18T00:32:02.000000+09:00"
             ]
         );
         try {
@@ -44,7 +44,7 @@ class RefundTransaction extends TestCase
             "2af43fc3-7bfd-4ed1-a6ec-b0d747bdc8f1",
             [
                 'description' => "4VgtaT7nx9nCCSGOYqsqY3PQB7j8S1LcJM99jV6h5DQ4TL9sXbFiutZ4wFjGxBLsRpox6uXLc6he8Kxv6FPaZ8I6AxiybIUdjn2Jl",
-                'returning_point_expires_at' => "2021-08-12T02:32:59.000000Z"
+                'returning_point_expires_at' => "2021-08-12T02:32:59.000000+09:00"
             ]
         );
         try {

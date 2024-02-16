@@ -92,7 +92,7 @@ class CreateTopupTransaction extends TestCase
             "bd51d245-8c4b-4321-be4d-9459c0099b05",
             "6d4ad3a8-07fb-4773-aad2-cc8044238a66",
             [
-                'point_expires_at' => "2020-09-15T01:10:05.000000Z",
+                'point_expires_at' => "2020-09-15T01:10:05.000000+09:00",
                 'description' => "i5NIsblUeDquiQL8YRreNoLAWMJdywYSICtYcbHl2ktF16gpa54attROZcBbejZS9wdnnNKINI7vj8qEDPsdJ8J",
                 'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "3859c46b-1a83-4a4c-b64b-2e24d6c94e1d"
@@ -116,7 +116,7 @@ class CreateTopupTransaction extends TestCase
             "6d4ad3a8-07fb-4773-aad2-cc8044238a66",
             [
                 'point_amount' => 5478,
-                'point_expires_at' => "2021-01-21T20:23:24.000000Z",
+                'point_expires_at' => "2021-01-21T20:23:24.000000+09:00",
                 'description' => "UtzmymsdzvhUXmrc210VozYCz4wR9Gfv1ooHMcqzJF0zVNZ8zHF5mnetJol0g7uhhZVwBBSB9NQuG198o4cE8ye8xiCptr8X3OQ",
                 'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "b17cfe53-f624-4d0a-a77d-66734f88b581"
@@ -141,7 +141,7 @@ class CreateTopupTransaction extends TestCase
             [
                 'money_amount' => 4875,
                 'point_amount' => 5757,
-                'point_expires_at' => "2022-07-23T01:40:42.000000Z",
+                'point_expires_at' => "2022-07-23T01:40:42.000000+09:00",
                 'description' => "cvMVMzYpfEHHq4AVCPhpFJVl2NE9OohrFLhvABt92YjeNGkeRyZCxDwnyuzPdWfYw482S6oHFsZh9ksnqTSKQYaLtgBF21Mao0iMx72McbAtuQfbwPK5Ol2Udeu5ClBnNsqGtwvAjO8SQrjpTlUKU7ix6vD3BTnNcaIv4Cy2qiGNeSDJueWNAF2iLh",
                 'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "8c138815-f8eb-46c2-8330-e7b84bbc97ed"
@@ -167,7 +167,7 @@ class CreateTopupTransaction extends TestCase
                 'bear_point_shop_id' => "10405a8e-bc57-4118-816f-fc5d8281775d",
                 'money_amount' => 339,
                 'point_amount' => 7237,
-                'point_expires_at' => "2022-04-12T16:41:10.000000Z",
+                'point_expires_at' => "2022-04-12T16:41:10.000000+09:00",
                 'description' => "4Yfnz5e3bjXKldANGzSZe49qKV1rholLnfHAgpNJKDDEjuzSmETPUL6TDRxNm",
                 'metadata' => "{\"key\":\"value\"}",
                 'request_id' => "51ebc46a-bd9a-49dd-8bd7-5914be8dc5d0"

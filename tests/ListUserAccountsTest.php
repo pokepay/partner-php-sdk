@@ -8,7 +8,7 @@ class ListUserAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListUserAccounts(
-            "f7badafa-54a1-4511-b337-e4aa1c1fe652"
+            "c3851eee-c081-4e48-9428-8ce6203ac303"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListUserAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListUserAccounts(
-            "f7badafa-54a1-4511-b337-e4aa1c1fe652",
+            "c3851eee-c081-4e48-9428-8ce6203ac303",
             [
-                'per_page' => 5145
+                'per_page' => 4268
             ]
         );
         try {
@@ -41,10 +41,10 @@ class ListUserAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListUserAccounts(
-            "f7badafa-54a1-4511-b337-e4aa1c1fe652",
+            "c3851eee-c081-4e48-9428-8ce6203ac303",
             [
-                'page' => 7996,
-                'per_page' => 3122
+                'page' => 781,
+                'per_page' => 1290
             ]
         );
         try {

@@ -76,7 +76,7 @@ class ListTransactionsV2 extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactionsV2(
             [
-                'to' => "2022-06-12T16:45:46.000000Z",
+                'to' => "2022-06-12T16:45:46.000000+09:00",
                 'next_page_cursor_id' => "b59dafbc-912c-4bef-bb8d-474796f0ec41",
                 'prev_page_cursor_id' => "61cefb16-141f-40a0-a8bf-97792c4e46ec",
                 'per_page' => 369
@@ -96,8 +96,8 @@ class ListTransactionsV2 extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactionsV2(
             [
-                'from' => "2022-05-13T22:51:50.000000Z",
-                'to' => "2021-03-13T23:51:09.000000Z",
+                'from' => "2022-05-13T22:51:50.000000+09:00",
+                'to' => "2021-03-13T23:51:09.000000+09:00",
                 'next_page_cursor_id' => "fece7a94-33ac-43dd-8b1b-1ec60b163d4f",
                 'prev_page_cursor_id' => "4caa26ae-5ef7-4ec3-a49f-d4a4805d1b3f",
                 'per_page' => 831
@@ -118,8 +118,8 @@ class ListTransactionsV2 extends TestCase
         $request = new Request\ListTransactionsV2(
             [
                 'types' => ["exchange_outflow", "expire"],
-                'from' => "2023-05-12T04:41:04.000000Z",
-                'to' => "2021-06-07T00:06:19.000000Z",
+                'from' => "2023-05-12T04:41:04.000000+09:00",
+                'to' => "2021-06-07T00:06:19.000000+09:00",
                 'next_page_cursor_id' => "8cf2e07e-679f-4d8f-821f-65dac7d4c4e4",
                 'prev_page_cursor_id' => "f2538a72-d81e-4e67-9198-2d9d4a0aa3e8",
                 'per_page' => 442
@@ -141,8 +141,8 @@ class ListTransactionsV2 extends TestCase
             [
                 'is_modified' => TRUE,
                 'types' => ["topup", "cashback", "exchange_inflow", "payment"],
-                'from' => "2022-10-11T10:49:34.000000Z",
-                'to' => "2021-12-28T16:25:23.000000Z",
+                'from' => "2022-10-11T10:49:34.000000+09:00",
+                'to' => "2021-12-28T16:25:23.000000+09:00",
                 'next_page_cursor_id' => "cb3e846c-d7c4-41bb-a404-c55fc895efc2",
                 'prev_page_cursor_id' => "27a88a14-4475-4cbe-af24-ad0171a19d4a",
                 'per_page' => 645
@@ -165,8 +165,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "IFUr",
                 'is_modified' => FALSE,
                 'types' => ["cashback", "exchange_inflow", "topup"],
-                'from' => "2021-09-05T06:44:01.000000Z",
-                'to' => "2020-10-14T01:18:45.000000Z",
+                'from' => "2021-09-05T06:44:01.000000+09:00",
+                'to' => "2020-10-14T01:18:45.000000+09:00",
                 'next_page_cursor_id' => "6dd14e7e-5638-4902-81cb-a0185959ff6d",
                 'prev_page_cursor_id' => "e93949cf-e08a-46ce-bbd9-55031442dcd8",
                 'per_page' => 281
@@ -190,8 +190,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "GRNkAeSH",
                 'is_modified' => FALSE,
                 'types' => ["expire", "topup", "payment"],
-                'from' => "2020-05-01T18:04:20.000000Z",
-                'to' => "2021-09-07T23:55:30.000000Z",
+                'from' => "2020-05-01T18:04:20.000000+09:00",
+                'to' => "2021-09-07T23:55:30.000000+09:00",
                 'next_page_cursor_id' => "5fcd5437-265b-46d8-8081-5f3706143e05",
                 'prev_page_cursor_id' => "1a0a7af2-ad93-4e89-9e39-0928d69b0d5c",
                 'per_page' => 423
@@ -216,8 +216,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "mknLVk7hQO",
                 'is_modified' => FALSE,
                 'types' => ["exchange_outflow", "exchange_inflow", "cashback", "expire", "payment"],
-                'from' => "2020-12-02T05:29:29.000000Z",
-                'to' => "2022-02-09T17:20:58.000000Z",
+                'from' => "2020-12-02T05:29:29.000000+09:00",
+                'to' => "2022-02-09T17:20:58.000000+09:00",
                 'next_page_cursor_id' => "e5b630a8-6881-4a04-8d83-81465bf9cfa5",
                 'prev_page_cursor_id' => "bdbe4cff-86e8-422a-a0a9-f10b73fdd11b",
                 'per_page' => 827
@@ -243,8 +243,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "9bLFf",
                 'is_modified' => TRUE,
                 'types' => ["payment", "cashback", "topup", "exchange_inflow"],
-                'from' => "2022-09-13T20:18:07.000000Z",
-                'to' => "2023-09-26T20:31:25.000000Z",
+                'from' => "2022-09-13T20:18:07.000000+09:00",
+                'to' => "2023-09-26T20:31:25.000000+09:00",
                 'next_page_cursor_id' => "6abc9db9-7c38-4cdd-9601-a9f053d20a4f",
                 'prev_page_cursor_id' => "ab3f5867-04a3-49bb-ad88-c58f0213e999",
                 'per_page' => 868
@@ -271,8 +271,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "ESdF",
                 'is_modified' => TRUE,
                 'types' => ["exchange_inflow", "payment", "expire", "exchange_outflow", "topup"],
-                'from' => "2022-06-06T10:38:03.000000Z",
-                'to' => "2022-11-23T05:39:52.000000Z",
+                'from' => "2022-06-06T10:38:03.000000+09:00",
+                'to' => "2022-11-23T05:39:52.000000+09:00",
                 'next_page_cursor_id' => "5d685570-9b2e-403c-850a-60b143b8297c",
                 'prev_page_cursor_id' => "bd2b7e86-c9fd-459e-b9e7-5db8278cb9b9",
                 'per_page' => 627
@@ -300,8 +300,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "ImjW3",
                 'is_modified' => TRUE,
                 'types' => ["exchange_outflow", "expire", "exchange_inflow"],
-                'from' => "2022-04-02T04:19:54.000000Z",
-                'to' => "2022-09-02T08:24:37.000000Z",
+                'from' => "2022-04-02T04:19:54.000000+09:00",
+                'to' => "2022-09-02T08:24:37.000000+09:00",
                 'next_page_cursor_id' => "63e5715b-e038-487b-9715-19b9ff9442aa",
                 'prev_page_cursor_id' => "9a3946e8-cfe8-49eb-b09f-c5596e9aa017",
                 'per_page' => 728
@@ -330,8 +330,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "UqQsbMF",
                 'is_modified' => FALSE,
                 'types' => ["topup", "expire", "exchange_inflow", "exchange_outflow", "cashback", "payment"],
-                'from' => "2020-02-03T08:11:05.000000Z",
-                'to' => "2023-06-29T18:25:12.000000Z",
+                'from' => "2020-02-03T08:11:05.000000+09:00",
+                'to' => "2023-06-29T18:25:12.000000+09:00",
                 'next_page_cursor_id' => "30f1ff9d-ef59-4f88-953a-1d6e057e9d65",
                 'prev_page_cursor_id' => "4860306d-5194-4efa-9c52-df967e6670e4",
                 'per_page' => 861
@@ -361,8 +361,8 @@ class ListTransactionsV2 extends TestCase
                 'transaction_id' => "NfSRiXL",
                 'is_modified' => FALSE,
                 'types' => ["exchange_outflow", "payment", "cashback", "topup", "exchange_inflow", "expire"],
-                'from' => "2020-03-21T03:35:25.000000Z",
-                'to' => "2021-01-28T09:27:41.000000Z",
+                'from' => "2020-03-21T03:35:25.000000+09:00",
+                'to' => "2021-01-28T09:27:41.000000+09:00",
                 'next_page_cursor_id' => "eb184385-8def-41e0-a634-4d0f5c103d4e",
                 'prev_page_cursor_id' => "1c990833-aae0-4762-985c-e437b7a43332",
                 'per_page' => 122

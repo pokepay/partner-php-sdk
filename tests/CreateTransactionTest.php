@@ -49,7 +49,7 @@ class CreateTransaction extends TestCase
             "a387e891-8847-4c38-9559-5e87acab0e1d",
             "d044b25e-2b03-4761-acdb-0b70e9a91604",
             [
-                'point_expires_at' => "2023-11-18T10:39:42.000000Z",
+                'point_expires_at' => "2023-11-18T10:39:42.000000+09:00",
                 'description' => "K33Y2PKkmhgdj1RbwEdGAkTKdkwDZEgx5wET5OvQd"
             ]
         );
@@ -71,7 +71,7 @@ class CreateTransaction extends TestCase
             "d044b25e-2b03-4761-acdb-0b70e9a91604",
             [
                 'point_amount' => 676,
-                'point_expires_at' => "2020-08-14T23:35:01.000000Z",
+                'point_expires_at' => "2020-08-14T23:35:01.000000+09:00",
                 'description' => "ofRUOUAciXVcpzKCMcrOD6Emk2wkp2iXzqZDQWG9JIPYO9QhKjYAAaWngq9PQfQxKRvEszf3mWAEHwNafuFelOU7xCAyi0eUz4xXH5OLhVoB1lIuiOfxpiSD0ualUMr1aiXbRr0Yt6Ont0eqhymEV4KDx3FmD9kb"
             ]
         );
@@ -94,7 +94,7 @@ class CreateTransaction extends TestCase
             [
                 'money_amount' => 7778,
                 'point_amount' => 5824,
-                'point_expires_at' => "2024-01-26T18:25:24.000000Z",
+                'point_expires_at' => "2024-01-26T18:25:24.000000+09:00",
                 'description' => "i1vOnH69EFivIjA6JEHCCuKlnfNVTWFTkh4YZxFD"
             ]
         );

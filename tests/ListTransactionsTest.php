@@ -292,7 +292,7 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'to' => "2020-07-26T10:55:21.000000Z",
+                'to' => "2020-07-26T10:55:21.000000+09:00",
                 'page' => 2784,
                 'per_page' => 4219,
                 'shop_id' => "f98b4df5-c995-408a-bb6b-47a2f3349e71",
@@ -321,8 +321,8 @@ class ListTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListTransactions(
             [
-                'from' => "2024-02-05T13:13:38.000000Z",
-                'to' => "2023-03-16T23:25:29.000000Z",
+                'from' => "2024-02-05T13:13:38.000000+09:00",
+                'to' => "2023-03-16T23:25:29.000000+09:00",
                 'page' => 3546,
                 'per_page' => 3920,
                 'shop_id' => "9b3545d7-4db0-4b06-8d6f-09019542ff11",
