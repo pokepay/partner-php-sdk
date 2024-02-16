@@ -1,7 +1,7 @@
 # Event
 
 <a name="create-external-transaction"></a>
-## ポケペイ外部取引を作成する
+## #<HEADING (N 2 TEXT CreateExternalTransaction)>: ポケペイ外部取引を作成する
 ポケペイ外部取引を作成します。
 
 ポケペイ外の現金決済やクレジットカード決済に対してポケペイのポイントを付けたいというときに使用します。
@@ -12,12 +12,11 @@ $request = new Request\CreateExternalTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    1597,                                         // amount: 取引額
+    3018,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
@@ -158,7 +157,7 @@ $request = new Request\CreateExternalTransaction(
 
 
 <a name="refund-external-transaction"></a>
-## ポケペイ外部取引をキャンセルする
+## #<HEADING (N 2 TEXT RefundExternalTransaction)>: ポケペイ外部取引をキャンセルする
 取引IDを指定して取引をキャンセルします。
 
 発行体の管理者は自組織の直営店、または発行しているマネーの決済加盟店組織での取引をキャンセルできます。

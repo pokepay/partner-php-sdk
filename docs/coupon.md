@@ -4,19 +4,19 @@ Couponは特定店舗で利用できるものや利用可能期間、配信条�
 
 
 <a name="list-coupons"></a>
-## クーポン一覧の取得
+## #<HEADING (N 2 TEXT ListCoupons)>: クーポン一覧の取得
 指定したマネーのクーポン一覧を取得します
 
 ```PHP
 $request = new Request\ListCoupons(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 対象クーポンのマネーID
     [
-        'coupon_id' => "Fu",                      // クーポンID
-        'coupon_name' => "Dgv4kO",                // クーポン名
-        'issued_shop_name' => "6m4K9tS",          // 発行店舗名
-        'available_shop_name' => "iVulS8aL7",     // 利用可能店舗名
-        'available_from' => "2023-09-08T20:01:50.000000+09:00", // 利用可能期間 (開始日時)
-        'available_to' => "2021-11-15T00:49:10.000000+09:00", // 利用可能期間 (終了日時)
+        'coupon_id' => "GNJayPu",                 // クーポンID
+        'coupon_name' => "LGI7qJBM1",             // クーポン名
+        'issued_shop_name' => "0GkOn3",           // 発行店舗名
+        'available_shop_name' => "zFNmGsu",       // 利用可能店舗名
+        'available_from' => "2021-09-10T11:42:30.000000+09:00", // 利用可能期間 (開始日時)
+        'available_to' => "2021-11-07T08:16:24.000000+09:00", // 利用可能期間 (終了日時)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取得数
     ]
@@ -150,31 +150,31 @@ $request = new Request\ListCoupons(
 
 
 <a name="create-coupon"></a>
-## クーポンの登録
+## #<HEADING (N 2 TEXT CreateCoupon)>: クーポンの登録
 新しいクーポンを登録します
 
 ```PHP
 $request = new Request\CreateCoupon(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "A8HtdDnMNWOCghBqOvgw5nwtb78AZlT1xxFKPBibIklPDYBL5PunXkbU07JfaX4EJc",
-    "2022-05-03T16:49:57.000000+09:00",
-    "2020-07-09T18:04:34.000000+09:00",
+    "PxpOKGLZNqGnQv4vAM4r6k1ysoOUTs9zNmVeqkO2HiOhqwCqqPDu4SgomC9nedZzxQTidYm",
+    "2021-08-31T08:57:24.000000+09:00",
+    "2023-11-25T00:12:44.000000+09:00",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // issuedShopId: 発行元の店舗ID
     [
-        'description' => "FkIMxNDaYs1RXZCKrn8aP0gKGhIFGPPLDKLrANucnjPRZN6rtP1AXcFXLbjWq4etaFIUka53cGfiTVBPWn0r6KAo6q34Ai3rBiJDLzb",
-        'discount_amount' => 6828,
-        'discount_percentage' => 3128.0,
-        'discount_upper_limit' => 6339,
-        'display_starts_at' => "2022-10-17T04:14:06.000000+09:00", // クーポンの掲載期間(開始日時)
-        'display_ends_at' => "2020-05-09T23:22:28.000000+09:00", // クーポンの掲載期間(終了日時)
+        'description' => "av4FJyEpc6fvQQvc0fWHGsoS3SQjrwnqyuJz3rhvOk0kOyWnUpp9pUqjgGKrCCAcywqoua2zNWyYtKLlgqN9Zs1pUt5UbWk4OEpm9iFq0Z2dJDNqZLisZgHeh4cLipKDMya1yxaxqS948a8GVSiMLTGCHi",
+        'discount_amount' => 560,
+        'discount_percentage' => 5845.0,
+        'discount_upper_limit' => 2160,
+        'display_starts_at' => "2021-06-05T18:12:28.000000+09:00", // クーポンの掲載期間(開始日時)
+        'display_ends_at' => "2023-10-27T19:36:46.000000+09:00", // クーポンの掲載期間(終了日時)
         'is_disabled' => FALSE,                   // 無効化フラグ
         'is_hidden' => FALSE,                     // クーポン一覧に掲載されるかどうか
-        'is_public' => TRUE,                      // アプリ配信なしで受け取れるかどうか
-        'code' => "vaz39Bc",                      // クーポン受け取りコード
-        'usage_limit' => 8759,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
-        'min_amount' => 8668,                     // クーポン適用可能な最小取引額
+        'is_public' => FALSE,                     // アプリ配信なしで受け取れるかどうか
+        'code' => "5eM",                          // クーポン受け取りコード
+        'usage_limit' => 4247,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
+        'min_amount' => 1670,                     // クーポン適用可能な最小取引額
         'is_shop_specified' => TRUE,              // 特定店舗限定のクーポンかどうか
-        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
+        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
         'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ストレージID
     ]
 );
@@ -415,7 +415,7 @@ Storage APIでアップロードしたクーポン画像のStorage IDを指定�
 
 
 <a name="get-coupon"></a>
-## クーポンの取得
+## #<HEADING (N 2 TEXT GetCoupon)>: クーポンの取得
 指定したIDを持つクーポンを取得します
 
 ```PHP
@@ -452,30 +452,30 @@ UUIDv4フォーマットである必要があり、フォーマットが異な�
 
 
 <a name="update-coupon"></a>
-## クーポンの更新
+## #<HEADING (N 2 TEXT UpdateCoupon)>: クーポンの更新
 指定したクーポンを更新します
 
 ```PHP
 $request = new Request\UpdateCoupon(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // couponId: クーポンID
     [
-        'name' => "IYZGpgWkLt0AhMGESvUnKpYcwrPZmi4NVFtBkPFaymDGnnFjgsIBu3HkhVNLlV",
-        'description' => "5otuWBNkgsyF1IHPfaMn4U4US7hfOek7XOcoWjokbLBn8zA4RVUOeI1HZtaxeLDv1tE4gcGlVehAGROrAIVDGtOS6aFbXE0bNc5CGGYRMB6bLzPBNedHJwuXDPH6rsZZmQ5PD0pYvLMFISdc0bLR4SWKknwN6fBVedaPGyCeHRTcYPeEjgsUa7GpEDUuhTJjjB3CshcTEHxPL7WK7apYVX2kYZeSVN7zmbVaKOXIN5pS15KZCJM1uqBAZEzQJ",
-        'discount_amount' => 1872,
-        'discount_percentage' => 1552.0,
-        'discount_upper_limit' => 7748,
-        'starts_at' => "2023-01-07T10:02:57.000000+09:00",
-        'ends_at' => "2022-07-22T03:01:47.000000+09:00",
-        'display_starts_at' => "2022-09-26T00:15:18.000000+09:00", // クーポンの掲載期間(開始日時)
-        'display_ends_at' => "2020-02-19T08:17:11.000000+09:00", // クーポンの掲載期間(終了日時)
-        'is_disabled' => FALSE,                   // 無効化フラグ
+        'name' => "n4DEji251VHzeaOiVXQUttglHTVHdpbs4tvzpxjoXfMoK0BU1",
+        'description' => "ChZjtvlJxfNT39g9wrYaR9Ui9EFOJgqWiFDix6WKi0HhFKwRXjjfXgIYqJx6YZ8bpaaYmVx0vIEqcfNP",
+        'discount_amount' => 6456,
+        'discount_percentage' => 5378.0,
+        'discount_upper_limit' => 1703,
+        'starts_at' => "2021-08-21T12:35:00.000000+09:00",
+        'ends_at' => "2023-01-06T14:37:46.000000+09:00",
+        'display_starts_at' => "2023-08-10T10:51:57.000000+09:00", // クーポンの掲載期間(開始日時)
+        'display_ends_at' => "2020-01-09T14:06:05.000000+09:00", // クーポンの掲載期間(終了日時)
+        'is_disabled' => TRUE,                    // 無効化フラグ
         'is_hidden' => TRUE,                      // クーポン一覧に掲載されるかどうか
         'is_public' => FALSE,                     // アプリ配信なしで受け取れるかどうか
-        'code' => "0gr",                          // クーポン受け取りコード
-        'usage_limit' => 6382,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
-        'min_amount' => 3264,                     // クーポン適用可能な最小取引額
-        'is_shop_specified' => TRUE,              // 特定店舗限定のクーポンかどうか
-        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
+        'code' => "02GtTVs09F",                   // クーポン受け取りコード
+        'usage_limit' => 2341,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
+        'min_amount' => 8759,                     // クーポン適用可能な最小取引額
+        'is_shop_specified' => FALSE,             // 特定店舗限定のクーポンかどうか
+        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
         'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ストレージID
     ]
 );

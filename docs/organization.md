@@ -1,7 +1,7 @@
 # Organization
 
 <a name="list-organizations"></a>
-## 加盟店組織の一覧を取得する
+## #<HEADING (N 2 TEXT ListOrganizations)>: 加盟店組織の一覧を取得する
 
 ```PHP
 $request = new Request\ListOrganizations(
@@ -9,8 +9,8 @@ $request = new Request\ListOrganizations(
     [
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
-        'name' => "a2dAC",                        // 組織名
-        'code' => "U1"                            // 組織コード
+        'name' => "zV1rhhI",                      // 組織名
+        'code' => "y4lf0taUmJ"                    // 組織コード
     ]
 );
 ```
@@ -86,21 +86,21 @@ $request = new Request\ListOrganizations(
 
 
 <a name="create-organization"></a>
-## 新規加盟店組織を追加する
+## #<HEADING (N 2 TEXT CreateOrganization)>: 新規加盟店組織を追加する
 
 ```PHP
 $request = new Request\CreateOrganization(
     "ox-supermarket",                             // code: 新規組織コード
     "oxスーパー",                                     // name: 新規組織名
     ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"],     // privateMoneyIds: 加盟店組織で有効にするマネーIDの配列
-    "CI0B6LCLgW@Bc4o.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
-    "jRucmSFeTg@WMc4.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
+    "r2jIuan84U@JDT9.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
+    "Kfa354idc7@T4cl.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
     [
         'bank_name' => "XYZ銀行",                   // 銀行名
         'bank_code' => "1234",                    // 銀行金融機関コード
         'bank_branch_name' => "ABC支店",            // 銀行支店名
         'bank_branch_code' => "123",              // 銀行支店コード
-        'bank_account_type' => "saving",          // 銀行口座種別 (普通=saving, 当座=current, その他=other)
+        'bank_account_type' => "other",           // 銀行口座種別 (普通=saving, 当座=current, その他=other)
         'bank_account' => "1234567",              // 銀行口座番号
         'bank_account_holder_name' => "ﾌｸｻﾞﾜﾕｷﾁ", // 口座名義人名
         'contact_name' => "佐藤清"                   // 担当者名

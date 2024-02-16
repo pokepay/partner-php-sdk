@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ecf44e31-0fef-4bd8-828e-490d9b99a57c"
+            "7ca88ddb-c2fa-4b69-8a00-ddab9938ae06"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ecf44e31-0fef-4bd8-828e-490d9b99a57c",
+            "7ca88ddb-c2fa-4b69-8a00-ddab9938ae06",
             [
-                'expires_in' => 6741
+                'expires_in' => 6219
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ecf44e31-0fef-4bd8-828e-490d9b99a57c",
+            "7ca88ddb-c2fa-4b69-8a00-ddab9938ae06",
             [
-                'description' => "YUSGpygg7wBGIjvRT6txnavCQQKHsIvoRCh25C1Az2YLh1E15h1KfExxiEjr6OAmi7PZf9U3mszbrj5NlGTFteBCT8kQ913MW1TgtCy4TZZ2aDj5tnr4",
-                'expires_in' => 588
+                'description' => "72UBgMR6JcPBXADBomVencyFAnbnAPWIWQ1pZIoHgIINZ6jsaG0bHYk2hvIgD20o8uHITkAwhuk32znQN3lsN0e7ofZPU85GrdKUvDjZUenwkSJ8CHVGuvQv50E7QU",
+                'expires_in' => 6687
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ecf44e31-0fef-4bd8-828e-490d9b99a57c",
+            "7ca88ddb-c2fa-4b69-8a00-ddab9938ae06",
             [
-                'amount' => 612.0,
-                'description' => "KHVYaIhmd0F9F2vD",
-                'expires_in' => 8706
+                'amount' => 6254.0,
+                'description' => "yeJl8SL4atWTkYdX20hJO7lJxzbynDCdZobvj0UWpDDm74CmD3Yp6pDTXNpXVvnAZW2I1Q2fdO4nli5MZVA6dN9LaX",
+                'expires_in' => 8548
             ]
         );
         try {

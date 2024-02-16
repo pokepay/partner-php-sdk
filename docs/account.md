@@ -1,15 +1,15 @@
 # Account
 
 <a name="list-user-accounts"></a>
-## エンドユーザー、店舗ユーザーのウォレット一覧を表示する
+## #<HEADING (N 2 TEXT ListUserAccounts)>: エンドユーザー、店舗ユーザーのウォレット一覧を表示する
 ユーザーIDを指定してそのユーザーのウォレット一覧を取得します。
 
 ```PHP
 $request = new Request\ListUserAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     [
-        'page' => 1925,                           // ページ番号
-        'per_page' => 6362                        // 1ページ分の取引数
+        'page' => 9487,                           // ページ番号
+        'per_page' => 1036                        // 1ページ分の取引数
     ]
 );
 ```
@@ -66,7 +66,7 @@ $request = new Request\ListUserAccounts(
 
 
 <a name="create-user-account"></a>
-## エンドユーザーのウォレットを作成する
+## #<HEADING (N 2 TEXT CreateUserAccount)>: エンドユーザーのウォレットを作成する
 既存のエンドユーザーに対して、指定したマネーのウォレットを新規作成します
 
 ```PHP
@@ -74,8 +74,8 @@ $request = new Request\CreateUserAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'name' => "uEi5vYJUD8gEZ12Jx0E0On80Cm37Y5ojakBIddZcsvGY5B6uIsJQ3GsQQKaCYR2UBguySF0CsAaGUbV7lsUbJIhzZTHJupCgSD0v1uQCTXkmzSPoucB8WmDgDjREEFmffbLTNxLqWxrNVRt7swt36REvVQvZ6rbQD71nYhyW2U33o9XzyRfU0RnfRrqWuvoFuoe8OLanNfa9xeRgTDc172x16OuulyC4TjFQg3c", // ウォレット名
-        'external_id' => "ZPdC2mOrWkfnXLAdP7V",   // 外部ID
+        'name' => "7h8AGlSSRwiNOYIornZxRDBxQGvNTLNrQKCvmHmTaoIV3rIs1jeyrAbDoooZnmxf3OApojLQO5NyfEcEDKhAl4wqj5ILZ0cxtylI2X3gC8rH7tPBZ52j7jOxIdr0BtwdyIP0TpAJeTFlwYQjSg51UWfankGviSVykrl3jIX4Z40weW", // ウォレット名
+        'external_id' => "FSUkrIkfeW",            // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );

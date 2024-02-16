@@ -8,7 +8,7 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "47c94e7e-68c8-4ba9-af94-ce62e4620ab8"
+            "248cfe99-b932-41e9-8144-ce695db7144b"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "47c94e7e-68c8-4ba9-af94-ce62e4620ab8",
+            "248cfe99-b932-41e9-8144-ce695db7144b",
             [
-                'external_id' => "TwhxD5QHhkZKjcmSrouERjQTug0bq1Vx9j"
+                'external_id' => "pGBJesWFa9Knfh9HMU1tlIN3t74NaX0W"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "47c94e7e-68c8-4ba9-af94-ce62e4620ab8",
+            "248cfe99-b932-41e9-8144-ce695db7144b",
             [
-                'account_name' => "SXI1Srly73xHxUBcknLOxhIMo9FzDj31LOww7pPUbTIEbU7t9ak4tLMhSCN1dLufqIaq9VPZZcaxGHdqDxpHv2rrXeDHksE3egtrpFiCcoIENv1FNXfWHeuzkZQpRI7lkkRZic2G2ZBJ7VxnuYxQLXM3ULhLaDQIZPLWOSTxiuGfyEnhDlZe306zyRiggMAbDct2Tc9Ew4vhdkl2CqDs2FpSU7DRyfsVjoTvIr0yy6ZUZKy3eL",
-                'external_id' => "uUBKBEThM4qULaICy8wljqT77vIZIOwmTsNLjmoa"
+                'account_name' => "W9oGfgUrRNi7L8CrJIf0RTlAt7yxvZiHOgpfT6c",
+                'external_id' => "ks9DvlUyUzTnv9GncITeoC1E6rkycpcCAEMN5VmurOgIk"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class CreateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerAccount(
-            "47c94e7e-68c8-4ba9-af94-ce62e4620ab8",
+            "248cfe99-b932-41e9-8144-ce695db7144b",
             [
-                'user_name' => "9EjEZqCNPFkEA1bTr9cUa91Tf5GZnSgQ3EubsJLK8Um6mUpnjjvpN8q7uPu2SSxrWQeXIsIjuZV6cnJ",
-                'account_name' => "733A244SAHQtqNgoC9MqFpCNOr0YEP9Dnz0l7KOAPeTBymMiW",
-                'external_id' => "nXdi4LMgaLzot"
+                'user_name' => "lxheywfTV0pDzpCYbE58Dt6c4IALNzLVHKTPlIADN3837LFtNXqs4esuh9gT0e6beEMBhzF8yxeofaM22kNZXilVAwEDBG6h4iJMO5gzJjiNUORTDY1oxgrO8hw3PagYchLd8gCX6xU0jAynC0vjWI7M646ublD7imOaSCbRi",
+                'account_name' => "8gY81StAcjvs29VXXCUJi9OU8dVxgWuSrlJpmdIJOSnVOrKPboOGOOyFysHi8STpAb6",
+                'external_id' => "zD6k6fyoOJsEVQDA6zVvaoC4BWqPEog3R2YNSGc"
             ]
         );
         try {

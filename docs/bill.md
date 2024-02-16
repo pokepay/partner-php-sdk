@@ -2,24 +2,24 @@
 支払いQRコード
 
 <a name="list-bills"></a>
-## 支払いQRコード一覧を表示する
+## #<HEADING (N 2 TEXT ListBills)>: 支払いQRコード一覧を表示する
 支払いQRコード一覧を表示します。
 
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 7846,                           // ページ番号
-        'per_page' => 2256,                       // 1ページの表示数
-        'bill_id' => "sZV",                       // 支払いQRコードのID
+        'page' => 5835,                           // ページ番号
+        'per_page' => 8749,                       // 1ページの表示数
+        'bill_id' => "aXhjEDb",                   // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "eaU-7441-Ym",     // 組織コード
+        'organization_code' => "eKFn-cFa71YK-",   // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2021-07-14T17:35:20.000000+09:00", // 作成日時(起点)
-        'created_to' => "2022-03-02T17:05:52.000000+09:00", // 作成日時(終点)
+        'created_from' => "2023-08-12T13:31:25.000000+09:00", // 作成日時(起点)
+        'created_to' => "2022-06-14T04:14:40.000000+09:00", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 3706,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 5731,             // 金額の範囲によるフィルタ(上限)
+        'lower_limit_amount' => 4607,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 4120,             // 金額の範囲によるフィルタ(上限)
         'is_disabled' => TRUE                     // 支払いQRコードが無効化されているかどうか
     ]
 );
@@ -200,7 +200,7 @@ $request = new Request\ListBills(
 
 
 <a name="create-bill"></a>
-## 支払いQRコードの発行
+## #<HEADING (N 2 TEXT CreateBill)>: 支払いQRコードの発行
 支払いQRコードの内容を更新します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
 
 ```PHP
@@ -208,7 +208,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 6651.0,                       // 支払い額
+        'amount' => 5361.0,                       // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -274,14 +274,14 @@ $request = new Request\CreateBill(
 
 
 <a name="update-bill"></a>
-## 支払いQRコードの更新
+## #<HEADING (N 2 TEXT UpdateBill)>: 支払いQRコードの更新
 支払いQRコードの内容を更新します。パラメータは全て省略可能で、指定したもののみ更新されます。
 
 ```PHP
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 1000.0,                       // 支払い額
+        'amount' => 8656.0,                       // 支払い額
         'description' => "test bill",             // 説明文
         'is_disabled' => FALSE                    // 無効化されているかどうか
     ]

@@ -6,7 +6,7 @@ Cashtrayはワンタイムで、一度読み取りに成功するか、取引エ
 
 
 <a name="create-cashtray"></a>
-## Cashtrayを作る
+## #<HEADING (N 2 TEXT CreateCashtray)>: Cashtrayを作る
 Cashtrayを作成します。
 
 エンドユーザーに対して支払いまたはチャージを行う店舗の情報(店舗ユーザーIDとマネーID)と、取引金額が必須項目です。
@@ -19,10 +19,10 @@ Cashtrayを作成します。
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    8714.0,                                       // amount: 金額
+    8341.0,                                       // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 7822                      // 失効時間(秒)
+        'expires_in' => 5039                      // 失効時間(秒)
     ]
 );
 ```
@@ -102,7 +102,7 @@ Cashtrayが失効するまでの時間を秒単位で指定します(任意項�
 
 
 <a name="get-cashtray"></a>
-## Cashtrayの情報を取得する
+## #<HEADING (N 2 TEXT GetCashtray)>: Cashtrayの情報を取得する
 Cashtrayの情報を取得します。
 
 Cashtrayの現在の状態に加え、エンドユーザーのCashtray読み取りの試行結果、Cashtray読み取りによって作られた取引情報が取得できます。
@@ -194,7 +194,7 @@ $request = new Request\GetCashtray(
 
 
 <a name="cancel-cashtray"></a>
-## Cashtrayを無効化する
+## #<HEADING (N 2 TEXT CancelCashtray)>: Cashtrayを無効化する
 Cashtrayを無効化します。
 
 これにより、 `GetCashtray` のレスポンス中の `canceled_at` に無効化時点での現在時刻が入るようになります。
@@ -232,16 +232,16 @@ $request = new Request\CancelCashtray(
 
 
 <a name="update-cashtray"></a>
-## Cashtrayの情報を更新する
+## #<HEADING (N 2 TEXT UpdateCashtray)>: Cashtrayの情報を更新する
 Cashtrayの内容を更新します。bodyパラメーターは全て省略可能で、指定したもののみ更新されます。
 
 ```PHP
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 8894.0,                       // 金額
+        'amount' => 9069.0,                       // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 3376                      // 失効時間(秒)
+        'expires_in' => 6389                      // 失効時間(秒)
     ]
 );
 ```
