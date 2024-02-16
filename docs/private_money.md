@@ -1,7 +1,7 @@
 # Private Money
 
 <a name="get-private-moneys"></a>
-## #<HEADING (N 2 TEXT GetPrivateMoneys)>: マネー一覧を取得する
+## GetPrivateMoneys: マネー一覧を取得する
 マネーの一覧を取得します。
 パートナーキーの管理者が発行体組織に属している場合、自組織が加盟または発行しているマネーの一覧を返します。また、`organization_code`として決済加盟店の組織コードを指定した場合、発行マネーのうち、その決済加盟店組織が加盟しているマネーの一覧を返します。
 パートナーキーの管理者が決済加盟店組織に属している場合は、自組織が加盟しているマネーの一覧を返します。
@@ -65,14 +65,14 @@ $request = new Request\GetPrivateMoneys(
 
 
 <a name="get-private-money-organization-summaries"></a>
-## #<HEADING (N 2 TEXT GetPrivateMoneyOrganizationSummaries)>: 決済加盟店の取引サマリを取得する
+## GetPrivateMoneyOrganizationSummaries: 決済加盟店の取引サマリを取得する
 
 ```PHP
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2023-04-27T02:59:48.000000+09:00", // 開始日時(toと同時に指定する必要有)
-        'to' => "2023-02-03T02:42:08.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'from' => "2020-03-29T13:01:01.000000+09:00", // 開始日時(toと同時に指定する必要有)
+        'to' => "2021-10-14T23:36:53.000000+09:00", // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -149,14 +149,14 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 
 
 <a name="get-private-money-summary"></a>
-## #<HEADING (N 2 TEXT GetPrivateMoneySummary)>: 取引サマリを取得する
+## GetPrivateMoneySummary: 取引サマリを取得する
 
 ```PHP
 $request = new Request\GetPrivateMoneySummary(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2020-12-24T18:40:53.000000+09:00", // 開始日時
-        'to' => "2023-02-09T17:47:35.000000+09:00" // 終了日時
+        'from' => "2024-02-06T14:39:28.000000+09:00", // 開始日時
+        'to' => "2022-02-16T09:21:53.000000+09:00" // 終了日時
     ]
 );
 ```

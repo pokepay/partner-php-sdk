@@ -8,7 +8,7 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "141dc114-3e4a-447e-9175-08c66f4db99b"
+            "43714e35-4e69-442b-9614-cfbe0b56065f"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "141dc114-3e4a-447e-9175-08c66f4db99b",
+            "43714e35-4e69-442b-9614-cfbe0b56065f",
             [
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
@@ -41,9 +41,9 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "141dc114-3e4a-447e-9175-08c66f4db99b",
+            "43714e35-4e69-442b-9614-cfbe0b56065f",
             [
-                'external_id' => "cYVhoHYv8oK6PmBlitBc7yEBa",
+                'external_id' => "pi9sRFfIml3aYSt3lpRaxglgDgXt4Q1YY5",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
@@ -60,10 +60,10 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "141dc114-3e4a-447e-9175-08c66f4db99b",
+            "43714e35-4e69-442b-9614-cfbe0b56065f",
             [
-                'account_name' => "r35aueMR2icJKVSttTxJqRluqT3Mh4anW56l",
-                'external_id' => "uhGMl2ZPz6RQIwT5wMQxTMAIZakEcrOlWx",
+                'account_name' => "fWlN5IEcyvL9OdFiSRfpsKvPQzGbA6g2YR2hQwUokjq4CNqWm4wU2XWZICwiX8Vu8XTvPlsafW3tZSHCvl1FWSv5xufJiRfxQTxfgN8Ey8uf2vig2tww3AigGthsy9FDSMyBr7l5UWRt05EJZwR4APkXF8jZEmpaplXHrhF465A00Gz1MCpPYG",
+                'external_id' => "LGIfkJkalVwd3AiZaxy5MrE5oHjCODqondVQ",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );
@@ -80,11 +80,11 @@ class UpdateCustomerAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCustomerAccount(
-            "141dc114-3e4a-447e-9175-08c66f4db99b",
+            "43714e35-4e69-442b-9614-cfbe0b56065f",
             [
-                'status' => "active",
-                'account_name' => "IqONz1bGJiUwP",
-                'external_id' => "kyrGn9J8SgJP",
+                'status' => "suspended",
+                'account_name' => "YUFHHnJRWWmhXoGSYECxwtZKIfQ26X0AxuvQLEW078N1",
+                'external_id' => "ZHbGcBAfb5h09hT0SwvP1DT4rS7F3fT9tBU",
                 'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}"
             ]
         );

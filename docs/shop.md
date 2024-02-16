@@ -1,7 +1,7 @@
 # Shop
 
 <a name="list-shops"></a>
-## #<HEADING (N 2 TEXT ListShops)>: 店舗一覧を取得する
+## ListShops: 店舗一覧を取得する
 
 ```PHP
 $request = new Request\ListShops(
@@ -9,11 +9,11 @@ $request = new Request\ListShops(
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "788-9983",              // 店舗の郵便番号
+        'postal_code' => "7272914",               // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "027068-9193",                   // 店舗の電話番号
-        'email' => "D8Uq2wrAzx@3uVs.com",         // 店舗のメールアドレス
-        'external_id' => "aMskDg4gjVyuIkVMq78tqhsvJ09ER3EthQa", // 店舗の外部ID
+        'tel' => "057228-691",                    // 店舗の電話番号
+        'email' => "4zRFm2vC7h@clwz.com",         // 店舗のメールアドレス
+        'external_id' => "c",                     // 店舗の外部ID
         'with_disabled' => TRUE,                  // 無効な店舗を含める
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
@@ -178,18 +178,18 @@ $request = new Request\ListShops(
 
 
 <a name="create-shop"></a>
-## #<HEADING (N 2 TEXT CreateShop)>: 【廃止】新規店舗を追加する
+## CreateShop: 【廃止】新規店舗を追加する
 新規店舗を追加します。このAPIは廃止予定です。以降は `CreateShopV2` を使用してください。
 
 ```PHP
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
-        'shop_postal_code' => "1119910",          // 店舗の郵便番号
+        'shop_postal_code' => "2510029",          // 店舗の郵便番号
         'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "09-9356853",               // 店舗の電話番号
-        'shop_email' => "THrw6ILkvb@k0qd.com",    // 店舗のメールアドレス
-        'shop_external_id' => "diq9gv",           // 店舗の外部ID
+        'shop_tel' => "0595197-3022",             // 店舗の電話番号
+        'shop_email' => "XeInumqgHf@OkUC.com",    // 店舗のメールアドレス
+        'shop_external_id' => "uE4qaa542To6U2Swu8o1SDrxuqQ", // 店舗の外部ID
         'organization_code' => "ox-supermarket"   // 組織コード
     ]
 );
@@ -289,20 +289,20 @@ $request = new Request\CreateShop(
 
 
 <a name="create-shop-v2"></a>
-## #<HEADING (N 2 TEXT CreateShopV2)>: 新規店舗を追加する
+## CreateShopV2: 新規店舗を追加する
 
 ```PHP
 $request = new Request\CreateShopV2(
     "oxスーパー三田店",                                  // name: 店舗名
     [
-        'postal_code' => "4386601",               // 店舗の郵便番号
+        'postal_code' => "5960370",               // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0854387-0538",                  // 店舗の電話番号
-        'email' => "l3vJ0MgFlZ@UgHO.com",         // 店舗のメールアドレス
-        'external_id' => "jnu31nDswSuNYxtDA3JGRf2klsZ4V", // 店舗の外部ID
+        'tel' => "0469-850-9790",                 // 店舗の電話番号
+        'email' => "0621qo7tvC@Jfbc.com",         // 店舗のメールアドレス
+        'external_id' => "JcvRtgyFxFpOmCZTu7xuo9KBh", // 店舗の外部ID
         'organization_code' => "ox-supermarket",  // 組織コード
         'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
     ]
 );
 ```
@@ -442,7 +442,7 @@ $request = new Request\CreateShopV2(
 
 
 <a name="get-shop"></a>
-## #<HEADING (N 2 TEXT GetShop)>: 店舗情報を表示する
+## GetShop: 店舗情報を表示する
 店舗情報を表示します。
 
 権限に関わらず自組織の店舗情報は表示可能です。それに加え、発行体は自組織の発行しているマネーの加盟店組織の店舗情報を表示できます。
@@ -478,7 +478,7 @@ $request = new Request\GetShop(
 
 
 <a name="update-shop"></a>
-## #<HEADING (N 2 TEXT UpdateShop)>: 店舗情報を更新する
+## UpdateShop: 店舗情報を更新する
 店舗情報を更新します。bodyパラメーターは全て省略可能で、指定したもののみ更新されます。
 
 ```PHP
@@ -486,14 +486,14 @@ $request = new Request\UpdateShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
     [
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "962-7741",              // 店舗の郵便番号
+        'postal_code' => "283-3805",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0922443064",                    // 店舗の電話番号
-        'email' => "K54n44Rohe@HahF.com",         // 店舗のメールアドレス
-        'external_id' => "2S",                    // 店舗の外部ID
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => [],      // 店舗でチャージ可能にするマネーIDの配列
-        'status' => "active"                      // 店舗の状態
+        'tel' => "0666274-420",                   // 店舗の電話番号
+        'email' => "dl4IksDc3Q@gutE.com",         // 店舗のメールアドレス
+        'external_id' => "GU43kLwiy7WIu6Kiyj33i8f3MGMV", // 店舗の外部ID
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗でチャージ可能にするマネーIDの配列
+        'status' => "disabled"                    // 店舗の状態
     ]
 );
 ```

@@ -1,16 +1,16 @@
 # Bulk
 
 <a name="bulk-create-transaction"></a>
-## #<HEADING (N 2 TEXT BulkCreateTransaction)>: CSVファイル一括取引
+## BulkCreateTransaction: CSVファイル一括取引
 CSVファイルから一括取引をします。
 
 ```PHP
 $request = new Request\BulkCreateTransaction(
-    "4EHvvGXcIfmnFXVxW6jk1K5",                    // name: 一括取引タスク名
-    "eaUC",                                       // content: 取引する情報のCSV
-    "5kejfhRk9fNlrg1tc233k1NTli7WC6NPV5u9",       // requestId: リクエストID
+    "92ieh43oSsMPxmGn6Rdno2jYiF",                 // name: 一括取引タスク名
+    "F3C",                                        // content: 取引する情報のCSV
+    "vyeXT7BQbAq9E4OVfxNWHbyY0GVXccPCE1Py",       // requestId: リクエストID
     [
-        'description' => "RTkyNyaeCWdLMs9trw4BRSAcsFY7jzwXn55LRrdoGeAl9DZPRjKIsTAwwXxMloYc4AXYbMu3a2NJ80wYAbrh8b4mOAsBMQ2yuMN8yTYiFBy2g2", // 一括取引の説明
+        'description' => "iEzq49ShuObsRkB",       // 一括取引の説明
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // マネーID
     ]
 );

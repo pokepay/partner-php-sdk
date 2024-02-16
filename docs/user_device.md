@@ -5,7 +5,7 @@ UserDeviceはユーザー毎のデバイスを管理します。
 
 
 <a name="create-user-device"></a>
-## #<HEADING (N 2 TEXT CreateUserDevice)>: ユーザーのデバイス登録
+## CreateUserDevice: ユーザーのデバイス登録
 ユーザーのデバイスを新規に登録します
 
 ```PHP
@@ -56,7 +56,7 @@ $request = new Request\CreateUserDevice(
 
 
 <a name="get-user-device"></a>
-## #<HEADING (N 2 TEXT GetUserDevice)>: ユーザーのデバイスを取得
+## GetUserDevice: ユーザーのデバイスを取得
 ユーザーのデバイスの情報を取得します
 
 ```PHP
@@ -90,7 +90,7 @@ $request = new Request\GetUserDevice(
 
 
 <a name="activate-user-device"></a>
-## #<HEADING (N 2 TEXT ActivateUserDevice)>: デバイスの有効化
+## ActivateUserDevice: デバイスの有効化
 指定のデバイスを有効化し、それ以外の同一ユーザーのデバイスを無効化します。
 
 

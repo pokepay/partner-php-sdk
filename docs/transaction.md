@@ -1,12 +1,12 @@
 # Transaction
 
 <a name="get-cpm-token"></a>
-## #<HEADING (N 2 TEXT GetCpmToken)>: CPMトークンの状態取得
+## GetCpmToken: CPMトークンの状態取得
 CPMトークンの現在の状態を取得します。CPMトークンの有効期限やCPM取引の状態を返します。
 
 ```PHP
 $request = new Request\GetCpmToken(
-    "OdfZpUjq65hyeST4lM6JJH"                      // cpmToken: CPMトークン
+    "HIDKOzfPcc6EtnnayySL28"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -37,24 +37,24 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 
 
 <a name="list-transactions"></a>
-## #<HEADING (N 2 TEXT ListTransactions)>: 【廃止】取引履歴を取得する
+## ListTransactions: 【廃止】取引履歴を取得する
 取引一覧を返します。
 
 ```PHP
 $request = new Request\ListTransactions(
     [
-        'from' => "2020-09-20T22:49:21.000000+09:00", // 開始日時
-        'to' => "2020-06-15T10:20:36.000000+09:00", // 終了日時
+        'from' => "2022-08-24T03:01:41.000000+09:00", // 開始日時
+        'to' => "2020-09-02T05:14:34.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
-        'transaction_id' => "jDTvE",              // 取引ID
+        'transaction_id' => "yIKWAjvD",           // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'is_modified' => TRUE,                    // キャンセルフラグ
+        'is_modified' => FALSE,                   // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
         'description' => "店頭QRコードによる支払い"          // 取引説明文
     ]
@@ -295,7 +295,7 @@ $request = new Request\ListTransactions(
 
 
 <a name="create-transaction"></a>
-## #<HEADING (N 2 TEXT CreateTransaction)>: 【廃止】チャージする
+## CreateTransaction: 【廃止】チャージする
 チャージ取引を作成します。このAPIは廃止予定です。以降は `CreateTopupTransaction` を使用してください。
 
 ```PHP
@@ -304,10 +304,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 3623,
-        'point_amount' => 3431,
-        'point_expires_at' => "2023-07-28T16:27:26.000000+09:00", // ポイント有効期限
-        'description' => "vxS4EyHzg6nNoPa5CN3wNAijCoaFL8xDG57myurtH"
+        'money_amount' => 5102,
+        'point_amount' => 9715,
+        'point_expires_at' => "2022-04-02T03:18:05.000000+09:00", // ポイント有効期限
+        'description' => "aQBMHSmVSoqMhdE3ItanxFs9H26p7PlJjO8pQcd7NQ3o7HqbdcdslULpkT0jFpuCPWiEuAU3WGq8HCeDlDeS4v5tOHTV8xfoGdcltO08eDZBADVytm7K2aaPOMbrJNQYKqvqaBzaVsWy0A1TK6isbfsluGigMgn3ngwPyWj0m4HhoYJPvHKs4"
     ]
 );
 ```
@@ -407,7 +407,7 @@ $request = new Request\CreateTransaction(
 
 
 <a name="list-transactions-v2"></a>
-## #<HEADING (N 2 TEXT ListTransactionsV2)>: 取引履歴を取得する
+## ListTransactionsV2: 取引履歴を取得する
 取引一覧を返します。
 
 ```PHP
@@ -420,11 +420,11 @@ $request = new Request\ListTransactionsV2(
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "TV",                 // 取引ID
-        'is_modified' => FALSE,                   // キャンセルフラグ
+        'transaction_id' => "udSOlNr",            // 取引ID
+        'is_modified' => TRUE,                    // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-        'from' => "2021-11-25T13:12:02.000000+09:00", // 開始日時
-        'to' => "2023-01-18T21:14:36.000000+09:00", // 終了日時
+        'from' => "2023-12-11T17:30:05.000000+09:00", // 開始日時
+        'to' => "2023-12-06T03:29:29.000000+09:00", // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -694,7 +694,7 @@ prev_page_cursor_idのtransaction自体は前のページには含まれませ�
 
 
 <a name="create-topup-transaction"></a>
-## #<HEADING (N 2 TEXT CreateTopupTransaction)>: チャージする
+## CreateTopupTransaction: チャージする
 チャージ取引を作成します。
 
 ```PHP
@@ -704,9 +704,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 4980,                   // マネー額
-        'point_amount' => 2624,                   // ポイント額
-        'point_expires_at' => "2022-09-26T20:34:36.000000+09:00", // ポイント有効期限
+        'money_amount' => 368,                    // マネー額
+        'point_amount' => 7711,                   // ポイント額
+        'point_expires_at' => "2021-07-28T18:47:17.000000+09:00", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -871,7 +871,7 @@ $request = new Request\CreateTopupTransaction(
 
 
 <a name="create-payment-transaction"></a>
-## #<HEADING (N 2 TEXT CreatePaymentTransaction)>: 支払いする
+## CreatePaymentTransaction: 支払いする
 支払取引を作成します。
 支払い時には、エンドユーザーの残高のうち、ポイント残高から優先的に消費されます。
 
@@ -881,12 +881,11 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    3919,                                         // amount: 支払い額
+    9276,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
@@ -1029,22 +1028,20 @@ $request = new Request\CreatePaymentTransaction(
 
 
 <a name="create-cpm-transaction"></a>
-## #<HEADING (N 2 TEXT CreateCpmTransaction)>: CPMトークンによる取引作成
+## CreateCpmTransaction: CPMトークンによる取引作成
 CPMトークンにより取引を作成します。
 CPMトークンに設定されたスコープの取引を作ることができます。
 
 
 ```PHP
 $request = new Request\CreateCpmTransaction(
-    "YgOAp27qf4lM2Lc0ovIO4g",                     // cpmToken: CPMトークン
+    "Cignn72q589moUcEwPHgQk",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    3848.0,                                       // amount: 取引金額
+    9335.0,                                       // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
@@ -1173,7 +1170,7 @@ $request = new Request\CreateCpmTransaction(
 
 
 <a name="create-transfer-transaction"></a>
-## #<HEADING (N 2 TEXT CreateTransferTransaction)>: 個人間送金
+## CreateTransferTransaction: 個人間送金
 エンドユーザー間での送金取引(個人間送金)を作成します。
 個人間送金で送れるのはマネーのみで、ポイントを送ることはできません。送金元のマネー残高のうち、有効期限が最も遠いものから順に送金されます。
 
@@ -1183,7 +1180,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    394.0,                                        // amount: 送金額
+    4091.0,                                       // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -1306,16 +1303,16 @@ $request = new Request\CreateTransferTransaction(
 
 
 <a name="create-exchange-transaction"></a>
-## #<HEADING (N 2 TEXT CreateExchangeTransaction)>
+## CreateExchangeTransaction
 
 ```PHP
 $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    7985,
+    8180,
     [
-        'description' => "D9Kb0v86SUuWhysGYhpzxNkTe1nYkIvf8XiiVm9m3PxRcOs8IuAGuSVcoOpUGwEQ4hX2cSmZJlbqOSlIj0hzz1riUwNupIpc",
+        'description' => "b0oCHdT5mkSZdmbh0pgGnMz7orP0dvX5uNC1NO12ypzaeefUddBLEbSIoAtWd7bMS3DLYVeJBZOspEV30543ULeXqhWGM9Gwir4eCIseVssSpSGkZGPjzugNPJGvlAPd7MbJsiFKDz7KSuxRcFiR9Po3IuF1pOg",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -1406,7 +1403,7 @@ $request = new Request\CreateExchangeTransaction(
 
 
 <a name="get-transaction"></a>
-## #<HEADING (N 2 TEXT GetTransaction)>: 取引情報を取得する
+## GetTransaction: 取引情報を取得する
 取引を取得します。
 
 ```PHP
@@ -1443,7 +1440,7 @@ $request = new Request\GetTransaction(
 
 
 <a name="refund-transaction"></a>
-## #<HEADING (N 2 TEXT RefundTransaction)>: 取引をキャンセルする
+## RefundTransaction: 取引をキャンセルする
 取引IDを指定して取引をキャンセルします。
 
 発行体の管理者は自組織の直営店、または発行しているマネーの決済加盟店組織での取引をキャンセルできます。
@@ -1457,7 +1454,7 @@ $request = new Request\RefundTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
     [
         'description' => "返品対応のため",               // 取引履歴に表示する返金事由
-        'returning_point_expires_at' => "2022-04-14T02:57:19.000000+09:00" // 返却ポイントの有効期限
+        'returning_point_expires_at' => "2023-05-28T19:33:49.000000+09:00" // 返却ポイントの有効期限
     ]
 );
 ```
@@ -1510,7 +1507,7 @@ $request = new Request\RefundTransaction(
 
 
 <a name="get-transaction-by-request-id"></a>
-## #<HEADING (N 2 TEXT GetTransactionByRequestId)>: リクエストIDから取引情報を取得する
+## GetTransactionByRequestId: リクエストIDから取引情報を取得する
 取引を取得します。
 
 ```PHP
@@ -1547,7 +1544,7 @@ $request = new Request\GetTransactionByRequestId(
 
 
 <a name="request-user-stats"></a>
-## #<HEADING (N 2 TEXT RequestUserStats)>: 指定期間内の顧客が行った取引の統計情報をCSVでダウンロードする
+## RequestUserStats: 指定期間内の顧客が行った取引の統計情報をCSVでダウンロードする
 期間を指定して、期間内に発行マネーの全顧客が行った取引の総額・回数などをCSVでダウンロードする機能です。
 CSVの作成は非同期で行われるため完了まで少しの間待つ必要がありますが、完了時にダウンロードできるURLをレスポンスとして返します。
 このURLの有効期限はリクエスト日時から7日間です。

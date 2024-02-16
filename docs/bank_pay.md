@@ -3,7 +3,7 @@ BankPayを用いた銀行からのチャージ取引などのAPIを提供して�
 
 
 <a name="create-bank"></a>
-## #<HEADING (N 2 TEXT CreateBank)>: 銀行口座の登録
+## CreateBank: 銀行口座の登録
 銀行口座の登録を始めるAPIです。レスポンスに含まれるredirect_urlをユーザーの端末で開き銀行を登録します。
 
 ユーザーが銀行口座の登録に成功すると、callback_urlにリクエストが行われます。
@@ -17,7 +17,7 @@ $request = new Request\CreateBank(
     "<Deep Link>",                                // callbackUrl: コールバックURL
     "ポケペイタロウ",                                    // kana: ユーザーの氏名 (片仮名で指定)
     [
-        'email' => "pSTL76Ftrt@cLxe.com",         // ユーザーのメールアドレス
+        'email' => "OaOTxiW7Qm@37b5.com",         // ユーザーのメールアドレス
         'birthdate' => "19901142"                 // 生年月日
     ]
 );
@@ -104,7 +104,7 @@ $request = new Request\CreateBank(
 
 
 <a name="list-banks"></a>
-## #<HEADING (N 2 TEXT ListBanks)>: 登録した銀行の一覧
+## ListBanks: 登録した銀行の一覧
 登録した銀行を一覧します
 
 ```PHP
@@ -152,14 +152,14 @@ $request = new Request\ListBanks(
 
 
 <a name="create-bank-topup-transaction"></a>
-## #<HEADING (N 2 TEXT CreateBankTopupTransaction)>: 銀行からのチャージ
+## CreateBankTopupTransaction: 銀行からのチャージ
 指定のマネーのアカウントにbank_idの口座を用いてチャージを行います。
 
 ```PHP
 $request = new Request\CreateBankTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    7474,                                         // amount: チャージ金額
+    445,                                          // amount: チャージ金額
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // bankId: 銀行ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // requestId: リクエストID
 );

@@ -8,11 +8,11 @@ class CreateBankTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBankTopupTransaction(
-            "1f77ce87-1c51-4398-af29-7b7ee63042e8",
-            "89726428-ac6b-4b33-99eb-84bdd0d3ca59",
-            3160,
-            "83d76475-3654-433d-9c9c-39bb8206b0ee",
-            "d4213b90-db44-43f5-95c8-57932880982a"
+            "bbcecb1e-46fa-4fbb-8353-dea8ea350064",
+            "a13d31b2-9fd9-4aac-b660-fc83042bf773",
+            8392,
+            "4304b01d-7440-4398-a367-94a942cdc7d0",
+            "539bda9d-3816-478e-838f-e59bd0041af9"
         );
         try {
             $response = $client->send($request);

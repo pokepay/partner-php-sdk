@@ -1,7 +1,7 @@
 # Customer
 
 <a name="get-account"></a>
-## #<HEADING (N 2 TEXT GetAccount)>: ウォレット情報を表示する
+## GetAccount: ウォレット情報を表示する
 ウォレットを取得します。
 
 ```PHP
@@ -38,7 +38,7 @@ $request = new Request\GetAccount(
 
 
 <a name="update-account"></a>
-## #<HEADING (N 2 TEXT UpdateAccount)>: ウォレット情報を更新する
+## UpdateAccount: ウォレット情報を更新する
 ウォレットの状態を更新します。
 以下の項目が変更できます。
 
@@ -51,8 +51,8 @@ $request = new Request\GetAccount(
 $request = new Request\UpdateAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'is_suspended' => FALSE,                  // ウォレットが凍結されているかどうか
-        'status' => "suspended",                  // ウォレット状態
+        'is_suspended' => TRUE,                   // ウォレットが凍結されているかどうか
+        'status' => "pre-closed",                 // ウォレット状態
         'can_transfer_topup' => TRUE              // チャージ可能かどうか
     ]
 );
@@ -124,7 +124,7 @@ $request = new Request\UpdateAccount(
 
 
 <a name="delete-account"></a>
-## #<HEADING (N 2 TEXT DeleteAccount)>: ウォレットを退会する
+## DeleteAccount: ウォレットを退会する
 ウォレットを退会します。一度ウォレットを退会した後は、そのウォレットを再び利用可能な状態に戻すことは出来ません。
 
 ```PHP
@@ -175,17 +175,17 @@ $request = new Request\DeleteAccount(
 
 
 <a name="list-account-balances"></a>
-## #<HEADING (N 2 TEXT ListAccountBalances)>: エンドユーザーの残高内訳を表示する
+## ListAccountBalances: エンドユーザーの残高内訳を表示する
 エンドユーザーのウォレット毎の残高を有効期限別のリストとして取得します。
 
 ```PHP
 $request = new Request\ListAccountBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 1216,                           // ページ番号
-        'per_page' => 2542,                       // 1ページ分の取引数
-        'expires_at_from' => "2020-11-17T07:13:58.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2023-12-15T14:55:29.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'page' => 6195,                           // ページ番号
+        'per_page' => 8539,                       // 1ページ分の取引数
+        'expires_at_from' => "2021-12-19T07:12:26.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2020-12-24T02:23:56.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
         'direction' => "desc"                     // 有効期限によるソート順序
     ]
 );
@@ -282,18 +282,18 @@ $request = new Request\ListAccountBalances(
 
 
 <a name="list-account-expired-balances"></a>
-## #<HEADING (N 2 TEXT ListAccountExpiredBalances)>: エンドユーザーの失効済みの残高内訳を表示する
+## ListAccountExpiredBalances: エンドユーザーの失効済みの残高内訳を表示する
 エンドユーザーのウォレット毎の失効済みの残高を有効期限別のリストとして取得します。
 
 ```PHP
 $request = new Request\ListAccountExpiredBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 2735,                           // ページ番号
-        'per_page' => 4508,                       // 1ページ分の取引数
-        'expires_at_from' => "2023-09-19T12:26:55.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2021-01-24T11:37:04.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
-        'direction' => "desc"                     // 有効期限によるソート順序
+        'page' => 7517,                           // ページ番号
+        'per_page' => 8655,                       // 1ページ分の取引数
+        'expires_at_from' => "2022-06-01T11:45:03.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2020-08-30T17:13:40.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'direction' => "asc"                      // 有効期限によるソート順序
     ]
 );
 ```
@@ -389,16 +389,16 @@ $request = new Request\ListAccountExpiredBalances(
 
 
 <a name="update-customer-account"></a>
-## #<HEADING (N 2 TEXT UpdateCustomerAccount)>: エンドユーザーのウォレット情報を更新する
+## UpdateCustomerAccount: エンドユーザーのウォレット情報を更新する
 エンドユーザーのウォレットの状態を更新します。
 
 ```PHP
 $request = new Request\UpdateCustomerAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'status' => "pre-closed",                 // ウォレット状態
-        'account_name' => "P8maV5rtMR8jJA0qFrCXX62swEdVlcE1pDfqBCarZYvdmFywG03wO2tw9b9gSgcnV53LsTaQMUByja4h8Fmn2IkVW46AaXTLnIb1p3Vk50IOLcyxsB2k1iwy0GYp", // アカウント名
-        'external_id' => "rnW3eBeMIFDidbgCsm42krJIJ3VvCWeef", // 外部ID
+        'status' => "suspended",                  // ウォレット状態
+        'account_name' => "YUl8rT0qGgNlNnCJRkrpCMKUObTnUvoOfaYn7SBWEnShATuBwDMx2i35hlO3p73deYKTcVkUK8FR0BdBqk6PZbeLJaeXKK60eGN", // アカウント名
+        'external_id' => "eoYYMC3",               // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );
@@ -499,22 +499,22 @@ $request = new Request\UpdateCustomerAccount(
 
 
 <a name="get-customer-accounts"></a>
-## #<HEADING (N 2 TEXT GetCustomerAccounts)>: エンドユーザーのウォレット一覧を表示する
+## GetCustomerAccounts: エンドユーザーのウォレット一覧を表示する
 マネーを指定してエンドユーザーのウォレット一覧を取得します。
 
 ```PHP
 $request = new Request\GetCustomerAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 9537,                           // ページ番号
-        'per_page' => 1780,                       // 1ページ分のウォレット数
-        'created_at_from' => "2023-03-26T09:25:48.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2021-05-01T18:23:34.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
+        'page' => 5969,                           // ページ番号
+        'per_page' => 6795,                       // 1ページ分のウォレット数
+        'created_at_from' => "2023-06-26T19:56:02.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2023-03-13T06:21:49.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
         'is_suspended' => TRUE,                   // ウォレットが凍結状態かどうかでフィルターする
-        'status' => "suspended",                  // ウォレット状態
-        'external_id' => "mAVi3G48vwlShzklz4fJ2c5dEW4O1JQ0NbiA", // 外部ID
-        'tel' => "0892-7832-571",                 // エンドユーザーの電話番号
-        'email' => "6UL34L8Zii@HuUu.com"          // エンドユーザーのメールアドレス
+        'status' => "active",                     // ウォレット状態
+        'external_id' => "EQJs9oGpHSaO8ylZvR684IU7oUD9IQcxhmZK29jSjKA", // 外部ID
+        'tel' => "017514-0600",                   // エンドユーザーの電話番号
+        'email' => "YqaZwK3o1k@xcyZ.com"          // エンドユーザーのメールアドレス
     ]
 );
 ```
@@ -658,7 +658,7 @@ $request = new Request\GetCustomerAccounts(
 
 
 <a name="create-customer-account"></a>
-## #<HEADING (N 2 TEXT CreateCustomerAccount)>: 新規エンドユーザーをウォレットと共に追加する
+## CreateCustomerAccount: 新規エンドユーザーをウォレットと共に追加する
 指定したマネーのウォレットを作成し、同時にそのウォレットを保有するユーザも新規に作成します。
 このAPIにより作成されたユーザは認証情報を持たないため、モバイルSDKやポケペイ標準アプリからはログインすることはできません。
 Partner APIのみから操作可能な特殊なユーザになります。
@@ -670,7 +670,7 @@ $request = new Request\CreateCustomerAccount(
     [
         'user_name' => "ポケペイ太郎",                  // ユーザー名
         'account_name' => "ポケペイ太郎のアカウント",         // アカウント名
-        'external_id' => "8bVVO1M4i3DbFiC1WxY9ulMFxgbayPZVxrVKh3J9BAGL1pFq7a" // 外部ID
+        'external_id' => "Lgjkh6thJZ3f9xkkWQrJnN5KIl9DD0wR9FH5l" // 外部ID
     ]
 );
 ```
@@ -739,17 +739,17 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 
 
 <a name="get-shop-accounts"></a>
-## #<HEADING (N 2 TEXT GetShopAccounts)>: 店舗ユーザーのウォレット一覧を表示する
+## GetShopAccounts: 店舗ユーザーのウォレット一覧を表示する
 マネーを指定して店舗ユーザーのウォレット一覧を取得します。
 
 ```PHP
 $request = new Request\GetShopAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 8755,                           // ページ番号
-        'per_page' => 5180,                       // 1ページ分のウォレット数
-        'created_at_from' => "2021-07-23T11:11:40.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2023-11-24T22:47:04.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
+        'page' => 79,                             // ページ番号
+        'per_page' => 440,                        // 1ページ分のウォレット数
+        'created_at_from' => "2021-08-14T05:00:22.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2022-12-30T09:46:54.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
         'is_suspended' => TRUE                    // ウォレットが凍結状態かどうかでフィルターする
     ]
 );
@@ -842,7 +842,7 @@ $request = new Request\GetShopAccounts(
 
 
 <a name="list-customer-transactions"></a>
-## #<HEADING (N 2 TEXT ListCustomerTransactions)>: 取引履歴を取得する
+## ListCustomerTransactions: 取引履歴を取得する
 取引一覧を返します。
 
 ```PHP
@@ -851,10 +851,10 @@ $request = new Request\ListCustomerTransactions(
     [
         'sender_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金エンドユーザーID
         'receiver_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
-        'type' => "transfer",                     // 取引種別
-        'is_modified' => TRUE,                    // キャンセル済みかどうか
-        'from' => "2021-03-31T19:25:04.000000+09:00", // 開始日時
-        'to' => "2022-05-09T18:42:14.000000+09:00", // 終了日時
+        'type' => "payment",                      // 取引種別
+        'is_modified' => FALSE,                   // キャンセル済みかどうか
+        'from' => "2021-03-11T14:24:47.000000+09:00", // 開始日時
+        'to' => "2022-02-15T05:21:40.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]

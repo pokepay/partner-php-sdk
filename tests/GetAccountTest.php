@@ -8,7 +8,7 @@ class GetAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetAccount(
-            "63fdc7af-cac7-411d-9933-1159c35c4746"
+            "c64fbf89-7fb1-4164-a5dc-5cec0e06d301"
         );
         try {
             $response = $client->send($request);

@@ -5,15 +5,15 @@ WebHookにはURLとタスク名、有効化されているかを設定するこ�
 
 
 <a name="create-webhook"></a>
-## #<HEADING (N 2 TEXT CreateWebhook)>: webhookの作成
+## CreateWebhook: webhookの作成
 ワーカータスクの処理が終了したことを通知するためのWebhookを登録します
 このAPIにより指定したタスクの終了時に、指定したURLにPOSTリクエストを送信します。
 このとき、リクエストボディは `{"task": <タスク名>}` という値になります。
 
 ```PHP
 $request = new Request\CreateWebhook(
-    "process_user_stats_operation",               // task: タスク名
-    "5QPmdKSPbz"                                  // url: URL
+    "bulk_shops",                                 // task: タスク名
+    "K"                                           // url: URL
 );
 ```
 
@@ -57,7 +57,7 @@ $request = new Request\CreateWebhook(
 
 
 <a name="list-webhooks"></a>
-## #<HEADING (N 2 TEXT ListWebhooks)>: 作成したWebhookの一覧を返す
+## ListWebhooks: 作成したWebhookの一覧を返す
 
 ```PHP
 $request = new Request\ListWebhooks(
@@ -106,16 +106,16 @@ $request = new Request\ListWebhooks(
 
 
 <a name="update-webhook"></a>
-## #<HEADING (N 2 TEXT UpdateWebhook)>: Webhookの更新
+## UpdateWebhook: Webhookの更新
 指定したWebhookの内容を更新します
 
 ```PHP
 $request = new Request\UpdateWebhook(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // webhookId: Webhook ID
     [
-        'url' => "6",                             // URL
+        'url' => "ClfP",                          // URL
         'is_active' => FALSE,                     // 有効/無効
-        'task' => "process_user_stats_operation"  // タスク名
+        'task' => "bulk_shops"                    // タスク名
     ]
 );
 ```
@@ -183,7 +183,7 @@ trueならWebhookによる通知が有効になり、falseなら無効になり�
 
 
 <a name="delete-webhook"></a>
-## #<HEADING (N 2 TEXT DeleteWebhook)>: Webhookの削除
+## DeleteWebhook: Webhookの削除
 指定したWebhookを削除します
 
 ```PHP
