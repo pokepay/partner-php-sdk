@@ -160,8 +160,8 @@ class CreateCheck extends TestCase
                 'money_amount' => 2132.0,
                 'bear_point_account' => "564f0633-c088-426c-bfdf-b12916570056",
                 'point_expires_in_days' => 4947,
-                'point_expires_at' => "2024-01-16T03:09:56.000000Z",
-                'expires_at' => "2022-08-04T04:38:22.000000Z",
+                'point_expires_at' => "2024-03-06T17:39:29.000000Z",
+                'expires_at' => "2024-01-16T03:09:56.000000Z",
                 'usage_limit' => 8911,
                 'is_onetime' => TRUE,
                 'description' => "23WFeXCsADfveWv5SetJLuZcB6tdcwibyPvTHbjOWbqqVGNOP2f7Fmc6X"
