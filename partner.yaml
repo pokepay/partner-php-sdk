@@ -34,6 +34,7 @@ tags:
   - name: Customer
   - name: Organization
   - name: Shop
+  - name: User
   - name: Account
   - name: Private Money
   - name: Bulk
@@ -1938,6 +1939,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
   /user:
     get:
+      tags:
+        - User
       responses:
         '200':
           description: OK
@@ -5778,6 +5781,8 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
   /bulk-transactions/{bulk_transaction_id}:
     get:
+      tags:
+        - Transaction
       summary: バルク取引ジョブの実行状況を取得する
       x-pokepay-operator-name: "GetBulkTransaction"
       x-pokepay-allow-server-side: true
@@ -5805,6 +5810,8 @@ paths:
           $ref: '#/components/responses/NotFound'
   /bulk-transactions/{bulk_transaction_id}/jobs:
     get:
+      tags:
+        - Transaction
       summary: バルク取引ジョブの詳細情報一覧を取得する
       x-pokepay-operator-name: "ListBulkTransactionJobs"
       x-pokepay-allow-server-side: true
@@ -6471,6 +6478,43 @@ paths:
                     ]
                     ```
 
+                blacklisted_product_rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      product_code:
+                        type: string
+                        maxLength: 64
+                        title: '対象の製品コード'
+                        description: |-
+                          対象の製品コード (JANコードやISBNコードなど) を指定します。(必須項目)
+
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (_ で任意の1文字にマッチし、 % で任意文字列にマッチします。 例: 978-% でISBNコード)
+                        items:
+                          type: string
+                      classification_code:
+                        type: string
+                        maxLength: 64
+                        title: '対象の商品分類コード'
+                        description: |-
+                          対象の商品分類コード (書籍のCコードなど) を指定します。(任意項目)
+
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (_ で任意の1文字にマッチし、 % で任意文字列にマッチします。 例: 978-% でISBNコード)
+                        items:
+                          type: string
+                    example: |-
+                      {
+                        "product_code": "4912345678904",
+                        "classification_code": "c123"
+                      }
+
+                  title: '商品情報ベースのキャンペーンで除外対象にする商品リスト'
+                  description:  |-
+                    商品情報をベースとしてポイント付与を行う際に、事前に除外対象とする商品リストを指定します。
+                    除外対象の商品コード、または分類コードのパターンの配列として指定します。
+                    取引時には、まずここで指定した除外対象商品が除かれ、残った商品に対して `product_based_point_rules` のルール群が適用されます。
+
                 applicable_days_of_week:
                   type: array
                   items:
@@ -6515,6 +6559,18 @@ paths:
                   describe: |-
                     キャンペーンを適用する店舗IDを指定します (複数指定)。
                     指定しなかった場合は全店舗が対象になります。
+                minimum_number_of_products:
+                  type: integer
+                  minimum: 1
+                  title: 'キャンペーンを適用する1会計内の商品個数の下限'
+                  description: |-
+                    このパラメータを指定すると、取引時の1会計内のルールに適合する商品個数がminimum_number_of_productsを超えたときにのみキャンペーンが発火するようになります。
+                minimum_number_of_amount:
+                  type: integer
+                  minimum: 1
+                  title: 'キャンペーンを適用する1会計内の商品総額の下限'
+                  description: |-
+                    このパラメータを指定すると、取引時の1会計内のルールに適合する商品総額がminimum_number_of_amountを超えたときにのみキャンペーンが発火するようになります。
                 minimum_number_for_combination_purchase:
                   type: integer
                   minimum: 1
@@ -7253,6 +7309,43 @@ paths:
                     ]
                     ```
 
+                blacklisted_product_rules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      product_code:
+                        type: string
+                        maxLength: 64
+                        title: '対象の製品コード'
+                        description: |-
+                          対象の製品コード (JANコードやISBNコードなど) を指定します。(必須項目)
+
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (_ で任意の1文字にマッチし、 % で任意文字列にマッチします。 例: 978-% でISBNコード)
+                        items:
+                          type: string
+                      classification_code:
+                        type: string
+                        maxLength: 64
+                        title: '対象の商品分類コード'
+                        description: |-
+                          対象の商品分類コード (書籍のCコードなど) を指定します。(任意項目)
+
+                          SQLのLIKE文のようにワイルドカードを使った製品コードのパターンを指定することもできます (_ で任意の1文字にマッチし、 % で任意文字列にマッチします。 例: 978-% でISBNコード)
+                        items:
+                          type: string
+                    example: |-
+                      {
+                        "product_code": "4912345678904",
+                        "classification_code": "c123"
+                      }
+
+                  title: '商品情報ベースのキャンペーンで除外対象にする商品リスト'
+                  description:  |-
+                    商品情報をベースとしてポイント付与を行う際に、事前に除外対象とする商品リストを指定します。
+                    除外対象の商品コード、または分類コードのパターンの配列として指定します。
+                    取引時には、まずここで指定した除外対象商品が除かれ、残った商品に対して `product_based_point_rules` のルール群が適用されます。
+
                 applicable_days_of_week:
                   type: array
                   items:
@@ -7300,6 +7393,20 @@ paths:
                   describe: |-
                     キャンペーンを適用する店舗IDを指定します (複数指定)。
                     指定しなかった場合は全店舗が対象になります。
+                minimum_number_of_products:
+                  type: integer
+                  minimum: 1
+                  nullable: true
+                  title: 'キャンペーンを適用する1会計内の商品個数の下限'
+                  description: |-
+                    このパラメータを指定すると、取引時の1会計内のルールに適合する商品個数がminimum_number_of_productsを超えたときにのみキャンペーンが発火するようになります。
+                minimum_number_of_amount:
+                  type: integer
+                  minimum: 1
+                  nullable: true
+                  title: 'キャンペーンを適用する1会計内の商品総額の下限'
+                  description: |-
+                    このパラメータを指定すると、取引時の1会計内のルールに適合する商品総額がminimum_number_of_amountを超えたときにのみキャンペーンが発火するようになります。
                 minimum_number_for_combination_purchase:
                   type: integer
                   minimum: 1

@@ -387,6 +387,7 @@ GET,/checks,403,unpermitted_admin_user,"この管理ユーザには権限があ�
 ,,422,private_money_not_found,,Private money not found
 POST,/checks,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameter_only_merchants_can_attach_points_to_check,,Only merchants can attach points to check
+,,400,invalid_parameter_bear_point_account_identification_item_not_unique,"ポイントを負担する店舗アカウントを指定するリクエストパラメータには、アカウントID、またはユーザIDのどちらかを含めることができます",Request parameters include either bear_point_account or bear_point_shop_id.
 ,,400,invalid_parameter_combination_usage_limit_and_is_onetime,,'usage_limit' can not be specified if 'is_onetime' is true.
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,400,invalid_parameter_expires_at,,'expires_at' must be in the future
@@ -395,6 +396,7 @@ POST,/checks,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_
 ,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
 ,,422,shop_account_not_found,,The shop account is not found
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,bear_point_account_not_found,"ポイントを負担する店舗アカウントが見つかりません",Bear point account not found.
 GET,/checks/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
@@ -750,7 +752,8 @@ GET,/user-devices/:uuid/banks,403,unpermitted_admin_user,"この管理ユーザ�
 ,,403,forbidden,,Forbidden
 ,,422,private_money_not_found,,Private money not found
 ,,422,user_device_not_found,,The user-device not found
-POST,/user-devices/:uuid/banks/topup,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外部サービス起因により、チャージに失敗しました",Failure to topup due to external services of the bank
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,forbidden,,Forbidden
 ,,403,user_bank_disabled_error,"現在、このユーザーは銀行からのチャージは利用できません",Topup from this user's bank have now been stopped.
 ,,404,user_bank_not_found,"登録された銀行が見つかりません",Bank not found
@@ -789,6 +792,5 @@ POST,/user-devices/:uuid/banks/topup,403,unpermitted_admin_user,"この管理ユ
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,paytree_disabled_private_money,"このマネーは銀行から引き落とし出来ません",This money cannot be charged from the bank
 ,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
-,,503,paytree_request_failure,"銀行口座の残高不足または、銀行の外部サービス起因により、チャージに失敗しました",Failure to topup due to external services of the bank
 ,,503,temporarily_unavailable,,Service Unavailable
 ,,503,incomplete_configration_for_organization_bank,"現状、このマネーは銀行からのチャージを行えません。システム管理者へお問合せ下さい","Currently, this money cannot be topup from this bank. Please contact your system administrator."
