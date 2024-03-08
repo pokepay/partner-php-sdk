@@ -9,3 +9,5 @@ API_BASE_URL     = https://partnerapi-sandbox.pokepay.jp
 TIMEZONE         = Asia/Tokyo
 CONNECTTIMEOUT   = 5
 TIMEOUT          = 5
+
+ACCEPT_LANGUAGE = 'ja'
