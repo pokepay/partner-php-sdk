@@ -17,6 +17,8 @@ class PartnerAPI
     private $clientInstance;
     private $curlOptions = array();
 
+    private $acceptLanguage;
+
     public function __construct($iniFile = null, $_clientId = null, $_clientSecret = null)
     {
         $iniFile = isset($iniFile) ? $iniFile : getenv('POKEPAY_PARTNER_CONFIG_FILE');
@@ -26,6 +28,9 @@ class PartnerAPI
             $this->clientId = isset($_clientId) ? $_clientId : $config['CLIENT_ID'];
             $this->clientSecret = isset($_clientSecret) ? $_clientSecret : $config['CLIENT_SECRET'];
             $this->apiBase = $config['API_BASE_URL'];
+            if (array_key_exists('ACCEPT_LANGUAGE', $config)) {
+                $this->acceptLanguage = $config['ACCEPT_LANGUAGE'];
+            }
             if (array_key_exists('SSL_KEY_FILE', $config)) {
                 $this->curlOptions[CURLOPT_SSLKEY] = $config['SSL_KEY_FILE'];
             }
@@ -92,11 +97,16 @@ class PartnerAPI
             $this->clientInstance = new HttpClient(...$args);
         }
 
+        $headers = $request->getHeaders();
+        if ($this->acceptLanguage) {
+          array_push($headers, 'Accept-Language: ' . $this->acceptLanguage);
+        }
+
         return $this->clientInstance->request(
             $request->getCallId(),
             $request->getMethod(),
             $this->apiBase . $request->getPath(),
-            $request->getHeaders(),
+            $headers,
             $request->getParams() + $request->getDefaultParams(),
             $request->responseClass
         );
