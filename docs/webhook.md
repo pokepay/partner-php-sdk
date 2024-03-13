@@ -13,7 +13,7 @@ WebHookにはURLとタスク名、有効化されているかを設定するこ�
 ```PHP
 $request = new Request\CreateWebhook(
     "process_user_stats_operation",               // task: タスク名
-    "TrO"                                         // url: URL
+    "4wkf"                                        // url: URL
 );
 ```
 
@@ -51,6 +51,13 @@ $request = new Request\CreateWebhook(
 成功したときは
 [OrganizationWorkerTaskWebhook](./responses.md#organization-worker-task-webhook)
 を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|409|organization_worker_task_finish_webhook_conflict|そのwebhookは既に登録されています|The webhook is already registered|
+
 
 
 ---
@@ -101,6 +108,12 @@ $request = new Request\ListWebhooks(
 [PaginatedOrganizationWorkerTaskWebhook](./responses.md#paginated-organization-worker-task-webhook)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+
+
 
 ---
 
@@ -113,7 +126,7 @@ $request = new Request\ListWebhooks(
 $request = new Request\UpdateWebhook(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // webhookId: Webhook ID
     [
-        'url' => "KV0pCM",                        // URL
+        'url' => "3Zcpne1CwZ",                    // URL
         'is_active' => FALSE,                     // 有効/無効
         'task' => "bulk_shops"                    // タスク名
     ]
@@ -179,6 +192,7 @@ trueならWebhookによる通知が有効になり、falseなら無効になり�
 を返します
 
 
+
 ---
 
 
@@ -212,6 +226,7 @@ $request = new Request\DeleteWebhook(
 成功したときは
 [OrganizationWorkerTaskWebhook](./responses.md#organization-worker-task-webhook)
 を返します
+
 
 
 ---

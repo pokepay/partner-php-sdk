@@ -11,12 +11,12 @@ Couponは特定店舗で利用できるものや利用可能期間、配信条�
 $request = new Request\ListCoupons(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 対象クーポンのマネーID
     [
-        'coupon_id' => "FJNQA3k",                 // クーポンID
-        'coupon_name' => "fFkr90kavA",            // クーポン名
-        'issued_shop_name' => "Fh1N68WRUf",       // 発行店舗名
-        'available_shop_name' => "MKK",           // 利用可能店舗名
-        'available_from' => "2023-10-15T08:25:04.000000+09:00", // 利用可能期間 (開始日時)
-        'available_to' => "2020-10-25T01:59:57.000000+09:00", // 利用可能期間 (終了日時)
+        'coupon_id' => "TUeh",                    // クーポンID
+        'coupon_name' => "ZchNm",                 // クーポン名
+        'issued_shop_name' => "t",                // 発行店舗名
+        'available_shop_name' => "iRjvHm",        // 利用可能店舗名
+        'available_from' => "2021-02-25T10:18:59.000000+09:00", // 利用可能期間 (開始日時)
+        'available_to' => "2021-03-22T04:58:29.000000+09:00", // 利用可能期間 (終了日時)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取得数
     ]
@@ -145,6 +145,14 @@ $request = new Request\ListCoupons(
 [PaginatedCoupons](./responses.md#paginated-coupons)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
+|422|private_money_not_found||Private money not found|
+
+
 
 ---
 
@@ -156,25 +164,25 @@ $request = new Request\ListCoupons(
 ```PHP
 $request = new Request\CreateCoupon(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "xnfVj2ixLy47V6oCSRL0xUNbSulItiZmR4s8Q6eoCkZwUxKYHejtKeuGiTkDduSXNG0RVuW1xrPnA7n9Ej",
-    "2020-06-25T12:59:32.000000+09:00",
-    "2022-12-08T03:36:21.000000+09:00",
+    "3Xz9htqusezXyLXJsEvfTSncRo7it4pVulLYkSwmXDZ9TbRw3V1nu1YMpRChCHVMpSWKVi5mN7",
+    "2020-07-03T15:10:49.000000+09:00",
+    "2020-10-06T05:12:19.000000+09:00",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // issuedShopId: 発行元の店舗ID
     [
-        'description' => "8YpxuJVhTLX0U9Yzr963ogHt47qS41N4ytZxwgWYbcPae1nLtlFduka7xLcbSk6Q3BA4Chyb7Mf5CpcrTy2zbD1UGihbRti2WdjYrbwS7bzAOd",
-        'discount_amount' => 2072,
-        'discount_percentage' => 7293.0,
-        'discount_upper_limit' => 2625,
-        'display_starts_at' => "2023-03-09T15:38:32.000000+09:00", // クーポンの掲載期間(開始日時)
-        'display_ends_at' => "2022-11-24T03:15:22.000000+09:00", // クーポンの掲載期間(終了日時)
+        'description' => "SPx9Uvns7gLOU5JmSxhNTmL5CoRyGeNp0HxXnZXSXNgckUAwWayJKCRYX3YIcgc",
+        'discount_amount' => 636,
+        'discount_percentage' => 9326.0,
+        'discount_upper_limit' => 8742,
+        'display_starts_at' => "2023-03-05T12:11:59.000000+09:00", // クーポンの掲載期間(開始日時)
+        'display_ends_at' => "2021-05-09T19:50:47.000000+09:00", // クーポンの掲載期間(終了日時)
         'is_disabled' => FALSE,                   // 無効化フラグ
-        'is_hidden' => TRUE,                      // クーポン一覧に掲載されるかどうか
-        'is_public' => TRUE,                      // アプリ配信なしで受け取れるかどうか
-        'code' => "SeSg1a",                       // クーポン受け取りコード
-        'usage_limit' => 7437,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
-        'min_amount' => 2022,                     // クーポン適用可能な最小取引額
-        'is_shop_specified' => TRUE,              // 特定店舗限定のクーポンかどうか
-        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
+        'is_hidden' => FALSE,                     // クーポン一覧に掲載されるかどうか
+        'is_public' => FALSE,                     // アプリ配信なしで受け取れるかどうか
+        'code' => "fiwKDxXV",                     // クーポン受け取りコード
+        'usage_limit' => 6645,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
+        'min_amount' => 6467,                     // クーポン適用可能な最小取引額
+        'is_shop_specified' => FALSE,             // 特定店舗限定のクーポンかどうか
+        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
         'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ストレージID
     ]
 );
@@ -410,6 +418,17 @@ Storage APIでアップロードしたクーポン画像のStorage IDを指定�
 [CouponDetail](./responses.md#coupon-detail)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|400|invalid_parameters|項目が無効です|Invalid parameters|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|404|partner_storage_not_found|指定したIDのデータは保存されていません|Not found by storage_id|
+|422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
+|422|private_money_not_found||Private money not found|
+|422|coupon_image_storage_conflict|クーポン画像のストレージIDは既に存在します|The coupon image storage_id is already exists|
+
+
 
 ---
 
@@ -448,6 +467,7 @@ UUIDv4フォーマットである必要があり、フォーマットが異な�
 を返します
 
 
+
 ---
 
 
@@ -459,22 +479,22 @@ UUIDv4フォーマットである必要があり、フォーマットが異な�
 $request = new Request\UpdateCoupon(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // couponId: クーポンID
     [
-        'name' => "nkqiuyDjwFdNNuG0fNwnzEwDe8tX0AzD2024sSzB873ezKHhQMUIVBMSQHDJ06qURkn8k7C1aCtb6ymahiTMOxJThQQ",
-        'description' => "8B3WLA2VSSlDFS0TYCXG7QmthoVoISPi85jrL5KeLXQTHW6mjLFUmaNkdxt1o3IenGJQ0ErNh1fizRJl9GWNmhIgjs6uEHZ788bwhRlF3b13bmBpjV0Kp1FjfRu6Xo0H9LLtDPl1L6OJHZ4YSTYH1joRHfEFIL2GZcTRPBMKNsc4MM4eASV6JPPJFyjzzvlzCqRumLDfdtLngZDxtvyBjgwoZzn9vtT1xrY2AwBvBsNze",
-        'discount_amount' => 3334,
-        'discount_percentage' => 3178.0,
-        'discount_upper_limit' => 4898,
-        'starts_at' => "2022-05-18T11:32:20.000000+09:00",
-        'ends_at' => "2020-06-27T18:32:52.000000+09:00",
-        'display_starts_at' => "2021-04-29T10:42:52.000000+09:00", // クーポンの掲載期間(開始日時)
-        'display_ends_at' => "2021-08-17T13:43:38.000000+09:00", // クーポンの掲載期間(終了日時)
-        'is_disabled' => FALSE,                   // 無効化フラグ
-        'is_hidden' => TRUE,                      // クーポン一覧に掲載されるかどうか
-        'is_public' => TRUE,                      // アプリ配信なしで受け取れるかどうか
-        'code' => "JyJvKs",                       // クーポン受け取りコード
-        'usage_limit' => 5542,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
-        'min_amount' => 281,                      // クーポン適用可能な最小取引額
-        'is_shop_specified' => FALSE,             // 特定店舗限定のクーポンかどうか
+        'name' => "D6rOBTI27AIAV5Jep",
+        'description' => "VqhTxky4RP0gQPVohOKO497LqBx5st33IycobYifawLoyomWOOMozo5jpKaGDznlAnGQMpbxQAiLohSPUwUYCUJg68uA2AmnfrLs0DzubTwACwZ7ZhzXL6GQDOebU5xROJsENJO2NqdySldX94xlSRqnAPOZUjwSd4H43FQ8gVS6TmMl7klMt3C13MqnL5qq1u02f7XAIyZQ65mKbppT1wZa5Ul9NliFarXnpuT0KKlK0tskfwpiMYtzv0h",
+        'discount_amount' => 1979,
+        'discount_percentage' => 2213.0,
+        'discount_upper_limit' => 8484,
+        'starts_at' => "2020-01-26T02:51:41.000000+09:00",
+        'ends_at' => "2023-06-05T02:15:02.000000+09:00",
+        'display_starts_at' => "2020-04-08T16:12:45.000000+09:00", // クーポンの掲載期間(開始日時)
+        'display_ends_at' => "2023-06-30T19:26:07.000000+09:00", // クーポンの掲載期間(終了日時)
+        'is_disabled' => TRUE,                    // 無効化フラグ
+        'is_hidden' => FALSE,                     // クーポン一覧に掲載されるかどうか
+        'is_public' => FALSE,                     // アプリ配信なしで受け取れるかどうか
+        'code' => "uW",                           // クーポン受け取りコード
+        'usage_limit' => 6215,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
+        'min_amount' => 686,                      // クーポン適用可能な最小取引額
+        'is_shop_specified' => TRUE,              // 特定店舗限定のクーポンかどうか
         'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
         'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ストレージID
     ]
@@ -701,6 +721,7 @@ Storage APIでアップロードしたクーポン画像のStorage IDを指定�
 成功したときは
 [CouponDetail](./responses.md#coupon-detail)
 を返します
+
 
 
 ---

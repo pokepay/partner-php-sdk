@@ -8,7 +8,7 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "ad0eb75f-cbe2-4f8d-91b7-dc31205f8761"
+            "6937e8fb-5575-49d3-8f9c-814f3803a976"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "ad0eb75f-cbe2-4f8d-91b7-dc31205f8761",
+            "6937e8fb-5575-49d3-8f9c-814f3803a976",
             [
-                'can_transfer_topup' => FALSE
+                'can_transfer_topup' => TRUE
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "ad0eb75f-cbe2-4f8d-91b7-dc31205f8761",
+            "6937e8fb-5575-49d3-8f9c-814f3803a976",
             [
-                'status' => "active",
-                'can_transfer_topup' => TRUE
+                'status' => "suspended",
+                'can_transfer_topup' => FALSE
             ]
         );
         try {
@@ -60,7 +60,7 @@ class UpdateAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateAccount(
-            "ad0eb75f-cbe2-4f8d-91b7-dc31205f8761",
+            "6937e8fb-5575-49d3-8f9c-814f3803a976",
             [
                 'is_suspended' => TRUE,
                 'status' => "pre-closed",

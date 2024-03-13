@@ -22,7 +22,7 @@ class ListWebhooks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListWebhooks(
             [
-                'per_page' => 9369
+                'per_page' => 2151
             ]
         );
         try {
@@ -39,8 +39,8 @@ class ListWebhooks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListWebhooks(
             [
-                'page' => 7524,
-                'per_page' => 2539
+                'page' => 8551,
+                'per_page' => 1333
             ]
         );
         try {

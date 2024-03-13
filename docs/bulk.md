@@ -6,11 +6,11 @@ CSVファイルから一括取引をします。
 
 ```PHP
 $request = new Request\BulkCreateTransaction(
-    "SWwFpSFb6ghcH2VtusdhlNFBNyAbp",              // name: 一括取引タスク名
-    "z",                                          // content: 取引する情報のCSV
-    "Fv3qLT4xQ4FH4JKfLjMEnjjYRFJycyrTQABE",       // requestId: リクエストID
+    "8tWD6s9Q6i",                                 // name: 一括取引タスク名
+    "iZbOooVKgu",                                 // content: 取引する情報のCSV
+    "1qds6qgsoONFz6uyU0wrmFTsH1jox1nE7Xd1",       // requestId: リクエストID
     [
-        'description' => "uKQySPbT7dKd5kN6lsJhY5V9KBcXLqEJAR5NnV4zCkeIs35giC", // 一括取引の説明
+        'description' => "LHtA5BVDLAJt8tqold",    // 一括取引の説明
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // マネーID
     ]
 );
@@ -105,6 +105,16 @@ $request = new Request\BulkCreateTransaction(
 成功したときは
 [BulkTransaction](./responses.md#bulk-transaction)
 を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|403|organization_not_issuer|発行体以外に許可されていない操作です|Unpermitted operation except for issuer organizations.|
+|409|NULL|NULL|NULL|
+|422|private_money_not_found||Private money not found|
+|422|bulk_transaction_invalid_csv_format|入力されたCSVデータに誤りがあります|Invalid csv format|
+
 
 
 ---

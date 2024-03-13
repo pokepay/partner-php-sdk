@@ -34,6 +34,7 @@ $request = new Request\GetAccount(
 を返します
 
 
+
 ---
 
 
@@ -51,9 +52,9 @@ $request = new Request\GetAccount(
 $request = new Request\UpdateAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'is_suspended' => TRUE,                   // ウォレットが凍結されているかどうか
-        'status' => "suspended",                  // ウォレット状態
-        'can_transfer_topup' => TRUE              // チャージ可能かどうか
+        'is_suspended' => FALSE,                  // ウォレットが凍結されているかどうか
+        'status' => "pre-closed",                 // ウォレット状態
+        'can_transfer_topup' => FALSE             // チャージ可能かどうか
     ]
 );
 ```
@@ -120,6 +121,7 @@ $request = new Request\UpdateAccount(
 を返します
 
 
+
 ---
 
 
@@ -131,7 +133,7 @@ $request = new Request\UpdateAccount(
 $request = new Request\DeleteAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'cashback' => FALSE                       // 返金有無
+        'cashback' => TRUE                        // 返金有無
     ]
 );
 ```
@@ -171,6 +173,7 @@ $request = new Request\DeleteAccount(
 を返します
 
 
+
 ---
 
 
@@ -182,11 +185,11 @@ $request = new Request\DeleteAccount(
 $request = new Request\ListAccountBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 2533,                           // ページ番号
-        'per_page' => 9012,                       // 1ページ分の取引数
-        'expires_at_from' => "2023-12-09T11:58:30.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2020-10-27T10:58:38.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
-        'direction' => "asc"                      // 有効期限によるソート順序
+        'page' => 5498,                           // ページ番号
+        'per_page' => 1507,                       // 1ページ分の取引数
+        'expires_at_from' => "2021-01-11T11:10:11.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2024-03-06T02:11:22.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'direction' => "desc"                     // 有効期限によるソート順序
     ]
 );
 ```
@@ -278,6 +281,7 @@ $request = new Request\ListAccountBalances(
 を返します
 
 
+
 ---
 
 
@@ -289,10 +293,10 @@ $request = new Request\ListAccountBalances(
 $request = new Request\ListAccountExpiredBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 8993,                           // ページ番号
-        'per_page' => 5817,                       // 1ページ分の取引数
-        'expires_at_from' => "2023-09-27T13:41:19.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2023-02-23T14:19:39.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
+        'page' => 9646,                           // ページ番号
+        'per_page' => 8827,                       // 1ページ分の取引数
+        'expires_at_from' => "2022-08-16T07:44:55.000000+09:00", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2020-05-27T11:01:04.000000+09:00", // 有効期限の期間によるフィルター(終了時点)
         'direction' => "asc"                      // 有効期限によるソート順序
     ]
 );
@@ -385,6 +389,7 @@ $request = new Request\ListAccountExpiredBalances(
 を返します
 
 
+
 ---
 
 
@@ -397,8 +402,8 @@ $request = new Request\UpdateCustomerAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
         'status' => "suspended",                  // ウォレット状態
-        'account_name' => "NlmNwAQ8Y0jNT0qxUB8a4TXFhHLajGYZGg1VAUTwo2npf0DnR1bXwfSfE9CGVpkwmUNwEyeY3SkwUHs36riiRTVUmdIwvoptA0kFtVZVAofWrATt0sgPSLEbYAP9C7Dcuytvk1dwYGRq7yqVWmDGrQmiU2MyeSTh59VcXSYsVWgihmxYyBN4EgSbg0a5I1x569p8J00LmW2gv", // アカウント名
-        'external_id' => "BZ4mYXSGmOU1IBVkS",     // 外部ID
+        'account_name' => "SZO0eB2VJdZjjB0xRzUNUpofUOthUvaBWHSD95mCwqz0uQMfHDC0caZdfhivWlaI8SRhD29ZtnzslLBpLYCslrR5KJr7bn9hdX9OCfFXn9K2AgfBHU7qrHZsxfuhIX0b4ZUJ6pPrj6eqKTlwfXx7lcxZh2WMWiFuZyBOgd5E91H2aN9YB3DkMGQHjMs0udRBjM6r3v444GQyuFePe1bdi6rL7eYxL0XFwW7EdlFHXGXUj", // アカウント名
+        'external_id' => "5PtPB6UkHgn3dVMZ5H3vRVXGOFVfx8FrjqoA5E4KYC", // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );
@@ -495,6 +500,7 @@ $request = new Request\UpdateCustomerAccount(
 を返します
 
 
+
 ---
 
 
@@ -506,15 +512,15 @@ $request = new Request\UpdateCustomerAccount(
 $request = new Request\GetCustomerAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 65,                             // ページ番号
-        'per_page' => 9002,                       // 1ページ分のウォレット数
-        'created_at_from' => "2023-05-26T21:31:11.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2022-11-03T14:53:15.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
-        'is_suspended' => FALSE,                  // ウォレットが凍結状態かどうかでフィルターする
+        'page' => 3185,                           // ページ番号
+        'per_page' => 6617,                       // 1ページ分のウォレット数
+        'created_at_from' => "2022-04-13T06:22:31.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2023-01-25T03:49:34.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
+        'is_suspended' => TRUE,                   // ウォレットが凍結状態かどうかでフィルターする
         'status' => "pre-closed",                 // ウォレット状態
-        'external_id' => "5laluOoaYK",            // 外部ID
-        'tel' => "0265-40-032",                   // エンドユーザーの電話番号
-        'email' => "V4WevyjRyb@CzhL.com"          // エンドユーザーのメールアドレス
+        'external_id' => "tgj4ic1Op9HqPn1KxYeayAuIYuThxbz5j4c", // 外部ID
+        'tel' => "05438-686",                     // エンドユーザーの電話番号
+        'email' => "PySc1Y3BYC@jC5c.com"          // エンドユーザーのメールアドレス
     ]
 );
 ```
@@ -653,6 +659,13 @@ $request = new Request\GetCustomerAccounts(
 [PaginatedAccountWithUsers](./responses.md#paginated-account-with-users)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|private_money_not_found||Private money not found|
+
+
 
 ---
 
@@ -670,7 +683,7 @@ $request = new Request\CreateCustomerAccount(
     [
         'user_name' => "ポケペイ太郎",                  // ユーザー名
         'account_name' => "ポケペイ太郎のアカウント",         // アカウント名
-        'external_id' => "yC6HsvW9eZQCCnbwNN5P9Qd8y0okF9W0KCmFH5Bj" // 外部ID
+        'external_id' => "ml4lO7XglfbnYtHnNg1NkaSDjP6uDVtUyLVbXorzMg2DQBw" // 外部ID
     ]
 );
 ```
@@ -734,6 +747,19 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 [AccountWithUser](./responses.md#account-with-user)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|user_not_found||The user is not found|
+|422|private_money_not_found||Private money not found|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
+|422|user_attributes_external_id_not_match|ユーザー属性情報の外部IDが一致しません|Not match external id of user attributes|
+|422|user_attributes_not_found|ユーザー属性情報が存在しません|Not found the user attrubtes|
+|422|account_closed|アカウントは退会しています|The account is closed|
+|422|account_can_not_create|このマネーに新規アカウントを作る事は出来ません|Can not create an account with this money|
+
+
 
 ---
 
@@ -746,10 +772,10 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 $request = new Request\GetShopAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 5463,                           // ページ番号
-        'per_page' => 4502,                       // 1ページ分のウォレット数
-        'created_at_from' => "2021-06-07T09:17:20.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2021-02-28T23:55:30.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
+        'page' => 3850,                           // ページ番号
+        'per_page' => 3853,                       // 1ページ分のウォレット数
+        'created_at_from' => "2024-01-10T00:32:29.000000+09:00", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2022-10-28T09:30:30.000000+09:00", // ウォレット作成日によるフィルター(終了時点)
         'is_suspended' => FALSE                   // ウォレットが凍結状態かどうかでフィルターする
     ]
 );
@@ -837,6 +863,13 @@ $request = new Request\GetShopAccounts(
 [PaginatedAccountWithUsers](./responses.md#paginated-account-with-users)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|private_money_not_found||Private money not found|
+
+
 
 ---
 
@@ -851,10 +884,10 @@ $request = new Request\ListCustomerTransactions(
     [
         'sender_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 送金エンドユーザーID
         'receiver_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
-        'type' => "expire",                       // 取引種別
+        'type' => "payment",                      // 取引種別
         'is_modified' => FALSE,                   // キャンセル済みかどうか
-        'from' => "2020-07-21T12:00:59.000000+09:00", // 開始日時
-        'to' => "2022-05-17T11:52:21.000000+09:00", // 終了日時
+        'from' => "2023-07-07T21:31:34.000000+09:00", // 開始日時
+        'to' => "2023-05-15T04:05:57.000000+09:00", // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -1011,6 +1044,14 @@ falseを指定するとキャンセルされていない取引のみ一覧に表
 成功したときは
 [PaginatedTransaction](./responses.md#paginated-transaction)
 を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|customer_user_not_found||The customer user is not found|
+|422|private_money_not_found||Private money not found|
+
 
 
 ---

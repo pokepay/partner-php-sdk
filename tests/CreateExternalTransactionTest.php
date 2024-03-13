@@ -8,10 +8,10 @@ class CreateExternalTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExternalTransaction(
-            "5129d3b6-bb7f-4b92-a762-36f058f615f5",
-            "ab13667e-4ccb-4513-8855-eef4ead14923",
-            "5cd4ba5c-fc83-4493-8c1f-704283072169",
-            6553
+            "ca489c32-3a6c-4f8e-b06f-1fb0407fb1e7",
+            "a0f15138-5d0e-4553-98fc-6f52b686ef5f",
+            "c8338fbf-7f1a-4ba4-bada-f433b205ff70",
+            9685
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateExternalTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExternalTransaction(
-            "5129d3b6-bb7f-4b92-a762-36f058f615f5",
-            "ab13667e-4ccb-4513-8855-eef4ead14923",
-            "5cd4ba5c-fc83-4493-8c1f-704283072169",
-            6553,
+            "ca489c32-3a6c-4f8e-b06f-1fb0407fb1e7",
+            "a0f15138-5d0e-4553-98fc-6f52b686ef5f",
+            "c8338fbf-7f1a-4ba4-bada-f433b205ff70",
+            9685,
             [
-                'request_id' => "bd9b8380-8881-4a57-bfd6-741a2327ea3c"
+                'request_id' => "e6e7344b-de48-4248-a5d8-d02eb6c83575"
             ]
         );
         try {
@@ -47,10 +47,10 @@ class CreateExternalTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExternalTransaction(
-            "5129d3b6-bb7f-4b92-a762-36f058f615f5",
-            "ab13667e-4ccb-4513-8855-eef4ead14923",
-            "5cd4ba5c-fc83-4493-8c1f-704283072169",
-            6553,
+            "ca489c32-3a6c-4f8e-b06f-1fb0407fb1e7",
+            "a0f15138-5d0e-4553-98fc-6f52b686ef5f",
+            "c8338fbf-7f1a-4ba4-bada-f433b205ff70",
+            9685,
             [
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
@@ -58,12 +58,8 @@ class CreateExternalTransaction extends TestCase
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "2c3e1ef7-6ee2-4812-8728-209c6c429baf"
+                'request_id' => "8242d677-eae7-40a8-9c15-b431cd60c332"
             ]
         );
         try {
@@ -79,17 +75,22 @@ class CreateExternalTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExternalTransaction(
-            "5129d3b6-bb7f-4b92-a762-36f058f615f5",
-            "ab13667e-4ccb-4513-8855-eef4ead14923",
-            "5cd4ba5c-fc83-4493-8c1f-704283072169",
-            6553,
+            "ca489c32-3a6c-4f8e-b06f-1fb0407fb1e7",
+            "a0f15138-5d0e-4553-98fc-6f52b686ef5f",
+            "c8338fbf-7f1a-4ba4-bada-f433b205ff70",
+            9685,
             [
                 'metadata' => "{\"key\":\"value\"}",
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "d65cf374-f92f-4437-9edc-b6c3bcfcdaf0"
+                'request_id' => "9d9a2bd9-9b87-4467-a7ad-0c04a1fa7901"
             ]
         );
         try {
@@ -105,20 +106,19 @@ class CreateExternalTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExternalTransaction(
-            "5129d3b6-bb7f-4b92-a762-36f058f615f5",
-            "ab13667e-4ccb-4513-8855-eef4ead14923",
-            "5cd4ba5c-fc83-4493-8c1f-704283072169",
-            6553,
+            "ca489c32-3a6c-4f8e-b06f-1fb0407fb1e7",
+            "a0f15138-5d0e-4553-98fc-6f52b686ef5f",
+            "c8338fbf-7f1a-4ba4-bada-f433b205ff70",
+            9685,
             [
-                'description' => "gLhtfJVe35y8GMiewS31bLCzVHordjTdSCAsQpc6Y8yxhWO55tLhQLiYShP7kXOlpXMYStomEeKEpJvQFwSHph9FRv177PaQ8oYo7WhrNkHCnxiA88PxVYtk6O70GeXdIhR0MXsF6PcBozeBp7XJjCfHWV4",
+                'description' => "3A",
                 'metadata' => "{\"key\":\"value\"}",
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "ae5be8f8-faf9-4638-979f-52136fa4e574"
+                'request_id' => "bbda88bb-17d4-4a4f-b2f9-81fd33669349"
             ]
         );
         try {

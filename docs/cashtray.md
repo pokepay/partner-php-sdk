@@ -19,10 +19,10 @@ Cashtrayを作成します。
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    8350.0,                                       // amount: 金額
+    4066.0,                                       // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 3313                      // 失効時間(秒)
+        'expires_in' => 3597                      // 失効時間(秒)
     ]
 );
 ```
@@ -96,6 +96,16 @@ Cashtrayが失効するまでの時間を秒単位で指定します(任意項�
 成功したときは
 [Cashtray](./responses.md#cashtray)
 を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|account_not_found|アカウントが見つかりません|The account is not found|
+|422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
+|422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
+|422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
+
 
 
 ---
@@ -190,6 +200,7 @@ $request = new Request\GetCashtray(
 を返します
 
 
+
 ---
 
 
@@ -228,6 +239,7 @@ $request = new Request\CancelCashtray(
 を返します
 
 
+
 ---
 
 
@@ -239,9 +251,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 2122.0,                       // 金額
+        'amount' => 6873.0,                       // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 9644                      // 失効時間(秒)
+        'expires_in' => 4433                      // 失効時間(秒)
     ]
 );
 ```
@@ -303,6 +315,7 @@ Cashtrayが失効するまでの時間を秒で指定します(任意項目、�
 成功したときは
 [Cashtray](./responses.md#cashtray)
 を返します
+
 
 
 ---

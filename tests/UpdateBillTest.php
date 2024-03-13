@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "260ef16d-2f25-488e-b2fb-bbbc019a0630"
+            "b9d6656b-e2d5-4433-91e9-91a91fd5b46a"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "260ef16d-2f25-488e-b2fb-bbbc019a0630",
+            "b9d6656b-e2d5-4433-91e9-91a91fd5b46a",
             [
-                'is_disabled' => FALSE
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "260ef16d-2f25-488e-b2fb-bbbc019a0630",
+            "b9d6656b-e2d5-4433-91e9-91a91fd5b46a",
             [
-                'description' => "LJQxdV3WM6UWACS2dO1XrIqjLkRVuK3nq7batLxIOBmFps6icepsOgM1POI2g4RFWHLgWTj79ONiXshylnMJ8cFfZANRdcfBAAjQdAye4764Jz1fwzq1xkeb31PZCwWorQSnxGf",
-                'is_disabled' => FALSE
+                'description' => "WL36Ne9BIyD0VsxUMLq2pynj2i9JShHMs7dpHbhmzmDvsuxdQFF1b9FFVSxNRhY3CeG383Fyff0GWufJQM5UqG40T",
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -60,10 +60,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "260ef16d-2f25-488e-b2fb-bbbc019a0630",
+            "b9d6656b-e2d5-4433-91e9-91a91fd5b46a",
             [
-                'amount' => 9502.0,
-                'description' => "eTFJZHQ79M2Ss97kEc3keeQQT9GXsDQBdre7zL0BtR7siyGOAYIBtYfoABp72fvLG75IlCBaaV7EMD2Lvu1xVpd2SW2QDltQPhfVU1yjF6PIqyViEANduVdVbVOlgO3LDSzz1gjZ82xJUdq7jZChCeLgC1j28mqeI4Zmwhpq4W7ATWe7rIwFigb5QOy7FrwL1m4M",
+                'amount' => 3509.0,
+                'description' => "H1YOyXeD7lp3hQ7iTUdtYXMwyZtYN7NcCeDXI01ioT6dE59eFWe4PxHJhHM6PRObQxj3f4w8El4HGgfInUuZUZacdXJKlldoDuv9TA2XHRXocL0a2ENjq4YdkJGWgFmKTEIA1MAf2HgecIl74FyRST7Scfd",
                 'is_disabled' => FALSE
             ]
         );

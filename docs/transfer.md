@@ -8,8 +8,8 @@
 $request = new Request\GetAccountTransferSummary(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'from' => "2021-08-02T05:27:53.000000+09:00", // 集計期間の開始時刻
-        'to' => "2021-09-18T19:45:36.000000+09:00", // 集計期間の終了時刻
+        'from' => "2023-06-06T15:24:34.000000+09:00", // 集計期間の開始時刻
+        'to' => "2022-09-26T07:49:32.000000+09:00", // 集計期間の終了時刻
         'transfer_types' => ["topup", "payment"]  // 取引明細種別 (複数指定可)
     ]
 );
@@ -115,6 +115,7 @@ $request = new Request\GetAccountTransferSummary(
 を返します
 
 
+
 ---
 
 
@@ -124,19 +125,19 @@ $request = new Request\GetAccountTransferSummary(
 ```PHP
 $request = new Request\ListTransfers(
     [
-        'from' => "2020-06-19T13:57:17.000000+09:00",
-        'to' => "2021-05-20T01:53:59.000000+09:00",
-        'page' => 4073,
-        'per_page' => 9480,
+        'from' => "2020-03-02T16:44:53.000000+09:00",
+        'to' => "2023-09-22T20:57:45.000000+09:00",
+        'page' => 9949,
+        'per_page' => 1246,
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'shop_name' => "CKblHpvjydQMyZpJXRc5eHTKhgTGS99CWclbxJk9UGVs7AyS6EkaVVgTRt8TJMkdy2Kt6yK18KgHYMepxiKvhS62bgrQ5CfUOReEzXwh2HaFG0fBq8bRVYAcUhla4ElhTQ0YeURl1GOjurrZiPGP4H2OIiP27PMShdmrLZn0c2TnxQG65H6H6Zxp",
+        'shop_name' => "WVb28SeWG8Bm8nEP885h5bVE5OX70",
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'customer_name' => "qg97OfVFHKHgi6aFdagyODHh8sDrbd0yYWNOsXPOinl78fGFKiwuhSA5xlXRnixRTFj3KnwY5SCeFNeP5coK1w3cE1hkCMkxq1dJ7wfZqteHF0KntGIPZciYg2hhQc1YzM9FpL65e9uvj6CmwRCBhZL6SZNJwpWif0NoyZTk9zujm1IrzuCv",
+        'customer_name' => "5Vm5JiHzOUPeHPDN54LrETsKWQEF",
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'is_modified' => TRUE,
-        'transaction_types' => ["exchange", "topup", "expire", "transfer", "payment"],
-        'transfer_types' => ["payment", "cashback", "transfer", "topup", "campaign", "expire", "coupon", "exchange"], // 取引明細の種類でフィルターします。
+        'is_modified' => FALSE,
+        'transaction_types' => ["cashback", "expire"],
+        'transfer_types' => ["campaign", "payment", "exchange", "expire"], // 取引明細の種類でフィルターします。
         'description' => "店頭QRコードによる支払い"          // 取引詳細説明文
     ]
 );
@@ -353,6 +354,12 @@ $request = new Request\ListTransfers(
 [PaginatedTransfers](./responses.md#paginated-transfers)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|NULL|NULL|NULL|
+
+
 
 ---
 
@@ -364,20 +371,20 @@ $request = new Request\ListTransfers(
 $request = new Request\ListTransfersV2(
     [
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'shop_name' => "aPDZL2JhIS9zlcKROrfBQpRcc9VRbHwiIioqMZ3il", // 店舗名
+        'shop_name' => "NuFH08cHi3IruRfVcbJYOhkdNc7P4FTTn7dkmZ79WHBWuUwmPiQWsAKL3kSTc0LPbfp9enQ4UqYgv1CZMBdnrAluiOKJEBcBWwa9xyy2bCL74Q4u2OMMM0xD2AQaKdW9LUbHMcMKbw9zDIEFEyvAvmcoCxUBg4yU3AAs36iFeuIBUml3h361guYHjOImoZhSOt8UNyob0V", // 店舗名
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-        'customer_name' => "GqeWCAjJJSpFdzZLYbCiJITNAI1ZlMykCH9InEOpOqp6VQ7PyxI8z8maHrCPmSi0T9nS23Djagy6qaNKxt583zaFQcmz3oFKrFOTHr13ICPhWGDlGgs4j9Eh7FtPL92QOR2syaebY0TWJWOlNphnXKdL27Ss", // エンドユーザー名
+        'customer_name' => "QGme5CA27ltkwLNnQtyV2QJygcowmF67ESWsIRxLPg383wnSfVCO7XYJmoO0uhcJraMmDaSEahfn300LCaHLSroJkepEoifMTQ44ocvwtomMfjQ73GX2yquqoxmpJQvrLat0xlnzVZch13fLL8IaybXOFsTe5kGdJyjn39kuUAVwNBecCVcfQFB6zhe4zCjHFhQi2UCz", // エンドユーザー名
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'is_modified' => FALSE,                   // キャンセルフラグ
-        'transaction_types' => ["expire", "cashback", "topup"], // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+        'is_modified' => TRUE,                    // キャンセルフラグ
+        'transaction_types' => ["topup", "transfer", "expire", "payment"], // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransferのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransferのID
         'per_page' => 50,                         // 1ページ分の取引数
-        'transfer_types' => ["transfer", "campaign", "coupon", "exchange"], // 取引明細種別 (複数指定可)
+        'transfer_types' => ["coupon", "topup"],  // 取引明細種別 (複数指定可)
         'description' => "店頭QRコードによる支払い",         // 取引詳細説明文
-        'from' => "2024-02-04T01:45:51.000000+09:00", // 開始日時
-        'to' => "2024-01-31T06:58:25.000000+09:00" // 終了日時
+        'from' => "2020-04-14T03:05:14.000000+09:00", // 開始日時
+        'to' => "2021-03-02T03:42:44.000000+09:00" // 終了日時
     ]
 );
 ```
@@ -671,6 +678,12 @@ prev_page_cursor_idのtransfer自体は前のページには含まれません�
 成功したときは
 [PaginatedTransfersV2](./responses.md#paginated-transfers-v2)
 を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+
 
 
 ---

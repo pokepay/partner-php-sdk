@@ -8,10 +8,10 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "a7ce657c-f8cb-4268-8818-8608d66e6829",
-            "d3cbb6bd-cd61-4670-9a94-e9d5b5d6786c",
-            "6f0de247-eccb-4836-ae41-12e4f3c645be",
-            5311
+            "aa7d5627-2d0b-4bbd-a3ae-c2f5bd68bda8",
+            "0ba5eb73-ebce-4c6b-903d-02b960d082a5",
+            "31359032-b7a8-4395-955b-3c80ed1a57ec",
+            5318
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "a7ce657c-f8cb-4268-8818-8608d66e6829",
-            "d3cbb6bd-cd61-4670-9a94-e9d5b5d6786c",
-            "6f0de247-eccb-4836-ae41-12e4f3c645be",
-            5311,
+            "aa7d5627-2d0b-4bbd-a3ae-c2f5bd68bda8",
+            "0ba5eb73-ebce-4c6b-903d-02b960d082a5",
+            "31359032-b7a8-4395-955b-3c80ed1a57ec",
+            5318,
             [
-                'request_id' => "35f081db-78d6-4a53-a675-5411ed447d22"
+                'request_id' => "9bd41548-ed16-423c-811a-dc60f2dca8f4"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "a7ce657c-f8cb-4268-8818-8608d66e6829",
-            "d3cbb6bd-cd61-4670-9a94-e9d5b5d6786c",
-            "6f0de247-eccb-4836-ae41-12e4f3c645be",
-            5311,
+            "aa7d5627-2d0b-4bbd-a3ae-c2f5bd68bda8",
+            "0ba5eb73-ebce-4c6b-903d-02b960d082a5",
+            "31359032-b7a8-4395-955b-3c80ed1a57ec",
+            5318,
             [
-                'description' => "NRvkQDqQyfbYx3gZkoJmFbE7IwGQAXumt4TYBnTYocgLaCvNLdfQm2C877PZfFXFvMCPfX4FUbJ7Z0wLyp",
-                'request_id' => "dc5bfc98-f6e1-4caf-a6cc-58b0b58e92f5"
+                'description' => "r5uMSg7mI2h9L5UgNjF9pGXPoR6V6EH9oG2E8mJwg74tJdyJ5Llab29gfUQ6hTQL306GhITMLHDmfb2965KcWooPsLAa0LofoeILq2j1JbokM11iel9SifEKQQKEl5jTOYEn550ChTMJy5Ri4zQipR66DYXbWwtCBK4yI7b7ruIn1DQefV0LKmn0D6u1aqXUgLX",
+                'request_id' => "04fcde16-034c-4f50-b188-f93233157f90"
             ]
         );
         try {
