@@ -125,7 +125,7 @@ class GetCustomerAccounts extends TestCase
         $request = new Request\GetCustomerAccounts(
             "55543535-882b-44f5-9f30-80a440a9c1d9",
             [
-                'created_at_to' => "2022-07-27T22:59:50.000000Z",
+                'created_at_to' => "2022-07-27T22:59:50.000000+09:00",
                 'is_suspended' => TRUE,
                 'status' => "pre-closed",
                 'external_id' => "tuXgZDedIJqTHGgnOhGiwZBj5AvHdO2Atfc",
@@ -148,8 +148,8 @@ class GetCustomerAccounts extends TestCase
         $request = new Request\GetCustomerAccounts(
             "55543535-882b-44f5-9f30-80a440a9c1d9",
             [
-                'created_at_from' => "2021-03-24T19:42:09.000000Z",
-                'created_at_to' => "2023-05-02T07:02:07.000000Z",
+                'created_at_from' => "2021-03-24T19:42:09.000000+09:00",
+                'created_at_to' => "2023-05-02T07:02:07.000000+09:00",
                 'is_suspended' => TRUE,
                 'status' => "pre-closed",
                 'external_id' => "XfPASw8jPQ0h",
@@ -173,8 +173,8 @@ class GetCustomerAccounts extends TestCase
             "55543535-882b-44f5-9f30-80a440a9c1d9",
             [
                 'per_page' => 6034,
-                'created_at_from' => "2022-02-08T11:59:01.000000Z",
-                'created_at_to' => "2021-10-26T00:50:23.000000Z",
+                'created_at_from' => "2022-02-08T11:59:01.000000+09:00",
+                'created_at_to' => "2021-10-26T00:50:23.000000+09:00",
                 'is_suspended' => TRUE,
                 'status' => "pre-closed",
                 'external_id' => "7pl9MWii2exAarzlUllr",
@@ -199,8 +199,8 @@ class GetCustomerAccounts extends TestCase
             [
                 'page' => 7048,
                 'per_page' => 7330,
-                'created_at_from' => "2022-02-14T10:49:45.000000Z",
-                'created_at_to' => "2023-05-04T06:41:23.000000Z",
+                'created_at_from' => "2022-02-14T10:49:45.000000+09:00",
+                'created_at_to' => "2023-05-04T06:41:23.000000+09:00",
                 'is_suspended' => FALSE,
                 'status' => "suspended",
                 'external_id' => "LoYSz5jRHNPv9LO3MtPyt1wTnktL8AYkBvD7caRgncONv",

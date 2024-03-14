@@ -7726,6 +7726,7 @@ paths:
           $ref: '#/components/responses/UnpermittedAdminUser'
         '503':
           $ref: '#/components/responses/UserStatsOperationServiceUnavailable'
+
   /webhooks:
     post:
       x-pokepay-operator-name: "CreateWebhook"

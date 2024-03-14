@@ -51,7 +51,7 @@ API操作によっては、大量のデータがある場合に備えてペー�
 
 以下にコード例を示します。
 
-```
+```php
 $request = new Pokepay\Request\ListTransactions();
 $response = $client->send($request);
 
