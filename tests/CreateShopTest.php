@@ -8,7 +8,7 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "0XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNh"
+            "hpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "0XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNh",
+            "hpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ",
             [
-                'organization_code' => "5f--P--"
+                'organization_code' => "-6-8J3v--G2-MPOM65m0U9Z-y-"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "0XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNh",
+            "hpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ",
             [
-                'shop_external_id' => "wwlNZ",
-                'organization_code' => "cv3786tt-8b-tR--"
+                'shop_external_id' => "6QKkz6REzoI7cZYW4c0GyNh",
+                'organization_code' => "-wp9-MWp---E-x--a"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "0XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNh",
+            "hpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ",
             [
-                'shop_email' => "x8cOR3TFR9@a8hM.com",
-                'shop_external_id' => "Mtt7RdIKeKSciqwdkkgvqZ",
-                'organization_code' => "Z0-50-gK-d-ZQh66q"
+                'shop_email' => "GKqjz0v27d@HE8r.com",
+                'shop_external_id' => "h9b3v7zqeYS2n0EGsPPbvQvYkAPB",
+                'organization_code' => "s8-6-t957H"
             ]
         );
         try {
@@ -80,12 +80,12 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "0XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNh",
+            "hpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ",
             [
-                'shop_tel' => "0268705290",
-                'shop_email' => "29oTCv16fP@XjhV.com",
-                'shop_external_id' => "pKgtr0aXml0I8",
-                'organization_code' => "KYD6-Qy-02Yp----iy-A0"
+                'shop_tel' => "058845-433",
+                'shop_email' => "WQZO9yz4Mc@4BWx.com",
+                'shop_external_id' => "S7UaVHpVi4pZYZOGK",
+                'organization_code' => "-2pJH-1dkId-"
             ]
         );
         try {
@@ -101,13 +101,13 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "0XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNh",
+            "hpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ",
             [
-                'shop_address' => "8sqMTw9CGMrpupnZP3tXLGdI4BQeMKNjNC6v4LdJ9q0nifAUuGHUnCvc4A5HlCo2a7OllUlOCGYapVIyu0AtoOYT3d8xXDGe31wijgcuuWSuuP7qXIDVYzNj",
-                'shop_tel' => "0109-309718",
-                'shop_email' => "ADYEWxDRpy@5o7r.com",
-                'shop_external_id' => "N4eiDq",
-                'organization_code' => "Y2lJz-JS2K-H-k4Jp2m---"
+                'shop_address' => "JfOMaGd4kHySUJYrKI48UyLazcdaqg9M9b56VUQzI",
+                'shop_tel' => "0727-90-227",
+                'shop_email' => "fsBnFuG56t@OVY8.com",
+                'shop_external_id' => "9Z9lrbTGfh4Qb",
+                'organization_code' => "-62-B--zV"
             ]
         );
         try {
@@ -123,14 +123,14 @@ class CreateShop extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateShop(
-            "0XmxAy3ATlXa99m3Ela8zcR94JgHtiXrfi45gdORj3Jla3Pfb8OgNh",
+            "hpCebdmmx3jJLFYo72YjP5pod5QaLCZTmFLxumOnvrupx16EXCUXyPfCabjEtMliIf7wKoPmNQWU6zl3h0ZGoCe5IIfEbaRlpdhTTQpQoSRT6b0IY83jSy9CLjq8yjjxInoBnLVw5NxHP7CI9Yb5tOQ",
             [
-                'shop_postal_code' => "850-7917",
-                'shop_address' => "tSHvWHxDbu1GOKxoKM3BkiQ5JCNLUQPpDOoGNkBoKxTvABwe33UWeSzKCZwv4PwJOyIcULWzrNeMACItmOkY1pUONfZUthj8CTdPwk2g7DYhFuXWtax2gH7mosTYAgSjd1Lu4N1G4DllEfWLsx2f1PjIk5LFEcZYZR1K1ULgGU5oSrsDCn36n92LJoBnxVWA0Bmx0P3sSh52djDx2E8q2Tl06IVYw4zb7KKLj26g9",
-                'shop_tel' => "0848-097",
-                'shop_email' => "3fT2ekfbMy@pSoZ.com",
-                'shop_external_id' => "rm",
-                'organization_code' => "k610S7NJ-u-h9D0B79-"
+                'shop_postal_code' => "058-2489",
+                'shop_address' => "GdoCEVoN09yrlyTlHcxkp2hdiJWs83eoAqvgg01zZW75gRDgWRTNwobRsB1baR1aePdc9fG",
+                'shop_tel' => "03-452-017",
+                'shop_email' => "5Jr7zEeO7n@UDqx.com",
+                'shop_external_id' => "j74j643AIOVakyq8QHWKNric3",
+                'organization_code' => "-Urw-0-lR6o-VyBR3q384V853--3w2"
             ]
         );
         try {

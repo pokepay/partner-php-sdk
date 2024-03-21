@@ -43,7 +43,7 @@ class ListAccountBalances extends TestCase
         $request = new Request\ListAccountBalances(
             "124a3fe8-1e88-4803-9195-15bbd1722f1a",
             [
-                'expires_at_to' => "2020-09-07T21:25:03.000000Z",
+                'expires_at_to' => "2020-09-07T21:25:03.000000+09:00",
                 'direction' => "asc"
             ]
         );
@@ -62,8 +62,8 @@ class ListAccountBalances extends TestCase
         $request = new Request\ListAccountBalances(
             "124a3fe8-1e88-4803-9195-15bbd1722f1a",
             [
-                'expires_at_from' => "2020-07-02T09:51:09.000000Z",
-                'expires_at_to' => "2022-05-06T04:41:55.000000Z",
+                'expires_at_from' => "2020-07-02T09:51:09.000000+09:00",
+                'expires_at_to' => "2022-05-06T04:41:55.000000+09:00",
                 'direction' => "desc"
             ]
         );
@@ -83,8 +83,8 @@ class ListAccountBalances extends TestCase
             "124a3fe8-1e88-4803-9195-15bbd1722f1a",
             [
                 'per_page' => 3844,
-                'expires_at_from' => "2020-06-15T18:58:37.000000Z",
-                'expires_at_to' => "2022-03-04T19:01:47.000000Z",
+                'expires_at_from' => "2020-06-15T18:58:37.000000+09:00",
+                'expires_at_to' => "2022-03-04T19:01:47.000000+09:00",
                 'direction' => "desc"
             ]
         );
@@ -105,8 +105,8 @@ class ListAccountBalances extends TestCase
             [
                 'page' => 3584,
                 'per_page' => 7257,
-                'expires_at_from' => "2022-05-05T20:55:29.000000Z",
-                'expires_at_to' => "2023-04-07T14:57:44.000000Z",
+                'expires_at_from' => "2022-05-05T20:55:29.000000+09:00",
+                'expires_at_to' => "2023-04-07T14:57:44.000000+09:00",
                 'direction' => "asc"
             ]
         );

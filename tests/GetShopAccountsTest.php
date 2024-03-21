@@ -43,7 +43,7 @@ class GetShopAccounts extends TestCase
         $request = new Request\GetShopAccounts(
             "ca2616e9-5ed4-477c-bcc2-cc53b62f225a",
             [
-                'created_at_to' => "2023-10-10T07:01:36.000000Z",
+                'created_at_to' => "2023-10-10T07:01:36.000000+09:00",
                 'is_suspended' => FALSE
             ]
         );
@@ -62,8 +62,8 @@ class GetShopAccounts extends TestCase
         $request = new Request\GetShopAccounts(
             "ca2616e9-5ed4-477c-bcc2-cc53b62f225a",
             [
-                'created_at_from' => "2022-03-15T18:57:12.000000Z",
-                'created_at_to' => "2022-11-02T09:39:16.000000Z",
+                'created_at_from' => "2022-03-15T18:57:12.000000+09:00",
+                'created_at_to' => "2022-11-02T09:39:16.000000+09:00",
                 'is_suspended' => FALSE
             ]
         );
@@ -83,8 +83,8 @@ class GetShopAccounts extends TestCase
             "ca2616e9-5ed4-477c-bcc2-cc53b62f225a",
             [
                 'per_page' => 2047,
-                'created_at_from' => "2020-10-29T13:03:08.000000Z",
-                'created_at_to' => "2022-09-06T09:13:55.000000Z",
+                'created_at_from' => "2020-10-29T13:03:08.000000+09:00",
+                'created_at_to' => "2022-09-06T09:13:55.000000+09:00",
                 'is_suspended' => FALSE
             ]
         );
@@ -105,8 +105,8 @@ class GetShopAccounts extends TestCase
             [
                 'page' => 9914,
                 'per_page' => 9044,
-                'created_at_from' => "2023-03-04T08:24:04.000000Z",
-                'created_at_to' => "2021-01-14T14:41:40.000000Z",
+                'created_at_from' => "2023-03-04T08:24:04.000000+09:00",
+                'created_at_to' => "2021-01-14T14:41:40.000000+09:00",
                 'is_suspended' => FALSE
             ]
         );
