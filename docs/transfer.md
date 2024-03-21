@@ -8,8 +8,8 @@
 $request = new Request\GetAccountTransferSummary(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'from' => "2020-05-19T10:22:23.000000Z",  // 集計期間の開始時刻
-        'to' => "2022-09-30T14:05:52.000000Z",    // 集計期間の終了時刻
+        'from' => "2020-11-21T12:14:48.000000+09:00", // 集計期間の開始時刻
+        'to' => "2024-01-29T03:18:51.000000+09:00", // 集計期間の終了時刻
         'transfer_types' => ["topup", "payment"]  // 取引明細種別 (複数指定可)
     ]
 );
@@ -124,19 +124,19 @@ $request = new Request\GetAccountTransferSummary(
 ```PHP
 $request = new Request\ListTransfers(
     [
-        'from' => "2023-09-04T06:29:07.000000Z",
-        'to' => "2024-01-13T03:24:09.000000Z",
-        'page' => 4884,
-        'per_page' => 6195,
+        'from' => "2023-12-31T07:01:20.000000+09:00",
+        'to' => "2020-06-29T02:08:48.000000+09:00",
+        'page' => 6859,
+        'per_page' => 4421,
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'shop_name' => "C590AS7UiB0DiDGREmImyJDbbC2wEGBfcAGc0EsTxqnb80BRFYcLTC4xCABLekowD1pN0MSUSSu62wEl3iPUkIv4a2NsBAg7OoWmbOWXvcqkH6OCG8bjnFs6Wxag7k",
+        'shop_name' => "4TLAvvWwguBec41EmwzzFrgc709a7P9KtTHr3zG8NnPjRfIRrqy3FohrRiHbftN77E9sKP2LWTHQkvbYQTkmfSmGSFmTTeLGAy7h6m0YyagUC0Ij3N9K",
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'customer_name' => "VTYLZtj",
+        'customer_name' => "7EVH4f0IDf80jI5hMMqGagepFcb0C3pMehBLw9uhZslxpk65zsLMOaWLvqiZty5Zp232IvDDPPtMusem1WSPOdAkWLCHhP7q7jyjEo8V3Di9DtzhzAGKUtsDdhPal5eEvQkTNVI1DbDv2ICSa1fLqeRzwnNnU8Hy7seU6TPp7YTcvCbm",
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'is_modified' => TRUE,
-        'transaction_types' => ["payment", "topup", "cashback"],
-        'transfer_types' => ["coupon", "cashback", "campaign", "payment", "topup", "transfer", "expire", "exchange"], // 取引明細の種類でフィルターします。
+        'is_modified' => FALSE,
+        'transaction_types' => ["payment", "transfer", "topup"],
+        'transfer_types' => ["transfer", "exchange", "cashback", "payment", "coupon", "campaign"], // 取引明細の種類でフィルターします。
         'description' => "店頭QRコードによる支払い"          // 取引詳細説明文
     ]
 );
@@ -364,20 +364,20 @@ $request = new Request\ListTransfers(
 $request = new Request\ListTransfersV2(
     [
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'shop_name' => "xB23NKDv8dBki6rCZ5MRu3n3kWR611LhXRF1WjDXemYssWVQAa0S9OWEqIPoWhsZ81p0D8THD4dpuhxNvhxjPfdLCMpGSOhV764tKT9oHgjnPne51YZOU0zGq4PpZBc0rJPOstD7C9IM7suB5w40dZFTsuKZGsFElmQpA4RSTaT", // 店舗名
+        'shop_name' => "FzroFJfg0zCih9q",         // 店舗名
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-        'customer_name' => "lLaqlkU49OXmcM1eYLCIvDzYzwAtEksQWSl6Am3gCBrhM35EfmrtOFWMml5EK", // エンドユーザー名
+        'customer_name' => "Hu842U5SnXNqipKVsIIUjVYx3ZiMVPZEq0xgguEtAXJ6WozfUGo1oVRA1PV2JD5SjzUvS2Jlq6P89tC2Mi1PRe6ex8zQnoMXPxIs0d6X24reGHeQvAPqGMsA1rgfPu4olvC1KDDE1G2mGU9YeDH5Tysjz5v4HW6eqkSknjW", // エンドユーザー名
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'is_modified' => FALSE,                   // キャンセルフラグ
-        'transaction_types' => ["cashback"],      // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+        'transaction_types' => ["cashback", "expire", "exchange", "topup", "transfer"], // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransferのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransferのID
         'per_page' => 50,                         // 1ページ分の取引数
-        'transfer_types' => ["transfer", "exchange"], // 取引明細種別 (複数指定可)
+        'transfer_types' => ["expire", "coupon", "exchange", "campaign", "payment", "transfer"], // 取引明細種別 (複数指定可)
         'description' => "店頭QRコードによる支払い",         // 取引詳細説明文
-        'from' => "2020-07-02T11:27:30.000000Z",  // 開始日時
-        'to' => "2020-07-24T15:07:42.000000Z"     // 終了日時
+        'from' => "2021-10-04T05:26:43.000000+09:00", // 開始日時
+        'to' => "2021-11-17T01:08:00.000000+09:00" // 終了日時
     ]
 );
 ```

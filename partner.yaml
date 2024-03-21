@@ -6761,6 +6761,7 @@ paths:
                     デフォルトではポイント付与先はキャンペーンを駆動するイベントのマネー(private_money_idで指定したマネー)になります。
 
                     別マネーに対するポイント付与は別のtransactionとなります。 RefundTransaction で元のイベントをキャンセルしたときはポイント付与のtransactionもキャンセルされ、逆にポイント付与のtransactionをキャンセルしたときは連動して元のイベントがキャンセルされます。
+
                 applicable_account_metadata:
                   description: |-
                     ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
@@ -6808,6 +6809,55 @@ paths:
                     {
                       "key": "sex",
                       "value": "male"
+                    }
+
+                applicable_transaction_metadata:
+                  description: |-
+                    取引時に指定するメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+                    メタデータの属性名 key とメタデータの値 value の組をオブジェクトとして指定します。
+                    取引のメタデータはCreatePaymentTransactionやCreateExternalTransactionで登録できます。
+
+                    オプショナルパラメータtestによって比較方法を指定することができます。
+                    デフォルトは equal で、その他に not-equalを指定可能です。
+
+                    例1: 取引のメタデータに会員ランクとしてbronzeが指定されているときのみ発火
+
+                    ```javascript
+                    {
+                      "key": "rank",
+                      "value": "bronze"
+                    }
+                    ```
+
+                    例2: 取引のメタデータに会員ランクとしてbronze以外が指定されているときのみ発火
+
+                    ```javascript
+                    {
+                      "key": "rank",
+                      "value": "bronze",
+                      "test": "not-equal"
+                    }
+                    ```
+
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                      description: |-
+                        メタデータの属性名
+                    value:
+                      type: string
+                      description: |-
+                        メタデータの値
+                    test:
+                      type: string
+                      enum: [equal, not-equal]
+                      description: |-
+                        メタデータの値の比較方法。デフォルトはequal
+                  example: |-
+                    {
+                      "key": "rank",
+                      "value": "bronze"
                     }
 
                 budget_caps_amount:
@@ -7586,6 +7636,7 @@ paths:
 
                     このパラメータが指定されている場合、各ユーザに対してそのキャンペーンによって過去付与されたポイントの累積値が記録されるようになります。
                     累積ポイント数がmax_total_point_amountを超えない限りにおいてキャンペーンで算出されたポイントが付与されます。
+
                 applicable_account_metadata:
                   description: |-
                     ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
@@ -7634,6 +7685,56 @@ paths:
                     {
                       "key": "sex",
                       "value": "male"
+                    }
+
+                applicable_transaction_metadata:
+                  description: |-
+                    取引時に指定するメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
+                    メタデータの属性名 key とメタデータの値 value の組をオブジェクトとして指定します。
+                    取引のメタデータはCreatePaymentTransactionやCreateExternalTransactionで登録できます。
+
+                    オプショナルパラメータtestによって比較方法を指定することができます。
+                    デフォルトは equal で、その他に not-equalを指定可能です。
+
+                    例1: 取引のメタデータに会員ランクとしてbronzeが指定されているときのみ発火
+
+                    ```javascript
+                    {
+                      "key": "rank",
+                      "value": "bronze"
+                    }
+                    ```
+
+                    例2: 取引のメタデータに会員ランクとしてbronze以外が指定されているときのみ発火
+
+                    ```javascript
+                    {
+                      "key": "rank",
+                      "value": "bronze",
+                      "test": "not-equal"
+                    }
+                    ```
+
+                  type: object
+                  nullable: true
+                  properties:
+                    key:
+                      type: string
+                      description: |-
+                        メタデータの属性名
+                    value:
+                      type: string
+                      description: |-
+                        メタデータの値
+                    test:
+                      type: string
+                      enum: [equal, not-equal]
+                      description: |-
+                        メタデータの値の比較方法。デフォルトはequal
+                  example: |-
+                    {
+                      "key": "rank",
+                      "value": "bronze"
                     }
 
                 budget_caps_amount:
@@ -7726,6 +7827,7 @@ paths:
           $ref: '#/components/responses/UnpermittedAdminUser'
         '503':
           $ref: '#/components/responses/UserStatsOperationServiceUnavailable'
+
   /webhooks:
     post:
       x-pokepay-operator-name: "CreateWebhook"
