@@ -8,7 +8,7 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf"
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'budget_caps_amount' => 890840466
+                'budget_caps_amount' => 647868743
             ]
         );
         try {
@@ -41,11 +41,11 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 323381811
+                'budget_caps_amount' => 917424574
             ]
         );
         try {
@@ -61,13 +61,13 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1108781822
+                'budget_caps_amount' => 568729767
             ]
         );
         try {
@@ -83,14 +83,14 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'max_total_point_amount' => 5529,
+                'max_total_point_amount' => 1987,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 764306704
+                'budget_caps_amount' => 1599807000
             ]
         );
         try {
@@ -106,15 +106,15 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'max_point_amount' => 6192,
-                'max_total_point_amount' => 2631,
+                'max_point_amount' => 598,
+                'max_total_point_amount' => 3199,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 244960136
+                'budget_caps_amount' => 1547814124
             ]
         );
         try {
@@ -130,16 +130,16 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
                 'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 3887,
-                'max_total_point_amount' => 418,
+                'max_point_amount' => 9036,
+                'max_total_point_amount' => 4779,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1631284754
+                'budget_caps_amount' => 1580378378
             ]
         );
         try {
@@ -155,17 +155,17 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'minimum_number_for_combination_purchase' => 8440,
-                'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 6063,
-                'max_total_point_amount' => 5424,
+                'minimum_number_for_combination_purchase' => 4381,
+                'exist_in_each_product_groups' => FALSE,
+                'max_point_amount' => 8567,
+                'max_total_point_amount' => 4091,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 705596965
+                'budget_caps_amount' => 1485835025
             ]
         );
         try {
@@ -181,18 +181,18 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'minimum_number_of_amount' => 3676,
-                'minimum_number_for_combination_purchase' => 4164,
+                'minimum_number_of_amount' => 723,
+                'minimum_number_for_combination_purchase' => 4265,
                 'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 9250,
-                'max_total_point_amount' => 966,
+                'max_point_amount' => 5419,
+                'max_total_point_amount' => 687,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 702770666
+                'budget_caps_amount' => 1363226621
             ]
         );
         try {
@@ -208,19 +208,19 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'minimum_number_of_products' => 3625,
-                'minimum_number_of_amount' => 232,
-                'minimum_number_for_combination_purchase' => 930,
-                'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 9289,
-                'max_total_point_amount' => 5024,
+                'minimum_number_of_products' => 6590,
+                'minimum_number_of_amount' => 3759,
+                'minimum_number_for_combination_purchase' => 2267,
+                'exist_in_each_product_groups' => TRUE,
+                'max_point_amount' => 1280,
+                'max_total_point_amount' => 6724,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1585076922
+                'budget_caps_amount' => 393054879
             ]
         );
         try {
@@ -236,20 +236,20 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'applicable_shop_ids' => ["451906b5-4ba1-4e34-ac8c-e7de3f65e2b9", "e34806c5-32d8-4a57-94e8-272fa68ee5c2", "63fada68-f94e-49c2-aff4-0771ea950830", "247399db-92c8-43c0-826c-d2ffad8c75fd", "41c1d7e0-523c-4472-9f19-f335f1407a56"],
-                'minimum_number_of_products' => 1794,
-                'minimum_number_of_amount' => 422,
-                'minimum_number_for_combination_purchase' => 147,
+                'blacklisted_shop_ids' => ["a535270c-a3d0-42c9-8be2-d3f8f566a79b", "9f58e9ff-3452-4949-afeb-9e097a0ff43d", "5f6f82ae-5772-4815-93cd-fdbea30dd904", "61f2b8ab-0e63-4cc1-ae24-69e54241a7b6", "9a913e19-60c4-4edc-910c-9bdf49f7e798", "d09c8e0b-6989-45ac-8c70-9796ee4ab866", "14e117e8-15bb-4f25-b73b-551f39ebbaac", "06c15c96-9d9a-4fab-966a-6168ee21fb11", "174881ef-b139-419c-b141-b6eaaf607901", "51d4bfbd-efb0-4303-9bb3-9da59737867b"],
+                'minimum_number_of_products' => 7862,
+                'minimum_number_of_amount' => 4710,
+                'minimum_number_for_combination_purchase' => 3756,
                 'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 9413,
-                'max_total_point_amount' => 4049,
+                'max_point_amount' => 8738,
+                'max_total_point_amount' => 2867,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1113859032
+                'budget_caps_amount' => 2002502568
             ]
         );
         try {
@@ -265,30 +265,21 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        ],
-                'applicable_shop_ids' => ["8045d93d-3623-47e3-a41e-e913d1bd7457", "8ac49481-c72e-4645-b586-84117ac185a1", "f43507c5-2060-42e4-9a30-0cc4a44c6270", "b888ed36-2871-416d-8985-0bdd1db3ebbd", "d511c70f-43fc-4193-9c35-d4e5f5b6768c", "d11a3aee-eb7d-42ad-928e-ec4e9b02f8c9"],
-                'minimum_number_of_products' => 6765,
-                'minimum_number_of_amount' => 1327,
-                'minimum_number_for_combination_purchase' => 7153,
+                'applicable_shop_ids' => ["5a215f06-9b3c-4dc2-8bdd-cdb005bf7365", "773df90f-b0be-4b31-bbbb-a0fa674df37f", "29aa6399-7c0a-4151-9cbe-90f8d04f971b", "5cf7d75d-8482-40cc-b43b-ea25cb93003d", "008710cc-64d7-4a25-972e-c2f2c14e81c5", "4e803ceb-cbd5-4ef2-8b5d-74d55fa15309", "12a5c541-4144-4cac-9924-16613b46ced5", "c04d01ff-a0cd-4140-9334-0e8af8a23517"],
+                'blacklisted_shop_ids' => ["0014f60b-bf31-48af-9bf8-f8594e81ae30", "e53f8a03-5a03-437a-b6f1-610a60381ab9", "01574e52-acbc-4c6c-aae9-5275a172db71", "5c5220cf-a642-4529-bf49-6dce0556416d", "1508f3b4-0651-4022-b737-9d5b2511702f", "bcc88cc2-148a-460d-a879-72712500afe9", "e382d27b-702a-43fa-ab86-03561620cfd1"],
+                'minimum_number_of_products' => 6935,
+                'minimum_number_of_amount' => 9830,
+                'minimum_number_for_combination_purchase' => 6207,
                 'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 5523,
-                'max_total_point_amount' => 6488,
+                'max_point_amount' => 4923,
+                'max_total_point_amount' => 2611,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 2027290463
+                'budget_caps_amount' => 534879453
             ]
         );
         try {
@@ -304,24 +295,23 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'applicable_days_of_week' => [0, 5, 4, 4, 4, 3],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["fdf3ba5c-da9b-49c2-8e1c-957b82797322", "c8362401-237c-4f89-b368-4bde5683a47a", "81d86303-2ea2-4f5a-9b15-67c7a99a72a5", "6be2143f-dc7c-48b3-b55e-dd2d802e0eb7", "10f8bb0b-6150-4850-be7e-afeed12d3f57"],
-                'minimum_number_of_products' => 7021,
-                'minimum_number_of_amount' => 5838,
-                'minimum_number_for_combination_purchase' => 3666,
+                'applicable_shop_ids' => ["7fb7f6d8-e2bd-4239-aa01-706d784d2a2b", "92247ed1-091e-4f0a-8a69-4fc5a255d145", "20181a4c-232c-4d14-96fd-94ba565aacec", "eeab11f9-f184-461d-a35b-e98f4100048e", "a0469b66-fb5b-41e4-bc7e-f7246ab83491", "6e686da4-d528-45ae-8841-02b0b39caa73", "f433346e-7daa-4f31-8add-f9702791768b"],
+                'blacklisted_shop_ids' => ["41b8ec39-ab63-4374-8209-c2765eb4e058"],
+                'minimum_number_of_products' => 5107,
+                'minimum_number_of_amount' => 6496,
+                'minimum_number_for_combination_purchase' => 4729,
                 'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 2219,
-                'max_total_point_amount' => 9916,
+                'max_point_amount' => 7793,
+                'max_total_point_amount' => 3542,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 438117142
+                'budget_caps_amount' => 582908392
             ]
         );
         try {
@@ -337,33 +327,30 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        ],
-                'applicable_days_of_week' => [2, 5, 2, 1, 6, 2, 1, 1],
+                'applicable_days_of_week' => [4, 2, 2],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["0a26692c-6709-4f3e-9d69-a2d7d49f8cd0", "ed451c76-3ab5-4993-89e4-2da42d9d1396", "47fdbdc1-e0a0-41e2-a855-68203b8e0b42", "ee92a2d7-3d14-46f4-a11b-0336af30c5b8", "bb5eccf6-eb1b-4009-a128-cf0c31126e86", "8efc85b7-3308-40dd-9fb9-0919c8d8bb4b", "d95c364e-1267-4c73-9aef-c02c57bc2691", "03d24b8a-2c98-4f8d-9c64-fd923a2f9a0e"],
-                'minimum_number_of_products' => 216,
-                'minimum_number_of_amount' => 1847,
-                'minimum_number_for_combination_purchase' => 4405,
+                'applicable_shop_ids' => ["b2211d94-41e2-48ad-a511-1de684ffed64", "03d70405-43b8-487c-ac99-2ec99abef437", "723311e3-7461-46b3-afef-a3794099be51"],
+                'blacklisted_shop_ids' => ["54ec41c9-ba73-4800-929c-77d53619efec", "fe0403b3-ccba-48f2-83cd-c21f4d5aa21f"],
+                'minimum_number_of_products' => 4881,
+                'minimum_number_of_amount' => 3547,
+                'minimum_number_for_combination_purchase' => 5676,
                 'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 9828,
-                'max_total_point_amount' => 2851,
+                'max_point_amount' => 3353,
+                'max_total_point_amount' => 8470,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 602282020
+                'budget_caps_amount' => 432354392
             ]
         );
         try {
@@ -379,40 +366,33 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [2, 6, 2, 2, 4, 1],
+                'applicable_days_of_week' => [5],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["2eafbf65-d8bf-438f-9710-9058c9d51e2e", "c35068c1-7373-4ffb-830d-9bd53f3e9fcf", "1ee4d998-8ae5-4dd3-894c-7e204375a10e", "0d40ede9-88ba-4f63-8b0d-c72488c6543d", "9ee28e4a-ac75-4991-922e-6e67ce4b1d50", "22cfc1cd-7968-4701-9ba3-f3eb748c3362", "e470684e-971f-4a8a-9714-2da76af1242a", "b372e907-16b4-4518-803f-613432590178", "5f6f32b5-8dec-465b-94f0-17940963cc21", "29f7d319-a9e9-421c-ab60-557a9c78491a"],
-                'minimum_number_of_products' => 3174,
-                'minimum_number_of_amount' => 8045,
-                'minimum_number_for_combination_purchase' => 6281,
-                'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 7040,
-                'max_total_point_amount' => 6107,
+                'applicable_shop_ids' => ["ebf5c9fb-a834-41a2-8941-b84400214e54", "0c040048-8096-458b-9f64-845449d83ed0", "f92c5073-2310-47ea-a80d-c02da5b58855"],
+                'blacklisted_shop_ids' => ["280e130e-39f3-4cbe-97e2-91751aac2b3b", "0e15f01e-9795-4de8-876e-f4e2fe882e92", "78d1953f-5649-4955-86bb-dc6c784790ff", "1cfebb28-e966-4bc0-b66f-3de2f10e83a4", "f0cdadcf-9220-45df-9b94-3ce30321583a"],
+                'minimum_number_of_products' => 3678,
+                'minimum_number_of_amount' => 1261,
+                'minimum_number_for_combination_purchase' => 985,
+                'exist_in_each_product_groups' => FALSE,
+                'max_point_amount' => 7655,
+                'max_total_point_amount' => 4727,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 2063324920
+                'budget_caps_amount' => 1564986024
             ]
         );
         try {
@@ -428,13 +408,8 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
@@ -444,22 +419,28 @@ class UpdateCampaign extends TestCase
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [3, 2, 6, 4, 5, 6, 5, 3],
+                'applicable_days_of_week' => [5, 1],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["af424593-329d-4569-a70e-99627c770734", "0df948d9-f062-4033-b436-71eb9bc7586d", "c2885e76-1879-4e8f-a87c-eba8c16c4d7c", "c3f1c30e-a60f-4103-aa22-17c4e2a21637", "bd8577a2-1109-49d9-a186-62fe51976f2d", "28cd3631-9e0a-46bb-ac16-be60edba18bc", "eac15ebe-9c21-4a67-baf1-8649b1696582", "43250fe8-4cb5-444d-8c93-1e705efc32d5", "16c61370-cd41-4365-b590-c9529fa02f98", "d994baee-b24a-4a21-98f1-11570610b1ff"],
-                'minimum_number_of_products' => 4766,
-                'minimum_number_of_amount' => 6590,
-                'minimum_number_for_combination_purchase' => 8537,
-                'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 9020,
-                'max_total_point_amount' => 3210,
+                'applicable_shop_ids' => ["c8946e96-32b3-417b-a8ea-37212adf9a9d", "3118c374-4a1f-4b22-8404-64b1aaddbb8c", "58080a56-7ea5-4f59-bbfd-f8ff349aa06e", "ac05a43a-bbd4-495d-a8c5-a1e09074fc8a"],
+                'blacklisted_shop_ids' => ["af0a78fe-43cf-4acc-b46c-e70a73af16eb", "11dc2fde-2f3a-49dd-92d0-84c9e4243741"],
+                'minimum_number_of_products' => 3935,
+                'minimum_number_of_amount' => 5139,
+                'minimum_number_for_combination_purchase' => 9830,
+                'exist_in_each_product_groups' => FALSE,
+                'max_point_amount' => 2839,
+                'max_total_point_amount' => 4889,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 583448988
+                'budget_caps_amount' => 473495181
             ]
         );
         try {
@@ -475,34 +456,44 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'subject' => "all",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [2],
+                'applicable_days_of_week' => [3, 1, 6],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["f43a7baf-a0ef-4c23-9db0-60fcb6157943"],
-                'minimum_number_of_products' => 4605,
-                'minimum_number_of_amount' => 517,
-                'minimum_number_for_combination_purchase' => 8649,
+                'applicable_shop_ids' => ["f77d846f-d253-4b4a-b02b-57a7e55fc8f4", "ed1dc640-6697-40b0-8cf8-c9f7665a8397", "f992738e-d6fa-413b-8067-e69fa1d313da", "825937ad-569c-4b33-bd00-9b1c8bfc85a8", "19ea0ed3-4ac1-46f3-aaf0-b2032ff1fc41", "6d723416-8975-4350-8aad-ddd13724ff20", "c8571477-0fcf-4e92-8d45-c378a5811193", "b7c826ba-6643-48b1-b7b6-f56919f973e6"],
+                'blacklisted_shop_ids' => ["be8e46da-3855-45a7-9615-b21012e47910", "88c91073-8df4-420a-829d-fe151579e4a9", "51e099f1-776a-4237-836a-3ca830f7dbca", "b5686faf-5db1-4558-a818-e9617e571b7a", "8c3f4ce4-5db0-4005-807f-fb4ddf067697", "5bfae930-d5d1-4615-8515-00b802c3b2a2", "151a6787-a926-4ff3-a991-56b7aa4ae0be", "f4086057-fdeb-4886-b4fb-5eefbd103d21", "cd53a16d-f654-4e53-9fa4-694951527188", "26900bfd-b62d-4cf3-b300-e773cc6e8b06"],
+                'minimum_number_of_products' => 9972,
+                'minimum_number_of_amount' => 4411,
+                'minimum_number_for_combination_purchase' => 5041,
                 'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 4118,
-                'max_total_point_amount' => 7473,
+                'max_point_amount' => 3540,
+                'max_total_point_amount' => 9981,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1460780232
+                'budget_caps_amount' => 1555114852
             ]
         );
         try {
@@ -518,18 +509,10 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'is_exclusive' => FALSE,
                 'subject' => "money",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
@@ -548,29 +531,23 @@ class UpdateCampaign extends TestCase
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [6, 5, 5, 6],
+                'applicable_days_of_week' => [4, 5, 5],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["7a4cd326-3c66-4dff-a0b3-45c8ec500426", "06c8253e-0065-45de-a8be-65fc3befde31", "5e0e78e6-84b0-4d1d-9159-643a729452dc", "ee4a5c5f-87c5-4feb-a7ca-72ee8ad14a63", "0d712633-e969-4d69-9f85-d800d7d21893", "9b80a95d-e1ae-4340-8a0f-fd2214685b33", "e0de024e-a240-4544-9b23-46db3489a0d6", "31c5050f-f0c6-421f-ab3a-5e02a802369b"],
-                'minimum_number_of_products' => 9295,
-                'minimum_number_of_amount' => 7137,
-                'minimum_number_for_combination_purchase' => 3818,
-                'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 9256,
-                'max_total_point_amount' => 7547,
+                'applicable_shop_ids' => ["29d82e89-98bd-4a67-9608-bc85328964b0", "4b43c984-887c-48af-8718-2ee9923525c2", "2bc9b844-4414-4312-b2e5-17182cffdc74", "b6dccb11-6e36-478c-8511-dad23193dd38", "717c9339-01f6-49d2-8207-f481f806a765"],
+                'blacklisted_shop_ids' => ["e06f4559-1e49-4d5a-a2bf-e27c609bb9cd", "36ba6268-ee36-4f25-8d10-262fb67449e6", "cff4f7bf-f1a5-4803-bb7d-ed1ecda504aa", "7ebe5653-5c68-4941-b844-65b4b949d940", "f7bde4e0-65c5-4cf6-b70f-1e1a035bbf21", "1aca37cf-d1dc-43b7-80be-b4d47066cd14", "9885c747-0754-4b37-b04c-832f9d1167a1", "81201ac0-ee90-450a-915d-92b283a73614", "f10c6465-4af0-4511-b868-148e76a70713"],
+                'minimum_number_of_products' => 2965,
+                'minimum_number_of_amount' => 7599,
+                'minimum_number_for_combination_purchase' => 4967,
+                'exist_in_each_product_groups' => TRUE,
+                'max_point_amount' => 4595,
+                'max_total_point_amount' => 3040,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 161597696
+                'budget_caps_amount' => 46030847
             ]
         );
         try {
@@ -586,13 +563,11 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'point_expires_in_days' => 8148,
-                'is_exclusive' => FALSE,
-                'subject' => "money",
+                'is_exclusive' => TRUE,
+                'subject' => "all",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
@@ -611,8 +586,10 @@ class UpdateCampaign extends TestCase
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [0, 0, 1],
+                'applicable_days_of_week' => [4, 3, 2, 5, 3, 3, 2, 5],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
@@ -620,22 +597,20 @@ class UpdateCampaign extends TestCase
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["35d34e3d-d63d-4afa-8db2-ca898075cdff", "aae1a663-fbe7-4903-a864-a65f71aea906", "c38cc1e3-e332-4100-8c1b-7aea48b07fa0", "b9ea4661-a2fc-413c-920c-c8ea17faa90a", "2cc5f6b2-747d-42c7-b31e-ab751a27152d", "a4eba469-be9b-453f-a87e-59d6d131a915", "03db2939-b4d5-4d73-849a-79beb78a1a6e", "2dd72194-356c-45fe-aab2-7aed3b170511", "fa884138-9f17-4f17-ae27-5be0e7cd26a1"],
-                'minimum_number_of_products' => 4457,
-                'minimum_number_of_amount' => 3422,
-                'minimum_number_for_combination_purchase' => 2314,
-                'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 7529,
-                'max_total_point_amount' => 856,
+                'applicable_shop_ids' => ["9e128976-b31b-4203-b574-472969d87ffc", "c4095b83-840e-4558-8239-6eb3dcf807fd", "0422f55f-7fb4-4eb1-81e4-47abf004a41b", "8553ad04-955d-41d1-a11c-aee08c443ba6", "019037ba-2f8a-4e53-8e76-5a7215bf69b2", "7a48d3bd-6e00-45ea-8432-6e0091e6bede", "d602ffc3-59d0-435e-8210-8b0c3adceac5", "17b738a2-bee7-4311-ab36-67ab68d33271"],
+                'blacklisted_shop_ids' => ["c42f00d8-aa68-41d3-88b8-ed1c71ce9c68", "21dd9c61-fa5b-4066-8a09-008441de82f9", "add52405-f93b-4130-ad1d-850d488705c0", "76df3573-a344-4589-a83e-f1824302712e", "59bddd54-186e-444d-90fc-557c6edba810"],
+                'minimum_number_of_products' => 8287,
+                'minimum_number_of_amount' => 6695,
+                'minimum_number_for_combination_purchase' => 1425,
+                'exist_in_each_product_groups' => TRUE,
+                'max_point_amount' => 5428,
+                'max_total_point_amount' => 5509,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 631031534
+                'budget_caps_amount' => 1928643782
             ]
         );
         try {
@@ -651,12 +626,11 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'point_expires_at' => "2020-08-05T15:13:26.000000+09:00",
-                'point_expires_in_days' => 4205,
+                'point_expires_in_days' => 6831,
                 'is_exclusive' => TRUE,
-                'subject' => "all",
+                'subject' => "money",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
@@ -669,31 +643,26 @@ class UpdateCampaign extends TestCase
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [5, 6],
+                'applicable_days_of_week' => [4, 0, 3, 0],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["6c1dba40-9508-4c04-a484-5caeaa80a54f", "e88a5db8-7813-40bb-9645-05a1eafe2e60", "653b57a9-e299-413c-bea7-c41c68ef6d74", "1268aa33-8d14-40e8-b94e-c030a176b127"],
-                'minimum_number_of_products' => 5983,
-                'minimum_number_of_amount' => 6393,
-                'minimum_number_for_combination_purchase' => 5489,
-                'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 6906,
-                'max_total_point_amount' => 7932,
+                'applicable_shop_ids' => ["7ca1081b-9df1-4316-8963-fb197ca72571", "d6cb615a-d629-45c2-b26e-bc7bb7ce886b", "7d36db3e-941e-4882-a8ad-c7777a9a3fb5", "65b784d6-c2f5-476e-aea4-bee83ff40a32"],
+                'blacklisted_shop_ids' => ["4f796b1a-33ac-4c98-b1fd-cbd749a2ded1", "eefcbb5a-4dfa-4710-b1ab-e334332ce201", "72e82ef8-e142-4338-b9b1-0cf21e3b01d0", "de7e7de0-5cd6-4237-863e-3263330fe064", "9e6e7b87-db21-4d08-8480-1b65130e4012", "9bc51e10-22de-415b-82b6-253170117676", "b9077163-01ff-473a-a4a2-e4cfa9d764da", "74275e60-7e9d-44b1-bc0a-aa757b9715bf", "98fa8dce-3f20-441c-8802-dc42f4eb1394", "4adcfca1-cd41-4064-b200-949b236a9dba"],
+                'minimum_number_of_products' => 6781,
+                'minimum_number_of_amount' => 2331,
+                'minimum_number_for_combination_purchase' => 7436,
+                'exist_in_each_product_groups' => TRUE,
+                'max_point_amount' => 9709,
+                'max_total_point_amount' => 2279,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1939346942
+                'budget_caps_amount' => 488959514
             ]
         );
         try {
@@ -709,24 +678,24 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'status' => "enabled",
-                'point_expires_at' => "2022-02-18T19:26:11.000000+09:00",
-                'point_expires_in_days' => 8453,
+                'point_expires_at' => "2022-03-01T13:40:50.000000Z",
+                'point_expires_in_days' => 498,
                 'is_exclusive' => FALSE,
-                'subject' => "money",
+                'subject' => "all",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
@@ -734,13 +703,8 @@ class UpdateCampaign extends TestCase
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [5, 5, 3, 5, 5, 5, 2, 3],
+                'applicable_days_of_week' => [3],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
@@ -749,21 +713,20 @@ class UpdateCampaign extends TestCase
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["932d38c8-b908-4d3a-acdd-e7d8cf188d11", "e30abff5-65d3-40c5-9785-a465e9b3f1cd"],
-                'minimum_number_of_products' => 8843,
-                'minimum_number_of_amount' => 5945,
-                'minimum_number_for_combination_purchase' => 5123,
-                'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 7722,
-                'max_total_point_amount' => 2926,
+                'applicable_shop_ids' => ["700c8230-0552-4e02-80db-3e5425332304", "174be639-2230-402d-add4-bd769749be80", "6100fe7c-5f39-418c-a911-3c1fe703f07c"],
+                'blacklisted_shop_ids' => ["5dffd7ce-f68a-42e9-a63e-8359d9772bb6", "0549d4b2-3a42-4063-b08f-2b6e0e655735", "ec7a2179-1178-435f-aea7-fba70106c378", "ad783258-c776-4ebb-8b06-3b240a53cddf", "43502144-6be1-432a-9830-7f0d2391aa5f", "f0a50563-f317-47b2-b635-c63cf103c44e"],
+                'minimum_number_of_products' => 8403,
+                'minimum_number_of_amount' => 2192,
+                'minimum_number_for_combination_purchase' => 7602,
+                'exist_in_each_product_groups' => FALSE,
+                'max_point_amount' => 1271,
+                'max_total_point_amount' => 6870,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1195112782
+                'budget_caps_amount' => 1161375036
             ]
         );
         try {
@@ -779,19 +742,27 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'description' => "qznKIn9uBoqN3XKkwmXFnLL0vhZmz7rucmF8n8VnjFoEs5f64mvXKC0yIYDrOmfZvcfCdES8HHJf50TC5y2HNrP34hD1uxIbudPgKcAH4LqtvnYdJrsgVxWy0PirB5ccKSjPsnaJy0xSUaUZ3KYipGveNp11WiSr08uCzB0JSt7hZNL6cvcqBnhGn",
                 'status' => "disabled",
-                'point_expires_at' => "2021-07-03T08:21:57.000000+09:00",
-                'point_expires_in_days' => 1402,
+                'point_expires_at' => "2022-07-02T08:26:59.000000Z",
+                'point_expires_in_days' => 6734,
                 'is_exclusive' => TRUE,
                 'subject' => "money",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
@@ -801,8 +772,11 @@ class UpdateCampaign extends TestCase
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [2, 2],
+                'applicable_days_of_week' => [4, 1, 3, 4, 3],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
@@ -810,20 +784,20 @@ class UpdateCampaign extends TestCase
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["80bebf8d-ef45-4e96-9834-95b601aeae44", "7dfa4424-85cc-4eb0-9f45-66a5bb5a1059", "6f51523b-febf-439a-b986-8814f56ffb44", "0f43a566-1167-49b2-8b9a-9e32d5de1b4b", "b58af7d3-9fc2-483b-8a1d-a79b9e205b33", "038e1d9c-df7f-4d10-b2fd-e579ca3c2cba", "e059e600-b397-47a7-9463-d7a2e79bf265", "66eda148-8bae-406b-b065-1610a5fa468f", "4059f80e-db4a-4c03-81d3-9c198da61d35"],
-                'minimum_number_of_products' => 8244,
-                'minimum_number_of_amount' => 3099,
-                'minimum_number_for_combination_purchase' => 9690,
+                'applicable_shop_ids' => ["59ceb168-fbcb-40cf-8e74-d00843ae0741", "81d87bef-283f-4629-8d58-ca88a86289a7", "319c3137-7d27-406f-b02c-08143b373df5", "089bb261-44e5-4b23-b76c-e79a6ecb2710", "6e8f75cf-1a2e-4ab5-ad38-33c1066efe3d", "57810222-8a7c-4ee5-b6a8-6a3b4c284a68"],
+                'blacklisted_shop_ids' => ["71f4bfee-98a1-417d-b229-27c6b17c6bd3", "e368a36a-ff62-4dc2-bdba-141c6380028e", "96649f97-eeb1-462d-8ee8-cd6993562b52", "2d8c44ea-2493-4518-9497-50ce219a7cd3", "2ffc5da7-0c15-4095-a855-6881b79d84b4"],
+                'minimum_number_of_products' => 1449,
+                'minimum_number_of_amount' => 1733,
+                'minimum_number_for_combination_purchase' => 716,
                 'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 7539,
-                'max_total_point_amount' => 1190,
+                'max_point_amount' => 4983,
+                'max_total_point_amount' => 4910,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 1643935742
+                'budget_caps_amount' => 241703418
             ]
         );
         try {
@@ -839,59 +813,41 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'event' => "payment",
-                'description' => "Rvl0KriuNlhP5RwfRsdmSnnsKFojcLOuuurZaaP5zVuitJAWBnMTQrqQLb4F279GcsdDtM3uSEYbuaOy1AtJbZFvX4DTrnYj6rE9HuWGm5xmBEPErYjV24xKSbfZiVFE1mx2zGT1xfUftI30JyBIPqdCDvWnTRvriMMqT8Y2wPxWWXEUoqg0zXsuvc8LF4mbP1hyPD",
-                'status' => "disabled",
-                'point_expires_at' => "2020-06-23T23:07:23.000000+09:00",
-                'point_expires_in_days' => 2689,
+                'description' => "ktKcWCyKm4tG2FzeWXxPN6RiMVhZmmGj0TMjPFLM0DLdwVX1nfPZtzGunVJbtCnsdFVcjFxpkr7nBijaa4uqZKlbpHQT4mZQDB6u1kMJt8otXLMwiqJK6MisPTXvJ9APWVf0nkI2cpiZ",
+                'status' => "enabled",
+                'point_expires_at' => "2022-05-04T16:36:07.000000Z",
+                'point_expires_in_days' => 6192,
                 'is_exclusive' => TRUE,
                 'subject' => "money",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [0, 3, 4, 5, 1, 1, 1, 6, 4, 0],
+                'applicable_days_of_week' => [5],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["a79b9da3-6119-48ea-96db-c3ee770042bf"],
-                'minimum_number_of_products' => 7581,
-                'minimum_number_of_amount' => 1844,
-                'minimum_number_for_combination_purchase' => 7332,
-                'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 7222,
-                'max_total_point_amount' => 4238,
+                'applicable_shop_ids' => ["bb7603e4-3a68-41d4-9c82-9873fb019089", "0dd17f90-bf18-4753-bb3a-310cd42e4f78", "83721b8f-6918-4ece-9fba-2dbd834be33e"],
+                'blacklisted_shop_ids' => ["275127d8-8784-4ea7-82f5-dcc0c1d07f89", "cd4bf5e8-c04c-491b-81f8-d403dc2586af", "c95875d0-e03b-4df8-824c-bfa677b05288"],
+                'minimum_number_of_products' => 1427,
+                'minimum_number_of_amount' => 9253,
+                'minimum_number_for_combination_purchase' => 4132,
+                'exist_in_each_product_groups' => FALSE,
+                'max_point_amount' => 1000,
+                'max_total_point_amount' => 2597,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 2101911273
+                'budget_caps_amount' => 1797489055
             ]
         );
         try {
@@ -907,18 +863,16 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'priority' => 2055,
-                'event' => "topup",
-                'description' => "0vhQYw5VlT5PtGoiFuhhxPNxJedAo6IB1JwI4HtHPlHFEuPGo3GkdygOOVSyzQqeTxBrSdGB4t2pP3KohbOZsA8epkaCTJpPbbkDn1ZrOBafUzNTBXIV1wGp1Rn3U4KQsAmdVQrUihNu2f4606Zw3XOfvqGLqQiqaG2p9irVNMOOMEypf2sbM",
+                'event' => "external-transaction",
+                'description' => "7PH9jsPo3qRbXC",
                 'status' => "enabled",
-                'point_expires_at' => "2020-07-09T00:55:34.000000+09:00",
-                'point_expires_in_days' => 5942,
-                'is_exclusive' => FALSE,
-                'subject' => "money",
+                'point_expires_at' => "2023-03-30T07:04:34.000000Z",
+                'point_expires_in_days' => 689,
+                'is_exclusive' => TRUE,
+                'subject' => "all",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
@@ -928,31 +882,39 @@ class UpdateCampaign extends TestCase
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [6, 0, 0, 1, 1, 2, 5],
+                'applicable_days_of_week' => [0, 5, 1, 3, 5, 0, 3, 2, 6],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["31b644ef-2ce1-4afc-9192-a8812e039149", "3c86c5d0-0815-4cfe-aa3c-034739408316", "913b624a-2437-44ca-8742-db7e189efac3", "e1233b00-8f9f-4d0b-b117-5c6f29ba1991"],
-                'minimum_number_of_products' => 9270,
-                'minimum_number_of_amount' => 1107,
-                'minimum_number_for_combination_purchase' => 221,
+                'applicable_shop_ids' => ["59785c20-161f-431c-9314-5e7172e10607", "60df8aaf-23fd-4fec-90db-d611c05931e8", "fb148318-6fe3-47bc-81a7-c36c55ce455d"],
+                'blacklisted_shop_ids' => ["b9a4b27d-72f8-4762-a293-219fed97e0c9", "d1daa531-9a8c-4170-84bb-863c6f5f165d", "3ad77a77-4323-4218-8e56-1a1fb32d127f", "ea928f4e-12eb-4f58-b177-059449f08a62"],
+                'minimum_number_of_products' => 5500,
+                'minimum_number_of_amount' => 5449,
+                'minimum_number_for_combination_purchase' => 2571,
                 'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 6566,
-                'max_total_point_amount' => 2106,
+                'max_point_amount' => 8097,
+                'max_total_point_amount' => 2094,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 676734527
+                'budget_caps_amount' => 324213244
             ]
         );
         try {
@@ -968,22 +930,17 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'ends_at' => "2022-03-29T06:22:46.000000+09:00",
-                'priority' => 9318,
-                'event' => "payment",
-                'description' => "VrWrKd8ZckndPnp3nLoMele3ppOb8vOALeCaVZzJ21Wkjwh096vY0YkfqArkVOxtHaQbqrekxj6KVFbsIqYgBl99xXSIGv3Ovn3SH7ljqEdpqCcPOpWjivoOnvdw0Yvld3IeJyhTlRg",
-                'status' => "disabled",
-                'point_expires_at' => "2022-08-30T01:48:04.000000+09:00",
-                'point_expires_in_days' => 2750,
+                'priority' => 9751,
+                'event' => "topup",
+                'description' => "h4XHkB",
+                'status' => "enabled",
+                'point_expires_at' => "2021-09-01T11:45:22.000000Z",
+                'point_expires_in_days' => 8710,
                 'is_exclusive' => TRUE,
-                'subject' => "money",
+                'subject' => "all",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
@@ -993,37 +950,38 @@ class UpdateCampaign extends TestCase
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [0],
+                'applicable_days_of_week' => [2, 6, 5, 3, 2, 0, 3, 4],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["9a2d9c52-141c-48ec-8c82-5f2f7a19f5dc", "e8460319-2210-476f-ac22-b0ab2144bb06", "e156e2cc-0722-4bfd-bf9b-d0882f60821d", "38553eea-774d-4514-ad91-d2bea7a7afcc", "cdde0ca1-db53-4a07-bd48-1215541888d1"],
-                'minimum_number_of_products' => 4928,
-                'minimum_number_of_amount' => 538,
-                'minimum_number_for_combination_purchase' => 8974,
-                'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 2325,
-                'max_total_point_amount' => 6024,
+                'applicable_shop_ids' => ["6677ef5f-1cd3-47b6-9c5d-5745450f857b", "7fb03f0d-d316-4ddb-8045-b84f64659729", "be23edbc-e20a-4eb5-8297-93a251c113f0", "93257eac-0ab0-4154-8961-2d3dc674afa1", "06278b8d-1599-4ca9-8415-848cd3c1fcbc", "95aea291-b619-4ac2-b293-bfede2a9346e", "2edae2bd-4d64-4769-82c3-070dd8e9d3be", "15f6844e-2f1d-4c78-9858-d50058832377"],
+                'blacklisted_shop_ids' => ["b37b48e1-c926-4cd2-9bc1-580a3b683987", "5c625afb-e6bd-4865-9e54-62ae608aa8ae", "bf21c3f8-98a4-48a6-9f3d-5c9381d309e6", "c57304e5-f630-4359-9c9e-7010fc21e989", "15885351-8993-4a43-9ac8-3b7aedbbc1fc", "9d229aed-732e-4edb-b816-272832a00a7d", "9d661f9b-cd85-444f-877b-dd5d963d2747"],
+                'minimum_number_of_products' => 6806,
+                'minimum_number_of_amount' => 5689,
+                'minimum_number_for_combination_purchase' => 507,
+                'exist_in_each_product_groups' => FALSE,
+                'max_point_amount' => 3843,
+                'max_total_point_amount' => 2532,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 414634257
+                'budget_caps_amount' => 495746459
             ]
         );
         try {
@@ -1039,18 +997,17 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'starts_at' => "2020-12-10T06:52:48.000000+09:00",
-                'ends_at' => "2023-09-29T22:25:44.000000+09:00",
-                'priority' => 2179,
+                'ends_at' => "2021-05-04T05:00:15.000000Z",
+                'priority' => 8216,
                 'event' => "payment",
-                'description' => "tHPdlvKxC8QojNKN0zqICt7BPEIsHw9iaxaPzoaDv6U6SXLkHad9cOSRej1Twb2rvpiwJLSyhoqY6ZnwMWmZEdo3TtkAPfziyB2HYxaSuFevcjssU2Qn83gWH7hF0T8Nh7eoO6asjOox0RRzWzgJ8qllmxnkMgshIHzbucfDhID3qemlo7JMN",
+                'description' => "OxIGcWZjjM6j3edDcpZu9iiEwcokneeQ36NR2IjhyB4vKQ7cGlo7SrCjimdlgwn9qvauQ2kDhj5HLJcSNTCm30yK3y8WItCe9VYgMydEalG7",
                 'status' => "disabled",
-                'point_expires_at' => "2020-12-18T22:48:08.000000+09:00",
-                'point_expires_in_days' => 9838,
-                'is_exclusive' => FALSE,
-                'subject' => "all",
+                'point_expires_at' => "2020-03-04T19:00:06.000000Z",
+                'point_expires_in_days' => 1469,
+                'is_exclusive' => TRUE,
+                'subject' => "money",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
@@ -1063,38 +1020,27 @@ class UpdateCampaign extends TestCase
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
-        , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [6, 3, 1],
+                'applicable_days_of_week' => [1, 6, 2, 4, 2],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
         , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["6d663cf1-10ef-4266-8d02-787191e56d31", "014cf454-93f9-4946-a3d7-1c5d1c273b30", "97eea620-6855-4ff5-9b9c-629ebe3602bf", "c3f2f463-0e23-41b5-bbf5-bae74c13bc91", "4768eb7e-9595-4532-93fc-0c701f3c0f8a"],
-                'minimum_number_of_products' => 4805,
-                'minimum_number_of_amount' => 5872,
-                'minimum_number_for_combination_purchase' => 3777,
+                'applicable_shop_ids' => ["154c8c49-e277-4aa5-84e7-f619a479e253", "9f49b3b5-10c1-4a01-a721-e0697fd30809", "fe52b38b-3d5b-44a7-aa6a-25d70c76ed08", "335b29d2-7179-4ca9-b818-385b32f5339d", "6c59dbee-eb65-4f88-a56b-15233cee9121"],
+                'blacklisted_shop_ids' => ["a027c686-881e-47b8-a307-2f497d4181dd", "adf594c4-1bdb-465b-afd4-033028b8c9a0", "29af4c5e-129a-4a68-aeed-0389997b213b", "79b635b8-9ce8-4b24-b8fb-441ea093b2e5", "9b7866f6-1bdb-4557-aab6-d4265f7ea604", "7e03a7b8-6f1b-40df-8e3e-0bbd0aa50803", "7537fb18-d702-414b-b095-087f8d59c55e"],
+                'minimum_number_of_products' => 364,
+                'minimum_number_of_amount' => 8716,
+                'minimum_number_for_combination_purchase' => 5234,
                 'exist_in_each_product_groups' => TRUE,
-                'max_point_amount' => 9860,
-                'max_total_point_amount' => 9034,
+                'max_point_amount' => 6225,
+                'max_total_point_amount' => 6350,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 2082490634
+                'budget_caps_amount' => 403686996
             ]
         );
         try {
@@ -1110,23 +1056,30 @@ class UpdateCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCampaign(
-            "55f41839-b543-439c-a2e3-7915f8aedbcf",
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
             [
-                'name' => "5OQQ9GoRehaS9O2M3fskqX8Wbk",
-                'starts_at' => "2023-05-31T11:07:36.000000+09:00",
-                'ends_at' => "2022-07-22T02:58:39.000000+09:00",
-                'priority' => 3466,
+                'starts_at' => "2024-02-27T09:42:41.000000Z",
+                'ends_at' => "2020-06-09T06:14:06.000000Z",
+                'priority' => 653,
                 'event' => "external-transaction",
-                'description' => "p66iGj1lRR9XuMVcs2zeQQbQwb51zUDjfyGpNkIiUDvsd07Li3GyEdt6GGJ1GXo5UPiFJuScrEGcY5I6vYJqE",
-                'status' => "disabled",
-                'point_expires_at' => "2022-06-29T03:13:37.000000+09:00",
-                'point_expires_in_days' => 2676,
+                'description' => "o6iR11TAHpgNTXOxFwqhkpZVaDhpFPp5bfKVt9DPYJAVzV6vyI6ywfpyKilj5zg8pn57kF0DYbPLXjuwrpeD0A9IDYP4sAiF",
+                'status' => "enabled",
+                'point_expires_at' => "2021-10-13T12:35:36.000000Z",
+                'point_expires_in_days' => 2936,
                 'is_exclusive' => FALSE,
                 'subject' => "all",
                 'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
         ],
                 'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
         ],
                 'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
@@ -1134,30 +1087,92 @@ class UpdateCampaign extends TestCase
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         , ["product_code" => "4912345678904", "classification_code" => "c123"]
         ],
-                'applicable_days_of_week' => [5, 6, 5, 5],
+                'applicable_days_of_week' => [0, 4, 1, 2, 1, 2, 3, 1, 5, 0],
                 'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
-        , ["from" => "12:00", "to" => "23:59"]
         ],
-                'applicable_shop_ids' => ["86fbab3b-13cb-431d-90b9-a693796c3ae2", "5337d6df-29db-4567-aed9-dee1e3e0e5ae", "d5e64111-d56e-4f0f-91e2-48d6b26b893a", "4ed59494-d4d1-48cd-b95a-aab619866c86", "51c48dd2-2ec7-4ab0-abbc-e98f208ad043", "7ae00418-5b98-4e73-9426-c1d03e0a9be4", "ecd27922-31ff-4e7a-b790-1f45912395f2"],
-                'minimum_number_of_products' => 6701,
-                'minimum_number_of_amount' => 2230,
-                'minimum_number_for_combination_purchase' => 6674,
+                'applicable_shop_ids' => ["66ff67d3-018d-4a56-89ec-f13b503d3e39", "f2f65cff-6bcd-430e-b17d-b3736d626870", "7568237f-f926-455b-ba6a-ef9dfd4de921", "2eecd940-f0f6-4c34-adba-e7843ed2b3cb", "ea8da4d8-af55-41bf-b172-6188d37b6756"],
+                'blacklisted_shop_ids' => ["5788ab36-6c55-4527-b04b-093491710987", "5cc3d9e0-b990-4b5f-b4c2-00ef99c743a2", "044e8df6-4311-44ab-8048-da213d99363f", "8be9e089-db2a-404b-ab88-e819a7dc8a71", "da16bdd9-2f7a-4e6b-b712-946074911bbe", "7626c529-3122-47c7-8142-7e831dc15dad", "03d38885-4c7f-4a96-87ba-1a1fcee74a26"],
+                'minimum_number_of_products' => 5573,
+                'minimum_number_of_amount' => 4002,
+                'minimum_number_for_combination_purchase' => 511,
                 'exist_in_each_product_groups' => FALSE,
-                'max_point_amount' => 2649,
-                'max_total_point_amount' => 5897,
+                'max_point_amount' => 3763,
+                'max_total_point_amount' => 629,
                 'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
         ,
                 'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
         ,
-                'budget_caps_amount' => 442236460
+                'budget_caps_amount' => 203411592
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testUpdateCampaign27()
+    {
+        $client = $this->newClient();
+        $request = new Request\UpdateCampaign(
+            "00a528e9-c261-4ee2-b981-bdc3d4377e2c",
+            [
+                'name' => "RFerhSuL22gGga7pF0nmLMfnIYTQdqHJZ8WnDHEVfpIBtEOMP2U7IkYygmkkDxd3MzpkzvPsPo2vcZvKaf470Dw5YI6SeAOBDBgRAgmjxZGGCqaBwJ9iXjXSEfbkdsvlfnd1NOUEcUOGTeYua5DveJsn8lhIUcgIkY0oNU4ZtZZObHmdr0N6vylnlZRhGDMxuj8",
+                'starts_at' => "2022-03-28T00:41:37.000000Z",
+                'ends_at' => "2024-03-03T16:35:03.000000Z",
+                'priority' => 8877,
+                'event' => "payment",
+                'description' => "DOAWeoDpeF6vcSyg1N9plx7jjHK1E1PUQiuVzdT2YVVNgkhGiOaJk8HWWbXOMsyMVL1Y0FzVGqOKFoU3xJNKmuaDr4cMSAgHDAlLlP6Lo5yS1v7L6lCM4yrq4lI3mHyvfAo1Zkwkd2ADoyNq2PW9ePZH1V16DlcE5mr",
+                'status' => "disabled",
+                'point_expires_at' => "2020-03-25T02:53:40.000000Z",
+                'point_expires_in_days' => 8345,
+                'is_exclusive' => TRUE,
+                'subject' => "all",
+                'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
+        ],
+                'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+        ],
+                'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
+        , ["product_code" => "4912345678904", "classification_code" => "c123"]
+        ],
+                'applicable_days_of_week' => [0, 5, 1, 6],
+                'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
+        , ["from" => "12:00", "to" => "23:59"]
+        ],
+                'applicable_shop_ids' => ["4c0d8d8e-987d-4b29-901a-180ff8905d86", "8b389fd9-e1c9-4b85-a9b4-5d7efc1b0366", "4a1d1c1c-1367-425a-bade-3c2e8946fa70", "8e901cbb-f90d-432e-869e-b5e672572587", "d2915382-5e39-4b99-b63b-745dd95cac84", "4cb86720-acc3-4852-9a96-242c91429d8d"],
+                'blacklisted_shop_ids' => ["442187c4-9fa5-4755-b8ca-3bb599d4b539", "babc919e-b84f-405b-9cf4-d4e3934101ef", "6d2ef45f-26eb-443c-867f-4e1dc8d81b2b", "cf6a2b3e-7aa8-45c5-9f84-f2161bf162a8", "28be3b4d-ea4d-48d6-9e9b-985d485cd389"],
+                'minimum_number_of_products' => 9449,
+                'minimum_number_of_amount' => 5230,
+                'minimum_number_for_combination_purchase' => 2764,
+                'exist_in_each_product_groups' => FALSE,
+                'max_point_amount' => 5299,
+                'max_total_point_amount' => 6796,
+                'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
+        ,
+                'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
+        ,
+                'budget_caps_amount' => 1005094122
             ]
         );
         try {

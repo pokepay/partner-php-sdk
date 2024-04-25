@@ -8,7 +8,7 @@ class GetUserDevice extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetUserDevice(
-            "3b8bf004-db9c-4895-9301-29ce399bc410"
+            "768c87b2-9b50-4d4c-a235-44393096f979"
         );
         try {
             $response = $client->send($request);
