@@ -369,6 +369,8 @@ POST,/external-transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK toke
 ,,422,not_refundable_transaction_type,"キャンセルできるのは取引種別が支払いかチャージのときのみです。",The transaction can refund when its type is payment or topup only
 ,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
 ,,503,temporarily_unavailable,,Service Unavailable
+GET,/external-transactions/requests/:request-id,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,event_not_found,"イベントが見つかりません",Event not found
 GET,/bulk-transactions/:uuid,404,notfound,,Not found
 GET,/bulk-transactions/:uuid/jobs,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,bulk_transaction_not_found,"Bulk取引が見つかりません",Bulk transaction not found
@@ -445,8 +447,8 @@ DELETE,/users/:uuid,403,,,
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/private-moneys,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,organization_not_found,,Organization not found
-GET,/private-moneys/:uuid,403,,,
-,,404,,,
+GET,/private-moneys/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_not_found,,Private money not found
 GET,/private-moneys/:uuid/summary,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,,,
 ,,422,private_money_not_found,,Private money not found
@@ -691,15 +693,14 @@ POST,/campaigns,400,invalid_parameters,"項目が無効です",Invalid parameter
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,campaign_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
 ,,422,shop_account_not_found,,The shop account is not found
-,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
 ,,422,campaign_period_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
 ,,422,campaign_invalid_period,,Invalid campaign period starts_at later than ends_at
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
+,,422,private_money_not_found,,Private money not found
 GET,/campaigns,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 PATCH,/campaigns/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
-,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,campaign_budget_caps_exceeded,"キャンペーン予算上限額を越えています",The campaign budget caps exceeded
 GET,/campaigns/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
@@ -794,3 +795,7 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
 ,,503,temporarily_unavailable,,Service Unavailable
 ,,503,incomplete_configration_for_organization_bank,"現状、このマネーは銀行からのチャージを行えません。システム管理者へお問合せ下さい","Currently, this money cannot be topup from this bank. Please contact your system administrator."
+POST,/paytree/charge-entry-result,400,partner_decryption_failed,"リクエスト中の暗号データを復号化することができませんでした。",Could not decrypt the data.
+,,400,partner_client_not_found,"partner_clientが見つかりません。",The partner client is not found.
+POST,/paytree/reconcile,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
