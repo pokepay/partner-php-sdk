@@ -9,12 +9,12 @@ $request = new Request\ListShops(
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "716-3551",              // 店舗の郵便番号
+        'postal_code' => "6525977",               // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0136-6261-581",                 // 店舗の電話番号
-        'email' => "m8wdK6sB9H@suCl.com",         // 店舗のメールアドレス
-        'external_id' => "aKx3AfzVa9lboQsNDBH1u", // 店舗の外部ID
-        'with_disabled' => TRUE,                  // 無効な店舗を含める
+        'tel' => "0245-7879-271",                 // 店舗の電話番号
+        'email' => "EwxvEfxvbf@oaYN.com",         // 店舗のメールアドレス
+        'external_id' => "mS964bSnGq",            // 店舗の外部ID
+        'with_disabled' => FALSE,                 // 無効な店舗を含める
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -173,6 +173,14 @@ $request = new Request\ListShops(
 [PaginatedShops](./responses.md#paginated-shops)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|private_money_not_found||Private money not found|
+|422|organization_not_found||Organization not found|
+
+
 
 ---
 
@@ -185,11 +193,11 @@ $request = new Request\ListShops(
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
-        'shop_postal_code' => "652-2536",         // 店舗の郵便番号
+        'shop_postal_code' => "7042009",          // 店舗の郵便番号
         'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "03184-0638",               // 店舗の電話番号
-        'shop_email' => "PURq2Q4ZM2@ZH2d.com",    // 店舗のメールアドレス
-        'shop_external_id' => "8EggWOOiiO67HWQCePWkLnY7y5P2vTc", // 店舗の外部ID
+        'shop_tel' => "077660-8701",              // 店舗の電話番号
+        'shop_email' => "kXmsTMdugD@smRt.com",    // 店舗のメールアドレス
+        'shop_external_id' => "nF7L4kFC",         // 店舗の外部ID
         'organization_code' => "ox-supermarket"   // 組織コード
     ]
 );
@@ -284,6 +292,17 @@ $request = new Request\CreateShop(
 [User](./responses.md#user)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|NULL|NULL|NULL|
+|409|email_conflict|このメールアドレスは既に使われています|The E-mail address is already registered|
+|409|shop_name_conflict||The shop name is already used|
+|422|organization_not_member_organization||The specified organization is not a member organization of the organization accessing this API|
+|422|organization_not_found||Organization not found|
+|422|unavailable_private_money||Given private money(s) is/are not available|
+
+
 
 ---
 
@@ -295,11 +314,11 @@ $request = new Request\CreateShop(
 $request = new Request\CreateShopV2(
     "oxスーパー三田店",                                  // name: 店舗名
     [
-        'postal_code' => "2445685",               // 店舗の郵便番号
+        'postal_code' => "759-2266",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "097807-493",                    // 店舗の電話番号
-        'email' => "tjhMxgRT9F@EddB.com",         // 店舗のメールアドレス
-        'external_id' => "an5HyW6Uan9MoYMbeeBKUXD", // 店舗の外部ID
+        'tel' => "072-32-018",                    // 店舗の電話番号
+        'email' => "cIyayD2aKj@XN0N.com",         // 店舗のメールアドレス
+        'external_id' => "WyT",                   // 店舗の外部ID
         'organization_code' => "ox-supermarket",  // 組織コード
         'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
         'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
@@ -437,6 +456,18 @@ $request = new Request\CreateShopV2(
 [ShopWithAccounts](./responses.md#shop-with-accounts)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|400|invalid_parameters|項目が無効です|Invalid parameters|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|409|shop_name_conflict||The shop name is already used|
+|422|organization_not_found||Organization not found|
+|422|unpermitted_private_money|このマネーは使えません|This money is not available|
+|422|unavailable_private_money||Given private money(s) is/are not available|
+|422|organization_not_member_organization||The specified organization is not a member organization of the organization accessing this API|
+
+
 
 ---
 
@@ -474,6 +505,7 @@ $request = new Request\GetShop(
 を返します
 
 
+
 ---
 
 
@@ -486,13 +518,13 @@ $request = new Request\UpdateShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
     [
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "012-4307",              // 店舗の郵便番号
+        'postal_code' => "080-7636",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0793587-854",                   // 店舗の電話番号
-        'email' => "L0vlIdvdIM@bz7w.com",         // 店舗のメールアドレス
-        'external_id' => "Ui6BXoKUl0tR073",       // 店舗の外部ID
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗でチャージ可能にするマネーIDの配列
+        'tel' => "02-485-036",                    // 店舗の電話番号
+        'email' => "73t7vuEmir@lewY.com",         // 店舗のメールアドレス
+        'external_id' => "I5WNi6AMJzfUo3",        // 店舗の外部ID
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗でチャージ可能にするマネーIDの配列
         'status' => "active"                      // 店舗の状態
     ]
 );
@@ -645,6 +677,7 @@ $request = new Request\UpdateShop(
 成功したときは
 [ShopWithAccounts](./responses.md#shop-with-accounts)
 を返します
+
 
 
 ---

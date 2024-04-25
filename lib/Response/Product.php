@@ -23,6 +23,10 @@ class Product extends Base
      */
     public $price;
     /**
+     * @var integer|null
+     */
+    public $quantity;
+    /**
      * @var boolean
      */
     public $isDiscounted;

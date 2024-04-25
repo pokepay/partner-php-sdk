@@ -2,6 +2,55 @@
 BankPayを用いた銀行からのチャージ取引などのAPIを提供しています。
 
 
+<a name="list-banks"></a>
+## ListBanks: 登録した銀行の一覧
+登録した銀行を一覧します
+
+```PHP
+$request = new Request\ListBanks(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
+    [
+        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    ]
+);
+```
+
+
+
+### Parameters
+**`user_device_id`** 
+  
+
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`private_money_id`** 
+  
+
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+
+
+成功したときは
+[Banks](./responses.md#banks)
+を返します
+
+
+
+---
+
+
 <a name="create-bank"></a>
 ## CreateBank: 銀行口座の登録
 銀行口座の登録を始めるAPIです。レスポンスに含まれるredirect_urlをユーザーの端末で開き銀行を登録します。
@@ -17,7 +66,7 @@ $request = new Request\CreateBank(
     "<Deep Link>",                                // callbackUrl: コールバックURL
     "ポケペイタロウ",                                    // kana: ユーザーの氏名 (片仮名で指定)
     [
-        'email' => "HNb57OPgys@rQCI.com",         // ユーザーのメールアドレス
+        'email' => "gJk8ucSDE2@uEYU.com",         // ユーザーのメールアドレス
         'birthdate' => "19901142"                 // 生年月日
     ]
 );
@@ -100,53 +149,6 @@ $request = new Request\CreateBank(
 を返します
 
 
----
-
-
-<a name="list-banks"></a>
-## ListBanks: 登録した銀行の一覧
-登録した銀行を一覧します
-
-```PHP
-$request = new Request\ListBanks(
-    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
-    [
-        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    ]
-);
-```
-
-
-
-### Parameters
-**`user_device_id`** 
-  
-
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-**`private_money_id`** 
-  
-
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-
-
-成功したときは
-[Banks](./responses.md#banks)
-を返します
-
 
 ---
 
@@ -159,7 +161,7 @@ $request = new Request\ListBanks(
 $request = new Request\CreateBankTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2895,                                         // amount: チャージ金額
+    3425,                                         // amount: チャージ金額
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // bankId: 銀行ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // requestId: リクエストID
 );
@@ -228,6 +230,7 @@ $request = new Request\CreateBankTopupTransaction(
 成功したときは
 [TransactionDetail](./responses.md#transaction-detail)
 を返します
+
 
 
 ---

@@ -60,6 +60,13 @@ $request = new Request\GetPrivateMoneys(
 [PaginatedPrivateMoneys](./responses.md#paginated-private-moneys)
 を返します
 
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|organization_not_found||Organization not found|
+
+
 
 ---
 
@@ -71,8 +78,8 @@ $request = new Request\GetPrivateMoneys(
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2023-06-12T09:52:35.000000+09:00", // 開始日時(toと同時に指定する必要有)
-        'to' => "2020-08-23T22:38:01.000000+09:00", // 終了日時(fromと同時に指定する必要有)
+        'from' => "2023-11-09T14:31:56.000000Z",  // 開始日時(toと同時に指定する必要有)
+        'to' => "2020-04-22T11:12:38.000000Z",    // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -145,6 +152,7 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 を返します
 
 
+
 ---
 
 
@@ -155,8 +163,8 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 $request = new Request\GetPrivateMoneySummary(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2023-07-23T18:46:17.000000+09:00", // 開始日時
-        'to' => "2023-09-04T17:42:15.000000+09:00" // 終了日時
+        'from' => "2021-11-06T09:13:43.000000Z",  // 開始日時
+        'to' => "2021-02-10T15:47:42.000000Z"     // 終了日時
     ]
 );
 ```
@@ -202,6 +210,7 @@ $request = new Request\GetPrivateMoneySummary(
 成功したときは
 [PrivateMoneySummary](./responses.md#private-money-summary)
 を返します
+
 
 
 ---
