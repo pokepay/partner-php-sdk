@@ -8,19 +8,19 @@
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 3267,                           // ページ番号
-        'per_page' => 86,                         // 1ページの表示数
-        'bill_id' => "ahT",                       // 支払いQRコードのID
+        'page' => 6224,                           // ページ番号
+        'per_page' => 8406,                       // 1ページの表示数
+        'bill_id' => "0zGq4PpZBc",                // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "Yn---3HQAgb-2e7-", // 組織コード
+        'organization_code' => "V-ld6at5-L7-g-FnGpUsttbam6-RlUA", // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2021-04-21T09:05:36.000000Z", // 作成日時(起点)
-        'created_to' => "2024-01-07T03:40:33.000000Z", // 作成日時(終点)
+        'created_from' => "2023-04-03T07:59:20.000000Z", // 作成日時(起点)
+        'created_to' => "2020-07-16T05:37:27.000000Z", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 3478,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 765,              // 金額の範囲によるフィルタ(上限)
-        'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
+        'lower_limit_amount' => 2765,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 5851,             // 金額の範囲によるフィルタ(上限)
+        'is_disabled' => TRUE                     // 支払いQRコードが無効化されているかどうか
     ]
 );
 ```
@@ -214,7 +214,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 3166.0,                       // 支払い額
+        'amount' => 8753.0,                       // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -299,7 +299,7 @@ $request = new Request\CreateBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 8218.0,                       // 支払い額
+        'amount' => 3844.0,                       // 支払い額
         'description' => "test bill",             // 説明文
         'is_disabled' => FALSE                    // 無効化されているかどうか
     ]

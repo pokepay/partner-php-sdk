@@ -39,6 +39,7 @@ require_once __DIR__ . '/lib/Request/CreateTopupTransaction.php';
 require_once __DIR__ . '/lib/Request/CreateTopupTransactionWithCheck.php';
 require_once __DIR__ . '/lib/Request/CreatePaymentTransaction.php';
 require_once __DIR__ . '/lib/Request/CreateCpmTransaction.php';
+require_once __DIR__ . '/lib/Request/CreateTransactionWithCashtray.php';
 require_once __DIR__ . '/lib/Request/CreateTransferTransaction.php';
 require_once __DIR__ . '/lib/Request/CreateExchangeTransaction.php';
 require_once __DIR__ . '/lib/Request/BulkCreateTransaction.php';

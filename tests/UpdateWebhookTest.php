@@ -8,7 +8,7 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "55d41502-856c-449c-9778-ddc09b1fbd99"
+            "874c0e8a-3517-46fb-960b-bf31b27ea8af"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "55d41502-856c-449c-9778-ddc09b1fbd99",
+            "874c0e8a-3517-46fb-960b-bf31b27ea8af",
             [
-                'task' => "bulk_shops"
+                'task' => "process_user_stats_operation"
             ]
         );
         try {
@@ -41,7 +41,7 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "55d41502-856c-449c-9778-ddc09b1fbd99",
+            "874c0e8a-3517-46fb-960b-bf31b27ea8af",
             [
                 'is_active' => TRUE,
                 'task' => "process_user_stats_operation"
@@ -60,9 +60,9 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "55d41502-856c-449c-9778-ddc09b1fbd99",
+            "874c0e8a-3517-46fb-960b-bf31b27ea8af",
             [
-                'url' => "EKMQ8",
+                'url' => "z",
                 'is_active' => TRUE,
                 'task' => "process_user_stats_operation"
             ]

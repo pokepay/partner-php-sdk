@@ -6,7 +6,7 @@ CPMトークンの現在の状態を取得します。CPMトークンの有効�
 
 ```PHP
 $request = new Request\GetCpmToken(
-    "iVZ5m5eyekXLeKtBuImxNn"                      // cpmToken: CPMトークン
+    "xlKwOlCibtq2e0nqtXLNIT"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -44,15 +44,15 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 ```PHP
 $request = new Request\ListTransactions(
     [
-        'from' => "2020-07-15T01:19:16.000000Z",  // 開始日時
-        'to' => "2024-04-03T13:30:43.000000Z",    // 終了日時
+        'from' => "2023-05-04T13:08:23.000000Z",  // 開始日時
+        'to' => "2022-11-02T13:06:01.000000Z",    // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
-        'transaction_id' => "4",                  // 取引ID
+        'transaction_id' => "ffmmox8h",           // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'is_modified' => FALSE,                   // キャンセルフラグ
@@ -311,10 +311,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 7838,
-        'point_amount' => 5173,
-        'point_expires_at' => "2024-03-26T19:43:14.000000Z", // ポイント有効期限
-        'description' => "ZNIieikdp8w9LWlkrqUcz43dBm26Or7FE7oxXwqyeP95WFsrDTZsTH"
+        'money_amount' => 2545,
+        'point_amount' => 6648,
+        'point_expires_at' => "2022-02-08T18:32:21.000000Z", // ポイント有効期限
+        'description' => "x7fQZGPMXFo6oIvZGxUJAAeHeUyg78eCpqwfbVaGI8MUg6pkTJeF4LA5VGWmlO55tLRhXfPthFrTbvP80JDs4TLAvvWwguBec41EmwzzFrgc709a7P9KtTHr3zG8NnPjRfIRrqy3FohrRiHbftN77E9sKP2LWTH"
     ]
 );
 ```
@@ -468,11 +468,11 @@ $request = new Request\ListTransactionsV2(
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "LM",                 // 取引ID
-        'is_modified' => FALSE,                   // キャンセルフラグ
+        'transaction_id' => "kv",                 // 取引ID
+        'is_modified' => TRUE,                    // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-        'from' => "2022-02-10T06:58:47.000000Z",  // 開始日時
-        'to' => "2020-04-03T04:43:39.000000Z",    // 終了日時
+        'from' => "2021-07-19T23:53:06.000000Z",  // 開始日時
+        'to' => "2021-01-10T00:16:17.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -758,9 +758,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 8834,                   // マネー額
-        'point_amount' => 5250,                   // ポイント額
-        'point_expires_at' => "2023-10-13T22:16:08.000000Z", // ポイント有効期限
+        'money_amount' => 3094,                   // マネー額
+        'point_amount' => 4032,                   // ポイント額
+        'point_expires_at' => "2023-05-22T22:55:16.000000Z", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -975,13 +975,15 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    7135,                                         // amount: 支払い額
+    9195,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
-        'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
+        'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
+        'strategy' => "point-preferred"           // 支払い時の残高消費方式
     ]
 );
 ```
@@ -1112,6 +1114,27 @@ $request = new Request\CreatePaymentTransaction(
 }
 ```
 
+**`strategy`** 
+  
+
+支払い時に残高がどのように消費されるかを指定します。
+デフォルトでは point-preferred (ポイント優先)が採用されます。
+
+- point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます(デフォルト動作)
+- money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+
+```json
+{
+  "type": "string",
+  "enum": [
+    "point-preferred",
+    "money-only"
+  ]
+}
+```
+
 
 
 成功したときは
@@ -1169,15 +1192,16 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```PHP
 $request = new Request\CreateCpmTransaction(
-    "hJmPNb2Vt3kMgTzAxm3nuC",                     // cpmToken: CPMトークン
+    "fSmGSFmTTeLGAy7h6m0Yya",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    4717.0,                                       // amount: 取引金額
+    1318.0,                                       // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
-        'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
+        'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
+        'strategy' => "point-preferred"           // 支払い時の残高消費方式
     ]
 );
 ```
@@ -1294,6 +1318,27 @@ $request = new Request\CreateCpmTransaction(
 }
 ```
 
+**`strategy`** 
+  
+
+支払い時に残高がどのように消費されるかを指定します。
+デフォルトでは point-preferred (ポイント優先)が採用されます。
+
+- point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます(デフォルト動作)
+- money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+
+```json
+{
+  "type": "string",
+  "enum": [
+    "point-preferred",
+    "money-only"
+  ]
+}
+```
+
 
 
 成功したときは
@@ -1359,7 +1404,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    1780.0,                                       // amount: 送金額
+    1859.0,                                       // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -1529,9 +1574,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    7361,
+    1951,
     [
-        'description' => "4rQ7TMWwQQegAiqW5Gh3EedIVko",
+        'description' => "0Ij3N9K7EVH4f0IDf80jI5hMMqGagepFcb0C3pMehBLw9uhZslxpk65zsLMOaWLvqiZty5Zp232IvDDPPtMusem1WSPOdAkWLCHhP7q7jyjEo8V3Di9DtzhzAGKUtsDdhPal5eEvQkTNVI1DbDv2ICSa1fLqeRzwnNnU8Hy7seU6TP",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -1712,7 +1757,7 @@ $request = new Request\RefundTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
     [
         'description' => "返品対応のため",               // 取引履歴に表示する返金事由
-        'returning_point_expires_at' => "2021-03-26T23:31:00.000000Z" // 返却ポイントの有効期限
+        'returning_point_expires_at' => "2021-07-22T02:45:40.000000Z" // 返却ポイントの有効期限
     ]
 );
 ```

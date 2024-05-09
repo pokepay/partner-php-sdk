@@ -9,8 +9,8 @@ $request = new Request\ListOrganizations(
     [
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
-        'name' => "YRl",                          // 組織名
-        'code' => "e"                             // 組織コード
+        'name' => "7",                            // 組織名
+        'code' => "69wB"                          // 組織コード
     ]
 );
 ```
@@ -100,9 +100,9 @@ $request = new Request\ListOrganizations(
 $request = new Request\CreateOrganization(
     "ox-supermarket",                             // code: 新規組織コード
     "oxスーパー",                                     // name: 新規組織名
-    ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // privateMoneyIds: 加盟店組織で有効にするマネーIDの配列
-    "9KOkq0RFzj@JHwR.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
-    "ArvOU8komJ@1Atk.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
+    ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // privateMoneyIds: 加盟店組織で有効にするマネーIDの配列
+    "PR32MXZafz@3jff.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
+    "pT8lgGERnF@dcWh.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
     [
         'bank_name' => "XYZ銀行",                   // 銀行名
         'bank_code' => "1234",                    // 銀行金融機関コード

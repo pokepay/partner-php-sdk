@@ -3,6 +3,7 @@
 
 namespace Pokepay\Request;
 
+use DateTime;
 
 class CreateExternalTransaction extends Base
 {
@@ -39,7 +40,10 @@ class CreateExternalTransaction extends Base
 
         $params += $this->optionalParams;
 
-        
+        if (isset($params['doneAt']) && $params['doneAt'] instanceof DateTime) {
+            $params['doneAt'] = $params['doneAt']->format(DateTime::ATOM);
+        }
+
         return $params;
     }
 }

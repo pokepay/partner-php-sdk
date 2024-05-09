@@ -8,8 +8,8 @@
 $request = new Request\ListUserAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     [
-        'page' => 3981,                           // ページ番号
-        'per_page' => 6981                        // 1ページ分の取引数
+        'page' => 3778,                           // ページ番号
+        'per_page' => 7882                        // 1ページ分の取引数
     ]
 );
 ```
@@ -75,8 +75,8 @@ $request = new Request\CreateUserAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'name' => "8UFtXOBKAPivd5iJNrdqAuTxyB0A3WX2EcUb892jz3Nv10xFyFeM6", // ウォレット名
-        'external_id' => "4iLpLDhctAZixWvzCjvZGuuLmpXA", // 外部ID
+        'name' => "CSoLJdEVZoJB0H5I2jNmYRtpCMs9TezTj3A085y5hWQ3gdeDOWFExGORRYNLJdsZ6n3IGoF44i0499bTqwmusaHN4dAo0kcMwrj6lsuth9pSzmqVAxW3BZh2UFG0NdobuyCqKAyF8XBloHn7nUM7l934bPMQ7DIwFMXGuP", // ウォレット名
+        'external_id' => "CrmdUDxKggDF",          // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );

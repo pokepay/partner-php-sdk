@@ -8,9 +8,9 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "sbYKCNybmAlkaNJiOvuR",
-            "sww",
-            "QSmiJco3KwhjqpMqyENnnotJKNM2DvQSu06F"
+            "opqI6bCrDgQTiBz8hople",
+            "Wuv10dzqD",
+            "mxXKufPIjjJpzSXKPSRMVYMVxniANdM0yy6s"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "sbYKCNybmAlkaNJiOvuR",
-            "sww",
-            "QSmiJco3KwhjqpMqyENnnotJKNM2DvQSu06F",
+            "opqI6bCrDgQTiBz8hople",
+            "Wuv10dzqD",
+            "mxXKufPIjjJpzSXKPSRMVYMVxniANdM0yy6s",
             [
-                'private_money_id' => "e7f8843e-095f-4f45-b806-c700bcf9d201"
+                'private_money_id' => "6f99d372-eb1f-4c52-bc15-d67bf2975a97"
             ]
         );
         try {
@@ -45,12 +45,12 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "sbYKCNybmAlkaNJiOvuR",
-            "sww",
-            "QSmiJco3KwhjqpMqyENnnotJKNM2DvQSu06F",
+            "opqI6bCrDgQTiBz8hople",
+            "Wuv10dzqD",
+            "mxXKufPIjjJpzSXKPSRMVYMVxniANdM0yy6s",
             [
-                'description' => "juzeNINZktFZU0JpHpSrpNbF8O3WzYFSGY9bWV5jbNB",
-                'private_money_id' => "258deac5-89bc-4788-8690-5bfe96d9f17a"
+                'description' => "NC9bYJUFWp4SJDd9Vw0ghvUwHY4GPMgqa4p3NBV6jnDEmNinmBAkCQlWqd4VgtaT7nx9nCCSGOYqsqY3PQB7j8S1LcJ",
+                'private_money_id' => "66371e9e-b8cd-47b9-bbdd-88b9d568deac"
             ]
         );
         try {

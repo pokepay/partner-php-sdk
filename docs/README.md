@@ -142,6 +142,7 @@ $request->setCallId($newCallId);
 - [GetCheck](./check.md#get-check): チャージQRコードの表示
 - [UpdateCheck](./check.md#update-check): チャージQRコードの更新
 - [CreateTopupTransactionWithCheck](./check.md#create-topup-transaction-with-check): チャージQRコードを読み取ることでチャージする
+- [CreateTransactionWithCashtray](./check.md#create-transaction-with-cashtray): CashtrayQRコードを読み取ることで取引する
 
 ### Bill
 - [ListBills](./bill.md#list-bills): 支払いQRコード一覧を表示する
@@ -178,7 +179,6 @@ $request->setCallId($newCallId);
 - [UpdateShop](./shop.md#update-shop): 店舗情報を更新する
 
 ### User
-- [GetUser](./user.md#get-user): 
 
 ### Account
 - [ListUserAccounts](./account.md#list-user-accounts): エンドユーザー、店舗ユーザーのウォレット一覧を表示する

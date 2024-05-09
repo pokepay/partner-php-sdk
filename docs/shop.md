@@ -9,12 +9,12 @@ $request = new Request\ListShops(
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "6525977",               // 店舗の郵便番号
+        'postal_code' => "341-4166",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0245-7879-271",                 // 店舗の電話番号
-        'email' => "EwxvEfxvbf@oaYN.com",         // 店舗のメールアドレス
-        'external_id' => "mS964bSnGq",            // 店舗の外部ID
-        'with_disabled' => FALSE,                 // 無効な店舗を含める
+        'tel' => "04032440-9862",                 // 店舗の電話番号
+        'email' => "L3FlnAD82Q@rpYa.com",         // 店舗のメールアドレス
+        'external_id' => "uslNraOesyAi",          // 店舗の外部ID
+        'with_disabled' => TRUE,                  // 無効な店舗を含める
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -193,11 +193,11 @@ $request = new Request\ListShops(
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
-        'shop_postal_code' => "7042009",          // 店舗の郵便番号
+        'shop_postal_code' => "171-0997",         // 店舗の郵便番号
         'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "077660-8701",              // 店舗の電話番号
-        'shop_email' => "kXmsTMdugD@smRt.com",    // 店舗のメールアドレス
-        'shop_external_id' => "nF7L4kFC",         // 店舗の外部ID
+        'shop_tel' => "036-4341-7488",            // 店舗の電話番号
+        'shop_email' => "Fx3P67yxFm@xWAZ.com",    // 店舗のメールアドレス
+        'shop_external_id' => "SoiVrIFnb7w6ZClkoqVajv", // 店舗の外部ID
         'organization_code' => "ox-supermarket"   // 組織コード
     ]
 );
@@ -314,14 +314,14 @@ $request = new Request\CreateShop(
 $request = new Request\CreateShopV2(
     "oxスーパー三田店",                                  // name: 店舗名
     [
-        'postal_code' => "759-2266",              // 店舗の郵便番号
+        'postal_code' => "575-3795",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "072-32-018",                    // 店舗の電話番号
-        'email' => "cIyayD2aKj@XN0N.com",         // 店舗のメールアドレス
-        'external_id' => "WyT",                   // 店舗の外部ID
+        'tel' => "0705771-0721",                  // 店舗の電話番号
+        'email' => "wSB8bfxMId@7hFK.com",         // 店舗のメールアドレス
+        'external_id' => "RGvYa7",                // 店舗の外部ID
         'organization_code' => "ox-supermarket",  // 組織コード
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
     ]
 );
 ```
@@ -518,14 +518,14 @@ $request = new Request\UpdateShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
     [
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "080-7636",              // 店舗の郵便番号
+        'postal_code' => "204-1399",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "02-485-036",                    // 店舗の電話番号
-        'email' => "73t7vuEmir@lewY.com",         // 店舗のメールアドレス
-        'external_id' => "I5WNi6AMJzfUo3",        // 店舗の外部ID
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗でチャージ可能にするマネーIDの配列
-        'status' => "active"                      // 店舗の状態
+        'tel' => "008833-5983",                   // 店舗の電話番号
+        'email' => "AVKuKRC5FL@AIRi.com",         // 店舗のメールアドレス
+        'external_id' => "GKuI8CNBTqLCZ99AjVbK3l31", // 店舗の外部ID
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗でチャージ可能にするマネーIDの配列
+        'status' => "disabled"                    // 店舗の状態
     ]
 );
 ```
