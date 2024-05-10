@@ -8,7 +8,7 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281"
+            "40a50bcf-8206-4f40-98c9-b916f0c501de"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
                 'is_disabled' => FALSE
             ]
@@ -41,10 +41,10 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'bear_point_account' => "eb42c91c-e73f-40d6-834c-99ef543c85e8",
-                'is_disabled' => TRUE
+                'bear_point_account' => "17b01569-f389-43e0-9a6a-492e81004be4",
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'point_expires_in_days' => 4792,
-                'bear_point_account' => "cc3833d9-2dae-41d8-b74c-15fcfeb77149",
-                'is_disabled' => TRUE
+                'point_expires_in_days' => 161,
+                'bear_point_account' => "c70cc07e-1da4-4751-9178-bcfddb91beed",
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -80,11 +80,11 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'point_expires_at' => "2024-02-05T18:41:14.000000Z",
-                'point_expires_in_days' => 9760,
-                'bear_point_account' => "14e25200-003a-483f-be1b-60f6edcaf1fd",
+                'point_expires_at' => "2020-02-02T23:53:05.000000Z",
+                'point_expires_in_days' => 9594,
+                'bear_point_account' => "d03d8be0-1757-4c89-a30f-613e284a8ce7",
                 'is_disabled' => FALSE
             ]
         );
@@ -101,12 +101,12 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'expires_at' => "2022-07-11T01:08:29.000000Z",
-                'point_expires_at' => "2020-02-24T21:12:04.000000Z",
-                'point_expires_in_days' => 3017,
-                'bear_point_account' => "93da2485-558e-44c9-84df-dd48a2f5772e",
+                'expires_at' => "2021-07-17T01:51:25.000000Z",
+                'point_expires_at' => "2023-11-16T14:00:50.000000Z",
+                'point_expires_in_days' => 2172,
+                'bear_point_account' => "d5226a40-015a-4c76-82d1-8e89c230eeaa",
                 'is_disabled' => FALSE
             ]
         );
@@ -123,13 +123,13 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'usage_limit' => 3789,
-                'expires_at' => "2020-06-23T21:23:01.000000Z",
-                'point_expires_at' => "2020-01-21T20:05:30.000000Z",
-                'point_expires_in_days' => 7264,
-                'bear_point_account' => "dbd1aeae-be97-4976-ab1e-5350b051a77b",
+                'usage_limit' => 1579,
+                'expires_at' => "2020-06-28T23:46:44.000000Z",
+                'point_expires_at' => "2020-12-15T03:19:07.000000Z",
+                'point_expires_in_days' => 7914,
+                'bear_point_account' => "eb72643d-7248-459b-b620-bc80c9a95768",
                 'is_disabled' => FALSE
             ]
         );
@@ -146,14 +146,14 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
                 'is_onetime' => TRUE,
-                'usage_limit' => 9205,
-                'expires_at' => "2024-04-16T08:25:47.000000Z",
-                'point_expires_at' => "2020-04-23T09:18:59.000000Z",
-                'point_expires_in_days' => 8780,
-                'bear_point_account' => "0230f239-3798-4121-aaba-20653712a6e8",
+                'usage_limit' => 9742,
+                'expires_at' => "2021-11-19T16:07:04.000000Z",
+                'point_expires_at' => "2021-07-05T05:27:00.000000Z",
+                'point_expires_in_days' => 2836,
+                'bear_point_account' => "dc63079b-1ee6-4b16-9afd-4d5c064d671b",
                 'is_disabled' => FALSE
             ]
         );
@@ -170,16 +170,16 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'description' => "FIX2d1fsIJRaq4cseT3Jr8x9EZ1qV4Ufa8eDKBhpNX1jWPk8Z43B0y0B9mfs2NjGqIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL84SGwACEhVooVmB4cFvbTIGcXWAqG4BSfipEZMFGhk16I7iXigWOnUAkBWGfv1h3SdKWf7Mk6",
-                'is_onetime' => TRUE,
-                'usage_limit' => 1393,
-                'expires_at' => "2023-04-03T19:01:29.000000Z",
-                'point_expires_at' => "2022-09-18T18:20:04.000000Z",
-                'point_expires_in_days' => 143,
-                'bear_point_account' => "9a14a861-462c-46e0-9b1e-8d83b2c7873d",
-                'is_disabled' => FALSE
+                'description' => "0xr0YedjAtAhk4Q5ZEYWHc6DIDKem3xaXPio5o0q9x0iUyrfJOMPlYYA9d24g2qlkQeuW1v6Ot04JjRtKJ3Y50yRgOZb7",
+                'is_onetime' => FALSE,
+                'usage_limit' => 4747,
+                'expires_at' => "2021-07-05T13:53:16.000000Z",
+                'point_expires_at' => "2022-05-08T17:53:07.000000Z",
+                'point_expires_in_days' => 2892,
+                'bear_point_account' => "fd164407-f392-4f7b-92cd-723f3f88b8d0",
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -195,17 +195,17 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'point_amount' => 7443.0,
-                'description' => "H11",
+                'point_amount' => 3896.0,
+                'description' => "cOO1w2GShMQxP1XNaA4tMwkt9CEIs7P52Qn8Ps6rGg4gxhQEPHlDMgzo7RyqyjDQCvIVLohtP7YX7LIJvkHIDHA",
                 'is_onetime' => FALSE,
-                'usage_limit' => 9434,
-                'expires_at' => "2023-04-04T19:27:17.000000Z",
-                'point_expires_at' => "2020-02-28T16:37:53.000000Z",
-                'point_expires_in_days' => 8425,
-                'bear_point_account' => "f0070bd7-9477-49aa-b45b-82decf946ca5",
-                'is_disabled' => TRUE
+                'usage_limit' => 4533,
+                'expires_at' => "2020-01-21T20:05:30.000000Z",
+                'point_expires_at' => "2021-02-16T05:42:00.000000Z",
+                'point_expires_in_days' => 7264,
+                'bear_point_account' => "dbd1aeae-be97-4976-ab1e-5350b051a77b",
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -221,18 +221,18 @@ class UpdateCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCheck(
-            "d869f644-0851-4143-b649-08190f207281",
+            "40a50bcf-8206-4f40-98c9-b916f0c501de",
             [
-                'money_amount' => 8395.0,
-                'point_amount' => 2627.0,
-                'description' => "w4FDQO05qLTqGDbzQDuaFv4VsaDUMga8HPHLfj8VAxLQCn6DppPY7uZKs5wMf3MBYDCuFCMBOgtd28MFakoJp4sttlPyu0hLTf3LV1FvqM27O2bqybT3XFSWXNEvBDebROkI568",
+                'money_amount' => 9205.0,
+                'point_amount' => 5387.0,
+                'description' => "4K9jehE0FIX2d1fsIJRaq4cseT3Jr8x9EZ1qV4Ufa8eDKBhpNX1jWPk8Z43B0y0B9mfs2NjGqIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL84SGwACEhVooVmB4cFvb",
                 'is_onetime' => TRUE,
-                'usage_limit' => 6777,
-                'expires_at' => "2021-09-17T02:17:00.000000Z",
-                'point_expires_at' => "2020-03-24T17:53:25.000000Z",
-                'point_expires_in_days' => 2338,
-                'bear_point_account' => "4a714c3c-dc8d-4d76-8164-2d67637a06b2",
-                'is_disabled' => FALSE
+                'usage_limit' => 6217,
+                'expires_at' => "2022-11-11T21:36:07.000000Z",
+                'point_expires_at' => "2020-09-18T19:22:00.000000Z",
+                'point_expires_in_days' => 8280,
+                'bear_point_account' => "34592ec1-9371-4ec7-a088-7fb4b0220d0f",
+                'is_disabled' => TRUE
             ]
         );
         try {

@@ -7,6 +7,7 @@ openapi: '3.0.1'
 info:
   description: >-
     Partner APIs
+
   title:  Partner APIs
   version: 24.3.26
 
@@ -3969,6 +3970,19 @@ paths:
 
                     リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
                   example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
+                strategy:
+                  type: string
+                  enum: [point-preferred, money-only]
+                  title: '支払い時の残高消費方式'
+                  description: |-
+                    支払い時に残高がどのように消費されるかを指定します。
+                    デフォルトでは point-preferred (ポイント優先)が採用されます。
+
+                    - point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます(デフォルト動作)
+                    - money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+                    マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+                  example: 'point-preferred'
       responses:
         '200':
           description: OK
@@ -4055,6 +4069,19 @@ paths:
 
                     リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
                   example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
+                strategy:
+                  type: string
+                  enum: [point-preferred, money-only]
+                  title: '支払い時の残高消費方式'
+                  description: |-
+                    支払い時に残高がどのように消費されるかを指定します。
+                    デフォルトでは point-preferred (ポイント優先)が採用されます。
+
+                    - point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます(デフォルト動作)
+                    - money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+                    マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+                  example: 'point-preferred'
       responses:
         '200':
           description: OK
@@ -4125,6 +4152,87 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+
+  /transactions/cashtray:
+    post:
+      tags:
+        - Check
+      summary: 'CashtrayQRコードを読み取ることで取引する'
+      description: |
+        エンドユーザーから受け取ったCashtray用QRコードのIDをエンドユーザーIDと共に渡すことで支払いあるいはチャージ取引が作られます。
+
+        通常CashtrayQRコードはエンドユーザーのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。
+        もしエンドユーザーとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがCashtrayQRの情報をエンドユーザーから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
+
+      x-pokepay-operator-name: "CreateTransactionWithCashtray"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["cashtray_id", "customer_id"]
+              properties:
+                cashtray_id:
+                  type: string
+                  format: uuid
+                  title: 'Cashtray用QRコードのID'
+                  description: |-
+                    Cashtray用QRコードのIDです。
+
+                    QRコード生成時に送金元店舗のウォレット情報や、金額などが登録されています。
+
+                customer_id:
+                  type: string
+                  format: uuid
+                  title: 'エンドユーザーのID'
+                  description: |-
+                    エンドユーザーIDです。
+
+                strategy:
+                  type: string
+                  enum: [point-preferred, money-only]
+                  default: 'point-preferred'
+                  title: '支払い時の残高消費方式'
+                  description: |-
+                    支払い時に残高がどのように消費されるかを指定します。
+                    チャージの場合は無効です。
+                    デフォルトでは point-preferred (ポイント優先)が採用されます。
+
+                    - point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます(デフォルト動作)
+                    - money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+                    マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。
+                    指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。
+                    もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
   /transactions/transfer:
     post:
       tags:
@@ -4549,6 +4657,14 @@ paths:
 
                     リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
                   example: 9dbfd997-b948-40d3-a3bf-6bc1a01368d2
+                done_at:
+                  type: string
+                  format: date-time
+                  title: 'ポケペイ外部取引の実施時間'
+                  description: |-
+                    ポケペイ外部取引が実際に起こった時間です。
+                    時間帯指定のポイント付与キャンペーンでの取引時間の計算に使われます。
+                    デフォルトではCreateExternalTransactionがリクエストされた時間になります。
       responses:
         '200':
           description: OK

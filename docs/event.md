@@ -12,15 +12,14 @@ $request = new Request\CreateExternalTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    7875,                                         // amount: 取引額
+    6907,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
-        'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
+        'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
+        'done_at' => "2023-08-17T17:06:58.000000Z" // ポケペイ外部取引の実施時間
     ]
 );
 ```
@@ -146,6 +145,20 @@ $request = new Request\CreateExternalTransaction(
 {
   "type": "string",
   "format": "uuid"
+}
+```
+
+**`done_at`** 
+  
+
+ポケペイ外部取引が実際に起こった時間です。
+時間帯指定のポイント付与キャンペーンでの取引時間の計算に使われます。
+デフォルトではCreateExternalTransactionがリクエストされた時間になります。
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
 }
 ```
 
