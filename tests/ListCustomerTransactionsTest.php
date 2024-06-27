@@ -8,7 +8,7 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991"
+            "ca1483ba-668f-4f3a-925e-52a409b09159"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'per_page' => 2195
+                'per_page' => 5855
             ]
         );
         try {
@@ -41,10 +41,10 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'page' => 1583,
-                'per_page' => 7505
+                'page' => 2646,
+                'per_page' => 827
             ]
         );
         try {
@@ -60,11 +60,11 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'to' => "2021-06-29T22:46:37.000000Z",
-                'page' => 9986,
-                'per_page' => 5020
+                'to' => "2023-06-13T16:38:37.000000Z",
+                'page' => 6181,
+                'per_page' => 7004
             ]
         );
         try {
@@ -80,12 +80,12 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'from' => "2023-01-30T07:54:11.000000Z",
-                'to' => "2023-01-13T03:50:03.000000Z",
-                'page' => 5920,
-                'per_page' => 7957
+                'from' => "2020-03-31T23:20:08.000000Z",
+                'to' => "2022-05-10T16:39:51.000000Z",
+                'page' => 5904,
+                'per_page' => 1198
             ]
         );
         try {
@@ -101,13 +101,13 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'is_modified' => FALSE,
-                'from' => "2021-10-31T16:53:27.000000Z",
-                'to' => "2020-08-28T01:39:11.000000Z",
-                'page' => 8501,
-                'per_page' => 377
+                'is_modified' => TRUE,
+                'from' => "2024-05-08T03:06:17.000000Z",
+                'to' => "2021-09-05T09:45:25.000000Z",
+                'page' => 4522,
+                'per_page' => 2449
             ]
         );
         try {
@@ -123,14 +123,14 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'type' => "expire",
-                'is_modified' => TRUE,
-                'from' => "2024-01-28T15:51:48.000000Z",
-                'to' => "2021-06-10T03:45:45.000000Z",
-                'page' => 4637,
-                'per_page' => 8364
+                'type' => "transfer",
+                'is_modified' => FALSE,
+                'from' => "2023-01-08T04:50:14.000000Z",
+                'to' => "2021-11-02T05:13:12.000000Z",
+                'page' => 9814,
+                'per_page' => 2562
             ]
         );
         try {
@@ -146,15 +146,15 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'receiver_customer_id' => "adda7660-557a-491a-a56c-9888103f5578",
+                'receiver_customer_id' => "2027492d-26f0-43de-b4b9-d93eb80ff9e6",
                 'type' => "expire",
-                'is_modified' => TRUE,
-                'from' => "2020-04-26T04:18:59.000000Z",
-                'to' => "2021-07-19T20:03:51.000000Z",
-                'page' => 9596,
-                'per_page' => 7027
+                'is_modified' => FALSE,
+                'from' => "2021-12-18T17:08:55.000000Z",
+                'to' => "2024-01-15T12:39:27.000000Z",
+                'page' => 3215,
+                'per_page' => 7731
             ]
         );
         try {
@@ -170,16 +170,16 @@ class ListCustomerTransactions extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCustomerTransactions(
-            "86c3664b-e50d-4724-bd4a-ac75b8598991",
+            "ca1483ba-668f-4f3a-925e-52a409b09159",
             [
-                'sender_customer_id' => "c8dd41ae-0a04-4ce5-8e4d-d25356c9c581",
-                'receiver_customer_id' => "1dea5adb-bc3a-4b7f-ad3d-e0ee5be50599",
-                'type' => "transfer",
-                'is_modified' => FALSE,
-                'from' => "2021-07-05T03:03:05.000000Z",
-                'to' => "2024-03-11T02:49:23.000000Z",
-                'page' => 6711,
-                'per_page' => 6254
+                'sender_customer_id' => "b3cd8754-85e8-4a64-bd2c-0980106f2397",
+                'receiver_customer_id' => "ea2346c6-891b-46d2-af34-7cdce9686a5a",
+                'type' => "exchange",
+                'is_modified' => TRUE,
+                'from' => "2021-11-03T07:09:59.000000Z",
+                'to' => "2020-12-18T11:35:57.000000Z",
+                'page' => 7220,
+                'per_page' => 3485
             ]
         );
         try {

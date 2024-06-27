@@ -215,12 +215,12 @@ class ListChecks extends TestCase
                 'organization_code' => "BHoLHZ5",
                 'expires_from' => "2020-12-26T04:12:56.000000Z",
                 'expires_to' => "2023-09-06T23:32:39.000000Z",
-                'created_from' => "2023-08-27T03:43:53.000000Z",
-                'created_to' => "2020-01-21T20:06:56.000000Z",
-                'issuer_shop_id' => "084d1b6f-3fb5-42f5-8816-1eb95712113a",
-                'description' => "sjia9h3ovw",
-                'is_onetime' => TRUE,
-                'is_disabled' => FALSE
+                'created_from' => "2024-06-16T11:40:45.000000Z",
+                'created_to' => "2023-08-27T03:43:53.000000Z",
+                'issuer_shop_id' => "cd4c8773-78e0-4b6f-b5f5-ac081305f016",
+                'description' => "Osjia9h3ov",
+                'is_onetime' => FALSE,
+                'is_disabled' => TRUE
             ]
         );
         try {
