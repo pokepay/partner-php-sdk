@@ -22,7 +22,7 @@ class GetPrivateMoneys extends TestCase
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneys(
             [
-                'per_page' => 9085
+                'per_page' => 4921
             ]
         );
         try {
@@ -39,8 +39,8 @@ class GetPrivateMoneys extends TestCase
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneys(
             [
-                'page' => 3978,
-                'per_page' => 4532
+                'page' => 6627,
+                'per_page' => 5650
             ]
         );
         try {
@@ -57,9 +57,9 @@ class GetPrivateMoneys extends TestCase
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneys(
             [
-                'organization_code' => "R-C7j9-wTEwA8A7uWw-Bm7zL7-18E2",
-                'page' => 216,
-                'per_page' => 1847
+                'organization_code' => "v-6",
+                'page' => 9476,
+                'per_page' => 3684
             ]
         );
         try {
