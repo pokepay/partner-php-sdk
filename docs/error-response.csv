@@ -3,14 +3,18 @@ GET,/user,403,unpermitted_admin_user,"この管理ユーザには権限があり
 GET,/dashboard,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,,Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/transfers,403,,,
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/transfers-v2,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/transactions,403,,,
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/transactions-v2,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,,Private money not found
@@ -45,8 +49,10 @@ POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of '
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/transactions/:uuid,403,,,
 ,,404,,,
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/transactions/requests/:request-id,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,transaction_not_found,"取引が見つかりません",Transaction not found
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,card_not_found,"カードが見つかりません",
@@ -68,7 +74,6 @@ POST,/transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
 POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -96,13 +101,12 @@ POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,On
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,customer_account_not_found,,The customer account is not found
 ,,422,shop_account_not_found,,The shop account is not found
 ,,422,private_money_not_found,,Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/topup/check,400,invalid_parameters,"項目が無効です",Invalid parameters
-,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,check_not_found,"これはチャージQRコードではありません",This is not a topup QR code
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
@@ -134,12 +138,12 @@ POST,/transactions/topup/check,400,invalid_parameters,"項目が無効です",In
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,check_already_received,"このチャージQRコードは既に受取済みの為、チャージ出来ませんでした",Check is already received
 ,,422,check_unavailable,"このチャージQRコードは利用できません",The topup QR code is not available
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
@@ -169,9 +173,7 @@ POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/payment,400,invalid_parameters,"項目が無効です",Invalid parameters
-,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+POST,/transactions/payment,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -199,13 +201,12 @@ POST,/transactions/payment,400,invalid_parameters,"項目が無効です",Invali
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,customer_account_not_found,,The customer account is not found
 ,,422,shop_account_not_found,,The shop account is not found
 ,,422,private_money_not_found,,Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/transfer,400,invalid_parameters,"項目が無効です",Invalid parameters
-,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+POST,/transactions/transfer,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,private_money_not_found,,Private money not found
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
@@ -237,10 +238,9 @@ POST,/transactions/transfer,400,invalid_parameters,"項目が無効です",Inval
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/exchange,400,invalid_parameters,"項目が無効です",Invalid parameters
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
-,,422,account_not_found,"アカウントが見つかりません",The account is not found
+POST,/transactions/exchange,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,transaction_restricted,,Transaction is not allowed
 ,,422,can_not_exchange_between_same_private_money,"同じマネーとの交換はできません",
 ,,422,can_not_exchange_between_users,"異なるユーザー間での交換は出来ません",
@@ -270,11 +270,10 @@ POST,/transactions/exchange,400,invalid_parameters,"項目が無効です",Inval
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/cpm,400,invalid_parameters,"項目が無効です",Invalid parameters
-,,403,cpm_unacceptable_amount,"このCPMトークンに対して許可されていない金額です。",The amount is unacceptable for the CPM token
+POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対して許可されていない金額です。",The amount is unacceptable for the CPM token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,,Private money not found
 ,,422,cpm_token_already_proceed,"このCPMトークンは既に処理されています。",The CPM token is already proceed
@@ -309,15 +308,14 @@ POST,/transactions/cpm,400,invalid_parameters,"項目が無効です",Invalid pa
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/bulk,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,organization_not_issuer,"発行体以外に許可されていない操作です",Unpermitted operation except for issuer organizations.
 ,,409,,,
 ,,422,private_money_not_found,,Private money not found
 ,,422,bulk_transaction_invalid_csv_format,"入力されたCSVデータに誤りがあります",Invalid csv format
-POST,/transactions/cashtray,400,invalid_parameters,"項目が無効です",Invalid parameters
-,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
+POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,cashtray_not_found,"決済QRコードが見つかりません",Cashtray is not found
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
@@ -349,13 +347,13 @@ POST,/transactions/cashtray,400,invalid_parameters,"項目が無効です",Inval
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,cashtray_already_proceed,"この決済QRコードは既に処理されています",Cashtray is already proceed
 ,,422,cashtray_expired,"この決済QRコードは有効期限が切れています",Cashtray is expired
 ,,422,cashtray_already_canceled,"この決済QRコードは既に無効化されています",Cashtray is already canceled
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/external-transactions,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,,Private money not found
@@ -425,6 +423,7 @@ PATCH,/bills/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限
 GET,/checks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,organization_not_found,,Organization not found
 ,,422,private_money_not_found,,Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/checks,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameter_only_merchants_can_attach_points_to_check,,Only merchants can attach points to check
 ,,400,invalid_parameter_bear_point_account_identification_item_not_unique,"ポイントを負担する店舗アカウントを指定するリクエストパラメータには、アカウントID、またはユーザIDのどちらかを含めることができます",Request parameters include either bear_point_account or bear_point_shop_id.
@@ -440,6 +439,7 @@ POST,/checks,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_
 GET,/checks/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
+,,503,temporarily_unavailable,,Service Unavailable
 PATCH,/checks/:uuid,400,invalid_parameter_combination_usage_limit_and_is_onetime,,'usage_limit' can not be specified if 'is_onetime' is true.
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,400,invalid_parameter_expires_at,,'expires_at' must be in the future
@@ -490,8 +490,10 @@ GET,/private-moneys/:uuid,403,unpermitted_admin_user,"この管理ユーザに�
 GET,/private-moneys/:uuid/summary,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,,,
 ,,422,private_money_not_found,,Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/private-moneys/:uuid/clearings,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,private_money_not_found,,Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/private-moneys/:uuid/organization-summaries,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
 ,,404,,,
@@ -524,6 +526,7 @@ GET,/organizations/:code/shops,403,,,
 GET,/shops,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,private_money_not_found,,Private money not found
 ,,422,organization_not_found,,Organization not found
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/shops,403,,,
 ,,409,email_conflict,"このメールアドレスは既に使われています",The E-mail address is already registered
 ,,409,shop_name_conflict,,The shop name is already used
@@ -547,9 +550,11 @@ PATCH,/shops/:uuid,400,invalid_parameters,"項目が無効です",Invalid parame
 ,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/customers,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/customers/transactions,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,private_money_not_found,,Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/customers/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
@@ -559,6 +564,7 @@ PATCH,/clearings/:uuid,403,unpermitted_admin_user,"この管理ユーザには�
 ,,404,clearing_not_found,"精算が見つかりません",Clearing not found
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/clearings,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/clearings/preview,400,clearing_to_should_be_past_date,"締め日は過去の日付を指定してください",Should set past date for 'closing_date'
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,private_money_not_found,,Private money not found
@@ -568,6 +574,7 @@ POST,/clearings,400,clearing_to_should_be_past_date,"締め日は過去の日付
 GET,/clearings/flico,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 GET,/clearings/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,clearing_not_found,"精算が見つかりません",Clearing not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/messaging-operations,403,,,
 POST,/messaging-operations,400,messaging_operation_over_transfer_limit,,The messaging operation's amount is over transfer limit
 ,,400,messaging_operation_sender_account_not_exist,,The account of sender user does not exist
@@ -637,6 +644,7 @@ POST,/tokens,403,unpermitted_admin_user,"この管理ユーザには権限があ
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,organization_not_found,,Organization not found
 GET,/tokens,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
 DELETE,/tokens/:token,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -654,17 +662,16 @@ PATCH,/accounts/:uuid/customers,403,unpermitted_admin_user,"この管理ユー�
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
-,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/accounts/shops,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,private_money_not_found,,Private money not found
 GET,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
 PATCH,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,503,temporarily_unavailable,,Service Unavailable
 DELETE,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,account_not_pre_closed,"アカウントが退会準備中ではありません",The account is not pre-closed
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
@@ -697,12 +704,15 @@ DELETE,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには�
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/accounts/:uuid/balances,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/accounts/:uuid/expired-balances,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/accounts/:uuid/transfers/summary,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 GET,/users/:uuid/accounts,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/cashtrays/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
@@ -723,6 +733,7 @@ PATCH,/cashtrays/:uuid,403,unpermitted_admin_user,"この管理ユーザには�
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 GET,/cpm/:cpm-token,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,cpm_token_not_found,"CPMトークンが見つかりませんでした。",The CPM token is not found.
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/seven-bank-atm-sessions/:qr-info,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 PATCH,/seven-bank-atm-sessions/:qr-info,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -736,12 +747,14 @@ POST,/campaigns,400,invalid_parameters,"項目が無効です",Invalid parameter
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,,Private money not found
 GET,/campaigns,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
 PATCH,/campaigns/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,campaign_budget_caps_exceeded,"キャンペーン予算上限額を越えています",The campaign budget caps exceeded
 GET,/campaigns/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/webhooks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,409,organization_worker_task_finish_webhook_conflict,"そのwebhookは既に登録されています",The webhook is already registered
 GET,/webhooks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -796,10 +809,10 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,403,forbidden,,Forbidden
 ,,403,user_bank_disabled_error,"現在、このユーザーは銀行からのチャージは利用できません",Topup from this user's bank have now been stopped.
 ,,404,user_bank_not_found,"登録された銀行が見つかりません",Bank not found
-,,410,transaction_canceled,"取引がキャンセルされました",Transaction was canceled
 ,,422,private_money_not_found,,Private money not found
 ,,422,user_device_is_disabled,"このデバイスは無効化されています",The user-device is disabled
 ,,422,user_device_not_found,,The user-device not found
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
