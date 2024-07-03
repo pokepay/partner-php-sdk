@@ -18,6 +18,8 @@ class PartnerAPI
     private $curlOptions = array();
 
     private $acceptLanguage;
+    private $appName;
+    private $appVersion;
 
     public function __construct($iniFile = null, $_clientId = null, $_clientSecret = null)
     {
@@ -28,9 +30,18 @@ class PartnerAPI
             $this->clientId = isset($_clientId) ? $_clientId : $config['CLIENT_ID'];
             $this->clientSecret = isset($_clientSecret) ? $_clientSecret : $config['CLIENT_SECRET'];
             $this->apiBase = $config['API_BASE_URL'];
+
             if (array_key_exists('ACCEPT_LANGUAGE', $config)) {
                 $this->acceptLanguage = $config['ACCEPT_LANGUAGE'];
             }
+
+            if (array_key_exists('APP_NAME', $config)) {
+                $this->appName = $config['APP_NAME'];
+            }
+            if (array_key_exists('APP_VERSION', $config)) {
+                $this->appVersion = $config['APP_VERSION'];
+            }
+
             if (array_key_exists('SSL_KEY_FILE', $config)) {
                 $this->curlOptions[CURLOPT_SSLKEY] = $config['SSL_KEY_FILE'];
             }
@@ -87,6 +98,19 @@ class PartnerAPI
         $this->curlOptions = $curlOptions;
     }
 
+    private function computeUserAgent() {
+        $userAgent = 'User-Agent: ';
+        if ($this->appName) {
+            $userAgent = $userAgent . $this->appName . ' ';
+        }
+        if ($this->appVersion) {
+            $userAgent = $userAgent . $this->appVersion . ' ';
+        }
+        $userAgent = $userAgent . 'partner-php-sdk/' . self::VERSION;
+        print($userAgent . "\n");
+        return $userAgent;
+    }
+
     public function send($request)
     {
         if (!$this->clientInstance) {
@@ -101,7 +125,8 @@ class PartnerAPI
         if ($this->acceptLanguage) {
           array_push($headers, 'Accept-Language: ' . $this->acceptLanguage);
         }
-        array_push($headers, 'User-Agent: ' . 'partner-php-sdk/' . self::VERSION);
+
+        array_push($headers, $this->computeUserAgent());
 
         return $this->clientInstance->request(
             $request->getCallId(),
