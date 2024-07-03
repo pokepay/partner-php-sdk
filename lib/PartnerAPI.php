@@ -107,7 +107,6 @@ class PartnerAPI
             $userAgent = $userAgent . $this->appVersion . ' ';
         }
         $userAgent = $userAgent . 'partner-php-sdk/' . self::VERSION;
-        print($userAgent . "\n");
         return $userAgent;
     }
 
