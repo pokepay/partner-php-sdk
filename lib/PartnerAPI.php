@@ -125,6 +125,7 @@ class PartnerAPI
         if ($this->acceptLanguage) {
           array_push($headers, 'Accept-Language: ' . $this->acceptLanguage);
         }
+        array_push($headers, 'User-Agent: ' . 'partner-php-sdk/' . self::VERSION);
 
         array_push($headers, $this->computeUserAgent());
 
