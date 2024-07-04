@@ -11,3 +11,6 @@ CONNECTTIMEOUT   = 5
 TIMEOUT          = 5
 
 ACCEPT_LANGUAGE = 'ja'
+
+APP_NAME     = 'example app'
+APP_VERSION  = '0.0.0'
