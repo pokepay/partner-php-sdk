@@ -98,15 +98,13 @@ class PartnerAPI
         $this->curlOptions = $curlOptions;
     }
 
-    private function computeUserAgent() {
-        $userAgent = 'User-Agent: ';
-        if ($this->appName) {
-            $userAgent = $userAgent . $this->appName . ' ';
-        }
-        if ($this->appVersion) {
-            $userAgent = $userAgent . $this->appVersion . ' ';
-        }
-        $userAgent = $userAgent . 'partner-php-sdk/' . self::VERSION;
+    private function computeUserAgent()
+    {
+        $userAgent = '';
+        $userAgent .= ($this->appName ? $this->appName : 'unknown');
+        $userAgent .= '/';
+        $userAgent .= ($this->appVersion ? $this->appVersion : 'unknown');
+        $userAgent .= 'partner-php-sdk/' . self::VERSION;
         return $userAgent;
     }
 
@@ -124,9 +122,8 @@ class PartnerAPI
         if ($this->acceptLanguage) {
           array_push($headers, 'Accept-Language: ' . $this->acceptLanguage);
         }
-        array_push($headers, 'User-Agent: ' . 'partner-php-sdk/' . self::VERSION);
 
-        array_push($headers, $this->computeUserAgent());
+        array_push($headers, 'User-Agent: ' . $this->computeUserAgent());
 
         return $this->clientInstance->request(
             $request->getCallId(),
