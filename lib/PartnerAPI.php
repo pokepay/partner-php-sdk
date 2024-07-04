@@ -98,6 +98,12 @@ class PartnerAPI
         $this->curlOptions = $curlOptions;
     }
 
+    public function setAppNameAndVersion($appName, $appVersion)
+    {
+        $this->appName = $appName;
+        $this->appVersion = $appVersion;
+    }
+
     private function computeUserAgent()
     {
         $userAgent = '';
