@@ -110,6 +110,7 @@ class PartnerAPI
         $userAgent .= ($this->appName ? $this->appName : 'unknown');
         $userAgent .= '/';
         $userAgent .= ($this->appVersion ? $this->appVersion : 'unknown');
+        $userAgent .= ' ';
         $userAgent .= 'partner-php-sdk/' . self::VERSION;
         return $userAgent;
     }
