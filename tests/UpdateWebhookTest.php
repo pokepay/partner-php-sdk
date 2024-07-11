@@ -8,7 +8,7 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "874c0e8a-3517-46fb-960b-bf31b27ea8af"
+            "8e3e20c4-d67d-407b-b8d1-14768d06dfb4"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "874c0e8a-3517-46fb-960b-bf31b27ea8af",
+            "8e3e20c4-d67d-407b-b8d1-14768d06dfb4",
             [
-                'task' => "process_user_stats_operation"
+                'task' => "bulk_shops"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "874c0e8a-3517-46fb-960b-bf31b27ea8af",
+            "8e3e20c4-d67d-407b-b8d1-14768d06dfb4",
             [
-                'is_active' => TRUE,
-                'task' => "process_user_stats_operation"
+                'is_active' => FALSE,
+                'task' => "bulk_shops"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateWebhook(
-            "874c0e8a-3517-46fb-960b-bf31b27ea8af",
+            "8e3e20c4-d67d-407b-b8d1-14768d06dfb4",
             [
-                'url' => "z",
+                'url' => "FCs7r9SIiP",
                 'is_active' => TRUE,
-                'task' => "process_user_stats_operation"
+                'task' => "bulk_shops"
             ]
         );
         try {

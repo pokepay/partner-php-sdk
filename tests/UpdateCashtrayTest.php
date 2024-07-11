@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "5af4bebb-b4ed-4efa-807e-1f29a1557037"
+            "5dac37c8-967a-4962-8818-43f58aac4ee3"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "5af4bebb-b4ed-4efa-807e-1f29a1557037",
+            "5dac37c8-967a-4962-8818-43f58aac4ee3",
             [
-                'expires_in' => 1395
+                'expires_in' => 2373
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "5af4bebb-b4ed-4efa-807e-1f29a1557037",
+            "5dac37c8-967a-4962-8818-43f58aac4ee3",
             [
-                'description' => "ucmF8n8VnjFoEs5f64mvXKC0yIYDrOmfZvcfCdES8HHJf50TC5y2HNrP34hD1ux",
-                'expires_in' => 6448
+                'description' => "hID3qemlo7JMNmGUe8JtqofMq1TyFcW0Uuc5ug2SpDoeGryI5OQQ9GoRehaS9O2M3fskqX8WbkxbWTp66iGj1lRR9XuMVcs2zeQQbQwb51zUDjfyGpNkIiUDvsd07Li3GyEdt6GGJ1GXo5UPiFJuScrEGcY5",
+                'expires_in' => 6071
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "5af4bebb-b4ed-4efa-807e-1f29a1557037",
+            "5dac37c8-967a-4962-8818-43f58aac4ee3",
             [
-                'amount' => 3042.0,
-                'description' => "udPgKcAH4LqtvnYdJrsgVxWy0PirB5ccKSjPsnaJy0xSUaUZ3KYipGveNp11WiSr08uCzB0JSt7hZNL6cvcqBnhGnyRs1Zbg",
-                'expires_in' => 649
+                'amount' => 6557.0,
+                'description' => "YJqEcansSsP2ceIvKP9bgYanQbVQM9Z6RG0kCsPdzwEr5mXGzuLW3FkWi9ZhIojVZoApe0VcAXVJNN81LI44xL3mfrFPuEOVKpPzDCyUBg3VaVg5lQKirhr",
+                'expires_in' => 9919
             ]
         );
         try {

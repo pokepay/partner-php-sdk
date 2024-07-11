@@ -8,8 +8,8 @@ class CreateTopupTransactionWithCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransactionWithCheck(
-            "6e364286-d514-45ac-8e73-89ee21638920",
-            "77dc6e96-dd0d-4d01-b154-48d3d4379d4b"
+            "2ea841ea-23bb-416e-843a-854569384188",
+            "0740d26d-314e-40e0-a92e-e5aecedb846e"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateTopupTransactionWithCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransactionWithCheck(
-            "6e364286-d514-45ac-8e73-89ee21638920",
-            "77dc6e96-dd0d-4d01-b154-48d3d4379d4b",
+            "2ea841ea-23bb-416e-843a-854569384188",
+            "0740d26d-314e-40e0-a92e-e5aecedb846e",
             [
-                'request_id' => "30465051-2efb-4fd9-a14c-7074857aec8f"
+                'request_id' => "2eb7b49f-ffed-4618-99fc-e4e0ce656897"
             ]
         );
         try {
