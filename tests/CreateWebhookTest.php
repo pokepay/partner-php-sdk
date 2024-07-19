@@ -8,8 +8,8 @@ class CreateWebhook extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateWebhook(
-            "process_user_stats_operation",
-            "rKUADY"
+            "bulk_shops",
+            "FCchnpK"
         );
         try {
             $response = $client->send($request);

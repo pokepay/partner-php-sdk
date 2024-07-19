@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "8d23aa86-0356-4fd1-856f-5b1620d87007",
-            "d9dba665-183e-410e-ba86-0a329fe19cdc",
-            "X9mQJiEELVlycfdA0sn1Jp9ctBvXrxjspmUg2Jofbfd8lI7ca3oyQQIsUl3rCM2ZMpE4WDor4IADTHdTPsjhUsWbuhnbIUFlf",
-            "v"
+            "7dd6fc10-8c3f-410d-adde-167a2a74efa5",
+            "47088f06-f12c-4cbe-b4e6-7bfbefa4b16e",
+            "fWLRafbjHHiTlinfVLWJIyGq0eGZ3LjtgQn48RP8UioFkI4pFJl8a49K0SiRVrDmJ5TPkLuNgnu18c0Kn6PzJQm77hC3byYhnk9L6y5R4kNHRMXQTzW1iBiUI5J",
+            "GbGoEyKdo0WvNvuZ"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "8d23aa86-0356-4fd1-856f-5b1620d87007",
-            "d9dba665-183e-410e-ba86-0a329fe19cdc",
-            "X9mQJiEELVlycfdA0sn1Jp9ctBvXrxjspmUg2Jofbfd8lI7ca3oyQQIsUl3rCM2ZMpE4WDor4IADTHdTPsjhUsWbuhnbIUFlf",
-            "v",
+            "7dd6fc10-8c3f-410d-adde-167a2a74efa5",
+            "47088f06-f12c-4cbe-b4e6-7bfbefa4b16e",
+            "fWLRafbjHHiTlinfVLWJIyGq0eGZ3LjtgQn48RP8UioFkI4pFJl8a49K0SiRVrDmJ5TPkLuNgnu18c0Kn6PzJQm77hC3byYhnk9L6y5R4kNHRMXQTzW1iBiUI5J",
+            "GbGoEyKdo0WvNvuZ",
             [
-                'birthdate' => "bOclFXKf"
+                'birthdate' => "zOy"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "8d23aa86-0356-4fd1-856f-5b1620d87007",
-            "d9dba665-183e-410e-ba86-0a329fe19cdc",
-            "X9mQJiEELVlycfdA0sn1Jp9ctBvXrxjspmUg2Jofbfd8lI7ca3oyQQIsUl3rCM2ZMpE4WDor4IADTHdTPsjhUsWbuhnbIUFlf",
-            "v",
+            "7dd6fc10-8c3f-410d-adde-167a2a74efa5",
+            "47088f06-f12c-4cbe-b4e6-7bfbefa4b16e",
+            "fWLRafbjHHiTlinfVLWJIyGq0eGZ3LjtgQn48RP8UioFkI4pFJl8a49K0SiRVrDmJ5TPkLuNgnu18c0Kn6PzJQm77hC3byYhnk9L6y5R4kNHRMXQTzW1iBiUI5J",
+            "GbGoEyKdo0WvNvuZ",
             [
-                'email' => "vdQivs3hjt@D1VY.com",
-                'birthdate' => "nThE"
+                'email' => "md6UzJ163l@ry8C.com",
+                'birthdate' => "4rDtJNzc"
             ]
         );
         try {
