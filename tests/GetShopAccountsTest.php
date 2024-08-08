@@ -43,8 +43,8 @@ class GetShopAccounts extends TestCase
         $request = new Request\GetShopAccounts(
             "e7f9bb88-8b7f-4883-b91c-43b0aea260a6",
             [
-                'created_at_to' => "2022-01-09T07:41:23.000000Z",
-                'is_suspended' => TRUE
+                'created_at_to' => "2024-07-14T02:22:10.000000Z",
+                'is_suspended' => FALSE
             ]
         );
         try {
@@ -62,8 +62,8 @@ class GetShopAccounts extends TestCase
         $request = new Request\GetShopAccounts(
             "e7f9bb88-8b7f-4883-b91c-43b0aea260a6",
             [
-                'created_at_from' => "2020-10-18T03:56:04.000000Z",
-                'created_at_to' => "2021-07-25T03:50:36.000000Z",
+                'created_at_from' => "2023-10-26T19:54:58.000000Z",
+                'created_at_to' => "2020-10-18T03:56:04.000000Z",
                 'is_suspended' => TRUE
             ]
         );
@@ -82,9 +82,9 @@ class GetShopAccounts extends TestCase
         $request = new Request\GetShopAccounts(
             "e7f9bb88-8b7f-4883-b91c-43b0aea260a6",
             [
-                'per_page' => 9222,
-                'created_at_from' => "2023-07-21T18:59:40.000000Z",
-                'created_at_to' => "2022-05-03T22:28:24.000000Z",
+                'per_page' => 8625,
+                'created_at_from' => "2020-07-30T17:36:05.000000Z",
+                'created_at_to' => "2023-07-21T18:59:40.000000Z",
                 'is_suspended' => TRUE
             ]
         );
@@ -103,10 +103,10 @@ class GetShopAccounts extends TestCase
         $request = new Request\GetShopAccounts(
             "e7f9bb88-8b7f-4883-b91c-43b0aea260a6",
             [
-                'page' => 4807,
-                'per_page' => 6255,
-                'created_at_from' => "2023-05-11T13:18:24.000000Z",
-                'created_at_to' => "2020-12-31T07:17:51.000000Z",
+                'page' => 2953,
+                'per_page' => 7807,
+                'created_at_from' => "2022-05-31T18:06:38.000000Z",
+                'created_at_to' => "2023-04-10T22:59:49.000000Z",
                 'is_suspended' => TRUE
             ]
         );

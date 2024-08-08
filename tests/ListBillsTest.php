@@ -22,7 +22,7 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'is_disabled' => FALSE
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -39,7 +39,7 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'upper_limit_amount' => 5168,
+                'upper_limit_amount' => 2592,
                 'is_disabled' => FALSE
             ]
         );
@@ -57,9 +57,9 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'lower_limit_amount' => 7192,
-                'upper_limit_amount' => 2756,
-                'is_disabled' => TRUE
+                'lower_limit_amount' => 4806,
+                'upper_limit_amount' => 805,
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -76,9 +76,9 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'shop_id' => "3a601079-b551-4d6f-a145-1d90db3b844c",
-                'lower_limit_amount' => 7788,
-                'upper_limit_amount' => 8837,
+                'shop_id' => "b4b9305c-1430-4913-b99a-3a8637d5f940",
+                'lower_limit_amount' => 7192,
+                'upper_limit_amount' => 2756,
                 'is_disabled' => TRUE
             ]
         );
@@ -96,7 +96,7 @@ class ListBills extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBills(
             [
-                'shop_name' => "Jk6MRPKi62IzWH9emhQ0CqvNNBrhyRg9xxzNXJhnMZrEqyRqPCGzbSmOoYCMUQNjvF4AYLzd022rwQVNfYYCfZZWpAcyBWwWi1DgvTt4hTTZowFPycM",
+                'shop_name' => "QoaELlrJk6MRPKi62IzWH9emhQ0CqvNNBrhyRg9xxzNXJhnMZrEqyRqPCGzbSmOoYCMUQNjvF4AYLzd022rwQVNfYYCfZZWpAcyBWwWi1DgvTt4hTTZowFPycM",
                 'shop_id' => "82ebb227-2b66-4610-ac0f-35fd8e7a7012",
                 'lower_limit_amount' => 9084,
                 'upper_limit_amount' => 8550,
