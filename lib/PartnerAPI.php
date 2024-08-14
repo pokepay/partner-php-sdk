@@ -102,13 +102,26 @@ class PartnerAPI
           array_push($headers, 'Accept-Language: ' . $this->acceptLanguage);
         }
 
-        return $this->clientInstance->request(
-            $request->getCallId(),
-            $request->getMethod(),
-            $this->apiBase . $request->getPath(),
-            $headers,
-            $request->getParams() + $request->getDefaultParams(),
-            $request->responseClass
-        );
+        $retry = 0;
+        while (true) {
+            try {
+                return $this->clientInstance->request(
+                    $request->getCallId(),
+                    $request->getMethod(),
+                    $this->apiBase . $request->getPath(),
+                    $headers,
+                    $request->getParams() + $request->getDefaultParams(),
+                    $request->responseClass
+                );
+            } catch (Error\ApiConnection $e) {
+                // Retry when timeout
+                if ($e->errno != 28 || $retry > 2) {
+                    throw $e;
+                }
+                ++$retry;
+                sleep($retry * 3);
+                $request->setCallId(null); // Re-generate the call ID
+            }
+        }
     }
 }
