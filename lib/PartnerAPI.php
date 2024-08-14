@@ -118,10 +118,15 @@ class PartnerAPI
                 if ($e->errno != 28 || $retry > 2) {
                     throw $e;
                 }
-                ++$retry;
-                sleep($retry * 3);
-                $request->setCallId(null); // Re-generate the call ID
+            } catch (Error\HttpRequest $e) {
+                // Retry on 503
+                if ($e->code != 503 || $retry > 2) {
+                    throw $e;
+                }
             }
+            ++$retry;
+            sleep($retry * 3);
+            $request->setCallId(null); // Re-generate the call ID
         }
     }
 }
