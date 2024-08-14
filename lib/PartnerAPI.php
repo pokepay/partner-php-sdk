@@ -125,7 +125,7 @@ class PartnerAPI
                 }
             }
             ++$retry;
-            sleep($retry * 3);
+            sleep(3);
             $request->setCallId(null); // Re-generate the call ID
         }
     }
