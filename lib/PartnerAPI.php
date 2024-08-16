@@ -119,6 +119,16 @@ class PartnerAPI
                     throw $e;
                 }
             } catch (Error\HttpRequest $e) {
+                if (array_key_exists('type', $e->response)
+                    && $e->response['type'] === 'request_id_conflict')
+                {
+                    throw new Error\RequestIdConflict(
+                        $e->code,
+                        $e->rawResponse,
+                        $e->response,
+                        $request->getParams()['request_id']
+                    );
+                }
                 // Retry on 503
                 if ($e->code != 503 || $retry > 2) {
                     throw $e;
