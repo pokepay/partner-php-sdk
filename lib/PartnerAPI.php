@@ -47,9 +47,6 @@ class PartnerAPI
             if (array_key_exists('TIMEOUT', $config)) {
                 $this->curlOptions[CURLOPT_TIMEOUT] = $config['TIMEOUT'];
             }
-            if (array_key_exists('MAX_RETRIES', $config)) {
-                $this->maxRetries = $config['MAX_RETRIES'];
-            }
             $this->config = $config;
         } else {
             throw new Exception('Configuration file is not given and not determined with POKEPAY_PARTNER_CONFIG_FILE.');
