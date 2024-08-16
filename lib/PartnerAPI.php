@@ -116,7 +116,7 @@ class PartnerAPI
                 );
             } catch (Error\ApiConnection $e) {
                 // Retry when timeout
-                if ($e->errno != 28 || $retry >= $this->maxRetries) {
+                if ($e->errno != CURLE_OPERATION_TIMEDOUT || $retry >= $this->maxRetries) {
                     throw $e;
                 }
             } catch (Error\HttpRequest $e) {
