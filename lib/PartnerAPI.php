@@ -18,6 +18,7 @@ class PartnerAPI
     private $curlOptions = array();
 
     private $acceptLanguage;
+    private $maxRetries = 2;
 
     public function __construct($iniFile = null, $_clientId = null, $_clientSecret = null)
     {
@@ -45,6 +46,9 @@ class PartnerAPI
             }
             if (array_key_exists('TIMEOUT', $config)) {
                 $this->curlOptions[CURLOPT_TIMEOUT] = $config['TIMEOUT'];
+            }
+            if (array_key_exists('MAX_RETRIES', $config)) {
+                $this->maxRetries = $config['MAX_RETRIES'];
             }
             $this->config = $config;
         } else {
@@ -115,7 +119,7 @@ class PartnerAPI
                 );
             } catch (Error\ApiConnection $e) {
                 // Retry when timeout
-                if ($e->errno != 28 || $retry > 2) {
+                if ($e->errno != 28 || $retry >= $this->maxRetries) {
                     throw $e;
                 }
             } catch (Error\HttpRequest $e) {
@@ -130,7 +134,7 @@ class PartnerAPI
                     );
                 }
                 // Retry on 503
-                if ($e->code != 503 || $retry > 2) {
+                if ($e->code != 503 || $retry >= $this->maxRetries) {
                     throw $e;
                 }
             }
