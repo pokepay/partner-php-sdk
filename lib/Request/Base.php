@@ -24,7 +24,7 @@ abstract class Base
 
     public function setCallId($newCallId)
     {
-        $this->callId = $newCallId || Uuid::uuid4();
+        $this->callId = $newCallId;
     }
 
     public function getMethod()

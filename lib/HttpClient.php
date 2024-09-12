@@ -37,7 +37,6 @@ class HttpClient
         if ($this->curlOptions) {
             $opts += $this->curlOptions;
         }
-        $opts += array(CURLOPT_CONNECTTIMEOUT => 5, CURLOPT_TIMEOUT => 5);
 
         curl_setopt_array($curl, $opts);
 
