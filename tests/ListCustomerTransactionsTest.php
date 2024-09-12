@@ -62,7 +62,7 @@ class ListCustomerTransactions extends TestCase
         $request = new Request\ListCustomerTransactions(
             "05d4da0c-f8ac-43e9-a1a8-54df0786da2d",
             [
-                'to' => "2020-06-09T08:43:25.000000Z",
+                'to' => "2020-06-09T08:43:25.000000+09:00",
                 'page' => 2641,
                 'per_page' => 1403
             ]
@@ -82,8 +82,8 @@ class ListCustomerTransactions extends TestCase
         $request = new Request\ListCustomerTransactions(
             "05d4da0c-f8ac-43e9-a1a8-54df0786da2d",
             [
-                'from' => "2023-08-31T11:35:24.000000Z",
-                'to' => "2021-11-27T00:17:30.000000Z",
+                'from' => "2023-08-31T11:35:24.000000+09:00",
+                'to' => "2021-11-27T00:17:30.000000+09:00",
                 'page' => 6128,
                 'per_page' => 9468
             ]
@@ -104,8 +104,8 @@ class ListCustomerTransactions extends TestCase
             "05d4da0c-f8ac-43e9-a1a8-54df0786da2d",
             [
                 'is_modified' => TRUE,
-                'from' => "2021-10-15T20:46:20.000000Z",
-                'to' => "2023-11-14T17:02:46.000000Z",
+                'from' => "2021-10-15T20:46:20.000000+09:00",
+                'to' => "2023-11-14T17:02:46.000000+09:00",
                 'page' => 8406,
                 'per_page' => 1440
             ]
@@ -127,8 +127,8 @@ class ListCustomerTransactions extends TestCase
             [
                 'type' => "transfer",
                 'is_modified' => TRUE,
-                'from' => "2022-03-30T21:58:48.000000Z",
-                'to' => "2024-01-29T17:38:21.000000Z",
+                'from' => "2022-03-30T21:58:48.000000+09:00",
+                'to' => "2024-01-29T17:38:21.000000+09:00",
                 'page' => 786,
                 'per_page' => 2848
             ]
@@ -151,8 +151,8 @@ class ListCustomerTransactions extends TestCase
                 'receiver_customer_id' => "476067c0-5180-472f-9748-fbe19e693314",
                 'type' => "cashback",
                 'is_modified' => TRUE,
-                'from' => "2020-07-04T11:49:13.000000Z",
-                'to' => "2020-10-22T23:48:51.000000Z",
+                'from' => "2020-07-04T11:49:13.000000+09:00",
+                'to' => "2020-10-22T23:48:51.000000+09:00",
                 'page' => 4783,
                 'per_page' => 8752
             ]
@@ -176,8 +176,8 @@ class ListCustomerTransactions extends TestCase
                 'receiver_customer_id' => "03a89a91-73ea-4831-99d4-32f7b9069362",
                 'type' => "exchange",
                 'is_modified' => FALSE,
-                'from' => "2020-01-13T05:00:34.000000Z",
-                'to' => "2020-03-01T04:56:22.000000Z",
+                'from' => "2020-01-13T05:00:34.000000+09:00",
+                'to' => "2020-03-01T04:56:22.000000+09:00",
                 'page' => 5098,
                 'per_page' => 7841
             ]

@@ -4,10 +4,10 @@
 namespace Pokepay\Request;
 
 
-class GetSevenBankAtmSession extends Base
+class GetSevenBankATMSession extends Base
 {
     protected $method = 'GET';
-    public $responseClass = \Pokepay\Response\SevenBankAtmSession::class;
+    public $responseClass = \Pokepay\Response\SevenBankATMSession::class;
     private $qrInfo;
     public function __construct($qrInfo)
     {

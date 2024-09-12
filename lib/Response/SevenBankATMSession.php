@@ -4,7 +4,7 @@
 namespace Pokepay\Response;
 
 
-class SevenBankAtmSession extends Base
+class SevenBankATMSession extends Base
 {
     /**
      * @var string
