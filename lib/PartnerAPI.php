@@ -18,6 +18,7 @@ class PartnerAPI
     private $curlOptions = array();
 
     private $acceptLanguage;
+    private $maxRetries = 2;
     private $appName;
     private $appVersion;
 
@@ -129,16 +130,43 @@ class PartnerAPI
         if ($this->acceptLanguage) {
           array_push($headers, 'Accept-Language: ' . $this->acceptLanguage);
         }
-
         array_push($headers, 'User-Agent: ' . $this->computeUserAgent());
 
-        return $this->clientInstance->request(
-            $request->getCallId(),
-            $request->getMethod(),
-            $this->apiBase . $request->getPath(),
-            $headers,
-            $request->getParams() + $request->getDefaultParams(),
-            $request->responseClass
-        );
+        $retry = 0;
+        while (true) {
+            try {
+                return $this->clientInstance->request(
+                    $request->getCallId(),
+                    $request->getMethod(),
+                    $this->apiBase . $request->getPath(),
+                    $headers,
+                    $request->getParams() + $request->getDefaultParams(),
+                    $request->responseClass
+                );
+            } catch (Error\ApiConnection $e) {
+                // Retry when timeout
+                if ($e->errno != CURLE_OPERATION_TIMEDOUT || $retry >= $this->maxRetries) {
+                    throw $e;
+                }
+            } catch (Error\HttpRequest $e) {
+                if (array_key_exists('type', $e->response)
+                    && $e->response['type'] === 'request_id_conflict')
+                {
+                    throw new Error\RequestIdConflict(
+                        $e->code,
+                        $e->rawResponse,
+                        $e->response,
+                        $request->getParams()['request_id']
+                    );
+                }
+                // Retry on 503
+                if ($e->code != 503 || $retry >= $this->maxRetries) {
+                    throw $e;
+                }
+            }
+            ++$retry;
+            sleep(3);
+            $request->setCallId(null); // Re-generate the call ID
+        }
     }
 }
