@@ -8403,6 +8403,10 @@ paths:
                   type: string
                   format: uuid
                   title: '銀行ID'
+                receiver_user_id:
+                  type: string
+                  format: uuid
+                  title: '受け取りユーザーID (デフォルトは自身)'
                 request_id:
                   type: string
                   format: uuid

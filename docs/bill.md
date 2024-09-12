@@ -8,18 +8,18 @@
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 8059,                           // ページ番号
-        'per_page' => 5147,                       // 1ページの表示数
-        'bill_id' => "zIdrHm6O",                  // 支払いQRコードのID
+        'page' => 7384,                           // ページ番号
+        'per_page' => 5023,                       // 1ページの表示数
+        'bill_id' => "c",                         // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "-23E-1evC3-m6V-ESLc-029-YOZ-UkK", // 組織コード
+        'organization_code' => "ZGRvh-2-40YK70dKT-k4rx-E-GRw1-1-", // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2022-04-17T00:55:51.000000Z", // 作成日時(起点)
-        'created_to' => "2020-04-15T22:23:38.000000Z", // 作成日時(終点)
+        'created_from' => "2021-12-30T10:04:17.000000Z", // 作成日時(起点)
+        'created_to' => "2020-01-01T21:57:23.000000Z", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 4503,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 605,              // 金額の範囲によるフィルタ(上限)
+        'lower_limit_amount' => 9971,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 5288,             // 金額の範囲によるフィルタ(上限)
         'is_disabled' => TRUE                     // 支払いQRコードが無効化されているかどうか
     ]
 );
@@ -214,7 +214,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 5417.0,                       // 支払い額
+        'amount' => 4657.0,                       // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -279,8 +279,8 @@ $request = new Request\CreateBill(
 |status|type|ja|en|
 |---|---|---|---|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|422|shop_account_not_found||The shop account is not found|
-|422|private_money_not_found||Private money not found|
+|422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
+|422|private_money_not_found|マネーが見つかりません|Private money not found|
 |422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
 |422|account_closed|アカウントは退会しています|The account is closed|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
@@ -299,7 +299,7 @@ $request = new Request\CreateBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 232.0,                        // 支払い額
+        'amount' => 6853.0,                       // 支払い額
         'description' => "test bill",             // 説明文
         'is_disabled' => FALSE                    // 無効化されているかどうか
     ]

@@ -8,10 +8,10 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "ca127c0c-3261-4028-94cc-ccf2d2a52131",
-            "c81a0cc2-7c07-4a5f-9e8b-8ecc4a7031d9",
-            "db01c22d-6011-4ce4-a38d-62e775c56e73",
-            7412
+            "832b55cb-dc90-46d1-ac8d-0fb44328a863",
+            "6b9cd14b-99a9-4b9d-b699-6cc8d413844c",
+            "d78c71dc-2ea6-45e5-b393-14ef4aa76aa3",
+            7119
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "ca127c0c-3261-4028-94cc-ccf2d2a52131",
-            "c81a0cc2-7c07-4a5f-9e8b-8ecc4a7031d9",
-            "db01c22d-6011-4ce4-a38d-62e775c56e73",
-            7412,
+            "832b55cb-dc90-46d1-ac8d-0fb44328a863",
+            "6b9cd14b-99a9-4b9d-b699-6cc8d413844c",
+            "d78c71dc-2ea6-45e5-b393-14ef4aa76aa3",
+            7119,
             [
-                'request_id' => "92f5b7ff-f7c2-450e-bc37-458e428585bb"
+                'request_id' => "1b5df037-569f-4d41-870e-c6f3d935f829"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateExchangeTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateExchangeTransaction(
-            "ca127c0c-3261-4028-94cc-ccf2d2a52131",
-            "c81a0cc2-7c07-4a5f-9e8b-8ecc4a7031d9",
-            "db01c22d-6011-4ce4-a38d-62e775c56e73",
-            7412,
+            "832b55cb-dc90-46d1-ac8d-0fb44328a863",
+            "6b9cd14b-99a9-4b9d-b699-6cc8d413844c",
+            "d78c71dc-2ea6-45e5-b393-14ef4aa76aa3",
+            7119,
             [
-                'description' => "f3z7z76OYqLZhd2VmnwZ1YQAtf2GPfHYeeJWiJLn1TOWVNqKCYgaN6maSZWJn127yVjYZzSkjksojB4PnV9sBfF1BkHf1A87wLQ9bOIRS2WYI5c",
-                'request_id' => "1ea02ddd-cfa7-4d7b-9c0d-0729624b266b"
+                'description' => "xjaX4bkzoW5SSzFCKjOEE829PJZq44v95w5OTBAsM3ixdWcd35lzGg9k8zX5Zx6rdzZ6Kiw60EKpO7FL05ARSiRG2UPRPUxcw9rvtxOfCP20hUm1E2Nlz5V1CO5TSFyNto",
+                'request_id' => "ca208929-ae70-4cf1-893f-8fbf31547cbb"
             ]
         );
         try {

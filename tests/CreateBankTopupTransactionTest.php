@@ -8,11 +8,33 @@ class CreateBankTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBankTopupTransaction(
-            "a2caf645-c346-431d-a4f2-000f00a6f176",
-            "4c0009ef-f296-4117-a2b4-98bc3219c2bb",
-            3763,
-            "d3d22db7-c5c9-4c12-a5d3-b65e17755b95",
-            "006318bd-c7c2-4c05-b9f5-1a5ec665e124"
+            "4ce6b147-6be3-43e8-a096-03f1d35dd9e0",
+            "24d24866-2fa1-47fa-987d-0b91160c89ca",
+            5293,
+            "927f70bc-200d-41db-8792-df6e65a808e2",
+            "19176388-9a47-4e68-9a73-56cb74617c64"
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateBankTopupTransaction1()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateBankTopupTransaction(
+            "4ce6b147-6be3-43e8-a096-03f1d35dd9e0",
+            "24d24866-2fa1-47fa-987d-0b91160c89ca",
+            5293,
+            "927f70bc-200d-41db-8792-df6e65a808e2",
+            "19176388-9a47-4e68-9a73-56cb74617c64",
+            [
+                'receiver_user_id' => "d82aeb7d-e756-4472-89a0-d545f837c6ac"
+            ]
         );
         try {
             $response = $client->send($request);

@@ -7,8 +7,8 @@
 セブン銀行ATMセッションを取得します
 
 ```PHP
-$request = new Request\GetSevenBankAtmSession(
-    "zi"                                          // qrInfo: QRコードの情報
+$request = new Request\GetSevenBankATMSession(
+    "6Nl"                                         // qrInfo: QRコードの情報
 );
 ```
 

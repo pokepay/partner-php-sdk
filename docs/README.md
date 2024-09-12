@@ -69,6 +69,9 @@ if ($response->pagination->hasNext) {
 
 - `Pokepay\Error\ApiConnection`: Partner APIサーバーとの通信に失敗したときに発行されます
 - `Pokepay\Error\HttpRequest`: Partner APIサーバーがエラーを返したときに発行されます
+- `Pokepay\Error\RequestIdConflict`: `requestId` が必要なリクエストで、指定したIDが既に使われているときに発行されます。互換性保持のため、 `Pokepay\Error\HttpRequest` を継承しています
+
+PHP SDKでは通信の異常や、一時的なサーバーダウンにより通信ができなかったときには自動で2回のリトライを行います。
 
 以下にエラーハンドリングの例を示します。
 
@@ -84,32 +87,26 @@ try {
 
 通信が失敗したときにリトライを行う場合には処理が重複して実行されるのを避けるために、新しくリクエストオブジェクトを作るのではなく、同じオブジェクトでリトライ処理を行ってください。
 
+`RequestIdConflict` が発生したときには新たな `requestId` を指定してリクエストをする必要があります。
+
 ```php
-$request = new Pokepay\Request\ListTransactions();
+$request = new Pokepay\Request\BulkCreateTransaction(
+    "一括取引タスク",
+    "....CSV....",
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+);
 while (true) {
     try {
-        $response = $client->send($request);
-        echo "ok\n";
-        break;
-    } catch (Pokepay\Error\ApiConnection $e) {
-        echo "Failed to request:\n";
-        echo $e . "\n";
-        echo "Retry in 3 seconds...\n";
-        sleep(3);
+        return $client->send($request);
+    } catch (Pokepay\Error\RequestIdConflict $e) {
+        // 再度新しいrequestIdでリクエストオブジェクトを作り直す。
+        $request = new Pokepay\RequestBulkCreateTransaction(
+            "一括取引タスク",
+            "....CSV....",
+            "yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"
+        );
     }
 }
-```
-
-もしリトライの実行をワーカープロセスなどの別プロセスで行う場合は、リクエストの `callId` を記録しておいて再利用してください。
-
-```php
-$request = new Pokepay\Request\ListTransactions();
-
-// callId を取得する
-$request->getCallId();
-
-// callId を設定する
-$request->setCallId($newCallId);
 ```
 <a name="api-operations"></a>
 ## API Operations
