@@ -13,7 +13,7 @@ class CreateBankTopupTransaction extends Base
     private $amount;
     private $bankId;
     private $requestId;
-    public function __construct($userDeviceId, $privateMoneyId, $amount, $bankId, $requestId)
+    public function __construct($userDeviceId, $privateMoneyId, $amount, $bankId, $requestId, $optionalParams = array())
     {
         parent::__construct();
         $this->userDeviceId = $userDeviceId;
@@ -22,7 +22,7 @@ class CreateBankTopupTransaction extends Base
         $this->bankId = $bankId;
         $this->requestId = $requestId;
 
-        $this->optionalParams = array();
+        $this->optionalParams = $optionalParams;
     }
 
     public function getPath()

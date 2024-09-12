@@ -12,7 +12,7 @@ $request = new Request\CreateExternalTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2991,                                         // amount: 取引額
+    7882,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
@@ -21,7 +21,7 @@ $request = new Request\CreateExternalTransaction(
 , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
-        'done_at' => "2023-05-25T07:59:05.000000Z" // ポケペイ外部取引の実施時間
+        'done_at' => "2024-03-08T19:36:01.000000Z" // ポケペイ外部取引の実施時間
     ]
 );
 ```
@@ -177,10 +177,10 @@ $request = new Request\CreateExternalTransaction(
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
 |422|customer_user_not_found||The customer user is not found|
 |422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
-|422|private_money_not_found||Private money not found|
+|422|private_money_not_found|マネーが見つかりません|Private money not found|
 |422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |422|customer_account_not_found||The customer account is not found|
-|422|shop_account_not_found||The shop account is not found|
+|422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
@@ -189,6 +189,7 @@ $request = new Request\CreateExternalTransaction(
 |422|account_not_accessible|アカウントにアクセスできません|The account is not accessible by this user|
 |422|terminal_is_invalidated|端末は無効化されています|The terminal is already invalidated|
 |422|same_account_transaction|同じアカウントに送信しています|Sending to the same account|
+|422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
 |422|transaction_invalid_done_at|取引完了日が無効です|Transaction completion date is invalid|
 |422|transaction_invalid_amount|取引金額が数値ではないか、受け入れられない桁数です|Transaction amount is not a number or cannot be accepted for this currency|

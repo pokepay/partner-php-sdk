@@ -150,7 +150,7 @@ require_once __DIR__ . '/lib/Response/Coupon.php';
 require_once __DIR__ . '/lib/Response/CouponDetail.php';
 require_once __DIR__ . '/lib/Response/PaginatedCoupons.php';
 require_once __DIR__ . '/lib/Response/PaginatedOrganizations.php';
-require_once __DIR__ . '/lib/Response/SevenBankAtmSession.php';
+require_once __DIR__ . '/lib/Response/SevenBankATMSession.php';
 require_once __DIR__ . '/lib/Response/BadRequest.php';
 require_once __DIR__ . '/lib/Response/PartnerClientNotFound.php';
 require_once __DIR__ . '/lib/Response/PartnerDecryptionFailed.php';

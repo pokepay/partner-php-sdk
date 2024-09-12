@@ -108,6 +108,7 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 |422|cashtray_not_found|決済QRコードが見つかりません|Cashtray is not found|
 |422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
+|422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
 |422|account_restricted|特定のアカウントの支払いに制限されています|The account is restricted to pay for a specific account|
 |422|account_balance_not_enough|口座残高が不足してます|The account balance is not enough|
@@ -127,7 +128,7 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
 |422|customer_account_not_found||The customer account is not found|
-|422|shop_account_not_found||The shop account is not found|
+|422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
 |422|account_not_accessible|アカウントにアクセスできません|The account is not accessible by this user|
@@ -160,10 +161,10 @@ Cashtrayを作成します。
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    8842.0,                                       // amount: 金額
+    7758.0,                                       // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 1916                      // 失効時間(秒)
+        'expires_in' => 2265                      // 失効時間(秒)
     ]
 );
 ```
@@ -390,9 +391,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 4358.0,                       // 金額
+        'amount' => 866.0,                        // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 6147                      // 失効時間(秒)
+        'expires_in' => 645                       // 失効時間(秒)
     ]
 );
 ```

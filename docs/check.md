@@ -14,18 +14,18 @@ QRコードを読み取る方法以外にも、このURLリンクを直接スマ
 ```PHP
 $request = new Request\ListChecks(
     [
-        'page' => 5349,                           // ページ番号
+        'page' => 2447,                           // ページ番号
         'per_page' => 50,                         // 1ページの表示数
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "CGgqZsePkl6iY0bdXM6Nza2rTctUJ", // 組織コード
-        'expires_from' => "2024-07-07T06:06:09.000000Z", // 有効期限の期間によるフィルター(開始時点)
-        'expires_to' => "2024-03-25T17:20:45.000000Z", // 有効期限の期間によるフィルター(終了時点)
-        'created_from' => "2021-11-02T11:24:24.000000Z", // 作成日時の期間によるフィルター(開始時点)
-        'created_to' => "2024-03-05T18:33:11.000000Z", // 作成日時の期間によるフィルター(終了時点)
+        'organization_code' => "ft8ZR3ZIT5H8aSOl3MDXnG9yHqEAThw", // 組織コード
+        'expires_from' => "2020-06-11T01:24:20.000000Z", // 有効期限の期間によるフィルター(開始時点)
+        'expires_to' => "2024-03-08T22:38:45.000000Z", // 有効期限の期間によるフィルター(終了時点)
+        'created_from' => "2021-06-25T10:03:29.000000Z", // 作成日時の期間によるフィルター(開始時点)
+        'created_to' => "2022-08-15T19:00:01.000000Z", // 作成日時の期間によるフィルター(終了時点)
         'issuer_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 発行店舗ID
-        'description' => "3qkWY",                 // チャージQRコードの説明文
+        'description' => "wsMIx1",                // チャージQRコードの説明文
         'is_onetime' => TRUE,                     // ワンタイムのチャージQRコードかどうか
-        'is_disabled' => FALSE                    // 無効化されたチャージQRコードかどうか
+        'is_disabled' => TRUE                     // 無効化されたチャージQRコードかどうか
     ]
 );
 ```
@@ -207,7 +207,7 @@ $request = new Request\ListChecks(
 |---|---|---|---|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
 |422|organization_not_found||Organization not found|
-|422|private_money_not_found||Private money not found|
+|422|private_money_not_found|マネーが見つかりません|Private money not found|
 |503|temporarily_unavailable||Service Unavailable|
 
 
@@ -222,13 +222,13 @@ $request = new Request\ListChecks(
 $request = new Request\CreateCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: 送金元の店舗アカウントID
     [
-        'money_amount' => 8428.0,                 // 付与マネー額
-        'point_amount' => 7341.0,                 // 付与ポイント額
+        'money_amount' => 8329.0,                 // 付与マネー額
+        'point_amount' => 3836.0,                 // 付与ポイント額
         'description' => "test check",            // 説明文(アプリ上で取引の説明文として表示される)
         'is_onetime' => FALSE,                    // ワンタイムかどうかのフラグ
-        'usage_limit' => 9112,                    // ワンタイムでない場合の最大読み取り回数
-        'expires_at' => "2023-07-29T11:40:37.000000Z", // チャージQRコード自体の失効日時
-        'point_expires_at' => "2023-07-24T13:43:22.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
+        'usage_limit' => 4555,                    // ワンタイムでない場合の最大読み取り回数
+        'expires_at' => "2023-05-02T08:08:24.000000Z", // チャージQRコード自体の失効日時
+        'point_expires_at' => "2021-09-23T11:18:49.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
         'point_expires_in_days' => 60,            // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
         'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント額を負担する店舗のウォレットID
     ]
@@ -392,16 +392,16 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 |---|---|---|---|
 |400|invalid_parameter_both_point_and_money_are_zero||One of 'money_amount' or 'point_amount' must be a positive (>0) number|
 |400|invalid_parameter_only_merchants_can_attach_points_to_check||Only merchants can attach points to check|
-|400|invalid_parameter_bear_point_account_identification_item_not_unique|ポイントを負担する店舗アカウントを指定するリクエストパラメータには、アカウントID、またはユーザIDのどちらかを含めることができます|Request parameters include either bear_point_account or bear_point_shop_id.|
 |400|invalid_parameter_combination_usage_limit_and_is_onetime||'usage_limit' can not be specified if 'is_onetime' is true.|
-|400|invalid_parameters|項目が無効です|Invalid parameters|
 |400|invalid_parameter_expires_at||'expires_at' must be in the future|
+|400|invalid_parameters|項目が無効です|Invalid parameters|
+|400|invalid_parameter_bear_point_account_identification_item_not_unique|ポイントを負担する店舗アカウントを指定するリクエストパラメータには、アカウントID、またはユーザIDのどちらかを含めることができます|Request parameters include either bear_point_account or bear_point_shop_id.|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
 |422|account_private_money_is_not_issued_by_organization||The account's private money is not issued by this organization|
-|422|shop_account_not_found||The shop account is not found|
-|422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
+|422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|bear_point_account_not_found|ポイントを負担する店舗アカウントが見つかりません|Bear point account not found.|
+|422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
 
 
 
@@ -450,16 +450,16 @@ $request = new Request\GetCheck(
 $request = new Request\UpdateCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // checkId: チャージQRコードのID
     [
-        'money_amount' => 7423.0,                 // 付与マネー額
-        'point_amount' => 8981.0,                 // 付与ポイント額
+        'money_amount' => 4282.0,                 // 付与マネー額
+        'point_amount' => 4709.0,                 // 付与ポイント額
         'description' => "test check",            // チャージQRコードの説明文
         'is_onetime' => FALSE,                    // ワンタイムかどうかのフラグ
-        'usage_limit' => 1674,                    // ワンタイムでない場合の最大読み取り回数
-        'expires_at' => "2023-08-20T18:59:10.000000Z", // チャージQRコード自体の失効日時
-        'point_expires_at' => "2022-03-02T01:05:10.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
+        'usage_limit' => 5139,                    // ワンタイムでない場合の最大読み取り回数
+        'expires_at' => "2021-12-05T13:24:47.000000Z", // チャージQRコード自体の失効日時
+        'point_expires_at' => "2024-07-01T23:56:18.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
         'point_expires_in_days' => 60,            // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
         'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント額を負担する店舗のウォレットID
-        'is_disabled' => FALSE                    // 無効化されているかどうかのフラグ
+        'is_disabled' => TRUE                     // 無効化されているかどうかのフラグ
     ]
 );
 ```
@@ -713,6 +713,7 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 |422|check_not_found|これはチャージQRコードではありません|This is not a topup QR code|
 |422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
+|422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
 |422|account_restricted|特定のアカウントの支払いに制限されています|The account is restricted to pay for a specific account|
 |422|account_balance_not_enough|口座残高が不足してます|The account balance is not enough|
@@ -732,7 +733,7 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
 |422|customer_account_not_found||The customer account is not found|
-|422|shop_account_not_found||The shop account is not found|
+|422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
 |422|account_not_accessible|アカウントにアクセスできません|The account is not accessible by this user|

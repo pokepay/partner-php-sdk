@@ -2,7 +2,7 @@ method,path,status_code,type,ja,en
 GET,/user,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 GET,/dashboard,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/transfers,403,,,
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -17,8 +17,9 @@ POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of '
 ,,403,,,
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -38,7 +39,7 @@ POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of '
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -59,6 +60,7 @@ POST,/transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
 ,,409,already_registered_veritrans_card,"このカードは既に登録されています",
 ,,409,already_registered_veritrans_account,"この会員は既に登録されています",
 ,,422,transaction_not_found,"取引が見つかりません",Transaction not found
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,can_not_refund_bank_transaction,"銀行取引はキャンセルできません",Bank transactions cannot be cancelled.
 ,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
 ,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
@@ -76,6 +78,7 @@ POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,On
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -103,14 +106,15 @@ POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,On
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
-,,422,private_money_not_found,,Private money not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,check_not_found,"これはチャージQRコードではありません",This is not a topup QR code
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -130,7 +134,7 @@ POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザ
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -145,6 +149,7 @@ POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザ
 POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -164,7 +169,7 @@ POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -176,6 +181,7 @@ POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理
 POST,/transactions/payment,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -203,14 +209,15 @@ POST,/transactions/payment,403,unpermitted_admin_user,"この管理ユーザに�
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
-,,422,private_money_not_found,,Private money not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/transfer,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -230,7 +237,7 @@ POST,/transactions/transfer,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -249,6 +256,7 @@ POST,/transactions/exchange,422,account_not_found,"アカウントが見つか�
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
 ,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
@@ -275,12 +283,13 @@ POST,/transactions/exchange,422,account_not_found,"アカウントが見つか�
 POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対して許可されていない金額です。",The amount is unacceptable for the CPM token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,cpm_token_already_proceed,"このCPMトークンは既に処理されています。",The CPM token is already proceed
 ,,422,cpm_token_already_expired,"このCPMトークンは既に失効しています。",The CPM token is already expired
 ,,422,cpm_token_not_found,"CPMトークンが見つかりませんでした。",The CPM token is not found.
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -300,7 +309,7 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -313,13 +322,14 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 POST,/transactions/bulk,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,organization_not_issuer,"発行体以外に許可されていない操作です",Unpermitted operation except for issuer organizations.
 ,,409,,,
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,bulk_transaction_invalid_csv_format,"入力されたCSVデータに誤りがあります",Invalid csv format
 POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,cashtray_not_found,"決済QRコードが見つかりません",Cashtray is not found
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -339,7 +349,7 @@ POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -356,10 +366,10 @@ POST,/external-transactions,400,invalid_parameters,"項目が無効です",Inval
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
@@ -368,6 +378,7 @@ POST,/external-transactions,400,invalid_parameters,"項目が無効です",Inval
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
 ,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
@@ -393,6 +404,7 @@ POST,/external-transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK toke
 ,,409,already_registered_veritrans_card,"このカードは既に登録されています",
 ,,409,already_registered_veritrans_account,"この会員は既に登録されています",
 ,,422,event_not_found,"イベントが見つかりません",Event not found
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,can_not_refund_bank_transaction,"銀行取引はキャンセルできません",Bank transactions cannot be cancelled.
 ,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
 ,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
@@ -412,8 +424,8 @@ GET,/bulk-transactions/:uuid/jobs,403,unpermitted_admin_user,"この管理ユー
 ,,422,bulk_transaction_not_found,"Bulk取引が見つかりません",Bulk transaction not found
 GET,/bills,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 POST,/bills,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,shop_account_not_found,,The shop account is not found
-,,422,private_money_not_found,,Private money not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -422,20 +434,20 @@ PATCH,/bills/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限
 ,,404,notfound,,Not found
 GET,/checks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,organization_not_found,,Organization not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/checks,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameter_only_merchants_can_attach_points_to_check,,Only merchants can attach points to check
-,,400,invalid_parameter_bear_point_account_identification_item_not_unique,"ポイントを負担する店舗アカウントを指定するリクエストパラメータには、アカウントID、またはユーザIDのどちらかを含めることができます",Request parameters include either bear_point_account or bear_point_shop_id.
 ,,400,invalid_parameter_combination_usage_limit_and_is_onetime,,'usage_limit' can not be specified if 'is_onetime' is true.
-,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,400,invalid_parameter_expires_at,,'expires_at' must be in the future
+,,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,400,invalid_parameter_bear_point_account_identification_item_not_unique,"ポイントを負担する店舗アカウントを指定するリクエストパラメータには、アカウントID、またはユーザIDのどちらかを含めることができます",Request parameters include either bear_point_account or bear_point_shop_id.
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
-,,422,shop_account_not_found,,The shop account is not found
-,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,bear_point_account_not_found,"ポイントを負担する店舗アカウントが見つかりません",Bear point account not found.
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
 GET,/checks/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
@@ -466,8 +478,8 @@ PATCH,/users/invitations/:uuid,403,,,
 ,,409,admin_user_conflict,,The Admin-user is already registered
 ,,503,failed_to_send_email,,Failed to send an E-mail.
 POST,/users/:uuid/accounts,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,user_not_found,,The user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,user_not_found,"ユーザーが見つかりません",The user is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,user_attributes_external_id_not_match,"ユーザー属性情報の外部IDが一致しません",Not match external id of user attributes
 ,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
@@ -486,13 +498,13 @@ DELETE,/users/:uuid,403,,,
 GET,/private-moneys,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,organization_not_found,,Organization not found
 GET,/private-moneys/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 GET,/private-moneys/:uuid/summary,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,,,
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/private-moneys/:uuid/clearings,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/private-moneys/:uuid/organization-summaries,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
@@ -506,7 +518,7 @@ POST,/private-moneys,400,invalid_parameters,"項目が無効です",Invalid para
 GET,/terminals,403,,,
 GET,/organizations,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 POST,/organizations,403,,,
 ,,409,organization_conflict,,The organization code is already used
 ,,409,shop_name_conflict,,The shop name is already used
@@ -524,7 +536,7 @@ PUT,/organizations/:code,403,,,
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/organizations/:code/shops,403,,,
 GET,/shops,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,organization_not_found,,Organization not found
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/shops,403,,,
@@ -545,6 +557,7 @@ GET,/shops/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限�
 PATCH,/shops/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,409,shop_name_conflict,,The shop name is already used
+,,422,head_office_can_not_be_disabled,,Head office can not be disabled
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,unavailable_private_money,,Given private money(s) is/are not available
 ,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
@@ -553,13 +566,13 @@ GET,/customers,403,unpermitted_admin_user,"この管理ユーザには権限が�
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/customers/transactions,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/customers/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 PATCH,/clearings/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,clearing_not_found,"精算が見つかりません",Clearing not found
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -567,10 +580,10 @@ GET,/clearings,403,unpermitted_admin_user,"この管理ユーザには権限が�
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/clearings/preview,400,clearing_to_should_be_past_date,"締め日は過去の日付を指定してください",Should set past date for 'closing_date'
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 POST,/clearings,400,clearing_to_should_be_past_date,"締め日は過去の日付を指定してください",Should set past date for 'closing_date'
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 GET,/clearings/flico,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 GET,/clearings/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,clearing_not_found,"精算が見つかりません",Clearing not found
@@ -583,7 +596,7 @@ POST,/messaging-operations,400,messaging_operation_over_transfer_limit,,The mess
 ,,403,,,
 ,,409,messaging_operation_already_done,,The messaging operation is already done
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/messaging-operations/receivers,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
@@ -628,13 +641,13 @@ POST,/device/pokeregis/:serial-number,400,terminal_is_already_invalidated,,The t
 ,,500,,,
 GET,/device/kiosks,400,,,
 ,,403,,,
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,organization_not_found,,Organization not found
 GET,/device/kiosk-maintenances,403,,,
 GET,/device/kiosks/:kiosk-id,400,,,
 ,,403,,,
 ,,404,,,
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,organization_not_found,,Organization not found
 POST,/merchandise-tag,403,,,
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -649,10 +662,10 @@ DELETE,/tokens/:token,403,unpermitted_admin_user,"この管理ユーザには権
 ,,404,notfound,,Not found
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/accounts/customers,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 POST,/accounts/customers,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,user_not_found,,The user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,user_not_found,"ユーザーが見つかりません",The user is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,user_attributes_external_id_not_match,"ユーザー属性情報の外部IDが一致しません",Not match external id of user attributes
 ,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
@@ -664,7 +677,7 @@ PATCH,/accounts/:uuid/customers,403,unpermitted_admin_user,"この管理ユー�
 ,,422,user_attributes_not_found,"ユーザー属性情報が存在しません",Not found the user attrubtes
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/accounts/shops,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 GET,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -679,6 +692,7 @@ DELETE,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには�
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
 ,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
@@ -741,11 +755,11 @@ PATCH,/seven-bank-atm-sessions/:qr-info,403,unpermitted_admin_user,"この管理
 POST,/campaigns,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,campaign_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,campaign_period_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
 ,,422,campaign_invalid_period,,Invalid campaign period starts_at later than ends_at
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 GET,/campaigns,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,503,temporarily_unavailable,,Service Unavailable
 PATCH,/campaigns/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
@@ -767,12 +781,12 @@ DELETE,/webhooks/:uuid,403,unpermitted_admin_user,"この管理ユーザには�
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/coupons,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 POST,/coupons,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,partner_storage_not_found,"指定したIDのデータは保存されていません",Not found by storage_id
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,coupon_image_storage_conflict,"クーポン画像のストレージIDは既に存在します",The coupon image storage_id is already exists
 GET,/coupons/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
@@ -786,7 +800,7 @@ POST,/storage/v1,400,partner_decryption_failed,"リクエスト中の暗号デ�
 ,,400,partner_client_not_found,"partner_clientが見つかりません。",The partner client is not found.
 ,,422,formats_not_supported_by_storage,"このフォーマットは対応していません",This format is not supported
 POST,/user-devices,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,user_not_found,,The user is not found
+,,422,user_not_found,"ユーザーが見つかりません",The user is not found
 GET,/user-devices/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,user_device_not_found,,The user-device not found
 POST,/user-devices/:uuid/activate,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -796,25 +810,27 @@ POST,/user-devices/:uuid/banks,403,unpermitted_admin_user,"この管理ユーザ
 ,,422,user_device_is_disabled,"このデバイスは無効化されています",The user-device is disabled
 ,,422,user_device_not_found,,The user-device not found
 ,,422,bank_registration_limit_error,"8口座を越えて登録できません",Can not register more than 8 accounts.
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,paytree_disabled_private_money,"このマネーは銀行から引き落とし出来ません",This money cannot be charged from the bank
 ,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
 ,,503,incomplete_configration_for_organization_bank,"現状、このマネーは銀行からのチャージを行えません。システム管理者へお問合せ下さい","Currently, this money cannot be topup from this bank. Please contact your system administrator."
 GET,/user-devices/:uuid/banks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,forbidden,,Forbidden
-,,422,private_money_not_found,,Private money not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,user_device_not_found,,The user-device not found
 POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外部サービス起因により、チャージに失敗しました",Failure to topup due to external services of the bank
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,forbidden,,Forbidden
 ,,403,user_bank_disabled_error,"現在、このユーザーは銀行からのチャージは利用できません",Topup from this user's bank have now been stopped.
 ,,404,user_bank_not_found,"登録された銀行が見つかりません",Bank not found
-,,422,private_money_not_found,,Private money not found
+,,422,user_not_found,"ユーザーが見つかりません",The user is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,user_device_is_disabled,"このデバイスは無効化されています",The user-device is disabled
 ,,422,user_device_not_found,,The user-device not found
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
@@ -834,7 +850,7 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,,The shop account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
