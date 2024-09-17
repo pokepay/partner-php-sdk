@@ -144,12 +144,19 @@ class PartnerAPI
                     $request->responseClass
                 );
             } catch (Error\ApiConnection $e) {
+                if (!$request->isRetriable())
+                {
+                    throw $e;
+                }
+
                 // Retry when timeout
-                if ($e->errno != CURLE_OPERATION_TIMEDOUT || $retry >= $this->maxRetries) {
+                if ($e->errno != CURLE_OPERATION_TIMEDOUT || $retry >= $this->maxRetries)
+                {
                     throw $e;
                 }
             } catch (Error\HttpRequest $e) {
-                if (array_key_exists('type', $e->response)
+                if (is_array($e->response)
+                    && array_key_exists('type', $e->response)
                     && $e->response['type'] === 'request_id_conflict')
                 {
                     throw new Error\RequestIdConflict(
@@ -159,8 +166,13 @@ class PartnerAPI
                         $request->getParams()['request_id']
                     );
                 }
+                if (!$request->isRetriable())
+                {
+                    throw $e;
+                }
                 // Retry on 503
-                if ($e->code != 503 || $retry >= $this->maxRetries) {
+                if ($e->code != 503 || $retry >= $this->maxRetries)
+                {
                     throw $e;
                 }
             }

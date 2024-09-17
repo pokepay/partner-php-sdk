@@ -51,4 +51,13 @@ abstract class Base
     {
         return array();
     }
+
+    public function isRetriable()
+    {
+        $params = $this->getParams();
+        return (
+            $this->method != 'POST'
+            || (is_array($params) && array_key_exists('request_id', $params))
+        );
+    }
 }
