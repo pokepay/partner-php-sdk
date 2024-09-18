@@ -56,7 +56,7 @@ abstract class Base
     {
         $params = $this->getParams();
         return (
-            $this->method != 'POST'
+            $this->method == 'GET' || $this->method == 'PATCH'
             || (is_array($params) && array_key_exists('request_id', $params))
         );
     }
