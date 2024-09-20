@@ -175,9 +175,9 @@ class PartnerAPI
                 {
                     throw $e;
                 }
+                sleep(3);
             }
             ++$retry;
-            sleep(3);
             $request->setCallId(null); // Re-generate the call ID
         }
     }
