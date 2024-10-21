@@ -116,6 +116,7 @@ while (true) {
 - [ListTransactions](./transaction.md#list-transactions): 【廃止】取引履歴を取得する
 - [CreateTransaction](./transaction.md#create-transaction): 【廃止】チャージする
 - [ListTransactionsV2](./transaction.md#list-transactions-v2): 取引履歴を取得する
+- [ListBillTransactions](./transaction.md#list-bill-transactions): 支払い取引履歴を取得する
 - [CreateTopupTransaction](./transaction.md#create-topup-transaction): チャージする
 - [CreatePaymentTransaction](./transaction.md#create-payment-transaction): 支払いする
 - [CreateCpmTransaction](./transaction.md#create-cpm-transaction): CPMトークンによる取引作成
@@ -127,6 +128,7 @@ while (true) {
 - [GetBulkTransaction](./transaction.md#get-bulk-transaction): バルク取引ジョブの実行状況を取得する
 - [ListBulkTransactionJobs](./transaction.md#list-bulk-transaction-jobs): バルク取引ジョブの詳細情報一覧を取得する
 - [RequestUserStats](./transaction.md#request-user-stats): 指定期間内の顧客が行った取引の統計情報をCSVでダウンロードする
+- [TerminateUserStats](./transaction.md#terminate-user-stats): RequestUserStatsのタスクを強制終了する
 
 ### Transfer
 - [GetAccountTransferSummary](./transfer.md#get-account-transfer-summary): 
@@ -218,6 +220,7 @@ while (true) {
 - [ActivateUserDevice](./user_device.md#activate-user-device): デバイスの有効化
 
 ### BankPay
+- [DeleteBanks](./bank_pay.md#delete-banks): 銀行口座の削除
 - [ListBanks](./bank_pay.md#list-banks): 登録した銀行の一覧
 - [CreateBank](./bank_pay.md#create-bank): 銀行口座の登録
 - [CreateBankTopupTransaction](./bank_pay.md#create-bank-topup-transaction): 銀行からのチャージ

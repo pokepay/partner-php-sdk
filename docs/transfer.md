@@ -8,8 +8,8 @@
 $request = new Request\GetAccountTransferSummary(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'from' => "2023-06-11T14:41:15.000000Z",  // 集計期間の開始時刻
-        'to' => "2023-03-08T13:39:55.000000Z",    // 集計期間の終了時刻
+        'from' => "2022-07-09T06:30:41.000000Z",  // 集計期間の開始時刻
+        'to' => "2021-04-16T20:31:59.000000Z",    // 集計期間の終了時刻
         'transfer_types' => ["topup", "payment"]  // 取引明細種別 (複数指定可)
     ]
 );
@@ -125,19 +125,19 @@ $request = new Request\GetAccountTransferSummary(
 ```PHP
 $request = new Request\ListTransfers(
     [
-        'from' => "2024-04-07T17:44:58.000000Z",
-        'to' => "2023-09-09T16:22:56.000000Z",
-        'page' => 7604,
-        'per_page' => 5057,
+        'from' => "2020-10-25T17:53:40.000000Z",
+        'to' => "2022-12-25T10:07:32.000000Z",
+        'page' => 8885,
+        'per_page' => 8783,
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'shop_name' => "Fn1WKJz5hhBZBCZgSERTDaoK9IqITw9RXh5VLaBXSS3EzsrMpj8GBIyJaRyweuGKy2nXN4UBPwGQ9mhvxLr7QQxCiR4LJ0VAGQ0LknXBVXV6IePzMvb8rIAKhBAUImOpB9NJd0FGb0jOdIa2VbV1E7pIBf60ZOpXb0uUTjEzrW5FEq6VpVqu1DpFd0JaBsPBEjjxsN82R5bV74h6",
+        'shop_name' => "UibZax1gbEqwtEhHNUjZJEl7H6aHeFVmJSAKrLNuNDUQhJfNq76RxAuxSVrnur4Ju4ayidm5BuCe0yTSEIanUYTV2eUYLa0Qhqw2R1myjYzFL4j0HTXKtxMi6tvMf7GbuKVOo81owGN6i0XTT33lqYdKQ0h3ghVZk7eOE9tcwx8MOKl5MRsa1MFEYPOVzvPSXDUkbgX2oBshUtXGZ9lfp9TwgYPOmismihXWyqdhqoMR6oAdT5yPsPRTmUY",
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        'customer_name' => "MclFLskpVJhF8OvhWGp3gTZC60RTw4fZ8zWBqSC3vDIMcnooU2vsEkhFzbMP7H4x70jy8CyXSjsNQfhm4JdiSR8LU0sAxVpKo9Pr8tnCR4b3VVcnR7ySaTJSLXaRbjFaOCY9HY0faJMcRsZ3tfn14pqdpY2gOVzxC2AMFcqtkzhdfPKiy9SERDVnpaYhOv",
+        'customer_name' => "dZdYDDGZDuZn0XgqQIqTu14tSh13qLZDYdRTWbMgZiB4q5yXIKvcyeytZUeCOzn479Q7e7CQ6mogsi4OQ6jQwMdVQzET3CTZR3naadmHoO937wRncWgLEMvwuXtyGneCNJhR9grzsET9HHziGJ2iqEYWh5QfKEnNvZa51B",
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         'is_modified' => TRUE,
-        'transaction_types' => ["exchange"],
-        'transfer_types' => ["payment", "cashback"], // 取引明細の種類でフィルターします。
+        'transaction_types' => ["expire"],
+        'transfer_types' => ["expire", "coupon", "payment", "cashback", "topup", "transfer", "exchange"], // 取引明細の種類でフィルターします。
         'description' => "店頭QRコードによる支払い"          // 取引詳細説明文
     ]
 );
@@ -372,20 +372,20 @@ $request = new Request\ListTransfers(
 $request = new Request\ListTransfersV2(
     [
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'shop_name' => "oQafvlfkuyBchbjOVF",      // 店舗名
+        'shop_name' => "Imb7878ag0GpEoXRZP9Tuo6ihkLtNpmjVgJl2arbhJouxWQ6FlBm7k1iTzlm9ILQGKVJoUCSY35cdkgvsbAYCbaEHjTHUmx8bpMxYByLz0xsJRhRVsB9HjzBAZfWzO75yHWR5FLMa9CO3GmqQepv7doxpRjgZI2VSDvLJkkZMMdEANfWVavAje3PJg4zkA5dwRQrAEDCEBzCTk0pNAGkxkj3y6QjLE9oTv9S3Zg4O5dK9OBTn3gY0HIwJr5Xn", // 店舗名
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-        'customer_name' => "aAmwoPiUeFs2qGGZk77FXigkPx1NC7bcdhHDyq2BmegmNcooOzsV0UAnFDq2j42XbKSjWX0mczdG92I3EQWa6MviKhzgN1WE1E9QE8I1WOtKGTOoDsggK2zVvIrNmjPyMt7JZTknlcSLOAfgHki7iEUUEZsYB8I8w6YX9AjYRSoiU1BYQYTGkBMdZ9gxwOlUDOeBSRiyqeameMaY0bgN8gTUkelv3hkGmk4iWQZ", // エンドユーザー名
+        'customer_name' => "6R9PIw5eC52tvIBnMyMg4CnT2dj7ORUTt4jEgn4792da7QYy7V605lzcBixerwgOsZo2yFQXiifPwyEPkMTjwK5UmBamQcUvvHD25XYGaGoRmlkWpVKSQYACWhdJgT5oXIAxp1c5Q2vG7", // エンドユーザー名
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'is_modified' => FALSE,                   // キャンセルフラグ
-        'transaction_types' => ["payment", "expire", "exchange", "topup"], // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
+        'is_modified' => TRUE,                    // キャンセルフラグ
+        'transaction_types' => ["transfer", "topup", "exchange", "cashback"], // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransferのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransferのID
         'per_page' => 50,                         // 1ページ分の取引数
-        'transfer_types' => ["transfer"],         // 取引明細種別 (複数指定可)
+        'transfer_types' => ["coupon", "topup", "campaign", "payment"], // 取引明細種別 (複数指定可)
         'description' => "店頭QRコードによる支払い",         // 取引詳細説明文
-        'from' => "2020-08-27T19:25:02.000000Z",  // 開始日時
-        'to' => "2020-11-16T22:04:08.000000Z"     // 終了日時
+        'from' => "2024-05-28T15:52:18.000000Z",  // 開始日時
+        'to' => "2020-11-04T09:33:44.000000Z"     // 終了日時
     ]
 );
 ```

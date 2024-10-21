@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "825a4ce6-af48-4f92-92de-d87acb01778b"
+            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "825a4ce6-af48-4f92-92de-d87acb01778b",
+            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517",
             [
-                'is_disabled' => FALSE
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "825a4ce6-af48-4f92-92de-d87acb01778b",
+            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517",
             [
-                'description' => "lBqoPAVuBC2EUluqb81O3ZagKE8LcCa8bz2nHShe5EoHVudmx1iMacSt3whWHQ5cbR62EyfrAyRxoXmZ8au8D4esSHy55WYfHfvN0QEBe9OUmuQoNyAxdh",
-                'is_disabled' => TRUE
+                'description' => "RBh7JkqQ2DDr8e6Qf8fK7SBxethCuCr4dBSWzD3agMTAvZtCmtviHLHOBHoLHZ5Hyso5u9Osjia9h3ovwp1QqOYhJfTJv",
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -60,10 +60,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "825a4ce6-af48-4f92-92de-d87acb01778b",
+            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517",
             [
-                'amount' => 2260.0,
-                'description' => "5YfaNVM2xjqlPxxy8RqwFWTQ1hvVt9bN2zIxNZx4eE9mHPjq6XCvYjxbcuNA5AOQHru6gAXocPu4UpOUbFxl1xg8SX1voG8Gydqo4fQ7D47J36mgyKf2pLnur36TYPgxIzfeirgwWnuJKugM3OQh2JHBnxbiEM0oFGnnvKX9mW4mLerHweV6yDq",
+                'amount' => 140.0,
+                'description' => "4bnDyHKg7jf7TRBDusrb62imeaN035TYhQYVT6897JBIT98Ea3vOiHnJbC3RzxMsGYTRQVbbDGQ3KFvfr7wcTIqfZGa8VmM7LxaafZsEiZ4h1kUtLESZUqCMHUv6WI9WlLqAjFFVtovIA3w7if4YoZJ6xmZ8N4p4uCNZaugRp11iM",
                 'is_disabled' => FALSE
             ]
         );

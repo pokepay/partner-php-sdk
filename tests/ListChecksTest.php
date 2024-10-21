@@ -22,7 +22,7 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'is_disabled' => TRUE
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -39,7 +39,7 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'is_onetime' => FALSE,
+                'is_onetime' => TRUE,
                 'is_disabled' => TRUE
             ]
         );
@@ -57,9 +57,9 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'description' => "MFu",
-                'is_onetime' => TRUE,
-                'is_disabled' => TRUE
+                'description' => "rfIL",
+                'is_onetime' => FALSE,
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -76,10 +76,10 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'issuer_shop_id' => "6d9c9d8c-24ed-43b2-9001-703ddd0eae48",
-                'description' => "Y5rxBRsFTy",
-                'is_onetime' => FALSE,
-                'is_disabled' => FALSE
+                'issuer_shop_id' => "eda02500-664e-4e38-97fb-26bf47759f9c",
+                'description' => "7",
+                'is_onetime' => TRUE,
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -96,9 +96,9 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'created_to' => "2020-03-16T19:15:17.000000Z",
-                'issuer_shop_id' => "f502dcf6-9aee-4325-a5af-1c77ca1cba62",
-                'description' => "d4rNZJsCq7",
+                'created_to' => "2023-04-23T01:28:23.000000Z",
+                'issuer_shop_id' => "dd29802a-5d83-413f-8cfe-74066b7b4bca",
+                'description' => "oY",
                 'is_onetime' => FALSE,
                 'is_disabled' => FALSE
             ]
@@ -117,12 +117,12 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'created_from' => "2020-01-22T06:25:49.000000Z",
-                'created_to' => "2020-10-06T06:24:16.000000Z",
-                'issuer_shop_id' => "ba8a1508-dfb7-4061-83a0-f9726dfada77",
-                'description' => "2NKYH12xH",
-                'is_onetime' => TRUE,
-                'is_disabled' => FALSE
+                'created_from' => "2021-11-04T11:35:54.000000Z",
+                'created_to' => "2022-11-08T06:35:09.000000Z",
+                'issuer_shop_id' => "9f6b96c0-dfe2-4138-89f3-a10a20987af0",
+                'description' => "1FcaYx8",
+                'is_onetime' => FALSE,
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -139,11 +139,11 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'expires_to' => "2022-02-19T08:35:27.000000Z",
-                'created_from' => "2021-08-15T09:13:42.000000Z",
-                'created_to' => "2023-10-19T16:42:25.000000Z",
-                'issuer_shop_id' => "6f3fc2c9-4477-4213-942c-62c057d20078",
-                'description' => "vxk",
+                'expires_to' => "2021-04-29T11:14:49.000000Z",
+                'created_from' => "2024-09-17T11:10:47.000000Z",
+                'created_to' => "2021-02-14T00:09:23.000000Z",
+                'issuer_shop_id' => "43529fa7-7637-4992-9e4b-7d816ca05cb2",
+                'description' => "oQE",
                 'is_onetime' => TRUE,
                 'is_disabled' => TRUE
             ]
@@ -162,13 +162,13 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'expires_from' => "2022-04-09T10:57:33.000000Z",
-                'expires_to' => "2021-01-21T20:17:59.000000Z",
-                'created_from' => "2024-01-21T15:48:46.000000Z",
-                'created_to' => "2024-04-20T18:52:46.000000Z",
-                'issuer_shop_id' => "f9181e5e-2656-4459-827d-e74423676fd1",
-                'description' => "RCyVTR3czN",
-                'is_onetime' => FALSE,
+                'expires_from' => "2023-08-18T13:32:31.000000Z",
+                'expires_to' => "2020-07-10T20:09:28.000000Z",
+                'created_from' => "2024-08-30T22:02:55.000000Z",
+                'created_to' => "2020-10-04T10:56:49.000000Z",
+                'issuer_shop_id' => "04c2c0e4-ee76-4c1c-aefa-23874afee603",
+                'description' => "KVxdoit0n",
+                'is_onetime' => TRUE,
                 'is_disabled' => FALSE
             ]
         );
@@ -186,13 +186,13 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'organization_code' => "wQ9Lz",
-                'expires_from' => "2020-02-07T16:32:25.000000Z",
-                'expires_to' => "2022-06-26T01:11:01.000000Z",
-                'created_from' => "2021-04-18T09:06:18.000000Z",
-                'created_to' => "2022-11-18T04:47:25.000000Z",
-                'issuer_shop_id' => "222b6aa4-cf69-42f1-89fe-b1eade570316",
-                'description' => "MdQ1lZ",
+                'organization_code' => "RdkY0a6T9IRy95uKnYj6",
+                'expires_from' => "2021-07-21T06:51:59.000000Z",
+                'expires_to' => "2022-01-15T21:12:06.000000Z",
+                'created_from' => "2021-09-02T02:43:46.000000Z",
+                'created_to' => "2023-08-06T09:38:39.000000Z",
+                'issuer_shop_id' => "201e2b83-18f1-402d-808e-1dc4c80bd16b",
+                'description' => "4zF",
                 'is_onetime' => FALSE,
                 'is_disabled' => TRUE
             ]
@@ -211,16 +211,16 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'private_money_id' => "cd3ebd81-3ef9-41fb-81d2-6807661adf80",
-                'organization_code' => "VB9A32ESqVUKE1GN9JqLEvyRd",
-                'expires_from' => "2023-09-18T23:48:05.000000Z",
-                'expires_to' => "2022-04-16T16:53:58.000000Z",
-                'created_from' => "2020-11-06T19:35:06.000000Z",
-                'created_to' => "2022-08-28T13:01:50.000000Z",
-                'issuer_shop_id' => "e2ea8d27-37fb-4bb2-b0bc-2ff7a80f97f3",
-                'description' => "4Z1pnjZ8xW",
-                'is_onetime' => FALSE,
-                'is_disabled' => TRUE
+                'private_money_id' => "c0917074-e8f6-46c1-83a0-1cdd2f6c1e37",
+                'organization_code' => "t4NS9wkdOXwioDpfXuzoNb",
+                'expires_from' => "2022-05-14T21:29:54.000000Z",
+                'expires_to' => "2023-01-21T02:32:01.000000Z",
+                'created_from' => "2023-09-02T13:45:51.000000Z",
+                'created_to' => "2021-06-27T19:24:57.000000Z",
+                'issuer_shop_id' => "72a8e55d-15aa-4b75-8b65-52a1880d0eaf",
+                'description' => "j9znX2X",
+                'is_onetime' => TRUE,
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -237,17 +237,17 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'per_page' => 8780,
-                'private_money_id' => "5265e465-8214-4829-8e33-028d144602d7",
-                'organization_code' => "KGyHXCKDfS0S9olx",
-                'expires_from' => "2021-03-28T04:10:43.000000Z",
-                'expires_to' => "2021-11-01T23:20:39.000000Z",
-                'created_from' => "2024-09-05T15:06:36.000000Z",
-                'created_to' => "2022-10-30T14:27:04.000000Z",
-                'issuer_shop_id' => "8eeca673-4186-48fe-9333-44b42ab264e5",
-                'description' => "yHhIbte",
-                'is_onetime' => FALSE,
-                'is_disabled' => FALSE
+                'per_page' => 8559,
+                'private_money_id' => "0e65db05-3dc6-4ba5-baac-be51bada5be3",
+                'organization_code' => "5QEOmdgUm73I2kFc",
+                'expires_from' => "2020-01-21T19:39:55.000000Z",
+                'expires_to' => "2022-05-24T22:27:26.000000Z",
+                'created_from' => "2020-09-17T20:59:41.000000Z",
+                'created_to' => "2021-02-09T18:52:01.000000Z",
+                'issuer_shop_id' => "77b23aeb-57f3-4a5a-821d-947f9d2f56b6",
+                'description' => "yT3",
+                'is_onetime' => TRUE,
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -264,16 +264,16 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'page' => 5520,
-                'per_page' => 8734,
-                'private_money_id' => "4fd37eaf-b531-4997-b451-22060099ed84",
-                'organization_code' => "OMttUhD0OiwEvovxL7L6kZ3KaNub1zw",
-                'expires_from' => "2022-08-13T01:49:14.000000Z",
-                'expires_to' => "2021-01-30T07:38:07.000000Z",
-                'created_from' => "2023-02-13T17:21:02.000000Z",
-                'created_to' => "2020-02-27T20:09:08.000000Z",
-                'issuer_shop_id' => "93aafadb-a387-45c8-af29-a3a817fe188d",
-                'description' => "j8ik3dms",
+                'page' => 9600,
+                'per_page' => 87,
+                'private_money_id' => "a8b8f410-d352-4951-843e-6a37884d22cf",
+                'organization_code' => "823WFeXCsADfv",
+                'expires_from' => "2023-05-11T13:54:21.000000Z",
+                'expires_to' => "2020-01-13T01:26:13.000000Z",
+                'created_from' => "2022-07-02T00:06:35.000000Z",
+                'created_to' => "2020-01-07T02:30:24.000000Z",
+                'issuer_shop_id' => "01f62a9d-2753-4b1a-a5ac-4cf43f2ce74a",
+                'description' => "Lu",
                 'is_onetime' => FALSE,
                 'is_disabled' => FALSE
             ]
