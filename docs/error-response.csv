@@ -12,6 +12,8 @@ GET,/transactions,403,,,
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/transactions-v2,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,503,temporarily_unavailable,,Service Unavailable
+GET,/transactions/bill,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
@@ -618,6 +620,10 @@ POST,/user-stats,400,invalid_parameters,"項目が無効です",Invalid paramete
 ,,422,invalid_promotional_operation_user,"ユーザーの指定に不正な値が含まれています",Invalid user data is specified
 ,,422,invalid_promotional_operation_status,"不正な処理ステータスです",Invalid operation status is specified
 ,,503,user_stats_operation_service_unavailable,"一時的にユーザー統計サービスが利用不能です",User stats service is temporarily unavailable
+POST,/user-stats/terminate,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,user_stats_operation_already_done,"指定されたIDの集計処理タスクは既に完了しています",The specified user stats operation is already done
+,,422,user_stats_operation_not_found,"指定されたIDの集計処理タスクが見つかりません",User stats task not found for the operation ID
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/device/pokeregis,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
 ,,409,hardware_id_conflict,,Hardware id is already registered
@@ -862,6 +868,10 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
 ,,503,temporarily_unavailable,,Service Unavailable
 ,,503,incomplete_configration_for_organization_bank,"現状、このマネーは銀行からのチャージを行えません。システム管理者へお問合せ下さい","Currently, this money cannot be topup from this bank. Please contact your system administrator."
+DELETE,/user-devices/:uuid/banks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,403,forbidden,,Forbidden
+,,404,user_bank_not_found,"登録された銀行が見つかりません",Bank not found
+,,422,user_device_not_found,,The user-device not found
 POST,/paytree/charge-entry-result,400,partner_decryption_failed,"リクエスト中の暗号データを復号化することができませんでした。",Could not decrypt the data.
 ,,400,partner_client_not_found,"partner_clientが見つかりません。",The partner client is not found.
 POST,/paytree/reconcile,400,invalid_parameters,"項目が無効です",Invalid parameters
