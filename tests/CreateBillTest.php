@@ -8,8 +8,8 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "9a5387ae-5073-455d-b2b6-f5c50f9210c4",
-            "f41d19fb-7d26-4d80-abfa-9dc49d937f4c"
+            "c404cacf-f9c6-4b71-8977-32134cce0494",
+            "887fe62c-62c0-4078-b276-e6f80b19b3eb"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "9a5387ae-5073-455d-b2b6-f5c50f9210c4",
-            "f41d19fb-7d26-4d80-abfa-9dc49d937f4c",
+            "c404cacf-f9c6-4b71-8977-32134cce0494",
+            "887fe62c-62c0-4078-b276-e6f80b19b3eb",
             [
-                'description' => "nAr7NHvMDZLOk3Kn6N9IKA2DQ0UDl0RkGXqQRpkGArTGUPugetKJLdESdgB4DMlPhuAgx6J23S5a4KJH2dJnXOeAy8xYgmSSWd6nFdHza9f0TF30iljDxgSpyfoekUtY"
+                'description' => "wVYBDQiRCyVTR3czNdwQ9LziqjK5MdQ1lZMyARXVB9A32ESqVUKE1GN9JqLEvyRdA5j20ws4Z1pnjZ8xWKeN3WKGyHXCKDfS0S9olxtCG8sS34enFyHhIbteE1tQOMttUhD0OiwEvovxL7L6kZ3KaNub1zwaCdHgj"
             ]
         );
         try {
@@ -43,11 +43,11 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "9a5387ae-5073-455d-b2b6-f5c50f9210c4",
-            "f41d19fb-7d26-4d80-abfa-9dc49d937f4c",
+            "c404cacf-f9c6-4b71-8977-32134cce0494",
+            "887fe62c-62c0-4078-b276-e6f80b19b3eb",
             [
-                'amount' => 1581.0,
-                'description' => "6dyRqDXbojqilSXXfgL13rI1kMYSkzLYWcqyBEPqq6jXoMPoI5dYhtAEAC8MN1MIRbysguh0xXqdkQK8VG"
+                'amount' => 3754.0,
+                'description' => "k3dmsSURUNaSg6OcHEmOeQFO3Ox8qDzSQ0YVNC6SfrLsEgbwDrafzykU4qQWw"
             ]
         );
         try {

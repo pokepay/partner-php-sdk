@@ -8,7 +8,7 @@ class CancelCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CancelCashtray(
-            "aaf6a586-88af-4705-b315-e668c4144e0c"
+            "0ae2c6fe-fceb-44b4-b4a6-23d66df3efbd"
         );
         try {
             $response = $client->send($request);

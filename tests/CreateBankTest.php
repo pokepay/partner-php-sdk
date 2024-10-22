@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "9d6194de-83c6-43a7-a890-98b9b2af3b6b",
-            "67b1afa0-4b25-439c-9d02-28d728de8b33",
-            "0yXFj5pEZQNOtIwcrR2Tap7tnXzfq7vVXcZ",
-            "XkAjYTEO65NQtFJaRQvj5yyqZjp"
+            "528e1122-9e40-4382-82b2-97dc79d33e2f",
+            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
+            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
+            "ATbfETgM8KooCtS8z1fc4bmpdj"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "9d6194de-83c6-43a7-a890-98b9b2af3b6b",
-            "67b1afa0-4b25-439c-9d02-28d728de8b33",
-            "0yXFj5pEZQNOtIwcrR2Tap7tnXzfq7vVXcZ",
-            "XkAjYTEO65NQtFJaRQvj5yyqZjp",
+            "528e1122-9e40-4382-82b2-97dc79d33e2f",
+            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
+            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
+            "ATbfETgM8KooCtS8z1fc4bmpdj",
             [
-                'birthdate' => "3EGDvx"
+                'birthdate' => "KCTf"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "9d6194de-83c6-43a7-a890-98b9b2af3b6b",
-            "67b1afa0-4b25-439c-9d02-28d728de8b33",
-            "0yXFj5pEZQNOtIwcrR2Tap7tnXzfq7vVXcZ",
-            "XkAjYTEO65NQtFJaRQvj5yyqZjp",
+            "528e1122-9e40-4382-82b2-97dc79d33e2f",
+            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
+            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
+            "ATbfETgM8KooCtS8z1fc4bmpdj",
             [
-                'email' => "c2vHpfKAFM@K87o.com",
-                'birthdate' => "EDfCnj"
+                'email' => "j1GK9RSuRp@80JI.com",
+                'birthdate' => "G"
             ]
         );
         try {

@@ -6,7 +6,7 @@ CPMトークンの現在の状態を取得します。CPMトークンの有効�
 
 ```PHP
 $request = new Request\GetCpmToken(
-    "zrqC43kvR5VzS4JSx7Qk5q"                      // cpmToken: CPMトークン
+    "NMgqN77FQwuiGtQW4pnFSk"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -44,15 +44,15 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 ```PHP
 $request = new Request\ListTransactions(
     [
-        'from' => "2021-11-26T04:55:53.000000Z",  // 開始日時
-        'to' => "2023-06-09T07:58:48.000000Z",    // 終了日時
+        'from' => "2023-02-24T02:39:56.000000Z",  // 開始日時
+        'to' => "2020-03-12T19:10:07.000000Z",    // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
-        'transaction_id' => "EJV",                // 取引ID
+        'transaction_id' => "z0ZAYuH",            // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'is_modified' => TRUE,                    // キャンセルフラグ
@@ -312,10 +312,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 3366,
-        'point_amount' => 2697,
-        'point_expires_at' => "2023-09-01T04:08:17.000000Z", // ポイント有効期限
-        'description' => "y6vGk0FuWZ3ptkSyNBcc9paWacdvlF8sKq6M8TMch0t9MLsXgvG8EYKbsPpBkO0z5h9VDX3NEhsO0rjGagOIQ6x9sSfu0zX8zdCniT7rbp4RdF8jzLLX07kGwmRZR89QJDyeQCnprhi7qh3KP4T37Wi9g9nZZhOiq9TM1kLnMOaPoayQ1SL4LwXctk2uyuazqzF"
+        'money_amount' => 5982,
+        'point_amount' => 3485,
+        'point_expires_at' => "2020-03-05T16:54:43.000000Z", // ポイント有効期限
+        'description' => "89ga8rAwXpAiqwTxt1HL4wWzmkMDA4SVfWD13Zj3L9DQPYajb0tVdWEdtL2ujHbA770c9iXi2Q1VWdznJovLhT0BrHHw3tEdBOJZocfpIFBg2EP1IMpzVlOR0ZjHbJ4pIYeH1mIjK91BovJNiyan2Rg9xEgMUhIRyB0Lq7z8Ljil9JSMA7rA7mkLLtmKfg"
     ]
 );
 ```
@@ -469,11 +469,11 @@ $request = new Request\ListTransactionsV2(
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "n",                  // 取引ID
-        'is_modified' => FALSE,                   // キャンセルフラグ
+        'transaction_id' => "DK2IgQ",             // 取引ID
+        'is_modified' => TRUE,                    // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-        'from' => "2020-09-01T04:44:16.000000Z",  // 開始日時
-        'to' => "2023-10-04T11:25:11.000000Z",    // 終了日時
+        'from' => "2021-06-15T23:35:43.000000Z",  // 開始日時
+        'to' => "2022-10-13T01:32:25.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -749,6 +749,266 @@ prev_page_cursor_idのtransaction自体は前のページには含まれませ�
 ---
 
 
+<a name="list-bill-transactions"></a>
+## ListBillTransactions: 支払い取引履歴を取得する
+支払いによって発生した取引を支払いのデータとともに一覧で返します。
+
+```PHP
+$request = new Request\ListBillTransactions(
+    [
+        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
+        'organization_code' => "pocketchange",    // 組織コード
+        'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
+        'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
+        'customer_name' => "太郎",                  // エンドユーザー名
+        'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザー端末ID
+        'description' => "店頭QRコードによる支払い",         // 取引説明文
+        'transaction_id' => "DYID",               // 取引ID
+        'bill_id' => "PEu",                       // 支払いQRコードのID
+        'is_modified' => FALSE,                   // キャンセルフラグ
+        'from' => "2020-01-28T06:42:52.000000Z",  // 開始日時
+        'to' => "2023-06-28T07:58:55.000000Z",    // 終了日時
+        'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
+        'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
+        'per_page' => 50                          // 1ページ分の取引数
+    ]
+);
+```
+
+
+
+### Parameters
+**`private_money_id`** 
+  
+
+マネーIDです。
+
+指定したマネーでの取引が一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`organization_code`** 
+  
+
+組織コードです。
+
+フィルターとして使われ、指定された組織の店舗での取引のみ一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "maxLength": 32,
+  "pattern": "^[a-zA-Z0-9-]*$"
+}
+```
+
+**`shop_id`** 
+  
+
+店舗IDです。
+
+フィルターとして使われ、指定された店舗での取引のみ一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`customer_id`** 
+  
+
+エンドユーザーIDです。
+
+フィルターとして使われ、指定されたエンドユーザーの取引のみ一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`customer_name`** 
+  
+
+エンドユーザー名です。
+
+フィルターとして使われ、入力された名前に部分一致するエンドユーザーでの取引のみ一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "maxLength": 256
+}
+```
+
+**`terminal_id`** 
+  
+
+エンドユーザーの端末IDです。
+フィルターとして使われ、指定された端末での取引のみ一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`description`** 
+  
+
+取引を指定の取引説明文でフィルターします。
+
+取引説明文が完全一致する取引のみ抽出されます。取引説明文は最大200文字で記録されています。
+
+```json
+{
+  "type": "string",
+  "maxLength": 200
+}
+```
+
+**`transaction_id`** 
+  
+
+取引IDです。
+
+フィルターとして使われ、指定された取引IDに部分一致(前方一致)する取引のみが一覧に表示されます。
+
+```json
+{
+  "type": "string"
+}
+```
+
+**`bill_id`** 
+  
+
+支払いQRコードのIDです。
+
+フィルターとして使われ、指定された支払いQRコードIDに部分一致(前方一致)する取引のみが一覧に表示されます。
+
+```json
+{
+  "type": "string"
+}
+```
+
+**`is_modified`** 
+  
+
+キャンセルフラグです。
+
+これにtrueを指定するとキャンセルされた取引のみ一覧に表示されます。
+デフォルト値はfalseで、キャンセルの有無にかかわらず一覧に表示されます。
+
+```json
+{
+  "type": "boolean"
+}
+```
+
+**`from`** 
+  
+
+抽出期間の開始日時です。
+
+フィルターとして使われ、開始日時以降に発生した取引のみ一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+**`to`** 
+  
+
+抽出期間の終了日時です。
+
+フィルターとして使われ、終了日時以前に発生した取引のみ一覧に表示されます。
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+**`next_page_cursor_id`** 
+  
+
+次ページへ遷移する際に起点となるtransactionのID(前ページの末尾要素のID)です。
+本APIのレスポンスにもnext_page_cursor_idが含まれており、これがnull値の場合は最後のページであることを意味します。
+UUIDである場合は次のページが存在することを意味し、このnext_page_cursor_idをリクエストパラメータに含めることで次ページに遷移します。
+
+next_page_cursor_idのtransaction自体は次のページには含まれません。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`prev_page_cursor_id`** 
+  
+
+前ページへ遷移する際に起点となるtransactionのID(次ページの先頭要素のID)です。
+
+本APIのレスポンスにもprev_page_cursor_idが含まれており、これがnull値の場合は先頭のページであることを意味します。
+UUIDである場合は前のページが存在することを意味し、このprev_page_cursor_idをリクエストパラメータに含めることで前ページに遷移します。
+
+prev_page_cursor_idのtransaction自体は前のページには含まれません。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`per_page`** 
+  
+
+1ページ分の取引数です。
+
+デフォルト値は50です。
+
+```json
+{
+  "type": "integer",
+  "minimum": 1,
+  "maximum": 1000
+}
+```
+
+
+
+成功したときは
+[PaginatedBillTransaction](./responses.md#paginated-bill-transaction)
+を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|503|temporarily_unavailable||Service Unavailable|
+
+
+
+---
+
+
 <a name="create-topup-transaction"></a>
 ## CreateTopupTransaction: チャージする
 チャージ取引を作成します。
@@ -760,9 +1020,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 9340,                   // マネー額
-        'point_amount' => 6476,                   // ポイント額
-        'point_expires_at' => "2024-07-14T06:45:38.000000Z", // ポイント有効期限
+        'money_amount' => 6494,                   // マネー額
+        'point_amount' => 2166,                   // ポイント額
+        'point_expires_at' => "2021-03-19T16:07:42.000000Z", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -979,12 +1239,11 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2411,                                         // amount: 支払い額
+    339,                                          // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
@@ -1198,14 +1457,13 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```PHP
 $request = new Request\CreateCpmTransaction(
-    "90ZBFe71DIECbUavopCer6",                     // cpmToken: CPMトークン
+    "QALktsxpQNr6y6a28m0nRu",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    8289.0,                                       // amount: 取引金額
+    7569.0,                                       // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
         'strategy' => "point-preferred"           // 支払い時の残高消費方式
@@ -1412,7 +1670,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2517.0,                                       // amount: 送金額
+    1810.0,                                       // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -1583,9 +1841,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    1778,
+    7625,
     [
-        'description' => "Wii2uDVrmTki6pqO0f8cnptMkBRjmpnnbeCg4xumOoxK0oT4F795unttA065Yr03Qzj1SYSblk7QSMdkkKPrtzfsCSKa",
+        'description' => "SuEUpdPie9qQ2GFfC0at9jn8DwInc5YWbNc2E2NkkIcBn5byBGxSlhAbqrppUqGdxMolEMce2oIWkzh6xh3kO5wXHuEli1NcEVyTrbdyJqmh3WRfG",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -1767,7 +2025,7 @@ $request = new Request\RefundTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
     [
         'description' => "返品対応のため",               // 取引履歴に表示する返金事由
-        'returning_point_expires_at' => "2020-07-18T08:24:12.000000Z" // 返却ポイントの有効期限
+        'returning_point_expires_at' => "2024-02-14T11:33:34.000000Z" // 返却ポイントの有効期限
     ]
 );
 ```
@@ -2027,6 +2285,58 @@ $request = new Request\RequestUserStats(
 |422|invalid_promotional_operation_user|ユーザーの指定に不正な値が含まれています|Invalid user data is specified|
 |422|invalid_promotional_operation_status|不正な処理ステータスです|Invalid operation status is specified|
 |503|user_stats_operation_service_unavailable|一時的にユーザー統計サービスが利用不能です|User stats service is temporarily unavailable|
+
+
+
+---
+
+
+<a name="terminate-user-stats"></a>
+## TerminateUserStats: RequestUserStatsのタスクを強制終了する
+RequestUserStatsによるファイル生成のタスクを強制終了するためのAPIです。
+RequestUserStatsのレスポンス中の `operation_id` をキーにして強制終了リクエストを送ります。
+既に集計タスクが終了している場合は何も行いません。
+発行体に対して結果通知用のWebhook URLが設定されている場合、強制終了成功時には以下のような内容のPOSTリクエストが送られます。
+
+- task: "process_user_stats_operation"
+- operation_id: 強制終了対象のタスクID
+- status: "terminated"
+
+```PHP
+$request = new Request\TerminateUserStats(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // operationId: 集計タスクID
+);
+```
+
+
+
+### Parameters
+**`operation_id`** 
+  
+
+強制終了対象の集計タスクIDです。
+必須パラメータであり、指定されたタスクIDが存在しない場合は `user_stats_operation_not_found`エラー(422)が返ります。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+
+
+成功したときは
+[UserStatsOperation](./responses.md#user-stats-operation)
+を返します
+
+### Error Responses
+|status|type|ja|en|
+|---|---|---|---|
+|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|user_stats_operation_already_done|指定されたIDの集計処理タスクは既に完了しています|The specified user stats operation is already done|
+|422|user_stats_operation_not_found|指定されたIDの集計処理タスクが見つかりません|User stats task not found for the operation ID|
+|503|temporarily_unavailable||Service Unavailable|
 
 
 

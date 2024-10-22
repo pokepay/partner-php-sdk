@@ -273,6 +273,9 @@
 
 `rows`は [Bank](#bank) オブジェクトの配列を返します。
 
+<a name="bank-deleted"></a>
+## BankDeleted
+
 <a name="paginated-transaction"></a>
 ## PaginatedTransaction
 * `rows (Transaction[])`: 
@@ -292,6 +295,16 @@
 * `prevPageCursorId (string|null)`: 
 
 `rows`は [Transaction](#transaction) オブジェクトの配列を返します。
+
+<a name="paginated-bill-transaction"></a>
+## PaginatedBillTransaction
+* `rows (BillTransaction[])`: 
+* `perPage (integer)`: 
+* `count (integer)`: 
+* `nextPageCursorId (string|null)`: 
+* `prevPageCursorId (string|null)`: 
+
+`rows`は [BillTransaction](#bill-transaction) オブジェクトの配列を返します。
 
 <a name="paginated-transfers"></a>
 ## PaginatedTransfers
@@ -656,6 +669,15 @@
 * `accountName (string)`: 
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
+
+<a name="bill-transaction"></a>
+## BillTransaction
+* `transaction (Transaction)`: 
+* `bill (Bill)`: 
+
+`transaction`は [Transaction](#transaction) オブジェクトを返します。
+
+`bill`は [Bill](#bill) オブジェクトを返します。
 
 <a name="account-balance"></a>
 ## AccountBalance

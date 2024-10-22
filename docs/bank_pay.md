@@ -2,6 +2,53 @@
 BankPayを用いた銀行からのチャージ取引などのAPIを提供しています。
 
 
+<a name="delete-banks"></a>
+## DeleteBanks: 銀行口座の削除
+銀行口座を削除します
+
+```PHP
+$request = new Request\DeleteBanks(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+);
+```
+
+
+
+### Parameters
+**`user_device_id`** 
+  
+
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`bank_id`** 
+  
+
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+
+
+成功したときは
+[BankDeleted](./responses.md#bank-deleted)
+を返します
+
+
+
+---
+
+
 <a name="list-banks"></a>
 ## ListBanks: 登録した銀行の一覧
 登録した銀行を一覧します
@@ -66,7 +113,7 @@ $request = new Request\CreateBank(
     "<Deep Link>",                                // callbackUrl: コールバックURL
     "ポケペイタロウ",                                    // kana: ユーザーの氏名 (片仮名で指定)
     [
-        'email' => "oNEqqi11P4@GN23.com",         // ユーザーのメールアドレス
+        'email' => "lahlWYdbEe@vpLk.com",         // ユーザーのメールアドレス
         'birthdate' => "19901142"                 // 生年月日
     ]
 );
@@ -161,7 +208,7 @@ $request = new Request\CreateBank(
 $request = new Request\CreateBankTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    6982,                                         // amount: チャージ金額
+    2171,                                         // amount: チャージ金額
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // bankId: 銀行ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // requestId: リクエストID
     [

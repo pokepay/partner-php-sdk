@@ -696,6 +696,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transfer'
+    BillTransaction:
+      x-pokepay-schema-type: "response"
+      properties:
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        bill:
+          $ref: '#/components/schemas/Bill'
     ShopWithMetadata:
       x-pokepay-schema-type: "response"
       properties:
@@ -1283,6 +1290,10 @@ components:
           type: integer
           minimum: 0
 
+    BankDeleted:
+      x-pokepay-schema-type: "response"
+      properties: {}
+
     PaginatedTransaction:
       x-pokepay-schema-type: "response"
       properties:
@@ -1313,6 +1324,32 @@ components:
           description: |-
             次ページ取得するためのID。
 
+            実際にはrows末尾
+        prev_page_cursor_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: |-
+            前ページ取得するためのID。
+
+            実際にはrows先頭
+    PaginatedBillTransaction:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillTransaction'
+        per_page:
+          type: integer
+        count:
+          type: integer
+        next_page_cursor_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: |-
+            次ページ取得するためのID。次ページ取得するためのID。
             実際にはrows末尾
         prev_page_cursor_id:
           type: string
@@ -3750,6 +3787,162 @@ paths:
                 $ref: '#/components/schemas/PaginatedTransactionV2'
         '400':
           $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /transactions/bill:
+    get:
+      tags:
+        - Transaction
+      summary: '支払い取引履歴を取得する'
+      description: 支払いによって発生した取引を支払いのデータとともに一覧で返します。
+      x-pokepay-operator-name: "ListBillTransactions"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                private_money_id:
+                  type: string
+                  format: uuid
+                  title: 'マネーID'
+                  description: |-
+                    マネーIDです。
+
+                    指定したマネーでの取引が一覧に表示されます。
+                organization_code:
+                  type: string
+                  pattern: '^[a-zA-Z0-9-]*$'
+                  maxLength: 32
+                  title: '組織コード'
+                  description: |-
+                    組織コードです。
+
+                    フィルターとして使われ、指定された組織の店舗での取引のみ一覧に表示されます。
+                  example: 'pocketchange'
+                shop_id:
+                  type: string
+                  format: uuid
+                  title: '店舗ID'
+                  description: |-
+                    店舗IDです。
+
+                    フィルターとして使われ、指定された店舗での取引のみ一覧に表示されます。
+                customer_id:
+                  type: string
+                  format: uuid
+                  title: 'エンドユーザーID'
+                  description: |-
+                    エンドユーザーIDです。
+
+                    フィルターとして使われ、指定されたエンドユーザーの取引のみ一覧に表示されます。
+                customer_name:
+                  type: string
+                  maxLength: 256
+                  title: 'エンドユーザー名'
+                  description: |-
+                    エンドユーザー名です。
+
+                    フィルターとして使われ、入力された名前に部分一致するエンドユーザーでの取引のみ一覧に表示されます。
+                  example: 太郎
+                terminal_id:
+                   type: string
+                   format: uuid
+                   title: 'エンドユーザー端末ID'
+                   description: |-
+                     エンドユーザーの端末IDです。
+                     フィルターとして使われ、指定された端末での取引のみ一覧に表示されます。
+                description:
+                  type: string
+                  maxLength: 200
+                  title: '取引説明文'
+                  description: |-
+                    取引を指定の取引説明文でフィルターします。
+
+                    取引説明文が完全一致する取引のみ抽出されます。取引説明文は最大200文字で記録されています。
+                  example: 店頭QRコードによる支払い
+                transaction_id:
+                  type: string
+                  title: '取引ID'
+                  description: |-
+                    取引IDです。
+
+                    フィルターとして使われ、指定された取引IDに部分一致(前方一致)する取引のみが一覧に表示されます。
+                bill_id:
+                  type: string
+                  title: '支払いQRコードのID'
+                  description: |-
+                    支払いQRコードのIDです。
+
+                    フィルターとして使われ、指定された支払いQRコードIDに部分一致(前方一致)する取引のみが一覧に表示されます。
+                is_modified:
+                  type: boolean
+                  title: 'キャンセルフラグ'
+                  description: |-
+                    キャンセルフラグです。
+
+                    これにtrueを指定するとキャンセルされた取引のみ一覧に表示されます。
+                    デフォルト値はfalseで、キャンセルの有無にかかわらず一覧に表示されます。
+                from:
+                  type: string
+                  format: date-time
+                  title: '開始日時'
+                  description: |-
+                    抽出期間の開始日時です。
+
+                    フィルターとして使われ、開始日時以降に発生した取引のみ一覧に表示されます。
+                to:
+                  type: string
+                  format: date-time
+                  title: '終了日時'
+                  description: |-
+                    抽出期間の終了日時です。
+
+                    フィルターとして使われ、終了日時以前に発生した取引のみ一覧に表示されます。
+                next_page_cursor_id:
+                  type: string
+                  format: uuid
+                  title: '次ページへ遷移する際に起点となるtransactionのID'
+                  description: |-
+                    次ページへ遷移する際に起点となるtransactionのID(前ページの末尾要素のID)です。
+                    本APIのレスポンスにもnext_page_cursor_idが含まれており、これがnull値の場合は最後のページであることを意味します。
+                    UUIDである場合は次のページが存在することを意味し、このnext_page_cursor_idをリクエストパラメータに含めることで次ページに遷移します。
+
+                    next_page_cursor_idのtransaction自体は次のページには含まれません。
+                prev_page_cursor_id:
+                  type: string
+                  format: uuid
+                  title: '前ページへ遷移する際に起点となるtransactionのID'
+                  description: |-
+                    前ページへ遷移する際に起点となるtransactionのID(次ページの先頭要素のID)です。
+
+                    本APIのレスポンスにもprev_page_cursor_idが含まれており、これがnull値の場合は先頭のページであることを意味します。
+                    UUIDである場合は前のページが存在することを意味し、このprev_page_cursor_idをリクエストパラメータに含めることで前ページに遷移します。
+
+                    prev_page_cursor_idのtransaction自体は前のページには含まれません。
+                per_page:
+                  type: integer
+                  minimum: 1
+                  maximum: 1000
+                  default: 50
+                  title: '1ページ分の取引数'
+                  description: |-
+                    1ページ分の取引数です。
+
+                    デフォルト値は50です。
+                  example: 50
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBillTransaction'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
   /transactions/topup:
     post:
       tags:
@@ -7989,6 +8182,50 @@ paths:
         '503':
           $ref: '#/components/responses/UserStatsOperationServiceUnavailable'
 
+  /user-stats/terminate:
+    post:
+      tags:
+        - Transaction
+      summary: 'RequestUserStatsのタスクを強制終了する'
+      description: |-
+        RequestUserStatsによるファイル生成のタスクを強制終了するためのAPIです。
+        RequestUserStatsのレスポンス中の `operation_id` をキーにして強制終了リクエストを送ります。
+        既に集計タスクが終了している場合は何も行いません。
+        発行体に対して結果通知用のWebhook URLが設定されている場合、強制終了成功時には以下のような内容のPOSTリクエストが送られます。
+
+        - task: "process_user_stats_operation"
+        - operation_id: 強制終了対象のタスクID
+        - status: "terminated"
+      x-pokepay-operator-name: "TerminateUserStats"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["operation_id"]
+              properties:
+                operation_id:
+                  type: string
+                  format: uuid
+                  title: '集計タスクID'
+                  description: |-
+                    強制終了対象の集計タスクIDです。
+                    必須パラメータであり、指定されたタスクIDが存在しない場合は `user_stats_operation_not_found`エラー(422)が返ります。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserStatsOperation'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/UnpermittedAdminUser'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
   /webhooks:
     post:
       x-pokepay-operator-name: "CreateWebhook"
@@ -8359,6 +8596,46 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Banks'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/UnpermittedAdminUser'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      x-pokepay-operator-name: "DeleteBanks"
+      x-pokepay-allow-server-side: true
+      tags:
+        - BankPay
+      summary: 銀行口座の削除
+      description: 銀行口座を削除します
+      parameters:
+        - in: path
+          name: user_device_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: "デバイスID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: [bank_id]
+              properties:
+                bank_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankDeleted'
         '400':
           $ref: '#/components/responses/InvalidParameters'
         '403':
