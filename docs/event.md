@@ -12,14 +12,16 @@ $request = new Request\CreateExternalTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2028,                                         // amount: 取引額
+    4031,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
-        'done_at' => "2020-03-28T15:31:15.000000Z" // ポケペイ外部取引の実施時間
+        'done_at' => "2021-12-01T20:04:03.000000Z" // ポケペイ外部取引の実施時間
     ]
 );
 ```
@@ -176,7 +178,6 @@ $request = new Request\CreateExternalTransaction(
 |422|customer_user_not_found||The customer user is not found|
 |422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
-|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |422|customer_account_not_found||The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
@@ -206,6 +207,8 @@ $request = new Request\CreateExternalTransaction(
 |422|coupon_amount_not_enough|このクーポンを使用するには支払い額が足りません。|The payment amount not enough to use this coupon.|
 |422|coupon_not_payment|クーポンは支払いにのみ使用できます。|Coupons can only be used for payment.|
 |422|coupon_unavailable|このクーポンは使用できません。|This coupon is unavailable.|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |503|temporarily_unavailable||Service Unavailable|
 
 
