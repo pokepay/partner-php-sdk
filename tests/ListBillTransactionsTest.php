@@ -22,7 +22,7 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'per_page' => 155
+                'per_page' => 804
             ]
         );
         try {
@@ -39,8 +39,8 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'prev_page_cursor_id' => "605b0ee7-59a4-4f6b-a4ae-ba380686a451",
-                'per_page' => 352
+                'prev_page_cursor_id' => "c08b8d8f-cef6-4dcd-bdd6-7e20f7e6e5cd",
+                'per_page' => 891
             ]
         );
         try {
@@ -57,9 +57,9 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'next_page_cursor_id' => "3bd2de53-d2da-471d-9377-7e4afb270031",
-                'prev_page_cursor_id' => "8c1e8775-8ce4-4c8c-a91c-555b27f1d9af",
-                'per_page' => 838
+                'next_page_cursor_id' => "e8fd7859-d870-4966-9245-3edd91eacd97",
+                'prev_page_cursor_id' => "d3e45e48-de27-4b48-bd88-3c717a55622f",
+                'per_page' => 693
             ]
         );
         try {
@@ -76,10 +76,10 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'to' => "2023-07-05T09:20:09.000000Z",
-                'next_page_cursor_id' => "60fd087e-9908-497e-86a1-e686a1427962",
-                'prev_page_cursor_id' => "b5d99fa9-4089-4498-b73e-777aa0278abf",
-                'per_page' => 264
+                'to' => "2020-07-05T04:17:07.000000Z",
+                'next_page_cursor_id' => "9b389d1e-262a-4bbe-82d0-ef07a0177668",
+                'prev_page_cursor_id' => "8cfe527b-c270-4ca3-86ca-9b56d57f2bff",
+                'per_page' => 163
             ]
         );
         try {
@@ -96,11 +96,11 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'from' => "2024-10-13T21:58:57.000000Z",
-                'to' => "2020-01-03T21:42:34.000000Z",
-                'next_page_cursor_id' => "e57385db-97b6-4da7-8bda-27d4721f2c23",
-                'prev_page_cursor_id' => "0c41c311-7adb-43c5-ab14-0f30eb758d3a",
-                'per_page' => 521
+                'from' => "2023-03-30T01:57:44.000000Z",
+                'to' => "2021-11-09T10:35:55.000000Z",
+                'next_page_cursor_id' => "087a9386-5b04-407c-bb3b-a893d9d51b6c",
+                'prev_page_cursor_id' => "a597c6fe-e32a-4c2d-97ab-c10e77f97cdd",
+                'per_page' => 47
             ]
         );
         try {
@@ -117,12 +117,12 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'is_modified' => FALSE,
-                'from' => "2020-11-09T18:23:35.000000Z",
-                'to' => "2023-06-23T22:03:48.000000Z",
-                'next_page_cursor_id' => "22d3be7f-8452-4b47-b1bf-6564a3e61a38",
-                'prev_page_cursor_id' => "f98d206a-9b97-4510-87e9-7b68a4142ec6",
-                'per_page' => 563
+                'is_modified' => TRUE,
+                'from' => "2024-08-31T10:25:33.000000Z",
+                'to' => "2025-01-14T12:48:50.000000Z",
+                'next_page_cursor_id' => "2067ab4e-6f03-41c5-b92d-1413992a4d5d",
+                'prev_page_cursor_id' => "c54520a9-454f-42ef-a89a-ca3d7438c7a4",
+                'per_page' => 883
             ]
         );
         try {
@@ -139,13 +139,13 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'bill_id' => "zo2GN3QYDG",
-                'is_modified' => TRUE,
-                'from' => "2024-04-07T11:52:35.000000Z",
-                'to' => "2023-03-28T10:01:49.000000Z",
-                'next_page_cursor_id' => "28ba46a6-d228-448c-83da-5c53b36d0f31",
-                'prev_page_cursor_id' => "c5c1c65b-7810-483b-90d6-f50496929a65",
-                'per_page' => 182
+                'bill_id' => "fbe2c62d-13c6-44cc-bc68-03f698c433a3",
+                'is_modified' => FALSE,
+                'from' => "2023-12-28T22:44:18.000000Z",
+                'to' => "2023-10-06T10:46:12.000000Z",
+                'next_page_cursor_id' => "477a4d1b-04b9-4691-b2d9-258113848b6a",
+                'prev_page_cursor_id' => "68be598e-3565-458b-a71e-2e101136b0be",
+                'per_page' => 15
             ]
         );
         try {
@@ -162,14 +162,14 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'transaction_id' => "Zzi2NmWBlu",
-                'bill_id' => "rzflOytNd",
+                'transaction_id' => "c274044e-4dc7-486b-9d05-5e650f908dbc",
+                'bill_id' => "74651c9f-3ad2-4979-9ac3-3878fe0d8744",
                 'is_modified' => FALSE,
-                'from' => "2022-01-25T09:52:15.000000Z",
-                'to' => "2023-07-13T06:43:13.000000Z",
-                'next_page_cursor_id' => "fe1ac32a-de6d-4c3b-8839-24ee4aff824d",
-                'prev_page_cursor_id' => "2b2fcfbc-afab-4566-ac7f-f51c2681b2c1",
-                'per_page' => 329
+                'from' => "2022-02-13T03:47:58.000000Z",
+                'to' => "2020-01-21T17:27:38.000000Z",
+                'next_page_cursor_id' => "f7aa1175-6891-427a-90e4-2d57afd06792",
+                'prev_page_cursor_id' => "cf1b6d5e-b966-4f2e-99f7-4134764583b8",
+                'per_page' => 435
             ]
         );
         try {
@@ -186,15 +186,15 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'description' => "X3LOs6P3dxLhDjrt4CFESWJnPCLUxGLtrgoghS3pPHE574eeX1ksH4R2MgyW6z149JBRZmQUgzecqWdDVSstoEtPVoykbtA6l7WDayqQLAKXyhWYdlIHfSBBKI1KQl4cK6HLesoN7AsxjaX4b",
-                'transaction_id' => "zo",
-                'bill_id' => "5SSzFCKj",
-                'is_modified' => FALSE,
-                'from' => "2024-03-28T05:01:26.000000Z",
-                'to' => "2023-02-09T02:28:46.000000Z",
-                'next_page_cursor_id' => "2c45663e-9dfc-439c-85b8-e4328414273b",
-                'prev_page_cursor_id' => "b33ff9b9-ed7c-4b50-9611-23ca013b7a5a",
-                'per_page' => 11
+                'description' => "6oHFsZh9ksnqTSKQYaLtgBF21Mao0iMx72McbAtuQfbwPK5Ol2Udeu5ClBnNsqGtwvAjO8SQrjpTlUKU7ix6",
+                'transaction_id' => "010e53f6-3199-4844-bc33-2cc24c9fc25c",
+                'bill_id' => "36b28d04-d454-4eee-821f-c314311c68a9",
+                'is_modified' => TRUE,
+                'from' => "2023-06-28T18:26:22.000000Z",
+                'to' => "2021-06-23T14:19:15.000000Z",
+                'next_page_cursor_id' => "4ab0fc61-3dc9-4976-b48b-513a48628f95",
+                'prev_page_cursor_id' => "07c8d8c3-c9f9-4310-b21b-fe84c143843b",
+                'per_page' => 264
             ]
         );
         try {
@@ -211,16 +211,16 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'terminal_id' => "5b5178f1-48b4-43b4-b640-e7a2c6570c3c",
-                'description' => "5w5OTBAsM3ixdWcd35lzGg9k8zX5Zx6rdzZ6Kiw60EKpO7FL05ARSiRG2U",
-                'transaction_id' => "R",
-                'bill_id' => "U",
+                'terminal_id' => "0e6f9a71-5516-4085-a947-c5cefe9e45e5",
+                'description' => "DJueWNAF2iLhkB08mWoSEw4Yfnz5e3bjXKldANGzSZe49qKV1rholLnfHAgpNJKDDEjuzSmETPUL6TDRxNmj",
+                'transaction_id' => "c1c7bd9a-a9dd-4a4b-9714-c5d0868e5c11",
+                'bill_id' => "a7094cc4-69bc-4ec5-ba81-da653918ac9a",
                 'is_modified' => TRUE,
-                'from' => "2023-01-29T08:35:12.000000Z",
-                'to' => "2021-02-01T10:40:32.000000Z",
-                'next_page_cursor_id' => "28c4af63-13ab-4e0c-b7b9-5672c314e52e",
-                'prev_page_cursor_id' => "fcfbe88f-e8ba-4bf6-bdbe-7974bc20307f",
-                'per_page' => 780
+                'from' => "2024-03-08T10:00:25.000000Z",
+                'to' => "2021-05-17T13:19:18.000000Z",
+                'next_page_cursor_id' => "d58acfa1-dd8e-4945-8d68-d739993bb8bc",
+                'prev_page_cursor_id' => "9f861c26-f0ca-4b2b-8b7d-1b2f394557f7",
+                'per_page' => 905
             ]
         );
         try {
@@ -237,17 +237,17 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'customer_name' => "OfCP20hUm1E2Nlz5V1CO5TSFyNtopqI6bCrDgQTiBz8hopleWuv10dzqDmxXKufPIjjJpzSXKPSRMVYMVxniANdM0yy6srRZNC9bYJUFWp4SJDd9Vw0ghvUwHY4GPMgqa4p3NBV6jnDEmNinmBAkCQlWqd4VgtaT7nx9nCCSGOYqsqY3PQB7j8S1LcJM99jV6h5DQ4TL9sXbFiutZ4wFjGxBLsRpox6uXLc6he8Kxv6FPaZ8I6AxiybIU",
-                'terminal_id' => "1b90ab64-46ea-4fdf-ae32-94dfa5cdae26",
-                'description' => "lMSQ6V8dRYSFDiggsas4Nm4Pbqn0MLycuAIyd8Tc91YrDumA0BEPaxu5hz8quH88gYqQC45YQse",
-                'transaction_id' => "yms9QyHV",
-                'bill_id' => "Eq6",
+                'customer_name' => "Ulzsxb9tQKSZdMATJHlP3s2aiyvcn732KUYpvpwWJTv2DUcmsWBTf3SfgLVNlOhNoRUioebBno3HZhnyNZ5Q77U04aLs4hmy4C28WnCRfz2leovb1R7O6QOgboW2zpcaLxa2QZma6CRo8nyJO9Y3f9djMgk8QSZwJ1",
+                'terminal_id' => "8c1e8775-8ce4-4c8c-a91c-555b27f1d9af",
+                'description' => "Ib7zDJ6KZTEk0mDRGqd8jGihF2zo2GN3QYDG6CZS1PVe5LZzi2NmWBluHrzflOytNd3ROm",
+                'transaction_id' => "6633dc3b-b1c8-4239-ae4d-cfbc8d61afab",
+                'bill_id' => "99c75566-fb2c-457f-9cc1-7d483e6dc8ee",
                 'is_modified' => TRUE,
-                'from' => "2023-10-19T09:25:14.000000Z",
-                'to' => "2021-08-16T10:30:05.000000Z",
-                'next_page_cursor_id' => "caf43398-1d4c-40a7-a927-707b4629b28e",
-                'prev_page_cursor_id' => "a559ac19-bb24-445a-a7f9-2519cadabe03",
-                'per_page' => 9
+                'from' => "2020-07-06T12:34:32.000000Z",
+                'to' => "2020-06-05T09:41:07.000000Z",
+                'next_page_cursor_id' => "508dfc0b-9993-4e4c-8ff3-ab36127350a5",
+                'prev_page_cursor_id' => "60fe0e50-aba1-4233-bb7c-2964f54d34af",
+                'per_page' => 505
             ]
         );
         try {
@@ -264,18 +264,18 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'customer_id' => "12f5cce7-0388-441b-a9ad-249113d035b3",
-                'customer_name' => "EPs9bN7e1DJRmWCvXV5f7NFxRTTWOKh4cp2t8rtdj0F82hhuu2d72PSRBNNGTP71wcJLJGkIvTZnRNAv7oeQjUez1G0bwCFurxma",
-                'terminal_id' => "a4b2aa7f-b1af-4f23-8ca4-2a196d8d752a",
-                'description' => "HHuXDOcuycPW2WYY40yWZt9",
-                'transaction_id' => "ZjHK",
-                'bill_id' => "Li",
+                'customer_id' => "d15140cc-1a68-49c4-a1ea-7e8a71ca7b90",
+                'customer_name' => "t4CFESWJnPCLUxGLtrgoghS3pPHE574eeX1ksH4R2MgyW6z149JBRZmQUgzecqWdDVSstoEtPVoykbtA6l7WDayqQLAKXyhWYdlIHfSBBKI1KQl4cK6",
+                'terminal_id' => "8916b399-6cc8-444c-9ca6-55e561e552f3",
+                'description' => "oN7AsxjaX4bkzoW5SSzFCKjOEE829PJZq44v95w5OTBAsM3ixdWcd35lzGg9k8zX5Zx6rdzZ6Kiw60EKpO7FL05ARSiRG2UPRPUxcw9rvtxOfCP20hUm1E2Nlz5V1CO5TSFyNtopqI6bCrDgQTiB",
+                'transaction_id' => "82bf787a-fdb8-45e8-a08c-daae16093fef",
+                'bill_id' => "646b3970-42ba-4dec-a5a8-2dd7e89818f5",
                 'is_modified' => FALSE,
-                'from' => "2023-10-13T05:30:26.000000Z",
-                'to' => "2023-07-28T17:42:24.000000Z",
-                'next_page_cursor_id' => "f8db6c8b-f421-441a-9f9b-66a550b59219",
-                'prev_page_cursor_id' => "4440cf27-04b6-4ff1-adc3-cf18aacbcbde",
-                'per_page' => 764
+                'from' => "2021-05-20T08:55:18.000000Z",
+                'to' => "2020-05-01T12:59:13.000000Z",
+                'next_page_cursor_id' => "079f05a7-7031-4a2d-88b0-fee467091fba",
+                'prev_page_cursor_id' => "e7208226-8282-4799-a5fa-fef11bca217e",
+                'per_page' => 667
             ]
         );
         try {
@@ -292,19 +292,19 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'shop_id' => "1e81400b-3bff-42c6-b37a-ab6660353afb",
-                'customer_id' => "9fbd6b2b-b38f-406f-a145-31ce082f7234",
-                'customer_name' => "G6jzrPFiN4YTSJ9o4hVc0u6tzaZ3sbYKCNybmAlkaNJiOvuRswwQSmiJco3KwhjqpMqyENnnotJKNM2DvQSu06FE8juzeNINZktFZU0Jp",
-                'terminal_id' => "5a43d8a8-cc48-4dc0-9270-d3d3edbca772",
-                'description' => "bF8O3WzYFSGY9bWV5jbNBEz14f9BIpTXI2luGWaGy1CoCYoYmaLr1BLYdgsrsB7nf3z7z76OYqLZhd2",
-                'transaction_id' => "VmnwZ1",
-                'bill_id' => "YQAtf",
+                'shop_id' => "3d32f283-c291-401d-befe-ca0d835d8dc4",
+                'customer_id' => "de821e2d-cd24-4f6d-a216-20f82a4efb01",
+                'customer_name' => "KufPIjjJpzSXKPSRMVYMVxniANdM0yy6srRZNC9bYJUFWp4SJDd9Vw0ghvUwHY4GPMgqa4p3NBV6jnDEmNinmBAkC",
+                'terminal_id' => "447b7bfd-0ed1-4ba6-acd7-c8f1fa972a02",
+                'description' => "4VgtaT7nx9nCCSGOYqsqY3PQB7j8S1LcJM99jV6h5DQ4TL9sXbFiutZ4wFjGxBLsRpox6uXLc6he8Kxv6FPaZ8I6AxiybIUdjn2Jl",
+                'transaction_id' => "cb08a75b-8ecd-45d3-94bc-b9d1fd5c0336",
+                'bill_id' => "69dd0e2b-db9d-4356-b8dc-b69720c77311",
                 'is_modified' => TRUE,
-                'from' => "2020-09-02T18:36:23.000000Z",
-                'to' => "2024-03-09T02:14:24.000000Z",
-                'next_page_cursor_id' => "48325a32-e847-41d0-a63e-e948ab0b7e59",
-                'prev_page_cursor_id' => "a894565b-9de5-4c9c-a5ca-bed739c8f016",
-                'per_page' => 459
+                'from' => "2020-09-24T21:07:23.000000Z",
+                'to' => "2022-01-23T09:07:30.000000Z",
+                'next_page_cursor_id' => "e235c808-59d9-4353-8685-d144aa3bcae9",
+                'prev_page_cursor_id' => "d2fb5c67-90e7-4873-a1f3-293476779ece",
+                'per_page' => 162
             ]
         );
         try {
@@ -321,20 +321,20 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'organization_code' => "-p--Qk-ft1--",
-                'shop_id' => "b6611fff-d137-455d-b92d-73a858c514d6",
-                'customer_id' => "9bf5346a-9159-487d-9a1a-65a63be07b7a",
-                'customer_name' => "kjksojB4PnV9sBfF1BkHf1A87wLQ9bOIRS2WYI5ck8HRSP5FHw4UX4tGWi4N1WpwhPzDe8V1DYdcKn6nAl4cEX71br7jv7EDkwXN76HyKk1SGbd2fzw9nBiKXYeHN7C4dOhcXyEVzhZku2OJwUM0ktk1yse4CdNhZgpKbkXWC5tLFNUhqVPCyC44juCu9OYkti8QhcNElbkx4K7ompot",
-                'terminal_id' => "67ba05e1-28ca-4396-a0a1-264036402b42",
-                'description' => "Lyz8KN17fLxPU1GvU5oJnH6hOfBgmDSuxOmphkziTG6p4HsLeIcNrFvlQBIX1JBgnrD1yLFlL5kbgs6xUgxf5sOofYseOtl3ilNOPpyIVjtUkLTSkOKux630Id9YuKsTGECVvJsAnqjel2la3rWWdK2ybDtXJii",
-                'transaction_id' => "zBkt",
-                'bill_id' => "9",
-                'is_modified' => TRUE,
-                'from' => "2022-12-04T17:33:31.000000Z",
-                'to' => "2023-01-18T10:01:23.000000Z",
-                'next_page_cursor_id' => "37284bc4-5064-4c4b-abe6-9d624d329243",
-                'prev_page_cursor_id' => "905a8190-f8a8-4239-af36-7a449d92f240",
-                'per_page' => 864
+                'organization_code' => "",
+                'shop_id' => "c5b3b98a-ba7f-47c4-b56d-5410951f5e41",
+                'customer_id' => "4f41fc00-b430-4442-aa15-f726a7a417c5",
+                'customer_name' => "Paxu5hz8quH88gYqQC45YQseyms9QyHVorEq6zLZyg3cEPs9bN7e1DJRmWCvXV5f7NFxRTTWOKh4cp2t8rtdj0F82hhuu2d72PSRBNNGTP71wcJLJGkIvTZnRNAv7oeQjUez1G0bwCFurxmaLHHuXDOc",
+                'terminal_id' => "b1775f75-c5dc-4a7e-b989-80a95c0a8063",
+                'description' => "W2WYY40yWZt9ZjHKqLir6qmCF3zfoEN4hG6jzrPFiN4YTSJ9o4hVc0u6tzaZ3sbYKCNybmAlkaNJiOvuR",
+                'transaction_id' => "b39bbba2-797b-4b84-9c8f-a2f3ac30cf0d",
+                'bill_id' => "096e4cf7-1e09-41dd-b7d1-51d33507deed",
+                'is_modified' => FALSE,
+                'from' => "2022-07-20T22:56:02.000000Z",
+                'to' => "2023-09-07T13:58:45.000000Z",
+                'next_page_cursor_id' => "365999ca-6663-4fef-b33e-330c909451cb",
+                'prev_page_cursor_id' => "0fc268f7-322a-40e8-aa6a-06bb9bd1b91d",
+                'per_page' => 754
             ]
         );
         try {
@@ -351,21 +351,21 @@ class ListBillTransactions extends TestCase
         $client = $this->newClient();
         $request = new Request\ListBillTransactions(
             [
-                'private_money_id' => "cad46929-3a8f-457c-9d5c-31c277b7123f",
-                'organization_code' => "2-y--fJ2-S---",
-                'shop_id' => "46dcba2e-8ca8-4ad1-a4a4-88b6ba61bec6",
-                'customer_id' => "19d96b46-016a-40fa-b199-3f5e9456f677",
-                'customer_name' => "njIRjO9MofqJJncHBCR1qP1zId4mLJCzHpOgkhaasWI8ELq",
-                'terminal_id' => "ba84bbca-b2f7-4252-9f41-f8a9243f659a",
-                'description' => "2Ghe0ne6pcNR1V7JprfFD47gNL9WM6cSeojzOZZrLxO3x6r1ViuOnspa8l8OxqMpLrB8ZQmhXHGSVgVcs3OQMdHqZLlv01wGqOn2jIsFsWbo7bpQq9anT6PszkN335U1t4DYsuiE88p3Hog0k8dxuKgCFI0Qv1brn8ATMTNMMEyVApkaDeYuOtB",
-                'transaction_id' => "Zgc4",
-                'bill_id' => "wc8RSE7B",
+                'private_money_id' => "cdea07f0-e9cd-41f1-b9c5-684e4c32a7ee",
+                'organization_code' => "75f95uL6-5-kia0-02--8-t-93-",
+                'shop_id' => "0daa8159-c3b9-4dae-a2d7-a5562bf95fb5",
+                'customer_id' => "c3d2386a-10e2-425b-8e03-e2bffd9cdcc2",
+                'customer_name' => "z14f9BIpTXI2luGWaGy1CoCYoYmaLr1BLYdgsrsB7nf3z7z76OYqLZhd2VmnwZ1YQAtf2GPfHYeeJWiJLn1TOWVNqKCYgaN6maSZWJn127yVjYZzSkjksojB4PnV9sBfF1BkHf1A87wLQ9bOIRS2WYI5ck8HRSP5FHw4UX4tGWi4N1WpwhPzDe8V1DYdcKn6nAl4cE",
+                'terminal_id' => "e2da2758-8c8d-4984-9737-dbb1b95fe508",
+                'description' => "br7jv7EDkwXN76HyKk1SGbd2fzw9nBiKXYeHN7C4dOhcXyEVzhZku2OJwUM0ktk1yse4CdNhZgpKbkXWC5tLFNUhqVPCyC44juCu9OYkti8QhcNElbkx4K7ompotaJBLyz8",
+                'transaction_id' => "f05a7acb-518d-4c4e-b137-35ba7a0e1d27",
+                'bill_id' => "fb74bc66-724c-4bf8-908e-ec1a4f26a319",
                 'is_modified' => FALSE,
-                'from' => "2022-08-11T00:57:01.000000Z",
-                'to' => "2021-04-22T15:36:43.000000Z",
-                'next_page_cursor_id' => "2db0b421-c073-4771-ae7e-4780e6dd3d22",
-                'prev_page_cursor_id' => "da0e76a3-63fe-44e6-8819-4ec1cf3adbad",
-                'per_page' => 191
+                'from' => "2020-09-24T06:17:53.000000Z",
+                'to' => "2023-01-27T14:39:45.000000Z",
+                'next_page_cursor_id' => "bde82f23-43a3-4f9e-871c-3886657f6ef6",
+                'prev_page_cursor_id' => "21230155-cd0c-4835-af4a-aa6edcfb1ec8",
+                'per_page' => 55
             ]
         );
         try {

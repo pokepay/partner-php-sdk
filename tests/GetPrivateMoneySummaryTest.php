@@ -8,7 +8,7 @@ class GetPrivateMoneySummary extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneySummary(
-            "e8a6c2da-79ee-489b-936f-02677817e878"
+            "54ec41c9-ba73-4800-929c-77d53619efec"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class GetPrivateMoneySummary extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneySummary(
-            "e8a6c2da-79ee-489b-936f-02677817e878",
+            "54ec41c9-ba73-4800-929c-77d53619efec",
             [
-                'to' => "2022-02-21T20:18:06.000000Z"
+                'to' => "2021-05-21T12:55:22.000000Z"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class GetPrivateMoneySummary extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetPrivateMoneySummary(
-            "e8a6c2da-79ee-489b-936f-02677817e878",
+            "54ec41c9-ba73-4800-929c-77d53619efec",
             [
-                'from' => "2020-05-17T00:49:18.000000Z",
-                'to' => "2020-12-07T20:20:30.000000Z"
+                'from' => "2021-12-04T07:34:10.000000Z",
+                'to' => "2020-01-15T01:58:27.000000Z"
             ]
         );
         try {
