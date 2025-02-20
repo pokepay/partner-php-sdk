@@ -8,7 +8,7 @@ class GetSevenBankATMSession extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetSevenBankATMSession(
-            "kHc"
+            "qwTxt1HL4w"
         );
         try {
             $response = $client->send($request);
