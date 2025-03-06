@@ -105,8 +105,8 @@ class ListAccountBalances extends TestCase
             [
                 'page' => 9044,
                 'per_page' => 3584,
-                'expires_at_from' => "2022-05-05T20:55:29.000000Z",
-                'expires_at_to' => "2023-04-07T14:57:44.000000Z",
+                'expires_at_from' => "2024-10-29T10:47:52.000000Z",
+                'expires_at_to' => "2022-05-05T20:55:29.000000Z",
                 'direction' => "asc"
             ]
         );

@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "528e1122-9e40-4382-82b2-97dc79d33e2f",
-            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
-            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
-            "ATbfETgM8KooCtS8z1fc4bmpdj"
+            "3366c047-6ec9-4c66-9ae2-1a2c1720927e",
+            "83d3a20a-dd1b-41b0-ba1c-c015889cf4a4",
+            "QJuIdXR7obZEoGLvyrYRSePLUjWmS1Vfe4rF1Hr4pu5zkebHCqAbvDaj08T6AqfU9VC96cIIeErItINWil5tFd5fwAxEmAXCuaDk4OeOYMd636fXlQmJ9z2bnV3FEVOMMOncgSgfpnmC2KuXyRgGfUfNENrDu8T1J2YZ",
+            "jgzjmCRB"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "528e1122-9e40-4382-82b2-97dc79d33e2f",
-            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
-            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
-            "ATbfETgM8KooCtS8z1fc4bmpdj",
+            "3366c047-6ec9-4c66-9ae2-1a2c1720927e",
+            "83d3a20a-dd1b-41b0-ba1c-c015889cf4a4",
+            "QJuIdXR7obZEoGLvyrYRSePLUjWmS1Vfe4rF1Hr4pu5zkebHCqAbvDaj08T6AqfU9VC96cIIeErItINWil5tFd5fwAxEmAXCuaDk4OeOYMd636fXlQmJ9z2bnV3FEVOMMOncgSgfpnmC2KuXyRgGfUfNENrDu8T1J2YZ",
+            "jgzjmCRB",
             [
-                'birthdate' => "KCTf"
+                'birthdate' => "BbdWS6J"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "528e1122-9e40-4382-82b2-97dc79d33e2f",
-            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
-            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
-            "ATbfETgM8KooCtS8z1fc4bmpdj",
+            "3366c047-6ec9-4c66-9ae2-1a2c1720927e",
+            "83d3a20a-dd1b-41b0-ba1c-c015889cf4a4",
+            "QJuIdXR7obZEoGLvyrYRSePLUjWmS1Vfe4rF1Hr4pu5zkebHCqAbvDaj08T6AqfU9VC96cIIeErItINWil5tFd5fwAxEmAXCuaDk4OeOYMd636fXlQmJ9z2bnV3FEVOMMOncgSgfpnmC2KuXyRgGfUfNENrDu8T1J2YZ",
+            "jgzjmCRB",
             [
-                'email' => "j1GK9RSuRp@80JI.com",
-                'birthdate' => "G"
+                'email' => "CIuNd5OFNr@ZXER.com",
+                'birthdate' => "72QaNr"
             ]
         );
         try {
