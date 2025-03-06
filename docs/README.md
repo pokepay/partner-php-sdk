@@ -145,7 +145,9 @@ while (true) {
 ### Bill
 - [ListBills](./bill.md#list-bills): 支払いQRコード一覧を表示する
 - [CreateBill](./bill.md#create-bill): 支払いQRコードの発行
+- [GetBill](./bill.md#get-bill): 支払いQRコードの表示
 - [UpdateBill](./bill.md#update-bill): 支払いQRコードの更新
+- [CreatePaymentTransactionWithBill](./bill.md#create-payment-transaction-with-bill): 支払いQRコードを読み取ることで支払いをする
 
 ### Cashtray
 - [CreateTransactionWithCashtray](./cashtray.md#create-transaction-with-cashtray): CashtrayQRコードを読み取ることで取引する
@@ -220,7 +222,7 @@ while (true) {
 - [ActivateUserDevice](./user_device.md#activate-user-device): デバイスの有効化
 
 ### BankPay
-- [DeleteBanks](./bank_pay.md#delete-banks): 銀行口座の削除
+- [DeleteBank](./bank_pay.md#delete-bank): 銀行口座の削除
 - [ListBanks](./bank_pay.md#list-banks): 登録した銀行の一覧
 - [CreateBank](./bank_pay.md#create-bank): 銀行口座の登録
 - [CreateBankTopupTransaction](./bank_pay.md#create-bank-topup-transaction): 銀行からのチャージ

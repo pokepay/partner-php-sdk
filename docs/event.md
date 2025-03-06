@@ -12,14 +12,16 @@ $request = new Request\CreateExternalTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2028,                                         // amount: 取引額
+    8965,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
-        'done_at' => "2020-03-28T15:31:15.000000Z" // ポケペイ外部取引の実施時間
+        'done_at' => "2024-08-02T22:54:55.000000Z" // ポケペイ外部取引の実施時間
     ]
 );
 ```
@@ -176,7 +178,6 @@ $request = new Request\CreateExternalTransaction(
 |422|customer_user_not_found||The customer user is not found|
 |422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
-|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |422|customer_account_not_found||The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
@@ -197,8 +198,8 @@ $request = new Request\CreateExternalTransaction(
 |422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
 |422|account_balance_exceeded|口座残高が上限を超えました|The account balance exceeded the limit|
 |422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
-|422|account_total_topup_limit_range|期間内での合計チャージ額上限に達しました|Entire period topup limit reached|
-|422|account_total_topup_limit_entire_period|全期間での合計チャージ額上限に達しました|Entire period topup limit reached|
+|422|account_total_topup_limit_range|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount within the period defined by the money.|
+|422|account_total_topup_limit_entire_period|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount defined by the money.|
 |422|coupon_unavailable_shop|このクーポンはこの店舗では使用できません。|This coupon is unavailable for this shop.|
 |422|coupon_already_used|このクーポンは既に使用済みです。|This coupon is already used.|
 |422|coupon_not_received|このクーポンは受け取られていません。|This coupon is not received.|
@@ -206,6 +207,8 @@ $request = new Request\CreateExternalTransaction(
 |422|coupon_amount_not_enough|このクーポンを使用するには支払い額が足りません。|The payment amount not enough to use this coupon.|
 |422|coupon_not_payment|クーポンは支払いにのみ使用できます。|Coupons can only be used for payment.|
 |422|coupon_unavailable|このクーポンは使用できません。|This coupon is unavailable.|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |503|temporarily_unavailable||Service Unavailable|
 
 

@@ -8,7 +8,7 @@ class GetExternalTransactionByRequestId extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetExternalTransactionByRequestId(
-            "0f990492-b28d-451d-af07-ca0ce1359514"
+            "14fce5b8-d476-4b05-8473-869651725ed9"
         );
         try {
             $response = $client->send($request);
