@@ -8,9 +8,9 @@ class CreateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCashtray(
-            "05dfcc03-205e-41c9-a860-72bda745bb1d",
-            "4eb5cc68-de08-4a5d-8f46-8900eff9f69d",
-            6991.0
+            "87a1d3cd-e7cf-4a8b-a58b-7c71251dfa67",
+            "9ff72096-6687-4f8c-bb56-23fe365f907a",
+            7542.0
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class CreateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCashtray(
-            "05dfcc03-205e-41c9-a860-72bda745bb1d",
-            "4eb5cc68-de08-4a5d-8f46-8900eff9f69d",
-            6991.0,
+            "87a1d3cd-e7cf-4a8b-a58b-7c71251dfa67",
+            "9ff72096-6687-4f8c-bb56-23fe365f907a",
+            7542.0,
             [
-                'expires_in' => 3740
+                'expires_in' => 4078
             ]
         );
         try {
@@ -45,12 +45,12 @@ class CreateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCashtray(
-            "05dfcc03-205e-41c9-a860-72bda745bb1d",
-            "4eb5cc68-de08-4a5d-8f46-8900eff9f69d",
-            6991.0,
+            "87a1d3cd-e7cf-4a8b-a58b-7c71251dfa67",
+            "9ff72096-6687-4f8c-bb56-23fe365f907a",
+            7542.0,
             [
-                'description' => "e3g3OqYMD6Y7flopJpL06wROQZ33dSb51CrQZVorM80jAnbL9pF2AijYf8ydTws4HIQ4AniWPzD9CM0oL6a",
-                'expires_in' => 5308
+                'description' => "f46VZC1gROo7yDwwPoswLPrFl08abqydMndg7MmFsD2bCpZf9Kmzx2cSvcsgfp28NPWqo6XqlqrR9lgptmz4nyVSUDS2rGPI8RxpE3teEPiaYEeN8ncoL5boSBHerEtGhFgJdxHlskgg6LM7DHhWIQ2aljg7pW5t",
+                'expires_in' => 6861
             ]
         );
         try {

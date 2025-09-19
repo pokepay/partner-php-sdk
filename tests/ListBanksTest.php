@@ -8,7 +8,7 @@ class ListBanks extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListBanks(
-            "12dac1a8-1866-4bcf-b7cf-0e2aa4902472"
+            "eb65fc16-629b-43c3-abf6-280aabc1e9ef"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListBanks extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListBanks(
-            "12dac1a8-1866-4bcf-b7cf-0e2aa4902472",
+            "eb65fc16-629b-43c3-abf6-280aabc1e9ef",
             [
-                'private_money_id' => "e752e422-df53-4b09-a912-197230b035b8"
+                'private_money_id' => "675ff836-947f-47e3-b682-9dc5c0777b3a"
             ]
         );
         try {

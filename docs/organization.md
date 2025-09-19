@@ -9,8 +9,8 @@ $request = new Request\ListOrganizations(
     [
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
-        'name' => "OqWuTa",                       // 組織名
-        'code' => "dRa"                           // 組織コード
+        'name' => "DLcNgo",                       // 組織名
+        'code' => "zsu"                           // 組織コード
     ]
 );
 ```
@@ -81,13 +81,6 @@ $request = new Request\ListOrganizations(
 [PaginatedOrganizations](./responses.md#paginated-organizations)
 を返します
 
-### Error Responses
-|status|type|ja|en|
-|---|---|---|---|
-|400|invalid_parameters|項目が無効です|Invalid parameters|
-|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|422|private_money_not_found|マネーが見つかりません|Private money not found|
-
 
 
 ---
@@ -101,8 +94,8 @@ $request = new Request\CreateOrganization(
     "ox-supermarket",                             // code: 新規組織コード
     "oxスーパー",                                     // name: 新規組織名
     ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // privateMoneyIds: 加盟店組織で有効にするマネーIDの配列
-    "aHOyfGqVUn@cXzh.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
-    "jskeGyZxmb@Ey05.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
+    "KajpcQf4nu@ECfd.com",                        // issuerAdminUserEmail: 発行体担当者メールアドレス
+    "VUoATZ0pZ1@FEus.com",                        // memberAdminUserEmail: 新規組織担当者メールアドレス
     [
         'bank_name' => "XYZ銀行",                   // 銀行名
         'bank_code' => "1234",                    // 銀行金融機関コード
@@ -277,16 +270,6 @@ $request = new Request\CreateOrganization(
 成功したときは
 [Organization](./responses.md#organization)
 を返します
-
-### Error Responses
-|status|type|ja|en|
-|---|---|---|---|
-|403|NULL|NULL|NULL|
-|409|organization_conflict||The organization code is already used|
-|409|shop_name_conflict||The shop name is already used|
-|422|organization_private_money_not_found||Issuer organization does not have private-money|
-|422|unavailable_private_money||Given private money(s) is/are not available|
-|503|failed_to_send_email||Failed to send an E-mail.|
 
 
 

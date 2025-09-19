@@ -8,7 +8,7 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "788ef505-ce3f-42f5-a8b8-4139ff73750a"
+            "d7fbe33a-c343-43fa-9638-06de23f118ba"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "788ef505-ce3f-42f5-a8b8-4139ff73750a",
+            "d7fbe33a-c343-43fa-9638-06de23f118ba",
             [
-                'per_page' => 46
+                'per_page' => 15
             ]
         );
         try {
@@ -41,10 +41,10 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "788ef505-ce3f-42f5-a8b8-4139ff73750a",
+            "d7fbe33a-c343-43fa-9638-06de23f118ba",
             [
-                'page' => 2117,
-                'per_page' => 49
+                'page' => 9778,
+                'per_page' => 25
             ]
         );
         try {
@@ -60,11 +60,11 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "788ef505-ce3f-42f5-a8b8-4139ff73750a",
+            "d7fbe33a-c343-43fa-9638-06de23f118ba",
             [
-                'available_to' => "2020-01-30T13:05:12.000000Z",
-                'page' => 7765,
-                'per_page' => 49
+                'available_to' => "2021-05-03T09:24:40.000000+09:00",
+                'page' => 8350,
+                'per_page' => 28
             ]
         );
         try {
@@ -80,12 +80,12 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "788ef505-ce3f-42f5-a8b8-4139ff73750a",
+            "d7fbe33a-c343-43fa-9638-06de23f118ba",
             [
-                'available_from' => "2022-10-21T22:05:49.000000Z",
-                'available_to' => "2020-01-19T00:51:04.000000Z",
-                'page' => 3677,
-                'per_page' => 47
+                'available_from' => "2024-09-01T11:36:46.000000+09:00",
+                'available_to' => "2024-05-03T01:39:59.000000+09:00",
+                'page' => 7524,
+                'per_page' => 3
             ]
         );
         try {
@@ -101,13 +101,13 @@ class ListCampaigns extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCampaigns(
-            "788ef505-ce3f-42f5-a8b8-4139ff73750a",
+            "d7fbe33a-c343-43fa-9638-06de23f118ba",
             [
-                'is_ongoing' => FALSE,
-                'available_from' => "2022-03-04T06:42:31.000000Z",
-                'available_to' => "2020-03-10T14:13:54.000000Z",
-                'page' => 1796,
-                'per_page' => 36
+                'is_ongoing' => TRUE,
+                'available_from' => "2022-08-23T01:04:01.000000+09:00",
+                'available_to' => "2021-11-24T07:33:54.000000+09:00",
+                'page' => 7238,
+                'per_page' => 42
             ]
         );
         try {

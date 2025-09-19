@@ -22,12 +22,14 @@ tags:
 
       `https://www-sandbox.pokepay.jp/checks/xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx`
 
-      QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注意: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります) 上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
+      QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります)
+      上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
   - name: Bill
     description: 支払いQRコード
   - name: Cashtray
     description: |
       Cashtrayは支払いとチャージ両方に使えるQRコードで、店舗ユーザとエンドユーザーの間の主に店頭などでの取引のために用いられます。
+      店舗ユーザはCashtrayの状態を監視することができ、取引の成否やエラー事由を知ることができます。
       Cashtrayによる取引では、エンドユーザーがQRコードを読み取った時点で即時取引が作られ、ユーザに対して受け取り確認画面は表示されません。
       Cashtrayはワンタイムで、一度読み取りに成功するか、取引エラーになると失効します。
       また、Cashtrayには有効期限があり、デフォルトでは30分で失効します。
@@ -2930,7 +2932,9 @@ paths:
                   nullable: true
                   format: decimal
                   title: '支払い額'
-                  description: 支払いQRコードを支払い額を指定します。省略するかnullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。
+                  description: |
+                    支払いQRコードを支払い額を指定します。省略するかnullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。
+                    また、金額を指定する場合の上限額は支払いをするマネーの取引上限額です。
                 private_money_id:
                   type: string
                   format: uuid
@@ -2959,6 +2963,38 @@ paths:
           $ref: '#/components/responses/UnprocessableEntity'
 
   /bills/{bill_id}:
+    get:
+      tags:
+        - Bill
+      summary: '支払いQRコードの表示'
+      description: 支払いQRコードの内容を表示します。
+      x-pokepay-operator-name: "GetBill"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: bill_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: '支払いQRコードのID'
+          description: |-
+            表示する支払いQRコードのIDです。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/UnpermittedAdminUser'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
     patch:
       tags:
         - Bill
@@ -2988,7 +3024,7 @@ paths:
                   nullable: true
                   format: decimal
                   title: '支払い額'
-                  description: 支払いQRコードを支払い額を指定します。nullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。
+                  description: 支払いQRコードを支払い額を指定します。nullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。また、金額を指定する場合の上限額は支払いをするマネーの取引上限額です。
                 description:
                   type: string
                   maxLength: 200
@@ -3864,6 +3900,7 @@ paths:
                   example: 店頭QRコードによる支払い
                 transaction_id:
                   type: string
+                  format: uuid
                   title: '取引ID'
                   description: |-
                     取引IDです。
@@ -3871,6 +3908,7 @@ paths:
                     フィルターとして使われ、指定された取引IDに部分一致(前方一致)する取引のみが一覧に表示されます。
                 bill_id:
                   type: string
+                  format: uuid
                   title: '支払いQRコードのID'
                   description: |-
                     支払いQRコードのIDです。
@@ -4215,6 +4253,12 @@ paths:
 
                     マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
                   example: 'point-preferred'
+                coupon_id:
+                  type: string
+                  format: uuid
+                  title: 'クーポンID'
+                  description: |-
+                    支払いに対して適用するクーポンのIDを指定します。
       responses:
         '200':
           description: OK
@@ -4226,6 +4270,92 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '403':
           $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /transactions/payment/bill:
+    post:
+      tags:
+        - Bill
+      summary: '支払いQRコードを読み取ることで支払いをする'
+      description: |
+        通常支払いQRコードはエンドユーザーのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。 もしエンドユーザーとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバが支払いQRの情報をエンドユーザーから代理受けして、サーバ間連携APIによって実際の支払い取引をリクエストすることになります。
+
+        エンドユーザーから受け取った支払いQRコードのIDをエンドユーザーIDと共に渡すことで支払い取引が作られます。
+        支払い時には、エンドユーザーの残高のうち、ポイント残高から優先的に消費されます。
+      x-pokepay-operator-name: "CreatePaymentTransactionWithBill"
+      x-pokepay-allow-server-side: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required: ["bill_id", "customer_id"]
+              properties:
+                bill_id:
+                  type: string
+                  format: uuid
+                  title: '支払いQRコードのID'
+                  description: |-
+                    支払いQRコードのIDです。
+
+                    QRコード生成時に送金先店舗のウォレット情報や、支払い金額などが登録されています。
+                customer_id:
+                  type: string
+                  format: uuid
+                  title: 'エンドユーザーのID'
+                  description: |-
+                    エンドユーザーIDです。
+
+                    支払いを行うエンドユーザーを指定します。
+                metadata:
+                  type: string
+                  format: json
+                  title: '取引メタデータ'
+                  description:  |-
+                    取引作成時に指定されるメタデータです。
+
+                    任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
+                  example: |-
+                    {"key":"value"}
+                request_id:
+                  type: string
+                  format: uuid
+                  title: 'リクエストID'
+                  description: |-
+                    取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+                    取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+                    リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+                    既に存在する、別のユーザによる取引とリクエストIDが衝突した場合、request_id_conflictが返ります。
+                  example: '9dbfd997-b948-40d3-a3bf-6bc1a01368d2'
+                strategy:
+                  type: string
+                  enum: [point-preferred, money-only]
+                  default: 'point-preferred'
+                  title: '支払い時の残高消費方式'
+                  description: |-
+                    支払い時に残高がどのように消費されるかを指定します。
+                    デフォルトでは point-preferred (ポイント優先)が採用されます。
+
+                    - point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます(デフォルト動作)
+                    - money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+                    マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+                  example: 'point-preferred'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionDetail'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
   /transactions/cpm:
@@ -8605,7 +8735,7 @@ paths:
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
     delete:
-      x-pokepay-operator-name: "DeleteBanks"
+      x-pokepay-operator-name: "DeleteBank"
       x-pokepay-allow-server-side: true
       tags:
         - BankPay

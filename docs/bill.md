@@ -8,18 +8,18 @@
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 7636,                           // ページ番号
-        'per_page' => 1814,                       // 1ページの表示数
-        'bill_id' => "b6qmrSFaDi",                // 支払いQRコードのID
+        'page' => 4805,                           // ページ番号
+        'per_page' => 5257,                       // 1ページの表示数
+        'bill_id' => "Qum7xlHp8",                 // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "Y7oV-oTN-a9lI9Q1-ru-C-b-aF--yyd", // 組織コード
+        'organization_code' => "--3",             // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2022-11-25T08:24:38.000000Z", // 作成日時(起点)
-        'created_to' => "2023-03-23T22:47:05.000000Z", // 作成日時(終点)
+        'created_from' => "2023-01-04T08:37:14.000000+09:00", // 作成日時(起点)
+        'created_to' => "2020-04-02T20:22:47.000000+09:00", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 99,               // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 9134,             // 金額の範囲によるフィルタ(上限)
+        'lower_limit_amount' => 3696,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 834,              // 金額の範囲によるフィルタ(上限)
         'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
     ]
 );
@@ -195,11 +195,6 @@ $request = new Request\ListBills(
 [PaginatedBills](./responses.md#paginated-bills)
 を返します
 
-### Error Responses
-|status|type|ja|en|
-|---|---|---|---|
-|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-
 
 
 ---
@@ -214,7 +209,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 4964.0,                       // 支払い額
+        'amount' => 3753.0,                       // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -227,6 +222,8 @@ $request = new Request\CreateBill(
   
 
 支払いQRコードを支払い額を指定します。省略するかnullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。
+また、金額を指定する場合の上限額は支払いをするマネーの取引上限額です。
+
 
 ```json
 {
@@ -275,16 +272,41 @@ $request = new Request\CreateBill(
 [Bill](./responses.md#bill)
 を返します
 
-### Error Responses
-|status|type|ja|en|
-|---|---|---|---|
-|403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
-|422|private_money_not_found|マネーが見つかりません|Private money not found|
-|422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
-|422|account_closed|アカウントは退会しています|The account is closed|
-|422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
-|422|account_suspended|アカウントは停止されています|The account is suspended|
+
+
+---
+
+
+<a name="get-bill"></a>
+## GetBill: 支払いQRコードの表示
+支払いQRコードの内容を表示します。
+
+```PHP
+$request = new Request\GetBill(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // billId: 支払いQRコードのID
+);
+```
+
+
+
+### Parameters
+**`bill_id`** 
+  
+
+表示する支払いQRコードのIDです。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+
+
+成功したときは
+[Bill](./responses.md#bill)
+を返します
 
 
 
@@ -299,9 +321,9 @@ $request = new Request\CreateBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 279.0,                        // 支払い額
+        'amount' => 8394.0,                       // 支払い額
         'description' => "test bill",             // 説明文
-        'is_disabled' => FALSE                    // 無効化されているかどうか
+        'is_disabled' => TRUE                     // 無効化されているかどうか
     ]
 );
 ```
@@ -324,7 +346,7 @@ $request = new Request\UpdateBill(
 **`amount`** 
   
 
-支払いQRコードを支払い額を指定します。nullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。
+支払いQRコードを支払い額を指定します。nullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。また、金額を指定する場合の上限額は支払いをするマネーの取引上限額です。
 
 ```json
 {
@@ -361,6 +383,120 @@ $request = new Request\UpdateBill(
 
 成功したときは
 [Bill](./responses.md#bill)
+を返します
+
+
+
+---
+
+
+<a name="create-payment-transaction-with-bill"></a>
+## CreatePaymentTransactionWithBill: 支払いQRコードを読み取ることで支払いをする
+通常支払いQRコードはエンドユーザーのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。 もしエンドユーザーとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバが支払いQRの情報をエンドユーザーから代理受けして、サーバ間連携APIによって実際の支払い取引をリクエストすることになります。
+
+エンドユーザーから受け取った支払いQRコードのIDをエンドユーザーIDと共に渡すことで支払い取引が作られます。
+支払い時には、エンドユーザーの残高のうち、ポイント残高から優先的に消費されます。
+
+
+```PHP
+$request = new Request\CreatePaymentTransactionWithBill(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
+    [
+        'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
+        'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
+        'strategy' => "point-preferred"           // 支払い時の残高消費方式
+    ]
+);
+```
+
+
+
+### Parameters
+**`bill_id`** 
+  
+
+支払いQRコードのIDです。
+
+QRコード生成時に送金先店舗のウォレット情報や、支払い金額などが登録されています。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`customer_id`** 
+  
+
+エンドユーザーIDです。
+
+支払いを行うエンドユーザーを指定します。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`metadata`** 
+  
+
+取引作成時に指定されるメタデータです。
+
+任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
+
+```json
+{
+  "type": "string",
+  "format": "json"
+}
+```
+
+**`request_id`** 
+  
+
+取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
+
+取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
+
+リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+既に存在する、別のユーザによる取引とリクエストIDが衝突した場合、request_id_conflictが返ります。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+**`strategy`** 
+  
+
+支払い時に残高がどのように消費されるかを指定します。
+デフォルトでは point-preferred (ポイント優先)が採用されます。
+
+- point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます(デフォルト動作)
+- money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+
+```json
+{
+  "type": "string",
+  "enum": [
+    "point-preferred",
+    "money-only"
+  ]
+}
+```
+
+
+
+成功したときは
+[TransactionDetail](./responses.md#transaction-detail)
 を返します
 
 
