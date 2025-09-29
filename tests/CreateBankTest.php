@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "528e1122-9e40-4382-82b2-97dc79d33e2f",
-            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
-            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
-            "ATbfETgM8KooCtS8z1fc4bmpdj"
+            "df43edfb-403e-487a-9122-b960789a4c24",
+            "aeb888bd-ec94-4d20-9eb1-c9662f8ed995",
+            "4bmpdjKCTfj1GK9RSuRp80JIGIfZb0zQJuIdXR7obZEoGLvyrYRSePLUjWmS1Vfe4rF1Hr4pu5zkebHCqAbvDaj08T6AqfU9VC96cIIeErItINWil5tFd5fwAxEmAXCuaDk4OeOYMd636fXlQmJ9z2bnV3FEVOMMOncgSgfpnmC2KuXyRgGfUfNENrDu8T1J2YZjgzjmCRB6BbdWS6JCIuNd5OFNrZXER72Q",
+            "Nr"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "528e1122-9e40-4382-82b2-97dc79d33e2f",
-            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
-            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
-            "ATbfETgM8KooCtS8z1fc4bmpdj",
+            "df43edfb-403e-487a-9122-b960789a4c24",
+            "aeb888bd-ec94-4d20-9eb1-c9662f8ed995",
+            "4bmpdjKCTfj1GK9RSuRp80JIGIfZb0zQJuIdXR7obZEoGLvyrYRSePLUjWmS1Vfe4rF1Hr4pu5zkebHCqAbvDaj08T6AqfU9VC96cIIeErItINWil5tFd5fwAxEmAXCuaDk4OeOYMd636fXlQmJ9z2bnV3FEVOMMOncgSgfpnmC2KuXyRgGfUfNENrDu8T1J2YZjgzjmCRB6BbdWS6JCIuNd5OFNrZXER72Q",
+            "Nr",
             [
-                'birthdate' => "KCTf"
+                'birthdate' => "pzY"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "528e1122-9e40-4382-82b2-97dc79d33e2f",
-            "9efd5351-7117-4f8f-8a50-b551cbeb2539",
-            "Y2Rpsj0heI1pcWBx1T31cQtfbPC",
-            "ATbfETgM8KooCtS8z1fc4bmpdj",
+            "df43edfb-403e-487a-9122-b960789a4c24",
+            "aeb888bd-ec94-4d20-9eb1-c9662f8ed995",
+            "4bmpdjKCTfj1GK9RSuRp80JIGIfZb0zQJuIdXR7obZEoGLvyrYRSePLUjWmS1Vfe4rF1Hr4pu5zkebHCqAbvDaj08T6AqfU9VC96cIIeErItINWil5tFd5fwAxEmAXCuaDk4OeOYMd636fXlQmJ9z2bnV3FEVOMMOncgSgfpnmC2KuXyRgGfUfNENrDu8T1J2YZjgzjmCRB6BbdWS6JCIuNd5OFNrZXER72Q",
+            "Nr",
             [
-                'email' => "j1GK9RSuRp@80JI.com",
-                'birthdate' => "G"
+                'email' => "fcTDxwidoK@xhgH.com",
+                'birthdate' => "IlA44"
             ]
         );
         try {

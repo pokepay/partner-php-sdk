@@ -6,7 +6,7 @@ CPMトークンの現在の状態を取得します。CPMトークンの有効�
 
 ```PHP
 $request = new Request\GetCpmToken(
-    "NMgqN77FQwuiGtQW4pnFSk"                      // cpmToken: CPMトークン
+    "Bg2EP1IMpzVlOR0ZjHbJ4p"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -44,15 +44,15 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 ```PHP
 $request = new Request\ListTransactions(
     [
-        'from' => "2023-02-24T02:39:56.000000Z",  // 開始日時
-        'to' => "2020-03-12T19:10:07.000000Z",    // 終了日時
+        'from' => "2024-05-24T19:52:05.000000Z",  // 開始日時
+        'to' => "2024-08-19T13:06:16.000000Z",    // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
-        'transaction_id' => "z0ZAYuH",            // 取引ID
+        'transaction_id' => "mI",                 // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'is_modified' => TRUE,                    // キャンセルフラグ
@@ -312,10 +312,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 5982,
-        'point_amount' => 3485,
-        'point_expires_at' => "2020-03-05T16:54:43.000000Z", // ポイント有効期限
-        'description' => "89ga8rAwXpAiqwTxt1HL4wWzmkMDA4SVfWD13Zj3L9DQPYajb0tVdWEdtL2ujHbA770c9iXi2Q1VWdznJovLhT0BrHHw3tEdBOJZocfpIFBg2EP1IMpzVlOR0ZjHbJ4pIYeH1mIjK91BovJNiyan2Rg9xEgMUhIRyB0Lq7z8Ljil9JSMA7rA7mkLLtmKfg"
+        'money_amount' => 6987,
+        'point_amount' => 5216,
+        'point_expires_at' => "2023-05-10T13:30:37.000000Z", // ポイント有効期限
+        'description' => "1BovJNiyan2Rg9xEgMUhIRyB0Lq7z8Ljil9JSMA7rA7mkLLtmKfguDK2Ig"
     ]
 );
 ```
@@ -419,6 +419,9 @@ $request = new Request\CreateTransaction(
 |422|customer_user_not_found||The customer user is not found|
 |422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
+|422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
+|422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
 |422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
@@ -428,8 +431,14 @@ $request = new Request\CreateTransaction(
 |422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
 |422|account_balance_exceeded|口座残高が上限を超えました|The account balance exceeded the limit|
 |422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
-|422|account_total_topup_limit_range|期間内での合計チャージ額上限に達しました|Entire period topup limit reached|
-|422|account_total_topup_limit_entire_period|全期間での合計チャージ額上限に達しました|Entire period topup limit reached|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|account_topup_quota_not_splittable|このチャージ可能枠は設定された金額未満の金額には使用できません|This topup quota is only applicable to its designated money amount.|
+|422|topup_amount_exceeding_topup_quota_usable_amount|チャージ金額がチャージ可能枠の利用可能金額を超えています|Topup amount is exceeding the topup quota's usable amount|
+|422|account_topup_quota_inactive|指定されたチャージ可能枠は有効ではありません|Topup quota is inactive|
+|422|account_topup_quota_not_within_applicable_period|指定されたチャージ可能枠の利用可能期間外です|Topup quota is not applicable at this time|
+|422|account_topup_quota_not_found|ウォレットにチャージ可能枠がありません|Topup quota is not found with this account|
+|422|account_total_topup_limit_range|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount within the period defined by the money.|
+|422|account_total_topup_limit_entire_period|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount defined by the money.|
 |422|coupon_unavailable_shop|このクーポンはこの店舗では使用できません。|This coupon is unavailable for this shop.|
 |422|coupon_already_used|このクーポンは既に使用済みです。|This coupon is already used.|
 |422|coupon_not_received|このクーポンは受け取られていません。|This coupon is not received.|
@@ -469,11 +478,11 @@ $request = new Request\ListTransactionsV2(
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "DK2IgQ",             // 取引ID
-        'is_modified' => TRUE,                    // キャンセルフラグ
+        'transaction_id' => "jO",                 // 取引ID
+        'is_modified' => FALSE,                   // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-        'from' => "2021-06-15T23:35:43.000000Z",  // 開始日時
-        'to' => "2022-10-13T01:32:25.000000Z",    // 終了日時
+        'from' => "2025-08-29T05:38:38.000000Z",  // 開始日時
+        'to' => "2022-08-12T05:33:14.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -763,11 +772,11 @@ $request = new Request\ListBillTransactions(
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザー端末ID
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "DYID",               // 取引ID
-        'bill_id' => "PEu",                       // 支払いQRコードのID
-        'is_modified' => FALSE,                   // キャンセルフラグ
-        'from' => "2020-01-28T06:42:52.000000Z",  // 開始日時
-        'to' => "2023-06-28T07:58:55.000000Z",    // 終了日時
+        'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
+        'bill_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 支払いQRコードのID
+        'is_modified' => TRUE,                    // キャンセルフラグ
+        'from' => "2020-06-21T05:56:19.000000Z",  // 開始日時
+        'to' => "2025-01-02T01:25:55.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -885,7 +894,8 @@ $request = new Request\ListBillTransactions(
 
 ```json
 {
-  "type": "string"
+  "type": "string",
+  "format": "uuid"
 }
 ```
 
@@ -898,7 +908,8 @@ $request = new Request\ListBillTransactions(
 
 ```json
 {
-  "type": "string"
+  "type": "string",
+  "format": "uuid"
 }
 ```
 
@@ -1020,9 +1031,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 6494,                   // マネー額
-        'point_amount' => 2166,                   // ポイント額
-        'point_expires_at' => "2021-03-19T16:07:42.000000Z", // ポイント有効期限
+        'money_amount' => 2244,                   // マネー額
+        'point_amount' => 473,                    // ポイント額
+        'point_expires_at' => "2024-02-07T03:23:53.000000Z", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -1189,7 +1200,10 @@ $request = new Request\CreateTopupTransaction(
 |400|invalid_parameter_both_point_and_money_are_zero||One of 'money_amount' or 'point_amount' must be a positive (>0) number|
 |400|invalid_parameters|項目が無効です|Invalid parameters|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
+|422|coupon_not_found|クーポンが見つかりませんでした。|The coupon is not found.|
+|422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
+|422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
 |422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
@@ -1199,8 +1213,13 @@ $request = new Request\CreateTopupTransaction(
 |422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
 |422|account_balance_exceeded|口座残高が上限を超えました|The account balance exceeded the limit|
 |422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
-|422|account_total_topup_limit_range|期間内での合計チャージ額上限に達しました|Entire period topup limit reached|
-|422|account_total_topup_limit_entire_period|全期間での合計チャージ額上限に達しました|Entire period topup limit reached|
+|422|account_topup_quota_not_splittable|このチャージ可能枠は設定された金額未満の金額には使用できません|This topup quota is only applicable to its designated money amount.|
+|422|topup_amount_exceeding_topup_quota_usable_amount|チャージ金額がチャージ可能枠の利用可能金額を超えています|Topup amount is exceeding the topup quota's usable amount|
+|422|account_topup_quota_inactive|指定されたチャージ可能枠は有効ではありません|Topup quota is inactive|
+|422|account_topup_quota_not_within_applicable_period|指定されたチャージ可能枠の利用可能期間外です|Topup quota is not applicable at this time|
+|422|account_topup_quota_not_found|ウォレットにチャージ可能枠がありません|Topup quota is not found with this account|
+|422|account_total_topup_limit_range|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount within the period defined by the money.|
+|422|account_total_topup_limit_entire_period|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount defined by the money.|
 |422|coupon_unavailable_shop|このクーポンはこの店舗では使用できません。|This coupon is unavailable for this shop.|
 |422|coupon_already_used|このクーポンは既に使用済みです。|This coupon is already used.|
 |422|coupon_not_received|このクーポンは受け取られていません。|This coupon is not received.|
@@ -1218,6 +1237,8 @@ $request = new Request\CreateTopupTransaction(
 |422|transaction_invalid_done_at|取引完了日が無効です|Transaction completion date is invalid|
 |422|transaction_invalid_amount|取引金額が数値ではないか、受け入れられない桁数です|Transaction amount is not a number or cannot be accepted for this currency|
 |422|request_id_conflict|このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。|The request_id is already used by another transaction. Try again with new request id|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |422|customer_account_not_found||The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
@@ -1239,15 +1260,15 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    339,                                          // amount: 支払い額
+    2833,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
-        'strategy' => "point-preferred"           // 支払い時の残高消費方式
+        'strategy' => "point-preferred",          // 支払い時の残高消費方式
+        'coupon_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // クーポンID
     ]
 );
 ```
@@ -1400,6 +1421,18 @@ $request = new Request\CreatePaymentTransaction(
 }
 ```
 
+**`coupon_id`** 
+  
+
+支払いに対して適用するクーポンのIDを指定します。
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
 
 
 成功したときは
@@ -1410,7 +1443,10 @@ $request = new Request\CreatePaymentTransaction(
 |status|type|ja|en|
 |---|---|---|---|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
-|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
+|422|coupon_not_found|クーポンが見つかりませんでした。|The coupon is not found.|
+|422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
+|422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
 |422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
@@ -1420,8 +1456,13 @@ $request = new Request\CreatePaymentTransaction(
 |422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
 |422|account_balance_exceeded|口座残高が上限を超えました|The account balance exceeded the limit|
 |422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
-|422|account_total_topup_limit_range|期間内での合計チャージ額上限に達しました|Entire period topup limit reached|
-|422|account_total_topup_limit_entire_period|全期間での合計チャージ額上限に達しました|Entire period topup limit reached|
+|422|account_topup_quota_not_splittable|このチャージ可能枠は設定された金額未満の金額には使用できません|This topup quota is only applicable to its designated money amount.|
+|422|topup_amount_exceeding_topup_quota_usable_amount|チャージ金額がチャージ可能枠の利用可能金額を超えています|Topup amount is exceeding the topup quota's usable amount|
+|422|account_topup_quota_inactive|指定されたチャージ可能枠は有効ではありません|Topup quota is inactive|
+|422|account_topup_quota_not_within_applicable_period|指定されたチャージ可能枠の利用可能期間外です|Topup quota is not applicable at this time|
+|422|account_topup_quota_not_found|ウォレットにチャージ可能枠がありません|Topup quota is not found with this account|
+|422|account_total_topup_limit_range|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount within the period defined by the money.|
+|422|account_total_topup_limit_entire_period|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount defined by the money.|
 |422|coupon_unavailable_shop|このクーポンはこの店舗では使用できません。|This coupon is unavailable for this shop.|
 |422|coupon_already_used|このクーポンは既に使用済みです。|This coupon is already used.|
 |422|coupon_not_received|このクーポンは受け取られていません。|This coupon is not received.|
@@ -1439,6 +1480,8 @@ $request = new Request\CreatePaymentTransaction(
 |422|transaction_invalid_done_at|取引完了日が無効です|Transaction completion date is invalid|
 |422|transaction_invalid_amount|取引金額が数値ではないか、受け入れられない桁数です|Transaction amount is not a number or cannot be accepted for this currency|
 |422|request_id_conflict|このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。|The request_id is already used by another transaction. Try again with new request id|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |422|customer_account_not_found||The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
@@ -1457,13 +1500,15 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```PHP
 $request = new Request\CreateCpmTransaction(
-    "QALktsxpQNr6y6a28m0nRu",                     // cpmToken: CPMトークン
+    "OJbPEulQIvNSkQALktsxpQ",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    7569.0,                                       // amount: 取引金額
+    7118.0,                                       // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
         'strategy' => "point-preferred"           // 支払い時の残高消費方式
@@ -1621,7 +1666,10 @@ $request = new Request\CreateCpmTransaction(
 |422|cpm_token_already_proceed|このCPMトークンは既に処理されています。|The CPM token is already proceed|
 |422|cpm_token_already_expired|このCPMトークンは既に失効しています。|The CPM token is already expired|
 |422|cpm_token_not_found|CPMトークンが見つかりませんでした。|The CPM token is not found.|
-|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
+|422|coupon_not_found|クーポンが見つかりませんでした。|The coupon is not found.|
+|422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
+|422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
 |422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
@@ -1631,8 +1679,13 @@ $request = new Request\CreateCpmTransaction(
 |422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
 |422|account_balance_exceeded|口座残高が上限を超えました|The account balance exceeded the limit|
 |422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
-|422|account_total_topup_limit_range|期間内での合計チャージ額上限に達しました|Entire period topup limit reached|
-|422|account_total_topup_limit_entire_period|全期間での合計チャージ額上限に達しました|Entire period topup limit reached|
+|422|account_topup_quota_not_splittable|このチャージ可能枠は設定された金額未満の金額には使用できません|This topup quota is only applicable to its designated money amount.|
+|422|topup_amount_exceeding_topup_quota_usable_amount|チャージ金額がチャージ可能枠の利用可能金額を超えています|Topup amount is exceeding the topup quota's usable amount|
+|422|account_topup_quota_inactive|指定されたチャージ可能枠は有効ではありません|Topup quota is inactive|
+|422|account_topup_quota_not_within_applicable_period|指定されたチャージ可能枠の利用可能期間外です|Topup quota is not applicable at this time|
+|422|account_topup_quota_not_found|ウォレットにチャージ可能枠がありません|Topup quota is not found with this account|
+|422|account_total_topup_limit_range|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount within the period defined by the money.|
+|422|account_total_topup_limit_entire_period|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount defined by the money.|
 |422|coupon_unavailable_shop|このクーポンはこの店舗では使用できません。|This coupon is unavailable for this shop.|
 |422|coupon_already_used|このクーポンは既に使用済みです。|This coupon is already used.|
 |422|coupon_not_received|このクーポンは受け取られていません。|This coupon is not received.|
@@ -1652,6 +1705,8 @@ $request = new Request\CreateCpmTransaction(
 |422|transaction_invalid_done_at|取引完了日が無効です|Transaction completion date is invalid|
 |422|transaction_invalid_amount|取引金額が数値ではないか、受け入れられない桁数です|Transaction amount is not a number or cannot be accepted for this currency|
 |422|request_id_conflict|このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。|The request_id is already used by another transaction. Try again with new request id|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |503|temporarily_unavailable||Service Unavailable|
 
 
@@ -1670,7 +1725,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    1810.0,                                       // amount: 送金額
+    7478.0,                                       // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -1795,7 +1850,10 @@ $request = new Request\CreateTransferTransaction(
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
 |422|customer_user_not_found||The customer user is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
-|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
+|422|coupon_not_found|クーポンが見つかりませんでした。|The coupon is not found.|
+|422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
+|422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
 |422|private_money_closed|このマネーは解約されています|This money was closed|
 |422|transaction_has_done|取引は完了しており、キャンセルすることはできません|Transaction has been copmpleted and cannot be canceled|
@@ -1805,8 +1863,13 @@ $request = new Request\CreateTransferTransaction(
 |422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
 |422|account_balance_exceeded|口座残高が上限を超えました|The account balance exceeded the limit|
 |422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
-|422|account_total_topup_limit_range|期間内での合計チャージ額上限に達しました|Entire period topup limit reached|
-|422|account_total_topup_limit_entire_period|全期間での合計チャージ額上限に達しました|Entire period topup limit reached|
+|422|account_topup_quota_not_splittable|このチャージ可能枠は設定された金額未満の金額には使用できません|This topup quota is only applicable to its designated money amount.|
+|422|topup_amount_exceeding_topup_quota_usable_amount|チャージ金額がチャージ可能枠の利用可能金額を超えています|Topup amount is exceeding the topup quota's usable amount|
+|422|account_topup_quota_inactive|指定されたチャージ可能枠は有効ではありません|Topup quota is inactive|
+|422|account_topup_quota_not_within_applicable_period|指定されたチャージ可能枠の利用可能期間外です|Topup quota is not applicable at this time|
+|422|account_topup_quota_not_found|ウォレットにチャージ可能枠がありません|Topup quota is not found with this account|
+|422|account_total_topup_limit_range|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount within the period defined by the money.|
+|422|account_total_topup_limit_entire_period|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount defined by the money.|
 |422|coupon_unavailable_shop|このクーポンはこの店舗では使用できません。|This coupon is unavailable for this shop.|
 |422|coupon_already_used|このクーポンは既に使用済みです。|This coupon is already used.|
 |422|coupon_not_received|このクーポンは受け取られていません。|This coupon is not received.|
@@ -1826,6 +1889,8 @@ $request = new Request\CreateTransferTransaction(
 |422|transaction_invalid_done_at|取引完了日が無効です|Transaction completion date is invalid|
 |422|transaction_invalid_amount|取引金額が数値ではないか、受け入れられない桁数です|Transaction amount is not a number or cannot be accepted for this currency|
 |422|request_id_conflict|このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。|The request_id is already used by another transaction. Try again with new request id|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
 |503|temporarily_unavailable||Service Unavailable|
 
 
@@ -1841,9 +1906,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    7625,
+    1081,
     [
-        'description' => "SuEUpdPie9qQ2GFfC0at9jn8DwInc5YWbNc2E2NkkIcBn5byBGxSlhAbqrppUqGdxMolEMce2oIWkzh6xh3kO5wXHuEli1NcEVyTrbdyJqmh3WRfG",
+        'description' => "m0nRuldHpSuEUpdPie9qQ2GFfC0at9jn8DwInc5YWbNc2E2NkkIcBn5byBGxSlhAbqrppUqGdxMolEMce2oIWkzh6xh3kO5wXHuEli1NcEVyTrbdyJqmh3WRfGT9d54NzUibZax1gbEqwtEhHNUjZJEl7H6",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -1937,6 +2002,9 @@ $request = new Request\CreateExchangeTransaction(
 |422|transaction_restricted||Transaction is not allowed|
 |422|can_not_exchange_between_same_private_money|同じマネーとの交換はできません||
 |422|can_not_exchange_between_users|異なるユーザー間での交換は出来ません||
+|422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
+|422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_not_accessible|アカウントにアクセスできません|The account is not accessible by this user|
@@ -1952,8 +2020,14 @@ $request = new Request\CreateExchangeTransaction(
 |422|account_transfer_limit_exceeded|取引金額が上限を超えました|Too much amount to transfer|
 |422|account_balance_exceeded|口座残高が上限を超えました|The account balance exceeded the limit|
 |422|account_money_topup_transfer_limit_exceeded|マネーチャージ金額が上限を超えました|Too much amount to money topup transfer|
-|422|account_total_topup_limit_range|期間内での合計チャージ額上限に達しました|Entire period topup limit reached|
-|422|account_total_topup_limit_entire_period|全期間での合計チャージ額上限に達しました|Entire period topup limit reached|
+|422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
+|422|account_topup_quota_not_splittable|このチャージ可能枠は設定された金額未満の金額には使用できません|This topup quota is only applicable to its designated money amount.|
+|422|topup_amount_exceeding_topup_quota_usable_amount|チャージ金額がチャージ可能枠の利用可能金額を超えています|Topup amount is exceeding the topup quota's usable amount|
+|422|account_topup_quota_inactive|指定されたチャージ可能枠は有効ではありません|Topup quota is inactive|
+|422|account_topup_quota_not_within_applicable_period|指定されたチャージ可能枠の利用可能期間外です|Topup quota is not applicable at this time|
+|422|account_topup_quota_not_found|ウォレットにチャージ可能枠がありません|Topup quota is not found with this account|
+|422|account_total_topup_limit_range|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount within the period defined by the money.|
+|422|account_total_topup_limit_entire_period|合計チャージ額がマネーで指定された期間内での上限を超えています|The topup exceeds the total amount defined by the money.|
 |422|coupon_unavailable_shop|このクーポンはこの店舗では使用できません。|This coupon is unavailable for this shop.|
 |422|coupon_already_used|このクーポンは既に使用済みです。|This coupon is already used.|
 |422|coupon_not_received|このクーポンは受け取られていません。|This coupon is not received.|
@@ -2025,7 +2099,7 @@ $request = new Request\RefundTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
     [
         'description' => "返品対応のため",               // 取引履歴に表示する返金事由
-        'returning_point_expires_at' => "2024-02-14T11:33:34.000000Z" // 返却ポイントの有効期限
+        'returning_point_expires_at' => "2021-10-22T08:40:05.000000Z" // 返却ポイントの有効期限
     ]
 );
 ```

@@ -10,8 +10,8 @@ class CreateOrganizationTest extends TestCase
         $code = "test-org" . $this->randomString(6);
         $name = "テスト組織" . $this->randomString(4);
         $privateMoneyIds = ["4b138a4c-8944-4f98-a5c4-96d3c1c415eb"];
-        $issuerAdminUserEmail = $this->randomString(6) . "@pokepay-tests.jp";
-        $memberAdminUserEmail = $this->randomString(6) . "@pokepay-tests.jp";
+        $issuerAdminUserEmail = "blackhole@pokepay.jp";
+        $memberAdminUserEmail = "blackhole@pokepay.jp";
         $response = $client->send(new Request\CreateOrganization(
             $code,
             $name,
@@ -28,8 +28,8 @@ class CreateOrganizationTest extends TestCase
         $code = "test-org" . $this->randomString(6);
         $name = "テスト組織" . $this->randomString(4);
         $privateMoneyIds = ["4b138a4c-8944-4f98-a5c4-96d3c1c415eb"];
-        $issuerAdminUserEmail = $this->randomString(6) . "@pokepay-tests.jp";
-        $memberAdminUserEmail = $this->randomString(6) . "@pokepay-tests.jp";
+        $issuerAdminUserEmail = "blackhole@pokepay.jp";
+        $memberAdminUserEmail = "blackhole@pokepay.jp";
         $bankCode = "1234";
         $bankName = $this->randomString(4) . "銀行";
         $bankBranchCode = "123";

@@ -9,7 +9,7 @@ class CreateWebhook extends TestCase
         $client = $this->newClient();
         $request = new Request\CreateWebhook(
             "bulk_shops",
-            "oQ4Xw"
+            "WBx1"
         );
         try {
             $response = $client->send($request);

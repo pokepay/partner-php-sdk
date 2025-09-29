@@ -176,10 +176,10 @@ class ListCustomerTransactions extends TestCase
                 'receiver_customer_id' => "95bba404-1c12-49b8-b33c-80cae6f8f332",
                 'type' => "expire",
                 'is_modified' => TRUE,
-                'from' => "2023-11-30T16:04:38.000000Z",
-                'to' => "2021-10-28T10:36:00.000000Z",
-                'page' => 9592,
-                'per_page' => 3713
+                'from' => "2024-11-12T16:05:48.000000Z",
+                'to' => "2023-11-30T16:04:38.000000Z",
+                'page' => 7185,
+                'per_page' => 9592
             ]
         );
         try {

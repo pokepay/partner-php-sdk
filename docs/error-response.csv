@@ -1,4 +1,5 @@
 method,path,status_code,type,ja,en
+GET,/ping,418,,,
 GET,/user,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 GET,/dashboard,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
@@ -20,6 +21,9 @@ POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of '
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -29,8 +33,14 @@ POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of '
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -78,7 +88,10 @@ POST,/transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
 POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -88,8 +101,13 @@ POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,On
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -107,6 +125,8 @@ POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,On
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,customer_account_not_found,,The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
@@ -114,7 +134,10 @@ POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,On
 POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,check_not_found,"これはチャージQRコードではありません",This is not a topup QR code
-,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -124,8 +147,13 @@ POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザ
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -145,22 +173,44 @@ POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザ
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,check_already_received,"このチャージQRコードは既に受取済みの為、チャージ出来ませんでした",Check is already received
 ,,422,check_unavailable,"このチャージQRコードは利用できません",The topup QR code is not available
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
 ,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
 ,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -168,20 +218,12 @@ POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理
 ,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
 ,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
-,,422,account_suspended,"アカウントは停止されています",The account is suspended
-,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
-,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
-,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
-,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
-,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
-,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
-,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
-,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
-,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/payment,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -191,8 +233,13 @@ POST,/transactions/payment,403,unpermitted_admin_user,"この管理ユーザに�
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -210,14 +257,65 @@ POST,/transactions/payment,403,unpermitted_admin_user,"この管理ユーザに�
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,customer_account_not_found,,The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/transactions/payment/bill,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,disabled_bill,"支払いQRコードが無効です",Bill is disabled
+,,422,customer_user_not_found,,The customer user is not found
+,,422,bill_not_found,"支払いQRコードが見つかりません",Bill not found
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
+,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
+,,422,private_money_closed,"このマネーは解約されています",This money was closed
+,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
+,,422,account_restricted,"特定のアカウントの支払いに制限されています",The account is restricted to pay for a specific account
+,,422,account_balance_not_enough,"口座残高が不足してます",The account balance is not enough
+,,422,c2c_transfer_not_allowed,"このマネーではユーザ間マネー譲渡は利用できません",Customer to customer transfer is not available for this money
+,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
+,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
+,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
+,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
+,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
+,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
+,,422,coupon_not_sent,"このウォレットに対して配信されていないクーポンです。",This coupon is not sent to this account yet.
+,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
+,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
+,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,account_suspended,"アカウントは停止されています",The account is suspended
+,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,customer_account_not_found,,The customer account is not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
+,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
+,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
+,,422,terminal_is_invalidated,"端末は無効化されています",The terminal is already invalidated
+,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
+,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
+,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/transfer,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
-,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -227,8 +325,13 @@ POST,/transactions/transfer,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -248,11 +351,16 @@ POST,/transactions/transfer,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/exchange,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,transaction_restricted,,Transaction is not allowed
 ,,422,can_not_exchange_between_same_private_money,"同じマネーとの交換はできません",
 ,,422,can_not_exchange_between_users,"異なるユーザー間での交換は出来ません",
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -268,8 +376,14 @@ POST,/transactions/exchange,422,account_not_found,"アカウントが見つか�
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -289,7 +403,10 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 ,,422,cpm_token_already_proceed,"このCPMトークンは既に処理されています。",The CPM token is already proceed
 ,,422,cpm_token_already_expired,"このCPMトークンは既に失効しています。",The CPM token is already expired
 ,,422,cpm_token_not_found,"CPMトークンが見つかりませんでした。",The CPM token is not found.
-,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -299,8 +416,13 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -320,6 +442,8 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/bulk,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,organization_not_issuer,"発行体以外に許可されていない操作です",Unpermitted operation except for issuer organizations.
@@ -329,7 +453,10 @@ POST,/transactions/bulk,403,unpermitted_admin_user,"この管理ユーザには�
 POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,cashtray_not_found,"決済QRコードが見つかりません",Cashtray is not found
-,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -339,8 +466,13 @@ POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -360,6 +492,8 @@ POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,cashtray_already_proceed,"この決済QRコードは既に処理されています",Cashtray is already proceed
 ,,422,cashtray_expired,"この決済QRコードは有効期限が切れています",Cashtray is expired
 ,,422,cashtray_already_canceled,"この決済QRコードは既に無効化されています",Cashtray is already canceled
@@ -369,11 +503,13 @@ POST,/external-transactions,400,invalid_parameters,"項目が無効です",Inval
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
-,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,customer_account_not_found,,The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -390,8 +526,13 @@ POST,/external-transactions,400,invalid_parameters,"項目が無効です",Inval
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -399,6 +540,8 @@ POST,/external-transactions,400,invalid_parameters,"項目が無効です",Inval
 ,,422,coupon_amount_not_enough,"このクーポンを使用するには支払い額が足りません。",The payment amount not enough to use this coupon.
 ,,422,coupon_not_payment,"クーポンは支払いにのみ使用できます。",Coupons can only be used for payment.
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/external-transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -425,14 +568,18 @@ GET,/bulk-transactions/:uuid,404,notfound,,Not found
 GET,/bulk-transactions/:uuid/jobs,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,bulk_transaction_not_found,"Bulk取引が見つかりません",Bulk transaction not found
 GET,/bills,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
-POST,/bills,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+GET,/bills/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,bill_not_found,"支払いQRコードが見つかりません",Bill not found
+POST,/bills,400,invalid_parameter_bill_amount_or_range_exceeding_transfer_limit,"支払いQRコードの金額がマネーの取引可能金額の上限を超えています",The input amount is exceeding the private money's limit for transfer
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
-PATCH,/bills/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+PATCH,/bills/:uuid,400,invalid_parameter_bill_amount_or_range_exceeding_transfer_limit,"支払いQRコードの金額がマネーの取引可能金額の上限を超えています",The input amount is exceeding the private money's limit for transfer
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 GET,/checks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,organization_not_found,,Organization not found
@@ -517,6 +664,7 @@ POST,/private-moneys,400,invalid_parameters,"項目が無効です",Invalid para
 ,,422,organization_not_found,,Organization not found
 ,,422,only_one_of_months_and_days_can_be_selected,"月と日のどちらか1つだけを選択できます",Only one of months and days can be selected
 ,,422,private_money_topup_transaction_limit_exceeded,"一回のチャージ取引の最大チャージ可能額がウォレットの最大マネー残高を越えています",The money amount for the transaction exceeds the maximum balance
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/terminals,403,,,
 GET,/organizations,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -693,6 +841,9 @@ PATCH,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権
 DELETE,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,account_not_pre_closed,"アカウントが退会準備中ではありません",The account is not pre-closed
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_not_accessible,"アカウントにアクセスできません",The account is not accessible by this user
@@ -708,8 +859,14 @@ DELETE,/accounts/:uuid,403,unpermitted_admin_user,"この管理ユーザには�
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -730,6 +887,7 @@ GET,/accounts/:uuid/expired-balances,403,unpermitted_admin_user,"この管理ユ
 ,,503,temporarily_unavailable,,Service Unavailable
 GET,/accounts/:uuid/transfers/summary,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/users/:uuid/accounts,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -833,8 +991,10 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,user_device_is_disabled,"このデバイスは無効化されています",The user-device is disabled
 ,,422,user_device_not_found,,The user-device not found
-,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
+,,422,not_applicable_transaction_type_for_account_topup_quota,"チャージ取引以外の取引種別ではチャージ可能枠を使用できません",Account topup quota is not applicable to transaction types other than topup.
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
 ,,422,transaction_has_done,"取引は完了しており、キャンセルすることはできません",Transaction has been copmpleted and cannot be canceled
@@ -844,8 +1004,14 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,422,account_transfer_limit_exceeded,"取引金額が上限を超えました",Too much amount to transfer
 ,,422,account_balance_exceeded,"口座残高が上限を超えました",The account balance exceeded the limit
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
-,,422,account_total_topup_limit_range,"期間内での合計チャージ額上限に達しました",Entire period topup limit reached
-,,422,account_total_topup_limit_entire_period,"全期間での合計チャージ額上限に達しました",Entire period topup limit reached
+,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
+,,422,account_topup_quota_not_splittable,"このチャージ可能枠は設定された金額未満の金額には使用できません",This topup quota is only applicable to its designated money amount.
+,,422,topup_amount_exceeding_topup_quota_usable_amount,"チャージ金額がチャージ可能枠の利用可能金額を超えています",Topup amount is exceeding the topup quota's usable amount
+,,422,account_topup_quota_inactive,"指定されたチャージ可能枠は有効ではありません",Topup quota is inactive
+,,422,account_topup_quota_not_within_applicable_period,"指定されたチャージ可能枠の利用可能期間外です",Topup quota is not applicable at this time
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_total_topup_limit_range,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount within the period defined by the money.
+,,422,account_total_topup_limit_entire_period,"合計チャージ額がマネーで指定された期間内での上限を超えています",The topup exceeds the total amount defined by the money.
 ,,422,coupon_unavailable_shop,"このクーポンはこの店舗では使用できません。",This coupon is unavailable for this shop.
 ,,422,coupon_already_used,"このクーポンは既に使用済みです。",This coupon is already used.
 ,,422,coupon_not_received,"このクーポンは受け取られていません。",This coupon is not received.
@@ -864,6 +1030,7 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,422,same_account_transaction,"同じアカウントに送信しています",Sending to the same account
 ,,422,transaction_invalid_done_at,"取引完了日が無効です",Transaction completion date is invalid
 ,,422,transaction_invalid_amount,"取引金額が数値ではないか、受け入れられない桁数です",Transaction amount is not a number or cannot be accepted for this currency
+,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,paytree_disabled_private_money,"このマネーは銀行から引き落とし出来ません",This money cannot be charged from the bank
 ,,422,unpermitted_private_money,"このマネーは使えません",This money is not available
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -876,3 +1043,30 @@ POST,/paytree/charge-entry-result,400,partner_decryption_failed,"リクエスト
 ,,400,partner_client_not_found,"partner_clientが見つかりません。",The partner client is not found.
 POST,/paytree/reconcile,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/accounts/:uuid/topup-quotas,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+GET,/accounts/:uuid/topup-quotas,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+GET,/accounts/:uuid/topup-quotas/:quota-id,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+PATCH,/accounts/:uuid/topup-quotas/:quota-id,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+DELETE,/accounts/:uuid/topup-quotas/:quota-id,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+GET,/topup-quotas,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,private_money_topup_quota_not_available,"このマネーにはチャージ可能枠の設定がありません",Topup quota is not available with this private money.
+,,422,account_topup_quota_not_found,"ウォレットにチャージ可能枠がありません",Topup quota is not found with this account
+,,422,account_not_found,"アカウントが見つかりません",The account is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
