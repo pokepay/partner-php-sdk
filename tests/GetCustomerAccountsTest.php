@@ -174,12 +174,12 @@ class GetCustomerAccounts extends TestCase
             [
                 'per_page' => 6435,
                 'created_at_from' => "2022-12-18T13:21:30.000000Z",
-                'created_at_to' => "2022-10-28T02:45:21.000000Z",
-                'is_suspended' => TRUE,
-                'status' => "active",
-                'external_id' => "YeKIbZQuPYAKNLvTyMcIYl",
-                'tel' => "079352848",
-                'email' => "Pv9LO3MtPy@t1wT.com"
+                'created_at_to' => "2025-06-21T23:46:25.000000Z",
+                'is_suspended' => FALSE,
+                'status' => "pre-closed",
+                'external_id' => "U",
+                'tel' => "070-062-041",
+                'email' => "uPYAKNLvTy@McIY.com"
             ]
         );
         try {
@@ -197,15 +197,15 @@ class GetCustomerAccounts extends TestCase
         $request = new Request\GetCustomerAccounts(
             "e981839f-7730-40a4-9991-3f49bc7c0625",
             [
-                'page' => 8687,
-                'per_page' => 8494,
-                'created_at_from' => "2024-02-11T20:15:48.000000Z",
-                'created_at_to' => "2023-10-06T20:45:00.000000Z",
-                'is_suspended' => TRUE,
-                'status' => "active",
-                'external_id' => "Yk",
-                'tel' => "004073-175",
-                'email' => "ncONv8Kje2@pUTW.com"
+                'page' => 5613,
+                'per_page' => 8339,
+                'created_at_from' => "2025-02-04T14:45:59.000000Z",
+                'created_at_to' => "2022-04-16T16:37:32.000000Z",
+                'is_suspended' => FALSE,
+                'status' => "suspended",
+                'external_id' => "Sz5j",
+                'tel' => "084-00934",
+                'email' => "Pyt1wTnktL@8AYk.com"
             ]
         );
         try {

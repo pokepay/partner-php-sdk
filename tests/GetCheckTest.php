@@ -8,7 +8,7 @@ class GetCheck extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCheck(
-            "b051a77b-0e57-4138-aef5-ff8a3812550b"
+            "f616c977-5ef1-4010-ae24-f1fe2440fe98"
         );
         try {
             $response = $client->send($request);

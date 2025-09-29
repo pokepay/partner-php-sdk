@@ -2,12 +2,12 @@
 BankPayを用いた銀行からのチャージ取引などのAPIを提供しています。
 
 
-<a name="delete-banks"></a>
-## DeleteBanks: 銀行口座の削除
+<a name="delete-bank"></a>
+## DeleteBank: 銀行口座の削除
 銀行口座を削除します
 
 ```PHP
-$request = new Request\DeleteBanks(
+$request = new Request\DeleteBank(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 );
@@ -113,7 +113,7 @@ $request = new Request\CreateBank(
     "<Deep Link>",                                // callbackUrl: コールバックURL
     "ポケペイタロウ",                                    // kana: ユーザーの氏名 (片仮名で指定)
     [
-        'email' => "lahlWYdbEe@vpLk.com",         // ユーザーのメールアドレス
+        'email' => "CQCIIRDiJ5@EWSp.com",         // ユーザーのメールアドレス
         'birthdate' => "19901142"                 // 生年月日
     ]
 );
@@ -208,7 +208,7 @@ $request = new Request\CreateBank(
 $request = new Request\CreateBankTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2171,                                         // amount: チャージ金額
+    8799,                                         // amount: チャージ金額
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // bankId: 銀行ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // requestId: リクエストID
     [

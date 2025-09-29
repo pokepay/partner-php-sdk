@@ -62,8 +62,8 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
             "ff54fc91-7642-4ae0-919d-07e4e7d7a11f",
             [
-                'from' => "2020-09-03T19:49:23.000000Z",
-                'to' => "2021-04-04T15:41:36.000000Z"
+                'from' => "2024-11-05T18:59:45.000000Z",
+                'to' => "2020-09-03T19:49:23.000000Z"
             ]
         );
         try {
@@ -81,8 +81,8 @@ class GetPrivateMoneyOrganizationSummaries extends TestCase
         $request = new Request\GetPrivateMoneyOrganizationSummaries(
             "ff54fc91-7642-4ae0-919d-07e4e7d7a11f",
             [
-                'from' => "2022-07-23T21:24:52.000000Z",
-                'to' => "2023-03-14T06:57:05.000000Z",
+                'from' => "2021-04-04T15:41:36.000000Z",
+                'to' => "2022-07-23T21:24:52.000000Z",
                 'page' => 6486
             ]
         );
