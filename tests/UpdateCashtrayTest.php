@@ -8,7 +8,7 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ba3c9300-0dec-496b-9145-f095c7a652bd"
+            "2d39a92c-e0bd-4586-a492-a61b1264550a"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ba3c9300-0dec-496b-9145-f095c7a652bd",
+            "2d39a92c-e0bd-4586-a492-a61b1264550a",
             [
-                'expires_in' => 8693
+                'expires_in' => 6558
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ba3c9300-0dec-496b-9145-f095c7a652bd",
+            "2d39a92c-e0bd-4586-a492-a61b1264550a",
             [
-                'description' => "8xbTpd0PiIwS54q66i2nXWkvfusE3magRZXBvYQN11diTIPMylP78XJI2fkoYuaeWPZ92K6Zt1zTkBm5QsUJIx79pUjuQLW3JQAlc0mxfIBEGWMOeqgVzvGmf46VZC1gROo7yDwwPoswLPrFl08abqydMndg7MmFsD2bCpZf9Kmzx2cSvcsgfp28NPWqo6XqlqrR9l",
-                'expires_in' => 665
+                'description' => "uaeWPZ92K6Zt1zTkBm5QsUJIx79pUjuQLW3JQAlc0mxfIBEGWMOeqgVzvGmf46VZC1gROo7yDwwPoswLPrFl08abqydMndg7MmFsD2bCpZf9Kmzx2cSvcsgfp28NPWqo6Xqlqr",
+                'expires_in' => 4874
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateCashtray(
-            "ba3c9300-0dec-496b-9145-f095c7a652bd",
+            "2d39a92c-e0bd-4586-a492-a61b1264550a",
             [
-                'amount' => 1776.0,
-                'description' => "tmz4nyVSUDS2rGPI8RxpE3teEPiaYEeN8ncoL5boSBHerEtGhFgJdxHlskgg6LM7DHhWIQ2aljg7pW5tLDSL3EPYXvMXdIXxGA8eOtdDg4emZxxvv3UzyZmkPPeL3QSeHszKal8UJ7mvjTFU0wWA",
-                'expires_in' => 3534
+                'amount' => 3257.0,
+                'description' => "ptmz4nyVSUDS2rGPI8RxpE3teEPiaYEeN8ncoL5boSBHerEtGhFgJdxHlskgg6LM7DHhWIQ2aljg7pW5tLDSL3EPYXvMXdIXxGA8eOtdDg4emZxxvv3UzyZmkPPeL3QSeHszKal8UJ7mvjTFU0wWAMu89",
+                'expires_in' => 2117
             ]
         );
         try {

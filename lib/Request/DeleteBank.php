@@ -4,7 +4,7 @@
 namespace Pokepay\Request;
 
 
-class DeleteBanks extends Base
+class DeleteBank extends Base
 {
     protected $method = 'DELETE';
     public $responseClass = \Pokepay\Response\BankDeleted::class;

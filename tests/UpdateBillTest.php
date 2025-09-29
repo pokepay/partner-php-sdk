@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517"
+            "dc8f373f-bb9f-4466-b754-615276c7c142"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517",
+            "dc8f373f-bb9f-4466-b754-615276c7c142",
             [
-                'is_disabled' => TRUE
+                'is_disabled' => FALSE
             ]
         );
         try {
@@ -41,9 +41,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517",
+            "dc8f373f-bb9f-4466-b754-615276c7c142",
             [
-                'description' => "RBh7JkqQ2DDr8e6Qf8fK7SBxethCuCr4dBSWzD3agMTAvZtCmtviHLHOBHoLHZ5Hyso5u9Osjia9h3ovwp1QqOYhJfTJv",
+                'description' => "Dusrb62imeaN035TYhQYVT6897JBIT98Ea3vOiHnJbC3Rzx",
                 'is_disabled' => FALSE
             ]
         );
@@ -60,10 +60,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "ab811bae-a4a2-4ac5-9eec-f8b9ec534517",
+            "dc8f373f-bb9f-4466-b754-615276c7c142",
             [
-                'amount' => 140.0,
-                'description' => "4bnDyHKg7jf7TRBDusrb62imeaN035TYhQYVT6897JBIT98Ea3vOiHnJbC3RzxMsGYTRQVbbDGQ3KFvfr7wcTIqfZGa8VmM7LxaafZsEiZ4h1kUtLESZUqCMHUv6WI9WlLqAjFFVtovIA3w7if4YoZJ6xmZ8N4p4uCNZaugRp11iM",
+                'amount' => 3143.0,
+                'description' => "TRQVbbDGQ3KFvfr7wcTIqfZGa8VmM7LxaafZsEiZ4h1kUtLESZUqCMHUv6WI9WlLqAjFFVtovIA3w7if4YoZJ6xmZ8N4p4uCNZaugRp11iMcrfILoN8ZP7287JaoYb8spv1FcaYx8c7c37K2BoQEo",
                 'is_disabled' => FALSE
             ]
         );
