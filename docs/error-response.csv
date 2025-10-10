@@ -445,7 +445,8 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 ,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/bulk,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+POST,/transactions/bulk,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,organization_not_issuer,"発行体以外に許可されていない操作です",Unpermitted operation except for issuer organizations.
 ,,409,,,
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
@@ -957,8 +958,10 @@ GET,/coupons/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限
 PATCH,/coupons/:uuid,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,partner_storage_not_found,"指定したIDのデータは保存されていません",Not found by storage_id
+,,422,coupon_recipients_cap_not_set,"クーポンに受け取り人数の上限が設定されていません",Recipients cap is not set to the coupon.
 ,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
 ,,422,coupon_image_storage_conflict,"クーポン画像のストレージIDは既に存在します",The coupon image storage_id is already exists
+,,422,coupon_reached_recipients_cap,"クーポンの受け取り人数の上限に達しました",The number of recipients of the coupon reached its cap.
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/storage/v1,400,partner_decryption_failed,"リクエスト中の暗号データを復号化することができませんでした。",Could not decrypt the data.
 ,,400,partner_client_not_found,"partner_clientが見つかりません。",The partner client is not found.
