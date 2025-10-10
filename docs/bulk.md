@@ -6,12 +6,13 @@ CSVファイルから一括取引をします。
 
 ```PHP
 $request = new Request\BulkCreateTransaction(
-    "dM7BVfn4iFY",                                // name: 一括取引タスク名
-    "JJXfrDUn2Z",                                 // content: 取引する情報のCSV
-    "5dTBMhYMOaLFSQqsldJHk3l4cpZ7fJl29A3O",       // requestId: リクエストID
+    "50Zlv3tzVr8aTPDqM",                          // name: 一括取引タスク名
+    "xS0",                                        // content: 取引する情報のCSV
+    "Vs3OlIrdnx7rU9Fte9Z959oBy13mtel3d8Tf",       // requestId: リクエストID
     [
-        'description' => "y0fQnXOgwkIth5yMWiTVYzb9YasuIp7v4EzACicWq4Ul0bBBFnJwjrP", // 一括取引の説明
-        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // マネーID
+        'description' => "J3Ol39ScasZnA58jo0hnztlMdM7BVfn4iFYyJJXfrDUn2Z5dTBMhYMOaLFSQ", // 一括取引の説明
+        'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
+        'callback_url' => "qs"                    // コールバックURL
     ]
 );
 ```
@@ -100,6 +101,41 @@ $request = new Request\BulkCreateTransaction(
 }
 ```
 
+**`callback_url`** 
+  
+
+一括取引タスクが終了したときに通知されるコールバックURLです。これはオプショナルなパラメータで、未指定の場合は通知されません。
+
+指定したURLに対して、以下の内容のリクエストがPOSTメソッドで送信されます。
+
+リクエスト例:
+ {
+  "bulk_transaction_id": "c9a0b2c0-e8d0-4a7f-9b1d-2f0c3e1a8b7a",
+  "request_id": "1640e29f-157a-46e2-af05-c402726cbf2b",
+  "completed_at": "2025-09-26T14:30:00Z",
+  "status": "done",
+  "success_count": 98,
+  "total_count": 100
+}
+
+- bulk_transaction_id: 一括取引タスクのタスクID
+- request_id: 本APIにクライアント側から指定したrequest_id
+- completed_at: 完了時刻
+- status: 終了時の状態。done (完了状態) か error (エラー) のいずれか
+- success_count: 成功件数
+- total_count: 総件数
+
+リトライ戦略について:
+対象URLにPOSTした結果、500, 502, 503, 504エラーを受け取ったとき、またはタイムアウト (10秒)したときに、最大3回までリトライします。
+成功通知が複数回送信されることもありえるため、request_idで排他処理を行なってください。
+
+```json
+{
+  "type": "string",
+  "format": "url"
+}
+```
+
 
 
 成功したときは
@@ -109,6 +145,7 @@ $request = new Request\BulkCreateTransaction(
 ### Error Responses
 |status|type|ja|en|
 |---|---|---|---|
+|400|invalid_parameters|項目が無効です|Invalid parameters|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
 |403|organization_not_issuer|発行体以外に許可されていない操作です|Unpermitted operation except for issuer organizations.|
 |409|NULL|NULL|NULL|

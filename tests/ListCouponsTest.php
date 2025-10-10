@@ -8,7 +8,7 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1"
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'per_page' => 5485
+                'per_page' => 9844
             ]
         );
         try {
@@ -41,10 +41,10 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'page' => 2145,
-                'per_page' => 4061
+                'page' => 9195,
+                'per_page' => 4716
             ]
         );
         try {
@@ -60,11 +60,11 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'available_to' => "2024-01-11T13:13:31.000000Z",
-                'page' => 6061,
-                'per_page' => 5678
+                'available_to' => "2023-07-15T22:22:53.000000Z",
+                'page' => 3704,
+                'per_page' => 1319
             ]
         );
         try {
@@ -80,12 +80,12 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'available_from' => "2024-11-10T14:43:52.000000Z",
-                'available_to' => "2025-06-19T01:49:43.000000Z",
-                'page' => 3798,
-                'per_page' => 7026
+                'available_from' => "2020-12-29T05:48:51.000000Z",
+                'available_to' => "2022-06-27T02:40:23.000000Z",
+                'page' => 7550,
+                'per_page' => 8759
             ]
         );
         try {
@@ -101,13 +101,13 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'available_shop_name' => "zLy9",
-                'available_from' => "2023-10-31T04:30:48.000000Z",
-                'available_to' => "2023-08-22T22:03:54.000000Z",
-                'page' => 3065,
-                'per_page' => 5692
+                'available_shop_name' => "l5fjzCH",
+                'available_from' => "2021-04-20T15:05:35.000000Z",
+                'available_to' => "2023-12-31T09:46:24.000000Z",
+                'page' => 6021,
+                'per_page' => 1157
             ]
         );
         try {
@@ -123,14 +123,14 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'issued_shop_name' => "4h",
-                'available_shop_name' => "bOAXXYVgV",
-                'available_from' => "2021-11-08T21:38:50.000000Z",
-                'available_to' => "2021-07-28T11:30:37.000000Z",
-                'page' => 1818,
-                'per_page' => 2043
+                'issued_shop_name' => "4",
+                'available_shop_name' => "A",
+                'available_from' => "2024-09-22T11:07:02.000000Z",
+                'available_to' => "2020-10-23T11:15:17.000000Z",
+                'page' => 6568,
+                'per_page' => 3182
             ]
         );
         try {
@@ -146,15 +146,15 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'coupon_name' => "hmxuYV6",
-                'issued_shop_name' => "qe5o2",
-                'available_shop_name' => "2Ol",
-                'available_from' => "2024-06-06T10:27:30.000000Z",
-                'available_to' => "2021-01-11T11:41:00.000000Z",
-                'page' => 1710,
-                'per_page' => 1574
+                'coupon_name' => "ehgiDu",
+                'issued_shop_name' => "605X",
+                'available_shop_name' => "bVsN",
+                'available_from' => "2022-05-08T18:21:29.000000Z",
+                'available_to' => "2024-04-14T02:46:26.000000Z",
+                'page' => 9439,
+                'per_page' => 1814
             ]
         );
         try {
@@ -170,16 +170,16 @@ class ListCoupons extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListCoupons(
-            "a6b15bb7-5638-4c99-9738-8fe9399d52a1",
+            "f3a243d0-f91c-40e2-ac19-5da28b9d3757",
             [
-                'coupon_id' => "dk5kJbuw4",
-                'coupon_name' => "uJbyUdwtwe",
-                'issued_shop_name' => "akD",
-                'available_shop_name' => "g0TFsZujDl",
-                'available_from' => "2024-10-27T07:48:57.000000Z",
-                'available_to' => "2022-09-10T05:04:20.000000Z",
-                'page' => 8642,
-                'per_page' => 5517
+                'coupon_id' => "Vd",
+                'coupon_name' => "DyaVdH",
+                'issued_shop_name' => "VHz0uIF",
+                'available_shop_name' => "KJ",
+                'available_from' => "2020-05-07T06:49:03.000000Z",
+                'available_to' => "2022-09-17T08:57:19.000000Z",
+                'page' => 2885,
+                'per_page' => 9560
             ]
         );
         try {

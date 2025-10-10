@@ -474,6 +474,8 @@
 * `couponImage (string|null)`: クーポン画像のURL
 * `availableShops (User[])`: 利用可能店舗リスト
 * `privateMoney (PrivateMoney)`: クーポンのマネー
+* `numRecipientsCap (integer|null)`: クーポンを受け取ることができるユーザ数上限
+* `numRecipients (integer|null)`: クーポンを受け取ったユーザ数
 
 `issued_shop`は [User](#user) オブジェクトを返します。
 
@@ -725,6 +727,8 @@
 * `code (string|null)`: クーポン受け取りコード
 * `isDisabled (boolean)`: 無効化フラグ
 * `token (string)`: クーポンを特定するためのトークン
+* `numRecipientsCap (integer|null)`: クーポンを受け取ることができるユーザ数上限
+* `numRecipients (integer|null)`: クーポンを受け取ったユーザ数
 
 `issued_shop`は [User](#user) オブジェクトを返します。
 

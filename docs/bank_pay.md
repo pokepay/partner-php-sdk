@@ -113,7 +113,7 @@ $request = new Request\CreateBank(
     "<Deep Link>",                                // callbackUrl: コールバックURL
     "ポケペイタロウ",                                    // kana: ユーザーの氏名 (片仮名で指定)
     [
-        'email' => "CQCIIRDiJ5@EWSp.com",         // ユーザーのメールアドレス
+        'email' => "l7ATMaf3Nq@LOcK.com",         // ユーザーのメールアドレス
         'birthdate' => "19901142"                 // 生年月日
     ]
 );
@@ -208,7 +208,7 @@ $request = new Request\CreateBank(
 $request = new Request\CreateBankTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8799,                                         // amount: チャージ金額
+    4641,                                         // amount: チャージ金額
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // bankId: 銀行ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // requestId: リクエストID
     [

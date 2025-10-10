@@ -29,7 +29,7 @@ class BulkCreateTransaction extends TestCase
             "CPUHg3H",
             "pQOkzK7LlGZ5l2cQL9XINJ3Yd9vs5R5vReMb",
             [
-                'private_money_id' => "8f7ec3a8-ace2-4f1a-bcd6-87a92c10a958"
+                'callback_url' => "bVX8HS4Jw"
             ]
         );
         try {
@@ -49,8 +49,30 @@ class BulkCreateTransaction extends TestCase
             "CPUHg3H",
             "pQOkzK7LlGZ5l2cQL9XINJ3Yd9vs5R5vReMb",
             [
-                'description' => "8HS4JwKvfQBXbwG5FfO",
-                'private_money_id' => "dd004762-aeba-46e2-8bd5-589322a803d3"
+                'private_money_id' => "b02ab713-2319-4e11-9f07-3f4b303addf6",
+                'callback_url' => "fQ"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testBulkCreateTransaction3()
+    {
+        $client = $this->newClient();
+        $request = new Request\BulkCreateTransaction(
+            "joNHBAUn0qZzCUWIZlu3",
+            "CPUHg3H",
+            "pQOkzK7LlGZ5l2cQL9XINJ3Yd9vs5R5vReMb",
+            [
+                'description' => "BXbw",
+                'private_money_id' => "aae97d03-4ea3-49c7-bd90-b1b5fb15781f",
+                'callback_url' => "fObbKUS"
             ]
         );
         try {
