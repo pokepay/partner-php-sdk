@@ -8,7 +8,7 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625"
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'email' => "cm0Sp2RluF@OAxJ.com"
+                'email' => "fcLabY2vDz@XzQx.com"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'tel' => "07-0551-2657",
-                'email' => "TcJlnsa7zu@y1tu.com"
+                'tel' => "0386914",
+                'email' => "9VFC5bo0KX@fPAS.com"
             ]
         );
         try {
@@ -60,11 +60,11 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'external_id' => "dw",
-                'tel' => "071-69745487",
-                'email' => "fKkMLwrBpO@RQ9L.com"
+                'external_id' => "w8jPQ0hMJ4nPgNJOUuVI3xkUSOX0v",
+                'tel' => "0074-316-0237",
+                'email' => "pl9MWii2ex@Aarz.com"
             ]
         );
         try {
@@ -80,12 +80,12 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'status' => "suspended",
-                'external_id' => "lnKRmCd4n",
-                'tel' => "045-981479",
-                'email' => "qpn3W7S36l@34SS.com"
+                'status' => "active",
+                'external_id' => "UllrgsQZQAnUYeKIbZQuPYAKNLvTyMc",
+                'tel' => "039-279393",
+                'email' => "z5jRHNPv9L@O3Mt.com"
             ]
         );
         try {
@@ -101,13 +101,13 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
                 'is_suspended' => FALSE,
                 'status' => "active",
-                'external_id' => "W72gqSjd8QPzbjt0rt7UmerReZGbvGgvA",
-                'tel' => "09215911045",
-                'email' => "P1AnQALadF@sAzg.com"
+                'external_id' => "yt1wTnktL8AY",
+                'tel' => "004073-175",
+                'email' => "ncONv8Kje2@pUTW.com"
             ]
         );
         try {
@@ -123,14 +123,14 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'created_at_to' => "2022-07-27T22:59:50.000000Z",
-                'is_suspended' => TRUE,
-                'status' => "pre-closed",
-                'external_id' => "tuXgZDedIJqTHGgnOhGiwZBj5AvHdO2Atfc",
-                'tel' => "0129-664-818",
-                'email' => "3sP8V6IT9V@FC5b.com"
+                'created_at_to' => "2022-04-21T04:20:10.000000Z",
+                'is_suspended' => FALSE,
+                'status' => "suspended",
+                'external_id' => "NDe87",
+                'tel' => "045226365",
+                'email' => "Usk6umIdkj@ysmB.com"
             ]
         );
         try {
@@ -146,15 +146,15 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'created_at_from' => "2021-03-24T19:42:09.000000Z",
-                'created_at_to' => "2020-09-24T18:38:11.000000Z",
+                'created_at_from' => "2022-05-05T01:50:52.000000Z",
+                'created_at_to' => "2024-03-10T11:23:04.000000Z",
                 'is_suspended' => TRUE,
-                'status' => "active",
-                'external_id' => "PASw8jPQ0hMJ4nPgNJOUuVI3xkUSOX0vTgyFK1F",
-                'tel' => "002-97-992",
-                'email' => "exAarzlUll@rgsQ.com"
+                'status' => "suspended",
+                'external_id' => "Cy1Ud1e5PrxfXmPZX1VlVfqebv0ckwSJ4e9e0pY47yGoAwg2",
+                'tel' => "0343-6615",
+                'email' => "wFZHEg2RF0@uEHw.com"
             ]
         );
         try {
@@ -170,16 +170,16 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'per_page' => 6435,
-                'created_at_from' => "2022-12-18T13:21:30.000000Z",
-                'created_at_to' => "2025-06-21T23:46:25.000000Z",
+                'per_page' => 2583,
+                'created_at_from' => "2022-08-10T17:00:59.000000Z",
+                'created_at_to' => "2023-09-15T19:26:54.000000Z",
                 'is_suspended' => FALSE,
-                'status' => "pre-closed",
-                'external_id' => "U",
-                'tel' => "070-062-041",
-                'email' => "uPYAKNLvTy@McIY.com"
+                'status' => "suspended",
+                'external_id' => "Jbwu9JRSn5a7ymUxn4mfvD7ycun86BZW4IWD5",
+                'tel' => "0416-7601-378",
+                'email' => "rq2HjQnZoV@WhOd.com"
             ]
         );
         try {
@@ -195,17 +195,17 @@ class GetCustomerAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerAccounts(
-            "e981839f-7730-40a4-9991-3f49bc7c0625",
+            "0e4e7760-d0c1-43f4-8192-1c94876e3f07",
             [
-                'page' => 5613,
-                'per_page' => 8339,
-                'created_at_from' => "2025-02-04T14:45:59.000000Z",
-                'created_at_to' => "2022-04-16T16:37:32.000000Z",
-                'is_suspended' => FALSE,
+                'page' => 9504,
+                'per_page' => 992,
+                'created_at_from' => "2024-11-26T21:23:31.000000Z",
+                'created_at_to' => "2026-05-27T18:46:45.000000Z",
+                'is_suspended' => TRUE,
                 'status' => "suspended",
-                'external_id' => "Sz5j",
-                'tel' => "084-00934",
-                'email' => "Pyt1wTnktL@8AYk.com"
+                'external_id' => "EjTApY38vZyrfHaX2ePxiTIXhf26BicGgC0Q3onqPmyIzF",
+                'tel' => "06-385030",
+                'email' => "DlS2m5Kv5I@bgTW.com"
             ]
         );
         try {

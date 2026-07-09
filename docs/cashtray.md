@@ -5,7 +5,6 @@ Cashtrayによる取引では、エンドユーザーがQRコードを読み取�
 Cashtrayはワンタイムで、一度読み取りに成功するか、取引エラーになると失効します。
 また、Cashtrayには有効期限があり、デフォルトでは30分で失効します。
 
-
 <a name="create-transaction-with-cashtray"></a>
 ## CreateTransactionWithCashtray: CashtrayQRコードを読み取ることで取引する
 エンドユーザーから受け取ったCashtray用QRコードのIDをエンドユーザーIDと共に渡すことで支払いあるいはチャージ取引が作られます。
@@ -13,13 +12,12 @@ Cashtrayはワンタイムで、一度読み取りに成功するか、取引エ
 通常CashtrayQRコードはエンドユーザーのアプリによって読み取られ、アプリとポケペイサーバとの直接通信によって取引が作られます。
 もしエンドユーザーとの通信をパートナーのサーバのみに限定したい場合、パートナーのサーバがCashtrayQRの情報をエンドユーザーから代理受けして、サーバ間連携APIによって実際のチャージ取引をリクエストすることになります。
 
-
 ```PHP
 $request = new Request\CreateTransactionWithCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: Cashtray用QRコードのID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
     [
-        'strategy' => "point-preferred",          // 支払い時の残高消費方式
+        'strategy' => "money-only",               // 支払い時の残高消費方式
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -28,13 +26,14 @@ $request = new Request\CreateTransactionWithCashtray(
 
 
 ### Parameters
-**`cashtray_id`** 
-  
-
+#### `cashtray_id`
 Cashtray用QRコードのIDです。
 
 QRコード生成時に送金元店舗のウォレット情報や、金額などが登録されています。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -42,11 +41,14 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 }
 ```
 
-**`customer_id`** 
-  
+</details>
 
+#### `customer_id`
 エンドユーザーIDです。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -54,9 +56,9 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 }
 ```
 
-**`strategy`** 
-  
+</details>
 
+#### `strategy`
 支払い時に残高がどのように消費されるかを指定します。
 チャージの場合は無効です。
 デフォルトでは point-preferred (ポイント優先)が採用されます。
@@ -65,6 +67,9 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 - money-only: マネー残高のみから消費され、ポイント残高は使われません
 
 マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -76,9 +81,9 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 }
 ```
 
-**`request_id`** 
-  
+</details>
 
+#### `request_id`
 取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
 
 取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。
@@ -88,12 +93,17 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
 既に存在する、別のユーザによる取引とリクエストIDが衝突した場合、request_id_conflictが返ります。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -108,7 +118,9 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 |422|account_not_found|アカウントが見つかりません|The account is not found|
 |422|cashtray_not_found|決済QRコードが見つかりません|Cashtray is not found|
 |422|coupon_not_found|クーポンが見つかりませんでした。|The coupon is not found.|
+|422|credit_session_money_topup_requires_credit_card|オーソリチャージ用マネーではクレジットカードによるチャージのみ許可されています|Credit card is required for topup on credit-session enabled money|
 |422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|credit_session_not_found|オーソリセッションが見つかりません|Credit session not found|
 |422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
 |422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
@@ -167,15 +179,14 @@ Cashtrayを作成します。
 
 その他に、Cashtrayから作られる取引に対する説明文や失効時間を指定できます。
 
-
 ```PHP
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    1475.0,                                       // amount: 金額
+    5666.0,                                       // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 1576                      // 失効時間(秒)
+        'expires_in' => 3664                      // 失効時間(秒)
     ]
 );
 ```
@@ -183,11 +194,12 @@ $request = new Request\CreateCashtray(
 
 
 ### Parameters
-**`private_money_id`** 
-  
-
+#### `private_money_id`
 取引対象のマネーのIDです(必須項目)。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -195,11 +207,14 @@ $request = new Request\CreateCashtray(
 }
 ```
 
-**`shop_id`** 
-  
+</details>
 
+#### `shop_id`
 店舗のユーザーIDです(必須項目)。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -207,11 +222,14 @@ $request = new Request\CreateCashtray(
 }
 ```
 
-**`amount`** 
-  
+</details>
 
+#### `amount`
 マネー額です(必須項目)。
 正の値を与えるとチャージになり、負の値を与えると支払いとなります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -219,11 +237,14 @@ $request = new Request\CreateCashtray(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 Cashtrayを読み取ったときに作られる取引の説明文です(最大200文字、任意項目)。
 アプリや管理画面などの取引履歴に表示されます。デフォルトでは空文字になります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -232,10 +253,13 @@ Cashtrayを読み取ったときに作られる取引の説明文です(最大20
 }
 ```
 
-**`expires_in`** 
-  
+</details>
 
+#### `expires_in`
 Cashtrayが失効するまでの時間を秒単位で指定します(任意項目、デフォルト値は1800秒(30分))。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -243,6 +267,8 @@ Cashtrayが失効するまでの時間を秒単位で指定します(任意項�
   "minimum": 1
 }
 ```
+
+</details>
 
 
 
@@ -278,10 +304,11 @@ $request = new Request\CancelCashtray(
 
 
 ### Parameters
-**`cashtray_id`** 
-  
-
+#### `cashtray_id`
 無効化するCashtrayのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -289,6 +316,8 @@ $request = new Request\CancelCashtray(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -371,10 +400,11 @@ $request = new Request\GetCashtray(
 
 
 ### Parameters
-**`cashtray_id`** 
-  
-
+#### `cashtray_id`
 情報を取得するCashtrayのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -382,6 +412,8 @@ $request = new Request\GetCashtray(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -402,9 +434,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 6822.0,                       // 金額
+        'amount' => 2507.0,                       // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 2050                      // 失効時間(秒)
+        'expires_in' => 272                       // 失効時間(秒)
     ]
 );
 ```
@@ -412,10 +444,11 @@ $request = new Request\UpdateCashtray(
 
 
 ### Parameters
-**`cashtray_id`** 
-  
-
+#### `cashtray_id`
 更新対象のCashtrayのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -424,11 +457,14 @@ $request = new Request\UpdateCashtray(
 }
 ```
 
-**`amount`** 
-  
+</details>
 
+#### `amount`
 マネー額です(任意項目)。
 正の値を与えるとチャージになり、負の値を与えると支払いとなります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -436,11 +472,14 @@ $request = new Request\UpdateCashtray(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 Cashtrayを読み取ったときに作られる取引の説明文です(最大200文字、任意項目)。
 アプリや管理画面などの取引履歴に表示されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -449,10 +488,13 @@ Cashtrayを読み取ったときに作られる取引の説明文です(最大20
 }
 ```
 
-**`expires_in`** 
-  
+</details>
 
+#### `expires_in`
 Cashtrayが失効するまでの時間を秒で指定します(任意項目、デフォルト値は1800秒(30分))。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -460,6 +502,8 @@ Cashtrayが失効するまでの時間を秒で指定します(任意項目、�
   "minimum": 1
 }
 ```
+
+</details>
 
 
 

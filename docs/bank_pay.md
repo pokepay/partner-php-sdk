@@ -1,7 +1,6 @@
 # BankPay
 BankPayを用いた銀行からのチャージ取引などのAPIを提供しています。
 
-
 <a name="delete-bank"></a>
 ## DeleteBank: 銀行口座の削除
 銀行口座を削除します
@@ -16,9 +15,24 @@ $request = new Request\DeleteBank(
 
 
 ### Parameters
-**`user_device_id`** 
-  
+#### `user_device_id`
 
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+#### `bank_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -27,16 +41,7 @@ $request = new Request\DeleteBank(
 }
 ```
 
-**`bank_id`** 
-  
-
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
+</details>
 
 
 
@@ -65,9 +70,24 @@ $request = new Request\ListBanks(
 
 
 ### Parameters
-**`user_device_id`** 
-  
+#### `user_device_id`
 
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+#### `private_money_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -76,16 +96,7 @@ $request = new Request\ListBanks(
 }
 ```
 
-**`private_money_id`** 
-  
-
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
+</details>
 
 
 
@@ -105,7 +116,6 @@ $request = new Request\ListBanks(
 ユーザーが銀行口座の登録に成功すると、callback_urlにリクエストが行われます。
 アプリの場合はDeep Linkを使うことを想定しています。
 
-
 ```PHP
 $request = new Request\CreateBank(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
@@ -113,7 +123,7 @@ $request = new Request\CreateBank(
     "<Deep Link>",                                // callbackUrl: コールバックURL
     "ポケペイタロウ",                                    // kana: ユーザーの氏名 (片仮名で指定)
     [
-        'email' => "CQCIIRDiJ5@EWSp.com",         // ユーザーのメールアドレス
+        'email' => "TvYgQYDODN@TX3Y.com",         // ユーザーのメールアドレス
         'birthdate' => "19901142"                 // 生年月日
     ]
 );
@@ -122,20 +132,10 @@ $request = new Request\CreateBank(
 
 
 ### Parameters
-**`user_device_id`** 
-  
+#### `user_device_id`
 
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-**`private_money_id`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -144,9 +144,26 @@ $request = new Request\CreateBank(
 }
 ```
 
-**`callback_url`** 
-  
+</details>
 
+#### `private_money_id`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+#### `callback_url`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -155,9 +172,12 @@ $request = new Request\CreateBank(
 }
 ```
 
-**`kana`** 
-  
+</details>
 
+#### `kana`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -166,9 +186,12 @@ $request = new Request\CreateBank(
 }
 ```
 
-**`email`** 
-  
+</details>
 
+#### `email`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -178,9 +201,12 @@ $request = new Request\CreateBank(
 }
 ```
 
-**`birthdate`** 
-  
+</details>
 
+#### `birthdate`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -188,6 +214,8 @@ $request = new Request\CreateBank(
   "maxLength": 8
 }
 ```
+
+</details>
 
 
 
@@ -208,7 +236,7 @@ $request = new Request\CreateBank(
 $request = new Request\CreateBankTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userDeviceId: デバイスID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8799,                                         // amount: チャージ金額
+    6708,                                         // amount: チャージ金額
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // bankId: 銀行ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // requestId: リクエストID
     [
@@ -220,20 +248,10 @@ $request = new Request\CreateBankTopupTransaction(
 
 
 ### Parameters
-**`user_device_id`** 
-  
+#### `user_device_id`
 
-
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-**`private_money_id`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -242,9 +260,26 @@ $request = new Request\CreateBankTopupTransaction(
 }
 ```
 
-**`amount`** 
-  
+</details>
 
+#### `private_money_id`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+#### `amount`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -253,20 +288,12 @@ $request = new Request\CreateBankTopupTransaction(
 }
 ```
 
-**`bank_id`** 
-  
+</details>
 
+#### `bank_id`
 
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-**`receiver_user_id`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -275,9 +302,12 @@ $request = new Request\CreateBankTopupTransaction(
 }
 ```
 
-**`request_id`** 
-  
+</details>
 
+#### `receiver_user_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -285,6 +315,22 @@ $request = new Request\CreateBankTopupTransaction(
   "format": "uuid"
 }
 ```
+
+</details>
+
+#### `request_id`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
 
 
 

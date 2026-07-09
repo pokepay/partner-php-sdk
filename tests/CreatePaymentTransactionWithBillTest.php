@@ -8,8 +8,8 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "05c27c83-161f-495a-aaf3-9027f8a00157",
-            "5fc53b74-229f-40ba-9ed9-cab10690c928"
+            "f388a16d-ec22-440c-873a-03f6168a7404",
+            "09b87654-5971-48ff-90bf-35884391544c"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "05c27c83-161f-495a-aaf3-9027f8a00157",
-            "5fc53b74-229f-40ba-9ed9-cab10690c928",
+            "f388a16d-ec22-440c-873a-03f6168a7404",
+            "09b87654-5971-48ff-90bf-35884391544c",
             [
-                'strategy' => "money-only"
+                'strategy' => "point-preferred"
             ]
         );
         try {
@@ -43,11 +43,11 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "05c27c83-161f-495a-aaf3-9027f8a00157",
-            "5fc53b74-229f-40ba-9ed9-cab10690c928",
+            "f388a16d-ec22-440c-873a-03f6168a7404",
+            "09b87654-5971-48ff-90bf-35884391544c",
             [
-                'request_id' => "0b232386-c58b-4857-a92a-0c5cc8f09147",
-                'strategy' => "point-preferred"
+                'request_id' => "32ad195b-bdd1-4d77-a106-b05a65cb7602",
+                'strategy' => "money-only"
             ]
         );
         try {
@@ -63,11 +63,11 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "05c27c83-161f-495a-aaf3-9027f8a00157",
-            "5fc53b74-229f-40ba-9ed9-cab10690c928",
+            "f388a16d-ec22-440c-873a-03f6168a7404",
+            "09b87654-5971-48ff-90bf-35884391544c",
             [
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "3e1ce7f5-88ff-44bf-a263-40aea121a8e6",
+                'request_id' => "46803cf6-7dcf-4fee-9ef6-fc366fbb69b7",
                 'strategy' => "money-only"
             ]
         );

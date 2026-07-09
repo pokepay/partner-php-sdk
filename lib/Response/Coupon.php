@@ -83,6 +83,14 @@ class Coupon extends Base
      * @var string
      */
     public $token;
+    /**
+     * @var integer|null
+     */
+    public $numRecipientsCap;
+    /**
+     * @var integer|null
+     */
+    public $numRecipients;
 
     protected function normalize($timezone)
     {

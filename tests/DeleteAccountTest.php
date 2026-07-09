@@ -8,7 +8,7 @@ class DeleteAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\DeleteAccount(
-            "ce348e12-e7ee-4579-a9c8-94dd3d6c2f3d"
+            "6e0f5443-faad-451b-9992-5ce9c4e4ae3a"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class DeleteAccount extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\DeleteAccount(
-            "ce348e12-e7ee-4579-a9c8-94dd3d6c2f3d",
+            "6e0f5443-faad-451b-9992-5ce9c4e4ae3a",
             [
-                'cashback' => TRUE
+                'cashback' => FALSE
             ]
         );
         try {

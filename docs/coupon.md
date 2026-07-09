@@ -1,6 +1,9 @@
 # Coupon
-Couponは支払い時に指定し、支払い処理の前にCouponに指定の方法で値引き処理を行います。
-Couponは特定店舗で利用できるものや利用可能期間、配信条件などを設定できます。
+割引クーポンを表すデータです。
+クーポンをユーザが明示的に利用することによって支払い決済時の割引(固定金額 or 割引率)が適用されます。
+クーポンは支払い時に指定し、支払い処理の前にクーポンに指定の方法で値引き処理を行います。
+クーポン原資を負担する発行店舗を設定したり、配布先を指定することも可能です。
+また、特定店舗で利用できるものや利用可能期間、配信条件などを設定できます。
 
 
 <a name="list-coupons"></a>
@@ -11,12 +14,12 @@ Couponは特定店舗で利用できるものや利用可能期間、配信条�
 $request = new Request\ListCoupons(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 対象クーポンのマネーID
     [
-        'coupon_id' => "hL1xCfnaEp",              // クーポンID
-        'coupon_name' => "D",                     // クーポン名
-        'issued_shop_name' => "NgoB",             // 発行店舗名
-        'available_shop_name' => "uiKa",          // 利用可能店舗名
-        'available_from' => "2024-03-18T14:10:50.000000Z", // 利用可能期間 (開始日時)
-        'available_to' => "2022-01-07T00:06:08.000000Z", // 利用可能期間 (終了日時)
+        'coupon_id' => "gox",                     // クーポンID
+        'coupon_name' => "qh3aCnD",               // クーポン名
+        'issued_shop_name' => "Qum7xlHp8m",       // 発行店舗名
+        'available_shop_name' => "oN73",          // 利用可能店舗名
+        'available_from' => "2025-11-26T06:39:11.000000Z", // 利用可能期間 (開始日時)
+        'available_to' => "2025-06-25T08:36:48.000000Z", // 利用可能期間 (終了日時)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取得数
     ]
@@ -26,12 +29,12 @@ $request = new Request\ListCoupons(
 
 
 ### Parameters
-**`private_money_id`** 
-  
-
+#### `private_money_id`
 対象クーポンのマネーIDです(必須項目)。
 存在しないマネーIDを指定した場合はprivate_money_not_foundエラー(422)が返ります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -40,12 +43,14 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`coupon_id`** 
-  
+</details>
 
+#### `coupon_id`
 指定されたクーポンIDで結果をフィルターします。
 部分一致(前方一致)します。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -53,11 +58,13 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`coupon_name`** 
-  
+</details>
 
+#### `coupon_name`
 指定されたクーポン名で結果をフィルターします。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -65,11 +72,13 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`issued_shop_name`** 
-  
+</details>
 
+#### `issued_shop_name`
 指定された発行店舗で結果をフィルターします。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -77,11 +86,13 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`available_shop_name`** 
-  
+</details>
 
+#### `available_shop_name`
 指定された利用可能店舗で結果をフィルターします。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -89,11 +100,13 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`available_from`** 
-  
+</details>
 
+#### `available_from`
 利用可能期間でフィルターします。フィルターの開始日時をISO8601形式で指定します。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -102,11 +115,13 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`available_to`** 
-  
+</details>
 
+#### `available_to`
 利用可能期間でフィルターします。フィルターの終了日時をISO8601形式で指定します。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -115,11 +130,14 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`page`** 
-  
+</details>
 
+#### `page`
 取得したいページ番号です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -127,17 +145,22 @@ $request = new Request\ListCoupons(
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
 1ページ分の取得数です。デフォルトでは 50 になっています。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
   "minimum": 1
 }
 ```
+
+</details>
 
 
 
@@ -164,26 +187,27 @@ $request = new Request\ListCoupons(
 ```PHP
 $request = new Request\CreateCoupon(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "cQf4nuECfdVUoATZ0pZ1FEusk3svdOIWNV",
-    "2020-12-16T03:08:56.000000Z",
-    "2023-06-14T02:48:33.000000Z",
+    "gaH3XPjun",
+    "2020-04-27T02:01:24.000000Z",
+    "2025-02-09T09:50:52.000000Z",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // issuedShopId: 発行元の店舗ID
     [
-        'description' => "ftM1EZPsd7jOCTvYgQYDODNTX3YU3qGQBWGDfb1wlkuiN7kKWKFoxKeA9tuL5LH4EHPGJy8",
-        'discount_amount' => 6237,
-        'discount_percentage' => 6227.0,
-        'discount_upper_limit' => 6767,
-        'display_starts_at' => "2022-03-06T08:47:40.000000Z", // クーポンの掲載期間(開始日時)
-        'display_ends_at' => "2021-08-03T15:48:26.000000Z", // クーポンの掲載期間(終了日時)
-        'is_disabled' => FALSE,                   // 無効化フラグ
-        'is_hidden' => FALSE,                     // クーポン一覧に掲載されるかどうか
-        'is_public' => TRUE,                      // アプリ配信なしで受け取れるかどうか
-        'code' => "HQyhzGX",                      // クーポン受け取りコード
-        'usage_limit' => 2072,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
-        'min_amount' => 8165,                     // クーポン適用可能な最小取引額
+        'description' => "NgffostplBJ13qPcXVXQ9E7OqefuC0zsB8aQbgel1VXLZNhM7VCGfzH0E",
+        'discount_amount' => 7025,
+        'discount_percentage' => 5441.0,
+        'discount_upper_limit' => 2852,
+        'display_starts_at' => "2021-11-13T19:49:20.000000Z", // クーポンの掲載期間(開始日時)
+        'display_ends_at' => "2020-04-19T05:00:25.000000Z", // クーポンの掲載期間(終了日時)
+        'is_disabled' => TRUE,                    // 無効化フラグ
+        'is_hidden' => TRUE,                      // クーポン一覧に掲載されるかどうか
+        'is_public' => FALSE,                     // アプリ配信なしで受け取れるかどうか
+        'code' => "4baZPNR",                      // クーポン受け取りコード
+        'usage_limit' => 2092,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
+        'min_amount' => 9813,                     // クーポン適用可能な最小取引額
         'is_shop_specified' => FALSE,             // 特定店舗限定のクーポンかどうか
-        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
-        'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ストレージID
+        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
+        'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ストレージID
+        'num_recipients_cap' => 6714              // クーポンを受け取ることができるユーザ数上限
     ]
 );
 ```
@@ -192,9 +216,10 @@ $request = new Request\CreateCoupon(
 
 
 ### Parameters
-**`private_money_id`** 
-  
+#### `private_money_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -203,9 +228,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`name`** 
-  
+</details>
 
+#### `name`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -214,9 +242,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -225,9 +256,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`discount_amount`** 
-  
+</details>
 
+#### `discount_amount`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -236,9 +270,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`discount_percentage`** 
-  
+</details>
 
+#### `discount_percentage`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -247,9 +284,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`discount_upper_limit`** 
-  
+</details>
 
+#### `discount_upper_limit`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -258,20 +298,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`starts_at`** 
-  
+</details>
 
+#### `starts_at`
 
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`ends_at`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -280,20 +312,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`display_starts_at`** 
-  
+</details>
 
+#### `ends_at`
 
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`display_ends_at`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -302,9 +326,40 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`is_disabled`** 
-  
+</details>
 
+#### `display_starts_at`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `display_ends_at`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `is_disabled`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -312,12 +367,14 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`is_hidden`** 
-  
+</details>
 
+#### `is_hidden`
 アプリに表示されるクーポン一覧に掲載されるかどうか。
 主に一時的に掲載から外したいときに用いられる。そのためis_publicの設定よりも優先される。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -325,9 +382,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`is_public`** 
-  
+</details>
 
+#### `is_public`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -335,9 +395,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`code`** 
-  
+</details>
 
+#### `code`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -345,19 +408,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`usage_limit`** 
-  
+</details>
 
+#### `usage_limit`
 
-```json
-{
-  "type": "integer"
-}
-```
-
-**`min_amount`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -365,9 +421,25 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`issued_shop_id`** 
-  
+</details>
 
+#### `min_amount`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "integer"
+}
+```
+
+</details>
+
+#### `issued_shop_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -376,9 +448,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`is_shop_specified`** 
-  
+</details>
 
+#### `is_shop_specified`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -386,9 +461,12 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`available_shop_ids`** 
-  
+</details>
 
+#### `available_shop_ids`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -400,10 +478,13 @@ $request = new Request\CreateCoupon(
 }
 ```
 
-**`storage_id`** 
-  
+</details>
 
+#### `storage_id`
 Storage APIでアップロードしたクーポン画像のStorage IDを指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -411,6 +492,22 @@ Storage APIでアップロードしたクーポン画像のStorage IDを指定�
   "format": "uuid"
 }
 ```
+
+</details>
+
+#### `num_recipients_cap`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+
+</details>
 
 
 
@@ -446,12 +543,13 @@ $request = new Request\GetCoupon(
 
 
 ### Parameters
-**`coupon_id`** 
-  
-
+#### `coupon_id`
 取得するクーポンのIDです。
 UUIDv4フォーマットである必要があり、フォーマットが異なる場合は InvalidParametersエラー(400)が返ります。
 指定したIDのクーポンが存在しない場合はCouponNotFoundエラー(422)が返ります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -459,6 +557,8 @@ UUIDv4フォーマットである必要があり、フォーマットが異な�
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -479,24 +579,25 @@ UUIDv4フォーマットである必要があり、フォーマットが異な�
 $request = new Request\UpdateCoupon(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // couponId: クーポンID
     [
-        'name' => "rHPOPDvrwRgeSOaGF6stofVWAQmmxPEjbZK4rV",
-        'description' => "AUW7FWHkKwdg6799FNaTUuVqVNtvvxMPy8uYVQrlAwBlTLDHylYVoU0Lud9b5MHdM8UnuwQ7jNoaulXZjgrVDfW2ufNp0gAs9phyFh2aSmdruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwuCknsFuOeDw3ETEoYbD",
-        'discount_amount' => 1051,
-        'discount_percentage' => 7493.0,
-        'discount_upper_limit' => 7410,
-        'starts_at' => "2024-06-07T19:09:56.000000Z",
-        'ends_at' => "2024-01-24T05:16:01.000000Z",
-        'display_starts_at' => "2024-08-09T18:39:51.000000Z", // クーポンの掲載期間(開始日時)
-        'display_ends_at' => "2023-03-23T08:01:33.000000Z", // クーポンの掲載期間(終了日時)
+        'name' => "QNhB3KMhlAuhO2DrrEN6v7h6DIeIXBVaS0Zi07XrJykFEWCqS7fIGsgSUetvzhcyY8O4aW8dVGclxW2nJI1LDT3BhMLUADblZz6ydgd6gv",
+        'description' => "eWK49xDzlQxtC3xLL1ERUl6NhqKkDSvghab5bsImY7PcHPZH7mHIXsOqC2xcKBYhL1xCfnaEpDLcNgoBzsuiKajpcQf4nuECfdVUoATZ0pZ1FEusk3svdOIWNVHFft",
+        'discount_amount' => 6970,
+        'discount_percentage' => 5069.0,
+        'discount_upper_limit' => 3249,
+        'starts_at' => "2022-05-31T22:33:30.000000Z",
+        'ends_at' => "2025-05-22T09:20:05.000000Z",
+        'display_starts_at' => "2025-12-13T13:18:25.000000Z", // クーポンの掲載期間(開始日時)
+        'display_ends_at' => "2024-07-02T19:51:44.000000Z", // クーポンの掲載期間(終了日時)
         'is_disabled' => TRUE,                    // 無効化フラグ
         'is_hidden' => FALSE,                     // クーポン一覧に掲載されるかどうか
-        'is_public' => TRUE,                      // アプリ配信なしで受け取れるかどうか
-        'code' => "ki",                           // クーポン受け取りコード
-        'usage_limit' => 2524,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
-        'min_amount' => 810,                      // クーポン適用可能な最小取引額
+        'is_public' => FALSE,                     // アプリ配信なしで受け取れるかどうか
+        'code' => "s",                            // クーポン受け取りコード
+        'usage_limit' => 2660,                    // ユーザごとの利用可能回数(NULLの場合は無制限)
+        'min_amount' => 8083,                     // クーポン適用可能な最小取引額
         'is_shop_specified' => FALSE,             // 特定店舗限定のクーポンかどうか
-        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
-        'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ストレージID
+        'available_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 利用可能店舗リスト
+        'storage_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ストレージID
+        'num_recipients_cap' => 6724              // クーポンを受け取ることができるユーザ数上限
     ]
 );
 ```
@@ -507,9 +608,10 @@ $request = new Request\UpdateCoupon(
 
 
 ### Parameters
-**`coupon_id`** 
-  
+#### `coupon_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -518,9 +620,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`name`** 
-  
+</details>
 
+#### `name`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -529,9 +634,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -540,9 +648,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`discount_amount`** 
-  
+</details>
 
+#### `discount_amount`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -551,9 +662,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`discount_percentage`** 
-  
+</details>
 
+#### `discount_percentage`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -562,9 +676,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`discount_upper_limit`** 
-  
+</details>
 
+#### `discount_upper_limit`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -573,20 +690,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`starts_at`** 
-  
+</details>
 
+#### `starts_at`
 
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`ends_at`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -595,20 +704,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`display_starts_at`** 
-  
+</details>
 
+#### `ends_at`
 
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`display_ends_at`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -617,9 +718,40 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`is_disabled`** 
-  
+</details>
 
+#### `display_starts_at`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `display_ends_at`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `is_disabled`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -627,12 +759,14 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`is_hidden`** 
-  
+</details>
 
+#### `is_hidden`
 アプリに表示されるクーポン一覧に掲載されるかどうか。
 主に一時的に掲載から外したいときに用いられる。そのためis_publicの設定よりも優先される。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -640,9 +774,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`is_public`** 
-  
+</details>
 
+#### `is_public`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -650,9 +787,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`code`** 
-  
+</details>
 
+#### `code`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -660,19 +800,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`usage_limit`** 
-  
+</details>
 
+#### `usage_limit`
 
-```json
-{
-  "type": "integer"
-}
-```
-
-**`min_amount`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -680,9 +813,25 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`is_shop_specified`** 
-  
+</details>
 
+#### `min_amount`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "integer"
+}
+```
+
+</details>
+
+#### `is_shop_specified`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -690,9 +839,12 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`available_shop_ids`** 
-  
+</details>
 
+#### `available_shop_ids`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -704,10 +856,13 @@ $request = new Request\UpdateCoupon(
 }
 ```
 
-**`storage_id`** 
-  
+</details>
 
+#### `storage_id`
 Storage APIでアップロードしたクーポン画像のStorage IDを指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -715,6 +870,22 @@ Storage APIでアップロードしたクーポン画像のStorage IDを指定�
   "format": "uuid"
 }
 ```
+
+</details>
+
+#### `num_recipients_cap`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+
+</details>
 
 
 

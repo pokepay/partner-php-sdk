@@ -8,9 +8,9 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "joNHBAUn0qZzCUWIZlu3",
-            "CPUHg3H",
-            "pQOkzK7LlGZ5l2cQL9XINJ3Yd9vs5R5vReMb"
+            "yiodipyOhBLvJd18F7msVCl",
+            "IZ6Bq4ZCm1",
+            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "joNHBAUn0qZzCUWIZlu3",
-            "CPUHg3H",
-            "pQOkzK7LlGZ5l2cQL9XINJ3Yd9vs5R5vReMb",
+            "yiodipyOhBLvJd18F7msVCl",
+            "IZ6Bq4ZCm1",
+            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF",
             [
-                'private_money_id' => "8f7ec3a8-ace2-4f1a-bcd6-87a92c10a958"
+                'callback_url' => "https://F9xx8GHc.example.com"
             ]
         );
         try {
@@ -45,12 +45,34 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "joNHBAUn0qZzCUWIZlu3",
-            "CPUHg3H",
-            "pQOkzK7LlGZ5l2cQL9XINJ3Yd9vs5R5vReMb",
+            "yiodipyOhBLvJd18F7msVCl",
+            "IZ6Bq4ZCm1",
+            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF",
             [
-                'description' => "8HS4JwKvfQBXbwG5FfO",
-                'private_money_id' => "dd004762-aeba-46e2-8bd5-589322a803d3"
+                'private_money_id' => "43f299ac-8faa-4d02-9a3c-6b585fb4d820",
+                'callback_url' => "https://N3Xa70o7.example.com"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testBulkCreateTransaction3()
+    {
+        $client = $this->newClient();
+        $request = new Request\BulkCreateTransaction(
+            "yiodipyOhBLvJd18F7msVCl",
+            "IZ6Bq4ZCm1",
+            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF",
+            [
+                'description' => "nFXURkjCcagg1x0DC",
+                'private_money_id' => "6631f3a6-4804-48f9-b43c-640d2ba2c473",
+                'callback_url' => "https://hXKR7nTW.example.com"
             ]
         );
         try {

@@ -8,25 +8,24 @@
 QRコードを読み取る方法以外にも、このURLリンクを直接スマートフォン(iOS/Android)上で開くことによりアプリが起動して取引が行われます。(注: 上記URLはsandbox環境であるため、アプリもsandbox環境のものである必要があります)
 上記URL中の `xxxxxxxx-xxxx-xxxxxxxxx-xxxxxxxxxxxx` の部分がチャージQRコードのIDです。
 
-
 <a name="list-checks"></a>
 ## ListChecks: チャージQRコード一覧の取得
 
 ```PHP
 $request = new Request\ListChecks(
     [
-        'page' => 9951,                           // ページ番号
+        'page' => 662,                            // ページ番号
         'per_page' => 50,                         // 1ページの表示数
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "avAje",           // 組織コード
-        'expires_from' => "2022-01-16T07:26:43.000000Z", // 有効期限の期間によるフィルター(開始時点)
-        'expires_to' => "2023-01-23T18:06:17.000000Z", // 有効期限の期間によるフィルター(終了時点)
-        'created_from' => "2020-07-10T17:37:20.000000Z", // 作成日時の期間によるフィルター(開始時点)
-        'created_to' => "2022-11-13T13:22:30.000000Z", // 作成日時の期間によるフィルター(終了時点)
+        'organization_code' => "myjYzFL4j0HTXKtxMi", // 組織コード
+        'expires_from' => "2020-11-06T19:18:56.000000Z", // 有効期限の期間によるフィルター(開始時点)
+        'expires_to' => "2025-07-12T20:35:57.000000Z", // 有効期限の期間によるフィルター(終了時点)
+        'created_from' => "2024-11-30T16:04:42.000000Z", // 作成日時の期間によるフィルター(開始時点)
+        'created_to' => "2026-06-25T12:24:45.000000Z", // 作成日時の期間によるフィルター(終了時点)
         'issuer_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 発行店舗ID
-        'description' => "4zkA5dwR",              // チャージQRコードの説明文
+        'description' => "6tvMf",                 // チャージQRコードの説明文
         'is_onetime' => FALSE,                    // ワンタイムのチャージQRコードかどうか
-        'is_disabled' => TRUE                     // 無効化されたチャージQRコードかどうか
+        'is_disabled' => FALSE                    // 無効化されたチャージQRコードかどうか
     ]
 );
 ```
@@ -34,9 +33,10 @@ $request = new Request\ListChecks(
 
 
 ### Parameters
-**`page`** 
-  
+#### `page`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -45,11 +45,14 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
 1ページ当たり表示数です。デフォルト値は50です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -57,11 +60,13 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`private_money_id`** 
-  
+</details>
 
+#### `private_money_id`
 チャージQRコードのチャージ対象のマネーIDで結果をフィルターします。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -70,11 +75,14 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`organization_code`** 
-  
+</details>
 
+#### `organization_code`
 チャージQRコードの発行店舗の所属組織の組織コードで結果をフィルターします。
 デフォルトでは未指定です。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -83,12 +91,14 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`expires_from`** 
-  
+</details>
 
+#### `expires_from`
 有効期限の期間によるフィルターの開始時点のタイムスタンプです。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -97,12 +107,14 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`expires_to`** 
-  
+</details>
 
+#### `expires_to`
 有効期限の期間によるフィルターの終了時点のタイムスタンプです。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -111,12 +123,14 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`created_from`** 
-  
+</details>
 
+#### `created_from`
 作成日時の期間によるフィルターの開始時点のタイムスタンプです。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -125,12 +139,14 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`created_to`** 
-  
+</details>
 
+#### `created_to`
 作成日時の期間によるフィルターの終了時点のタイムスタンプです。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -139,12 +155,14 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`issuer_shop_id`** 
-  
+</details>
 
+#### `issuer_shop_id`
 チャージQRコードを発行した店舗IDによってフィルターします。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -153,13 +171,15 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 チャージQRコードの説明文(description)によってフィルターします。
 部分一致(前方一致)したものを表示します。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -167,14 +187,16 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`is_onetime`** 
-  
+</details>
 
+#### `is_onetime`
 チャージQRコードがワンタイムに設定されているかどうかでフィルターします。
 `true` の場合はワンタイムかどうかでフィルターし、`false`の場合はワンタイムでないものをフィルターします。
 未指定の場合はフィルターしません。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -182,20 +204,24 @@ $request = new Request\ListChecks(
 }
 ```
 
-**`is_disabled`** 
-  
+</details>
 
+#### `is_disabled`
 チャージQRコードが無効化されているかどうかでフィルターします。
 `true` の場合は無効なものをフィルターし、`false`の場合は有効なものをフィルターします。
 未指定の場合はフィルターしません。
 デフォルトでは未指定です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
   "type": "boolean"
 }
 ```
+
+</details>
 
 
 
@@ -223,13 +249,13 @@ $request = new Request\ListChecks(
 $request = new Request\CreateCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: 送金元の店舗アカウントID
     [
-        'money_amount' => 3442.0,                 // 付与マネー額
-        'point_amount' => 9537.0,                 // 付与ポイント額
+        'money_amount' => 8474.0,                 // 付与マネー額
+        'point_amount' => 6205.0,                 // 付与ポイント額
         'description' => "test check",            // 説明文(アプリ上で取引の説明文として表示される)
-        'is_onetime' => FALSE,                    // ワンタイムかどうかのフラグ
-        'usage_limit' => 2883,                    // ワンタイムでない場合の最大読み取り回数
-        'expires_at' => "2023-09-20T16:54:29.000000Z", // チャージQRコード自体の失効日時
-        'point_expires_at' => "2020-05-06T19:06:42.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
+        'is_onetime' => TRUE,                     // ワンタイムかどうかのフラグ
+        'usage_limit' => 8139,                    // ワンタイムでない場合の最大読み取り回数
+        'expires_at' => "2020-08-19T12:07:32.000000Z", // チャージQRコード自体の失効日時
+        'point_expires_at' => "2024-12-04T20:09:52.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
         'point_expires_in_days' => 60,            // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
         'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // ポイント額を負担する店舗のウォレットID
     ]
@@ -242,12 +268,12 @@ $request = new Request\CreateCheck(
 
 
 ### Parameters
-**`money_amount`** 
-  
-
+#### `money_amount`
 チャージQRコードによって付与されるマネー額です。
 `money_amount`と`point_amount`の少なくともどちらかは指定する必要があります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -257,12 +283,14 @@ $request = new Request\CreateCheck(
 }
 ```
 
-**`point_amount`** 
-  
+</details>
 
+#### `point_amount`
 チャージQRコードによって付与されるポイント額です。
 `money_amount`と`point_amount`の少なくともどちらかは指定する必要があります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -272,9 +300,12 @@ $request = new Request\CreateCheck(
 }
 ```
 
-**`account_id`** 
-  
+</details>
 
+#### `account_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -283,9 +314,12 @@ $request = new Request\CreateCheck(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -294,13 +328,15 @@ $request = new Request\CreateCheck(
 }
 ```
 
-**`is_onetime`** 
-  
+</details>
 
+#### `is_onetime`
 チャージQRコードが一度の読み取りで失効するときに`true`にします。デフォルト値は`true`です。
 `false`の場合、複数ユーザによって読み取り可能なQRコードになります。
 ただし、その場合も1ユーザにつき1回のみしか読み取れません。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -308,14 +344,16 @@ $request = new Request\CreateCheck(
 }
 ```
 
-**`usage_limit`** 
-  
+</details>
 
+#### `usage_limit`
 複数ユーザによって読み取り可能なチャージQRコードの最大読み取り回数を指定します。
 NULLに設定すると無制限に読み取り可能なチャージQRコードになります。
 デフォルト値はNULLです。
 ワンタイム指定(`is_onetime`)がされているときは、本パラメータはNULLである必要があります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -323,13 +361,15 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`expires_at`** 
-  
+</details>
 
+#### `expires_at`
 チャージQRコード自体の失効日時を指定します。この日時以降はチャージQRコードを読み取れなくなります。デフォルトでは作成日時から3ヶ月後になります。
 
 チャージQRコード自体の失効日時であって、チャージQRコードによって付与されるマネー残高の有効期限とは異なることに注意してください。マネー残高の有効期限はマネー設定で指定されているものになります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -338,13 +378,15 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`point_expires_at`** 
-  
+</details>
 
+#### `point_expires_at`
 チャージQRコードによって付与されるポイント残高の有効起源を指定します。デフォルトではマネー残高の有効期限と同じものが指定されます。
 
 チャージQRコードにより付与されるマネー残高の有効期限はQRコード毎には指定できませんが、ポイント残高の有効期限は本パラメータにより、QRコード毎に個別に指定することができます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -353,13 +395,15 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`point_expires_in_days`** 
-  
+</details>
 
+#### `point_expires_in_days`
 チャージQRコードによって付与されるポイント残高の有効期限を相対日数で指定します。
 1を指定すると、チャージQRコード作成日の当日中に失効します(翌日0時に失効)。
 `point_expires_at`と`point_expires_in_days`が両方指定されている場合は、チャージQRコードによるチャージ取引ができた時点からより近い方が採用されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -368,12 +412,14 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`bear_point_account`** 
-  
+</details>
 
+#### `bear_point_account`
 ポイントチャージをする場合、ポイント額を負担する店舗のウォレットIDを指定することができます。
 デフォルトではマネー発行体のデフォルト店舗(本店)がポイント負担先となります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -381,6 +427,8 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -421,10 +469,11 @@ $request = new Request\GetCheck(
 
 
 ### Parameters
-**`check_id`** 
-  
-
+#### `check_id`
 表示対象のチャージQRコードのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -432,6 +481,8 @@ $request = new Request\GetCheck(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -451,13 +502,13 @@ $request = new Request\GetCheck(
 $request = new Request\UpdateCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // checkId: チャージQRコードのID
     [
-        'money_amount' => 8131.0,                 // 付与マネー額
-        'point_amount' => 9044.0,                 // 付与ポイント額
+        'money_amount' => 8790.0,                 // 付与マネー額
+        'point_amount' => 1824.0,                 // 付与ポイント額
         'description' => "test check",            // チャージQRコードの説明文
         'is_onetime' => FALSE,                    // ワンタイムかどうかのフラグ
-        'usage_limit' => 9776,                    // ワンタイムでない場合の最大読み取り回数
-        'expires_at' => "2024-08-30T18:34:54.000000Z", // チャージQRコード自体の失効日時
-        'point_expires_at' => "2020-03-08T04:31:09.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
+        'usage_limit' => 1414,                    // ワンタイムでない場合の最大読み取り回数
+        'expires_at' => "2022-06-22T17:05:02.000000Z", // チャージQRコード自体の失効日時
+        'point_expires_at' => "2020-11-28T20:35:17.000000Z", // チャージQRコードによって付与されるポイント残高の有効期限
         'point_expires_in_days' => 60,            // チャージQRコードによって付与されるポイント残高の有効期限(相対日数指定)
         'bear_point_account' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント額を負担する店舗のウォレットID
         'is_disabled' => FALSE                    // 無効化されているかどうかのフラグ
@@ -468,10 +519,11 @@ $request = new Request\UpdateCheck(
 
 
 ### Parameters
-**`check_id`** 
-  
-
+#### `check_id`
 更新対象のチャージQRコードのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -480,12 +532,14 @@ $request = new Request\UpdateCheck(
 }
 ```
 
-**`money_amount`** 
-  
+</details>
 
+#### `money_amount`
 チャージQRコードによって付与されるマネー額です。
 `money_amount`と`point_amount`が両方0になるような更新リクエストはエラーになります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -495,12 +549,14 @@ $request = new Request\UpdateCheck(
 }
 ```
 
-**`point_amount`** 
-  
+</details>
 
+#### `point_amount`
 チャージQRコードによって付与されるポイント額です。
 `money_amount`と`point_amount`が両方0になるような更新リクエストはエラーになります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -510,12 +566,14 @@ $request = new Request\UpdateCheck(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 チャージQRコードの説明文です。
 チャージ取引後は、取引の説明文に転記され、取引履歴などに表示されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -524,13 +582,15 @@ $request = new Request\UpdateCheck(
 }
 ```
 
-**`is_onetime`** 
-  
+</details>
 
+#### `is_onetime`
 チャージQRコードが一度の読み取りで失効するときに`true`にします。
 `false`の場合、複数ユーザによって読み取り可能なQRコードになります。
 ただし、その場合も1ユーザにつき1回のみしか読み取れません。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -538,13 +598,15 @@ $request = new Request\UpdateCheck(
 }
 ```
 
-**`usage_limit`** 
-  
+</details>
 
+#### `usage_limit`
 複数ユーザによって読み取り可能なチャージQRコードの最大読み取り回数を指定します。
 NULLに設定すると無制限に読み取り可能なチャージQRコードになります。
 ワンタイム指定(`is_onetime`)がされているときは、本パラメータはNULLである必要があります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -552,13 +614,15 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`expires_at`** 
-  
+</details>
 
+#### `expires_at`
 チャージQRコード自体の失効日時を指定します。この日時以降はチャージQRコードを読み取れなくなります。
 
 チャージQRコード自体の失効日時であって、チャージQRコードによって付与されるマネー残高の有効期限とは異なることに注意してください。マネー残高の有効期限はマネー設定で指定されているものになります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -567,13 +631,15 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`point_expires_at`** 
-  
+</details>
 
+#### `point_expires_at`
 チャージQRコードによって付与されるポイント残高の有効起源を指定します。
 
 チャージQRコードにより付与されるマネー残高の有効期限はQRコード毎には指定できませんが、ポイント残高の有効期限は本パラメータにより、QRコード毎に個別に指定することができます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -582,14 +648,16 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`point_expires_in_days`** 
-  
+</details>
 
+#### `point_expires_in_days`
 チャージQRコードによって付与されるポイント残高の有効期限を相対日数で指定します。
 1を指定すると、チャージQRコード作成日の当日中に失効します(翌日0時に失効)。
 `point_expires_at`と`point_expires_in_days`が両方指定されている場合は、チャージQRコードによるチャージ取引ができた時点からより近い方が採用されます。
 `point_expires_at`と`point_expires_in_days`が両方NULLに設定されている場合は、マネーに設定されている残高の有効期限と同じになります。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -598,11 +666,13 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`bear_point_account`** 
-  
+</details>
 
+#### `bear_point_account`
 ポイントチャージをする場合、ポイント額を負担する店舗のウォレットIDを指定することができます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -611,18 +681,22 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 }
 ```
 
-**`is_disabled`** 
-  
+</details>
 
+#### `is_disabled`
 チャージQRコードを無効化するときに`true`にします。
 `false`の場合は無効化されているチャージQRコードを再有効化します。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
   "type": "boolean"
 }
 ```
+
+</details>
 
 
 
@@ -641,7 +715,6 @@ NULLに設定すると無制限に読み取り可能なチャージQRコード�
 
 エンドユーザーから受け取ったチャージ用QRコードのIDをエンドユーザーIDと共に渡すことでチャージ取引が作られます。
 
-
 ```PHP
 $request = new Request\CreateTopupTransactionWithCheck(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // checkId: チャージ用QRコードのID
@@ -655,13 +728,14 @@ $request = new Request\CreateTopupTransactionWithCheck(
 
 
 ### Parameters
-**`check_id`** 
-  
-
+#### `check_id`
 チャージ用QRコードのIDです。
 
 QRコード生成時に送金元店舗のウォレット情報や、送金額などが登録されています。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -669,13 +743,16 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 }
 ```
 
-**`customer_id`** 
-  
+</details>
 
+#### `customer_id`
 エンドユーザーIDです。
 
 送金先のエンドユーザーを指定します。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -683,9 +760,9 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 }
 ```
 
-**`request_id`** 
-  
+</details>
 
+#### `request_id`
 取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
 
 取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
@@ -693,12 +770,17 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
 既に存在する、別のユーザによる取引とリクエストIDが衝突した場合、request_id_conflictが返ります。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -713,7 +795,9 @@ QRコード生成時に送金元店舗のウォレット情報や、送金額な
 |422|customer_user_not_found||The customer user is not found|
 |422|check_not_found|これはチャージQRコードではありません|This is not a topup QR code|
 |422|coupon_not_found|クーポンが見つかりませんでした。|The coupon is not found.|
+|422|credit_session_money_topup_requires_credit_card|オーソリチャージ用マネーではクレジットカードによるチャージのみ許可されています|Credit card is required for topup on credit-session enabled money|
 |422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|credit_session_not_found|オーソリセッションが見つかりません|Credit session not found|
 |422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
 |422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|

@@ -8,7 +8,7 @@ class RefundTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundTransaction(
-            "667f2955-f2d3-432c-b654-f563b2624d26"
+            "9361b3f2-32b6-44f5-8762-43d5a872b993"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class RefundTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundTransaction(
-            "667f2955-f2d3-432c-b654-f563b2624d26",
+            "9361b3f2-32b6-44f5-8762-43d5a872b993",
             [
-                'returning_point_expires_at' => "2024-02-23T15:18:38.000000Z"
+                'returning_point_expires_at' => "2022-11-17T08:09:54.000000Z"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class RefundTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundTransaction(
-            "667f2955-f2d3-432c-b654-f563b2624d26",
+            "9361b3f2-32b6-44f5-8762-43d5a872b993",
             [
-                'description' => "wfudd",
-                'returning_point_expires_at' => "2022-04-23T18:20:52.000000Z"
+                'description' => "iycmsaOa8T2aG",
+                'returning_point_expires_at' => "2024-08-26T02:53:00.000000Z"
             ]
         );
         try {

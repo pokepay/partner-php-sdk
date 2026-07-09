@@ -35,6 +35,10 @@ class CpmToken extends Base
      * @var string
      */
     public $metadata;
+    /**
+     * @var string|null
+     */
+    public $strategy;
 
     protected function normalize($timezone)
     {
