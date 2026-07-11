@@ -8,7 +8,7 @@ class GetBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetBill(
-            "ceb060c8-59cb-4cac-a867-3f37e701e96a"
+            "f87fba5f-f102-4493-be3d-e2203cd347c3"
         );
         try {
             $response = $client->send($request);

@@ -1,4 +1,10 @@
 # Event
+外部決済イベント（ExternalTransaction）を表すデータです。
+Pokepay外の決済（現金決済、クレジットカード決済等）を記録し、ポケペイのポイント還元を実現します。
+外部決済イベントを作成することで、キャンペーン連動によるポイント付与が可能になります。
+イベントのキャンセル（返金）にも対応しており、紐付いたポイント還元も同時にキャンセルされます。
+リクエストIDによる羃等性の担保もサポートしています。
+
 
 <a name="create-external-transaction"></a>
 ## CreateExternalTransaction: ポケペイ外部取引を作成する
@@ -6,21 +12,19 @@
 
 ポケペイ外の現金決済やクレジットカード決済に対してポケペイのポイントを付けたいというときに使用します。
 
-
 ```PHP
 $request = new Request\CreateExternalTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8678,                                         // amount: 取引額
+    8613,                                         // amount: 取引額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // ポケペイ外部取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
-        'done_at' => "2020-10-22T17:57:20.000000Z" // ポケペイ外部取引の実施時間
+        'done_at' => "2023-09-15T08:40:24.000000Z" // ポケペイ外部取引の実施時間
     ]
 );
 ```
@@ -28,13 +32,14 @@ $request = new Request\CreateExternalTransaction(
 
 
 ### Parameters
-**`shop_id`** 
-  
-
+#### `shop_id`
 店舗IDです。
 
 ポケペイ外部取引が行なう店舗を指定します。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -42,13 +47,16 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`customer_id`** 
-  
+</details>
 
+#### `customer_id`
 エンドユーザーIDです。
 
 エンドユーザーを指定します。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -56,13 +64,16 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`private_money_id`** 
-  
+</details>
 
+#### `private_money_id`
 マネーIDです。
 
 マネーを指定します。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -70,10 +81,13 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`amount`** 
-  
+</details>
 
+#### `amount`
 取引金額です。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -82,12 +96,15 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 取引説明文です。
 
 任意入力で、取引履歴に表示される説明文です。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -96,12 +113,15 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`metadata`** 
-  
+</details>
 
+#### `metadata`
 ポケペイ外部取引作成時に指定され、取引と紐付けられるメタデータです。
 
 任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSONで指定します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -110,9 +130,9 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`products`** 
-  
+</details>
 
+#### `products`
 一つの取引に含まれる商品情報データです。
 以下の内容からなるJSONオブジェクトの配列で指定します。
 
@@ -124,6 +144,9 @@ $request = new Request\CreateExternalTransaction(
 - `is_discounted`: 賞味期限が近いなどの理由で商品が値引きされているかどうかのフラグ。boolean
 - `other`: その他商品に関する情報。JSONオブジェクトで指定します。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "array",
@@ -133,14 +156,17 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`request_id`** 
-  
+</details>
 
+#### `request_id`
 取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
 
 取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
 
 リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -149,12 +175,15 @@ $request = new Request\CreateExternalTransaction(
 }
 ```
 
-**`done_at`** 
-  
+</details>
 
+#### `done_at`
 ポケペイ外部取引が実際に起こった時間です。
 時間帯指定のポイント付与キャンペーンでの取引時間の計算に使われます。
 デフォルトではCreateExternalTransactionがリクエストされた時間になります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -162,6 +191,8 @@ $request = new Request\CreateExternalTransaction(
   "format": "date-time"
 }
 ```
+
+</details>
 
 
 
@@ -181,7 +212,9 @@ $request = new Request\CreateExternalTransaction(
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
+|422|credit_session_money_topup_requires_credit_card|オーソリチャージ用マネーではクレジットカードによるチャージのみ許可されています|Credit card is required for topup on credit-session enabled money|
 |422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|credit_session_not_found|オーソリセッションが見つかりません|Credit session not found|
 |422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
 |422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|
@@ -244,9 +277,10 @@ $request = new Request\RefundExternalTransaction(
 
 
 ### Parameters
-**`event_id`** 
-  
+#### `event_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -255,9 +289,12 @@ $request = new Request\RefundExternalTransaction(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -265,6 +302,8 @@ $request = new Request\RefundExternalTransaction(
   "maxLength": 200
 }
 ```
+
+</details>
 
 
 
@@ -292,9 +331,10 @@ $request = new Request\GetExternalTransactionByRequestId(
 
 
 ### Parameters
-**`request_id`** 
-  
+#### `request_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -302,6 +342,8 @@ $request = new Request\GetExternalTransactionByRequestId(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 

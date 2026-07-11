@@ -95,6 +95,14 @@ class CouponDetail extends Base
      * @var PrivateMoney
      */
     public $privateMoney;
+    /**
+     * @var integer|null
+     */
+    public $numRecipientsCap;
+    /**
+     * @var integer|null
+     */
+    public $numRecipients;
 
     protected function normalize($timezone)
     {

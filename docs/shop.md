@@ -1,4 +1,10 @@
 # Shop
+店舗（加盟店）を表すデータです。
+Pokepayプラットフォーム上で支払いを受け取る店舗ユーザーを管理します。
+店舗は組織（Organization）に所属し、店舗ごとにウォレットを持ちます。
+店舗情報には住所、電話番号、メールアドレス、外部連携用IDなどが含まれます。
+店舗ステータス（active/disabled）の管理も可能です。
+
 
 <a name="list-shops"></a>
 ## ListShops: 店舗一覧を取得する
@@ -9,11 +15,11 @@ $request = new Request\ListShops(
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "414-7112",              // 店舗の郵便番号
+        'postal_code' => "433-1670",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "044-05-7548",                   // 店舗の電話番号
-        'email' => "KnTaroT8w3@801Z.com",         // 店舗のメールアドレス
-        'external_id' => "pTa0FFkkUFLVCDKp9TvCsVFg3Dy", // 店舗の外部ID
+        'tel' => "0416539743",                    // 店舗の電話番号
+        'email' => "kA5dwRQrAE@DCEB.com",         // 店舗のメールアドレス
+        'external_id' => "Tk0p",                  // 店舗の外部ID
         'with_disabled' => TRUE,                  // 無効な店舗を含める
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
@@ -24,11 +30,11 @@ $request = new Request\ListShops(
 
 
 ### Parameters
-**`organization_code`** 
-  
-
+#### `organization_code`
 このパラメータを渡すとその組織の店舗のみが返され、省略すると加盟店も含む店舗が返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -38,11 +44,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`private_money_id`** 
-  
+</details>
 
+#### `private_money_id`
 このパラメータを渡すとそのマネーのウォレットを持つ店舗のみが返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -51,11 +59,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`name`** 
-  
+</details>
 
+#### `name`
 このパラメータを渡すとその名前の店舗のみが返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -65,11 +75,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`postal_code`** 
-  
+</details>
 
+#### `postal_code`
 このパラメータを渡すとその郵便番号が登録された店舗のみが返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -78,11 +90,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`address`** 
-  
+</details>
 
+#### `address`
 このパラメータを渡すとその住所が登録された店舗のみが返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -91,11 +105,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`tel`** 
-  
+</details>
 
+#### `tel`
 このパラメータを渡すとその電話番号が登録された店舗のみが返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -104,11 +120,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`email`** 
-  
+</details>
 
+#### `email`
 このパラメータを渡すとそのメールアドレスが登録された店舗のみが返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -118,11 +136,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`external_id`** 
-  
+</details>
 
+#### `external_id`
 このパラメータを渡すとその外部IDが登録された店舗のみが返されます。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -131,11 +151,13 @@ $request = new Request\ListShops(
 }
 ```
 
-**`with_disabled`** 
-  
+</details>
 
+#### `with_disabled`
 このパラメータを渡すと無効にされた店舗を含めて返されます。デフォルトでは無効にされた店舗は返されません。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -143,11 +165,14 @@ $request = new Request\ListShops(
 }
 ```
 
-**`page`** 
-  
+</details>
 
+#### `page`
 取得したいページ番号です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -155,17 +180,23 @@ $request = new Request\ListShops(
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
 1ページ分の取引数です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
-  "minimum": 1
+  "minimum": 1,
+  "maximum": 1000
 }
 ```
+
+</details>
 
 
 
@@ -194,11 +225,11 @@ $request = new Request\ListShops(
 $request = new Request\CreateShop(
     "oxスーパー三田店",                                  // shopName: 店舗名
     [
-        'shop_postal_code' => "0492706",          // 店舗の郵便番号
+        'shop_postal_code' => "1771848",          // 店舗の郵便番号
         'shop_address' => "東京都港区芝...",            // 店舗の住所
-        'shop_tel' => "0229-195224",              // 店舗の電話番号
-        'shop_email' => "I5NM6J7Ehk@zGk2.com",    // 店舗のメールアドレス
-        'shop_external_id' => "yYle2ZOPXJOiEYcNwwBKhoxCdqw8", // 店舗の外部ID
+        'shop_tel' => "03916185-4669",            // 店舗の電話番号
+        'shop_email' => "S3Zg4O5dK9@OBTn.com",    // 店舗のメールアドレス
+        'shop_external_id' => "gY0HIwJr5Xn6R9PIw5eC52tvIBnMyMg4Cn", // 店舗の外部ID
         'organization_code' => "ox-supermarket"   // 組織コード
     ]
 );
@@ -207,9 +238,10 @@ $request = new Request\CreateShop(
 
 
 ### Parameters
-**`shop_name`** 
-  
+#### `shop_name`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -219,9 +251,12 @@ $request = new Request\CreateShop(
 }
 ```
 
-**`shop_postal_code`** 
-  
+</details>
 
+#### `shop_postal_code`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -230,9 +265,12 @@ $request = new Request\CreateShop(
 }
 ```
 
-**`shop_address`** 
-  
+</details>
 
+#### `shop_address`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -241,9 +279,12 @@ $request = new Request\CreateShop(
 }
 ```
 
-**`shop_tel`** 
-  
+</details>
 
+#### `shop_tel`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -252,9 +293,12 @@ $request = new Request\CreateShop(
 }
 ```
 
-**`shop_email`** 
-  
+</details>
 
+#### `shop_email`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -264,9 +308,12 @@ $request = new Request\CreateShop(
 }
 ```
 
-**`shop_external_id`** 
-  
+</details>
 
+#### `shop_external_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -275,9 +322,12 @@ $request = new Request\CreateShop(
 }
 ```
 
-**`organization_code`** 
-  
+</details>
 
+#### `organization_code`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -286,6 +336,8 @@ $request = new Request\CreateShop(
   "pattern": "^[a-zA-Z0-9-]*$"
 }
 ```
+
+</details>
 
 
 
@@ -315,14 +367,14 @@ $request = new Request\CreateShop(
 $request = new Request\CreateShopV2(
     "oxスーパー三田店",                                  // name: 店舗名
     [
-        'postal_code' => "3437268",               // 店舗の郵便番号
+        'postal_code' => "424-1276",              // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "08-22599",                      // 店舗の電話番号
-        'email' => "z7E9ZuYBAH@z0vH.com",         // 店舗のメールアドレス
-        'external_id' => "u4S",                   // 店舗の外部ID
+        'tel' => "02-4427304",                    // 店舗の電話番号
+        'email' => "792da7QYy7@V605.com",         // 店舗のメールアドレス
+        'external_id' => "zcBixerwgOsZ",          // 店舗の外部ID
         'organization_code' => "ox-supermarket",  // 組織コード
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
+        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 店舗でチャージ可能にするマネーIDの配列
     ]
 );
 ```
@@ -330,12 +382,13 @@ $request = new Request\CreateShopV2(
 
 
 ### Parameters
-**`name`** 
-  
-
+#### `name`
 店舗名です。
 
 同一組織内に同名の店舗があった場合は`name_conflict`エラーが返ります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -345,9 +398,12 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`postal_code`** 
-  
+</details>
 
+#### `postal_code`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -356,9 +412,12 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`address`** 
-  
+</details>
 
+#### `address`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -367,9 +426,12 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`tel`** 
-  
+</details>
 
+#### `tel`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -378,9 +440,12 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`email`** 
-  
+</details>
 
+#### `email`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -390,9 +455,12 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`external_id`** 
-  
+</details>
 
+#### `external_id`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -401,9 +469,12 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`organization_code`** 
-  
+</details>
 
+#### `organization_code`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -413,13 +484,16 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`private_money_ids`** 
-  
+</details>
 
+#### `private_money_ids`
 店舗で有効にするマネーIDの配列を指定します。
 
 店舗が所属する組織が発行または加盟しているマネーのみが指定できます。利用できないマネーが指定された場合は`unavailable_private_money`エラーが返ります。
 このパラメータを省略したときは、店舗が所属する組織が発行または加盟している全てのマネーのウォレットができます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -432,13 +506,16 @@ $request = new Request\CreateShopV2(
 }
 ```
 
-**`can_topup_private_money_ids`** 
-  
+</details>
 
+#### `can_topup_private_money_ids`
 店舗でチャージ可能にするマネーIDの配列を指定します。
 
 このパラメータは発行体のみが指定でき、自身が発行しているマネーのみを指定できます。加盟店が他発行体のマネーに加盟している場合でも、そのチャージ可否を変更することはできません。
 省略したときは対象店舗のその発行体の全てのマネーのアカウントがチャージ不可となります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -450,6 +527,8 @@ $request = new Request\CreateShopV2(
   }
 }
 ```
+
+</details>
 
 
 
@@ -467,6 +546,9 @@ $request = new Request\CreateShopV2(
 |422|unpermitted_private_money|このマネーは使えません|This money is not available|
 |422|unavailable_private_money||Given private money(s) is/are not available|
 |422|organization_not_member_organization||The specified organization is not a member organization of the organization accessing this API|
+|503|geocoding_api_key_missing|住所検索サービスは一時的に利用できません|Geocoding service is temporarily unavailable|
+|503|geocoding_api_error|住所検索 API がエラーを返しました|Geocoding API returned an error|
+|503|geocoding_http_error|住所検索リクエストに失敗しました|Geocoding request failed|
 
 
 
@@ -488,9 +570,10 @@ $request = new Request\GetShop(
 
 
 ### Parameters
-**`shop_id`** 
-  
+#### `shop_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -498,6 +581,8 @@ $request = new Request\GetShop(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -519,13 +604,13 @@ $request = new Request\UpdateShop(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
     [
         'name' => "oxスーパー三田店",                    // 店舗名
-        'postal_code' => "904-8000",              // 店舗の郵便番号
+        'postal_code' => "9613996",               // 店舗の郵便番号
         'address' => "東京都港区芝...",                 // 店舗の住所
-        'tel' => "0951-3647583",                  // 店舗の電話番号
-        'email' => "ygIW1kAzyA@HjkW.com",         // 店舗のメールアドレス
-        'external_id' => "0eFslSf8NaBTyV6GBT8tDHI0", // 店舗の外部ID
-        'private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗で有効にするマネーIDの配列
-        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗でチャージ可能にするマネーIDの配列
+        'tel' => "03-50-4755",                    // 店舗の電話番号
+        'email' => "mBamQcUvvH@D25X.com",         // 店舗のメールアドレス
+        'external_id' => "YGaGoRmlkWpVKSQYACWhdJ", // 店舗の外部ID
+        'private_money_ids' => [],                // 店舗で有効にするマネーIDの配列
+        'can_topup_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 店舗でチャージ可能にするマネーIDの配列
         'status' => "disabled"                    // 店舗の状態
     ]
 );
@@ -534,9 +619,10 @@ $request = new Request\UpdateShop(
 
 
 ### Parameters
-**`shop_id`** 
-  
+#### `shop_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -545,12 +631,15 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`name`** 
-  
+</details>
 
+#### `name`
 店舗名です。
 
 同一組織内に同名の店舗があった場合は`shop_name_conflict`エラーが返ります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -560,10 +649,13 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`postal_code`** 
-  
+</details>
 
+#### `postal_code`
 店舗住所の郵便番号(7桁の数字)です。ハイフンは無視されます。明示的に空の値を設定するにはNULLを指定します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -572,9 +664,12 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`address`** 
-  
+</details>
 
+#### `address`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -583,10 +678,13 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`tel`** 
-  
+</details>
 
+#### `tel`
 店舗の電話番号です。ハイフンは無視されます。明示的に空の値を設定するにはNULLを指定します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -595,10 +693,13 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`email`** 
-  
+</details>
 
+#### `email`
 店舗の連絡先メールアドレスです。明示的に空の値を設定するにはNULLを指定します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -608,10 +709,13 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`external_id`** 
-  
+</details>
 
+#### `external_id`
 店舗の外部IDです(最大36文字)。明示的に空の値を設定するにはNULLを指定します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -620,14 +724,17 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`private_money_ids`** 
-  
+</details>
 
+#### `private_money_ids`
 店舗で有効にするマネーIDの配列を指定します。
 
 店舗が所属する組織が発行または加盟しているマネーのみが指定できます。利用できないマネーが指定された場合は`unavailable_private_money`エラーが返ります。
 店舗が既にウォレットを持っている場合に、ここでそのウォレットのマネーIDを指定しないで更新すると、そのマネーのウォレットは凍結(無効化)されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "array",
@@ -639,14 +746,17 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`can_topup_private_money_ids`** 
-  
+</details>
 
+#### `can_topup_private_money_ids`
 店舗でチャージ可能にするマネーIDの配列を指定します。
 
 このパラメータは発行体のみが指定でき、発行しているマネーのみを指定できます。加盟店が他発行体のマネーに加盟している場合でも、そのチャージ可否を変更することはできません。
 省略したときは対象店舗のその発行体の全てのマネーのアカウントがチャージ不可となります。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "array",
@@ -658,10 +768,13 @@ $request = new Request\UpdateShop(
 }
 ```
 
-**`status`** 
-  
+</details>
 
+#### `status`
 店舗の状態です。activeを指定すると有効となり、disabledを指定するとリスト表示から除外されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -672,6 +785,8 @@ $request = new Request\UpdateShop(
   ]
 }
 ```
+
+</details>
 
 
 

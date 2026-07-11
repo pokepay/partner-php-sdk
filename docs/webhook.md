@@ -3,7 +3,6 @@ Webhookは特定のワーカータスクでの処理が完了した事を通知�
 WebHookにはURLとタスク名、有効化されているかを設定することが出来ます。
 通知はタスク完了時、事前に設定したURLにPOSTリクエストを行います。
 
-
 <a name="list-webhooks"></a>
 ## ListWebhooks: 作成したWebhookの一覧を返す
 
@@ -19,11 +18,12 @@ $request = new Request\ListWebhooks(
 
 
 ### Parameters
-**`page`** 
-  
-
+#### `page`
 取得したいページ番号です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -31,17 +31,22 @@ $request = new Request\ListWebhooks(
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
 1ページ分の取得数です。デフォルトでは 50 になっています。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
   "minimum": 1
 }
 ```
+
+</details>
 
 
 
@@ -68,17 +73,18 @@ $request = new Request\ListWebhooks(
 ```PHP
 $request = new Request\CreateWebhook(
     "bulk_shops",                                 // task: タスク名
-    "7mHIXsOqC"                                   // url: URL
+    "ldC"                                         // url: URL
 );
 ```
 
 
 
 ### Parameters
-**`task`** 
-  
-
+#### `task`
 ワーカータスク名を指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -90,16 +96,21 @@ $request = new Request\CreateWebhook(
 }
 ```
 
-**`url`** 
-  
+</details>
 
+#### `url`
 通知先のURLを指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
   "type": "string"
 }
 ```
+
+</details>
 
 
 
@@ -131,10 +142,11 @@ $request = new Request\DeleteWebhook(
 
 
 ### Parameters
-**`webhook_id`** 
-  
-
+#### `webhook_id`
 削除するWebhookのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -142,6 +154,8 @@ $request = new Request\DeleteWebhook(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -162,7 +176,7 @@ $request = new Request\DeleteWebhook(
 $request = new Request\UpdateWebhook(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // webhookId: Webhook ID
     [
-        'url' => "xcK",                           // URL
+        'url' => "sSS",                           // URL
         'is_active' => TRUE,                      // 有効/無効
         'task' => "process_user_stats_operation"  // タスク名
     ]
@@ -172,10 +186,11 @@ $request = new Request\UpdateWebhook(
 
 
 ### Parameters
-**`webhook_id`** 
-  
-
+#### `webhook_id`
 更新するWebhookのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -184,10 +199,13 @@ $request = new Request\UpdateWebhook(
 }
 ```
 
-**`url`** 
-  
+</details>
 
+#### `url`
 変更するURLを指定します
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -195,10 +213,13 @@ $request = new Request\UpdateWebhook(
 }
 ```
 
-**`is_active`** 
-  
+</details>
 
+#### `is_active`
 trueならWebhookによる通知が有効になり、falseなら無効になります
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -206,10 +227,13 @@ trueならWebhookによる通知が有効になり、falseなら無効になり�
 }
 ```
 
-**`task`** 
-  
+</details>
 
+#### `task`
 指定したタスクが終了したときにWebhookによる通知がされます
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -220,6 +244,8 @@ trueならWebhookによる通知が有効になり、falseなら無効になり�
   ]
 }
 ```
+
+</details>
 
 
 

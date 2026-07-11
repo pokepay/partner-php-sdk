@@ -3,6 +3,7 @@
 
 namespace Pokepay\Response;
 
+use DateTimeZone;
 
 class Bill extends Base
 {
@@ -38,4 +39,14 @@ class Bill extends Base
      * @var string
      */
     public $token;
+    /**
+     * @var \DateTime
+     */
+    public $createdAt;
+
+    protected function normalize($timezone)
+    {
+        $tz = new DateTimeZone($timezone);
+        $this->createdAt->setTimezone($tz);
+    }
 }

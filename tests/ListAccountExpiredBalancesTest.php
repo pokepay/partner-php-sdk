@@ -8,7 +8,7 @@ class ListAccountExpiredBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountExpiredBalances(
-            "a4a782a4-76f9-4936-a8d1-35b63e8bbb60"
+            "154960a2-ce1f-44d3-ad4e-01f7bc94c80f"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class ListAccountExpiredBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountExpiredBalances(
-            "a4a782a4-76f9-4936-a8d1-35b63e8bbb60",
+            "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
             [
                 'direction' => "desc"
             ]
@@ -41,9 +41,9 @@ class ListAccountExpiredBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountExpiredBalances(
-            "a4a782a4-76f9-4936-a8d1-35b63e8bbb60",
+            "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
             [
-                'expires_at_to' => "2020-10-21T06:08:14.000000Z",
+                'expires_at_to' => "2020-05-12T06:39:28.000000Z",
                 'direction' => "desc"
             ]
         );
@@ -60,10 +60,10 @@ class ListAccountExpiredBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountExpiredBalances(
-            "a4a782a4-76f9-4936-a8d1-35b63e8bbb60",
+            "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
             [
-                'expires_at_from' => "2024-05-06T22:47:15.000000Z",
-                'expires_at_to' => "2021-02-10T04:23:33.000000Z",
+                'expires_at_from' => "2021-08-10T22:28:30.000000Z",
+                'expires_at_to' => "2022-01-02T23:11:37.000000Z",
                 'direction' => "asc"
             ]
         );
@@ -80,11 +80,11 @@ class ListAccountExpiredBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountExpiredBalances(
-            "a4a782a4-76f9-4936-a8d1-35b63e8bbb60",
+            "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
             [
-                'per_page' => 9269,
-                'expires_at_from' => "2022-07-27T12:24:37.000000Z",
-                'expires_at_to' => "2020-03-19T18:01:03.000000Z",
+                'per_page' => 4714,
+                'expires_at_from' => "2020-04-19T21:07:10.000000Z",
+                'expires_at_to' => "2023-01-28T20:39:36.000000Z",
                 'direction' => "desc"
             ]
         );
@@ -101,13 +101,13 @@ class ListAccountExpiredBalances extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ListAccountExpiredBalances(
-            "a4a782a4-76f9-4936-a8d1-35b63e8bbb60",
+            "154960a2-ce1f-44d3-ad4e-01f7bc94c80f",
             [
-                'page' => 6531,
-                'per_page' => 2579,
-                'expires_at_from' => "2023-10-07T04:30:21.000000Z",
-                'expires_at_to' => "2023-04-20T20:38:29.000000Z",
-                'direction' => "asc"
+                'page' => 2353,
+                'per_page' => 7193,
+                'expires_at_from' => "2025-03-14T13:29:46.000000Z",
+                'expires_at_to' => "2021-07-19T10:26:05.000000Z",
+                'direction' => "desc"
             ]
         );
         try {

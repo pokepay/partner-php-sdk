@@ -1,12 +1,70 @@
 # Responses
+<a name="cvs-authorization"></a>
+## CvsAuthorization
+* `account (AccountDetail)`: 
+* `user (User)`: 
+* `orderId (string)`: 申し込みID
+* `transactionId (string|null)`: 取引ID
+* `payLimit (\DateTime)`: お支払期限
+* `tel (string)`: 電話番号
+* `name1 (string)`: 顧客姓
+* `name2 (string)`: 顧客名
+* `amount (integer)`: チャージ額
+* `serviceOptionType (string)`: コンビニ種別
+* `haraikomiUrl (string)`: 払込票URL
+* `receiptNo (string)`: 受付番号
+* `doneAt (\DateTime|null)`: 入金完了日時
+* `canceledAt (\DateTime|null)`: キャンセル日時
+
+`account`は [AccountDetail](#account-detail) オブジェクトを返します。
+
+`user`は [User](#user) オブジェクトを返します。
+
+<a name="paginated-cvs-authorizations"></a>
+## PaginatedCvsAuthorizations
+* `perPage (integer)`: 
+* `count (integer)`: 
+* `items (CvsAuthorization[])`: 
+* `prev (string|null)`: 
+* `next (string|null)`: 
+
+`items`は [CvsAuthorization](#cvs-authorization) オブジェクトの配列を返します。
+
+<a name="credit-session"></a>
+## CreditSession
+* `id (string)`: 
+* `expiresAt (\DateTime)`: 
+
+<a name="captured-credit-session"></a>
+## CapturedCreditSession
+* `sessionId (string)`: 
+
+<a name="credit-session-transaction-result"></a>
+## CreditSessionTransactionResult
+
+<a name="paginated-user-cards"></a>
+## PaginatedUserCards
+* `rows (UserCard[])`: 
+* `count (integer)`: 総件数
+* `pagination (Pagination)`: 
+
+`rows`は [UserCard](#user-card) オブジェクトの配列を返します。
+
+`pagination`は [Pagination](#pagination) オブジェクトを返します。
+
+<a name="card-authorize-result"></a>
+## CardAuthorizeResult
+* `authenticationHtml (string)`: 認証開始用HTML
+* `requestId (string)`: リクエストID
+
 <a name="account-with-user"></a>
 ## AccountWithUser
-* `id (string)`: 
-* `name (string)`: 
-* `isSuspended (boolean)`: 
-* `status (string)`: 
-* `privateMoney (PrivateMoney)`: 
-* `user (User)`: 
+* `id (string)`: ウォレットID
+* `name (string)`: ウォレット名
+* `isSuspended (boolean)`: ウォレットが凍結されているかどうか
+* `status (string)`: ウォレット状態
+* `privateMoney (PrivateMoney)`: 設定マネー情報
+* `user (User)`: ユーザ情報
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
 
@@ -14,17 +72,17 @@
 
 <a name="account-detail"></a>
 ## AccountDetail
-* `id (string)`: 
-* `name (string)`: 
-* `isSuspended (boolean)`: 
-* `status (string)`: 
-* `balance (double)`: 
-* `moneyBalance (double)`: 
-* `pointBalance (double)`: 
-* `pointDebt (double)`: 
-* `privateMoney (PrivateMoney)`: 
-* `user (User)`: 
-* `externalId (string|null)`: 
+* `id (string)`: ウォレットID
+* `name (string)`: ウォレット名
+* `isSuspended (boolean)`: ウォレットが凍結されているかどうか
+* `status (string)`: ウォレット状態
+* `balance (double)`: 総残高
+* `moneyBalance (double)`: マネー残高
+* `pointBalance (double)`: ポイント残高
+* `pointDebt (double)`: ポイント負債
+* `privateMoney (PrivateMoney)`: 設定マネー情報
+* `user (User)`: ユーザ情報
+* `externalId (string|null)`: 外部ID
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
 
@@ -32,6 +90,9 @@
 
 <a name="account-deleted"></a>
 ## AccountDeleted
+
+<a name="customer-card-deleted"></a>
+## CustomerCardDeleted
 
 <a name="bill"></a>
 ## Bill
@@ -43,6 +104,7 @@
 * `account (AccountWithUser)`: 支払いQRコード発行ウォレット
 * `isDisabled (boolean)`: 無効化されているかどうか
 * `token (string)`: 支払いQRコードを解析したときに出てくるURL
+* `createdAt (\DateTime)`: 支払いQRコードの作成日時
 
 `account`は [AccountWithUser](#account-with-user) オブジェクトを返します。
 
@@ -89,6 +151,7 @@
 * `scopes (string[])`: 許可された取引種別
 * `expiresAt (\DateTime)`: CPMトークンの失効日時
 * `metadata (string)`: エンドユーザー側メタデータ
+* `strategy (string|null)`: 支払い時の残高消費方式
 
 `account`は [AccountDetail](#account-detail) オブジェクトを返します。
 
@@ -142,9 +205,9 @@
 * `id (string)`: 取引ID
 * `type (string)`: 取引種別
 * `isModified (boolean)`: 返金された取引かどうか
-* `sender (User)`: 送金者情報
+* `sender (User)`: 送金ユーザ情報
 * `senderAccount (Account)`: 送金ウォレット情報
-* `receiver (User)`: 受取者情報
+* `receiver (User)`: 受取ユーザ情報
 * `receiverAccount (Account)`: 受取ウォレット情報
 * `amount (double)`: 取引総額 (マネー額 + ポイント額)
 * `moneyAmount (double)`: 取引マネー額
@@ -153,13 +216,23 @@
 * `campaignPointAmount (double)`: キャンペーンによるポイント付与額
 * `doneAt (\DateTime)`: 取引日時
 * `description (string)`: 取引説明文
-* `transfers (Transfer[])`: 
+* `transfers (Transfer[])`: 取引明細一覧
 
 `receiver`と`sender`は [User](#user) オブジェクトを返します。
 
 `receiver_account`と`sender_account`は [Account](#account) オブジェクトを返します。
 
 `transfers`は [Transfer](#transfer) オブジェクトの配列を返します。
+
+<a name="transaction-group"></a>
+## TransactionGroup
+* `id (string)`: トランザクショングループID
+* `name (string)`: トランザクショングループ名
+* `createdAt (\DateTime)`: 作成日時
+* `updatedAt (\DateTime)`: 更新日時
+* `transactions (Transaction[])`: グループに属する取引一覧
+
+`transactions`は [Transaction](#transaction) オブジェクトの配列を返します。
 
 <a name="shop-with-accounts"></a>
 ## ShopWithAccounts
@@ -187,6 +260,7 @@
 * `errorLineno (integer|null)`: バルク取引のエラーが発生した行番号
 * `submittedAt (\DateTime)`: バルク取引が登録された日時
 * `updatedAt (\DateTime)`: バルク取引が更新された日時
+* `scheduledAt (\DateTime|null)`: バルク取引の予約実行日時
 
 <a name="paginated-bulk-transaction-job"></a>
 ## PaginatedBulkTransactionJob
@@ -474,6 +548,8 @@
 * `couponImage (string|null)`: クーポン画像のURL
 * `availableShops (User[])`: 利用可能店舗リスト
 * `privateMoney (PrivateMoney)`: クーポンのマネー
+* `numRecipientsCap (integer|null)`: クーポンを受け取ることができるユーザ数上限
+* `numRecipients (integer|null)`: クーポンを受け取ったユーザ数
 
 `issued_shop`は [User](#user) オブジェクトを返します。
 
@@ -518,6 +594,20 @@
 
 `transaction`は [Transaction](#transaction) オブジェクトを返します。
 
+<a name="user-card"></a>
+## UserCard
+* `id (string)`: カード識別子
+* `cardNumber (string)`: マスク済みカード番号
+* `registeredAt (\DateTime)`: 登録日時
+
+<a name="pagination"></a>
+## Pagination
+* `current (integer)`: 
+* `perPage (integer)`: 
+* `maxPage (integer)`: 
+* `hasPrev (boolean)`: 
+* `hasNext (boolean)`: 
+
 <a name="private-money"></a>
 ## PrivateMoney
 * `id (string)`: マネーID
@@ -537,22 +627,14 @@
 
 `organization`は [Organization](#organization) オブジェクトを返します。
 
-<a name="pagination"></a>
-## Pagination
-* `current (integer)`: 
-* `perPage (integer)`: 
-* `maxPage (integer)`: 
-* `hasPrev (boolean)`: 
-* `hasNext (boolean)`: 
-
 <a name="transaction"></a>
 ## Transaction
 * `id (string)`: 取引ID
 * `type (string)`: 取引種別
 * `isModified (boolean)`: 返金された取引かどうか
-* `sender (User)`: 送金者情報
+* `sender (User)`: 送金ユーザ情報
 * `senderAccount (Account)`: 送金ウォレット情報
-* `receiver (User)`: 受取者情報
+* `receiver (User)`: 受取ユーザ情報
 * `receiverAccount (Account)`: 受取ウォレット情報
 * `amount (double)`: 取引総額 (マネー額 + ポイント額)
 * `moneyAmount (double)`: 取引マネー額
@@ -597,23 +679,23 @@
 * `id (string)`: ウォレットID
 * `name (string)`: ウォレット名
 * `isSuspended (boolean)`: ウォレットが凍結されているかどうか
-* `status (string)`: 
+* `status (string)`: ウォレット状態
 * `privateMoney (PrivateMoney)`: 設定マネー情報
 
 `private_money`は [PrivateMoney](#private-money) オブジェクトを返します。
 
 <a name="transfer"></a>
 ## Transfer
-* `id (string)`: 
-* `senderAccount (AccountWithoutPrivateMoneyDetail)`: 
-* `receiverAccount (AccountWithoutPrivateMoneyDetail)`: 
-* `amount (double)`: 
-* `moneyAmount (double)`: 
-* `pointAmount (double)`: 
-* `doneAt (\DateTime)`: 
-* `type (string)`: 
-* `description (string)`: 
-* `transactionId (string)`: 
+* `id (string)`: 取引明細ID
+* `senderAccount (AccountWithoutPrivateMoneyDetail)`: 送金元ウォレット
+* `receiverAccount (AccountWithoutPrivateMoneyDetail)`: 送金先ウォレット
+* `amount (double)`: 送金総額 (マネー額 + ポイント額)
+* `moneyAmount (double)`: 送金マネー額
+* `pointAmount (double)`: 送金ポイント額
+* `doneAt (\DateTime)`: 送金日時
+* `type (string)`: 取引明細種別
+* `description (string)`: 取引明細説明文
+* `transactionId (string)`: 親取引ID
 
 `receiver_account`と`sender_account`は [AccountWithoutPrivateMoneyDetail](#account-without-private-money-detail) オブジェクトを返します。
 
@@ -725,6 +807,8 @@
 * `code (string|null)`: クーポン受け取りコード
 * `isDisabled (boolean)`: 無効化フラグ
 * `token (string)`: クーポンを特定するためのトークン
+* `numRecipientsCap (integer|null)`: クーポンを受け取ることができるユーザ数上限
+* `numRecipients (integer|null)`: クーポンを受け取ったユーザ数
 
 `issued_shop`は [User](#user) オブジェクトを返します。
 

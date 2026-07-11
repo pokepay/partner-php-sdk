@@ -1,4 +1,10 @@
 # Private Money
+Pokepay上で発行する電子マネーを表すデータです。
+電子マネーは１つの発行体(Organization)によって発行されます。
+電子マネーはCustomerやMerchantが所有するウォレット間を送金されます。
+電子マネー残高はユーザが有償で購入するマネーと無償で付与されるポイントの2種類のバリューで構成され、
+それぞれ有効期限決定ロジックは電子マネーの設定に依存します。
+
 
 <a name="get-private-moneys"></a>
 ## GetPrivateMoneys: マネー一覧を取得する
@@ -19,10 +25,11 @@ $request = new Request\GetPrivateMoneys(
 
 
 ### Parameters
-**`organization_code`** 
-  
-
+#### `organization_code`
 パートナーキーの管理者が発行体組織に属している場合、発行マネーのうち、この組織コードで指定した決済加盟店組織が加盟しているマネーの一覧を返します。決済加盟店組織の管理者は自組織以外を指定することはできません。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -32,9 +39,26 @@ $request = new Request\GetPrivateMoneys(
 }
 ```
 
-**`page`** 
-  
+</details>
 
+#### `page`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "integer",
+  "minimum": 1
+}
+```
+
+</details>
+
+#### `per_page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -43,16 +67,7 @@ $request = new Request\GetPrivateMoneys(
 }
 ```
 
-**`per_page`** 
-  
-
-
-```json
-{
-  "type": "integer",
-  "minimum": 1
-}
-```
+</details>
 
 
 
@@ -78,8 +93,8 @@ $request = new Request\GetPrivateMoneys(
 $request = new Request\GetPrivateMoneyOrganizationSummaries(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2022-06-21T07:17:00.000000Z",  // 開始日時(toと同時に指定する必要有)
-        'to' => "2023-11-30T02:26:04.000000Z",    // 終了日時(fromと同時に指定する必要有)
+        'from' => "2020-05-20T05:22:42.000000Z",  // 開始日時(toと同時に指定する必要有)
+        'to' => "2020-07-28T00:27:27.000000Z",    // 終了日時(fromと同時に指定する必要有)
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
@@ -90,9 +105,10 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 
 
 ### Parameters
-**`private_money_id`** 
-  
+#### `private_money_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -101,20 +117,12 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 }
 ```
 
-**`from`** 
-  
+</details>
 
+#### `from`
 
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
-
-**`to`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -123,9 +131,26 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 }
 ```
 
-**`page`** 
-  
+</details>
 
+#### `to`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -134,9 +159,12 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -144,6 +172,8 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
   "minimum": 1
 }
 ```
+
+</details>
 
 
 
@@ -163,8 +193,8 @@ $request = new Request\GetPrivateMoneyOrganizationSummaries(
 $request = new Request\GetPrivateMoneySummary(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'from' => "2021-01-09T11:30:21.000000Z",  // 開始日時
-        'to' => "2024-03-22T20:39:27.000000Z"     // 終了日時
+        'from' => "2023-01-24T10:31:04.000000Z",  // 開始日時
+        'to' => "2022-04-01T01:49:52.000000Z"     // 終了日時
     ]
 );
 ```
@@ -172,9 +202,10 @@ $request = new Request\GetPrivateMoneySummary(
 
 
 ### Parameters
-**`private_money_id`** 
-  
+#### `private_money_id`
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -183,9 +214,26 @@ $request = new Request\GetPrivateMoneySummary(
 }
 ```
 
-**`from`** 
-  
+</details>
 
+#### `from`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "date-time"
+}
+```
+
+</details>
+
+#### `to`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -194,16 +242,7 @@ $request = new Request\GetPrivateMoneySummary(
 }
 ```
 
-**`to`** 
-  
-
-
-```json
-{
-  "type": "string",
-  "format": "date-time"
-}
-```
+</details>
 
 
 

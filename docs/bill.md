@@ -1,5 +1,16 @@
 # Bill
-支払いQRコード
+支払いQRコード(トークン)を表すデータです。
+URL文字列のまま利用されるケースとQR画像化して利用されるケースがあります。
+ログイン済みユーザアプリで読込むことで、支払い取引を作成します。
+設定される支払い金額(amount)は、固定値とユーザによる自由入力の2パターンがあります。
+amountが空の場合は、ユーザによる自由入力で受け付けた金額で支払いを行います。
+有効期限は比較的長命で利用される事例が多いです。
+
+複数マネー対応支払いQRコードについて:
+オプショナルで複数のマネーを１つの支払いQRコードに設定可能です。
+その場合ユーザ側でどのマネーで支払うか指定可能です。
+複数マネー対応支払いQRコードにはデフォルトのマネーウォレットを設定する必要があり、ユーザがマネーを明示的に選択しなかった場合はデフォルトのマネーによる支払いになります。
+
 
 <a name="list-bills"></a>
 ## ListBills: 支払いQRコード一覧を表示する
@@ -8,19 +19,19 @@
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 8556,                           // ページ番号
-        'per_page' => 1583,                       // 1ページの表示数
-        'bill_id' => "xkj3y6Qj",                  // 支払いQRコードのID
+        'page' => 3385,                           // ページ番号
+        'per_page' => 9515,                       // 1ページの表示数
+        'bill_id' => "ow",                        // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "-1j72CMY-6ss",    // 組織コード
+        'organization_code' => "I-67J-T",         // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2021-10-15T19:09:54.000000Z", // 作成日時(起点)
-        'created_to' => "2021-09-18T07:26:49.000000Z", // 作成日時(終点)
+        'created_from' => "2020-10-17T02:26:13.000000Z", // 作成日時(起点)
+        'created_to' => "2024-03-23T16:45:49.000000Z", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 976,              // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 3197,             // 金額の範囲によるフィルタ(上限)
-        'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
+        'lower_limit_amount' => 3641,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 2814,             // 金額の範囲によるフィルタ(上限)
+        'is_disabled' => TRUE                     // 支払いQRコードが無効化されているかどうか
     ]
 );
 ```
@@ -28,11 +39,12 @@ $request = new Request\ListBills(
 
 
 ### Parameters
-**`page`** 
-  
-
+#### `page`
 取得したいページ番号です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -40,11 +52,14 @@ $request = new Request\ListBills(
 }
 ```
 
-**`per_page`** 
-  
+</details>
 
+#### `per_page`
 1ページに表示する支払いQRコードの数です。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -52,10 +67,13 @@ $request = new Request\ListBills(
 }
 ```
 
-**`bill_id`** 
-  
+</details>
 
+#### `bill_id`
 支払いQRコードのIDを指定して検索します。IDは前方一致で検索されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -63,10 +81,13 @@ $request = new Request\ListBills(
 }
 ```
 
-**`private_money_id`** 
-  
+</details>
 
+#### `private_money_id`
 支払いQRコードの送金元ウォレットのマネーIDでフィルターします。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -75,10 +96,13 @@ $request = new Request\ListBills(
 }
 ```
 
-**`organization_code`** 
-  
+</details>
 
+#### `organization_code`
 支払いQRコードの送金元店舗が所属する組織の組織コードでフィルターします。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -88,10 +112,13 @@ $request = new Request\ListBills(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 支払いQRコードを読み取ることで作られた取引の説明文としてアプリなどに表示されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -100,13 +127,16 @@ $request = new Request\ListBills(
 }
 ```
 
-**`created_from`** 
-  
+</details>
 
+#### `created_from`
 支払いQRコードの作成日時でフィルターします。
 
 これ以降に作成された支払いQRコードのみ一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -114,13 +144,16 @@ $request = new Request\ListBills(
 }
 ```
 
-**`created_to`** 
-  
+</details>
 
+#### `created_to`
 支払いQRコードの作成日時でフィルターします。
 
 これ以前に作成された支払いQRコードのみ一覧に表示されます。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -128,10 +161,13 @@ $request = new Request\ListBills(
 }
 ```
 
-**`shop_name`** 
-  
+</details>
 
+#### `shop_name`
 支払いQRコードを作成した店舗名でフィルターします。店舗名は部分一致で検索されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -140,10 +176,13 @@ $request = new Request\ListBills(
 }
 ```
 
-**`shop_id`** 
-  
+</details>
 
+#### `shop_id`
 支払いQRコードを作成した店舗IDでフィルターします。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -152,11 +191,14 @@ $request = new Request\ListBills(
 }
 ```
 
-**`lower_limit_amount`** 
-  
+</details>
 
+#### `lower_limit_amount`
 支払いQRコードの金額の下限を指定してフィルターします。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -165,11 +207,14 @@ $request = new Request\ListBills(
 }
 ```
 
-**`upper_limit_amount`** 
-  
+</details>
 
+#### `upper_limit_amount`
 支払いQRコードの金額の上限を指定してフィルターします。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "integer",
@@ -178,16 +223,21 @@ $request = new Request\ListBills(
 }
 ```
 
-**`is_disabled`** 
-  
+</details>
 
+#### `is_disabled`
 支払いQRコードが無効化されているかどうかを表します。デフォルト値は偽(有効)です。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
   "type": "boolean"
 }
 ```
+
+</details>
 
 
 
@@ -214,7 +264,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 4159.0,                       // 支払い額
+        'amount' => 5879.0,                       // 支払い額
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -223,12 +273,12 @@ $request = new Request\CreateBill(
 
 
 ### Parameters
-**`amount`** 
-  
-
+#### `amount`
 支払いQRコードを支払い額を指定します。省略するかnullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。
 また、金額を指定する場合の上限額は支払いをするマネーの取引上限額です。
 
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -238,20 +288,12 @@ $request = new Request\CreateBill(
 }
 ```
 
-**`private_money_id`** 
-  
+</details>
 
+#### `private_money_id`
 
-```json
-{
-  "type": "string",
-  "format": "uuid"
-}
-```
-
-**`shop_id`** 
-  
-
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -260,9 +302,26 @@ $request = new Request\CreateBill(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `shop_id`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+#### `description`
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -270,6 +329,8 @@ $request = new Request\CreateBill(
   "maxLength": 200
 }
 ```
+
+</details>
 
 
 
@@ -307,10 +368,11 @@ $request = new Request\GetBill(
 
 
 ### Parameters
-**`bill_id`** 
-  
-
+#### `bill_id`
 表示する支払いQRコードのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -318,6 +380,8 @@ $request = new Request\GetBill(
   "format": "uuid"
 }
 ```
+
+</details>
 
 
 
@@ -338,9 +402,9 @@ $request = new Request\GetBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 3631.0,                       // 支払い額
+        'amount' => 6264.0,                       // 支払い額
         'description' => "test bill",             // 説明文
-        'is_disabled' => FALSE                    // 無効化されているかどうか
+        'is_disabled' => TRUE                     // 無効化されているかどうか
     ]
 );
 ```
@@ -348,10 +412,11 @@ $request = new Request\UpdateBill(
 
 
 ### Parameters
-**`bill_id`** 
-  
-
+#### `bill_id`
 更新対象の支払いQRコードのIDです。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -360,10 +425,13 @@ $request = new Request\UpdateBill(
 }
 ```
 
-**`amount`** 
-  
+</details>
 
+#### `amount`
 支払いQRコードを支払い額を指定します。nullを渡すと任意金額の支払いQRコードとなり、エンドユーザーがアプリで読み取った際に金額を入力します。また、金額を指定する場合の上限額は支払いをするマネーの取引上限額です。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -373,10 +441,13 @@ $request = new Request\UpdateBill(
 }
 ```
 
-**`description`** 
-  
+</details>
 
+#### `description`
 支払いQRコードの詳細説明文です。アプリ上で取引の説明文として表示されます。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -385,16 +456,21 @@ $request = new Request\UpdateBill(
 }
 ```
 
-**`is_disabled`** 
-  
+</details>
 
+#### `is_disabled`
 支払いQRコードが無効化されているかどうかを指定します。真にすると無効化され、偽にすると有効化します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
   "type": "boolean"
 }
 ```
+
+</details>
 
 
 
@@ -414,7 +490,6 @@ $request = new Request\UpdateBill(
 エンドユーザーから受け取った支払いQRコードのIDをエンドユーザーIDと共に渡すことで支払い取引が作られます。
 支払い時には、エンドユーザーの残高のうち、ポイント残高から優先的に消費されます。
 
-
 ```PHP
 $request = new Request\CreatePaymentTransactionWithBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
@@ -430,13 +505,14 @@ $request = new Request\CreatePaymentTransactionWithBill(
 
 
 ### Parameters
-**`bill_id`** 
-  
-
+#### `bill_id`
 支払いQRコードのIDです。
 
 QRコード生成時に送金先店舗のウォレット情報や、支払い金額などが登録されています。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -444,13 +520,16 @@ QRコード生成時に送金先店舗のウォレット情報や、支払い金
 }
 ```
 
-**`customer_id`** 
-  
+</details>
 
+#### `customer_id`
 エンドユーザーIDです。
 
 支払いを行うエンドユーザーを指定します。
 
+<details>
+<summary>スキーマ</summary>
+
 ```json
 {
   "type": "string",
@@ -458,12 +537,15 @@ QRコード生成時に送金先店舗のウォレット情報や、支払い金
 }
 ```
 
-**`metadata`** 
-  
+</details>
 
+#### `metadata`
 取引作成時に指定されるメタデータです。
 
 任意入力で、全てのkeyとvalueが文字列であるようなフラットな構造のJSON文字列で指定します。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -472,15 +554,18 @@ QRコード生成時に送金先店舗のウォレット情報や、支払い金
 }
 ```
 
-**`request_id`** 
-  
+</details>
 
+#### `request_id`
 取引作成APIの羃等性を担保するためのリクエスト固有のIDです。
 
 取引作成APIで結果が受け取れなかったなどの理由で再試行する際に、二重に取引が作られてしまうことを防ぐために、クライアント側から指定されます。指定は任意で、UUID V4フォーマットでランダム生成した文字列です。リクエストIDは一定期間で削除されます。
 
 リクエストIDを指定したとき、まだそのリクエストIDに対する取引がない場合、新規に取引が作られレスポンスとして返されます。もしそのリクエストIDに対する取引が既にある場合、既存の取引がレスポンスとして返されます。
 既に存在する、別のユーザによる取引とリクエストIDが衝突した場合、request_id_conflictが返ります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -489,9 +574,9 @@ QRコード生成時に送金先店舗のウォレット情報や、支払い金
 }
 ```
 
-**`strategy`** 
-  
+</details>
 
+#### `strategy`
 支払い時に残高がどのように消費されるかを指定します。
 デフォルトでは point-preferred (ポイント優先)が採用されます。
 
@@ -499,6 +584,9 @@ QRコード生成時に送金先店舗のウォレット情報や、支払い金
 - money-only: マネー残高のみから消費され、ポイント残高は使われません
 
 マネー設定でポイント残高のみの利用に設定されている場合(display_money_and_point が point-only の場合)、 strategy の指定に関わらずポイント優先になります。
+
+<details>
+<summary>スキーマ</summary>
 
 ```json
 {
@@ -509,6 +597,8 @@ QRコード生成時に送金先店舗のウォレット情報や、支払い金
   ]
 }
 ```
+
+</details>
 
 
 
@@ -524,7 +614,9 @@ QRコード生成時に送金先店舗のウォレット情報や、支払い金
 |422|customer_user_not_found||The customer user is not found|
 |422|bill_not_found|支払いQRコードが見つかりません|Bill not found|
 |422|coupon_not_found|クーポンが見つかりませんでした。|The coupon is not found.|
+|422|credit_session_money_topup_requires_credit_card|オーソリチャージ用マネーではクレジットカードによるチャージのみ許可されています|Credit card is required for topup on credit-session enabled money|
 |422|cannot_topup_during_cvs_authorization_pending|コンビニ決済の予約中はチャージできません|You cannot topup your account while a convenience store payment is pending.|
+|422|credit_session_not_found|オーソリセッションが見つかりません|Credit session not found|
 |422|not_applicable_transaction_type_for_account_topup_quota|チャージ取引以外の取引種別ではチャージ可能枠を使用できません|Account topup quota is not applicable to transaction types other than topup.|
 |422|private_money_topup_quota_not_available|このマネーにはチャージ可能枠の設定がありません|Topup quota is not available with this private money.|
 |422|account_can_not_topup|この店舗からはチャージできません|account can not topup|

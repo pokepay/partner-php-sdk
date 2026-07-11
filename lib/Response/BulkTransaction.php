@@ -43,11 +43,18 @@ class BulkTransaction extends Base
      * @var \DateTime
      */
     public $updatedAt;
+    /**
+     * @var \DateTime|null
+     */
+    public $scheduledAt;
 
     protected function normalize($timezone)
     {
         $tz = new DateTimeZone($timezone);
         $this->submittedAt->setTimezone($tz);
         $this->updatedAt->setTimezone($tz);
+        if (isset($this->scheduledAt)){
+            $this->scheduledAt->setTimezone($tz);
+        }
     }
 }
