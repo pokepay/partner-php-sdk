@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class CreateBill extends Base
 {
     protected $method = 'POST';
-    public $responseClass = \Pokepay\Response\Bill::class;
+    public $responseClass = \Pokepay\Response\BillWithAdditionalPrivateMoneys::class;
     private $privateMoneyId;
     private $shopId;
     public function __construct($privateMoneyId, $shopId, $optionalParams = array())

@@ -15,9 +15,9 @@ targetとして取引または外部決済イベントを選択して個別設�
 $request = new Request\ListCampaigns(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'is_ongoing' => TRUE,                     // 現在適用可能なキャンペーンかどうか
-        'available_from' => "2022-05-23T16:21:45.000000Z", // 指定された日時以降に適用可能期間が含まれているか
-        'available_to' => "2024-01-29T18:14:42.000000Z", // 指定された日時以前に適用可能期間が含まれているか
+        'is_ongoing' => FALSE,                    // 現在適用可能なキャンペーンかどうか
+        'available_from' => "2021-02-27T02:06:49.000000Z", // 指定された日時以降に適用可能期間が含まれているか
+        'available_to' => "2022-08-25T10:33:32.000000Z", // 指定された日時以前に適用可能期間が含まれているか
         'page' => 1,                              // ページ番号
         'per_page' => 20                          // 1ページ分の取得数
     ]
@@ -146,46 +146,45 @@ $request = new Request\ListCampaigns(
 
 ```PHP
 $request = new Request\CreateCampaign(
-    "PSv0sqeMHVeJGZnQaE4lp3S7TMyfZKpPybiZ1Lwce18e7Eq5OqWuTabdRaaHOyfGqVUncXzhjskeGyZxmbEy050Zlv3tzVr8aTPDqMKbxS0Vs3OlIrdnx7rU9Fte9Z959oBy13mtel3d8TfJ3Ol39ScasZnA58jo0hnztlMdM7BVfn4iFYyJJXfrDUn2Z5dTBMhYMOaLFSQqsldJHk3l4cpZ7fJl29A3O6y0fQnXOgwkIth5yMWiTVYzb9Ya", // name: キャンペーン名
+    "cac0Neld0xGYOxpvYgvz5c96ZecqU3VE5SiDh8XYp2Sb6qswUL8UZ6V9wGI85BEYoVTObCbAWlB9ZTLlBVIhK6pPNqnVaACzTnU4fw9nHGh382d4IcuvP4sfyk", // name: キャンペーン名
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    "2021-09-21T04:20:49.000000Z",                // startsAt: キャンペーン開始日時
-    "2024-04-17T11:59:28.000000Z",                // endsAt: キャンペーン終了日時
-    3443,                                         // priority: キャンペーンの適用優先度
+    "2024-03-01T09:01:03.000000Z",                // startsAt: キャンペーン開始日時
+    "2024-10-09T05:20:47.000000Z",                // endsAt: キャンペーン終了日時
+    881,                                          // priority: キャンペーンの適用優先度
     "external-transaction",                       // event: イベント種別
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント負担先店舗ID
-        'description' => "uIp7v4EzACicWq4Ul0bBBFnJwjrPufrwL5Z4qM5cyeftMbZhJuNsCdqVbAgLZQKQXblhvdQVC38rMOaKHSf5htPpycWdWsbduWBxtfg1Kliu47KITpvwbo61t0xPHohZAfXS5WAq97VI0kJjyO9S00lR", // キャンペーンの説明文
-        'status' => "enabled",                    // キャンペーン作成時の状態
-        'point_expires_at' => "2021-11-08T19:19:39.000000Z", // ポイント有効期限(絶対日時指定)
-        'point_expires_in_days' => 7333,          // ポイント有効期限(相対日数指定)
-        'is_exclusive' => FALSE,                  // キャンペーンの重複設定
+        'description' => "A2kGIKWn7WmxLFKf1vUL",  // キャンペーンの説明文
+        'status' => "disabled",                   // キャンペーン作成時の状態
+        'point_expires_at' => "2024-12-08T00:56:34.000000Z", // ポイント有効期限(絶対日時指定)
+        'point_expires_in_days' => 3718,          // ポイント有効期限(相対日数指定)
+        'is_exclusive' => TRUE,                   // キャンペーンの重複設定
         'subject' => "all",                       // ポイント付与の対象金額の種別
         'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
 ],                                                // 取引金額ベースのポイント付与ルール
         'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
 , ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
-, ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
 ],                                                // 商品情報ベースのポイント付与ルール
         'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
+, ["product_code" => "4912345678904", "classification_code" => "c123"]
 ],                                                // 商品情報ベースのキャンペーンで除外対象にする商品リスト
-        'applicable_days_of_week' => [2],         // キャンペーンを適用する曜日 (複数指定)
+        'applicable_days_of_week' => [5, 5, 2],   // キャンペーンを適用する曜日 (複数指定)
         'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-, ["from" => "12:00", "to" => "23:59"]
 ],                                                // キャンペーンを適用する時間帯 (複数指定)
-        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象となる店舗IDのリスト
-        'blacklisted_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象外となる店舗IDのリスト(ブラックリスト方式)
-        'minimum_number_of_products' => 503,      // キャンペーンを適用する1会計内の商品個数の下限
-        'minimum_number_of_amount' => 6369,       // キャンペーンを適用する1会計内の商品総額の下限
-        'minimum_number_for_combination_purchase' => 8061, // 複数種類の商品を同時購入するときの商品種別数の下限
+        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象となる店舗IDのリスト
+        'blacklisted_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象外となる店舗IDのリスト(ブラックリスト方式)
+        'minimum_number_of_products' => 1000,     // キャンペーンを適用する1会計内の商品個数の下限
+        'minimum_number_of_amount' => 8749,       // キャンペーンを適用する1会計内の商品総額の下限
+        'minimum_number_for_combination_purchase' => 5077, // 複数種類の商品を同時購入するときの商品種別数の下限
         'exist_in_each_product_groups' => TRUE,   // 複数の商品グループにつき1種類以上の商品購入によって発火するキャンペーンの指定フラグ
-        'max_point_amount' => 1890,               // キャンペーンによって付与されるポイントの上限
-        'max_total_point_amount' => 2988,         // キャンペーンによって付与されるの1人当たりの累計ポイントの上限
+        'max_point_amount' => 5705,               // キャンペーンによって付与されるポイントの上限
+        'max_total_point_amount' => 5040,         // キャンペーンによって付与されるの1人当たりの累計ポイントの上限
         'dest_private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント付与先となるマネーID
         'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
 ,                                                 // ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
         'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
 ,                                                 // 取引時に指定するメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
-        'budget_caps_amount' => 462263081         // キャンペーン予算上限
+        'budget_caps_amount' => 1703947906        // キャンペーン予算上限
     ]
 );
 ```
@@ -1068,41 +1067,41 @@ $request = new Request\GetCampaign(
 $request = new Request\UpdateCampaign(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // campaignId: キャンペーンID
     [
-        'name' => "eUN",                          // キャンペーン名
-        'starts_at' => "2022-06-10T00:15:20.000000Z", // キャンペーン開始日時
-        'ends_at' => "2020-12-22T20:26:17.000000Z", // キャンペーン終了日時
-        'priority' => 7128,                       // キャンペーンの適用優先度
-        'event' => "payment",                     // イベント種別
-        'description' => "IXisF2lvLdWFAH9CECfmZyvOgcw2bcIoYI3B409EBsOM5mHn7CA1SM3xNEFCgQheyCbSnP7P0SqnjQBF0gNpyvaBHzjlAdXU9fbl4BElEfYJ", // キャンペーンの説明文
+        'name' => "rnXru0CK861yZBwzeoylnePV0HOJ5M", // キャンペーン名
+        'starts_at' => "2022-09-09T10:46:27.000000Z", // キャンペーン開始日時
+        'ends_at' => "2024-05-11T10:20:23.000000Z", // キャンペーン終了日時
+        'priority' => 8756,                       // キャンペーンの適用優先度
+        'event' => "topup",                       // イベント種別
+        'description' => "ra9od5pOMZG0Q1epC2P9o6ZPNLGB22OwLCnaLili3chmVxHdB9QfCurmIpiTiNJmdhSFJZDo3oq9jSUkc9PdtCnJGKBJDfwGwTHxDL2bOdX", // キャンペーンの説明文
         'status' => "disabled",                   // キャンペーン作成時の状態
-        'point_expires_at' => "2026-06-11T07:48:11.000000Z", // ポイント有効期限(絶対日時指定)
-        'point_expires_in_days' => 5411,          // ポイント有効期限(相対日数指定)
+        'point_expires_at' => "2021-05-30T03:52:06.000000Z", // ポイント有効期限(絶対日時指定)
+        'point_expires_in_days' => 3564,          // ポイント有効期限(相対日数指定)
         'is_exclusive' => FALSE,                  // キャンペーンの重複設定
-        'subject' => "all",                       // ポイント付与の対象金額の種別
+        'subject' => "money",                     // ポイント付与の対象金額の種別
         'amount_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "subject_more_than_or_equal" => 1000, "subject_less_than" => 5000]
 ],                                                // 取引金額ベースのポイント付与ルール
         'product_based_point_rules' => [["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+, ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
+, ["point_amount" => 5, "point_amount_unit" => "percent", "product_code" => "4912345678904", "is_multiply_by_count" => TRUE, "required_count" => 2]
 ],                                                // 商品情報ベースのポイント付与ルール
         'blacklisted_product_rules' => [["product_code" => "4912345678904", "classification_code" => "c123"]
-, ["product_code" => "4912345678904", "classification_code" => "c123"]
 ],                                                // 商品情報ベースのキャンペーンで除外対象にする商品リスト
-        'applicable_days_of_week' => [6],         // キャンペーンを適用する曜日 (複数指定)
+        'applicable_days_of_week' => [2, 5],      // キャンペーンを適用する曜日 (複数指定)
         'applicable_time_ranges' => [["from" => "12:00", "to" => "23:59"]
-, ["from" => "12:00", "to" => "23:59"]
 ],                                                // キャンペーンを適用する時間帯 (複数指定)
-        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象となる店舗IDのリスト
+        'applicable_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象となる店舗IDのリスト
         'blacklisted_shop_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // キャンペーン適用対象外となる店舗IDのリスト(ブラックリスト方式)
-        'minimum_number_of_products' => 7833,     // キャンペーンを適用する1会計内の商品個数の下限
-        'minimum_number_of_amount' => 1747,       // キャンペーンを適用する1会計内の商品総額の下限
-        'minimum_number_for_combination_purchase' => 3952, // 複数種類の商品を同時購入するときの商品種別数の下限
+        'minimum_number_of_products' => 6296,     // キャンペーンを適用する1会計内の商品個数の下限
+        'minimum_number_of_amount' => 9156,       // キャンペーンを適用する1会計内の商品総額の下限
+        'minimum_number_for_combination_purchase' => 4291, // 複数種類の商品を同時購入するときの商品種別数の下限
         'exist_in_each_product_groups' => FALSE,  // 複数の商品グループにつき1種類以上の商品購入によって発火するキャンペーンの指定フラグ
-        'max_point_amount' => 1767,               // キャンペーンによって付与されるポイントの上限
-        'max_total_point_amount' => 784,          // キャンペーンによって付与されるの1人当たりの累計ポイントの上限
+        'max_point_amount' => 6516,               // キャンペーンによって付与されるポイントの上限
+        'max_total_point_amount' => 8103,         // キャンペーンによって付与されるの1人当たりの累計ポイントの上限
         'applicable_account_metadata' => ["key" => "sex", "value" => "male"]
 ,                                                 // ウォレットに紐付くメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
         'applicable_transaction_metadata' => ["key" => "rank", "value" => "bronze"]
 ,                                                 // 取引時に指定するメタデータが特定の値を持つときにのみ発火するキャンペーンを登録します。
-        'budget_caps_amount' => 666964785         // キャンペーン予算上限
+        'budget_caps_amount' => 1487163457        // キャンペーン予算上限
     ]
 );
 ```

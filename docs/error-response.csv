@@ -183,6 +183,7 @@ POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザ
 ,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,422,check_already_received,"このチャージQRコードは既に受取済みの為、チャージ出来ませんでした",Check is already received
+,,422,check_not_started_yet,"このチャージQRコードはまだ使用できません",Check is not usable yet
 ,,422,check_unavailable,"このチャージQRコードは利用できません",The topup QR code is not available
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -471,6 +472,7 @@ POST,/transactions/bulk,400,invalid_parameters,"項目が無効です",Invalid p
 ,,409,,,
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,bulk_transaction_invalid_csv_format,"入力されたCSVデータに誤りがあります",Invalid csv format
+,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,account_not_found,"アカウントが見つかりません",The account is not found
 ,,422,cashtray_not_found,"決済QRコードが見つかりません",Cashtray is not found
@@ -596,20 +598,28 @@ GET,/external-transactions/requests/:request-id,403,unpermitted_admin_user,"こ�
 GET,/bulk-transactions/:uuid,404,notfound,,Not found
 GET,/bulk-transactions/:uuid/jobs,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,bulk_transaction_not_found,"Bulk取引が見つかりません",Bulk transaction not found
+POST,/bulk-transactions/:uuid/cancel,404,notfound,,Not found
+,,422,bulk_transaction_not_cancelable,"Bulk取引は現在のステータスではキャンセルできません",Bulk transaction cannot be canceled in its current status
+,,503,temporarily_unavailable,,Service Unavailable
+POST,/bulk-transactions/:uuid/resume,404,notfound,,Not found
+,,422,bulk_transaction_not_resumable,"Bulk取引は現在のステータスでは再開できません",Bulk transaction cannot be resumed in its current status
+,,503,temporarily_unavailable,,Service Unavailable
 GET,/bills,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 GET,/bills/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,bill_not_found,"支払いQRコードが見つかりません",Bill not found
 POST,/bills,400,invalid_parameter_bill_amount_or_range_exceeding_transfer_limit,"支払いQRコードの金額がマネーの取引可能金額の上限を超えています",The input amount is exceeding the private money's limit for transfer
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
-,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 PATCH,/bills/:uuid,400,invalid_parameter_bill_amount_or_range_exceeding_transfer_limit,"支払いQRコードの金額がマネーの取引可能金額の上限を超えています",The input amount is exceeding the private money's limit for transfer
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
+,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 GET,/checks,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,organization_not_found,,Organization not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
@@ -617,6 +627,7 @@ GET,/checks,403,unpermitted_admin_user,"この管理ユーザには権限があ�
 POST,/checks,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
 ,,400,invalid_parameter_only_merchants_can_attach_points_to_check,,Only merchants can attach points to check
 ,,400,invalid_parameter_combination_usage_limit_and_is_onetime,,'usage_limit' can not be specified if 'is_onetime' is true.
+,,400,invalid_parameter_starts_at_after_expires_at,"「starts_at」は「expires_at」より前の日時を指定してください",'starts_at' must be earlier than 'expires_at'
 ,,400,invalid_parameter_expires_at,,'expires_at' must be in the future
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,400,invalid_parameter_bear_point_account_identification_item_not_unique,"ポイントを負担する店舗アカウントを指定するリクエストパラメータには、アカウントID、またはユーザIDのどちらかを含めることができます",Request parameters include either bear_point_account or bear_point_shop_id.
@@ -634,6 +645,7 @@ PATCH,/checks/:uuid,400,invalid_parameter_combination_usage_limit_and_is_onetime
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,400,invalid_parameter_expires_at,,'expires_at' must be in the future
 ,,400,invalid_parameter_both_point_and_money_are_zero,,One of 'money_amount' or 'point_amount' must be a positive (>0) number
+,,400,invalid_parameter_starts_at_after_expires_at,"「starts_at」は「expires_at」より前の日時を指定してください",'starts_at' must be earlier than 'expires_at'
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,account_money_topup_transfer_limit_exceeded,"マネーチャージ金額が上限を超えました",Too much amount to money topup transfer
@@ -783,6 +795,7 @@ POST,/customers/:uuid/cards/delete,400,invalid_email_domain,"メールアドレ�
 ,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/customers/:uuid/card-authorize/topup-with-membership,400,invalid_mdk_token,,Invalid MDK token
+,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,forbidden,,Forbidden
 ,,404,card_not_found,"カードが見つかりません",
@@ -844,6 +857,7 @@ POST,/customers/:uuid/card-authorize/topup-with-membership,400,invalid_mdk_token
 ,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/customers/:uuid/card-authorize/topup-with-mdk-token,400,invalid_mdk_token,,Invalid MDK token
+,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,forbidden,,Forbidden
 ,,404,card_not_found,"カードが見つかりません",
@@ -983,7 +997,7 @@ POST,/messaging-operations,400,messaging_operation_over_transfer_limit,,The mess
 ,,400,messaging_operation_is_draft,,The messaging operation is draft
 ,,400,messaging_attachment_user_not_exist,,The user does not exist
 ,,403,,,
-,,409,messaging_operation_already_done,,The messaging operation is already done
+,,409,messaging_operation_already_done,"既に実行済みのため操作できません",The messaging operation is already done
 ,,422,account_can_not_topup,"この店舗からはチャージできません",account can not topup
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -997,10 +1011,11 @@ PATCH,/messaging-operations/:uuid,400,messaging_operation_over_transfer_limit,,T
 ,,400,messaging_attachment_user_not_exist,,The user does not exist
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,,,
-,,409,messaging_operation_already_done,,The messaging operation is already done
+,,409,messaging_operation_already_done,"既に実行済みのため操作できません",The messaging operation is already done
 ,,503,temporarily_unavailable,,Service Unavailable
 DELETE,/messaging-operations/:uuid,403,,,
 ,,404,,,
+,,409,messaging_operation_already_done,"既に実行済みのため操作できません",The messaging operation is already done
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/user-stats,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission

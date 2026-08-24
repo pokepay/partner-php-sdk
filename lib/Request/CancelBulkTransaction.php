@@ -4,22 +4,22 @@
 namespace Pokepay\Request;
 
 
-class GetBill extends Base
+class CancelBulkTransaction extends Base
 {
-    protected $method = 'GET';
-    public $responseClass = \Pokepay\Response\BillWithAdditionalPrivateMoneys::class;
-    private $billId;
-    public function __construct($billId)
+    protected $method = 'POST';
+    public $responseClass = \Pokepay\Response\BulkTransaction::class;
+    private $bulkTransactionId;
+    public function __construct($bulkTransactionId)
     {
         parent::__construct();
-        $this->billId = $billId;
+        $this->bulkTransactionId = $bulkTransactionId;
 
         $this->optionalParams = array();
     }
 
     public function getPath()
     {
-        return '/bills' . '/' . $this->billId;
+        return '/bulk-transactions' . '/' . $this->bulkTransactionId . '/cancel';
     }
 
     public function getParams()

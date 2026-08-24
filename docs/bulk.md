@@ -1,7 +1,7 @@
 # Bulk
 一括取引処理を表すデータです。
 CSVファイルのアップロードにより、複数件の取引をバッチ処理する非同期APIを提供します。
-一括処理のステータス（submitted, examining, queued, processing, error, done）を監視できます。
+一括処理のステータス（submitted, examining, queued, processing, error, done, scheduled, canceled）を監視できます。
 処理完了時にコールバックURLへの通知も可能です。
 また、スケジュール実行時刻を指定して将来の時点で処理を実行することもできます。
 
@@ -12,13 +12,13 @@ CSVファイルから一括取引をします。
 
 ```PHP
 $request = new Request\BulkCreateTransaction(
-    "Lm8H",                                       // name: 一括取引タスク名
-    "uYz",                                        // content: 取引する情報のCSV
-    "7E9ZuYBAHz0vH45u4SHdXpfYeqMtcfd8wxcy",       // requestId: リクエストID
+    "t",                                          // name: 一括取引タスク名
+    "B6",                                         // content: 取引する情報のCSV
+    "ycarokvOGbxOtjjILQMz1SYbigi3uqGy9JaE",       // requestId: リクエストID
     [
-        'description' => "IW1kAzyAHjkW0eFslSf8NaBTyV6GBT8tDHI0zWcr0sMpkdiHOOwl5xIQiAP4UplfuFUQK5yc0JqyEbk4xV1ElwOVpwOgCs3REJLXlOpH", // 一括取引の説明
+        'description' => "7yaI77xfyzjZfk3Eg446tN2eZbvNHRDlrWw9qEb2szCXBkkHRCtXprtOEGF7FA7qtYAU5XoCNIUER98LHSRVr", // 一括取引の説明
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'callback_url' => "https://9qH3Tntl.example.com" // コールバックURL
+        'callback_url' => "https://y41mwGLH.example.com" // コールバックURL
     ]
 );
 ```
@@ -175,6 +175,7 @@ $request = new Request\BulkCreateTransaction(
 |409|NULL|NULL|NULL|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
 |422|bulk_transaction_invalid_csv_format|入力されたCSVデータに誤りがあります|Invalid csv format|
+|503|temporarily_unavailable||Service Unavailable|
 
 
 

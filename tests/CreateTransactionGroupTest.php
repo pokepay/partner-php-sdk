@@ -8,7 +8,7 @@ class CreateTransactionGroup extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransactionGroup(
-            "TeB7HbtOFrcDL7mosyloW0gLyNig5qU771SYwG9bLFfHIbs98VpOgmc8pS7"
+            "hOfBgmDSuxOmphkziTG6p4HsLeIcNrFvlQBIX1JBgnrD1yLFlL5kbgs"
         );
         try {
             $response = $client->send($request);

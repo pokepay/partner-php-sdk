@@ -36,6 +36,12 @@ class ListChecks extends PagingBase
         if (isset($params['expiresTo']) && $params['expiresTo'] instanceof DateTime) {
             $params['expiresTo'] = $params['expiresTo']->format(DateTime::ATOM);
         }
+        if (isset($params['startsFrom']) && $params['startsFrom'] instanceof DateTime) {
+            $params['startsFrom'] = $params['startsFrom']->format(DateTime::ATOM);
+        }
+        if (isset($params['startsTo']) && $params['startsTo'] instanceof DateTime) {
+            $params['startsTo'] = $params['startsTo']->format(DateTime::ATOM);
+        }
         if (isset($params['createdFrom']) && $params['createdFrom'] instanceof DateTime) {
             $params['createdFrom'] = $params['createdFrom']->format(DateTime::ATOM);
         }

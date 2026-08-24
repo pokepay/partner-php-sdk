@@ -12,10 +12,10 @@ $request = new Request\GetCvsAuthorizations(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-        'status' => "applied",                    // ステータス
-        'before' => "Umx8bpMxY",                  // ページング(before)
-        'after' => "yLz",                         // ページング(after)
-        'per_page' => 48                          // 1ページあたりの表示件数
+        'status' => "payed",                      // ステータス
+        'before' => "bfQ",                        // ページング(before)
+        'after' => "VxrOe",                       // ページング(after)
+        'per_page' => 35                          // 1ページあたりの表示件数
     ]
 );
 ```
@@ -146,14 +146,19 @@ $request = new Request\GetCvsAuthorizations(
 $request = new Request\CreateCvsAuthorization(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    75753,                                        // amount: チャージ額
+    264913,                                       // amount: チャージ額
     "famima",                                     // serviceOptionType: コンビニ種別
-    "Vs",                                         // name1: 顧客姓
-    "9Hj",                                        // name2: 顧客名
-    "AZf",                                        // tel: 電話番号
+    "XnEEoR2",                                    // name1: 顧客姓
+    "VQKj59H",                                    // name2: 顧客名
+    "9GxwaIDAEf",                                 // tel: 電話番号
     [
         'receiver_user_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // チャージ先エンドユーザーのID
-        'topup_quota_id' => 190                   // チャージ可能枠ID
+        'description' => "コンビニチャージ",              // 取引履歴に表示する説明文
+        'topup_quota_id' => 7175,                 // チャージ可能枠ID
+        'memo1' => "campaign2026summer",          // 取引メモ1
+        'memo2' => "YTy7R47iCgx7WyI42Bj1Wjh2fPJE8E716SPRYKWJApro8XpU0da1reC76r6EN63HIk75", // 取引メモ2
+        'memo3' => "8NxaRIBYa6wv",                // 取引メモ3
+        'freekey' => "order20260803001"           // キー情報
     ]
 );
 ```
@@ -293,6 +298,25 @@ receiver_user_id が指定されない場合、このユーザーがチャージ
 
 </details>
 
+#### `description`
+取引説明文です。
+
+任意入力で、コンビニでの入金確認後に作成されるチャージ取引の取引履歴に表示されます。
+省略した場合、および空文字列を指定した場合は既定の説明文が使われます
+(取引説明文を空にすることはできません)。
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "maxLength": 200
+}
+```
+
+</details>
+
 #### `topup_quota_id`
 チャージするマネーにチャージ可能枠機能が設定されているとき、使用するチャージ可能枠のIDを表します。
 
@@ -303,6 +327,81 @@ receiver_user_id が指定されない場合、このユーザーがチャージ
 {
   "type": "integer",
   "minimum": 1
+}
+```
+
+</details>
+
+#### `memo1`
+Veritransの取引に付与する取引メモです。
+
+任意入力で、半角英数字100文字以内で指定します。
+Veritransの取引検索で参照できます。ポケペイの取引履歴には表示されません。
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "maxLength": 100,
+  "pattern": "^[0-9A-Za-z]*$"
+}
+```
+
+</details>
+
+#### `memo2`
+Veritransの取引に付与する取引メモです。
+
+任意入力で、半角英数字100文字以内で指定します。
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "maxLength": 100,
+  "pattern": "^[0-9A-Za-z]*$"
+}
+```
+
+</details>
+
+#### `memo3`
+Veritransの取引に付与する取引メモです。
+
+任意入力で、半角英数字100文字以内で指定します。
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "maxLength": 100,
+  "pattern": "^[0-9A-Za-z]*$"
+}
+```
+
+</details>
+
+#### `freekey`
+Veritransの取引に付与するキー情報です。
+
+任意入力で、半角英数字256桁以内で指定します。
+加盟店システムで管理しているIDとVeritransの取引を紐付ける用途に使えます。
+ハイフンやアンダースコアは使用できないため、UUIDをそのまま指定することはできません。
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "maxLength": 256,
+  "pattern": "^[0-9A-Za-z]*$"
 }
 ```
 

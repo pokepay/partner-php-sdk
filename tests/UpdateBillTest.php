@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "e0f0d313-534b-44c4-9166-3cd3cae8eca8"
+            "54cf65f5-ba67-47cd-b34f-e8048287ddd1"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "e0f0d313-534b-44c4-9166-3cd3cae8eca8",
+            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
             [
-                'is_disabled' => TRUE
+                'additional_private_money_ids' => ["61ec7332-334a-4f82-88c2-d06ea0d6211f", "a2dbbe78-cb62-4c2c-be1a-9b002558eae9", "fdbedf9f-1c29-4345-8d30-193d890340ef", "934c377e-4746-4980-92c7-9e6ee43b727f", "2f3712fc-316e-4380-8676-89a9d6fcc3c0", "72f03d94-6c18-441c-ab98-4d09306ea97e", "9274a7cb-ec16-4b58-8639-04adfd67d228", "bb53616d-0517-44d7-b41a-a97bf92d1e6d", "18ce89cc-4165-400d-b203-5216f0200348"]
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "e0f0d313-534b-44c4-9166-3cd3cae8eca8",
+            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
             [
-                'description' => "9olxtCG8sS34enFyHhIbteE1tQOMttUhD0OiwEvovxL7L6kZ3KaNub1zwaCdHgj8ik3dmsSURUNaSg6OcHEm",
-                'is_disabled' => FALSE
+                'is_disabled' => FALSE,
+                'additional_private_money_ids' => ["3b350a56-ea36-4b86-b995-b99ecb152a3d", "9a1d92c4-ddf1-4d09-84fd-4d20792e913c", "9f326b92-0dcd-4a7c-86f5-531a16bf08f2", "6d9c9d8c-24ed-43b2-9001-703ddd0eae48", "a53c5df9-631e-4a1d-80db-f3d918e0ffb5", "1b7a060d-ee95-453a-b278-82420d8bb2d2"]
             ]
         );
         try {
@@ -60,11 +60,32 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "e0f0d313-534b-44c4-9166-3cd3cae8eca8",
+            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
             [
-                'amount' => 9641.0,
-                'description' => "QFO3Ox8qDzSQ0YVNC6SfrLsEgbwDrafzykU4qQWwEl9RBh7JkqQ2DDr8e6Qf8fK7SBxethCuCr4dBSWzD3agMTAvZtCmtviHLHOBHo",
-                'is_disabled' => TRUE
+                'description' => "FTyEvnewbYd4rNZJsCq7m7arw2NKYH12xHXaAOFqIwxrvxkxwVYBDQiRCyVTR3czNdwQ9LziqjK5MdQ1lZMyARXVB9A32ESqVUKE1GN9JqLEvyRdA5j20ws4Z1pnjZ8xWKeN3WKGyHXCKDfS0S9olxtCG8sS34enFyHhIbteE1tQ",
+                'is_disabled' => TRUE,
+                'additional_private_money_ids' => ["a6a582be-cacf-455d-9a4d-e3ab06144a74", "106a508e-5f74-402c-9faa-350a7bd50282", "80ead2d5-030c-4ddb-8213-09e801b21ba7", "6ba9a844-5330-4112-8f69-8af7381b4312", "3bbbf581-a3a2-41c5-b6ef-a5f6cfcae578"]
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testUpdateBill4()
+    {
+        $client = $this->newClient();
+        $request = new Request\UpdateBill(
+            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
+            [
+                'amount' => 3119.0,
+                'description' => "7L6kZ3KaNub1zwaCdHgj8ik3dmsSURUNaSg6OcHEmOeQF",
+                'is_disabled' => TRUE,
+                'additional_private_money_ids' => ["25bd1eb3-4ccf-4d78-93b8-0bf1e5f6fc44", "1b6844dd-6d7a-4afe-9fd3-42d15e9fce9f", "15348a07-be30-4bd9-8812-6c561d5ae918", "933b1d9d-4c4e-44c3-9b2a-ea16f43e9eb6", "a4778e05-af10-44a9-9383-1a6631996cf2", "c9bad83a-4b4c-4029-b3de-b745c2a0faa2", "9a4aa223-c3e7-4962-b709-8dfdbe93e944", "61fedff2-9825-46e1-8b3e-1b063de4db66", "725fca1e-5623-4d11-a75d-f9fafb84a0f9"]
             ]
         );
         try {

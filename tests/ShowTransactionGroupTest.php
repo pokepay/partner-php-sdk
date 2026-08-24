@@ -8,7 +8,7 @@ class ShowTransactionGroup extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ShowTransactionGroup(
-            "0c94c2d7-f495-4c5d-959d-d75a15c697e9"
+            "0619e09c-c69d-4a20-bc1e-82365a4354a9"
         );
         try {
             $response = $client->send($request);

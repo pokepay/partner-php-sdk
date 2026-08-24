@@ -8,7 +8,7 @@ class GetShopAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetShopAccounts(
-            "4ba9474d-bb29-4b26-92d0-60cb26e8cd8d"
+            "4c4df09a-c8ea-4602-b592-3b442f0ec08d"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class GetShopAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetShopAccounts(
-            "4ba9474d-bb29-4b26-92d0-60cb26e8cd8d",
+            "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
             [
                 'is_suspended' => TRUE
             ]
@@ -41,9 +41,9 @@ class GetShopAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetShopAccounts(
-            "4ba9474d-bb29-4b26-92d0-60cb26e8cd8d",
+            "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
             [
-                'created_at_to' => "2021-10-31T16:57:13.000000Z",
+                'created_at_to' => "2026-05-14T15:53:20.000000Z",
                 'is_suspended' => TRUE
             ]
         );
@@ -60,11 +60,11 @@ class GetShopAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetShopAccounts(
-            "4ba9474d-bb29-4b26-92d0-60cb26e8cd8d",
+            "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
             [
-                'created_at_from' => "2023-11-06T02:31:37.000000Z",
-                'created_at_to' => "2024-07-07T08:34:30.000000Z",
-                'is_suspended' => TRUE
+                'created_at_from' => "2025-06-12T01:11:15.000000Z",
+                'created_at_to' => "2023-05-08T13:24:13.000000Z",
+                'is_suspended' => FALSE
             ]
         );
         try {
@@ -80,11 +80,11 @@ class GetShopAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetShopAccounts(
-            "4ba9474d-bb29-4b26-92d0-60cb26e8cd8d",
+            "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
             [
-                'per_page' => 6667,
-                'created_at_from' => "2023-12-12T11:10:42.000000Z",
-                'created_at_to' => "2023-11-10T03:08:06.000000Z",
+                'per_page' => 644,
+                'created_at_from' => "2021-12-12T13:57:58.000000Z",
+                'created_at_to' => "2020-05-21T00:15:54.000000Z",
                 'is_suspended' => FALSE
             ]
         );
@@ -101,13 +101,13 @@ class GetShopAccounts extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetShopAccounts(
-            "4ba9474d-bb29-4b26-92d0-60cb26e8cd8d",
+            "4c4df09a-c8ea-4602-b592-3b442f0ec08d",
             [
-                'page' => 7903,
-                'per_page' => 1435,
-                'created_at_from' => "2021-06-16T10:57:24.000000Z",
-                'created_at_to' => "2020-01-11T14:03:41.000000Z",
-                'is_suspended' => TRUE
+                'page' => 7075,
+                'per_page' => 5144,
+                'created_at_from' => "2026-07-04T12:00:10.000000Z",
+                'created_at_to' => "2022-11-05T06:14:30.000000Z",
+                'is_suspended' => FALSE
             ]
         );
         try {

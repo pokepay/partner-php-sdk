@@ -8,9 +8,9 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "yiodipyOhBLvJd18F7msVCl",
-            "IZ6Bq4ZCm1",
-            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF"
+            "JBxT",
+            "0YUW8iwJJ",
+            "uJPCjlaztijN3vebjT869RjYRPCqvnZ1Yzdr"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "yiodipyOhBLvJd18F7msVCl",
-            "IZ6Bq4ZCm1",
-            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF",
+            "JBxT",
+            "0YUW8iwJJ",
+            "uJPCjlaztijN3vebjT869RjYRPCqvnZ1Yzdr",
             [
-                'callback_url' => "https://F9xx8GHc.example.com"
+                'callback_url' => "https://hGH7XKNo.example.com"
             ]
         );
         try {
@@ -45,12 +45,12 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "yiodipyOhBLvJd18F7msVCl",
-            "IZ6Bq4ZCm1",
-            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF",
+            "JBxT",
+            "0YUW8iwJJ",
+            "uJPCjlaztijN3vebjT869RjYRPCqvnZ1Yzdr",
             [
-                'private_money_id' => "43f299ac-8faa-4d02-9a3c-6b585fb4d820",
-                'callback_url' => "https://N3Xa70o7.example.com"
+                'private_money_id' => "d8d3a52e-7fc7-4e7e-84ac-367ce2625f7b",
+                'callback_url' => "https://pqqjYUa4.example.com"
             ]
         );
         try {
@@ -66,13 +66,13 @@ class BulkCreateTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\BulkCreateTransaction(
-            "yiodipyOhBLvJd18F7msVCl",
-            "IZ6Bq4ZCm1",
-            "53pAwidsKM1ZphpLhv7NIoqmlJpzKOYIsRtF",
+            "JBxT",
+            "0YUW8iwJJ",
+            "uJPCjlaztijN3vebjT869RjYRPCqvnZ1Yzdr",
             [
-                'description' => "nFXURkjCcagg1x0DC",
-                'private_money_id' => "6631f3a6-4804-48f9-b43c-640d2ba2c473",
-                'callback_url' => "https://hXKR7nTW.example.com"
+                'description' => "NN7jWbTA8sT9CjYdhYyR9ZtWhMAKSZHQ2Tjahc0hASAcEibjku1",
+                'private_money_id' => "54c5fa98-94e6-4ae4-91e5-ba99ba264f74",
+                'callback_url' => "https://gL0O7DlA.example.com"
             ]
         );
         try {

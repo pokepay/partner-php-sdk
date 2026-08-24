@@ -34,6 +34,9 @@ class CreateCheck extends Base
         if (isset($params['expiresAt']) && $params['expiresAt'] instanceof DateTime) {
             $params['expiresAt'] = $params['expiresAt']->format(DateTime::ATOM);
         }
+        if (isset($params['startsAt']) && $params['startsAt'] instanceof DateTime) {
+            $params['startsAt'] = $params['startsAt']->format(DateTime::ATOM);
+        }
         if (isset($params['pointExpiresAt']) && $params['pointExpiresAt'] instanceof DateTime) {
             $params['pointExpiresAt'] = $params['pointExpiresAt']->format(DateTime::ATOM);
         }

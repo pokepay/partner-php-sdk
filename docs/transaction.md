@@ -17,7 +17,7 @@ CPMトークンの現在の状態を取得します。CPMトークンの有効�
 
 ```PHP
 $request = new Request\GetCpmToken(
-    "kt1s5IzgftNOCeiOWbpouk"                      // cpmToken: CPMトークン
+    "odFyg21jiUhByaB66BNcap"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -58,18 +58,18 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 ```PHP
 $request = new Request\ListTransactions(
     [
-        'from' => "2021-09-22T09:42:40.000000Z",  // 開始日時
-        'to' => "2022-02-17T21:31:20.000000Z",    // 終了日時
+        'from' => "2020-08-27T22:41:33.000000Z",  // 開始日時
+        'to' => "2024-10-05T21:36:20.000000Z",    // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
-        'transaction_id' => "VaYSY",              // 取引ID
+        'transaction_id' => "LZWxad9qMq",         // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'is_modified' => FALSE,                   // キャンセルフラグ
+        'is_modified' => TRUE,                    // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
         'description' => "店頭QRコードによる支払い"          // 取引説明文
     ]
@@ -368,10 +368,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 1060,
-        'point_amount' => 6184,
-        'point_expires_at' => "2026-04-08T21:55:02.000000Z", // ポイント有効期限
-        'description' => "U3L46cfTNsJ74FdhPrGorQztiuURWZ5r1OnryKkdpmMzmoITgipjScgSjEKEvn9tkKJsfEeEirDJBvMOLUpWvpkfaBwAHAugbJ1KgmPImdwaTBcN"
+        'money_amount' => 1931,
+        'point_amount' => 9917,
+        'point_expires_at' => "2025-12-19T02:07:34.000000Z", // ポイント有効期限
+        'description' => "CaVImVTzD7ogGgbbuuhXvkkv63jx716j9qYe"
     ]
 );
 ```
@@ -549,7 +549,7 @@ $request = new Request\CreateTransaction(
 
 ```PHP
 $request = new Request\CreateTransactionGroup(
-    "wqaqeRCH16a6zzUqrHdosHdbmLywq"               // name: 作成するトランザクショングループの名称です。
+    "QTBsHYxIvY8A2kLLFzD"                         // name: 作成するトランザクショングループの名称です。
 );
 ```
 
@@ -642,11 +642,11 @@ $request = new Request\ListTransactionsV2(
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "kvEUDG",             // 取引ID
-        'is_modified' => TRUE,                    // キャンセルフラグ
+        'transaction_id' => "GgwT6RW",            // 取引ID
+        'is_modified' => FALSE,                   // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-        'from' => "2025-01-11T21:56:04.000000Z",  // 開始日時
-        'to' => "2024-04-06T11:03:17.000000Z",    // 終了日時
+        'from' => "2023-11-12T02:36:40.000000Z",  // 開始日時
+        'to' => "2020-09-18T01:43:21.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -983,9 +983,9 @@ $request = new Request\ListBillTransactions(
         'description' => "店頭QRコードによる支払い",         // 取引説明文
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
         'bill_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 支払いQRコードのID
-        'is_modified' => TRUE,                    // キャンセルフラグ
-        'from' => "2023-04-07T07:21:25.000000Z",  // 開始日時
-        'to' => "2021-05-28T02:32:21.000000Z",    // 終了日時
+        'is_modified' => FALSE,                   // キャンセルフラグ
+        'from' => "2020-04-13T16:03:29.000000Z",  // 開始日時
+        'to' => "2023-01-27T12:40:44.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -1285,9 +1285,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 6381,                   // マネー額
-        'point_amount' => 7756,                   // ポイント額
-        'point_expires_at' => "2024-02-04T22:55:04.000000Z", // ポイント有効期限
+        'money_amount' => 3755,                   // マネー額
+        'point_amount' => 5177,                   // ポイント額
+        'point_expires_at' => "2024-09-07T12:12:29.000000Z", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -1545,12 +1545,11 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    8040,                                         // amount: 支払い額
+    5503,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
         'strategy' => "point-preferred",          // 支払い時の残高消費方式
@@ -1817,15 +1816,13 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```PHP
 $request = new Request\CreateCpmTransaction(
-    "GQ9yekqoyNLKN2h7BNq3rR",                     // cpmToken: CPMトークン
+    "Vp03GIkTp5cuONNVFc9v9g",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    7717.0,                                       // amount: 取引金額
+    4880.0,                                       // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
         'strategy' => "point-preferred"           // 支払い時の残高消費方式
@@ -2067,7 +2064,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    299.0,                                        // amount: 送金額
+    890.0,                                        // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -2271,9 +2268,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    5683,
+    7572,
     [
-        'description' => "qEgXsKX0DNjA5LloLW2ZGwTADg0EGo2tY0BvAArU4c3Hcr3rYtMZs1YhEQlphw1DkmThPoIdPA7X1r8JTPyIk7mw82VAIRkHcNMgqN77FQwuiGtQW4pnFSkfz0ZAYuHKErS89ga8rAwXpAi",
+        'description' => "hWfe1J2XdVSiGrZnaj14JqvayOvsUjS1TQRpGXwusKVKoDVo20K4pv",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -2487,7 +2484,7 @@ $request = new Request\RefundTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
     [
         'description' => "返品対応のため",               // 取引履歴に表示する返金事由
-        'returning_point_expires_at' => "2023-06-11T19:59:42.000000Z" // 返却ポイントの有効期限
+        'returning_point_expires_at' => "2021-07-24T18:36:07.000000Z" // 返却ポイントの有効期限
     ]
 );
 ```
@@ -2695,6 +2692,80 @@ $request = new Request\ListBulkTransactionJobs(
 
 成功したときは
 [PaginatedBulkTransactionJob](./responses.md#paginated-bulk-transaction-job)
+を返します
+
+
+
+---
+
+
+<a name="cancel-bulk-transaction"></a>
+## CancelBulkTransaction: バルク取引をキャンセルする
+
+```PHP
+$request = new Request\CancelBulkTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // bulkTransactionId: バルク取引ジョブID
+);
+```
+
+
+
+### Parameters
+#### `bulk_transaction_id`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+
+
+成功したときは
+[BulkTransaction](./responses.md#bulk-transaction)
+を返します
+
+
+
+---
+
+
+<a name="resume-bulk-transaction"></a>
+## ResumeBulkTransaction: バルク取引を再開する
+
+```PHP
+$request = new Request\ResumeBulkTransaction(
+    "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"        // bulkTransactionId: バルク取引ジョブID
+);
+```
+
+
+
+### Parameters
+#### `bulk_transaction_id`
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "string",
+  "format": "uuid"
+}
+```
+
+</details>
+
+
+
+成功したときは
+[BulkTransaction](./responses.md#bulk-transaction)
 を返します
 
 

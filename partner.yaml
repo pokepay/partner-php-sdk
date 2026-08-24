@@ -117,7 +117,7 @@ tags:
     description: |
       一括取引処理を表すデータです。
       CSVファイルのアップロードにより、複数件の取引をバッチ処理する非同期APIを提供します。
-      一括処理のステータス（submitted, examining, queued, processing, error, done）を監視できます。
+      一括処理のステータス（submitted, examining, queued, processing, error, done, scheduled, canceled）を監視できます。
       処理完了時にコールバックURLへの通知も可能です。
       また、スケジュール実行時刻を指定して将来の時点で処理を実行することもできます。
   - name: Event
@@ -574,6 +574,56 @@ components:
           type: string
           format: date-time
           title: 支払いQRコードの作成日時
+    BillWithAdditionalPrivateMoneys:
+      x-pokepay-schema-type: "response"
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: 支払いQRコードのID
+        amount:
+          type: number
+          format: decimal
+          nullable: true
+          title: 支払い額
+          description: 支払い額。支払い額未指定の場合は支払い時に任意金額を入力できます。
+        max_amount:
+          type: number
+          format: decimal
+          nullable: true
+          title: 支払い額を範囲指定した場合の上限
+          description: 支払い額に任意金額を入力する際の上限です。
+        min_amount:
+          type: number
+          format: decimal
+          nullable: true
+          title: 支払い額を範囲指定した場合の下限
+          description: 支払い額に任意金額を入力する際の下限です。
+        description:
+          type: string
+          title: 支払いQRコードの説明文(アプリ上で取引の説明文として表示される)
+        account:
+          $ref: '#/components/schemas/AccountWithUser'
+          title: 支払いQRコード発行ウォレット
+          description: 支払いQRコードを発行した店舗のウォレットです。ユーザやマネーの情報を含みます。
+        is_disabled:
+          type: boolean
+          title: 無効化されているかどうか
+        token:
+          type: string
+          title: 支払いQRコードを解析したときに出てくるURL
+        created_at:
+          type: string
+          format: date-time
+          title: 支払いQRコードの作成日時
+        additional_private_moneys:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrivateMoney'
+          title: 追加の支払いマネー
+          description: |-
+            複数マネー対応支払いQRコードで、`account` のマネー以外に支払いに使えるマネーの一覧です。
+            複数マネー対応でない場合は空配列になります。
     Check:
       x-pokepay-schema-type: "response"
       properties:
@@ -614,6 +664,11 @@ components:
           type: string
           format: date-time
           title: チャージQRコード自体の失効日時
+        starts_at:
+          type: string
+          format: date-time
+          nullable: true
+          title: チャージQRコード有効開始日時
         last_used_at:
           type: string
           format: date-time
@@ -701,6 +756,14 @@ components:
 
             - point-preferred: ポイント残高が優先的に消費され、ポイントがなくなり次第マネー残高から消費されていきます
             - money-only: マネー残高のみから消費され、ポイント残高は使われません
+
+        coupon_id:
+          type: string
+          format: uuid
+          nullable: true
+          title: クーポンID
+          description: |-
+            CPMトークンを使った支払い時に、クーポンによる値引き処理を行なう場合にエンドユーザ側から指定するクーポンIDです。
 
     Cashtray:
       x-pokepay-schema-type: "response"
@@ -1179,6 +1242,8 @@ components:
             - processing
             - error
             - done
+            - scheduled
+            - canceled
           title: バルク取引の状態
         error:
           type: string
@@ -3545,7 +3610,7 @@ paths:
       tags:
         - Bill
       summary: '支払いQRコードの発行'
-      description: 支払いQRコードの内容を更新します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
+      description: 支払いQRコードを作成します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
       x-pokepay-operator-name: "CreateBill"
       x-pokepay-allow-server-side: true
       requestBody:
@@ -3568,6 +3633,19 @@ paths:
                   type: string
                   format: uuid
                   title: '支払いマネーのマネーID'
+                additional_private_money_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                  title: '追加の支払いマネーのマネーID'
+                  description: |-
+                    複数マネー対応支払いQRコードにするために、`private_money_id` 以外に支払いに使えるマネーのマネーIDを指定します。
+                    エンドユーザはアプリでの読み取り時に、ここで指定したマネーを含む中から支払うマネーを選択できます。
+                    マネーを明示的に選択しなかった場合は `private_money_id` で指定したマネーによる支払いになります。
+
+                    支払い先の店舗ユーザは、ここで指定した全てのマネーのウォレットを持っている必要があります。
+                    また `amount` を指定する場合の上限額は、`private_money_id` と合わせた全マネーの取引上限額のうち最小のものです。
                 shop_id:
                   type: string
                   format: uuid
@@ -3583,7 +3661,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Bill'
+                $ref: '#/components/schemas/BillWithAdditionalPrivateMoneys'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
@@ -3615,7 +3693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Bill'
+                $ref: '#/components/schemas/BillWithAdditionalPrivateMoneys'
         '400':
           $ref: '#/components/responses/InvalidParameters'
         '403':
@@ -3664,19 +3742,35 @@ paths:
                   type: boolean
                   title: '無効化されているかどうか'
                   description: 支払いQRコードが無効化されているかどうかを指定します。真にすると無効化され、偽にすると有効化します。
+                additional_private_money_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                  title: '追加の支払いマネーのマネーID'
+                  description: |-
+                    複数マネー対応支払いQRコードの、デフォルトマネー以外に支払いに使えるマネーを指定し直します。
+                    ここで渡した内容で置き換えられるため、既存の追加マネーを残したい場合は残したいマネーIDも含めて渡してください。
+                    空配列を渡すと追加マネーが全て外れ、デフォルトマネーのみの支払いQRコードになります。
+                    このパラメータ自体を省略した場合、追加マネーの設定は変更されません。
+
+                    支払い先の店舗ユーザは、ここで指定した全てのマネーのウォレットを持っている必要があります。
+                    デフォルトマネーは変更できません。
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Bill'
+                $ref: '#/components/schemas/BillWithAdditionalPrivateMoneys'
         '400':
           $ref: '#/components/responses/BadRequest'
         '403':
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
   /checks:
     post:
       tags:
@@ -3741,6 +3835,15 @@ paths:
                     チャージQRコード自体の失効日時を指定します。この日時以降はチャージQRコードを読み取れなくなります。デフォルトでは作成日時から3ヶ月後になります。
 
                     チャージQRコード自体の失効日時であって、チャージQRコードによって付与されるマネー残高の有効期限とは異なることに注意してください。マネー残高の有効期限はマネー設定で指定されているものになります。
+                starts_at:
+                  type: string
+                  format: date-time
+                  nullable: true
+                  title: チャージQRコード有効開始日時
+                  description: |-
+                    チャージQRコードの有効開始日時を指定します。この日時を過ぎるまではチャージQRコードを読み取ることができません。
+                    NULL（デフォルト）の場合は作成直後から有効になります。
+                    `starts_at`は`expires_at`より前である必要があります。
                 point_expires_at:
                   type: string
                   format: date-time
@@ -3826,6 +3929,20 @@ paths:
                   title: '有効期限の期間によるフィルター(終了時点)'
                   description: |-
                     有効期限の期間によるフィルターの終了時点のタイムスタンプです。
+                    デフォルトでは未指定です。
+                starts_from:
+                  type: string
+                  format: date-time
+                  title: '有効開始日時の期間によるフィルター(開始時点)'
+                  description: |-
+                    有効開始日時の期間によるフィルターの開始時点のタイムスタンプです。
+                    デフォルトでは未指定です。
+                starts_to:
+                  type: string
+                  format: date-time
+                  title: '有効開始日時の期間によるフィルター(終了時点)'
+                  description: |-
+                    有効開始日時の期間によるフィルターの終了時点のタイムスタンプです。
                     デフォルトでは未指定です。
                 created_from:
                   type: string
@@ -3985,6 +4102,16 @@ paths:
                     チャージQRコード自体の失効日時を指定します。この日時以降はチャージQRコードを読み取れなくなります。
 
                     チャージQRコード自体の失効日時であって、チャージQRコードによって付与されるマネー残高の有効期限とは異なることに注意してください。マネー残高の有効期限はマネー設定で指定されているものになります。
+                starts_at:
+                  type: string
+                  format: date-time
+                  nullable: true
+                  title: チャージQRコード有効開始日時
+                  description: |-
+                    チャージQRコードの有効開始日時を指定します。この日時を過ぎるまではチャージQRコードを読み取ることができません。
+                    NULLに設定すると、作成直後から有効になります。
+                    過去の日時を指定した場合は現在日時に補正されます。
+                    `starts_at`は`expires_at`より前である必要があります。
                 point_expires_at:
                   type: string
                   format: date-time
@@ -4132,12 +4259,64 @@ paths:
                   type: string
                   title: '電話番号'
                   description: '顧客の電話番号を表します。'
+                description:
+                  type: string
+                  maxLength: 200
+                  title: '取引履歴に表示する説明文'
+                  description: |-
+                    取引説明文です。
+
+                    任意入力で、コンビニでの入金確認後に作成されるチャージ取引の取引履歴に表示されます。
+                    省略した場合、および空文字列を指定した場合は既定の説明文が使われます
+                    (取引説明文を空にすることはできません)。
+                  example: コンビニチャージ
                 topup_quota_id:
                   type: integer
                   minimum: 1
                   title: 'チャージ可能枠ID'
                   description: |-
                     チャージするマネーにチャージ可能枠機能が設定されているとき、使用するチャージ可能枠のIDを表します。
+                memo1:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ1'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                    Veritransの取引検索で参照できます。ポケペイの取引履歴には表示されません。
+                  example: campaign2026summer
+                memo2:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ2'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                memo3:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ3'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                freekey:
+                  type: string
+                  maxLength: 256
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: 'キー情報'
+                  description: |-
+                    Veritransの取引に付与するキー情報です。
+
+                    任意入力で、半角英数字256桁以内で指定します。
+                    加盟店システムで管理しているIDとVeritransの取引を紐付ける用途に使えます。
+                    ハイフンやアンダースコアは使用できないため、UUIDをそのまま指定することはできません。
+                  example: order20260803001
       responses:
         '200':
           description: OK
@@ -5745,6 +5924,8 @@ paths:
           $ref: '#/components/responses/Conflict'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+        '503':
+          $ref: '#/components/responses/TemporarilyUnavailable'
   /transactions/{transaction_id}:
     get:
       tags:
@@ -7188,6 +7369,34 @@ paths:
                 delete_card_if_auth_fail:
                   type: boolean
                   title: '認証失敗時にカードを削除するか'
+                description:
+                  type: string
+                  maxLength: 200
+                  title: '取引履歴に表示する説明文'
+                  description: |-
+                    取引説明文です。
+
+                    任意入力で、3Dセキュア認証成功後に作成されるチャージ取引の取引履歴に表示されます。
+                    省略した場合、および空文字列を指定した場合は既定の説明文が使われます
+                    (取引説明文を空にすることはできません)。
+                  example: クレジットカードチャージ
+                return_url:
+                  type: string
+                  maxLength: 2048
+                  title: '3Dセキュア完了画面の戻り先URL'
+                  description: |-
+                    3Dセキュア完了画面(成功・失敗いずれも)に表示する「戻る」ボタンの遷移先URLです。
+
+                    任意入力です。指定した場合のみボタンが表示され、エンドユーザーが押すと
+                    このURLへ遷移します。省略した場合、および空文字列を指定した場合は
+                    ボタンを表示しません。
+
+                    スキームは http または https のみ受け付けます。それ以外の値、および
+                    2048文字を超える値は invalid_parameters エラー
+                    (invalid: ["return_url"]、エラーコード400) になります。
+                    ポケペイ側でクエリパラメータの付与は行いません。取引を識別したい場合は
+                    URL自体にパラメータを含めてください。
+                  example: https://example.com/charge/complete?session=abc
                 request_id:
                   type: string
                   format: uuid
@@ -7196,6 +7405,47 @@ paths:
                 topup_quota_id:
                   type: integer
                   title: 'チャージ可能枠ID'
+                memo1:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ1'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                    Veritransの取引検索で参照できます。ポケペイの取引履歴には表示されません。
+                  example: campaign2026summer
+                memo2:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ2'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                memo3:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ3'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                freekey:
+                  type: string
+                  maxLength: 256
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: 'キー情報'
+                  description: |-
+                    Veritransの取引に付与するキー情報です。
+
+                    任意入力で、半角英数字256桁以内で指定します。
+                    加盟店システムで管理しているIDとVeritransの取引を紐付ける用途に使えます。
+                    ハイフンやアンダースコアは使用できないため、UUIDをそのまま指定することはできません。
+                  example: order20260803001
       responses:
         '200':
           description: OK
@@ -7203,6 +7453,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CardAuthorizeResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
         '403':
           $ref: '#/components/responses/Forbidden'
         '404':
@@ -7264,6 +7516,34 @@ paths:
                 is_cardholder_name_specified:
                   type: boolean
                   title: 'カード名義人指定フラグ'
+                description:
+                  type: string
+                  maxLength: 200
+                  title: '取引履歴に表示する説明文'
+                  description: |-
+                    取引説明文です。
+
+                    任意入力で、3Dセキュア認証成功後に作成されるチャージ取引の取引履歴に表示されます。
+                    省略した場合、および空文字列を指定した場合は既定の説明文が使われます
+                    (取引説明文を空にすることはできません)。
+                  example: クレジットカードチャージ
+                return_url:
+                  type: string
+                  maxLength: 2048
+                  title: '3Dセキュア完了画面の戻り先URL'
+                  description: |-
+                    3Dセキュア完了画面(成功・失敗いずれも)に表示する「戻る」ボタンの遷移先URLです。
+
+                    任意入力です。指定した場合のみボタンが表示され、エンドユーザーが押すと
+                    このURLへ遷移します。省略した場合、および空文字列を指定した場合は
+                    ボタンを表示しません。
+
+                    スキームは http または https のみ受け付けます。それ以外の値、および
+                    2048文字を超える値は invalid_parameters エラー
+                    (invalid: ["return_url"]、エラーコード400) になります。
+                    ポケペイ側でクエリパラメータの付与は行いません。取引を識別したい場合は
+                    URL自体にパラメータを含めてください。
+                  example: https://example.com/charge/complete?session=abc
                 request_id:
                   type: string
                   format: uuid
@@ -7271,6 +7551,47 @@ paths:
                 topup_quota_id:
                   type: integer
                   title: 'チャージ可能枠ID'
+                memo1:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ1'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                    Veritransの取引検索で参照できます。ポケペイの取引履歴には表示されません。
+                  example: campaign2026summer
+                memo2:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ2'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                memo3:
+                  type: string
+                  maxLength: 100
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: '取引メモ3'
+                  description: |-
+                    Veritransの取引に付与する取引メモです。
+
+                    任意入力で、半角英数字100文字以内で指定します。
+                freekey:
+                  type: string
+                  maxLength: 256
+                  pattern: '^[0-9A-Za-z]*$'
+                  title: 'キー情報'
+                  description: |-
+                    Veritransの取引に付与するキー情報です。
+
+                    任意入力で、半角英数字256桁以内で指定します。
+                    加盟店システムで管理しているIDとVeritransの取引を紐付ける用途に使えます。
+                    ハイフンやアンダースコアは使用できないため、UUIDをそのまま指定することはできません。
+                  example: order20260803001
       responses:
         '200':
           description: OK
@@ -7473,6 +7794,66 @@ paths:
           $ref: '#/components/responses/InvalidParameters'
         '403':
           $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /bulk-transactions/{bulk_transaction_id}/cancel:
+    post:
+      tags:
+        - Transaction
+      summary: バルク取引をキャンセルする
+      x-pokepay-operator-name: "CancelBulkTransaction"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: bulk_transaction_id
+          schema:
+            type: string
+            format: uuid
+            title: 'バルク取引ジョブID'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkTransaction'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /bulk-transactions/{bulk_transaction_id}/resume:
+    post:
+      tags:
+        - Transaction
+      summary: バルク取引を再開する
+      x-pokepay-operator-name: "ResumeBulkTransaction"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: bulk_transaction_id
+          schema:
+            type: string
+            format: uuid
+            title: 'バルク取引ジョブID'
+          required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkTransaction'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
   /cashtrays:
