@@ -8,7 +8,7 @@ class GetCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCoupon(
-            "5bb6b948-9b74-4866-b9e3-2040ac4aa4c4"
+            "21e41373-90c5-4e04-b33f-d70c33af60d4"
         );
         try {
             $response = $client->send($request);

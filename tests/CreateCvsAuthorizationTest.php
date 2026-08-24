@@ -8,13 +8,13 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "009b5207-ead3-4b25-bfc1-f0824b266d1a",
-            "3efc29ad-0881-40ca-b6b3-cbf83cc26c60",
-            45428,
-            "famima",
-            "kw6yfFQ",
-            "c",
-            "HRn98CcSX"
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep"
         );
         try {
             $response = $client->send($request);
@@ -29,15 +29,15 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "009b5207-ead3-4b25-bfc1-f0824b266d1a",
-            "3efc29ad-0881-40ca-b6b3-cbf83cc26c60",
-            45428,
-            "famima",
-            "kw6yfFQ",
-            "c",
-            "HRn98CcSX",
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep",
             [
-                'topup_quota_id' => 2313
+                'freekey' => "9l1twQ5yfMr36GSBF53m0mp6Vm902998gKSlRVYmi3g9x6K6695nMt225FwYZn"
             ]
         );
         try {
@@ -53,16 +53,156 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "009b5207-ead3-4b25-bfc1-f0824b266d1a",
-            "3efc29ad-0881-40ca-b6b3-cbf83cc26c60",
-            45428,
-            "famima",
-            "kw6yfFQ",
-            "c",
-            "HRn98CcSX",
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep",
             [
-                'receiver_user_id' => "85b8af0e-9318-4bcb-a500-21862bb622b5",
-                'topup_quota_id' => 6535
+                'memo3' => "V44vJ7PbIc8x2mqlwHAtI7SPFU47Tk05r8XQ63Pl8e6jQkHms039Evq1",
+                'freekey' => "ZVQcH0w1N33FOG762B5"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateCvsAuthorization3()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateCvsAuthorization(
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep",
+            [
+                'memo2' => "NXRur8r2RE0n9712yDktOl",
+                'memo3' => "EZVH",
+                'freekey' => "1bn7a11dL7FcRCxuBiH2kLrjee4ei13GR1Ra4hrq"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateCvsAuthorization4()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateCvsAuthorization(
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep",
+            [
+                'memo1' => "0Zv6MEIB507Y90PwCKK4LBPVz8gJNq1ZbxIh3UNkYTd0IiTkmOCEpZ371SJo8V2JetTNfSUHM3338k1e6",
+                'memo2' => "ZHsA7",
+                'memo3' => "58Wxt1bY1575Hw28TjMP1JWOz3Hawhhq9q8LJac8W55lnRjy8l4dAGi9qY5znJ5P9t2",
+                'freekey' => "2nOPBZHuCvjPmlvS5mbNrA9M692EwSfXq6dx0OGf8ugYd2rTnC1Up1Fj4miq1bhLSu5KZQ7ubDvKrYJ2jvcK9e7be84Yo"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateCvsAuthorization5()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateCvsAuthorization(
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep",
+            [
+                'topup_quota_id' => 6030,
+                'memo1' => "4P662lF1RMT24f2W5M7sd0V90Va5IcSnfEWoG3TT0NbB",
+                'memo2' => "T42tZ48HrbQRnSxo6P73QfkgVu0CDiY5YjP6PR1MDlVyY5xIC7b5F5",
+                'memo3' => "9LYQ5Xw59qGNQkvy5C",
+                'freekey' => "EaIQ0xOT615Y4uu7o12Na3K9CF2482nF4m2b7CR0RsZS6VU3pAPCU9t3VrCTa0CVjP2Yd4onyS0jh8FHkd361AV1"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateCvsAuthorization6()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateCvsAuthorization(
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep",
+            [
+                'description' => "2WPHw1UTjf1quigD2l2JnK33Y2PKk",
+                'topup_quota_id' => 6254,
+                'memo1' => "9JB8zXBagXoZ1gYcffaXF2xbgWgMpH",
+                'memo2' => "3883n4LCa7rIWPinB5j4wA5bwjkIL7gOkuG4898e8dYCIK923mHW8M6",
+                'memo3' => "IjMWKX7wQ938Uha7Ax8A",
+                'freekey' => "raaDUv2874Ack9rZ261f7lWd63mMNtY54HZDwIs2TpRPkwhol05FDsK9z5Z0y6ptgU2"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreateCvsAuthorization7()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreateCvsAuthorization(
+            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
+            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
+            243792,
+            "other",
+            "Dg31",
+            "Umv",
+            "i1k0xZep",
+            [
+                'receiver_user_id' => "2346511d-b54f-430f-8cf9-dfefde24362a",
+                'description' => "lj4kfEe2uvMtiKxUivt9MIJ97msI3tB",
+                'topup_quota_id' => 3614,
+                'memo1' => "4W8npM84jc00khUz8eyDBG38Eff5fDifkJL05986tiQ1RZVz7uSQQe",
+                'memo2' => "oggd9iEDf0LbSMkhM9bwkyfCEo27t0BghDGvNW61MIuZN37bnv813RSm4ouG",
+                'memo3' => "8ZuiIEM9G32HsLfgYDsXr04Ee266d4g7P9370h9",
+                'freekey' => ""
             ]
         );
         try {

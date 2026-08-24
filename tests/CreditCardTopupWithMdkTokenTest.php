@@ -8,10 +8,10 @@ class CreditCardTopupWithMdkToken extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreditCardTopupWithMdkToken(
-            "c2b009f3-b574-46b7-879e-c0deafb14a5a",
-            "K",
-            "57638b03-cd7d-44cb-bd2e-81869617c865",
-            5757
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreditCardTopupWithMdkToken extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreditCardTopupWithMdkToken(
-            "c2b009f3-b574-46b7-879e-c0deafb14a5a",
-            "K",
-            "57638b03-cd7d-44cb-bd2e-81869617c865",
-            5757,
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
             [
-                'topup_quota_id' => 5879
+                'freekey' => "wt25r0B0VJbFXWIx7PN2eg7v"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreditCardTopupWithMdkToken extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreditCardTopupWithMdkToken(
-            "c2b009f3-b574-46b7-879e-c0deafb14a5a",
-            "K",
-            "57638b03-cd7d-44cb-bd2e-81869617c865",
-            5757,
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
             [
-                'request_id' => "429cca8a-737d-4221-994d-c5d185854662",
-                'topup_quota_id' => 1886
+                'memo3' => "4CCP0a8qcIzFQ0in4EbIfzxvwR169WdnQ",
+                'freekey' => "7dW79UliyjOw8R44e"
             ]
         );
         try {
@@ -69,14 +69,14 @@ class CreditCardTopupWithMdkToken extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreditCardTopupWithMdkToken(
-            "c2b009f3-b574-46b7-879e-c0deafb14a5a",
-            "K",
-            "57638b03-cd7d-44cb-bd2e-81869617c865",
-            5757,
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
             [
-                'is_cardholder_name_specified' => TRUE,
-                'request_id' => "89204903-b376-41d7-a48c-1752cd85d618",
-                'topup_quota_id' => 8411
+                'memo2' => "83dnj20JiQ09C2Z1J2q3eW1P2z608Zrnt84DB4C79HRkhOy9hnYkeSqCt",
+                'memo3' => "aQL9kh09IyoHukEyVb1sLOwVOI0EDx5PD0chPQBsV",
+                'freekey' => "1fCkHj5Fz2ob13TZe8TjTdcOq3YKB2Fo16ncnTJ43prw9HO362AJ79C840Z9s0gK8"
             ]
         );
         try {
@@ -92,15 +92,180 @@ class CreditCardTopupWithMdkToken extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreditCardTopupWithMdkToken(
-            "c2b009f3-b574-46b7-879e-c0deafb14a5a",
-            "K",
-            "57638b03-cd7d-44cb-bd2e-81869617c865",
-            5757,
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
             [
-                'receiver_user_id' => "50c9a915-28c9-41be-a630-a0ea43976194",
+                'memo1' => "6Rrf822M30e4Fi326wUn25151Dv9w6x499",
+                'memo2' => "wV0Ns6D0",
+                'memo3' => "ok7R058C2AXzN0R8ukIs7I",
+                'freekey' => "J5aoDkF7aI9aziOjNW6d0IeV82G1kv2h1j34NT"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreditCardTopupWithMdkToken5()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreditCardTopupWithMdkToken(
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
+            [
+                'topup_quota_id' => 4070,
+                'memo1' => "i1efq18797HgNrPy815y6rAYhqa",
+                'memo2' => "e0041w",
+                'memo3' => "s9u1cRed4DtA5oA4A7BUx7n99LEh5n7PticTxWIc46qT6893INKO1L06q0Ic7QCAVIcT33f3WbvaMmNX66IJwp5",
+                'freekey' => "6ojEc5ljRg1faGNOiiV8FXk5W0QxUOhcVWAnsE8O6Gskgl3JB9G5Y4vNj1QB3L"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreditCardTopupWithMdkToken6()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreditCardTopupWithMdkToken(
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
+            [
+                'request_id' => "2d30e38d-84bc-4909-911e-b40aee212fd6",
+                'topup_quota_id' => 6147,
+                'memo1' => "Y81lp2Y0YH4ye4f54Eb1TB1PhgqaU63E4fYWjHVBzEC54N",
+                'memo2' => "LG5000FrXK6O6Zp48HoHvmDp47vai5zAKTpr3FzK9F1tC1hN24K7mNWoVF99ecxH",
+                'memo3' => "AKwxYdFL0WO2kgo4H6m2MUqP1c5dn3c8Mejlg9fY2LA6d",
+                'freekey' => "41G546j6Hixu497aO5GZbZQhU0cQsk3u7xJY793Av"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreditCardTopupWithMdkToken7()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreditCardTopupWithMdkToken(
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
+            [
+                'return_url' => "w40dZFTsuKZGsFElmQpA4RSTaTlLaqlkU49OXmcM1eYLCIvDzYzwAtEksQWSl6Am3gCBrhM35EfmrtOFWMml5EKRiDsWg9ZcujQMFmb4vZ2HzNm8wdK6sB9HsuClaKx3AfzVa9lboQsNDBH1uzKMqlEF94aThPURq2Q4ZM2ZH2d8EggWOOiiO67HWQCePWkLnY7y5P2vTc2kTDF85U9g31HpRLtjhMxgRT9FEddBtVan5HyW6Uan9MoYMbeeBKUXDDy014vqgIch5W6XuTL0vlIdvdIMbz7wUi6BXoKUl0tR07369wBiPR32MXZafz3jffpT8lgGERnFdcWhSdaJfJ60D0H2T0aKhnL3FlnAD82QrpYaKuslNraOesyAiawWiyWkSV3bs4OkWhHFx3P67yxFmxWAZtUSoiVrIFnb7w6ZClkoqVajvuG5cGcBP5wA9GwSB8bfxMId7hFKERGvYa7vbD1cIywVpXocQ5N98CAVKuKRC5FLAIRiGKuI8CNBTqLCZ99AjVbK3l31NeAICSoLJdEVZoJB0H5I2jNmYRtpCMs9TezTj3A085y5hWQ3gdeDOWFExGORRYNLJdsZ6n3IGoF44i0499bTqwmusaHN4dAo0kcMwrj6lsuth9pSzmqVAxW3BZh2UFG0NdobuyCqKAyF8XBloHn7nUM7l934bPMQ7DIwFMXGuPCrmdUDxKggDFfFvOJkxhc8IPvtQD4QxNm6tX3Guvbo2vDNfvQpElqxJKgNyOMeXS2rUoCJ5iHqorIswPc2cBsLEwskU0m8hSr1melepO9LnwIsUcSmvb4GOUqCz9cGDIhlPt52zP7YS2DWusWLcKpd2P335Nv6jpCTg7cImjgcPmkAEumRe3ajMg8VGC0KZL7VMaMEGv2NsNRGCHkqW6b190Xf2yHeAyBqIIySMiYLD3kq3Znz8pepfEmpSiLZTFdERWScAwFtubDUWmymMiDwFFfcNNLAfTp6G3m2S11HDiNC2T6Z1NRFWi9xNJqHv5TG4qAHZdsob31RGFcTjCHIRk6EOKDYDfh7IyYBfSv2V1UV4oPfCtFaYiWkYeLppJ33CkMXXFMJbGPqbgq29Gzz59vVOvin5VZAtZIBDPoHNl5n64I544K0pgRwqKcwLRpyfhvSp3huvf9ISSZ1V5b6lHxDKXrcl2EVGtJV2Ntce9IqiVZ5m5eyekXLeKtBuImxNnX45R5ZNIieikdp8w9LWlkrqUcz43dBm26Or7FE7oxXwqyeP95WFsrDTZsTHaLMAx4xhJmPNb2Vt3kMgTzAxm3nuCtm4tM4rQ7TMWwQQegAiqW5Gh3EedIVkoAN4R6PBgm1bgbkQVRY8MuhwDykulFo5mDyJw8V3XaTOkFDFDXkJRYuzmNrD0IPFMYcPpoEqcZqYNWKYupHW3vkZPbupwOmpLyfcnvR24ekndSEuijqLz34cJjz9WzSXV2waIpnDEjnPuGDOLqsy43AtWyT6hyzJkPIxdv4Vr2ADhNnBQ2AhJrtrRhEmEhncAz9T8Jn6tKv842hmKtJWGe0W2JoBVxOBG6QSEaMM6DcJjf",
+                'request_id' => "f323e499-9a19-4341-b484-47ae8b753264",
+                'topup_quota_id' => 9251,
+                'memo1' => "xcN8PV6hni2TzDfi42NDp7qHLBE2Ad7Src7F7uTr2Y4goq53H6t00iBC99xJ8A58xydhQwlu9J5",
+                'memo2' => "4o0WLh70e7dDAAbtn5IaXIDLo3F187gL63EgG",
+                'memo3' => "ScUPgcA2MAPoIrl126kw7bwY1lUh6SmJKhs2Evi7JphkF65yag11DzsON9ucoprOX4c0GNxa63M8qLYT4V88T",
+                'freekey' => "J2sM5cNV74j6bKb8Qd5X3M48vu2Pl1qWeJou1BU6C67mbd8AfDC9k3wQ8GGJOw931831t94CtwBV50RQ16"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreditCardTopupWithMdkToken8()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreditCardTopupWithMdkToken(
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
+            [
+                'description' => "Jua2paAAkUgzb5zEsMYGbxzOIV2r2JtDEGxgzX90xQ1qEwnOjzBjMdE2ZgqC6g1ENWOPFMuy",
+                'return_url' => "Zod8nuff2bwE3RDjoGhPLmonziI8gPB410GLPQCeC7jS6W3DftZcdyglmNXEppEtAwequ8PJiYpSm0jLeVc0IIOPvouCcBMs9oEUXdmuJ5CsXeAgeVmz0XdBqvz2LZqSb1Cr9GvJk1u6JVnb04lQy4ktenk93ttYPJhOiPCYhnxitPJhteZ9v4lYIFrYpnV35pBMGKJEJkpn6Mlr99tmpLoTFQeHIPsIBBDhi4oQ1t1s3zE32Vk24Ceen1NSjytDUp3byZcFEPnIDVyEjs1xIVAG7PJaXsPvnXy7JLPWT4POJKIKUBKfvAdAdVhR8qFWp5tCaOkj67zOOhzPjoLUnpes4zWmpVcy9ixDX4fCfbAE0AZjhFFPDiC5XgRDuJC7DFGXWJ1DsLyOnXTqwNlXWPSNst44xBM1tMMoOyWoAqWcD5ADFBSPh7o2MC5sMNAQhF0HCoj9Dj4ZpJqp2buSHK5WKI86hTWo47qb9nSKNBR3LjzCdQo4GwTY7y2Am8ZcyGh3BczuQ1HmAT4U7cCHORIBupKF2LGLWlWRqEU1R3HVfumJrkxA1RBhkJnrKn6T4UBYf7XzEp3cMOeoQItbJApNFNbizZqSEKvNBsiLTmRsG1pcvzPfSNlMjgyCm3l36NNuyyweAXXanZiLS6lbj9JXoVWEOjNWcJ8Pqob8ZBDc2LIkAJFpX3tMiPvkskrBs7cZNQht6pUXt6QkeG9pRp1c5EcN6nLJcb0NEcuMnzKSDbJDSeKRyRniwPaN0afN8mRVY0r2kLaYAQQnNWq5gJk8ucSDE2uEYUD0C3IXLL4lH8T3KxBkSfET7NeTYdPy8UjYc9OlslQQZIq7zSOEeSzczj6ObIBdQwmJP2q6udBME6WRlyybO27figMsVRHKPW8EbdfuKdbyfcjYNDVx4A2ovqPMZA8irXJ9E6ZcMzkLyAqgwSoddiujWTgn11mpxaVIYgQo5GvBiHKw3I5f57jFE45d3P21Pzx2jnlKrw0LdNS4VtkXCDrt0LJOE3QgwrCcszhfH09Y5OthVwPmvHXBFS5mnHJDaN7ByqCBViT8YJSc5gafw5E7JxTvjUc1aT5EbGpCQn8B7l65BYMvNkhEwbRq7C0zj85JoESc",
+                'request_id' => "c74698ac-68e9-4973-bc1f-31152cf2b9e4",
+                'topup_quota_id' => 1384,
+                'memo1' => "3m60L52qYgv25r4P3sp1R7QXUygXhm78KC4PwBv6r6abjW6LEgRk4Ai6w352i6RXkcL8e50EAgk0r6YRm7oi36j54YmF4dd1",
+                'memo2' => "OTDvn1Ljz066QvxDOMZ9YWFBZ5gP3lFQal78kD3OVFFT1G6ZG9dBAS77uUPb496lRG93WV2jNIFpr5Hl6kB4i2m461Pr1L3",
+                'memo3' => "PGZ9v2yNd9SP2zFndQ526731hU13PHz66Ea2IPai2fUIqb13X9781M1ASdTL23P65BZ11Y6n5",
+                'freekey' => "13ld3"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreditCardTopupWithMdkToken9()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreditCardTopupWithMdkToken(
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
+            [
                 'is_cardholder_name_specified' => TRUE,
-                'request_id' => "c6ff9025-3d2d-414e-a347-9789832241f0",
-                'topup_quota_id' => 1892
+                'description' => "3QSzeJKZKHWOYDy8Xa1n",
+                'return_url' => "aLbp7yoCkUCkILHDjG2icoeSoFWNBFxzeu6Kj8LSmqtcTHfZNvkLrHlNhPf4I7mVEEqd8S9trsTY1RY9q3EI5KlF19OJHZirKKYCiI5WbqIsQYvdmHcE3kg67Mp0CzjOzftNuETzfXonmfKJhNI2H30SlKK1O1UKOiryeoJ2KHqioForPYYFDgWpGReS1ZkiP3jHymN76Njiv2bjGekXOVbuSOvVupSap8p4f5efgdz6gyp1GcS4NU5bS5TrzXQYDyRb4tqKolqMgdRHskFZ317m16rSuV3GWqnvnIS00nrMnQNFRYYqQB2LOvvxaJWdM6RyNE08AoCyr23XqnSacLmBXCHDyWfJbD0iY7FmSIIJxWwKBqcUUGOv4rpZxW6C1o0zvPKHwlN5cgpKhTDjrt62aO0gTJKvsFX8pCgUNdYXQChONhwWGHDaQRstzyfCMC6r4ZI5zg9bDUlUJBBIg9Fd6Y7e4aTjbZiLOaWRsEnzqZ6lGrz0tQnP1Co4x4AXMvzQhY1JlrHqbdULcyqcFghqKIiyi3aAuGXWsNdhyWJyqrPAKmmZGZJNC4j2awHXlJF9A7cu6AxfU8HIO6LO5Dd5XiFWL9oU011XoGoCpelXPpOt9Y3msxtcs0WRQEq2AUltkkF5RV8aSNO9GQnDszD12NRIYvg8bbFQzPdXDpujuzOkg0dnSdALdNv5r8wM328xFuBm1H3xUdHsESYPWyVyErNbO9OH6RQgeafcESSUHZ6h2XaPg728RkvVOUbcGA0kjIj9fnBbIK8dSJpAN6wIXIQbTWkewXW1RgDvxeuhtqc0lVuVevBpKZFsUJPsCckORoCtdXbeAqJmttYcSXDoCgwypQnQUsnWOKMZ3rJ8aRGwz6VDq2kLV7UR9Ys1BTbKj9QeMGWU46l1ev23Q5PTPgtt4yAIzCwP1Z0JVfF9RSrf0Q1pmhWHNJvae7EjBkQNn9uWl9JunPyftwg9sZ6EOXmzMsMVDhbzfFvUl3UtKdNP5TLVhbhll0GP4QAkQeOPrTAo5HhYx5jCaGbLEuJCfBO4W1IV2UViZVHRWPkdj3cWX27LHxVCRXJ7RR9vhNIu31vkGd5KFMjSHWQRA9E535lViSyzzCHjVEEg0SpYDFFDY1quxNkSS1vmCLOUldc17zrM7imjJVYnMFmZVKbnQskJ4SJWYdnxMjsH9rlpcWw1Vg5A3jIY5TVDn7VAyGhf1a2i4Xb006Y5FN9bW9vksFBm8sMwbh1WFtpEmCrFqNwdLZ15QmFMvlNaa2goLZ5E9OEvOUIiBwbJ5GuqfgOe",
+                'request_id' => "553034b9-b519-44ee-966e-e262eef39c4f",
+                'topup_quota_id' => 1710,
+                'memo1' => "cd8Jjk9gUmjHR",
+                'memo2' => "aFMzS7Din8171fCVAY8Vkphc8ZeLJ44WwASprKCnEP6mu119",
+                'memo3' => "83T5tIpOUSR9s50XRhIk6V7c2plXMBUAK5SwHPR61X8QjDpjRBk6Zr15kEI954AgtmPwG9C3iVXnQk71JccxH",
+                'freekey' => "wSr98754B31lvYgiN4h3H5W97hok20aN9Rq1pKKGcnkYUKmTt7Fk135IKX813y72gz0K70atF0p6ftdtBmdv9pzw635Bm"
+            ]
+        );
+        try {
+            $response = $client->send($request);
+            $this->assertTrue(true);
+        } catch (Error\HttpRequest $e) {
+            $this->assertNotSame(400, $e->code);
+        } catch (Error\ApiConnection $e) {
+            $this->assertTrue(false);
+        }
+    }
+    public function testCreditCardTopupWithMdkToken10()
+    {
+        $client = $this->newClient();
+        $request = new Request\CreditCardTopupWithMdkToken(
+            "ca525a27-82e9-49b8-9473-8180da735958",
+            "snC42wCpy",
+            "16a516bb-3141-4a7b-baa4-28e9dd723220",
+            6083,
+            [
+                'receiver_user_id' => "9c19a908-e0b3-4290-9e81-f993cabcc516",
+                'is_cardholder_name_specified' => FALSE,
+                'description' => "UE26kLnIwLEQafbBqwyhczkUDSv0LkIzcZbnCm3D96fkss4WwEMOvII6xukRoB486IcnSrXwZGPsDFfbhpjo6CvZmit6sG22LWplDlWahPig9MKERKZGyJip4Q",
+                'return_url' => "p4t6WiXGIWU4TxH2FAjMtbi1KGeJyFNO2KrkgbsXcbEbgPoZFbPh9J838rL1gDfq3VsJIZMJTMvIMK26sORVFvF51NUOj8RI7n9XLkQqGxRAu4ClCzUyuIEYrXjU1Rl6vF7n9cWf5sF0ARyOKP3HCUhOEdj0FvKzWLO0X17seRboXyaTp5fxFISfuSj9R4g3InaFkgEEKedrMwdHukpCicHBj64f1DT6D6Mien3I4QpNgQKGBSiEs2F3MGwgLve3TZFNm4S8a9Imcm3HEYVUSqsC3AriSwCEB0Kew5ULKwo1UdPl33Js1Kuu0UegnQjK5K12MWvCvA9DjpAvmSouPF8sEd3lBtNl0JB2dKxVrlXLEonC1KsoREeh2RXqHgFOF3b7VdwEdOPGXSe9OOoep5LkQDV7qJw1By6uFHkBHhurHoZlcvR7Q0TdgtR89zH4BRb4LxjYp1VFXi65IWH287FkS1AdoZmrqVFQp8fp9IpDGNT32XXjSeAsfsowmrnytFnDNPErJC0T6j8TSBN1GRIxfJ3UGUUM2jHDzbRjTfUU5d5AtOipE6L0lEeYXxSLgJV1GwAOqdc8zzTPJEfMbaKIEhnBHfV6tGM4VGRurvyE3ASr9IOsPHz4Zd6uXHhCBvnC8wCQDn5TxePGCKc6zq0vbsfAwCBSEwRfx0DBbiZykOey7zjJ6OyJP83x3uLLTOPjH6jjFnlRSGQkOLow4uOPR7jYUk",
+                'request_id' => "ca93ae09-3ce9-492d-a5b5-af1ebcafb7dd",
+                'topup_quota_id' => 5805,
+                'memo1' => "xL1riw3863gLVg6pi23mnH5B12bx7wq9b57hjbx3710mI0GagSZ0s9K96s3W9nm3Waex3145b17tn2O71JMxcYQB794L34rNHM",
+                'memo2' => "UOHS",
+                'memo3' => "9IB0um0Jc457LfU43Wk5c4M8T3B2jbg3Ks7mKc3F4kP14DLpGy1676tN2bgQD5nplqXQ0kmJK2v5a9ak958jzv58",
+                'freekey' => "w0z4nyYMb6T6K0iEYkR3n37p03NB4ZZ32"
             ]
         );
         try {

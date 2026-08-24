@@ -8,7 +8,7 @@ class TerminateUserStats extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\TerminateUserStats(
-            "837b7d22-8cf7-472f-8eb1-35ffd4ce46ac"
+            "332f825f-e0c1-4e9b-a26b-ef0e2c4342cf"
         );
         try {
             $response = $client->send($request);

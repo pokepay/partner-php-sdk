@@ -19,18 +19,18 @@ amountが空の場合は、ユーザによる自由入力で受け付けた金�
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 3385,                           // ページ番号
-        'per_page' => 9515,                       // 1ページの表示数
-        'bill_id' => "ow",                        // 支払いQRコードのID
+        'page' => 8917,                           // ページ番号
+        'per_page' => 7588,                       // 1ページの表示数
+        'bill_id' => "YCbLTAWi",                  // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "I-67J-T",         // 組織コード
+        'organization_code' => "hd--iA8p-e9h-Ui-N-mhKkn-255fJ6r", // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2020-10-17T02:26:13.000000Z", // 作成日時(起点)
-        'created_to' => "2024-03-23T16:45:49.000000Z", // 作成日時(終点)
+        'created_from' => "2022-07-22T18:58:54.000000Z", // 作成日時(起点)
+        'created_to' => "2023-05-30T22:35:34.000000Z", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 3641,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 2814,             // 金額の範囲によるフィルタ(上限)
+        'lower_limit_amount' => 931,              // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 4016,             // 金額の範囲によるフィルタ(上限)
         'is_disabled' => TRUE                     // 支払いQRコードが無効化されているかどうか
     ]
 );
@@ -257,14 +257,15 @@ $request = new Request\ListBills(
 
 <a name="create-bill"></a>
 ## CreateBill: 支払いQRコードの発行
-支払いQRコードの内容を更新します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
+支払いQRコードを作成します。支払い先の店舗ユーザーは指定したマネーのウォレットを持っている必要があります。
 
 ```PHP
 $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 5879.0,                       // 支払い額
+        'amount' => 4214.0,                       // 支払い額
+        'additional_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 追加の支払いマネーのマネーID
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
 );
@@ -304,6 +305,29 @@ $request = new Request\CreateBill(
 
 </details>
 
+#### `additional_private_money_ids`
+複数マネー対応支払いQRコードにするために、`private_money_id` 以外に支払いに使えるマネーのマネーIDを指定します。
+エンドユーザはアプリでの読み取り時に、ここで指定したマネーを含む中から支払うマネーを選択できます。
+マネーを明示的に選択しなかった場合は `private_money_id` で指定したマネーによる支払いになります。
+
+支払い先の店舗ユーザは、ここで指定した全てのマネーのウォレットを持っている必要があります。
+また `amount` を指定する場合の上限額は、`private_money_id` と合わせた全マネーの取引上限額のうち最小のものです。
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "array",
+  "items": {
+    "type": "string",
+    "format": "uuid"
+  }
+}
+```
+
+</details>
+
 #### `shop_id`
 
 <details>
@@ -335,7 +359,7 @@ $request = new Request\CreateBill(
 
 
 成功したときは
-[Bill](./responses.md#bill)
+[BillWithAdditionalPrivateMoneys](./responses.md#bill-with-additional-private-moneys)
 を返します
 
 ### Error Responses
@@ -343,9 +367,9 @@ $request = new Request\CreateBill(
 |---|---|---|---|
 |400|invalid_parameter_bill_amount_or_range_exceeding_transfer_limit|支払いQRコードの金額がマネーの取引可能金額の上限を超えています|The input amount is exceeding the private money's limit for transfer|
 |403|unpermitted_admin_user|この管理ユーザには権限がありません|Admin does not have permission|
+|422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
-|422|shop_user_not_found|店舗が見つかりません|The shop user is not found|
 |422|account_closed|アカウントは退会しています|The account is closed|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
@@ -386,7 +410,7 @@ $request = new Request\GetBill(
 
 
 成功したときは
-[Bill](./responses.md#bill)
+[BillWithAdditionalPrivateMoneys](./responses.md#bill-with-additional-private-moneys)
 を返します
 
 
@@ -402,9 +426,10 @@ $request = new Request\GetBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 6264.0,                       // 支払い額
+        'amount' => 298.0,                        // 支払い額
         'description' => "test bill",             // 説明文
-        'is_disabled' => TRUE                     // 無効化されているかどうか
+        'is_disabled' => TRUE,                    // 無効化されているかどうか
+        'additional_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 追加の支払いマネーのマネーID
     ]
 );
 ```
@@ -472,10 +497,34 @@ $request = new Request\UpdateBill(
 
 </details>
 
+#### `additional_private_money_ids`
+複数マネー対応支払いQRコードの、デフォルトマネー以外に支払いに使えるマネーを指定し直します。
+ここで渡した内容で置き換えられるため、既存の追加マネーを残したい場合は残したいマネーIDも含めて渡してください。
+空配列を渡すと追加マネーが全て外れ、デフォルトマネーのみの支払いQRコードになります。
+このパラメータ自体を省略した場合、追加マネーの設定は変更されません。
+
+支払い先の店舗ユーザは、ここで指定した全てのマネーのウォレットを持っている必要があります。
+デフォルトマネーは変更できません。
+
+<details>
+<summary>スキーマ</summary>
+
+```json
+{
+  "type": "array",
+  "items": {
+    "type": "string",
+    "format": "uuid"
+  }
+}
+```
+
+</details>
+
 
 
 成功したときは
-[Bill](./responses.md#bill)
+[BillWithAdditionalPrivateMoneys](./responses.md#bill-with-additional-private-moneys)
 を返します
 
 

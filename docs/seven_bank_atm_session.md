@@ -7,7 +7,7 @@
 
 ```PHP
 $request = new Request\GetSevenBankATMSession(
-    "qGQBWGD"                                     // qrInfo: QRコードの情報
+    "J3d41BsVg"                                   // qrInfo: QRコードの情報
 );
 ```
 

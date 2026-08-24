@@ -129,6 +129,8 @@ while (true) {
 - [GetTransactionByRequestId](./transaction.md#get-transaction-by-request-id): リクエストIDから取引情報を取得する
 - [GetBulkTransaction](./transaction.md#get-bulk-transaction): バルク取引ジョブの実行状況を取得する
 - [ListBulkTransactionJobs](./transaction.md#list-bulk-transaction-jobs): バルク取引ジョブの詳細情報一覧を取得する
+- [CancelBulkTransaction](./transaction.md#cancel-bulk-transaction): バルク取引をキャンセルする
+- [ResumeBulkTransaction](./transaction.md#resume-bulk-transaction): バルク取引を再開する
 - [RequestUserStats](./transaction.md#request-user-stats): 指定期間内の顧客が行った取引の統計情報をCSVでダウンロードする
 - [TerminateUserStats](./transaction.md#terminate-user-stats): RequestUserStatsのタスクを強制終了する
 

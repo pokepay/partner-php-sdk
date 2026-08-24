@@ -8,7 +8,7 @@ class GetCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCvsAuthorization(
-            "024716d0-6e42-452b-9ab9-e7f60894880b"
+            "972a7718-71fc-4777-9b04-e0a1018d6670"
         );
         try {
             $response = $client->send($request);

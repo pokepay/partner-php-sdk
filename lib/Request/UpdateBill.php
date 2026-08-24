@@ -7,7 +7,7 @@ namespace Pokepay\Request;
 class UpdateBill extends Base
 {
     protected $method = 'PATCH';
-    public $responseClass = \Pokepay\Response\Bill::class;
+    public $responseClass = \Pokepay\Response\BillWithAdditionalPrivateMoneys::class;
     private $billId;
     public function __construct($billId, $optionalParams = array())
     {
