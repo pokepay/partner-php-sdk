@@ -74,6 +74,7 @@ require_once __DIR__ . '/lib/Request/GetPrivateMoneys.php';
 require_once __DIR__ . '/lib/Request/GetPrivateMoneyOrganizationSummaries.php';
 require_once __DIR__ . '/lib/Request/GetPrivateMoneySummary.php';
 require_once __DIR__ . '/lib/Request/GetCustomerCards.php';
+require_once __DIR__ . '/lib/Request/CreateCustomerCard.php';
 require_once __DIR__ . '/lib/Request/DeleteCustomerCard.php';
 require_once __DIR__ . '/lib/Request/CreditCardTopupWithMembership.php';
 require_once __DIR__ . '/lib/Request/CreditCardTopupWithMdkToken.php';
@@ -191,6 +192,7 @@ require_once __DIR__ . '/lib/Response/PartnerDecryptionFailed.php';
 require_once __DIR__ . '/lib/Response/PartnerRequestExpired.php';
 require_once __DIR__ . '/lib/Response/PartnerRequestAlreadyDone.php';
 require_once __DIR__ . '/lib/Response/InvalidParameters.php';
+require_once __DIR__ . '/lib/Response/InvalidMdkToken.php';
 require_once __DIR__ . '/lib/Response/UnpermittedAdminUser.php';
 require_once __DIR__ . '/lib/Response/UserStatsOperationServiceUnavailable.php';
 

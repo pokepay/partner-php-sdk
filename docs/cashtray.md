@@ -148,7 +148,7 @@ QRコード生成時に送金元店舗のウォレット情報や、金額など
 |422|coupon_unavailable|このクーポンは使用できません。|This coupon is unavailable.|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
-|422|customer_account_not_found||The customer account is not found|
+|422|customer_account_not_found|ユーザアカウントが見つかりません|The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
@@ -183,10 +183,10 @@ Cashtrayを作成します。
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    3682.0,                                       // amount: 金額
+    5174.0,                                       // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 1443                      // 失効時間(秒)
+        'expires_in' => 2211                      // 失効時間(秒)
     ]
 );
 ```
@@ -434,9 +434,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 8470.0,                       // 金額
+        'amount' => 1592.0,                       // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 3025                      // 失効時間(秒)
+        'expires_in' => 9422                      // 失効時間(秒)
     ]
 );
 ```

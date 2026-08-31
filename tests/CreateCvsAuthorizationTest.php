@@ -8,13 +8,13 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep"
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem"
         );
         try {
             $response = $client->send($request);
@@ -29,15 +29,15 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep",
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem",
             [
-                'freekey' => "9l1twQ5yfMr36GSBF53m0mp6Vm902998gKSlRVYmi3g9x6K6695nMt225FwYZn"
+                'freekey' => "qp6"
             ]
         );
         try {
@@ -53,16 +53,16 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep",
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem",
             [
-                'memo3' => "V44vJ7PbIc8x2mqlwHAtI7SPFU47Tk05r8XQ63Pl8e6jQkHms039Evq1",
-                'freekey' => "ZVQcH0w1N33FOG762B5"
+                'memo3' => "wQ5yfMr36GSBF53m0mp",
+                'freekey' => "zFC6w0X5I7uvEXS0UK58kc0XFbMp2X0PYHGG2e4M"
             ]
         );
         try {
@@ -78,17 +78,17 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep",
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem",
             [
-                'memo2' => "NXRur8r2RE0n9712yDktOl",
-                'memo3' => "EZVH",
-                'freekey' => "1bn7a11dL7FcRCxuBiH2kLrjee4ei13GR1Ra4hrq"
+                'memo2' => "Evq1mFiWv48WG3246bKpruw421A",
+                'memo3' => "5dz9FT43X58oog5Wd26y0H5g5kbO0cbo4qZL78YrNWBn1IsWNRRur8",
+                'freekey' => "5Cw0ocbi67mA4bz9VV143W1yC3urDT09tEss52t4SLUV8bJu8meHaM"
             ]
         );
         try {
@@ -104,18 +104,18 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep",
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem",
             [
-                'memo1' => "0Zv6MEIB507Y90PwCKK4LBPVz8gJNq1ZbxIh3UNkYTd0IiTkmOCEpZ371SJo8V2JetTNfSUHM3338k1e6",
-                'memo2' => "ZHsA7",
-                'memo3' => "58Wxt1bY1575Hw28TjMP1JWOz3Hawhhq9q8LJac8W55lnRjy8l4dAGi9qY5znJ5P9t2",
-                'freekey' => "2nOPBZHuCvjPmlvS5mbNrA9M692EwSfXq6dx0OGf8ugYd2rTnC1Up1Fj4miq1bhLSu5KZQ7ubDvKrYJ2jvcK9e7be84Yo"
+                'memo1' => "rqSym9nhMtPy0acAAAI0Q7NlIm4C9TBq90y",
+                'memo2' => "Nq1ZbxIh3UNkYTd0IiTkmOCEpZ371SJo8V2JetTNfSUHM3338k1e6KXMTdE363nLzyURBpsB1oHcl3ac",
+                'memo3' => "qv7loR105F96Trm1wJ8mP669d58Wxt1bY1575Hw28TjMP1JWOz3Hawhhq9q8LJac8W55l",
+                'freekey' => "h9dhLza2J3r8c2xVo62"
             ]
         );
         try {
@@ -131,19 +131,19 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep",
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem",
             [
-                'topup_quota_id' => 6030,
-                'memo1' => "4P662lF1RMT24f2W5M7sd0V90Va5IcSnfEWoG3TT0NbB",
-                'memo2' => "T42tZ48HrbQRnSxo6P73QfkgVu0CDiY5YjP6PR1MDlVyY5xIC7b5F5",
-                'memo3' => "9LYQ5Xw59qGNQkvy5C",
-                'freekey' => "EaIQ0xOT615Y4uu7o12Na3K9CF2482nF4m2b7CR0RsZS6VU3pAPCU9t3VrCTa0CVjP2Yd4onyS0jh8FHkd361AV1"
+                'topup_quota_id' => 6971,
+                'memo1' => "bhLSu5KZQ7ubDvKrYJ2jvcK9e7be84YozM9w75pZ5WsU5",
+                'memo2' => "6UsW5M7sd0V90Va5IcSnfEWoG3TT0NbBwTG8cp75Z50GzM5k",
+                'memo3' => "3QfkgVu0CDiY5YjP6PR1MDlVyY5xIC7b5F5jMGcXCf",
+                'freekey' => "Q5Xw59qGNQkvy5C285zF8rMHH5ybK15HDM4hF44tPbHq7L1Q91r4i7Ay6WyQ769"
             ]
         );
         try {
@@ -159,20 +159,20 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep",
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem",
             [
-                'description' => "2WPHw1UTjf1quigD2l2JnK33Y2PKk",
-                'topup_quota_id' => 6254,
-                'memo1' => "9JB8zXBagXoZ1gYcffaXF2xbgWgMpH",
-                'memo2' => "3883n4LCa7rIWPinB5j4wA5bwjkIL7gOkuG4898e8dYCIK923mHW8M6",
-                'memo3' => "IjMWKX7wQ938Uha7Ax8A",
-                'freekey' => "raaDUv2874Ack9rZ261f7lWd63mMNtY54HZDwIs2TpRPkwhol05FDsK9z5Z0y6ptgU2"
+                'description' => "0g8RX9GwTm1EaeDH0runisLVA8D7RtvLwRN8QmXijHIy",
+                'topup_quota_id' => 7971,
+                'memo1' => "h8FHkd361AV10S6Q71Unrhq1v9H4mso0kzj0LIh5vUc50L44Lx4kH5XfKu5S6eE5psPP1wY68cnp3",
+                'memo2' => "8WPtMVP6lg0Te51m5nrE4kBj4",
+                'memo3' => "4898e8dYCIK923mHW8M6U6x4c0B2ehYIYSt44uP1e9vj2fCVyb98DfAdoNGYNtYNUOEIjMWKX7wQ938Uha7Ax8A6",
+                'freekey' => "C63Uv2874Ack9rZ261f7lWd63mMNtY54HZDwIs2TpRPkwhol05FDsK9z5Z0y6ptgU2P9dMuLaFvbnuaAA8FOg"
             ]
         );
         try {
@@ -188,21 +188,21 @@ class CreateCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCvsAuthorization(
-            "ee1c5a9f-650e-46e9-a611-8084f3016f10",
-            "500147bf-7bbb-4618-be56-7e7d0e9d3660",
-            243792,
-            "other",
-            "Dg31",
-            "Umv",
-            "i1k0xZep",
+            "4a331524-98b9-4528-8a88-951547912afc",
+            "2eca846c-e5a5-49d2-96a8-dc9c0be1c1a7",
+            251726,
+            "sej",
+            "CAhIxw",
+            "eHf4mhVFw",
+            "6RKDem",
             [
-                'receiver_user_id' => "2346511d-b54f-430f-8cf9-dfefde24362a",
-                'description' => "lj4kfEe2uvMtiKxUivt9MIJ97msI3tB",
-                'topup_quota_id' => 3614,
-                'memo1' => "4W8npM84jc00khUz8eyDBG38Eff5fDifkJL05986tiQ1RZVz7uSQQe",
-                'memo2' => "oggd9iEDf0LbSMkhM9bwkyfCEo27t0BghDGvNW61MIuZN37bnv813RSm4ouG",
-                'memo3' => "8ZuiIEM9G32HsLfgYDsXr04Ee266d4g7P9370h9",
-                'freekey' => ""
+                'receiver_user_id' => "ba488ef6-8319-46be-b482-b685c26bff39",
+                'description' => "MIJ97msI3tBe6ti0SO07EXHC5hQ61pWDcVyEH0QvPCR5IiYZhX71qxxCDFjWtGssb86D9XZfo8j2fPJCGzVYdohDRxcepsSsdecspEcH6zAIM8ju98Xf3eDqYA5vYg7TRPpd99WNI7yrXSKn",
+                'topup_quota_id' => 367,
+                'memo1' => "iEDf0LbSMkhM9bwkyfCEo27t0BghDGvNW61MIuZN37bnv813RSm4ouGh8S79S2EKhe57u0lfv3Ky9b805MV3",
+                'memo2' => "g7P9370h99vVXT9x4C6i",
+                'memo3' => "ko9W48qf2tGFnA1TKkUk8jj1wo747zR0nly5l91VGP3Ep14Rl5n1qS23L5C40oAAJH5Hjq8el",
+                'freekey' => "wso8YSgBd7Y78LqseKVodC72J83h9lm4z6C9Rs6FyJNl217Ywe8A2Ix39S072jo5LP2pqRbDgZX9sKA28"
             ]
         );
         try {

@@ -8,7 +8,7 @@ class GetCvsAuthorizations extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCvsAuthorizations(
-            "97080b35-75a6-4efb-a8b6-079e10576f52"
+            "c97b3de0-d02b-4a56-a4b6-d3539153e140"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class GetCvsAuthorizations extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCvsAuthorizations(
-            "97080b35-75a6-4efb-a8b6-079e10576f52",
+            "c97b3de0-d02b-4a56-a4b6-d3539153e140",
             [
-                'per_page' => 76
+                'per_page' => 14
             ]
         );
         try {
@@ -41,10 +41,10 @@ class GetCvsAuthorizations extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCvsAuthorizations(
-            "97080b35-75a6-4efb-a8b6-079e10576f52",
+            "c97b3de0-d02b-4a56-a4b6-d3539153e140",
             [
-                'after' => "emCYd",
-                'per_page' => 33
+                'after' => "4zOt2LPb",
+                'per_page' => 42
             ]
         );
         try {
@@ -60,11 +60,11 @@ class GetCvsAuthorizations extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCvsAuthorizations(
-            "97080b35-75a6-4efb-a8b6-079e10576f52",
+            "c97b3de0-d02b-4a56-a4b6-d3539153e140",
             [
-                'before' => "Ky6kNARZB",
-                'after' => "0",
-                'per_page' => 56
+                'before' => "n",
+                'after' => "vCf",
+                'per_page' => 46
             ]
         );
         try {
@@ -80,12 +80,12 @@ class GetCvsAuthorizations extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCvsAuthorizations(
-            "97080b35-75a6-4efb-a8b6-079e10576f52",
+            "c97b3de0-d02b-4a56-a4b6-d3539153e140",
             [
                 'status' => "expired",
-                'before' => "So7Ck5Gj",
-                'after' => "L9QXL9sf",
-                'per_page' => 83
+                'before' => "5",
+                'after' => "Ws",
+                'per_page' => 33
             ]
         );
         try {
@@ -101,13 +101,13 @@ class GetCvsAuthorizations extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCvsAuthorizations(
-            "97080b35-75a6-4efb-a8b6-079e10576f52",
+            "c97b3de0-d02b-4a56-a4b6-d3539153e140",
             [
-                'customer_id' => "6a9fffae-dca1-4fef-ab51-a2a62e381269",
+                'customer_id' => "4bc5c764-73d5-4a6e-92f2-35beb6f3bf48",
                 'status' => "canceled",
-                'before' => "gJL",
-                'after' => "s7NW",
-                'per_page' => 95
+                'before' => "9KHVuXFGK",
+                'after' => "t4lw",
+                'per_page' => 62
             ]
         );
         try {

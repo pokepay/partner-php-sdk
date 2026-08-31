@@ -8,8 +8,8 @@ class CreateTransactionWithCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransactionWithCashtray(
-            "1a45853b-126e-4196-8b7b-bb8d62f5047a",
-            "fdfbb98d-5228-4937-ad57-826126963898"
+            "24e9edaf-9e30-4ccf-81db-9892478f9181",
+            "bd0f11d1-4fb9-48f8-bdfb-9586ae842453"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateTransactionWithCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransactionWithCashtray(
-            "1a45853b-126e-4196-8b7b-bb8d62f5047a",
-            "fdfbb98d-5228-4937-ad57-826126963898",
+            "24e9edaf-9e30-4ccf-81db-9892478f9181",
+            "bd0f11d1-4fb9-48f8-bdfb-9586ae842453",
             [
-                'request_id' => "065d30c3-a1c1-449b-a991-0ca3c4902c9a"
+                'request_id' => "352b150a-e2ce-4798-b07a-169b5415c498"
             ]
         );
         try {
@@ -43,11 +43,11 @@ class CreateTransactionWithCashtray extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTransactionWithCashtray(
-            "1a45853b-126e-4196-8b7b-bb8d62f5047a",
-            "fdfbb98d-5228-4937-ad57-826126963898",
+            "24e9edaf-9e30-4ccf-81db-9892478f9181",
+            "bd0f11d1-4fb9-48f8-bdfb-9586ae842453",
             [
-                'strategy' => "money-only",
-                'request_id' => "08f9ef64-b439-40af-9411-81171bfaa10d"
+                'strategy' => "point-preferred",
+                'request_id' => "7b07a3ff-8f4b-4f78-acb7-0ae9514501f6"
             ]
         );
         try {

@@ -42,6 +42,12 @@
 <a name="credit-session-transaction-result"></a>
 ## CreditSessionTransactionResult
 
+<a name="user-card"></a>
+## UserCard
+* `id (string)`: カード識別子
+* `cardNumber (string)`: マスク済みカード番号
+* `registeredAt (\DateTime)`: 登録日時
+
 <a name="paginated-user-cards"></a>
 ## PaginatedUserCards
 * `rows (UserCard[])`: 
@@ -598,12 +604,6 @@
 `account`は [AccountDetail](#account-detail) オブジェクトを返します。
 
 `transaction`は [Transaction](#transaction) オブジェクトを返します。
-
-<a name="user-card"></a>
-## UserCard
-* `id (string)`: カード識別子
-* `cardNumber (string)`: マスク済みカード番号
-* `registeredAt (\DateTime)`: 登録日時
 
 <a name="pagination"></a>
 ## Pagination

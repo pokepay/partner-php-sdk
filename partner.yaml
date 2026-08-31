@@ -2361,6 +2361,7 @@ components:
         - $ref: '#/components/schemas/PartnerRequestExpired'
         - $ref: '#/components/schemas/PartnerRequestAlreadyDone'
         - $ref: '#/components/schemas/InvalidParameters'
+        - $ref: '#/components/schemas/InvalidMdkToken'
     PartnerClientNotFound:
       x-pokepay-schema-type: "response"
       properties:
@@ -2420,6 +2421,14 @@ components:
               nullable: true
               items:
                 type: string
+    InvalidMdkToken:
+      x-pokepay-schema-type: "response"
+      properties:
+        type:
+          type: string
+          pattern: '^invalid_mdk_token$'
+        message:
+          type: string
     Forbidden:
       properties:
         type:
@@ -2524,6 +2533,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UnprocessableEntity'
+    InvalidMdkToken:
+      description: Invalid MDK token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvalidMdkToken'
     Conflict:
       description: Conflict
       content:
@@ -7266,6 +7281,57 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+    post:
+      tags:
+        - Customer
+      summary: 'エンドユーザーのクレジットカードを登録する'
+      description: |-
+        エンドユーザーのクレジットカードを登録します。
+        会員登録がまだの場合は同時に会員登録も行います。
+      x-pokepay-operator-name: "CreateCustomerCard"
+      x-pokepay-allow-server-side: true
+      parameters:
+        - in: path
+          name: customer_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: 'エンドユーザーID'
+          description: カード保持者であるエンドユーザーのIDです。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                  title: 'MDKトークン'
+                  description: カード情報に紐付くMDKトークンです。
+                is_cardholder_name_specified:
+                  type: boolean
+                  default: false
+                  title: 'カード名義人指定フラグ'
+                  description: MDKトークン作成時にカード名義人を指定したかどうかのフラグです。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCard'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '503':
+          $ref: '#/components/responses/TemporarilyUnavailable'
   /customers/{customer_id}/cards/delete:
     post:
       tags:

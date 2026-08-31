@@ -171,6 +171,7 @@ while (true) {
 - [CreateCustomerAccount](./customer.md#create-customer-account): 新規エンドユーザーをウォレットと共に追加する
 - [GetShopAccounts](./customer.md#get-shop-accounts): 店舗ユーザーのウォレット一覧を表示する
 - [GetCustomerCards](./customer.md#get-customer-cards): エンドユーザーのクレジットカード一覧を取得する
+- [CreateCustomerCard](./customer.md#create-customer-card): エンドユーザーのクレジットカードを登録する
 - [DeleteCustomerCard](./customer.md#delete-customer-card): エンドユーザーのクレジットカードを削除する
 - [CreditCardTopupWithMembership](./customer.md#credit-card-topup-with-membership): 登録済みクレジットカードでチャージする（3Dセキュア）
 - [CreditCardTopupWithMdkToken](./customer.md#credit-card-topup-with-mdk-token): 未登録クレジットカード（MDKトークン）でチャージする（3Dセキュア）
