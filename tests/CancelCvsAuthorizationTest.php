@@ -8,7 +8,7 @@ class CancelCvsAuthorization extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CancelCvsAuthorization(
-            "59b1d643-abd4-4449-af0c-aaa29d626ff5"
+            "c2bed1a4-556f-427a-ab5c-1465d75d99d9"
         );
         try {
             $response = $client->send($request);

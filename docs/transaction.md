@@ -17,7 +17,7 @@ CPMトークンの現在の状態を取得します。CPMトークンの有効�
 
 ```PHP
 $request = new Request\GetCpmToken(
-    "odFyg21jiUhByaB66BNcap"                      // cpmToken: CPMトークン
+    "8uJqFVIWZBtq3jnfd5KTcW"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -58,18 +58,18 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 ```PHP
 $request = new Request\ListTransactions(
     [
-        'from' => "2020-08-27T22:41:33.000000Z",  // 開始日時
-        'to' => "2024-10-05T21:36:20.000000Z",    // 終了日時
+        'from' => "2024-05-17T09:05:05.000000Z",  // 開始日時
+        'to' => "2022-04-28T00:42:09.000000Z",    // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
-        'transaction_id' => "LZWxad9qMq",         // 取引ID
+        'transaction_id' => "OYe9k",              // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'is_modified' => TRUE,                    // キャンセルフラグ
+        'is_modified' => FALSE,                   // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
         'description' => "店頭QRコードによる支払い"          // 取引説明文
     ]
@@ -368,10 +368,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 1931,
-        'point_amount' => 9917,
-        'point_expires_at' => "2025-12-19T02:07:34.000000Z", // ポイント有効期限
-        'description' => "CaVImVTzD7ogGgbbuuhXvkkv63jx716j9qYe"
+        'money_amount' => 6138,
+        'point_amount' => 1135,
+        'point_expires_at' => "2024-03-31T15:43:42.000000Z", // ポイント有効期限
+        'description' => "yRuU9Z8Q2HvADi2W3bSFZd8xGhm9VbcZgOZ4yYRMkHKY2yx9gLKmBFLvqK55BnlHTaFsTxQXtMZL6XWgDmeak1eoliBFeYUr35I7ta0sw71srL0z9GEG3PXvn"
     ]
 );
 ```
@@ -527,7 +527,7 @@ $request = new Request\CreateTransaction(
 |422|coupon_unavailable|このクーポンは使用できません。|This coupon is unavailable.|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
-|422|customer_account_not_found||The customer account is not found|
+|422|customer_account_not_found|ユーザアカウントが見つかりません|The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
@@ -549,7 +549,7 @@ $request = new Request\CreateTransaction(
 
 ```PHP
 $request = new Request\CreateTransactionGroup(
-    "QTBsHYxIvY8A2kLLFzD"                         // name: 作成するトランザクショングループの名称です。
+    "l3BKAcPvm"                                   // name: 作成するトランザクショングループの名称です。
 );
 ```
 
@@ -642,11 +642,11 @@ $request = new Request\ListTransactionsV2(
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "GgwT6RW",            // 取引ID
+        'transaction_id' => "Pfih5KNNj",          // 取引ID
         'is_modified' => FALSE,                   // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-        'from' => "2023-11-12T02:36:40.000000Z",  // 開始日時
-        'to' => "2020-09-18T01:43:21.000000Z",    // 終了日時
+        'from' => "2021-05-09T13:41:55.000000Z",  // 開始日時
+        'to' => "2022-05-23T15:37:57.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -983,9 +983,9 @@ $request = new Request\ListBillTransactions(
         'description' => "店頭QRコードによる支払い",         // 取引説明文
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
         'bill_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 支払いQRコードのID
-        'is_modified' => FALSE,                   // キャンセルフラグ
-        'from' => "2020-04-13T16:03:29.000000Z",  // 開始日時
-        'to' => "2023-01-27T12:40:44.000000Z",    // 終了日時
+        'is_modified' => TRUE,                    // キャンセルフラグ
+        'from' => "2026-08-22T06:40:18.000000Z",  // 開始日時
+        'to' => "2020-06-09T14:55:32.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -1285,9 +1285,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 3755,                   // マネー額
-        'point_amount' => 5177,                   // ポイント額
-        'point_expires_at' => "2024-09-07T12:12:29.000000Z", // ポイント有効期限
+        'money_amount' => 8702,                   // マネー額
+        'point_amount' => 8654,                   // ポイント額
+        'point_expires_at' => "2023-11-15T07:37:28.000000Z", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -1525,7 +1525,7 @@ $request = new Request\CreateTopupTransaction(
 |422|request_id_conflict|このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。|The request_id is already used by another transaction. Try again with new request id|
 |422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
 |422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
-|422|customer_account_not_found||The customer account is not found|
+|422|customer_account_not_found|ユーザアカウントが見つかりません|The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
 |503|temporarily_unavailable||Service Unavailable|
@@ -1545,7 +1545,7 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    5503,                                         // amount: 支払い額
+    126,                                          // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
@@ -1799,7 +1799,7 @@ $request = new Request\CreatePaymentTransaction(
 |422|request_id_conflict|このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。|The request_id is already used by another transaction. Try again with new request id|
 |422|reserved_word_can_not_specify_to_metadata|取引メタデータに予約語は指定出来ません|Reserved word can not specify to metadata|
 |422|invalid_metadata|メタデータの形式が不正です|Invalid metadata format|
-|422|customer_account_not_found||The customer account is not found|
+|422|customer_account_not_found|ユーザアカウントが見つかりません|The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|private_money_not_found|マネーが見つかりません|Private money not found|
 |503|temporarily_unavailable||Service Unavailable|
@@ -1816,13 +1816,15 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```PHP
 $request = new Request\CreateCpmTransaction(
-    "Vp03GIkTp5cuONNVFc9v9g",                     // cpmToken: CPMトークン
+    "Uca7AszKQRtnK9OFQAZk8l",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    4880.0,                                       // amount: 取引金額
+    960.0,                                        // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
         'strategy' => "point-preferred"           // 支払い時の残高消費方式
@@ -2035,7 +2037,7 @@ $request = new Request\CreateCpmTransaction(
 |422|coupon_unavailable|このクーポンは使用できません。|This coupon is unavailable.|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
-|422|customer_account_not_found||The customer account is not found|
+|422|customer_account_not_found|ユーザアカウントが見つかりません|The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
@@ -2064,7 +2066,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    890.0,                                        // amount: 送金額
+    1686.0,                                       // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -2241,7 +2243,7 @@ $request = new Request\CreateTransferTransaction(
 |422|coupon_unavailable|このクーポンは使用できません。|This coupon is unavailable.|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
-|422|customer_account_not_found||The customer account is not found|
+|422|customer_account_not_found|ユーザアカウントが見つかりません|The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|
@@ -2268,9 +2270,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    7572,
+    7048,
     [
-        'description' => "hWfe1J2XdVSiGrZnaj14JqvayOvsUjS1TQRpGXwusKVKoDVo20K4pv",
+        'description' => "zl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTsHdNmWw",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -2484,7 +2486,7 @@ $request = new Request\RefundTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
     [
         'description' => "返品対応のため",               // 取引履歴に表示する返金事由
-        'returning_point_expires_at' => "2021-07-24T18:36:07.000000Z" // 返却ポイントの有効期限
+        'returning_point_expires_at' => "2025-06-11T19:42:40.000000Z" // 返却ポイントの有効期限
     ]
 );
 ```

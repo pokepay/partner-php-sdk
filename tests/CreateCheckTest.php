@@ -187,10 +187,10 @@ class CreateCheck extends TestCase
                 'point_expires_in_days' => 6237,
                 'point_expires_at' => "2022-12-19T13:19:56.000000Z",
                 'starts_at' => "2026-03-06T15:21:09.000000Z",
-                'expires_at' => "2026-08-05T16:31:45.000000Z",
-                'usage_limit' => 5750,
+                'expires_at' => "2026-08-28T17:29:56.000000Z",
+                'usage_limit' => 1137,
                 'is_onetime' => TRUE,
-                'description' => "rRxx8SeYgA5RTAZIE0d3whSKLF4xWXCgQOdSsQVPrApoltrzZbM"
+                'description' => "2rRxx8SeYgA5RTAZIE0d3whSKLF"
             ]
         );
         try {
@@ -208,8 +208,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 3233.0,
-                'point_amount' => 4925.0
+                'money_amount' => 3590.0,
+                'point_amount' => 6267.0
             ]
         );
         try {
@@ -227,9 +227,9 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 4322.0,
-                'point_amount' => 9256.0,
-                'description' => "CaDUv1CsWTy6z2FdXbfXavW2HwaVVWGcOvRgfjTir1eeHpnGAvFN5uVHKI7mM3plgJR5fwzKIFQcpGZZVlRU03Fa2F6PUopGrOCijX4VQZjHwhb9lV"
+                'money_amount' => 7587.0,
+                'point_amount' => 2560.0,
+                'description' => "CgQOdSsQVPrApoltrzZbMjGbqCaDUv1CsWTy6z2FdXbfXavW2HwaVVWGcOvRgfjTir1eeHpnGAvFN5uVHKI7mM3pl"
             ]
         );
         try {
@@ -247,10 +247,10 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 8435.0,
-                'point_amount' => 3156.0,
+                'money_amount' => 4455.0,
+                'point_amount' => 9674.0,
                 'is_onetime' => TRUE,
-                'description' => "jbq8Wo22UU1er3T1gBtfr20CiDsCwy"
+                'description' => "fwzKIFQcpGZZVlRU03Fa2F6PUopGrOCijX4VQZjHwhb9lV9sTjbq8W"
             ]
         );
         try {
@@ -268,11 +268,11 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 1356.0,
-                'point_amount' => 7767.0,
-                'usage_limit' => 6325,
-                'is_onetime' => FALSE,
-                'description' => "EeQbE5VhNxjrtNh84WLuHKWoYQpDLtJyiWbDVy6Ss7attO0KDvZ2PuoFKU33PYYZTEIyRndmm72c26Cd6B3OB7swghUIdkqUOY2HAI87h7tC8vMnTzjNmFWDzLZ"
+                'money_amount' => 4975.0,
+                'point_amount' => 6527.0,
+                'usage_limit' => 8925,
+                'is_onetime' => TRUE,
+                'description' => "22UU1er3T1gBtfr20CiDsCwyLdW5AzEeQbE5VhNxjrtNh84WLuHKWoYQpDLtJyiWbDVy6Ss7attO0KDvZ2PuoFKU33PYYZTEIyRndmm72c26Cd6B3OB7swghUIdkqUOY2HAI87h7tC8vMnTzjNmFWDzLZE"
             ]
         );
         try {
@@ -290,12 +290,12 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 5701.0,
-                'point_amount' => 3356.0,
-                'expires_at' => "2024-02-12T02:13:34.000000Z",
-                'usage_limit' => 4256,
-                'is_onetime' => TRUE,
-                'description' => "7HQXwymFrbXYvN3cal4RO9jT63dRDxKNVoewLoaJggIMA5wXB3CTdPu3I6Gb57N6Bfk723xgVJhWc2FLmu9RV4wTQ1eFfFoOmA6KgKFTgUMIqeaKPydQtxKkPEiJ9F7s09s2D07ZJtROtnJy"
+                'money_amount' => 3356.0,
+                'point_amount' => 7630.0,
+                'expires_at' => "2023-10-23T13:18:08.000000Z",
+                'usage_limit' => 3471,
+                'is_onetime' => FALSE,
+                'description' => "HQXwymFrbXYvN3cal4RO9jT63dRDxKNVoewLoaJggIMA5"
             ]
         );
         try {
@@ -313,13 +313,13 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 1018.0,
-                'point_amount' => 9142.0,
-                'starts_at' => "2022-11-05T11:38:29.000000Z",
-                'expires_at' => "2025-05-01T02:50:20.000000Z",
-                'usage_limit' => 3496,
-                'is_onetime' => FALSE,
-                'description' => "npU0js5rsIZ4cWpER3UtPkG2eq1I6SZr9Xo8DUROCVDxPSk72x92MmliF75MFhbZKuKGU7dTPisUgKnCV"
+                'money_amount' => 1540.0,
+                'point_amount' => 8718.0,
+                'starts_at' => "2025-02-18T01:54:32.000000Z",
+                'expires_at' => "2024-03-23T08:13:54.000000Z",
+                'usage_limit' => 4659,
+                'is_onetime' => TRUE,
+                'description' => "TdPu3I6Gb57N6Bfk723xgVJhWc2FLmu9RV4wTQ1eFfFoOmA6KgKFTgUMIqeaKPydQtxK"
             ]
         );
         try {
@@ -337,14 +337,14 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 2682.0,
-                'point_amount' => 1701.0,
-                'point_expires_at' => "2021-02-13T20:25:17.000000Z",
-                'starts_at' => "2024-11-12T15:49:04.000000Z",
-                'expires_at' => "2024-11-04T22:37:08.000000Z",
-                'usage_limit' => 4228,
+                'money_amount' => 170.0,
+                'point_amount' => 2384.0,
+                'point_expires_at' => "2025-08-08T02:34:40.000000Z",
+                'starts_at' => "2022-10-07T02:14:34.000000Z",
+                'expires_at' => "2025-02-17T16:45:57.000000Z",
+                'usage_limit' => 1045,
                 'is_onetime' => TRUE,
-                'description' => "lylHobnm6HycWppeOG5c4bSqVBGp3Ank6BTTvgxHzzgdLIxgPMdYrCUsTg7mFBD5JyTl3OSbQF6o9LFFmkiVCdqahnfY1HR9DfMzD3LCASqee9bY3sHOGNF3Mai4"
+                'description' => "iJ9F7s09s2D07ZJtROtnJyz65lsPnpU0js5rsIZ4cWpER3UtPkG2eq1I6SZr9Xo8DUROCVDxPSk72x92MmliF75MFhbZKuKGU7dTPisUgKnCVzFujd5tp1lylHobnm6HycWppeOG5c4bSqVBGp3Ank6BTTvgxHzzgdLIxgPMd"
             ]
         );
         try {
@@ -362,15 +362,15 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 9325.0,
-                'point_amount' => 8503.0,
-                'point_expires_in_days' => 1775,
-                'point_expires_at' => "2022-05-30T20:39:11.000000Z",
-                'starts_at' => "2024-05-18T20:01:59.000000Z",
-                'expires_at' => "2023-11-08T12:44:26.000000Z",
-                'usage_limit' => 3466,
-                'is_onetime' => FALSE,
-                'description' => "RN8AasCH56gnyuHFpFsNPJmzuH1GHYOOmiUvKwyiQYSSoPK3N5ZGrmU0unMptspEioBBqGcJLaXcepDTPRHElLNQrvWUnk17KWAioiFIGH7shpxz5S2r82nr4Char2DsC6IOlQ3ZCa8lZmMT5mAFAIeN7EOz"
+                'money_amount' => 3545.0,
+                'point_amount' => 9074.0,
+                'point_expires_in_days' => 6596,
+                'point_expires_at' => "2020-05-30T11:01:31.000000Z",
+                'starts_at' => "2026-05-30T04:35:53.000000Z",
+                'expires_at' => "2020-07-13T20:47:47.000000Z",
+                'usage_limit' => 8316,
+                'is_onetime' => TRUE,
+                'description' => "g7mFBD5JyTl3OSbQF6o9LFFmkiVCdqahnfY1HR9DfMzD3LCASqee9bY3sHOGNF3Mai4m7no77RN8AasCH56gnyuHFpFsNPJmzuH1GHYOOmiUvKwyiQYSSoPK3N5ZGrmU0unMptspEioBBq"
             ]
         );
         try {
@@ -388,16 +388,16 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'money_amount' => 984.0,
-                'point_amount' => 1794.0,
-                'bear_point_account' => "fab1506e-da52-48c3-8863-74e28ca559cc",
-                'point_expires_in_days' => 2292,
-                'point_expires_at' => "2025-06-15T20:55:05.000000Z",
-                'starts_at' => "2021-11-02T17:24:29.000000Z",
-                'expires_at' => "2024-12-24T19:38:54.000000Z",
-                'usage_limit' => 6708,
+                'money_amount' => 3462.0,
+                'point_amount' => 7310.0,
+                'bear_point_account' => "ce7e18ca-df10-44cc-a75b-b0e14c1faf01",
+                'point_expires_in_days' => 8069,
+                'point_expires_at' => "2023-11-07T18:55:11.000000Z",
+                'starts_at' => "2020-10-27T01:01:25.000000Z",
+                'expires_at' => "2020-09-04T18:05:36.000000Z",
+                'usage_limit' => 7561,
                 'is_onetime' => TRUE,
-                'description' => "joxB"
+                'description' => "RHElLNQrvWUnk17KWAioiFIGH7shpxz5S2r82nr4Char2DsC6IOlQ3ZCa8lZmMT5mAFAIeN7EOzXnRCcb"
             ]
         );
         try {
@@ -415,7 +415,7 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 5795.0
+                'point_amount' => 6604.0
             ]
         );
         try {
@@ -433,8 +433,8 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 9134.0,
-                'description' => "piRc0j39oPNkDTFwGmGihFz2z0gAPfWDnSv3peMsqUtDBVf5JNWPBpzSQtetKx5V0IU1H2quyHwM5236"
+                'point_amount' => 2291.0,
+                'description' => "MiN4tjoxBAROpiRc0j39oPNkDTFwGmGihFz2z0gAPf"
             ]
         );
         try {
@@ -452,9 +452,9 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 3744.0,
-                'is_onetime' => FALSE,
-                'description' => "7FRSK6ZN3dPGJYhssMJ1c81K9V4uwaN6FqKGuMQEbIhSKLSxcJDAAH0jwIPbMhYlMMXruKsOetb8P3w3wpAlq46MRFhBa1KSFCImukjAtQPb0UOTifX7KrzTtAdseC51TTzGU05VTqLiAQDTT40IDYkIvu0sCcHMaDTHEOIiZjdOoQxmayWcgZvBQUAudiH"
+                'point_amount' => 2007.0,
+                'is_onetime' => TRUE,
+                'description' => "Sv3peMsqUtDBVf5JNWPBpzSQtetKx5V0IU1H2quyHwM52367FRSK6ZN3dPGJYhssMJ1c81K9V4uwaN6FqKGuMQEbIhSKLSxcJDAAH0jwIPbMhYl"
             ]
         );
         try {
@@ -472,10 +472,10 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 9627.0,
-                'usage_limit' => 5366,
+                'point_amount' => 429.0,
+                'usage_limit' => 9023,
                 'is_onetime' => TRUE,
-                'description' => "hALf0xr0YedjAtAhk4Q5ZEYWHc6DIDKem3xaXPio5o0q9x0iUyrfJOMPlYYA9d24g2qlkQeuW1v6Ot04JjRtKJ3Y50yRgOZb7LyYKRMPV8lVcOO1w2GShMQxP1XNaA4tM"
+                'description' => "MXruKsOetb8P3w3wpAlq46MRFhBa1KSFCImukjAtQPb0UOTifX7KrzTtAdseC51TTzGU05VTqLiAQD"
             ]
         );
         try {
@@ -493,11 +493,11 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 8202.0,
-                'expires_at' => "2026-05-12T11:28:55.000000Z",
-                'usage_limit' => 7531,
+                'point_amount' => 212.0,
+                'expires_at' => "2022-06-04T07:24:36.000000Z",
+                'usage_limit' => 4769,
                 'is_onetime' => FALSE,
-                'description' => "t9CEIs7P52Qn8Ps6rGg4gxhQEPHlDMgzo7RyqyjDQCvIVLohtP7YX7LIJvkHIDHAM5JdvPW8u4K9jehE0FIX2d1fsIJRaq4cseT3Jr8x9EZ1qV4Ufa8eDKBhpNX1jWPk8Z43B0y0B9mfs2"
+                'description' => "IDYkIvu0sCcHMaDTHEOIiZjdOoQxmayWcgZvBQUAudiHvhALf"
             ]
         );
         try {
@@ -515,12 +515,12 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 4490.0,
-                'starts_at' => "2025-02-21T09:39:26.000000Z",
-                'expires_at' => "2023-05-29T20:41:14.000000Z",
-                'usage_limit' => 4243,
-                'is_onetime' => FALSE,
-                'description' => "qIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL84SGwACEhVooVmB4cFvbTI"
+                'point_amount' => 538.0,
+                'starts_at' => "2022-07-12T06:09:01.000000Z",
+                'expires_at' => "2025-10-09T21:51:24.000000Z",
+                'usage_limit' => 779,
+                'is_onetime' => TRUE,
+                'description' => "xr0YedjAtAhk4Q5ZEYWHc6DIDKem3xaXPio5o0q9x0iUyrfJOMPlYYA9d24g2qlkQeuW1v6Ot04JjRtKJ3Y50yRgOZb7LyYKRMPV8lVcOO1w2GShMQxP1XNaA4tMwkt9CEIs7P52Qn8Ps6rGg4gxhQEPHlDMgzo7RyqyjDQCvIVLohtP7"
             ]
         );
         try {
@@ -538,13 +538,13 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 8007.0,
-                'point_expires_at' => "2020-09-18T19:22:00.000000Z",
-                'starts_at' => "2022-01-12T07:20:55.000000Z",
-                'expires_at' => "2022-04-24T08:52:17.000000Z",
-                'usage_limit' => 4977,
+                'point_amount' => 4568.0,
+                'point_expires_at' => "2025-02-13T04:06:15.000000Z",
+                'starts_at' => "2020-12-17T07:35:40.000000Z",
+                'expires_at' => "2023-04-27T22:28:12.000000Z",
+                'usage_limit' => 2762,
                 'is_onetime' => FALSE,
-                'description' => "4BSfipEZMFGhk16I7iXigWOnUAkBWGfv1"
+                'description' => "v"
             ]
         );
         try {
@@ -562,14 +562,14 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 3968.0,
-                'point_expires_in_days' => 3689,
-                'point_expires_at' => "2026-06-13T22:48:06.000000Z",
-                'starts_at' => "2025-09-23T09:44:34.000000Z",
-                'expires_at' => "2025-12-21T16:00:44.000000Z",
-                'usage_limit' => 2605,
+                'point_amount' => 8043.0,
+                'point_expires_in_days' => 5902,
+                'point_expires_at' => "2020-02-24T21:12:04.000000Z",
+                'starts_at' => "2021-03-02T03:11:04.000000Z",
+                'expires_at' => "2022-01-18T00:10:45.000000Z",
+                'usage_limit' => 5518,
                 'is_onetime' => FALSE,
-                'description' => "Wf7Mk6qxlTgasH11ZahWwt0KCw4FDQO05qLTqGDbzQDuaFv4VsaDUMga8HPHLfj8VAxLQCn6DppPY7uZKs5wMf3MBYDCuF"
+                'description' => "HAM5JdvPW8u4K9jehE0FIX2d1fsIJRaq4cseT3Jr8x9EZ1qV4Ufa8eDKBhpNX1jWPk8Z43B0y0B9mfs2NjGqIbT9OwqnkaPpwID0eLyZpFNZ79bus52pNLLPoSL84SGwACEhVooVmB4cFvbTIGcXWAqG4BSfipEZMFGhk16I7iXigWOnUAkBWGfv1h3SdKWf7Mk6q"
             ]
         );
         try {
@@ -587,15 +587,15 @@ class CreateCheck extends TestCase
         $request = new Request\CreateCheck(
             "057c8ef5-5ae7-45d2-86dd-1b121b24d9be",
             [
-                'point_amount' => 3267.0,
-                'bear_point_account' => "630f294d-4a84-4c8a-82fd-053da93a2c4f",
-                'point_expires_in_days' => 2337,
-                'point_expires_at' => "2021-12-02T10:33:24.000000Z",
-                'starts_at' => "2024-01-19T02:35:12.000000Z",
-                'expires_at' => "2023-10-21T04:43:56.000000Z",
-                'usage_limit' => 1815,
+                'point_amount' => 3948.0,
+                'bear_point_account' => "5d27308d-4189-4d7d-94fd-39a062a0f115",
+                'point_expires_in_days' => 143,
+                'point_expires_at' => "2025-05-11T11:26:25.000000Z",
+                'starts_at' => "2020-08-24T20:46:36.000000Z",
+                'expires_at' => "2021-07-01T00:10:08.000000Z",
+                'usage_limit' => 3099,
                 'is_onetime' => TRUE,
-                'description' => "8MFakoJp4sttlPyu0hLTf3LV1FvqM27O2bqybT3XFSWXNEvBDeb"
+                'description' => "sH11ZahWwt0KCw4FDQO05qLTqGDbzQDuaFv4VsaDUMga8HPHLfj8VAxLQCn6DppPY7uZKs5wMf3MBYDCuFCMBOgtd28MFakoJp4sttlPyu0hLTf3LV1FvqM27O2bqybT3XFS"
             ]
         );
         try {

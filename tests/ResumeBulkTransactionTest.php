@@ -8,7 +8,7 @@ class ResumeBulkTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\ResumeBulkTransaction(
-            "ff1b624e-8ba2-4ce5-8de4-ef350a07a942"
+            "2eadb457-704b-4103-a409-793b280c2cc2"
         );
         try {
             $response = $client->send($request);

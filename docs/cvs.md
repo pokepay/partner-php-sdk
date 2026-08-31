@@ -12,10 +12,10 @@ $request = new Request\GetCvsAuthorizations(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
-        'status' => "payed",                      // ステータス
-        'before' => "bfQ",                        // ページング(before)
-        'after' => "VxrOe",                       // ページング(after)
-        'per_page' => 35                          // 1ページあたりの表示件数
+        'status' => "expired",                    // ステータス
+        'before' => "GQHjMs0udR",                 // ページング(before)
+        'after' => "jM6",                         // ページング(after)
+        'per_page' => 52                          // 1ページあたりの表示件数
     ]
 );
 ```
@@ -146,18 +146,18 @@ $request = new Request\GetCvsAuthorizations(
 $request = new Request\CreateCvsAuthorization(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    264913,                                       // amount: チャージ額
-    "famima",                                     // serviceOptionType: コンビニ種別
-    "XnEEoR2",                                    // name1: 顧客姓
-    "VQKj59H",                                    // name2: 顧客名
-    "9GxwaIDAEf",                                 // tel: 電話番号
+    251944,                                       // amount: チャージ額
+    "econ",                                       // serviceOptionType: コンビニ種別
+    "4GQyu",                                      // name1: 顧客姓
+    "ePe1bdi",                                    // name2: 顧客名
+    "rL7eYxL",                                    // tel: 電話番号
     [
         'receiver_user_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // チャージ先エンドユーザーのID
         'description' => "コンビニチャージ",              // 取引履歴に表示する説明文
-        'topup_quota_id' => 7175,                 // チャージ可能枠ID
+        'topup_quota_id' => 8113,                 // チャージ可能枠ID
         'memo1' => "campaign2026summer",          // 取引メモ1
-        'memo2' => "YTy7R47iCgx7WyI42Bj1Wjh2fPJE8E716SPRYKWJApro8XpU0da1reC76r6EN63HIk75", // 取引メモ2
-        'memo3' => "8NxaRIBYa6wv",                // 取引メモ3
+        'memo2' => "IR4r9f1iZQVJCIu8pLuGU50iq7Z6XaZcd9a55Ea4m7A07h1goZ8o9oOJ0qv6uWWMwCy2ns8CjmWZWZ5BJ99mD95R", // 取引メモ2
+        'memo3' => "v1P69N8P91tvC18njEfQ7l9u4mpK8FPETBIWC0hAv2wnO7000234xcRv4L0v8Jp625", // 取引メモ3
         'freekey' => "order20260803001"           // キー情報
     ]
 );
@@ -454,7 +454,7 @@ Veritransの取引に付与するキー情報です。
 |422|coupon_unavailable|このクーポンは使用できません。|This coupon is unavailable.|
 |422|account_suspended|アカウントは停止されています|The account is suspended|
 |422|account_closed|アカウントは退会しています|The account is closed|
-|422|customer_account_not_found||The customer account is not found|
+|422|customer_account_not_found|ユーザアカウントが見つかりません|The customer account is not found|
 |422|shop_account_not_found|店舗アカウントが見つかりません|The shop account is not found|
 |422|account_currency_mismatch|アカウント間で通貨が異なっています|Currency mismatch between accounts|
 |422|account_pre_closed|アカウントは退会準備中です|The account is pre-closed|

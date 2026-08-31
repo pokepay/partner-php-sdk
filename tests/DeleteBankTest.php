@@ -8,8 +8,8 @@ class DeleteBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\DeleteBank(
-            "6e28be25-ef6f-4898-bb27-38f1f8d6470e",
-            "9259dc45-af51-4a69-bb63-5539bf790927"
+            "6130a7ee-5330-4939-b5be-6bd432c567e2",
+            "4f68e29e-6781-44ae-aaa6-0296b168c77e"
         );
         try {
             $response = $client->send($request);

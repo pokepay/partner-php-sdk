@@ -8,10 +8,10 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "2272e094-7ea3-4190-aa3b-192ecc8e6e33",
-            "ba441551-f8bb-47e9-a3db-dd2fd1c10eb0",
-            "24ffa2e9-6289-47e0-b918-a51f24d87295",
-            6475
+            "a25c5d17-55fb-4757-97fd-af235b378848",
+            "71285854-fa61-4252-abdd-05982c5d4137",
+            "a5602371-f8aa-4c00-b8fc-7e8dd8c09ce9",
+            4808
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "2272e094-7ea3-4190-aa3b-192ecc8e6e33",
-            "ba441551-f8bb-47e9-a3db-dd2fd1c10eb0",
-            "24ffa2e9-6289-47e0-b918-a51f24d87295",
-            6475,
+            "a25c5d17-55fb-4757-97fd-af235b378848",
+            "71285854-fa61-4252-abdd-05982c5d4137",
+            "a5602371-f8aa-4c00-b8fc-7e8dd8c09ce9",
+            4808,
             [
-                'coupon_id' => "03721c8e-3199-4ccc-9e08-7f5b43c17edf"
+                'coupon_id' => "ac43ea8c-ea6f-46ae-9400-617cc99f27f6"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "2272e094-7ea3-4190-aa3b-192ecc8e6e33",
-            "ba441551-f8bb-47e9-a3db-dd2fd1c10eb0",
-            "24ffa2e9-6289-47e0-b918-a51f24d87295",
-            6475,
+            "a25c5d17-55fb-4757-97fd-af235b378848",
+            "71285854-fa61-4252-abdd-05982c5d4137",
+            "a5602371-f8aa-4c00-b8fc-7e8dd8c09ce9",
+            4808,
             [
-                'strategy' => "money-only",
-                'coupon_id' => "2e619787-ed14-4060-ada6-b6eeb36c0488"
+                'strategy' => "point-preferred",
+                'coupon_id' => "967ea154-38d7-4c17-af50-414ed07e4662"
             ]
         );
         try {
@@ -69,14 +69,14 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "2272e094-7ea3-4190-aa3b-192ecc8e6e33",
-            "ba441551-f8bb-47e9-a3db-dd2fd1c10eb0",
-            "24ffa2e9-6289-47e0-b918-a51f24d87295",
-            6475,
+            "a25c5d17-55fb-4757-97fd-af235b378848",
+            "71285854-fa61-4252-abdd-05982c5d4137",
+            "a5602371-f8aa-4c00-b8fc-7e8dd8c09ce9",
+            4808,
             [
-                'request_id' => "242b545a-e589-430b-b8fe-740b5bbe03e1",
-                'strategy' => "point-preferred",
-                'coupon_id' => "5e6591e9-5e0f-4aae-9539-cee92e6f34c3"
+                'request_id' => "8d08ab43-f855-4c58-b3ba-f7579803e39c",
+                'strategy' => "money-only",
+                'coupon_id' => "dc82ca8f-fc76-4c7d-9530-42ec64ea0a6e"
             ]
         );
         try {
@@ -92,17 +92,19 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "2272e094-7ea3-4190-aa3b-192ecc8e6e33",
-            "ba441551-f8bb-47e9-a3db-dd2fd1c10eb0",
-            "24ffa2e9-6289-47e0-b918-a51f24d87295",
-            6475,
+            "a25c5d17-55fb-4757-97fd-af235b378848",
+            "71285854-fa61-4252-abdd-05982c5d4137",
+            "a5602371-f8aa-4c00-b8fc-7e8dd8c09ce9",
+            4808,
             [
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "a4663132-0a91-4d0c-abea-0a935c55efa8",
+                'request_id' => "e699fabd-7659-4c25-bfd7-f637136c7cdb",
                 'strategy' => "money-only",
-                'coupon_id' => "b8368dc9-3490-4e44-8490-6d93394d4095"
+                'coupon_id' => "67e65e57-d7de-40f5-acf8-e14a434df60d"
             ]
         );
         try {
@@ -118,21 +120,18 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "2272e094-7ea3-4190-aa3b-192ecc8e6e33",
-            "ba441551-f8bb-47e9-a3db-dd2fd1c10eb0",
-            "24ffa2e9-6289-47e0-b918-a51f24d87295",
-            6475,
+            "a25c5d17-55fb-4757-97fd-af235b378848",
+            "71285854-fa61-4252-abdd-05982c5d4137",
+            "a5602371-f8aa-4c00-b8fc-7e8dd8c09ce9",
+            4808,
             [
                 'metadata' => "{\"key\":\"value\"}",
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
         , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "6ca6e0c6-0d1a-4d3c-8c5b-b95d262f4f55",
+                'request_id' => "8b5b9e65-d196-4f6a-bc45-6407db70a31d",
                 'strategy' => "money-only",
-                'coupon_id' => "26479cb5-77b3-4e48-8b9b-d5a98d88ae14"
+                'coupon_id' => "c4e892ad-f3ac-46d8-a986-3f65455eabfd"
             ]
         );
         try {
@@ -148,18 +147,22 @@ class CreatePaymentTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransaction(
-            "2272e094-7ea3-4190-aa3b-192ecc8e6e33",
-            "ba441551-f8bb-47e9-a3db-dd2fd1c10eb0",
-            "24ffa2e9-6289-47e0-b918-a51f24d87295",
-            6475,
+            "a25c5d17-55fb-4757-97fd-af235b378848",
+            "71285854-fa61-4252-abdd-05982c5d4137",
+            "a5602371-f8aa-4c00-b8fc-7e8dd8c09ce9",
+            4808,
             [
-                'description' => "cTCafuN856J50SdiADG37eydGENMPuSUGCPNHip0Y3dBWcNdXe1sI",
+                'description' => "mEzy22TP2wtSY9IoDSrJUA2sSTBsOwjVmr0bTbO79fqhITnnz7WaCAiQd9B8sle88sl7rSWKN9oQjHsNX48VkSyiuzE1L2wv36YuE4jwp0IiR44I5KLiOrRKq3qxtTGifN6KrraD5uojwDmQdLNOKHIlD",
                 'metadata' => "{\"key\":\"value\"}",
                 'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+        , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
         ],
-                'request_id' => "63d8427f-b553-4a56-baf4-4328eb27fcae",
+                'request_id' => "a43f7169-fee1-4ea4-a3a9-74bc7a40624f",
                 'strategy' => "point-preferred",
-                'coupon_id' => "5e4fb802-b4a1-47c3-b3f0-8f89e5f820e4"
+                'coupon_id' => "77bbccad-91be-4487-b7c0-672306a95238"
             ]
         );
         try {

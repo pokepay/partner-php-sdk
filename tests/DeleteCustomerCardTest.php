@@ -8,8 +8,8 @@ class DeleteCustomerCard extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\DeleteCustomerCard(
-            "0e0c9b43-38cb-4505-8e80-8a35ea5d583f",
-            "3c425d00-fcaf-49f9-9840-c8a096ca58a8"
+            "24b261d7-aede-4f18-8a62-e296cdde2e74",
+            "b02afdb9-b5b3-40df-b400-6632f81322b6"
         );
         try {
             $response = $client->send($request);

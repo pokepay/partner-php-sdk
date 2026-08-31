@@ -15,8 +15,8 @@ Customerのウォレットはマネー残高(有償バリュー)、ポイント�
 $request = new Request\ListUserAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     [
-        'page' => 5655,                           // ページ番号
-        'per_page' => 9651                        // 1ページ分の取引数
+        'page' => 7544,                           // ページ番号
+        'per_page' => 2252                        // 1ページ分の取引数
     ]
 );
 ```
@@ -91,8 +91,8 @@ $request = new Request\CreateUserAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'name' => "jyrMS4IVkYp7d5uCmZcCGsDsYW6iBTOJJItmv4ZbMGqyaKdWN8wtUzEEJzkH6S98QQghHEuISiLlQ9W3XgJB2NaMYnzVdH4lBEl49jCEcrfCIMQObL3OoO8rAUeIJBL5bUAsdaXhLa6DeYgow42MLUfdk8XuchSqSbTRRUD", // ウォレット名
-        'external_id' => "8SLFRBVzctWtyXmcrdg7VkR4X33FNwVK3ZsilsWVKactB", // 外部ID
+        'name' => "kYmgigiRBecjiYHAY2JzBXAH8kMOdWqNTIGASpUbYQp5bqa8tWD6s9Q6iiZbOooVKgu1qds6qgsoONFz6uyU0wrmFTsH1jox1nE7Xd1LHtA5BVDLAJt8tqoldYOWGhpaRKD1ENaiTkaXYFCXi0fdqXvmGys8YOpBu2KczD6BTCHnjtvnDM8G6PBmZyIjoWRfxfaml9V53r3s2", // ウォレット名
+        'external_id' => "bgJInEjXNNDJsFK9WBlSOaEAClE0qaCOj2fSXpFKUlotqu2axS", // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );
