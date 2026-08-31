@@ -24,7 +24,7 @@ abstract class Base
 
     public function setCallId($newCallId)
     {
-        $this->callId = $newCallId;
+        $this->callId = $newCallId || Uuid::uuid4();
     }
 
     public function getMethod()
@@ -50,5 +50,14 @@ abstract class Base
     public function getParams()
     {
         return array();
+    }
+
+    public function isRetriable()
+    {
+        $params = $this->getParams();
+        return (
+            $this->method == 'GET' || $this->method == 'PATCH'
+            || (is_array($params) && array_key_exists('request_id', $params))
+        );
     }
 }
