@@ -53,7 +53,7 @@ POST,/transactions,400,invalid_parameter_both_point_and_money_are_zero,,One of '
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -132,7 +132,7 @@ POST,/transactions/topup,400,invalid_parameter_both_point_and_money_are_zero,,On
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -170,7 +170,7 @@ POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザ
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -188,7 +188,7 @@ POST,/transactions/topup/check,403,unpermitted_admin_user,"この管理ユーザ
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/topup/seven-bank-atm,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
@@ -271,7 +271,7 @@ POST,/transactions/payment,403,unpermitted_admin_user,"この管理ユーザに�
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -310,7 +310,7 @@ POST,/transactions/payment/bill,403,unpermitted_admin_user,"この管理ユー�
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -357,7 +357,7 @@ POST,/transactions/transfer,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -453,7 +453,7 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -507,7 +507,7 @@ POST,/transactions/cashtray,403,unpermitted_admin_user,"この管理ユーザに
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -532,7 +532,7 @@ POST,/external-transactions,400,invalid_parameters,"項目が無効です",Inval
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
@@ -778,6 +778,21 @@ GET,/customers/:uuid,400,invalid_parameters,"項目が無効です",Invalid para
 GET,/customers/:uuid/cards,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,503,temporarily_unavailable,,Service Unavailable
+POST,/customers/:uuid/cards,400,invalid_email_domain,"メールアドレスのドメインが間違っています",Invalid domain name error
+,,400,invalid_mdk_token,,Invalid MDK token
+,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,404,card_not_found,"カードが見つかりません",
+,,409,already_registered_veritrans_card,"このカードは既に登録されています",
+,,409,already_registered_veritrans_account,"この会員は既に登録されています",
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
+,,422,customer_user_not_found,,The customer user is not found
+,,422,dev_env_user_veritrans_membership_deleted,"テスト環境におけるVeritrans4Gのカード情報の定期的な削除によって、ポケペイに登録済みのカード情報を削除しました。お手数ですが、カード情報の登録から再度お試しください",User Veritrans membership on development environment is deleted
+,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
+,,422,unacceptable_card,,Card is not acceptable for some reason
+,,422,veritrans_membership_not_registered,"会員登録をしていません",
+,,503,failed_to_send_email,,Failed to send an E-mail.
+,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
 POST,/customers/:uuid/cards/delete,400,invalid_email_domain,"メールアドレスのドメインが間違っています",Invalid domain name error
 ,,400,invalid_mdk_token,,Invalid MDK token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -843,7 +858,7 @@ POST,/customers/:uuid/card-authorize/topup-with-membership,400,invalid_mdk_token
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -904,7 +919,7 @@ POST,/customers/:uuid/card-authorize/topup-with-mdk-token,400,invalid_mdk_token,
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -955,7 +970,7 @@ POST,/cvs,400,cvs_invalid_request_parameter,"入力データが不正です",Par
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
@@ -1281,7 +1296,7 @@ POST,/user-devices/:uuid/banks/topup,400,paytree_request_failure,"銀行の外�
 ,,422,coupon_unavailable,"このクーポンは使用できません。",This coupon is unavailable.
 ,,422,account_suspended,"アカウントは停止されています",The account is suspended
 ,,422,account_closed,"アカウントは退会しています",The account is closed
-,,422,customer_account_not_found,,The customer account is not found
+,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
 ,,422,account_currency_mismatch,"アカウント間で通貨が異なっています",Currency mismatch between accounts
 ,,422,account_pre_closed,"アカウントは退会準備中です",The account is pre-closed
