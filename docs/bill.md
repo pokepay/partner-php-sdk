@@ -19,19 +19,19 @@ amountが空の場合は、ユーザによる自由入力で受け付けた金�
 ```PHP
 $request = new Request\ListBills(
     [
-        'page' => 2157,                           // ページ番号
-        'per_page' => 6055,                       // 1ページの表示数
-        'bill_id' => "e",                         // 支払いQRコードのID
+        'page' => 9989,                           // ページ番号
+        'per_page' => 9510,                       // 1ページの表示数
+        'bill_id' => "yLhmVZrKtr",                // 支払いQRコードのID
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'organization_code' => "-D54e-F6XEN",     // 組織コード
+        'organization_code' => "Aa02-8--c-c-4lBW9-8ds58--PmuIrC9", // 組織コード
         'description' => "test bill",             // 取引説明文
-        'created_from' => "2021-07-29T10:08:23.000000Z", // 作成日時(起点)
-        'created_to' => "2024-03-20T17:44:56.000000Z", // 作成日時(終点)
+        'created_from' => "2023-06-18T15:42:21.000000Z", // 作成日時(起点)
+        'created_to' => "2023-03-26T14:35:12.000000Z", // 作成日時(終点)
         'shop_name' => "bill test shop1",         // 店舗名
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'lower_limit_amount' => 9779,             // 金額の範囲によるフィルタ(下限)
-        'upper_limit_amount' => 1699,             // 金額の範囲によるフィルタ(上限)
-        'is_disabled' => FALSE                    // 支払いQRコードが無効化されているかどうか
+        'lower_limit_amount' => 7156,             // 金額の範囲によるフィルタ(下限)
+        'upper_limit_amount' => 8581,             // 金額の範囲によるフィルタ(上限)
+        'is_disabled' => TRUE                     // 支払いQRコードが無効化されているかどうか
     ]
 );
 ```
@@ -264,7 +264,7 @@ $request = new Request\CreateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: 支払いマネーのマネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 支払い先(受け取り人)の店舗ID
     [
-        'amount' => 6474.0,                       // 支払い額
+        'amount' => 1839.0,                       // 支払い額
         'additional_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"], // 追加の支払いマネーのマネーID
         'description' => "test bill"              // 説明文(アプリ上で取引の説明文として表示される)
     ]
@@ -426,10 +426,10 @@ $request = new Request\GetBill(
 $request = new Request\UpdateBill(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // billId: 支払いQRコードのID
     [
-        'amount' => 959.0,                        // 支払い額
+        'amount' => 5346.0,                       // 支払い額
         'description' => "test bill",             // 説明文
         'is_disabled' => TRUE,                    // 無効化されているかどうか
-        'additional_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 追加の支払いマネーのマネーID
+        'additional_private_money_ids' => ["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"] // 追加の支払いマネーのマネーID
     ]
 );
 ```

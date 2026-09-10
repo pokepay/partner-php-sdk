@@ -17,7 +17,7 @@ $request = new Request\CreateTransactionWithCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: Cashtray用QRコードのID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
     [
-        'strategy' => "point-preferred",          // 支払い時の残高消費方式
+        'strategy' => "money-only",               // 支払い時の残高消費方式
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -183,10 +183,10 @@ Cashtrayを作成します。
 $request = new Request\CreateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ユーザーID
-    5174.0,                                       // amount: 金額
+    4937.0,                                       // amount: 金額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 2211                      // 失効時間(秒)
+        'expires_in' => 9754                      // 失効時間(秒)
     ]
 );
 ```
@@ -434,9 +434,9 @@ Cashtrayの内容を更新します。bodyパラメーターは全て省略可�
 $request = new Request\UpdateCashtray(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cashtrayId: CashtrayのID
     [
-        'amount' => 1592.0,                       // 金額
+        'amount' => 7434.0,                       // 金額
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
-        'expires_in' => 9422                      // 失効時間(秒)
+        'expires_in' => 1512                      // 失効時間(秒)
     ]
 );
 ```

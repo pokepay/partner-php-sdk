@@ -13,9 +13,9 @@ $request = new Request\GetCvsAuthorizations(
     [
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'status' => "expired",                    // ステータス
-        'before' => "GQHjMs0udR",                 // ページング(before)
-        'after' => "jM6",                         // ページング(after)
-        'per_page' => 52                          // 1ページあたりの表示件数
+        'before' => "8mWO",                       // ページング(before)
+        'after' => "zQrw5",                       // ページング(after)
+        'per_page' => 72                          // 1ページあたりの表示件数
     ]
 );
 ```
@@ -146,18 +146,18 @@ $request = new Request\GetCvsAuthorizations(
 $request = new Request\CreateCvsAuthorization(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーのID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    251944,                                       // amount: チャージ額
-    "econ",                                       // serviceOptionType: コンビニ種別
-    "4GQyu",                                      // name1: 顧客姓
-    "ePe1bdi",                                    // name2: 顧客名
-    "rL7eYxL",                                    // tel: 電話番号
+    113188,                                       // amount: チャージ額
+    "sej",                                        // serviceOptionType: コンビニ種別
+    "J8uGQS",                                     // name1: 顧客姓
+    "as",                                         // name2: 顧客名
+    "DUHsEK1qa",                                  // tel: 電話番号
     [
         'receiver_user_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // チャージ先エンドユーザーのID
         'description' => "コンビニチャージ",              // 取引履歴に表示する説明文
-        'topup_quota_id' => 8113,                 // チャージ可能枠ID
+        'topup_quota_id' => 560,                  // チャージ可能枠ID
         'memo1' => "campaign2026summer",          // 取引メモ1
-        'memo2' => "IR4r9f1iZQVJCIu8pLuGU50iq7Z6XaZcd9a55Ea4m7A07h1goZ8o9oOJ0qv6uWWMwCy2ns8CjmWZWZ5BJ99mD95R", // 取引メモ2
-        'memo3' => "v1P69N8P91tvC18njEfQ7l9u4mpK8FPETBIWC0hAv2wnO7000234xcRv4L0v8Jp625", // 取引メモ3
+        'memo2' => "OaLaok9IPibnVjx3d7rpYA3",     // 取引メモ2
+        'memo3' => "rc46Pd7VTC07Ueq0YinBn9N01Zd8p44vXX3sPd3XUtKZ0VF82E372K2wtSRG3m4H0mlZ2BnVRK59rd81H5yjrE3Fq", // 取引メモ3
         'freekey' => "order20260803001"           // キー情報
     ]
 );
