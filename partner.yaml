@@ -869,6 +869,36 @@ components:
           title: Cashtray読み取り記録の作成日時
           description: エンドユーザーによるCashtrayの読み取りリクエストに対する記録(CashtrayAttempt)の作成日時です。これによりエンドユーザーがCashtrayをいつ読み取ったかが分かります。
 
+    CampaignShopLabel:
+      x-pokepay-schema-type: "response"
+      x-pokepay-mobile-sdk: true
+      type: object
+      title: 'キャンペーン適用対象店舗のラベル指定'
+      properties:
+        id:
+          type: string
+          format: uuid
+        name_en:
+          type: string
+        name_ja:
+          type: string
+        user_tag_group:
+          $ref: '#/components/schemas/CampaignShopLabelUserTagGroup'
+
+    CampaignShopLabelUserTagGroup:
+      x-pokepay-schema-type: "response"
+      x-pokepay-mobile-sdk: true
+      type: object
+      title: '店舗ラベルの所属ラベルグループ'
+      properties:
+        id:
+          type: string
+          format: uuid
+        name_en:
+          type: string
+        name_ja:
+          type: string
+
     User:
       x-pokepay-schema-type: "response"
       properties:
@@ -1771,6 +1801,96 @@ components:
       x-pokepay-schema-type: "response"
       properties: {}
 
+    PaginatedCustomers:
+      x-pokepay-schema-type: "response"
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerListRow'
+        count:
+          type: integer
+          minimum: 0
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    CustomerListRow:
+      x-pokepay-schema-type: "response"
+      description: |-
+        エンドユーザー一覧の 1 行です。
+
+        is_include_user_attribute=true を指定した場合、発行体が定義したユーザー属性が
+        ここに列挙されていないキーとして同じ階層に展開されます。
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: 退会済みかつ組織権限の場合は空文字になります。
+        tel:
+          type: string
+          description: 退会済みかつ組織権限の場合は空文字になります。
+        email:
+          type: string
+          description: 退会済みかつ組織権限の場合は空文字になります。
+        registered_at:
+          type: string
+          format: date-time
+        last_transaction_done_at:
+          type: string
+          format: date-time
+          nullable: true
+        money_balance:
+          type: number
+          nullable: true
+          description: with_balance=false のときは null になります。
+        point_balance:
+          type: number
+          nullable: true
+          description: with_balance=false のときは null になります。
+        account_uuid:
+          type: string
+          format: uuid
+        account_is_suspended:
+          type: boolean
+        account_status:
+          type: string
+          enum: [active, suspended, pre-closed, closed]
+        external_id:
+          type: string
+          nullable: true
+        individual_number_identification:
+          $ref: '#/components/schemas/IndividualNumberIdentification'
+    IndividualNumberIdentification:
+      x-pokepay-schema-type: "response"
+      description: |-
+        マイナンバー(個人番号)認証の状態です。
+
+        有効期限は認証日時 + 該当マネーの identification_validity_days
+        (未設定時は 365 日) で算出されます。
+        退会済みかつ組織権限の場合は、未認証・判定なしとして返ります。
+      properties:
+        is_identified:
+          type: boolean
+          description: 認証済みかつ有効期限内のとき true
+        last_identified_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: 最終認証日時 (未認証時は null)
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: 認証の失効日時 (未認証時は null)
+        is_resident:
+          type: boolean
+          nullable: true
+          description: |-
+            住民判定。true は住民、false は非住民と判定済み、null はまだ判定していない
+            (認証記録が無い、またはマネーにサービスが未設定) ことを表す。
+            「非住民」と「判定なし」は運用上まったく別の意味を持つため潰していない
+      required: [is_identified, last_identified_at, expires_at, is_resident]
     PaginatedTransaction:
       x-pokepay-schema-type: "response"
       properties:
@@ -1978,6 +2098,17 @@ components:
           nullable: true
           items:
             $ref: '#/components/schemas/User'
+        applicable_shop_labels:
+          type: array
+          title: 'キャンペーン適用対象の店舗ラベル指定'
+          nullable: true
+          description: |-
+            ラベルで適用対象店舗を限定している場合、その指定ラベル。
+            ラベル指定が無い場合は null。
+            対象店舗はラベル付与状況から動的に決まるため、この場合
+            applicable_shops は null になります。
+          items:
+            $ref: '#/components/schemas/CampaignShopLabel'
         is_exclusive:
           type: boolean
           title: 'キャンペーンの重複を許すかどうかのフラグ'
@@ -7233,6 +7364,199 @@ paths:
           $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+  /customers:
+    get:
+      tags:
+        - Customer
+      summary: 'エンドユーザー一覧を取得する'
+      description: |-
+        指定したマネーのエンドユーザー一覧を返します。
+
+        このエンドポイントは管理画面 API の顧客一覧と同じ実装を共有しており、
+        パートナーキーに紐づく管理ユーザーの権限 (`customer-info` の read) で評価されます。
+        氏名・電話番号・メールアドレスに加え、マイナンバー認証の状態も返ります。
+
+        退会済み (`account_status` が `closed`) のエンドユーザーについては、
+        組織権限のパートナーキーに対して氏名・電話番号・メールアドレスが空文字になり、
+        マイナンバー認証状態も未認証・判定なしとして返ります。
+
+        なお実装は `fast_pagination` / `before` / `after` によるカーソルページングも
+        受け付けますが、これは管理画面が使うためのもので、レスポンスの形が
+        (`pagination` ではなく `per_page` / `prev` / `next` に) 変わります。
+        ここでは文書化していません。
+
+        `page` / `per_page` / `with_balance` / `is_include_user_attribute` を
+        integer / boolean ではなく string で宣言しているのは、この operation に
+        `x-pokepay-allow-server-side` が無く apispec の型変換が走らないためです。
+        値は URL から取り出した文字列のまま controller に届き、controller 側で
+        `integer-string-p` / `boolean-string-p` として検証しています。
+        型を宣言だけしても実効しないので、宣言を実態に合わせています
+        (`tests/unit/config/apispec.lisp` が機械チェックしています)。
+      parameters:
+        - in: query
+          name: private_money_id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            title: 'マネーID'
+          description: 一覧を取得するマネーのIDです。
+        - in: query
+          name: customer_id
+          schema:
+            type: string
+            format: uuid
+            title: 'エンドユーザーID'
+          description: エンドユーザーIDの前方一致で絞り込みます。
+        - in: query
+          name: customer_name
+          schema:
+            type: string
+            maxLength: 256
+            title: 'エンドユーザー名'
+          description: エンドユーザー名の部分一致で絞り込みます。
+        - in: query
+          name: customer_tel
+          schema:
+            type: string
+            maxLength: 15
+            title: '電話番号'
+          description: 電話番号の完全一致で絞り込みます。
+        - in: query
+          name: customer_email
+          schema:
+            type: string
+            maxLength: 256
+            title: 'メールアドレス'
+          description: メールアドレスの部分一致で絞り込みます。
+        - in: query
+          name: account_status
+          schema:
+            type: string
+            enum: [active, suspended, pre-closed, closed]
+            title: 'ウォレット状態'
+          description: ウォレットの状態で絞り込みます。
+        - in: query
+          name: registered_from
+          schema:
+            type: string
+            format: date-time
+            title: '登録日時の開始'
+          description: この日時以降に登録されたエンドユーザーのみ表示します。
+        - in: query
+          name: registered_to
+          schema:
+            type: string
+            format: date-time
+            title: '登録日時の終了'
+          description: この日時以前に登録されたエンドユーザーのみ表示します。
+        - in: query
+          name: last_transaction_from
+          schema:
+            type: string
+            format: date-time
+            title: '最終取引日時の開始'
+          description: この日時以降に取引のあったエンドユーザーのみ表示します。
+        - in: query
+          name: last_transaction_to
+          schema:
+            type: string
+            format: date-time
+            title: '最終取引日時の終了'
+          description: この日時以前に取引のあったエンドユーザーのみ表示します。
+        - in: query
+          name: individual_number_identification
+          schema:
+            type: string
+            enum: [identified, not-identified]
+            title: 'マイナンバー認証の有効性'
+          description: |-
+            マイナンバー認証の有効性で絞り込みます。
+            有効期限切れの認証は not-identified 扱いです。
+            マネーにサービスが設定されていない場合、手動付与の認証は
+            判定不能のため認証なし扱いになります (fail-closed)。
+        - in: query
+          name: resident_status
+          schema:
+            type: string
+            enum: [resident, non-resident, unknown]
+            title: 'マイナンバー認証の住民判定'
+          description: |-
+            マイナンバー認証の住民判定で絞り込みます。3 値で、それぞれ独立した意味を持ちます。
+
+            - `resident`: 住民と判定されたエンドユーザー
+            - `non-resident`: 非住民と判定されたエンドユーザー。管理画面から認証を手動解除された
+              エンドユーザーもここに含まれます (解除は行削除ではなく is_resident=false への更新のため)
+            - `unknown`: まだ住民判定をしていないエンドユーザー
+
+            マネーにサービスが設定されていない場合は住民判定を一切できないため、
+            全エンドユーザーが `unknown` 相当になります (`resident` / `non-resident` は 0 件、
+            `unknown` は全件)。
+        - in: query
+          name: is_include_user_attribute
+          schema:
+            type: string
+            enum: ['true', 'false']
+            title: 'ユーザー属性を含めるか'
+          description: |-
+            true を指定すると、発行体が定義したユーザー属性が各行にそのまま展開されます。
+            属性のキー名は発行体ごとに異なります。
+        - in: query
+          name: external_id
+          schema:
+            type: string
+            maxLength: 49
+            title: '外部ID'
+          description: 発行体が付与した外部IDの完全一致で絞り込みます。
+        - in: query
+          name: with_balance
+          schema:
+            type: string
+            enum: ['true', 'false']
+            title: '残高を含めるか'
+          description: |-
+            残高を含めるかどうかです。デフォルトは true です。
+            false を指定すると money_balance / point_balance が null になり、
+            エンドユーザーごとの残高取得を行わない分だけ高速になります。
+        - in: query
+          name: sort_by
+          schema:
+            type: string
+            enum: [registered-at, last-transaction-done-at]
+            title: '並び順'
+          description: 並び替えの基準です。デフォルトは last-transaction-done-at です。
+        - in: query
+          name: sort_direction
+          schema:
+            type: string
+            enum: [asc, desc]
+            title: '並び順の方向'
+          description: 並び順の方向です。デフォルトは desc です。
+        - in: query
+          name: page
+          schema:
+            type: string
+            pattern: '^[1-9][0-9]*$'
+            title: 'ページ番号'
+          description: 取得したいページ番号です。
+        - in: query
+          name: per_page
+          schema:
+            type: string
+            pattern: '^[1-9][0-9]*$'
+            title: '1ページ分の要素数'
+          description: 1ページ当たりの要素数です。デフォルト値は50です。
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCustomers'
+        '400':
+          $ref: '#/components/responses/InvalidParameters'
+        '403':
+          $ref: '#/components/responses/Forbidden'
   /customers/{customer_id}/cards:
     get:
       tags:
@@ -7448,6 +7772,7 @@ paths:
                   example: クレジットカードチャージ
                 return_url:
                   type: string
+                  format: url
                   maxLength: 2048
                   title: '3Dセキュア完了画面の戻り先URL'
                   description: |-
@@ -7595,6 +7920,7 @@ paths:
                   example: クレジットカードチャージ
                 return_url:
                   type: string
+                  format: url
                   maxLength: 2048
                   title: '3Dセキュア完了画面の戻り先URL'
                   description: |-
@@ -8633,6 +8959,21 @@ paths:
                   description: |-
                     キャンペーンを適用する店舗IDを指定します (複数指定)。
                     指定しなかった場合は全店舗が対象になります。
+                applicable_shop_label_ids:
+                  type: array
+                  nullable: true
+                  items:
+                    type: string
+                    format: uuid
+                  title: 'キャンペーン適用対象となる店舗ラベルIDのリスト'
+                  description: |-
+                    キャンペーン適用対象店舗をラベル (user_tag_group_item) で指定します。
+                    指定されたラベルが付与されている店舗が対象になります。
+                    判定はラベルグループ内が OR、グループ間が AND です。
+                    店舗のラベル付与状況を随時参照するため、登録後に店舗へラベルが
+                    付与された場合もキャンペーンを更新せずに対象となります。
+                    applicable_shop_ids / blacklisted_shop_ids とは同時に指定できません。
+                    null または空配列を指定するとラベル指定を解除します。
                 blacklisted_shop_ids:
                   type: array
                   items:
@@ -9538,6 +9879,21 @@ paths:
                   description: |-
                     キャンペーンを適用する店舗IDを指定します (複数指定)。
                     指定しなかった場合は全店舗が対象になります。
+                applicable_shop_label_ids:
+                  type: array
+                  nullable: true
+                  items:
+                    type: string
+                    format: uuid
+                  title: 'キャンペーン適用対象となる店舗ラベルIDのリスト'
+                  description: |-
+                    キャンペーン適用対象店舗をラベル (user_tag_group_item) で指定します。
+                    判定はラベルグループ内が OR、グループ間が AND です。
+                    未指定の場合は現在の指定を引き継ぎます。
+                    null または空配列を指定するとラベル指定を解除します。
+                    applicable_shop_ids / blacklisted_shop_ids とは同時に指定できません。
+                    排他判定には保存済みの値も含まれるため、店舗指定からラベル指定へ
+                    切り替えるときは applicable_shop_ids も null にして同時に送ってください。
                 blacklisted_shop_ids:
                   type: array
                   items:

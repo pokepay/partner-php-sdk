@@ -716,7 +716,6 @@ GET,/organizations,400,invalid_parameters,"項目が無効です",Invalid parame
 POST,/organizations,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
 ,,409,organization_conflict,,The organization code is already used
-,,409,organization_invoice_registration_number_conflict,"この登録番号は既に登録されています",The invoice registration number is conflict
 ,,409,shop_name_conflict,,The shop name is already used
 ,,422,organization_private_money_not_found,,Issuer organization does not have private-money
 ,,422,unavailable_private_money,,Given private money(s) is/are not available
@@ -729,7 +728,6 @@ GET,/organizations/:code,403,unpermitted_admin_user,"この管理ユーザには
 ,,422,organization_third_party_private_money_not_found,,Issuer organization does not have third-party private-money
 PUT,/organizations/:code,403,,,
 ,,404,,,
-,,409,organization_invoice_registration_number_conflict,"この登録番号は既に登録されています",The invoice registration number is conflict
 ,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
 ,,422,organization_third_party_private_money_not_found,,Issuer organization does not have third-party private-money
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -1191,6 +1189,7 @@ POST,/campaigns,400,invalid_parameters,"項目が無効です",Invalid parameter
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,campaign_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,campaign_invalid_user_tag_group_item,"指定された店舗ラベルが不正です",The specified shop label is invalid
 ,,422,campaign_period_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
 ,,422,campaign_invalid_period,,Invalid campaign period starts_at later than ends_at
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
@@ -1201,6 +1200,7 @@ PATCH,/campaigns/:uuid,400,invalid_parameters,"項目が無効です",Invalid pa
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,campaign_budget_caps_exceeded,"キャンペーン予算上限額を越えています",The campaign budget caps exceeded
+,,422,campaign_invalid_user_tag_group_item,"指定された店舗ラベルが不正です",The specified shop label is invalid
 GET,/campaigns/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,503,temporarily_unavailable,,Service Unavailable
