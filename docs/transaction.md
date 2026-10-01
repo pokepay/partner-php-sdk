@@ -17,7 +17,7 @@ CPMトークンの現在の状態を取得します。CPMトークンの有効�
 
 ```PHP
 $request = new Request\GetCpmToken(
-    "8uJqFVIWZBtq3jnfd5KTcW"                      // cpmToken: CPMトークン
+    "sdIfCC8uQL5mCoKagjGEM3"                      // cpmToken: CPMトークン
 );
 ```
 
@@ -58,15 +58,15 @@ CPM取引時にエンドユーザーが店舗に提示するバーコードを�
 ```PHP
 $request = new Request\ListTransactions(
     [
-        'from' => "2024-05-17T09:05:05.000000Z",  // 開始日時
-        'to' => "2022-04-28T00:42:09.000000Z",    // 終了日時
+        'from' => "2021-06-06T15:09:12.000000Z",  // 開始日時
+        'to' => "2023-02-11T20:04:23.000000Z",    // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50,                         // 1ページ分の取引数
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'terminal_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 端末ID
-        'transaction_id' => "OYe9k",              // 取引ID
+        'transaction_id' => "sC9B0w8",            // 取引ID
         'organization_code' => "pocketchange",    // 組織コード
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
         'is_modified' => FALSE,                   // キャンセルフラグ
@@ -368,10 +368,10 @@ $request = new Request\CreateTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     [
-        'money_amount' => 6138,
-        'point_amount' => 1135,
-        'point_expires_at' => "2024-03-31T15:43:42.000000Z", // ポイント有効期限
-        'description' => "yRuU9Z8Q2HvADi2W3bSFZd8xGhm9VbcZgOZ4yYRMkHKY2yx9gLKmBFLvqK55BnlHTaFsTxQXtMZL6XWgDmeak1eoliBFeYUr35I7ta0sw71srL0z9GEG3PXvn"
+        'money_amount' => 9338,
+        'point_amount' => 9734,
+        'point_expires_at' => "2023-12-19T22:40:31.000000Z", // ポイント有効期限
+        'description' => "6bQig1LgqOPtR6wzZdUh56Q0WZf8IPC"
     ]
 );
 ```
@@ -549,7 +549,7 @@ $request = new Request\CreateTransaction(
 
 ```PHP
 $request = new Request\CreateTransactionGroup(
-    "l3BKAcPvm"                                   // name: 作成するトランザクショングループの名称です。
+    "7BRlPxu7"                                    // name: 作成するトランザクショングループの名称です。
 );
 ```
 
@@ -642,11 +642,11 @@ $request = new Request\ListTransactionsV2(
         'customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // エンドユーザーID
         'customer_name' => "太郎",                  // エンドユーザー名
         'description' => "店頭QRコードによる支払い",         // 取引説明文
-        'transaction_id' => "Pfih5KNNj",          // 取引ID
+        'transaction_id' => "PJAL2SS",            // 取引ID
         'is_modified' => FALSE,                   // キャンセルフラグ
         'types' => ["topup", "payment"],          // 取引種別 (複数指定可)、チャージ=topup、支払い=payment
-        'from' => "2021-05-09T13:41:55.000000Z",  // 開始日時
-        'to' => "2022-05-23T15:37:57.000000Z",    // 終了日時
+        'from' => "2021-10-31T00:44:20.000000Z",  // 開始日時
+        'to' => "2025-07-26T14:37:34.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -983,9 +983,9 @@ $request = new Request\ListBillTransactions(
         'description' => "店頭QRコードによる支払い",         // 取引説明文
         'transaction_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 取引ID
         'bill_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 支払いQRコードのID
-        'is_modified' => TRUE,                    // キャンセルフラグ
-        'from' => "2026-08-22T06:40:18.000000Z",  // 開始日時
-        'to' => "2020-06-09T14:55:32.000000Z",    // 終了日時
+        'is_modified' => FALSE,                   // キャンセルフラグ
+        'from' => "2020-08-29T12:04:11.000000Z",  // 開始日時
+        'to' => "2020-05-07T13:26:40.000000Z",    // 終了日時
         'next_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 次ページへ遷移する際に起点となるtransactionのID
         'prev_page_cursor_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 前ページへ遷移する際に起点となるtransactionのID
         'per_page' => 50                          // 1ページ分の取引数
@@ -1285,9 +1285,9 @@ $request = new Request\CreateTopupTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
         'bear_point_shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // ポイント支払時の負担店舗ID
-        'money_amount' => 8702,                   // マネー額
-        'point_amount' => 8654,                   // ポイント額
-        'point_expires_at' => "2023-11-15T07:37:28.000000Z", // ポイント有効期限
+        'money_amount' => 380,                    // マネー額
+        'point_amount' => 4136,                   // ポイント額
+        'point_expires_at' => "2022-05-04T14:56:10.000000Z", // ポイント有効期限
         'description' => "初夏のチャージキャンペーン",         // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
@@ -1545,11 +1545,13 @@ $request = new Request\CreatePaymentTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    126,                                          // amount: 支払い額
+    4216,                                         // amount: 支払い額
     [
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
+, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
         'strategy' => "point-preferred",          // 支払い時の残高消費方式
@@ -1816,14 +1818,13 @@ CPMトークンに設定されたスコープの取引を作ることができ�
 
 ```PHP
 $request = new Request\CreateCpmTransaction(
-    "Uca7AszKQRtnK9OFQAZk8l",                     // cpmToken: CPMトークン
+    "w3UniyERaYjCV8kJefHmgX",                     // cpmToken: CPMトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // shopId: 店舗ID
-    960.0,                                        // amount: 取引金額
+    4950.0,                                       // amount: 取引金額
     [
         'description' => "たい焼き(小倉)",              // 取引説明文
         'metadata' => "{\"key\":\"value\"}",      // 店舗側メタデータ
         'products' => [["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
-, ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 , ["jan_code" => "abc", "name" => "name1", "unit_price" => 100, "price" => 100, "quantity" => 1, "is_discounted" => FALSE, "other" => "{}"]
 ],                                                // 商品情報データ
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
@@ -2066,7 +2067,7 @@ $request = new Request\CreateTransferTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // senderId: 送金元ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // receiverId: 受取ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    1686.0,                                       // amount: 送金額
+    4869.0,                                       // amount: 送金額
     [
         'metadata' => "{\"key\":\"value\"}",      // 取引メタデータ
         'description' => "たい焼き(小倉)",              // 取引履歴に表示する説明文
@@ -2270,9 +2271,9 @@ $request = new Request\CreateExchangeTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    7048,
+    4759,
     [
-        'description' => "zl04cFD8UrQW71JWWTZgcCuDt4bOl52Y9Vo2q3PiHBjRUpdSYSIHe7WRd8QgrTh5gg3jBLh2J3dK297uJriMdLcWHclyy16UsYQYNNbAndnytowLyNOYLTsHdNmWw",
+        'description' => "Pcnp5Z68uiRVcRs6iSVq6CAE1cykbPfFVTBynTVWrp1vTM1qsdO4ANmXuI4pjaa3jMjNf8XzKnei",
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // リクエストID
     ]
 );
@@ -2486,7 +2487,7 @@ $request = new Request\RefundTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // transactionId: 取引ID
     [
         'description' => "返品対応のため",               // 取引履歴に表示する返金事由
-        'returning_point_expires_at' => "2025-06-11T19:42:40.000000Z" // 返却ポイントの有効期限
+        'returning_point_expires_at' => "2021-02-18T03:14:01.000000Z" // 返却ポイントの有効期限
     ]
 );
 ```

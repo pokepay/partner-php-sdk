@@ -12,13 +12,13 @@ CSVファイルから一括取引をします。
 
 ```PHP
 $request = new Request\BulkCreateTransaction(
-    "yxgBYhgQbJ9IVu3c5hWvjkkOZFf6OC",             // name: 一括取引タスク名
-    "zDv",                                        // content: 取引する情報のCSV
-    "yXye2YX5J7kswz32xxJb5gogkv5hZzhmNsrW",       // requestId: リクエストID
+    "hetKrZtdVOY5mSWLp",                          // name: 一括取引タスク名
+    "uTFDp0xZ",                                   // content: 取引する情報のCSV
+    "JMmmZyM3omHaaYolohp4juaWxRzzc4S4bskU",       // requestId: リクエストID
     [
-        'description' => "blOgZAXoZX3MAHgYPmjySnk7glzhXNaVAYaLNrv4APPX0VuhkKvXP9XmQeb4lI9NzNi4QRVhKIgwqcZXXujn6BV89aH0zGishU", // 一括取引の説明
+        'description' => "Y0GUghtLrKdmw4Mj2vrs21Q3QscjDt5dNl9IacbccU5Qd92Qhefxi61LsaPXprVMDsZV4dkyP5lnQdeGG2WwubsLa4vnCWV1QVssD1Im12VLZ8F0u3SxrrH1vjl84Vk", // 一括取引の説明
         'private_money_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // マネーID
-        'callback_url' => "https://XB3k1TCB.example.com" // コールバックURL
+        'callback_url' => "https://WU20DVNh.example.com" // コールバックURL
     ]
 );
 ```
