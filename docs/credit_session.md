@@ -13,7 +13,7 @@ $request = new Request\PostCreditSession(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "2021-11-24T13:35:34.000000Z",                // expiresAt: セッション有効期限
+    "2020-10-05T13:35:21.000000Z",                // expiresAt: セッション有効期限
     [
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // 冪等性キー
     ]
@@ -122,10 +122,10 @@ $request = new Request\PostCreditSession(
 ```PHP
 $request = new Request\CreateCreditSessionTransaction(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // sessionId: クレジットセッションID
-    6815.0,                                       // amount: 取引金額
+    793.0,                                        // amount: 取引金額
     [
         'shop_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 店舗ID
-        'description' => "OthUvaBWHSD95mCwqz0uQMfHDC0caZdfhivWlaI8SRhD29ZtnzslLBpLYCslrR5KJr7bn9hdX9OCfFXn9K2AgfBHU7qrHZsxfuhIX0b4ZUJ6pPrj6eqKTlwfXx7lcxZh2WMWiFuZyBOgd5E91H2aN9YB3D", // 取引説明
+        'description' => "xGnpm1kxDBXzRf1f9JiZjCJBrJjt5kCWz5zMWjynyv6KSgRW4BSGACMY5nowhDUZD5IZKMp0STmYDwTtHP0EcP6hogkn6nAjgTjLkVtsanieCAlqrCK8PwmGod9YcEsgY2DC2Vj8cKXwgERagqKSGsUKboeeiIHlMn", // 取引説明
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" // 冪等性キー
     ]
 );
