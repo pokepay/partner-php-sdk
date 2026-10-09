@@ -8,11 +8,11 @@ class CreateBankTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBankTopupTransaction(
-            "9e05582b-b4f6-42b6-902c-b1fac0b5aa50",
-            "4568f1a0-78da-43b7-865d-a1574e520159",
-            9020,
-            "848d8e64-7ace-4c64-9dfd-a916507138fe",
-            "4fd3a53d-3046-4da1-8830-1bc0847287cb"
+            "5e1bfa47-5760-4159-af99-d4536fd1d76c",
+            "f4d64d58-b6b2-4b60-9207-46eee754d828",
+            4365,
+            "8735398a-c99d-4606-ac61-b36bbdcd3a31",
+            "c339cf6e-d47b-4833-9cdd-47881cd30f33"
         );
         try {
             $response = $client->send($request);
@@ -27,13 +27,13 @@ class CreateBankTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBankTopupTransaction(
-            "9e05582b-b4f6-42b6-902c-b1fac0b5aa50",
-            "4568f1a0-78da-43b7-865d-a1574e520159",
-            9020,
-            "848d8e64-7ace-4c64-9dfd-a916507138fe",
-            "4fd3a53d-3046-4da1-8830-1bc0847287cb",
+            "5e1bfa47-5760-4159-af99-d4536fd1d76c",
+            "f4d64d58-b6b2-4b60-9207-46eee754d828",
+            4365,
+            "8735398a-c99d-4606-ac61-b36bbdcd3a31",
+            "c339cf6e-d47b-4833-9cdd-47881cd30f33",
             [
-                'receiver_user_id' => "21417332-0a1e-4bc1-a0ab-1744e993f131"
+                'receiver_user_id' => "25bc776f-b68b-4733-b85f-25b2539d3808"
             ]
         );
         try {

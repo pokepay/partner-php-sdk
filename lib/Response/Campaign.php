@@ -20,6 +20,10 @@ class Campaign extends Base
      */
     public $applicableShops;
     /**
+     * @var CampaignShopLabel[]|null
+     */
+    public $applicableShopLabels;
+    /**
      * @var boolean
      */
     public $isExclusive;
@@ -92,6 +96,9 @@ class Campaign extends Base
     {
         $tz = new DateTimeZone($timezone);
         foreach ($this->applicableShops as $item) {
+            $item->normalize($timezone);
+        }
+        foreach ($this->applicableShopLabels as $item) {
             $item->normalize($timezone);
         }
         $this->startsAt->setTimezone($tz);
