@@ -117,12 +117,12 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'created_from' => "2022-03-22T01:22:02.000000Z",
-                'created_to' => "2022-11-20T12:48:14.000000Z",
-                'issuer_shop_id' => "a49f033e-a6f2-4534-a41c-d8422fcd3f0b",
-                'description' => "WzD3",
-                'is_onetime' => TRUE,
-                'is_disabled' => FALSE
+                'created_from' => "2026-10-18T16:13:19.000000Z",
+                'created_to' => "2022-03-22T01:22:02.000000Z",
+                'issuer_shop_id' => "1eb457c3-410e-433e-b234-63e49549bc1c",
+                'description' => "SWz",
+                'is_onetime' => FALSE,
+                'is_disabled' => TRUE
             ]
         );
         try {
@@ -139,12 +139,12 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'starts_to' => "2024-03-07T03:20:07.000000Z",
-                'created_from' => "2021-04-28T05:09:39.000000Z",
-                'created_to' => "2020-11-14T02:15:23.000000Z",
-                'issuer_shop_id' => "a76bb2d4-1ec1-4ff6-9af4-731a9a58d00c",
-                'description' => "Cmtv",
-                'is_onetime' => FALSE,
+                'starts_to' => "2026-07-23T21:53:08.000000Z",
+                'created_from' => "2023-10-15T15:25:50.000000Z",
+                'created_to' => "2022-12-02T11:17:53.000000Z",
+                'issuer_shop_id' => "67dd5167-0d13-4d4d-80bb-b2d4e4041ec1",
+                'description' => "ZtCmtvi",
+                'is_onetime' => TRUE,
                 'is_disabled' => TRUE
             ]
         );
@@ -162,11 +162,11 @@ class ListChecks extends TestCase
         $client = $this->newClient();
         $request = new Request\ListChecks(
             [
-                'starts_from' => "2023-12-23T21:34:04.000000Z",
-                'starts_to' => "2020-04-17T04:15:04.000000Z",
-                'created_from' => "2022-05-26T16:46:07.000000Z",
-                'created_to' => "2023-10-26T03:41:58.000000Z",
-                'issuer_shop_id' => "374f7c2b-c042-4ba4-886f-c1ccefd64cc8",
+                'starts_from' => "2020-04-17T04:15:04.000000Z",
+                'starts_to' => "2022-05-26T16:46:07.000000Z",
+                'created_from' => "2023-10-26T03:41:58.000000Z",
+                'created_to' => "2023-11-20T13:20:43.000000Z",
+                'issuer_shop_id' => "7185c042-4ba4-4d48-afcc-4cc8a81d46da",
                 'description' => "Hyso5u",
                 'is_onetime' => TRUE,
                 'is_disabled' => TRUE
