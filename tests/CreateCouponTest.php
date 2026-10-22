@@ -8,13 +8,13 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 1815
+                'discount_amount' => 5244
             ]
         );
         try {
@@ -30,14 +30,14 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 1950,
-                'num_recipients_cap' => 5786
+                'discount_amount' => 8315,
+                'num_recipients_cap' => 3895
             ]
         );
         try {
@@ -53,15 +53,15 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 1767,
-                'storage_id' => "c5bc7591-ca36-4b88-a6fa-b479b99786f0",
-                'num_recipients_cap' => 6752
+                'discount_amount' => 5869,
+                'storage_id' => "abc63683-3390-4009-8b1b-813f2e9fd071",
+                'num_recipients_cap' => 9490
             ]
         );
         try {
@@ -77,16 +77,16 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 5899,
-                'min_amount' => 296,
-                'storage_id' => "2bc8a34c-7e97-40dc-92d2-f8555b917f37",
-                'num_recipients_cap' => 7205
+                'discount_amount' => 6297,
+                'min_amount' => 9403,
+                'storage_id' => "c6dae969-5941-4438-a6d2-7a2b29e67bbd",
+                'num_recipients_cap' => 8609
             ]
         );
         try {
@@ -102,17 +102,17 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 7563,
-                'usage_limit' => 2526,
-                'min_amount' => 8613,
-                'storage_id' => "d3610148-4b6a-4a76-9006-91382e58c9a6",
-                'num_recipients_cap' => 9431
+                'discount_amount' => 356,
+                'usage_limit' => 9011,
+                'min_amount' => 3412,
+                'storage_id' => "8d40fa71-a6c8-4021-95f2-8ac90e353977",
+                'num_recipients_cap' => 4582
             ]
         );
         try {
@@ -128,18 +128,18 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 3453,
-                'code' => "jeN",
-                'usage_limit' => 6431,
-                'min_amount' => 2713,
-                'storage_id' => "53779806-0217-4d4c-9a7b-764b24d3eea5",
-                'num_recipients_cap' => 9844
+                'discount_amount' => 5360,
+                'code' => "FXAp",
+                'usage_limit' => 647,
+                'min_amount' => 1097,
+                'storage_id' => "3b55981c-e8d3-4c8b-a7cc-5a51079af755",
+                'num_recipients_cap' => 5756
             ]
         );
         try {
@@ -155,19 +155,19 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 5071,
+                'discount_amount' => 3720,
                 'is_public' => FALSE,
-                'code' => "Wx",
-                'usage_limit' => 6972,
-                'min_amount' => 7368,
-                'storage_id' => "32da6800-dd2a-4e1a-a0e4-aa633be8b23b",
-                'num_recipients_cap' => 6346
+                'code' => "JL",
+                'usage_limit' => 4219,
+                'min_amount' => 23,
+                'storage_id' => "9555380b-4604-4a8d-849c-cfef88c9c420",
+                'num_recipients_cap' => 9701
             ]
         );
         try {
@@ -183,20 +183,20 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 7897,
-                'is_hidden' => TRUE,
+                'discount_amount' => 7845,
+                'is_hidden' => FALSE,
                 'is_public' => TRUE,
-                'code' => "fr6CL909V",
-                'usage_limit' => 6402,
-                'min_amount' => 10000,
-                'storage_id' => "8de487ca-489a-4221-bff3-b9189c0d1da6",
-                'num_recipients_cap' => 7579
+                'code' => "4rnSGnuDl",
+                'usage_limit' => 4401,
+                'min_amount' => 8367,
+                'storage_id' => "6431da57-1ba6-419c-878f-6172f264c620",
+                'num_recipients_cap' => 5858
             ]
         );
         try {
@@ -212,21 +212,21 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 74,
+                'discount_amount' => 7535,
                 'is_disabled' => TRUE,
-                'is_hidden' => FALSE,
-                'is_public' => FALSE,
-                'code' => "nV3jRZ",
-                'usage_limit' => 9268,
-                'min_amount' => 6498,
-                'storage_id' => "f533decc-c821-4033-9aed-bd4be1152bc6",
-                'num_recipients_cap' => 7344
+                'is_hidden' => TRUE,
+                'is_public' => TRUE,
+                'code' => "KKbLr",
+                'usage_limit' => 5458,
+                'min_amount' => 7234,
+                'storage_id' => "e6aa05bf-ce22-4e47-87a1-15624a62bb59",
+                'num_recipients_cap' => 390
             ]
         );
         try {
@@ -242,22 +242,22 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 2988,
-                'display_ends_at' => "2025-12-19T22:14:42.000000Z",
+                'discount_amount' => 588,
+                'display_ends_at' => "2026-03-11T09:04:29.000000Z",
                 'is_disabled' => TRUE,
                 'is_hidden' => TRUE,
                 'is_public' => TRUE,
-                'code' => "2cSSl7Ob",
-                'usage_limit' => 8223,
-                'min_amount' => 1572,
-                'storage_id' => "0242e81f-551f-4178-8c56-67d9356ce9b3",
-                'num_recipients_cap' => 1170
+                'code' => "B5z5qrK2",
+                'usage_limit' => 237,
+                'min_amount' => 2193,
+                'storage_id' => "53342958-20f5-4f44-bb30-4e2b8176b606",
+                'num_recipients_cap' => 7448
             ]
         );
         try {
@@ -273,23 +273,23 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 7097,
-                'display_starts_at' => "2020-05-08T19:09:55.000000Z",
-                'display_ends_at' => "2025-10-28T17:30:05.000000Z",
+                'discount_amount' => 1706,
+                'display_starts_at' => "2026-06-07T05:34:13.000000Z",
+                'display_ends_at' => "2020-07-21T15:29:27.000000Z",
                 'is_disabled' => FALSE,
                 'is_hidden' => TRUE,
                 'is_public' => TRUE,
-                'code' => "4",
-                'usage_limit' => 529,
-                'min_amount' => 6428,
-                'storage_id' => "b435da68-1257-49e9-bf19-24bd03539eba",
-                'num_recipients_cap' => 502
+                'code' => "ldTa29xEBf",
+                'usage_limit' => 6170,
+                'min_amount' => 9285,
+                'storage_id' => "c2980cb4-9a8c-45af-aa9e-f28de9eacee1",
+                'num_recipients_cap' => 7960
             ]
         );
         try {
@@ -305,24 +305,24 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 401,
-                'discount_upper_limit' => 9933,
-                'display_starts_at' => "2020-09-22T04:21:42.000000Z",
-                'display_ends_at' => "2023-06-06T06:51:02.000000Z",
+                'discount_amount' => 4770,
+                'discount_upper_limit' => 879,
+                'display_starts_at' => "2023-04-18T23:13:36.000000Z",
+                'display_ends_at' => "2023-05-30T15:04:29.000000Z",
                 'is_disabled' => TRUE,
-                'is_hidden' => TRUE,
+                'is_hidden' => FALSE,
                 'is_public' => FALSE,
-                'code' => "jrsl",
-                'usage_limit' => 9165,
-                'min_amount' => 1199,
-                'storage_id' => "2987976a-6eb0-4d32-9a53-0c2ca8b88713",
-                'num_recipients_cap' => 7839
+                'code' => "gaw81k",
+                'usage_limit' => 2547,
+                'min_amount' => 1104,
+                'storage_id' => "7ad40c99-cedf-4658-be0d-2070897a78ac",
+                'num_recipients_cap' => 8859
             ]
         );
         try {
@@ -338,25 +338,25 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 1599,
-                'description' => "vIS4FqKIGpu0MDWpiDvc0",
-                'discount_upper_limit' => 2559,
-                'display_starts_at' => "2024-09-14T02:29:36.000000Z",
-                'display_ends_at' => "2026-04-30T11:45:01.000000Z",
-                'is_disabled' => FALSE,
+                'discount_amount' => 8468,
+                'description' => "HnKZwzgtMuSjmXprQOJIDMtkxUA3CwMowYwsohy6o54EyGXhKAybq9is4L00eclCf6ygQgmzcLUKbT5feGtXeOgCjHXo5HdhOmdyoXuDdYfk0Kl5",
+                'discount_upper_limit' => 6446,
+                'display_starts_at' => "2026-09-19T07:14:55.000000Z",
+                'display_ends_at' => "2024-07-20T06:21:11.000000Z",
+                'is_disabled' => TRUE,
                 'is_hidden' => FALSE,
                 'is_public' => TRUE,
-                'code' => "6ElFsXXAu",
-                'usage_limit' => 945,
-                'min_amount' => 8890,
-                'storage_id' => "cc0a2e67-3191-4d67-a5f2-11a022eb03c4",
-                'num_recipients_cap' => 6486
+                'code' => "UrTL0y",
+                'usage_limit' => 2034,
+                'min_amount' => 3927,
+                'storage_id' => "fe3d4b32-22c9-4bc6-bb6e-9a1f8375170a",
+                'num_recipients_cap' => 2702
             ]
         );
         try {
@@ -372,15 +372,15 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 2883,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["1a38be5d-8111-45b2-9e67-49ee75034483", "9a1c9714-002b-4921-93f5-d0caa114a12f", "471a75a5-cd34-4cca-99ea-f03c26633e06", "2567f9c4-1b7b-40bd-885d-251ed9ef954f", "8ec86228-1142-4a5e-8de4-6ab2f1cb6edc", "0927b436-dc53-41dc-ab3c-55b365843e6d"]
+                'discount_amount' => 2518,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["38b730e1-9014-41e2-82fe-8e15d061efaf", "7fab0bf4-4ba7-4f75-9a4d-7f40d2eca76e", "99c5b80e-c9ee-42ff-ab61-f9ea624e7964"]
             ]
         );
         try {
@@ -396,16 +396,16 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 1432,
-                'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["1d8f9fe8-0c5e-485f-8bb7-7f47d0160160", "7de28da7-d163-4ea3-9639-8c1502d9bca0"],
-                'num_recipients_cap' => 4848
+                'discount_amount' => 7843,
+                'is_shop_specified' => FALSE,
+                'available_shop_ids' => ["29ad37da-25cb-4d61-ba8a-16967d090da7", "14474be1-102c-48a6-bb02-6ae3e2f95aa9", "de9a8e8c-750e-4db8-a20e-7ee372fb826b", "5e7ddbe1-dbf3-44f8-b172-d09be1ec89f0", "50ab18f5-7882-435e-bf96-e6306493bacd", "6da70b10-42b7-4a70-a849-be02b80c1cd5", "7172cf73-1fd7-4b21-9cb6-6a989e61bc1d", "705428a3-73fe-4cb4-a9d4-8faf779e5cc4"],
+                'num_recipients_cap' => 7830
             ]
         );
         try {
@@ -421,17 +421,17 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 5348,
+                'discount_amount' => 8475,
                 'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["895348ea-442b-45b9-9b89-6f8ddd2d1b62", "9c994583-d5a0-4261-95cd-8c2eeac848a4", "4c6ddacf-c730-46d1-815a-045594dd570d", "b6e47e45-98c6-40a7-933b-255d62470c0f", "164fd332-e742-4274-ac52-ed3e84587840", "ff7fa534-0856-4049-911f-fd3ab1d906d6", "3ad14b16-701a-4dad-95b2-9979391dcf21"],
-                'storage_id' => "23b5b990-b3b1-4c0e-88dc-610ad8dbf50a",
-                'num_recipients_cap' => 3442
+                'available_shop_ids' => ["fec51439-d46f-4769-9711-c5b4aa6c4724", "9761cbfd-fbdb-476a-be54-72a5b2b39aa9", "8751bbf5-1833-43c6-b0c8-5dd2e54b3fd9", "f2799dcb-3327-4d80-9743-98fbc9fa871a", "5bee6b1a-f1c2-4945-a14d-9f6cfca1ceeb"],
+                'storage_id' => "c363572c-47c4-4155-ae90-5b6183060de8",
+                'num_recipients_cap' => 439
             ]
         );
         try {
@@ -447,18 +447,18 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 3034,
-                'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["5d4b7f12-fff7-4965-b529-14a080e6a769", "53f3ecf7-a5fe-4597-b26c-614c4d628c80", "85ec37d2-06a7-49bc-a3b5-8bb484577fe8", "c1ee978a-9cc6-47f3-bed4-467c59582dba", "c03e39d7-3a52-4928-b3a7-3efddbb07668", "78a5ce64-8de9-43e1-bc64-0cbe4465e0ac"],
-                'min_amount' => 503,
-                'storage_id' => "4130db89-93d2-4d35-87bf-e8c9fed6fc98",
-                'num_recipients_cap' => 6283
+                'discount_amount' => 1382,
+                'is_shop_specified' => FALSE,
+                'available_shop_ids' => ["3050b43d-f6f6-4b3b-84c1-07d20274f9f0", "8fb23835-c276-4bd8-b7cd-853da1310a75", "ebe93c0c-a58a-42f0-9085-7e0e2ba0ec3c", "a460d5b6-e7fc-47c6-96ee-ca7f52609f2c", "8869513f-0699-4f3c-8c3d-83278c761014", "e648fa19-8562-4836-8a6a-12c18d6ad44b", "5a1f5582-d185-49d9-98fc-8aabe1152e38", "5103679a-ccc8-439d-bc12-c1a02e5a84a3", "e190893a-845f-4cae-a3fa-d0654275d05d"],
+                'min_amount' => 6512,
+                'storage_id' => "1f8f2807-3bd3-40d1-acc6-11dbbd135658",
+                'num_recipients_cap' => 4526
             ]
         );
         try {
@@ -474,19 +474,19 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 4414,
-                'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["2626d128-337a-4a4c-96c9-d679fa8702f2", "b8fbe233-adf4-4f56-9b3d-8ea1211d3428", "26bcafbd-fa1e-4574-8cf1-ef1b330f5e5a", "27a7c67d-20a7-47bf-9683-bda3e25d2c92", "b6433aa0-2f77-4720-8953-2347a0fce88c", "5aa1438b-6c8c-41d2-b9c1-40884c550174", "ef8fcf5f-8753-4284-84b9-24e31d017392", "d2acfecf-9b5f-4996-abe3-0c4304528b00", "0db01da7-b922-41d6-8332-2531be10fe21"],
-                'usage_limit' => 6828,
-                'min_amount' => 9235,
-                'storage_id' => "f4377a32-0631-45fc-af82-6c9fdbf3e1d6",
-                'num_recipients_cap' => 8585
+                'discount_amount' => 6020,
+                'is_shop_specified' => FALSE,
+                'available_shop_ids' => ["fbea08a8-9de7-4831-b026-e99f6f037ea9", "4408c9b8-1068-40b9-a3a8-90c59f04cd06"],
+                'usage_limit' => 9591,
+                'min_amount' => 8244,
+                'storage_id' => "240ed03f-849a-458f-80d4-aa56894c4312",
+                'num_recipients_cap' => 7722
             ]
         );
         try {
@@ -502,20 +502,20 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 235,
-                'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["6ada1085-577c-468c-92ea-b4dd6e93c86b", "38b0a09c-2ca2-4bc0-a2dd-3892efbf9fa0", "6c48d2c1-8886-47ed-be26-4641eef07c75"],
-                'code' => "sWm",
-                'usage_limit' => 6569,
-                'min_amount' => 4441,
-                'storage_id' => "af75a738-2fec-4c60-95e3-d0501f85b55d",
-                'num_recipients_cap' => 4520
+                'discount_amount' => 7603,
+                'is_shop_specified' => FALSE,
+                'available_shop_ids' => ["6ba7959e-70d8-42e2-92ba-32a144cadd66", "864296d1-e7b4-4acd-825c-41db0cc71c4b", "e16640c2-753c-41f1-8596-96439fe84033", "91ea249b-06d3-47a7-bcb2-72ab962b0da9", "9ac8f89b-fae9-40c4-8697-68ee4ecdddd2", "bf4eed45-c033-4980-bd53-73f75eff935e"],
+                'code' => "skPWs7mG",
+                'usage_limit' => 2200,
+                'min_amount' => 8827,
+                'storage_id' => "4f73d3f6-aef3-4819-a15f-7acc65460118",
+                'num_recipients_cap' => 7835
             ]
         );
         try {
@@ -531,21 +531,21 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 9369,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["88ec6d90-aec6-4148-b8cf-d7c25177ff29", "707c3891-2b9d-4704-954f-44b04ca544a3", "fc1ed892-c8e7-4754-8f07-152be7f5a75c", "9ebb83bb-7750-4ea3-b641-1acce92f0305", "e61b3919-ca95-4a7e-ab67-2300946945a9", "1b4f3a80-541c-489b-8d84-8dcaad431b91", "265f3800-4c1c-469c-a189-f61e00683577"],
+                'discount_amount' => 4414,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["260a0124-f2fa-49b2-bb24-42bd7f303169", "ad1e2e20-f021-43a3-93eb-21e193d8b27e", "0cbb6e9c-7d6c-40ed-ae28-345dfe924e35", "a0c6ac0c-8c51-42c9-8a7d-3c9e01bf5ae3", "364da970-e6e0-405a-aa7b-b9626a92bc2d", "3f7ecfb2-ebf1-4a19-a9fc-b882521be45b", "77c2f73d-a293-4435-88d9-491a519f345d"],
                 'is_public' => TRUE,
-                'code' => "wCaYZ0",
-                'usage_limit' => 5931,
-                'min_amount' => 5471,
-                'storage_id' => "a96f79b5-4741-4324-b49c-ded78ea9cc3c",
-                'num_recipients_cap' => 9477
+                'code' => "6ax",
+                'usage_limit' => 3329,
+                'min_amount' => 6949,
+                'storage_id' => "588138ef-93dc-42d4-9449-0362ecad3323",
+                'num_recipients_cap' => 6123
             ]
         );
         try {
@@ -561,22 +561,22 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 1118,
+                'discount_amount' => 446,
                 'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["b9f7d024-3326-4331-aec9-6728fdc95641", "cc4ad927-8d5a-4b89-9088-610f7ab44967", "bc376201-f6cd-4439-bf46-eb448aef9a46", "7ec924fe-2f7b-477a-901a-806cd54d07a4"],
+                'available_shop_ids' => ["be6ca5fe-7129-4e45-a1d0-267f38e465c2"],
                 'is_hidden' => FALSE,
-                'is_public' => TRUE,
-                'code' => "68w",
-                'usage_limit' => 899,
-                'min_amount' => 3716,
-                'storage_id' => "c8f7acd0-09fa-4cd0-8ea7-b8310734c99e",
-                'num_recipients_cap' => 7030
+                'is_public' => FALSE,
+                'code' => "Rli",
+                'usage_limit' => 8172,
+                'min_amount' => 9761,
+                'storage_id' => "14f0a91a-c5ca-4b37-8385-b0285accadf9",
+                'num_recipients_cap' => 4790
             ]
         );
         try {
@@ -592,23 +592,23 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 2695,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["2ed994f0-9e95-48c0-81d5-0c6c9680aeff", "5df030f2-9e30-43e5-b228-b2a679231135", "b0291cb5-1a9d-4a6f-9cb0-93b658615f7b", "7e222f82-d1fb-48b7-9c59-a7fdbe7ed696", "8b68ca2a-2253-44d9-b4ae-d9f2beb9803d", "b2d7f040-0174-4ccc-b0d1-52496a5a0468", "fafad8dd-c5d4-47f3-91f4-f2225203c666"],
-                'is_disabled' => TRUE,
-                'is_hidden' => TRUE,
+                'discount_amount' => 1343,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["b6ca284d-755e-4b80-9de6-337aa7ad2385"],
+                'is_disabled' => FALSE,
+                'is_hidden' => FALSE,
                 'is_public' => FALSE,
-                'code' => "NUlxPCHvP",
-                'usage_limit' => 9985,
-                'min_amount' => 6153,
-                'storage_id' => "5b4d2e48-8c65-48a4-945a-00b47333752f",
-                'num_recipients_cap' => 1896
+                'code' => "0C",
+                'usage_limit' => 1466,
+                'min_amount' => 2199,
+                'storage_id' => "ff7c69c8-459f-4a96-a302-8f80f14c9fbc",
+                'num_recipients_cap' => 9624
             ]
         );
         try {
@@ -624,24 +624,24 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 7824,
-                'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["a22e3e01-ba2c-48ae-a98a-538c05ca2614"],
-                'display_ends_at' => "2026-05-25T17:05:07.000000Z",
-                'is_disabled' => TRUE,
+                'discount_amount' => 4837,
+                'is_shop_specified' => FALSE,
+                'available_shop_ids' => ["7f4a6dc6-bc9e-473c-a5a0-f0ce397b7327", "b7527ae1-cbb5-4084-9469-6b4e401d43dd", "7af9087b-9148-47aa-9393-093c8cc190b8", "5c55de2c-203e-4cbb-ba61-a1e576e5303c", "8555ce33-031f-4cf3-b1d6-4e9918c5cb7d", "b63217e7-7905-412d-8b6a-1f800c341cdc", "7caf5a63-46b7-4251-b8fc-cf8bdf885e18"],
+                'display_ends_at' => "2024-01-10T21:22:54.000000Z",
+                'is_disabled' => FALSE,
                 'is_hidden' => TRUE,
-                'is_public' => TRUE,
-                'code' => "D87F",
-                'usage_limit' => 1973,
-                'min_amount' => 7578,
-                'storage_id' => "d7760b1a-491d-48cf-9bcc-5b73a599bbaf",
-                'num_recipients_cap' => 1777
+                'is_public' => FALSE,
+                'code' => "S",
+                'usage_limit' => 4173,
+                'min_amount' => 1087,
+                'storage_id' => "834153cc-9395-4cd0-86ee-711d70ffdf1d",
+                'num_recipients_cap' => 2876
             ]
         );
         try {
@@ -657,25 +657,25 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 5119,
-                'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["6386839c-a762-419e-8976-774e07b8c658", "af861a09-80ab-4d26-b0d3-c3980194fed6", "817c5f11-5b69-4ac4-9e19-81a63a3224a1", "559bf6ae-5add-46de-82d7-593ef9d457e6", "d3a742ff-2c1d-4101-81fe-a3d0a166046d", "dc1f0dc7-5e73-4548-98b0-66388ef5e8c5"],
-                'display_starts_at' => "2022-04-05T11:31:28.000000Z",
-                'display_ends_at' => "2021-08-24T21:57:22.000000Z",
-                'is_disabled' => TRUE,
+                'discount_amount' => 7546,
+                'is_shop_specified' => FALSE,
+                'available_shop_ids' => ["f589a637-501a-4317-b8e8-8663e011553b", "bdbbbd61-9716-46ba-9237-3ad638ed41f5", "7f9768c3-51d0-4fd1-9f82-850cff0afa1a", "e58cbf14-3388-41ee-b318-1c7431ae1292", "dff3a4a6-82e7-40c4-8bcb-849366f2560e", "6d018086-0373-4950-bee7-1700feeeb00d", "8c18f9b1-c474-4187-8bb8-17748437a398", "04fc4c46-f239-4873-bc9d-88ead0f056f7", "7f8946a9-0493-4520-91ee-aec2b5605b70", "f6fa37df-7460-4e31-afe0-46ee48d2654d"],
+                'display_starts_at' => "2021-01-30T11:21:07.000000Z",
+                'display_ends_at' => "2026-02-02T06:01:45.000000Z",
+                'is_disabled' => FALSE,
                 'is_hidden' => TRUE,
                 'is_public' => FALSE,
-                'code' => "TJypI",
-                'usage_limit' => 2576,
-                'min_amount' => 772,
-                'storage_id' => "3c40dcb4-42b2-495e-89ee-09f54ae95793",
-                'num_recipients_cap' => 4751
+                'code' => "6Xeri5tCJD",
+                'usage_limit' => 5791,
+                'min_amount' => 6683,
+                'storage_id' => "f9893f73-adfe-4b47-845e-53e3fb12325c",
+                'num_recipients_cap' => 6638
             ]
         );
         try {
@@ -691,26 +691,26 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 2851,
+                'discount_amount' => 4859,
                 'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["753e8213-2f3b-448c-9c35-889b1cb3b2b6", "e0fd0f3d-845f-49d6-a0cc-cf6bb172c997", "99aa0dce-cdf9-46c5-899d-b685c33ea991", "791a6655-8953-440e-acd7-16d397f98e9f", "4e3afda4-7b61-4c9c-b65e-a6afa677a6e0", "2584cf6c-0e5a-4327-8b7c-f721be004ac7", "50e8a6a6-c9ef-44b7-90e8-b590b46e20bf", "b00c4d54-282a-4a11-992b-14d4272023c7"],
-                'discount_upper_limit' => 7283,
-                'display_starts_at' => "2026-08-08T08:49:55.000000Z",
-                'display_ends_at' => "2025-04-02T06:27:36.000000Z",
+                'available_shop_ids' => ["592f5480-3130-4407-96b9-b7958f2e7be9", "3812fbda-0618-4f3e-99a4-3e592acc7b3e", "cd55c210-9758-4107-a6b0-09a908915bbb", "83b65928-3fea-485b-88f3-f6b0500f8564", "dd6b8802-f8f3-4e90-970b-e9b3584bc4d9", "769bc327-bb34-4431-ac16-955d4bb080af", "0f1deca0-874b-4488-9e30-0bfde655db12", "306649a2-1b32-49c2-9ea5-62011b24c726", "31c57e0f-b4b8-40ca-983d-825f3402e0c1", "bcd4ee9b-2c62-446b-8ecf-4e0d32301846"],
+                'discount_upper_limit' => 4939,
+                'display_starts_at' => "2024-09-18T14:24:42.000000Z",
+                'display_ends_at' => "2020-10-14T16:43:43.000000Z",
                 'is_disabled' => FALSE,
-                'is_hidden' => FALSE,
-                'is_public' => TRUE,
-                'code' => "TO",
-                'usage_limit' => 9148,
-                'min_amount' => 2393,
-                'storage_id' => "4e08a0ae-c43e-486b-a55b-603f8b37f6f9",
-                'num_recipients_cap' => 7450
+                'is_hidden' => TRUE,
+                'is_public' => FALSE,
+                'code' => "a",
+                'usage_limit' => 361,
+                'min_amount' => 7210,
+                'storage_id' => "ef5e8244-0ad8-44b1-b1c0-98067f8dc928",
+                'num_recipients_cap' => 1435
             ]
         );
         try {
@@ -726,27 +726,27 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_amount' => 4576,
+                'discount_amount' => 1366,
                 'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["16bef6aa-5c2d-4d36-8087-04ecb6fc9c8a", "5f871ef7-8c2b-4fdc-901d-0b91631d208f", "e47da5b0-e913-4a9c-8e0b-fdb273059331", "f0167af9-919b-4b53-8862-aa7005a1ea6b", "3416b3e5-4f6d-4b1f-84a5-d90403ee27aa", "2e7e66cd-a45b-4e07-9fae-8fdb82b69b1d", "7d493633-fc27-42e1-bf16-757785a9d35b", "d0757f0a-869f-44a0-8bc0-b0514c908a25", "7121435f-6e19-4620-b9ae-0c8f3c116d8d", "290fb61e-10fb-4aa3-9cb2-03faacfd62af"],
-                'description' => "T4JKnzi5L8cpHHMwXcAIRcjNLk0uNWeNHUqo3XUcSS2VsZS4Lj4GkDI0oXRDtB",
-                'discount_upper_limit' => 2762,
-                'display_starts_at' => "2020-06-05T10:24:56.000000Z",
-                'display_ends_at' => "2025-06-22T23:58:10.000000Z",
-                'is_disabled' => TRUE,
-                'is_hidden' => TRUE,
-                'is_public' => TRUE,
-                'code' => "11f",
-                'usage_limit' => 5733,
-                'min_amount' => 2302,
-                'storage_id' => "d99ab3c0-26fc-4e14-98ae-5021fccf2c17",
-                'num_recipients_cap' => 9410
+                'available_shop_ids' => ["3724976d-7982-4e23-a3fa-e38ceb529f6b", "c9e4019c-ac69-4ad1-9322-8f9e94080b39", "3900844b-f69a-4067-a475-483d357681e6", "2a8a732b-47bf-4b4a-832e-404f6e33a2f1", "ac2be83d-0ad1-42a2-ac25-ef6fc95c5898"],
+                'description' => "qEQic9b7rjANNhMIW5uX0nomeRn6xi8YDAJH7HJXNF3Oy8VhKyGvyermibojKhVPIvz1I1HvcbolySSXeAcLtwR11xDAJrx0pv2XvsLcCeEcDmfq2CKw2F1KvbCjTFkaD9SEmE89oiZ9sjCAHNKHbkDV7xD9UgYkUYCn38T5jddntLP9wvyYD1qoSVwF",
+                'discount_upper_limit' => 6660,
+                'display_starts_at' => "2025-05-28T06:11:00.000000Z",
+                'display_ends_at' => "2025-03-18T09:33:36.000000Z",
+                'is_disabled' => FALSE,
+                'is_hidden' => FALSE,
+                'is_public' => FALSE,
+                'code' => "PG",
+                'usage_limit' => 5271,
+                'min_amount' => 1385,
+                'storage_id' => "af67d736-04d9-45ee-8222-c8512666778b",
+                'num_recipients_cap' => 6725
             ]
         );
         try {
@@ -762,13 +762,13 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 2150.0
+                'discount_percentage' => 3623.0
             ]
         );
         try {
@@ -784,14 +784,14 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 8550.0,
-                'num_recipients_cap' => 1333
+                'discount_percentage' => 1288.0,
+                'num_recipients_cap' => 1721
             ]
         );
         try {
@@ -807,15 +807,15 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 4454.0,
-                'storage_id' => "837e8452-f75d-4d90-b29c-9606a6a29ce0",
-                'num_recipients_cap' => 8647
+                'discount_percentage' => 6364.0,
+                'storage_id' => "ebc994cd-ad6c-40cc-b77e-ab36530aad57",
+                'num_recipients_cap' => 4431
             ]
         );
         try {
@@ -831,16 +831,16 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 1571.0,
-                'min_amount' => 5007,
-                'storage_id' => "551e8d53-3c07-44c4-b2ae-f447792a3255",
-                'num_recipients_cap' => 2990
+                'discount_percentage' => 9704.0,
+                'min_amount' => 6943,
+                'storage_id' => "68d54c86-1651-40ba-b158-0e0108754a62",
+                'num_recipients_cap' => 975
             ]
         );
         try {
@@ -856,17 +856,17 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 8751.0,
-                'usage_limit' => 8126,
-                'min_amount' => 3632,
-                'storage_id' => "b03cb5d5-45b0-4221-99d3-61ac6bdeea41",
-                'num_recipients_cap' => 5257
+                'discount_percentage' => 9678.0,
+                'usage_limit' => 718,
+                'min_amount' => 7389,
+                'storage_id' => "779596d2-b1d4-4cc5-9229-d34e2aa43931",
+                'num_recipients_cap' => 8481
             ]
         );
         try {
@@ -882,18 +882,18 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 9137.0,
-                'code' => "89",
-                'usage_limit' => 2547,
-                'min_amount' => 8463,
-                'storage_id' => "a77b0af3-240f-4c43-b540-996232de7770",
-                'num_recipients_cap' => 8952
+                'discount_percentage' => 211.0,
+                'code' => "o",
+                'usage_limit' => 8689,
+                'min_amount' => 1403,
+                'storage_id' => "2edf27dd-caba-4362-84dc-3ead2f8a82c8",
+                'num_recipients_cap' => 3701
             ]
         );
         try {
@@ -909,19 +909,19 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 2398.0,
-                'is_public' => FALSE,
-                'code' => "oj",
-                'usage_limit' => 6193,
-                'min_amount' => 9139,
-                'storage_id' => "b32ad5f6-deb0-4511-aa54-edcc3c90b697",
-                'num_recipients_cap' => 943
+                'discount_percentage' => 7947.0,
+                'is_public' => TRUE,
+                'code' => "W",
+                'usage_limit' => 1437,
+                'min_amount' => 3695,
+                'storage_id' => "1cdb1f45-3ee5-4f79-bc4c-b0595b00effe",
+                'num_recipients_cap' => 1004
             ]
         );
         try {
@@ -937,20 +937,20 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 4246.0,
-                'is_hidden' => TRUE,
-                'is_public' => TRUE,
-                'code' => "kZtGKmc",
-                'usage_limit' => 1384,
-                'min_amount' => 6719,
-                'storage_id' => "0ba7b296-a6dd-4a09-a610-07b134090b45",
-                'num_recipients_cap' => 6519
+                'discount_percentage' => 7777.0,
+                'is_hidden' => FALSE,
+                'is_public' => FALSE,
+                'code' => "EzRnl",
+                'usage_limit' => 9979,
+                'min_amount' => 4396,
+                'storage_id' => "1d9afccb-b2d9-426b-98a0-c52512422bf9",
+                'num_recipients_cap' => 4498
             ]
         );
         try {
@@ -966,21 +966,21 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 1332.0,
+                'discount_percentage' => 8062.0,
                 'is_disabled' => FALSE,
                 'is_hidden' => FALSE,
-                'is_public' => TRUE,
-                'code' => "1rbMFU",
-                'usage_limit' => 141,
-                'min_amount' => 9686,
-                'storage_id' => "84c89d6c-fa47-4561-b852-e2e3209f5e19",
-                'num_recipients_cap' => 4065
+                'is_public' => FALSE,
+                'code' => "T2Gi0",
+                'usage_limit' => 7959,
+                'min_amount' => 392,
+                'storage_id' => "c54f5c75-2ef1-441a-a402-e70512c55ef7",
+                'num_recipients_cap' => 4466
             ]
         );
         try {
@@ -996,22 +996,22 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 5006.0,
-                'display_ends_at' => "2025-04-03T04:10:03.000000Z",
+                'discount_percentage' => 6356.0,
+                'display_ends_at' => "2022-10-23T23:19:22.000000Z",
                 'is_disabled' => FALSE,
-                'is_hidden' => TRUE,
-                'is_public' => FALSE,
-                'code' => "w",
-                'usage_limit' => 1061,
-                'min_amount' => 299,
-                'storage_id' => "10941edc-4921-4343-8dbc-9f1a473593ba",
-                'num_recipients_cap' => 6273
+                'is_hidden' => FALSE,
+                'is_public' => TRUE,
+                'code' => "D1PwMG5",
+                'usage_limit' => 14,
+                'min_amount' => 3197,
+                'storage_id' => "43b77373-a396-4522-bb04-dfa43f351d0b",
+                'num_recipients_cap' => 5951
             ]
         );
         try {
@@ -1027,23 +1027,23 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 3872.0,
-                'display_starts_at' => "2021-03-02T21:57:17.000000Z",
-                'display_ends_at' => "2024-03-19T04:59:49.000000Z",
-                'is_disabled' => TRUE,
-                'is_hidden' => FALSE,
+                'discount_percentage' => 84.0,
+                'display_starts_at' => "2026-05-28T23:04:40.000000Z",
+                'display_ends_at' => "2020-08-18T05:11:35.000000Z",
+                'is_disabled' => FALSE,
+                'is_hidden' => TRUE,
                 'is_public' => FALSE,
-                'code' => "cVhw",
-                'usage_limit' => 9130,
-                'min_amount' => 5859,
-                'storage_id' => "cd62f353-7744-4736-a424-1869697b5011",
-                'num_recipients_cap' => 4242
+                'code' => "oD",
+                'usage_limit' => 2404,
+                'min_amount' => 2830,
+                'storage_id' => "f46a2e53-dbca-4b28-a6f0-74939dbee7f2",
+                'num_recipients_cap' => 7188
             ]
         );
         try {
@@ -1059,24 +1059,24 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 7049.0,
-                'discount_upper_limit' => 1662,
-                'display_starts_at' => "2022-05-31T00:16:17.000000Z",
-                'display_ends_at' => "2021-01-22T04:45:43.000000Z",
-                'is_disabled' => FALSE,
-                'is_hidden' => TRUE,
-                'is_public' => FALSE,
-                'code' => "5TUTM16Yq",
-                'usage_limit' => 2576,
-                'min_amount' => 2674,
-                'storage_id' => "ad8068c8-f8c1-45cf-b85d-207f2e29e9a8",
-                'num_recipients_cap' => 6387
+                'discount_percentage' => 9665.0,
+                'discount_upper_limit' => 989,
+                'display_starts_at' => "2025-06-08T14:14:48.000000Z",
+                'display_ends_at' => "2022-05-23T11:06:36.000000Z",
+                'is_disabled' => TRUE,
+                'is_hidden' => FALSE,
+                'is_public' => TRUE,
+                'code' => "p",
+                'usage_limit' => 7677,
+                'min_amount' => 6637,
+                'storage_id' => "a114d1be-c91c-4b61-90a6-17477ee5a96a",
+                'num_recipients_cap' => 7205
             ]
         );
         try {
@@ -1092,25 +1092,25 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 2671.0,
-                'description' => "5GeUYrGDCf0i4xR1YeuarVLqKYaajZ45lMb2EdpxyfZWbcSeQSSC89X69cCxk1lmjrE2LQn8WVW3m44epc5OJWLmTr626o4XX2rICXAhNDPHxc5nbxE6dOS7QbkrsxeFRrdV1gQxduyB3Z9uLKn8CBvuRo159rPRsnfNPsYuS9nBNol3v7lVyt80jIUhEuqcVn523Q4baN0pPcQtGvFKDcSo",
-                'discount_upper_limit' => 6877,
-                'display_starts_at' => "2020-08-11T03:55:42.000000Z",
-                'display_ends_at' => "2026-02-25T05:23:04.000000Z",
+                'discount_percentage' => 9550.0,
+                'description' => "TvZeWlNcmFKOSukrPpaSteC08CcbsYxt96gmv0VcOEBgxJasez0E3N0w4tVAdgt1xX1dSRHXsAmJyubVIv51Dnx9WEjtPQeVvIzNJybaWd5nDKgnWgGOF388caTufq1V8gMtPEUm5qxAkXQdgmA6Ox4Cr60B3K44a0163kByMdg32LG1oWyluqXLUpztzpGIdluCdFeopAnKzAxtAmMd124CMe44VQ69lqvNuxr",
+                'discount_upper_limit' => 2640,
+                'display_starts_at' => "2021-01-23T06:30:52.000000Z",
+                'display_ends_at' => "2020-10-17T09:53:45.000000Z",
                 'is_disabled' => FALSE,
                 'is_hidden' => FALSE,
-                'is_public' => TRUE,
-                'code' => "IJSa9",
-                'usage_limit' => 4783,
-                'min_amount' => 1938,
-                'storage_id' => "e890c865-13e2-45eb-9328-22570fe91b31",
-                'num_recipients_cap' => 1678
+                'is_public' => FALSE,
+                'code' => "roQ",
+                'usage_limit' => 4468,
+                'min_amount' => 2080,
+                'storage_id' => "be329ced-36f7-41fb-a632-2c530b9ad71c",
+                'num_recipients_cap' => 7891
             ]
         );
         try {
@@ -1126,15 +1126,15 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 8603.0,
+                'discount_percentage' => 4244.0,
                 'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["c8b5039b-ff40-4514-abc6-542c073cc132", "3cf55021-7d5e-4383-b7ed-8498b12bd8c9", "35902a2e-98e6-4a4a-b517-7abb4d8c503d", "65cf343d-b930-4e1e-89ed-62a25ccfc28d", "fee5be17-3785-4077-ba2e-fd6f0fe60a12"]
+                'available_shop_ids' => ["72239b2c-1161-443c-b468-e184c3bc0c13"]
             ]
         );
         try {
@@ -1150,16 +1150,16 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 2356.0,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["3b67308d-c0f3-4c26-b0e9-4c39d988acb3", "44ef40dc-29d1-4c2c-989d-c27914ba7e10", "fcdad998-d19b-4487-8411-ef450f736f7f", "4da098ce-41f1-44ed-8177-8efbf329ea4f", "8e54b6a9-61f8-4f91-b859-24916f901eee", "a053fedc-d504-4356-8ab9-5ad4e7023338", "544a308e-78eb-4a83-a061-0bd22d36d6b9", "edb6fd05-8090-447d-a579-ca78a4bd5326", "ad377d02-46a0-403e-8420-b68f67cb72d6", "6cd1cfeb-e294-4b69-929a-62303eb65459"],
-                'num_recipients_cap' => 867
+                'discount_percentage' => 1994.0,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["309ca511-4cb5-4521-8885-9fdacc122898", "496affeb-2a5b-4908-ba23-90ba1b8d78bb", "4c8ed78c-f065-4632-9f0d-17333e7b3ec8", "853600ee-dd8d-48c0-9916-e45b2e904aa6", "84a2c8a7-4b5f-4e16-9daa-2f0ebd41788b", "2647dfe5-30bd-4c6b-a729-8ed85d6c8bf0", "908278ab-fbd5-450d-bebb-734d291626c5", "d750e892-c340-4248-a3f8-1abe58cf0e2e"],
+                'num_recipients_cap' => 5154
             ]
         );
         try {
@@ -1175,17 +1175,17 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 8808.0,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["d96372b5-f730-42f5-b6d4-9c1400ac2a5c", "35f7a2ed-760c-4758-9495-9c4a52116889", "a894f783-aca8-4d17-8e83-60fed80bb27e", "5715cdb3-c4f4-41e1-bcdf-7f69e4147c2b", "e31d1950-19b6-49bf-9f1d-f07a8348ed15", "a328483c-fc7c-4e72-8d42-e92c490aceff", "7c5d7689-bcc3-4e1d-b62e-6cf2f1647ba0", "2e497798-e354-4170-911b-50323acfda4b"],
-                'storage_id' => "7fac31ab-68bc-448a-90fa-0e08549dd093",
-                'num_recipients_cap' => 1933
+                'discount_percentage' => 6669.0,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["dd78d123-2460-49da-9730-fe8ff1bbb71b", "96a182d4-3840-4263-b665-c04da57b038a", "c7b126c5-0149-4e0d-9175-1e56b16edf5f", "12fb053a-ea9d-420a-b0b5-9ba4174b215e", "be4d20ad-66ab-43e5-bd4b-742d14ca5870", "28766d01-e6e4-4276-b0b5-d029e619ac69", "1911aeab-4d53-423a-9866-ab1b1a97bd48", "d14e86a2-875c-43d2-8134-d3103841ffc0"],
+                'storage_id' => "22a6b3cd-1e4a-400b-9b29-5065cda11328",
+                'num_recipients_cap' => 1571
             ]
         );
         try {
@@ -1201,18 +1201,18 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 8906.0,
+                'discount_percentage' => 3028.0,
                 'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["d50ad256-dd56-4974-bd84-1caa220778d3", "e9a4656a-3d48-49de-b74b-ec707e114200", "0bf89147-aebc-4134-812b-e49bd12c5c57", "12aa59ad-8914-40a2-89b7-7498611a0080", "27b5a41f-90d7-4e06-a097-a3cd069bfa05", "6684a8fc-0a9c-426c-9492-7783bd609af7", "2139808c-0c1c-4d5c-9680-13017dce0ffc", "d129ebde-7100-489d-afef-08f96e58de25", "25d252db-6469-4d8d-84f4-352bd78b2eac"],
-                'min_amount' => 6221,
-                'storage_id' => "0328bb8a-1de6-48e1-93f7-da04f7f0cffb",
-                'num_recipients_cap' => 1400
+                'available_shop_ids' => ["a00d247d-71be-42c5-8a75-83b4dc6df083", "730fbada-081e-47cc-a15e-df516a94330e", "b3b450a8-b758-4f2a-81c9-d719558454f7", "4b021643-ac47-48c9-b064-feaf99949fb9", "5d54910c-80e9-4a90-bb57-b82ac57051aa", "dc17aed7-961c-4239-9e97-5e84cc08fa2c", "ce08d00b-2737-4e90-ad73-d65ff4b2d33d", "26c1f8e8-abf1-4e12-8f12-5846410ad6c0"],
+                'min_amount' => 8365,
+                'storage_id' => "783dad69-9d91-490e-94a5-655e8615c41d",
+                'num_recipients_cap' => 6396
             ]
         );
         try {
@@ -1228,19 +1228,19 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 6270.0,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["4cca2fc9-9930-49de-b76c-2717b06b2746", "3754c7d0-7cad-4554-9d5e-0263e68519d3", "06707071-0807-44dd-bbd8-d431a939db13", "0803db28-074f-427d-a39d-2c4a70b492ca", "d90a9a0a-72c3-47f0-88b4-1f197c1fd3e1", "dddeed2a-dd62-4ef7-81f6-32a29f746f99", "12c90644-3a03-4166-a9c9-0d931d346b11", "47502ad9-287f-4522-a256-4d45254b2a7c", "cf05b4fa-0ff7-4358-85fa-7b2e69ae8f65", "056ec189-64e0-4658-b784-fd83aa48fd40"],
-                'usage_limit' => 8387,
-                'min_amount' => 245,
-                'storage_id' => "2a68520d-1062-47dc-be42-d1ac557b2699",
-                'num_recipients_cap' => 9482
+                'discount_percentage' => 5403.0,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["997751ca-f9e7-4370-bf33-b31a140eb7da", "6800c298-0557-4e02-830d-e92d1060bfb8", "f810d953-21a4-43f0-8412-716e4594ffa7", "748165b1-2036-4ad9-9d45-40e63dfae9ac", "fd0c0859-3c22-4758-ac5e-3907d7353933"],
+                'usage_limit' => 1482,
+                'min_amount' => 8917,
+                'storage_id' => "79d66155-55c8-4348-8430-0afb7e72b9eb",
+                'num_recipients_cap' => 8803
             ]
         );
         try {
@@ -1256,20 +1256,20 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 597.0,
+                'discount_percentage' => 5992.0,
                 'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["e43759dd-672a-4f2d-ad8b-cb00fed8d6ad", "93d321f6-c29f-475a-a1ad-1b7e91ded193", "e3396211-8c3d-4622-b6fe-754881aa6388", "bdccb6a5-93c7-45c9-b782-9a519bc5fbaa", "10ddaaa6-1c5b-4ec7-9fc6-b5c4312b3333", "d0f3687c-0ef9-457f-8db3-611fc59e3601", "de79d91e-7b57-408f-9188-a463b16a511a", "e59986cf-8051-4bb7-9c3f-de127205cb84"],
-                'code' => "GqTbykQN",
-                'usage_limit' => 7588,
-                'min_amount' => 7207,
-                'storage_id' => "ffe4ac7c-5e65-4a58-8bf7-eb663481683f",
-                'num_recipients_cap' => 2540
+                'available_shop_ids' => ["1e369008-8a93-4391-a1b6-2c9479043ef2", "c86a8c70-b2ef-4f6a-9e13-9e26dae46346", "004dd78d-2827-483b-a496-23c9dbe5ac8b", "822001bc-8979-4738-8cfc-0d89e6fc1665", "49a37e95-e001-4abd-8c8b-5376dd4d0d3b", "a161fa33-9ac6-41b8-85ee-edb898ddc18b", "f0a2409f-7858-4c67-a9d1-36811c0a7943"],
+                'code' => "5",
+                'usage_limit' => 214,
+                'min_amount' => 4121,
+                'storage_id' => "0f782632-14e9-479d-a4b4-69bf7fe3967a",
+                'num_recipients_cap' => 4940
             ]
         );
         try {
@@ -1285,21 +1285,21 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 5234.0,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["f63cca1c-7a50-4b72-9194-2c3f3f20e513", "333575c3-5cdb-448e-97ae-98067bec12bf", "1fe7675e-e497-4cc8-8aaf-1243586f45b6", "478f7c6f-b047-4b58-b7b6-93a90a825cb2", "f43883d6-cb57-4598-acad-6bfd5af5a84f", "82aca6f6-c10c-47c2-af8c-eb12534b4a4b", "7ecda518-e9a2-4dfb-be26-65d2610ceb8e", "748ab544-d4ab-4dee-abd7-8e77bfcb5d02", "864f2d4a-2331-45d2-8313-b9c2e1d9532d"],
+                'discount_percentage' => 9097.0,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["c47eeb6f-7e05-4e70-ae38-021a8364190f", "487a988d-ab8c-4f79-81f1-01bba716c031", "f6125fe9-442f-479a-9554-f56154a92f40"],
                 'is_public' => FALSE,
-                'code' => "Xf",
-                'usage_limit' => 9715,
-                'min_amount' => 714,
-                'storage_id' => "1090be3b-2ed3-4b0c-8e64-8dbdeb00142d",
-                'num_recipients_cap' => 8767
+                'code' => "h9J32aBIr",
+                'usage_limit' => 6716,
+                'min_amount' => 748,
+                'storage_id' => "4fa3500a-cee5-4c46-8468-b7320489ee5e",
+                'num_recipients_cap' => 1932
             ]
         );
         try {
@@ -1315,22 +1315,22 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 8474.0,
+                'discount_percentage' => 826.0,
                 'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["53e4eb39-12af-4600-bcd5-592159645a4e", "2e6b021f-b580-4ed0-8478-3f0359b34ec5", "86b3ee23-148f-4a80-ae9b-88384156112c", "1a5ab00c-b0e4-4998-99b7-bd3fcadf6250", "473527d6-881e-47cf-9c5c-8677a812aae6", "f5b7deb2-c583-4c4b-9ddd-6af843c32c3a", "7ecb21d9-32da-448b-8e9a-1567bd031370", "b4eaae77-0e89-4e9d-abe1-394080f13f1b", "ee0af227-b898-4174-a6bb-4ac475b651d8", "4f4cb108-238d-4068-b685-81f768a0d56a"],
+                'available_shop_ids' => ["4987dbd6-d0c4-43ee-8007-8c9fba6f9820", "40bd31bd-d856-4c51-af23-fba54be89cac", "20b86a23-9307-4009-8edf-da16694a0550", "be8612db-d006-471a-8981-c086629cdeb4"],
                 'is_hidden' => FALSE,
-                'is_public' => TRUE,
-                'code' => "gPgh",
-                'usage_limit' => 5903,
-                'min_amount' => 7020,
-                'storage_id' => "5fceab59-8843-4fa6-b173-326f80bdbdf4",
-                'num_recipients_cap' => 4108
+                'is_public' => FALSE,
+                'code' => "2rMs",
+                'usage_limit' => 4674,
+                'min_amount' => 9830,
+                'storage_id' => "324ab5ac-c687-4c72-aa03-8c6557a0f59f",
+                'num_recipients_cap' => 3207
             ]
         );
         try {
@@ -1346,23 +1346,23 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 3089.0,
+                'discount_percentage' => 6075.0,
                 'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["ea74d168-b301-414e-8afa-6fe1bfe230e3"],
+                'available_shop_ids' => ["aeb63987-3611-49c2-a152-e6d176760870"],
                 'is_disabled' => FALSE,
                 'is_hidden' => FALSE,
                 'is_public' => FALSE,
-                'code' => "PGR",
-                'usage_limit' => 1367,
-                'min_amount' => 6713,
-                'storage_id' => "180072bb-f02b-43d8-a04c-b7552dc1b6c6",
-                'num_recipients_cap' => 7770
+                'code' => "Ud58fde",
+                'usage_limit' => 19,
+                'min_amount' => 9273,
+                'storage_id' => "e115aab6-b075-41bc-8f2b-0906872dd6a0",
+                'num_recipients_cap' => 4940
             ]
         );
         try {
@@ -1378,24 +1378,24 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 791.0,
+                'discount_percentage' => 921.0,
                 'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["3760a2cb-e648-432a-b264-b7cc6add0541", "7d72c77b-6187-41d8-b98a-67b21dddd370", "b9293d7d-06a4-4d6c-9916-d4fb5999a5c1", "fad408ac-2e12-44ab-bc24-cb6bc9c9f081", "fad026f2-a66f-4f19-95f2-5d14bc87569c", "dba75db6-5aa2-454b-9ebd-40ea68afad50", "846f4776-ce64-4a55-b75d-4dd764b1d664"],
-                'display_ends_at' => "2022-10-06T19:22:02.000000Z",
-                'is_disabled' => TRUE,
-                'is_hidden' => TRUE,
-                'is_public' => TRUE,
-                'code' => "qNK4Tq0Pq",
-                'usage_limit' => 3158,
-                'min_amount' => 4858,
-                'storage_id' => "e4cd838f-ee43-4920-bedf-59bd5f6719fe",
-                'num_recipients_cap' => 4604
+                'available_shop_ids' => ["8a5dbe71-2c70-416b-9365-e7c42cec178f"],
+                'display_ends_at' => "2021-10-25T19:22:15.000000Z",
+                'is_disabled' => FALSE,
+                'is_hidden' => FALSE,
+                'is_public' => FALSE,
+                'code' => "c6Hbo3o2w",
+                'usage_limit' => 6588,
+                'min_amount' => 7654,
+                'storage_id' => "837fc8d2-8a81-4f6f-9fa9-28ef9c69d835",
+                'num_recipients_cap' => 3629
             ]
         );
         try {
@@ -1411,25 +1411,25 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 2732.0,
-                'is_shop_specified' => TRUE,
-                'available_shop_ids' => ["82e88422-d3bc-44d3-8e03-17be95bfb73f", "a4a5a890-420d-4ff4-9e44-ee24f9c84f92", "1db88722-936f-4c8d-9af6-1eac344fdfac", "8bae6bc1-7cd9-4433-9a2c-fa4fbbe0e64b"],
-                'display_starts_at' => "2025-11-30T21:32:15.000000Z",
-                'display_ends_at' => "2020-05-09T13:34:25.000000Z",
+                'discount_percentage' => 6516.0,
+                'is_shop_specified' => FALSE,
+                'available_shop_ids' => ["b866f679-2d1d-4dff-9693-ce09a1f5643a", "bdf4b15c-ff1a-4f88-9835-5bab8a985942", "ec3ff97a-f074-4131-a45d-bdea17edadbc", "87fbe5f0-8f0e-4047-afdb-150939e13ded"],
+                'display_starts_at' => "2021-02-05T10:05:00.000000Z",
+                'display_ends_at' => "2020-06-04T01:43:19.000000Z",
                 'is_disabled' => FALSE,
-                'is_hidden' => FALSE,
+                'is_hidden' => TRUE,
                 'is_public' => FALSE,
-                'code' => "CE4xLFo",
-                'usage_limit' => 7266,
-                'min_amount' => 2588,
-                'storage_id' => "3606ab41-1939-4ca0-add5-77cf615b1812",
-                'num_recipients_cap' => 3558
+                'code' => "oZNCkYK3",
+                'usage_limit' => 522,
+                'min_amount' => 6615,
+                'storage_id' => "0c9a3a41-7dec-47e3-a8e5-0f6db6093f9a",
+                'num_recipients_cap' => 4340
             ]
         );
         try {
@@ -1445,26 +1445,26 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 2479.0,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["2c8b401d-d832-43b0-ba49-29025177d6a6", "ac9348ea-d083-42d5-be6e-ac9ea241ea18", "1403441c-2a21-4e76-bfbc-e82070882341", "88deeb7c-88af-44ef-ae1a-4ea80fcaa6a3", "7a6de46d-4b96-4b4a-b26c-73305d13ec51", "22981e71-cded-4203-b131-7cd2ce8aa587"],
-                'discount_upper_limit' => 7445,
-                'display_starts_at' => "2026-03-13T20:51:25.000000Z",
-                'display_ends_at' => "2022-10-06T21:43:11.000000Z",
-                'is_disabled' => TRUE,
+                'discount_percentage' => 2542.0,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["30d2fbeb-200b-4aa8-b105-d29a43e273d7", "25c039e8-1c47-4603-a882-9bcf0a5591d9", "db263170-8001-480f-8d94-dee964e03d6d", "0146130d-e67c-46f2-8ca6-475e3b4fd6d1", "af3749ac-da2d-46ac-b9a8-5d9e33b79c31", "00d8bce5-e2e6-4a4a-8f98-7fc967bb692a", "e6d1e16d-4bb6-488b-98ae-fef060520cb2", "515d66ee-350f-44a6-86e5-c1112c1615a5", "193aeec4-582e-40e1-b485-08c2b05ca0a9", "054359eb-bc6d-431d-b84a-8a55b70d6ba0"],
+                'discount_upper_limit' => 7866,
+                'display_starts_at' => "2026-04-11T09:19:18.000000Z",
+                'display_ends_at' => "2026-08-08T04:50:04.000000Z",
+                'is_disabled' => FALSE,
                 'is_hidden' => TRUE,
                 'is_public' => TRUE,
-                'code' => "wDGw",
-                'usage_limit' => 8522,
-                'min_amount' => 4518,
-                'storage_id' => "142c8eab-e7b7-48d8-97f4-82996efd5098",
-                'num_recipients_cap' => 1982
+                'code' => "iWJ5x76il",
+                'usage_limit' => 7582,
+                'min_amount' => 5934,
+                'storage_id' => "3a9ac13c-4281-4114-8e1e-ccdd01e0b9bb",
+                'num_recipients_cap' => 2005
             ]
         );
         try {
@@ -1480,27 +1480,27 @@ class CreateCoupon extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCoupon(
-            "1aecfc91-57c5-49b1-9b89-e742f35ee909",
-            "uKUao6Z6xonfMjSwz5WZMumkxzfJ30tPK0gRaUMP2gDk6hqbkZIVaXAnNHVk2JXX3zMOLBJZia176ashqVZtOtkEaR1q9",
-            "2023-12-05T22:06:44.000000Z",
-            "2022-05-15T04:28:48.000000Z",
-            "d0e9787b-c687-4cbe-bb11-b4e922b98a4c",
+            "e5a00885-fc7d-4563-b947-5760d72c0159",
+            "SlX2n5lak1n33o382bj7JojzlN4lU5sMlhBuyia62bkzzlqI",
+            "2023-01-02T00:01:04.000000Z",
+            "2022-01-31T18:43:47.000000Z",
+            "13e6cb30-36ab-4022-b9e4-0cdd7c1571d4",
             [
-                'discount_percentage' => 7495.0,
-                'is_shop_specified' => FALSE,
-                'available_shop_ids' => ["83371f9e-655b-45bf-871f-78208d290380", "309f7423-10e7-4682-8ecb-292952165b51", "248a70f7-0d08-4c0a-bc26-79dcbb96eba3", "46daa398-b77a-4b41-a735-8e498b833c14", "9bb0f89b-966b-42ee-bdc4-74f79dd8922a"],
-                'description' => "gdQyyCPmcszk1DSduCpdgUz5UizzupfDUVzOTa3MaAaf4kTfREjRbk7TIk1gephK43IsijpvrzedeO1cdtY9cqUS5AzQzHd",
-                'discount_upper_limit' => 2379,
-                'display_starts_at' => "2021-06-12T12:12:55.000000Z",
-                'display_ends_at' => "2021-01-26T06:23:08.000000Z",
-                'is_disabled' => TRUE,
-                'is_hidden' => FALSE,
-                'is_public' => FALSE,
-                'code' => "uEaRrfiO",
-                'usage_limit' => 2961,
-                'min_amount' => 1789,
-                'storage_id' => "66c4a750-e39d-4bd8-ace0-8ab43cdd938a",
-                'num_recipients_cap' => 6326
+                'discount_percentage' => 6434.0,
+                'is_shop_specified' => TRUE,
+                'available_shop_ids' => ["1542c71f-67c7-4c17-b77e-9e1aeb04cb22", "133f67fb-48b7-444e-b1e0-ae781e424e5f", "1f91e3f4-09a4-402c-815b-e76ca757d9d6"],
+                'description' => "VfYnX2Qn7EnOChsUwktnh8VjRFve7MdNMBgFvJyEEmkecVySQ3ucJUKFqVhyrEcw3WNc5IXHiI",
+                'discount_upper_limit' => 3646,
+                'display_starts_at' => "2021-02-19T02:21:38.000000Z",
+                'display_ends_at' => "2026-07-20T23:24:56.000000Z",
+                'is_disabled' => FALSE,
+                'is_hidden' => TRUE,
+                'is_public' => TRUE,
+                'code' => "Oj",
+                'usage_limit' => 1822,
+                'min_amount' => 147,
+                'storage_id' => "8ee5f483-798e-4f7c-a74e-23b65e2d9166",
+                'num_recipients_cap' => 3855
             ]
         );
         try {

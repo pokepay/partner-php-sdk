@@ -8,7 +8,7 @@ class CreateUserDevice extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserDevice(
-            "0ab457f1-f0ef-4959-9ae9-678677e06ccf"
+            "f7335c94-3e00-4638-b24d-759b8ea8cd2f"
         );
         try {
             $response = $client->send($request);
@@ -23,7 +23,7 @@ class CreateUserDevice extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateUserDevice(
-            "0ab457f1-f0ef-4959-9ae9-678677e06ccf",
+            "f7335c94-3e00-4638-b24d-759b8ea8cd2f",
             [
                 'metadata' => "{\"user_agent\": \"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0\"}"
             ]

@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "505465f4-79c1-4727-a3da-4f1b21a783d3",
-            "c7c5e36b-c165-42f2-aefd-5d8cd93e2ea3",
-            "bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQlj7s7IqXcFdC0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs0g4RtCJckJnkv8b3lOd0jZSZisKJGtLxfbPFfaIRWKNMj5dtiKnG8zX8t",
-            "Wqvm0QmTuUJdqTxvEdTrlIk"
+            "88492597-26ab-42d4-aef9-7b7d94c4bb31",
+            "ed639660-278a-450f-8105-4fcce2743b8c",
+            "oGWtPPIzjjzRC7Vh9LObliCnClJEf5Qg177zO5rbJQyEpgsB3u1k6p1M3AaDCD8U2M3hy0vfxtwSmqJp6yKARh5ZRW3Kxq9vutzMeQNTZUuVlFabCqRikwgbBJfMhTrHTPQaRFRzLrLpSH0GqkthOAKJR8VBFpRQxxKQexm5F4TlRS3PsnDMFQKcrRJGtyzouTG0fNi1SBzVwDCpwO7mzwiIebwBbgsjluVjYrLryI60OsM6y",
+            "K"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "505465f4-79c1-4727-a3da-4f1b21a783d3",
-            "c7c5e36b-c165-42f2-aefd-5d8cd93e2ea3",
-            "bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQlj7s7IqXcFdC0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs0g4RtCJckJnkv8b3lOd0jZSZisKJGtLxfbPFfaIRWKNMj5dtiKnG8zX8t",
-            "Wqvm0QmTuUJdqTxvEdTrlIk",
+            "88492597-26ab-42d4-aef9-7b7d94c4bb31",
+            "ed639660-278a-450f-8105-4fcce2743b8c",
+            "oGWtPPIzjjzRC7Vh9LObliCnClJEf5Qg177zO5rbJQyEpgsB3u1k6p1M3AaDCD8U2M3hy0vfxtwSmqJp6yKARh5ZRW3Kxq9vutzMeQNTZUuVlFabCqRikwgbBJfMhTrHTPQaRFRzLrLpSH0GqkthOAKJR8VBFpRQxxKQexm5F4TlRS3PsnDMFQKcrRJGtyzouTG0fNi1SBzVwDCpwO7mzwiIebwBbgsjluVjYrLryI60OsM6y",
+            "K",
             [
-                'birthdate' => "Gk"
+                'birthdate' => "Z1jPy1n"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "505465f4-79c1-4727-a3da-4f1b21a783d3",
-            "c7c5e36b-c165-42f2-aefd-5d8cd93e2ea3",
-            "bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQlj7s7IqXcFdC0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs0g4RtCJckJnkv8b3lOd0jZSZisKJGtLxfbPFfaIRWKNMj5dtiKnG8zX8t",
-            "Wqvm0QmTuUJdqTxvEdTrlIk",
+            "88492597-26ab-42d4-aef9-7b7d94c4bb31",
+            "ed639660-278a-450f-8105-4fcce2743b8c",
+            "oGWtPPIzjjzRC7Vh9LObliCnClJEf5Qg177zO5rbJQyEpgsB3u1k6p1M3AaDCD8U2M3hy0vfxtwSmqJp6yKARh5ZRW3Kxq9vutzMeQNTZUuVlFabCqRikwgbBJfMhTrHTPQaRFRzLrLpSH0GqkthOAKJR8VBFpRQxxKQexm5F4TlRS3PsnDMFQKcrRJGtyzouTG0fNi1SBzVwDCpwO7mzwiIebwBbgsjluVjYrLryI60OsM6y",
+            "K",
             [
-                'email' => "GEpBmPu4Hk@qOfX.com",
-                'birthdate' => "Ekl5C8"
+                'email' => "pNVd9AFxrp@WfPQ.com",
+                'birthdate' => "vI"
             ]
         );
         try {
