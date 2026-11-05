@@ -14,7 +14,7 @@
 $request = new Request\DeleteAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'cashback' => TRUE                        // 返金有無
+        'cashback' => FALSE                       // 返金有無
     ]
 );
 ```
@@ -121,7 +121,7 @@ $request = new Request\UpdateAccount(
     [
         'is_suspended' => TRUE,                   // ウォレットが凍結されているかどうか
         'status' => "active",                     // ウォレット状態
-        'can_transfer_topup' => FALSE             // チャージ可能かどうか
+        'can_transfer_topup' => TRUE              // チャージ可能かどうか
     ]
 );
 ```
@@ -212,10 +212,10 @@ $request = new Request\UpdateAccount(
 $request = new Request\ListAccountBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 7198,                           // ページ番号
-        'per_page' => 1119,                       // 1ページ分の取引数
-        'expires_at_from' => "2026-04-09T16:37:04.000000Z", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2024-10-17T05:05:19.000000Z", // 有効期限の期間によるフィルター(終了時点)
+        'page' => 7731,                           // ページ番号
+        'per_page' => 1751,                       // 1ページ分の取引数
+        'expires_at_from' => "2021-09-27T19:35:06.000000Z", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2023-11-01T17:00:09.000000Z", // 有効期限の期間によるフィルター(終了時点)
         'direction' => "asc"                      // 有効期限によるソート順序
     ]
 );
@@ -338,11 +338,11 @@ $request = new Request\ListAccountBalances(
 $request = new Request\ListAccountExpiredBalances(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'page' => 9961,                           // ページ番号
-        'per_page' => 4376,                       // 1ページ分の取引数
-        'expires_at_from' => "2025-01-21T09:55:15.000000Z", // 有効期限の期間によるフィルター(開始時点)
-        'expires_at_to' => "2026-01-18T01:13:39.000000Z", // 有効期限の期間によるフィルター(終了時点)
-        'direction' => "desc"                     // 有効期限によるソート順序
+        'page' => 6500,                           // ページ番号
+        'per_page' => 2252,                       // 1ページ分の取引数
+        'expires_at_from' => "2025-05-10T15:17:49.000000Z", // 有効期限の期間によるフィルター(開始時点)
+        'expires_at_to' => "2020-07-23T10:29:52.000000Z", // 有効期限の期間によるフィルター(終了時点)
+        'direction' => "asc"                      // 有効期限によるソート順序
     ]
 );
 ```
@@ -464,9 +464,9 @@ $request = new Request\ListAccountExpiredBalances(
 $request = new Request\UpdateCustomerAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // accountId: ウォレットID
     [
-        'status' => "suspended",                  // ウォレット状態
-        'account_name' => "bEAm8DDmMv6OU8xPn5JSHVJXh8Q94B643G49hiuGz9Mf8rtHhq6vTBJC14vJa23qnBx2rVMt", // アカウント名
-        'external_id' => "QpLPCeP9dzLx5t2lgWoJQYoOSmAcuLVq3Dp4kCeEF", // 外部ID
+        'status' => "active",                     // ウォレット状態
+        'account_name' => "wgERagqKSGsUKboeeiIHlMnCdyvxKvSOqTvlYodFyg21jiUhByaB66BNcapTyLZWxad9qMqfjUCaVImVTzD7ogGgbbuuhXvkkv63jx716j9qYeQTBsHYxIvY8A2kLLFzDvGgwT6RWA89QL9Vp03GIkTp5cuONNVFc9v9gdz5hW", // アカウント名
+        'external_id' => "e1J2XdVSiGrZnaj14JqvayOvsUjS1TQRpGXwusK", // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );
@@ -590,15 +590,15 @@ $request = new Request\UpdateCustomerAccount(
 $request = new Request\GetCustomerAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 8635,                           // ページ番号
-        'per_page' => 3429,                       // 1ページ分のウォレット数
-        'created_at_from' => "2024-06-20T10:01:03.000000Z", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2023-11-11T09:53:13.000000Z", // ウォレット作成日によるフィルター(終了時点)
-        'is_suspended' => FALSE,                  // ウォレットが凍結状態かどうかでフィルターする
-        'status' => "suspended",                  // ウォレット状態
-        'external_id' => "oD1k2yoz92oXPFICS0jn7hXy", // 外部ID
-        'tel' => "02234012",                      // エンドユーザーの電話番号
-        'email' => "3jLO2pXiaE@fX6c.com"          // エンドユーザーのメールアドレス
+        'page' => 2380,                           // ページ番号
+        'per_page' => 1264,                       // 1ページ分のウォレット数
+        'created_at_from' => "2022-02-17T13:44:04.000000Z", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2020-02-28T15:12:04.000000Z", // ウォレット作成日によるフィルター(終了時点)
+        'is_suspended' => TRUE,                   // ウォレットが凍結状態かどうかでフィルターする
+        'status' => "active",                     // ウォレット状態
+        'external_id' => "K4pvhym0ixofoZrqcO9xmrGI7Yq8b7zKf4Zjq1K3jlOjYQfsb", // 外部ID
+        'tel' => "0113-53-9584",                  // エンドユーザーの電話番号
+        'email' => "oRIGPs251h@35D6.com"          // エンドユーザーのメールアドレス
     ]
 );
 ```
@@ -791,7 +791,7 @@ $request = new Request\CreateCustomerAccount(
     [
         'user_name' => "ポケペイ太郎",                  // ユーザー名
         'account_name' => "ポケペイ太郎のアカウント",         // アカウント名
-        'external_id' => "9g0DX8Wq75NNOSKErJuxzhPvCMr0kZtscw8OT2IA" // 外部ID
+        'external_id' => "qOUv7GYFIehbCx0by4H"    // 外部ID
     ]
 );
 ```
@@ -892,11 +892,11 @@ PAPIクライアントシステムから利用するPokepayユーザーのIDで�
 $request = new Request\GetShopAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'page' => 9949,                           // ページ番号
-        'per_page' => 1246,                       // 1ページ分のウォレット数
-        'created_at_from' => "2024-12-07T18:29:48.000000Z", // ウォレット作成日によるフィルター(開始時点)
-        'created_at_to' => "2025-03-14T20:30:15.000000Z", // ウォレット作成日によるフィルター(終了時点)
-        'is_suspended' => FALSE                   // ウォレットが凍結状態かどうかでフィルターする
+        'page' => 226,                            // ページ番号
+        'per_page' => 7461,                       // 1ページ分のウォレット数
+        'created_at_from' => "2022-03-22T07:02:02.000000Z", // ウォレット作成日によるフィルター(開始時点)
+        'created_at_to' => "2026-07-15T21:20:47.000000Z", // ウォレット作成日によるフィルター(終了時点)
+        'is_suspended' => TRUE                    // ウォレットが凍結状態かどうかでフィルターする
     ]
 );
 ```
@@ -1022,8 +1022,8 @@ idはcredit-sessions作成時に使用できます。
 $request = new Request\GetCustomerCards(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
     [
-        'page' => 6103,                           // ページ番号
-        'per_page' => 15                          // 1ページ分の要素数
+        'page' => 5631,                           // ページ番号
+        'per_page' => 71                          // 1ページ分の要素数
     ]
 );
 ```
@@ -1096,7 +1096,7 @@ $request = new Request\GetCustomerCards(
 ```PHP
 $request = new Request\CreateCustomerCard(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: エンドユーザーID
-    "28S",                                        // token: MDKトークン
+    "ZyPkDxfE",                                   // token: MDKトークン
     [
         'is_cardholder_name_specified' => FALSE   // カード名義人指定フラグ
     ]
@@ -1227,17 +1227,17 @@ $request = new Request\CreditCardTopupWithMembership(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: カード保持者のエンドユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // cardUuid: カード識別子
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    2760,                                         // amount: チャージ金額
+    3297,                                         // amount: チャージ金額
     [
         'receiver_user_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // チャージ先ユーザーID
         'delete_card_if_auth_fail' => TRUE,       // 認証失敗時にカードを削除するか
         'description' => "クレジットカードチャージ",          // 取引履歴に表示する説明文
         'return_url' => "https://example.com/charge/complete?session=abc", // 3Dセキュア完了画面の戻り先URL
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
-        'topup_quota_id' => 1976,                 // チャージ可能枠ID
+        'topup_quota_id' => 8085,                 // チャージ可能枠ID
         'memo1' => "campaign2026summer",          // 取引メモ1
-        'memo2' => "JS15mGFl3fiK2FnP8l34G4oC97Xi2VAQRLi357c40zqzOK2p7RHrWnesZ9R75995lD2P99Sd561M705163Vp6Q89F4bE", // 取引メモ2
-        'memo3' => "Pr6RDFv3S48O9qUWSjKtH7GWFK1NeAI2927", // 取引メモ3
+        'memo2' => "YvHTB053LRPo827tiFagl2L1g4QJ9yOP0jsp082fNlV9EqbRbd24Rj7u6pC11OaLaok9IPibnVjx3d7rpYA3FDQftTHPaG", // 取引メモ2
+        'memo3' => "VTC07Ueq0YinBn9N01Zd8p44vXX3sPd3X", // 取引メモ3
         'freekey' => "order20260803001"           // キー情報
     ]
 );
@@ -1372,6 +1372,7 @@ URL自体にパラメータを含めてください。
 ```json
 {
   "type": "string",
+  "format": "url",
   "maxLength": 2048
 }
 ```
@@ -1501,19 +1502,19 @@ receiver_user_id を指定すると、カード保持者と異なるユーザー
 ```PHP
 $request = new Request\CreditCardTopupWithMdkToken(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // customerId: カード保持者のエンドユーザーID
-    "83wn",                                       // token: MDKトークン
+    "4bskUY0GUg",                                 // token: MDKトークン
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
-    5373,                                         // amount: チャージ金額
+    7429,                                         // amount: チャージ金額
     [
         'receiver_user_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // チャージ先ユーザーID
         'is_cardholder_name_specified' => FALSE,  // カード名義人指定フラグ
         'description' => "クレジットカードチャージ",          // 取引履歴に表示する説明文
         'return_url' => "https://example.com/charge/complete?session=abc", // 3Dセキュア完了画面の戻り先URL
         'request_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // リクエストID
-        'topup_quota_id' => 1126,                 // チャージ可能枠ID
+        'topup_quota_id' => 4596,                 // チャージ可能枠ID
         'memo1' => "campaign2026summer",          // 取引メモ1
-        'memo2' => "6lrYzVNP054AWsnmM2q6dI419Tg8z7jBH", // 取引メモ2
-        'memo3' => "1zup0734v1Jw462bo0a842Y6adZo208uQdTK381Bb3foS7PTn4J70yHbrOUfwq2om8Ec3lztncx7MSp0CsWekk7pq208Ym5Q0g", // 取引メモ3
+        'memo2' => "s7XvcGQ16ldcA0YttEEGRS6mj61qV3omt2iB11k8UdlOS4mo61RylMjJu67B9qiOX4V3hXyY3dDy", // 取引メモ2
+        'memo3' => "38kockq0UJmZx1xMw5aFxLdh44jb7SCn3kAMG", // 取引メモ3
         'freekey' => "order20260803001"           // キー情報
     ]
 );
@@ -1645,6 +1646,7 @@ URL自体にパラメータを含めてください。
 ```json
 {
   "type": "string",
+  "format": "url",
   "maxLength": 2048
 }
 ```
@@ -1776,8 +1778,8 @@ $request = new Request\ListCustomerTransactions(
         'receiver_customer_id' => "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 受取エンドユーザーID
         'type' => "transfer",                     // 取引種別
         'is_modified' => FALSE,                   // キャンセル済みかどうか
-        'from' => "2021-03-13T14:48:29.000000Z",  // 開始日時
-        'to' => "2024-02-14T19:52:59.000000Z",    // 終了日時
+        'from' => "2025-02-07T15:20:55.000000Z",  // 開始日時
+        'to' => "2022-12-27T21:24:49.000000Z",    // 終了日時
         'page' => 1,                              // ページ番号
         'per_page' => 50                          // 1ページ分の取引数
     ]
