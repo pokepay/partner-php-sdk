@@ -8,7 +8,7 @@ class GetCustomerCards extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerCards(
-            "085d3da7-ec9f-46bb-a5b3-d18e08ea09ab"
+            "b723ee14-f43c-466d-b708-9f737c661909"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class GetCustomerCards extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerCards(
-            "085d3da7-ec9f-46bb-a5b3-d18e08ea09ab",
+            "b723ee14-f43c-466d-b708-9f737c661909",
             [
-                'per_page' => 54
+                'per_page' => 88
             ]
         );
         try {
@@ -41,10 +41,10 @@ class GetCustomerCards extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCustomerCards(
-            "085d3da7-ec9f-46bb-a5b3-d18e08ea09ab",
+            "b723ee14-f43c-466d-b708-9f737c661909",
             [
-                'page' => 8562,
-                'per_page' => 12
+                'page' => 6770,
+                'per_page' => 10
             ]
         );
         try {

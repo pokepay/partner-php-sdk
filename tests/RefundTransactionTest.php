@@ -8,7 +8,7 @@ class RefundTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundTransaction(
-            "166aeaaf-f4f8-4da9-8b44-6b32b434a458"
+            "ed53ba9f-4f3d-4ec8-9ec9-49ec624c16c4"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class RefundTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundTransaction(
-            "166aeaaf-f4f8-4da9-8b44-6b32b434a458",
+            "ed53ba9f-4f3d-4ec8-9ec9-49ec624c16c4",
             [
-                'returning_point_expires_at' => "2022-09-22T17:45:33.000000Z"
+                'returning_point_expires_at' => "2025-06-25T02:01:40.000000Z"
             ]
         );
         try {
@@ -41,10 +41,10 @@ class RefundTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\RefundTransaction(
-            "166aeaaf-f4f8-4da9-8b44-6b32b434a458",
+            "ed53ba9f-4f3d-4ec8-9ec9-49ec624c16c4",
             [
-                'description' => "cOfyMo26iqol80j1t4n3lpnoezOx6Ov6eGwjQCqxdtQnDY4S9N4HhJ5rCsXRcUZY47cpIh03BvqB7CzLjYHoO28zEE65UlKtMCe12MUV2dxrA2428zEWnFZLX87qtedPzV8Nd",
-                'returning_point_expires_at' => "2026-04-10T00:26:07.000000Z"
+                'description' => "aOh78QfhNbZ3YfGhlbqaOElvScjtjkG1WEjltqaYkhp7caXjUtBcNe9XyY4wthFo0glXBErIUB1p7aPMzXnAdDrY96Gn0OAQ9xSN0zfKx7",
+                'returning_point_expires_at' => "2020-09-03T12:35:02.000000Z"
             ]
         );
         try {

@@ -79,6 +79,10 @@ class Check extends Base
      * @var string
      */
     public $token;
+    /**
+     * @var string|null
+     */
+    public $serialCode;
 
     protected function normalize($timezone)
     {
