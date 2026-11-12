@@ -69,15 +69,18 @@ GET,/transactions/:uuid,403,,,
 GET,/transactions/requests/:request-id,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,transaction_not_found,"取引が見つかりません",Transaction not found
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
+POST,/transactions/:uuid/refund,400,invalid_mdk_token,"カード情報を確認できませんでした。お手数ですが、カード情報を入力し直してください。",Invalid MDK token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,card_not_found,"カードが見つかりません",
 ,,409,already_registered_veritrans_card,"このカードは既に登録されています",
 ,,409,already_registered_veritrans_account,"この会員は既に登録されています",
 ,,422,transaction_not_found,"取引が見つかりません",Transaction not found
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
+,,422,can_not_refund_paytree_gw_transaction,"コード読取り取引に対してPokepay側での取引キャンセルは行えません",Transactions made by scanning a code cannot be cancelled on the Pokepay side.
 ,,422,can_not_refund_bank_transaction,"銀行取引はキャンセルできません",Bank transactions cannot be cancelled.
-,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,unavailable_card_error,"カード会社の判断により、このカードはご利用いただけませんでした。カード会社にお問い合わせいただくか、別のカードをご利用ください。",This card could not be used due to the card issuer's decision. Please contact your card issuer or use another card.
+,,422,card_limit_exceeded,"ご利用可能額を超えているため、このカードはご利用いただけませんでした。別のカードをご利用ください。",This card could not be used because the available credit has been exceeded. Please use another card.
+,,422,invalid_card,"カード会社によりご利用が承認されませんでした。カード番号・有効期限・セキュリティコードに誤りがないかご確認のうえ、再度お試しください。","Your card issuer did not approve this card. Please check that the card number, expiration date, and security code are correct, and try again."
 ,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
 ,,422,unacceptable_card,,Card is not acceptable for some reason
 ,,422,veritrans_membership_not_registered,"会員登録をしていません",
@@ -414,14 +417,12 @@ POST,/transactions/exchange,422,account_not_found,"アカウントが見つか�
 ,,422,account_closed,"アカウントは退会しています",The account is closed
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対して許可されていない金額です。",The amount is unacceptable for the CPM token
-,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+POST,/transactions/cpm,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
+,,403,cpm_unacceptable_amount,"このCPMトークンに対して許可されていない金額です。",The amount is unacceptable for the CPM token
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
-,,422,cpm_token_strategy_conflict,"CPMトークンに設定された支払い方式と異なる支払い方式が指定されました。",The strategy conflicts with the one set in the CPM token
-,,422,cpm_token_already_proceed,"このCPMトークンは既に処理されています。",The CPM token is already proceed
-,,422,cpm_token_already_expired,"このCPMトークンは既に失効しています。",The CPM token is already expired
 ,,422,cpm_token_not_found,"CPMトークンが見つかりませんでした。",The CPM token is not found.
+,,422,cpm_token_strategy_conflict,"CPMトークンに設定された支払い方式と異なる支払い方式が指定されました。",The strategy conflicts with the one set in the CPM token
 ,,422,coupon_not_found,"クーポンが見つかりませんでした。",The coupon is not found.
 ,,422,credit_session_money_topup_requires_credit_card,"オーソリチャージ用マネーではクレジットカードによるチャージのみ許可されています",Credit card is required for topup on credit-session enabled money
 ,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
@@ -465,6 +466,8 @@ POST,/transactions/cpm,403,cpm_unacceptable_amount,"このCPMトークンに対�
 ,,422,request_id_conflict,"このリクエストIDは他の取引ですでに使用されています。お手数ですが、別のリクエストIDで最初からやり直してください。",The request_id is already used by another transaction. Try again with new request id
 ,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
+,,422,cpm_token_already_expired,"このCPMトークンは既に失効しています。",The CPM token is already expired
+,,422,cpm_token_already_proceed,"このCPMトークンは既に処理されています。",The CPM token is already proceed
 ,,503,temporarily_unavailable,,Service Unavailable
 POST,/transactions/bulk,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
@@ -574,15 +577,18 @@ POST,/external-transactions,400,invalid_parameters,"項目が無効です",Inval
 ,,422,reserved_word_can_not_specify_to_metadata,"取引メタデータに予約語は指定出来ません",Reserved word can not specify to metadata
 ,,422,invalid_metadata,"メタデータの形式が不正です",Invalid metadata format
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/external-transactions/:uuid/refund,400,invalid_mdk_token,,Invalid MDK token
+POST,/external-transactions/:uuid/refund,400,invalid_mdk_token,"カード情報を確認できませんでした。お手数ですが、カード情報を入力し直してください。",Invalid MDK token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,card_not_found,"カードが見つかりません",
 ,,409,already_registered_veritrans_card,"このカードは既に登録されています",
 ,,409,already_registered_veritrans_account,"この会員は既に登録されています",
 ,,422,event_not_found,"イベントが見つかりません",Event not found
 ,,422,private_money_closed,"このマネーは解約されています",This money was closed
+,,422,can_not_refund_paytree_gw_transaction,"コード読取り取引に対してPokepay側での取引キャンセルは行えません",Transactions made by scanning a code cannot be cancelled on the Pokepay side.
 ,,422,can_not_refund_bank_transaction,"銀行取引はキャンセルできません",Bank transactions cannot be cancelled.
-,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,unavailable_card_error,"カード会社の判断により、このカードはご利用いただけませんでした。カード会社にお問い合わせいただくか、別のカードをご利用ください。",This card could not be used due to the card issuer's decision. Please contact your card issuer or use another card.
+,,422,card_limit_exceeded,"ご利用可能額を超えているため、このカードはご利用いただけませんでした。別のカードをご利用ください。",This card could not be used because the available credit has been exceeded. Please use another card.
+,,422,invalid_card,"カード会社によりご利用が承認されませんでした。カード番号・有効期限・セキュリティコードに誤りがないかご確認のうえ、再度お試しください。","Your card issuer did not approve this card. Please check that the card number, expiration date, and security code are correct, and try again."
 ,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
 ,,422,unacceptable_card,,Card is not acceptable for some reason
 ,,422,veritrans_membership_not_registered,"会員登録をしていません",
@@ -653,6 +659,7 @@ PATCH,/checks/:uuid,400,invalid_parameter_combination_usage_limit_and_is_onetime
 ,,422,account_private_money_is_not_issued_by_organization,,The account's private money is not issued by this organization
 GET,/users,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 POST,/users,400,user_invalid_email,"入力されたメールアドレスが間違っています。入力内容をご確認ください",
+,,400,invalid_email_domain,"メールアドレスのドメインが間違っています",Invalid domain name error
 ,,400,not_shop_admin_user_must_not_be_linked_to_any_shops,,Admin user who does not have shop-authority must not be linked to any shops
 ,,400,shop_admin_user_requires_shop,,Admin user who has shop-authority requires at least one shop
 ,,403,,,
@@ -663,7 +670,8 @@ POST,/users,400,user_invalid_email,"入力されたメールアドレスが間�
 GET,/users/invitations,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,,,
 ,,422,organization_not_found,,Organization not found
-PATCH,/users/invitations/:uuid,403,,,
+PATCH,/users/invitations/:uuid,400,invalid_email_domain,"メールアドレスのドメインが間違っています",Invalid domain name error
+,,403,,,
 ,,404,,,
 ,,409,admin_user_conflict,,The Admin-user is already registered
 ,,503,failed_to_send_email,,Failed to send an E-mail.
@@ -706,6 +714,21 @@ POST,/private-moneys,400,credit_card_monthly_cap_less_than_daily_cap,"クレジ�
 ,,409,private_money_conflict,"このマネーは既に登録されています。",The money is already used
 ,,422,private_money_invalid_fallback_private_money,"指定されたフォールバックマネーは有効ではありません",The specified fallback private money is not valid
 ,,422,organization_not_found,,Organization not found
+,,422,veritrans_municipal_merchant_not_found,"Pokepay 自治体契約のマーチャントが登録されていません",The merchant for the Pokepay municipal contract is not registered
+,,422,cvs_requires_veritrans_merchant,"コンビニ決済には Pokepay 自治体契約または顧客直接契約が必要です",Convenience store payment requires the Pokepay municipal contract or a direct contract
+,,422,veritrans_data_return_reconfiguration_required,"マーチャントの CCID を変更する場合は、データ還元サービスを設定し直してください",The data return service must be set again when the merchant CCID changes
+,,422,veritrans_data_return_not_allowed,"データ還元サービスは顧客直接契約の場合のみ設定できます",The data return service can only be set for the direct contract
+,,422,veritrans_merchant_parameters_not_allowed,"マーチャント情報は顧客直接契約の場合のみ設定できます",Merchant information can only be set for the direct contract
+,,422,veritrans_usage_type_conflict,"Veritrans の利用形態がクレジットカード・コンビニ決済の利用設定と一致しません",The Veritrans usage type does not match the credit card and convenience store payment settings
+,,422,invalid_cvs_pay_limit_days,"コンビニ決済の支払期限は 1〜60 日で指定してください",The convenience store payment deadline must be between 1 and 60 days
+,,422,veritrans_data_return_parameters_missing,"データ還元サービスを有効にするには SFTP ユーザーとディレクトリが必要です",The SFTP user and directory are required to enable the data return service
+,,422,veritrans_merchant_parameters_missing,"顧客直接契約に必要なマーチャント情報が入力されていません",Required merchant information for the direct contract is missing
+,,422,veritrans_merchant_secret_key_invalid,"Veritrans の秘密鍵は 16 進の文字列で入力してください",The Veritrans merchant secret key must be a hexadecimal string
+,,422,veritrans_merchant_cc_id_reserved,"この CCID は Pokepay の契約用のため、顧客直接契約には使用できません",This CCID belongs to a Pokepay contract and cannot be used for a direct contract
+,,422,veritrans_merchant_shared_with_other_organizations,"このマーチャントは他の組織と共有されているため、この組織から変更できません",The merchant is shared with other organizations and cannot be changed from this organization
+,,422,veritrans_sender_shop_not_found,"チャージ元店舗が発行体の店舗に見つかりません",The charge-source shop is not found in the issuer organization
+,,422,veritrans_usage_type_change_affects_other_moneys,"Veritrans の利用形態の変更は同じ組織の他のマネーにも反映されます。確認のうえ再度実行してください",Changing the Veritrans usage type also changes other moneys of the organization. Confirm the change to continue
+,,422,veritrans_setting_parameters_too_long,"Veritrans の設定値が長すぎます",A Veritrans setting value is too long
 ,,422,only_one_of_months_and_days_can_be_selected,"月と日のどちらか1つだけを選択できます",Only one of months and days can be selected
 ,,422,private_money_topup_transaction_limit_exceeded,"一回のチャージ取引の最大チャージ可能額がウォレットの最大マネー残高を越えています",The money amount for the transaction exceeds the maximum balance
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -714,9 +737,9 @@ GET,/organizations,400,invalid_parameters,"項目が無効です",Invalid parame
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 POST,/organizations,400,invalid_parameters,"項目が無効です",Invalid parameters
+,,400,invalid_email_domain,"メールアドレスのドメインが間違っています",Invalid domain name error
 ,,403,,,
 ,,409,organization_conflict,,The organization code is already used
-,,409,organization_invoice_registration_number_conflict,"この登録番号は既に登録されています",The invoice registration number is conflict
 ,,409,shop_name_conflict,,The shop name is already used
 ,,422,organization_private_money_not_found,,Issuer organization does not have private-money
 ,,422,unavailable_private_money,,Given private money(s) is/are not available
@@ -729,7 +752,6 @@ GET,/organizations/:code,403,unpermitted_admin_user,"この管理ユーザには
 ,,422,organization_third_party_private_money_not_found,,Issuer organization does not have third-party private-money
 PUT,/organizations/:code,403,,,
 ,,404,,,
-,,409,organization_invoice_registration_number_conflict,"この登録番号は既に登録されています",The invoice registration number is conflict
 ,,422,organization_not_member_organization,,The specified organization is not a member organization of the organization accessing this API
 ,,422,organization_third_party_private_money_not_found,,Issuer organization does not have third-party private-money
 ,,503,temporarily_unavailable,,Service Unavailable
@@ -778,8 +800,7 @@ GET,/customers/:uuid,400,invalid_parameters,"項目が無効です",Invalid para
 GET,/customers/:uuid/cards,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,customer_user_not_found,,The customer user is not found
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/customers/:uuid/cards,400,invalid_email_domain,"メールアドレスのドメインが間違っています",Invalid domain name error
-,,400,invalid_mdk_token,,Invalid MDK token
+POST,/customers/:uuid/cards,400,invalid_mdk_token,"カード情報を確認できませんでした。お手数ですが、カード情報を入力し直してください。",Invalid MDK token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,card_not_found,"カードが見つかりません",
 ,,409,already_registered_veritrans_card,"このカードは既に登録されています",
@@ -787,14 +808,15 @@ POST,/customers/:uuid/cards,400,invalid_email_domain,"メールアドレスの�
 ,,422,customer_account_not_found,"ユーザアカウントが見つかりません",The customer account is not found
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,dev_env_user_veritrans_membership_deleted,"テスト環境におけるVeritrans4Gのカード情報の定期的な削除によって、ポケペイに登録済みのカード情報を削除しました。お手数ですが、カード情報の登録から再度お試しください",User Veritrans membership on development environment is deleted
-,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,unavailable_card_error,"カード会社の判断により、このカードはご利用いただけませんでした。カード会社にお問い合わせいただくか、別のカードをご利用ください。",This card could not be used due to the card issuer's decision. Please contact your card issuer or use another card.
+,,422,card_limit_exceeded,"ご利用可能額を超えているため、このカードはご利用いただけませんでした。別のカードをご利用ください。",This card could not be used because the available credit has been exceeded. Please use another card.
+,,422,invalid_card,"カード会社によりご利用が承認されませんでした。カード番号・有効期限・セキュリティコードに誤りがないかご確認のうえ、再度お試しください。","Your card issuer did not approve this card. Please check that the card number, expiration date, and security code are correct, and try again."
 ,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
 ,,422,unacceptable_card,,Card is not acceptable for some reason
 ,,422,veritrans_membership_not_registered,"会員登録をしていません",
-,,503,failed_to_send_email,,Failed to send an E-mail.
 ,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
 POST,/customers/:uuid/cards/delete,400,invalid_email_domain,"メールアドレスのドメインが間違っています",Invalid domain name error
-,,400,invalid_mdk_token,,Invalid MDK token
+,,400,invalid_mdk_token,"カード情報を確認できませんでした。お手数ですが、カード情報を入力し直してください。",Invalid MDK token
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,card_not_found,"カードが見つかりません",
 ,,409,already_registered_veritrans_card,"このカードは既に登録されています",
@@ -802,14 +824,16 @@ POST,/customers/:uuid/cards/delete,400,invalid_email_domain,"メールアドレ�
 ,,422,card_has_active_credit_session,"アクティブなオーソリセッションがあるためカードを削除できません",Cannot delete card with active credit session
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,dev_env_user_veritrans_membership_deleted,"テスト環境におけるVeritrans4Gのカード情報の定期的な削除によって、ポケペイに登録済みのカード情報を削除しました。お手数ですが、カード情報の登録から再度お試しください",User Veritrans membership on development environment is deleted
-,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,unavailable_card_error,"カード会社の判断により、このカードはご利用いただけませんでした。カード会社にお問い合わせいただくか、別のカードをご利用ください。",This card could not be used due to the card issuer's decision. Please contact your card issuer or use another card.
+,,422,card_limit_exceeded,"ご利用可能額を超えているため、このカードはご利用いただけませんでした。別のカードをご利用ください。",This card could not be used because the available credit has been exceeded. Please use another card.
+,,422,invalid_card,"カード会社によりご利用が承認されませんでした。カード番号・有効期限・セキュリティコードに誤りがないかご確認のうえ、再度お試しください。","Your card issuer did not approve this card. Please check that the card number, expiration date, and security code are correct, and try again."
 ,,422,veritrans_wrong_password_or_cancel,"本人認証に失敗しました。（パスワード間違い、キャンセル、カード会社判定）",Not complete authentication by cardholder.
 ,,422,unacceptable_card,,Card is not acceptable for some reason
 ,,422,veritrans_membership_not_registered,"会員登録をしていません",
 ,,503,failed_to_send_email,,Failed to send an E-mail.
 ,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/customers/:uuid/card-authorize/topup-with-membership,400,invalid_mdk_token,,Invalid MDK token
+POST,/customers/:uuid/card-authorize/topup-with-membership,400,invalid_mdk_token,"カード情報を確認できませんでした。お手数ですが、カード情報を入力し直してください。",Invalid MDK token
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,forbidden,,Forbidden
@@ -820,7 +844,7 @@ POST,/customers/:uuid/card-authorize/topup-with-membership,400,invalid_mdk_token
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,dev_env_user_veritrans_membership_deleted,"テスト環境におけるVeritrans4Gのカード情報の定期的な削除によって、ポケペイに登録済みのカード情報を削除しました。お手数ですが、カード情報の登録から再度お試しください",User Veritrans membership on development environment is deleted
 ,,422,cannot_authenticate_error,"認証に失敗しました",Authentication failed
-,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,unavailable_card_error,"カード会社の判断により、このカードはご利用いただけませんでした。カード会社にお問い合わせいただくか、別のカードをご利用ください。",This card could not be used due to the card issuer's decision. Please contact your card issuer or use another card.
 ,,422,authenticate_failure_unsupported_device,"未対応デバイス（未対応ブラウザ、携帯等）等の理由で認証できません。",Ineligible for 3D-secure service.
 ,,422,troubled_client_error,"誤った操作を行なった可能性があります",
 ,,422,veritrans_rfc_invalid_email,"登録されているメールアドレスはカード登録に使用できないフォーマットになっています。メールアドレスの先頭または@の直前に.がある場合や、連続した.が含まれている場合はメールアドレスを変更してください",The registered email address is in a format that cannot be used for card registration
@@ -871,7 +895,7 @@ POST,/customers/:uuid/card-authorize/topup-with-membership,400,invalid_mdk_token
 ,,422,total_credit_card_topup_amount_today_exceeding_daily_cap,"一日のクレジットカードでのチャージの合計金額が上限を超えています",Total topup amount using credit card today is exceeding the daily cap
 ,,503,veritrans_api_error,"カード決済サービスが一時的にご利用になれません。時間を置いて再度お試しください",Credit card service is temporarily unavailable. Please wait a moment and try again
 ,,503,temporarily_unavailable,,Service Unavailable
-POST,/customers/:uuid/card-authorize/topup-with-mdk-token,400,invalid_mdk_token,,Invalid MDK token
+POST,/customers/:uuid/card-authorize/topup-with-mdk-token,400,invalid_mdk_token,"カード情報を確認できませんでした。お手数ですが、カード情報を入力し直してください。",Invalid MDK token
 ,,400,invalid_parameters,"項目が無効です",Invalid parameters
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,403,forbidden,,Forbidden
@@ -881,7 +905,7 @@ POST,/customers/:uuid/card-authorize/topup-with-mdk-token,400,invalid_mdk_token,
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
 ,,422,cannot_authenticate_error,"認証に失敗しました",Authentication failed
-,,422,unavailable_card_error,"このクレジットカードはご利用になれません",The credit card is unavailable
+,,422,unavailable_card_error,"カード会社の判断により、このカードはご利用いただけませんでした。カード会社にお問い合わせいただくか、別のカードをご利用ください。",This card could not be used due to the card issuer's decision. Please contact your card issuer or use another card.
 ,,422,authenticate_failure_unsupported_device,"未対応デバイス（未対応ブラウザ、携帯等）等の理由で認証できません。",Ineligible for 3D-secure service.
 ,,422,troubled_client_error,"誤った操作を行なった可能性があります",
 ,,422,veritrans_rfc_invalid_email,"登録されているメールアドレスはカード登録に使用できないフォーマットになっています。メールアドレスの先頭または@の直前に.がある場合や、連続した.が含まれている場合はメールアドレスを変更してください",The registered email address is in a format that cannot be used for card registration
@@ -939,6 +963,7 @@ POST,/cvs,400,cvs_invalid_request_parameter,"入力データが不正です",Par
 ,,422,user_not_found,"ユーザーが見つかりません",The user is not found
 ,,422,customer_user_not_found,,The customer user is not found
 ,,422,private_money_not_found,"マネーが見つかりません",Private money not found
+,,422,cvs_payment_gateway_error,"決済サービスでコンビニ決済を受け付けられませんでした",The convenience store payment could not be processed by the payment service.
 ,,422,credit_session_money_topup_requires_credit_card,"オーソリチャージ用マネーではクレジットカードによるチャージのみ許可されています",Credit card is required for topup on credit-session enabled money
 ,,422,cannot_topup_during_cvs_authorization_pending,"コンビニ決済の予約中はチャージできません",You cannot topup your account while a convenience store payment is pending.
 ,,422,credit_session_not_found,"オーソリセッションが見つかりません",Credit session not found
@@ -990,6 +1015,7 @@ DELETE,/cvs/:order-id,400,cvs_invalid_request_parameter,"入力データが不�
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,cvs_authorization_has_already_been_canceled,"このコンビニ決済はすでにキャンセルされています",This authorization has already been canceled.
 ,,422,completed_cvs_authorization_cannot_be_canceled,"完了したコンビニ決済はキャンセルできません",Completed authorizations cannot be canceled.
+,,422,cvs_payment_gateway_error,"決済サービスでコンビニ決済を受け付けられませんでした",The convenience store payment could not be processed by the payment service.
 ,,422,cvs_authorization_not_found,,CVS Authorization not found.
 PATCH,/clearings/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,clearing_not_found,"精算が見つかりません",Clearing not found
@@ -1191,6 +1217,7 @@ POST,/campaigns,400,invalid_parameters,"項目が無効です",Invalid parameter
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,422,campaign_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
 ,,422,shop_account_not_found,"店舗アカウントが見つかりません",The shop account is not found
+,,422,campaign_invalid_user_tag_group_item,"指定された店舗ラベルが不正です",The specified shop label is invalid
 ,,422,campaign_period_overlaps,"同期間に開催されるキャンペーン間で優先度が重複してます",The campaign period overlaps under the same private-money / type / priority
 ,,422,campaign_invalid_period,,Invalid campaign period starts_at later than ends_at
 ,,422,shop_user_not_found,"店舗が見つかりません",The shop user is not found
@@ -1201,6 +1228,8 @@ PATCH,/campaigns/:uuid,400,invalid_parameters,"項目が無効です",Invalid pa
 ,,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,422,campaign_budget_caps_exceeded,"キャンペーン予算上限額を越えています",The campaign budget caps exceeded
+,,422,campaign_invalid_user_tag_group_item,"指定された店舗ラベルが不正です",The specified shop label is invalid
+,,422,campaign_locked,"このキャンペーンは技術者によって設定されているため更新できません",This campaign is configured by engineers and cannot be updated
 GET,/campaigns/:uuid,403,unpermitted_admin_user,"この管理ユーザには権限がありません",Admin does not have permission
 ,,404,notfound,,Not found
 ,,503,temporarily_unavailable,,Service Unavailable
