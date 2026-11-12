@@ -8,8 +8,8 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "846ac8d5-8b6c-4375-850a-d9f1df8b4d62",
-            "e237f6b8-5d31-46cf-b33f-315afe23851a"
+            "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+            "aa38f265-18fc-4b3d-b468-5b43b1521775"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "846ac8d5-8b6c-4375-850a-d9f1df8b4d62",
-            "e237f6b8-5d31-46cf-b33f-315afe23851a",
+            "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+            "aa38f265-18fc-4b3d-b468-5b43b1521775",
             [
-                'description' => "gKE8LcCa8bz2nHShe5EoHVudmx1iMacSt3whWHQ5cbR62EyfrAyRxoXmZ8au8D4esSHy55WYfHfvN0QEBe9OUmuQoNyAxdhT65"
+                'description' => "Cr4dBSWzD3agMTAvZtCmtviHLHOBHoLH"
             ]
         );
         try {
@@ -43,11 +43,11 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "846ac8d5-8b6c-4375-850a-d9f1df8b4d62",
-            "e237f6b8-5d31-46cf-b33f-315afe23851a",
+            "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+            "aa38f265-18fc-4b3d-b468-5b43b1521775",
             [
-                'additional_private_money_ids' => ["e2a70e66-3aa7-44e1-ac4e-09d60be1965e", "1d910096-f30d-4acd-b20f-b7add4332778", "996ba8ea-a971-431f-acaa-a75013aff3f8", "06b18892-e996-4278-bb79-b3237e083bb8", "e774c97e-c9a1-4bd2-a771-2b77462988c6", "ecfd0bd7-0fde-42d4-915c-a51536889831", "a1401868-6bf6-4398-9856-3aa9fe707817", "5aebfe2c-19a8-4b0c-b439-9ee2d4c7e8ce", "701d4404-da32-417a-a684-27c971622926", "a9cd0a78-694e-4092-9afc-ceda37241178"],
-                'description' => "4eE9mHPjq6XCvYjxbcuNA5AO"
+                'additional_private_money_ids' => ["1f400f17-d748-4b17-893d-e579cd4c8773", "801b78e0-1b6f-4fb5-b508-f0160bbf1eb9", "5712113a-c34f-4c29-b3ea-319b52a9a0a4", "a8d4befd-6ce9-4d13-9b82-476164205cde", "57c0e1b9-cce8-4e01-9583-effd8f7d26df", "ebdcb41a-cc24-44aa-b36f-93f6e57450f7"],
+                'description' => "p1QqOYhJfTJv9"
             ]
         );
         try {
@@ -63,12 +63,12 @@ class CreateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBill(
-            "846ac8d5-8b6c-4375-850a-d9f1df8b4d62",
-            "e237f6b8-5d31-46cf-b33f-315afe23851a",
+            "8b95fcd3-02c2-4b78-beaf-53a3d3a2daa1",
+            "aa38f265-18fc-4b3d-b468-5b43b1521775",
             [
-                'amount' => 173.0,
-                'additional_private_money_ids' => ["07d8d248-443e-4527-be89-51bad8f57297", "8a4e5792-9f72-4b2f-b5b6-7d67c852f423"],
-                'description' => "XocPu4UpOUbFxl1xg8SX1voG8Gydqo4fQ7D47J36mgyKf2pLnur36TYPgxIzfeirgw"
+                'amount' => 140.0,
+                'additional_private_money_ids' => ["a1893025-7334-40aa-bbbe-41ba7fa9193b", "d9484a62-7280-4eee-87a6-6d3b99a909bb", "93925044-e279-40c8-8bac-b8a8e0d39367", "dc343f37-e96a-473f-9f66-edb7b58f1754", "ca7d6152-c142-4ebb-ae11-c6c44cca8ff5", "6fc1af73-36f2-4862-b697-3a3235403004", "c860ec92-14e9-470d-bced-f712122a1465"],
+                'description' => "aN035TYhQYVT6897JBIT98Ea3vOiHnJbC3RzxMsGYTRQVbbDGQ3KFvfr7wcTIqfZGa8VmM7LxaafZsEiZ4h1kUtLESZUqCMHUv6WI9WlLqAjFFVtovIA3w7if4YoZJ6xmZ8N4p4uCNZaugRp11iMcrfILo"
             ]
         );
         try {

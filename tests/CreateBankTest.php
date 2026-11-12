@@ -8,10 +8,10 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "505465f4-79c1-4727-a3da-4f1b21a783d3",
-            "c7c5e36b-c165-42f2-aefd-5d8cd93e2ea3",
-            "bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQlj7s7IqXcFdC0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs0g4RtCJckJnkv8b3lOd0jZSZisKJGtLxfbPFfaIRWKNMj5dtiKnG8zX8t",
-            "Wqvm0QmTuUJdqTxvEdTrlIk"
+            "08fb1f16-6d55-4eee-b5bb-f99808862f1a",
+            "29611482-532d-47f7-9160-dd20210d1b37",
+            "jNoaulXZjgrVDfW2ufNp0gAs9phyFh2aSmdruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwu",
+            "knsF"
         );
         try {
             $response = $client->send($request);
@@ -26,12 +26,12 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "505465f4-79c1-4727-a3da-4f1b21a783d3",
-            "c7c5e36b-c165-42f2-aefd-5d8cd93e2ea3",
-            "bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQlj7s7IqXcFdC0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs0g4RtCJckJnkv8b3lOd0jZSZisKJGtLxfbPFfaIRWKNMj5dtiKnG8zX8t",
-            "Wqvm0QmTuUJdqTxvEdTrlIk",
+            "08fb1f16-6d55-4eee-b5bb-f99808862f1a",
+            "29611482-532d-47f7-9160-dd20210d1b37",
+            "jNoaulXZjgrVDfW2ufNp0gAs9phyFh2aSmdruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwu",
+            "knsF",
             [
-                'birthdate' => "Gk"
+                'birthdate' => "uO"
             ]
         );
         try {
@@ -47,13 +47,13 @@ class CreateBank extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateBank(
-            "505465f4-79c1-4727-a3da-4f1b21a783d3",
-            "c7c5e36b-c165-42f2-aefd-5d8cd93e2ea3",
-            "bwN5IYLm99wEVRQ8sJxsInHOegu4ueAVfQ8nRhLcha2zRRyQlj7s7IqXcFdC0ufgYUkqe3kskveA2n2lBOE9H5VVR8QU7QjrIemlNkbreYYQh0DpuFWTXBEy8Kcs0g4RtCJckJnkv8b3lOd0jZSZisKJGtLxfbPFfaIRWKNMj5dtiKnG8zX8t",
-            "Wqvm0QmTuUJdqTxvEdTrlIk",
+            "08fb1f16-6d55-4eee-b5bb-f99808862f1a",
+            "29611482-532d-47f7-9160-dd20210d1b37",
+            "jNoaulXZjgrVDfW2ufNp0gAs9phyFh2aSmdruAKFNN9YCEWSULZdpylXeF6qvGwUl7ATMaf3NqLOcKmTPNREiEdfOxleMzyqb14XnQoYrg3WK0gxDGSVD8anN0lX3R6Ngh2OAi1BcnwfTRLJa4uoIhpR40nORwu",
+            "knsF",
             [
-                'email' => "GEpBmPu4Hk@qOfX.com",
-                'birthdate' => "Ekl5C8"
+                'email' => "eDw3ETEoYb@DEhr.com",
+                'birthdate' => "0AwKk"
             ]
         );
         try {

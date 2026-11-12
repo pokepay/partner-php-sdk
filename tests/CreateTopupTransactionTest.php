@@ -8,9 +8,9 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0"
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d"
         );
         try {
             $response = $client->send($request);
@@ -25,11 +25,11 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0",
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
             [
-                'request_id' => "3966e75a-48bf-4d73-8708-e0f988dbed50"
+                'request_id' => "46fb88a2-28ed-4778-8015-6b041b4b993f"
             ]
         );
         try {
@@ -45,12 +45,12 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0",
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
             [
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "98816005-696c-4996-8ba4-0d0772fd22bd"
+                'request_id' => "762bfcca-e855-42ee-bee4-471c2286ea39"
             ]
         );
         try {
@@ -66,13 +66,13 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0",
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
             [
-                'description' => "ZYRURgUMf0P5ozHDn0iOeoWIRRMyR0nQkh8Zz7eaFGoiOPKR0rUW9UTcnGDBsZuPfABdiNvfS9Anufij6THnocikBJOkD3FvwnaI0WeOGlWmmegc1KGhe3Txnu",
+                'description' => "RrjDmsbpR1t9xme9U0GR2pRvNpULEoTr6H5p2Y5YBaOZdS1seolNILNbVpFGvZ3N4x3uvaLnbw12Ii4C82SzJJG4lODNS2Ij7U5b72UTWbjXGfzCmZ2vkYmrCrWwA7IkDmk9acr8tX9JQSHyiFoseHqYyK8GIOW0PGU45uzPdd0dJeNNvUC",
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "4490ba4b-8261-441b-bf08-d86359004cfe"
+                'request_id' => "b7257d1e-2b30-4362-b109-c000786b5f8f"
             ]
         );
         try {
@@ -88,14 +88,14 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0",
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
             [
-                'point_expires_at' => "2021-07-14T23:33:11.000000Z",
-                'description' => "CS1DK4Gnrr3oBLGMXHrz9mqfRhRmUp8pN9pjtBKEK15Dd3XxCT0Zmu6u7tOxquneNatGolCf6SjeF7SeZXyMS6WkNJ2GvSwQUcruYP4H5cCw5ExNqh41OXXFwVmaHYw6oEFbK8qER1LlAIi5qYTqeIN9jfts",
+                'point_expires_at' => "2026-06-04T18:57:26.000000Z",
+                'description' => "vmd5I8evbrAQGpnYomE2cpD4cThkIOO2LW0e3G1sTmjjHcN57ZbAikJ2opGyr1ja",
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "5e1a359d-4342-44d4-abeb-10a60e9c3b7f"
+                'request_id' => "0adaacb3-479e-4afa-b583-de8135ee8012"
             ]
         );
         try {
@@ -111,15 +111,15 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0",
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
             [
-                'point_amount' => 6291,
-                'point_expires_at' => "2020-07-17T06:33:40.000000Z",
-                'description' => "nQigIBcgyeHE0tecRrYBgXoYNaRDH3xa5ZXl3L94kmDiQZVmfdCV9wGJUROgp1VTNstK",
+                'point_amount' => 8813,
+                'point_expires_at' => "2026-02-13T18:38:02.000000Z",
+                'description' => "e771kQ7mwZnfGMQasC1yb1Dq2UL9Kx0jYk7sZRicOTg23f5GXrX6ozTzm0HG0TosxKz4jitwHtujKhwCFGwiyv4vlRBRxfHZeKBVf4jVtecQNubIdHetIBP",
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "e93f83dd-273e-4073-9e8f-94e2e4e51c6b"
+                'request_id' => "a05cb38c-740c-4b55-933f-7572719a092d"
             ]
         );
         try {
@@ -135,16 +135,16 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0",
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
             [
-                'money_amount' => 886,
-                'point_amount' => 1676,
-                'point_expires_at' => "2024-08-25T04:34:05.000000Z",
-                'description' => "ZmJCZwuee4w9Rkvag9C19xRl1IlJpGXqlhd5uwOg53j3Qic0iyKLnZxaZi9iCa2kj9IDD4FLU53H4cTCafuN856J50SdiADG37ey",
+                'money_amount' => 3830,
+                'point_amount' => 7408,
+                'point_expires_at' => "2022-07-03T12:45:25.000000Z",
+                'description' => "N86f46tWgyM",
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "7c16228e-bfe4-4301-8747-da45f4915d13"
+                'request_id' => "0ff2f2b4-cd33-42a8-89c1-e08ed5359b4a"
             ]
         );
         try {
@@ -160,17 +160,17 @@ class CreateTopupTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateTopupTransaction(
-            "40438761-18af-48f2-8672-538e21afc393",
-            "d7285db5-6547-4ad0-8cb0-98f7c5ce1570",
-            "6fcb410c-dc83-45b4-8fec-9db7171410b0",
+            "779d29a4-9328-4324-b4a7-2765237843bc",
+            "4dcb55b0-9b9e-4542-9cfa-c8416036fc57",
+            "f050a3f9-cab8-44b0-a69a-a5b2aad39d4d",
             [
-                'bear_point_shop_id' => "60ce7bac-511c-4ace-8dd0-9f75c1359cd3",
-                'money_amount' => 6869,
-                'point_amount' => 3234,
-                'point_expires_at' => "2025-09-26T02:53:59.000000Z",
-                'description' => "CPNHip0Y3dBWcNdXe1sIjLSVztCspdpKcDGU85LATApzQ2dQG1XtK0UfX1fzmKZw4",
+                'bear_point_shop_id' => "391a9528-49da-41a2-b0cb-f282d601da2f",
+                'money_amount' => 7963,
+                'point_amount' => 9463,
+                'point_expires_at' => "2026-10-13T16:48:23.000000Z",
+                'description' => "YBSX4EzfsIiIDCSxoowqwobMRj4K8plKuk4zON6lsKCXAkk07Q9YuV27x2ZZwJNPJ0aXH1uRWCYsw6VR",
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "e489d188-81aa-448a-a9ea-472687ec4a02"
+                'request_id' => "d315edc2-0f95-4266-9258-9a189e847860"
             ]
         );
         try {

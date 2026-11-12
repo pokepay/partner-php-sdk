@@ -8,8 +8,8 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "6ce43cde-875c-44d1-9ce6-3c8c2f2c7d80",
-            "c78b1de8-84ce-4fbd-8598-41629c9bba40"
+            "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+            "54af57f3-f39c-4258-9caf-9886fcc19e72"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "6ce43cde-875c-44d1-9ce6-3c8c2f2c7d80",
-            "c78b1de8-84ce-4fbd-8598-41629c9bba40",
+            "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+            "54af57f3-f39c-4258-9caf-9886fcc19e72",
             [
-                'strategy' => "point-preferred"
+                'strategy' => "money-only"
             ]
         );
         try {
@@ -43,10 +43,10 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "6ce43cde-875c-44d1-9ce6-3c8c2f2c7d80",
-            "c78b1de8-84ce-4fbd-8598-41629c9bba40",
+            "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+            "54af57f3-f39c-4258-9caf-9886fcc19e72",
             [
-                'request_id' => "686ad6df-e5bc-4e04-9d0b-0db39820d92f",
+                'request_id' => "b0a1dc41-095e-4da7-a747-4f08e3d906ec",
                 'strategy' => "money-only"
             ]
         );
@@ -63,12 +63,12 @@ class CreatePaymentTransactionWithBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreatePaymentTransactionWithBill(
-            "6ce43cde-875c-44d1-9ce6-3c8c2f2c7d80",
-            "c78b1de8-84ce-4fbd-8598-41629c9bba40",
+            "0696dadd-89d1-4677-b44f-a9ed32b4544a",
+            "54af57f3-f39c-4258-9caf-9886fcc19e72",
             [
                 'metadata' => "{\"key\":\"value\"}",
-                'request_id' => "1de9d2e6-2706-4947-bba6-0d2ee2ba039d",
-                'strategy' => "point-preferred"
+                'request_id' => "18a3d0a2-fe92-4fc5-8205-bb194fad4716",
+                'strategy' => "money-only"
             ]
         );
         try {

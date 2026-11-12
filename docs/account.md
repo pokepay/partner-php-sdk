@@ -15,8 +15,8 @@ Customerのウォレットはマネー残高(有償バリュー)、ポイント�
 $request = new Request\ListUserAccounts(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     [
-        'page' => 7544,                           // ページ番号
-        'per_page' => 2252                        // 1ページ分の取引数
+        'page' => 2706,                           // ページ番号
+        'per_page' => 4066                        // 1ページ分の取引数
     ]
 );
 ```
@@ -91,8 +91,8 @@ $request = new Request\CreateUserAccount(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // userId: ユーザーID
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // privateMoneyId: マネーID
     [
-        'name' => "kYmgigiRBecjiYHAY2JzBXAH8kMOdWqNTIGASpUbYQp5bqa8tWD6s9Q6iiZbOooVKgu1qds6qgsoONFz6uyU0wrmFTsH1jox1nE7Xd1LHtA5BVDLAJt8tqoldYOWGhpaRKD1ENaiTkaXYFCXi0fdqXvmGys8YOpBu2KczD6BTCHnjtvnDM8G6PBmZyIjoWRfxfaml9V53r3s2", // ウォレット名
-        'external_id' => "bgJInEjXNNDJsFK9WBlSOaEAClE0qaCOj2fSXpFKUlotqu2axS", // 外部ID
+        'name' => "nO6pf4h9ws9kLnk6cNbb0JJrPLyLIGGlYxmDF5NDmHAR3RBnK7", // ウォレット名
+        'external_id' => "2f11paMW4hGPanWOZJLbDfcebA2u", // 外部ID
         'metadata' => "{\"key1\":\"foo\",\"key2\":\"bar\"}" // ウォレットに付加するメタデータ
     ]
 );
