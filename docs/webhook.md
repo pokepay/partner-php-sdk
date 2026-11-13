@@ -72,8 +72,8 @@ $request = new Request\ListWebhooks(
 
 ```PHP
 $request = new Request\CreateWebhook(
-    "process_user_stats_operation",               // task: タスク名
-    "1nu1YMp"                                     // url: URL
+    "bulk_shops",                                 // task: タスク名
+    "d"                                           // url: URL
 );
 ```
 
@@ -176,8 +176,8 @@ $request = new Request\DeleteWebhook(
 $request = new Request\UpdateWebhook(
     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",       // webhookId: Webhook ID
     [
-        'url' => "ChC",                           // URL
-        'is_active' => TRUE,                      // 有効/無効
+        'url' => "odh0ls",                        // URL
+        'is_active' => FALSE,                     // 有効/無効
         'task' => "bulk_shops"                    // タスク名
     ]
 );

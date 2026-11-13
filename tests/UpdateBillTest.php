@@ -8,7 +8,7 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "54cf65f5-ba67-47cd-b34f-e8048287ddd1"
+            "02e740da-988b-41d0-9d37-63b26298e2aa"
         );
         try {
             $response = $client->send($request);
@@ -23,9 +23,9 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
+            "02e740da-988b-41d0-9d37-63b26298e2aa",
             [
-                'additional_private_money_ids' => ["61ec7332-334a-4f82-88c2-d06ea0d6211f", "a2dbbe78-cb62-4c2c-be1a-9b002558eae9", "fdbedf9f-1c29-4345-8d30-193d890340ef", "934c377e-4746-4980-92c7-9e6ee43b727f", "2f3712fc-316e-4380-8676-89a9d6fcc3c0", "72f03d94-6c18-441c-ab98-4d09306ea97e", "9274a7cb-ec16-4b58-8639-04adfd67d228", "bb53616d-0517-44d7-b41a-a97bf92d1e6d", "18ce89cc-4165-400d-b203-5216f0200348"]
+                'additional_private_money_ids' => ["a638a8b7-802a-4d83-bf0c-91fea1c57406", "6b7b4bca-60aa-43e1-9aef-0e590eb0fa1f", "a1b2011f-e49a-479d-80e2-1138669ae089", "3094cbf3-a10a-4af0-b623-69e081864331", "be8fc617-5946-4c63-9361-1e11098a0559", "7db900f8-e1b8-4c63-bc29-82b70c4f72e3", "621c8933-9fa7-4637-929e-ec4be8b77d81", "6ca05cb2-e9c2-4da4-af25-4f8499da23ac", "914e0e51-79c5-4b1c-86ef-f2ed00fce9f8"]
             ]
         );
         try {
@@ -41,10 +41,10 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
+            "02e740da-988b-41d0-9d37-63b26298e2aa",
             [
                 'is_disabled' => FALSE,
-                'additional_private_money_ids' => ["3b350a56-ea36-4b86-b995-b99ecb152a3d", "9a1d92c4-ddf1-4d09-84fd-4d20792e913c", "9f326b92-0dcd-4a7c-86f5-531a16bf08f2", "6d9c9d8c-24ed-43b2-9001-703ddd0eae48", "a53c5df9-631e-4a1d-80db-f3d918e0ffb5", "1b7a060d-ee95-453a-b278-82420d8bb2d2"]
+                'additional_private_money_ids' => ["04c2c0e4-ee76-4c1c-aefa-23874afee603", "4df550f8-50cb-42bc-8f7d-2ed6f203f65e"]
             ]
         );
         try {
@@ -60,11 +60,11 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
+            "02e740da-988b-41d0-9d37-63b26298e2aa",
             [
-                'description' => "FTyEvnewbYd4rNZJsCq7m7arw2NKYH12xHXaAOFqIwxrvxkxwVYBDQiRCyVTR3czNdwQ9LziqjK5MdQ1lZMyARXVB9A32ESqVUKE1GN9JqLEvyRdA5j20ws4Z1pnjZ8xWKeN3WKGyHXCKDfS0S9olxtCG8sS34enFyHhIbteE1tQ",
-                'is_disabled' => TRUE,
-                'additional_private_money_ids' => ["a6a582be-cacf-455d-9a4d-e3ab06144a74", "106a508e-5f74-402c-9faa-350a7bd50282", "80ead2d5-030c-4ddb-8213-09e801b21ba7", "6ba9a844-5330-4112-8f69-8af7381b4312", "3bbbf581-a3a2-41c5-b6ef-a5f6cfcae578"]
+                'description' => "xdoit0nsRdkY0a6T9IRy95uKnYj6aDVb3qDkr4zFWttvA7t4NS9wkdOXwioDpfXuzoNbRpuKefj9znX2XonFzQcO5QEOmdgUm73I2kFchNQksZB6ByT3lVRQ7O823WFeXCsAD",
+                'is_disabled' => FALSE,
+                'additional_private_money_ids' => ["83d3e1aa-c05c-4e66-b62a-6f65ff338f57", "3651128d-617b-4576-b527-ab0bc0080c40", "01f62a9d-2753-4b1a-a5ac-4cf43f2ce74a", "00fb1511-064c-468c-a92a-1b40513502f5", "50fa615d-03a3-4d1d-9fda-86e396228292", "786c319b-e1bf-44c2-a22c-120ede48deb6", "aa2435bf-5174-4f64-aae3-64f766002be9"]
             ]
         );
         try {
@@ -80,12 +80,12 @@ class UpdateBill extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\UpdateBill(
-            "54cf65f5-ba67-47cd-b34f-e8048287ddd1",
+            "02e740da-988b-41d0-9d37-63b26298e2aa",
             [
-                'amount' => 3119.0,
-                'description' => "7L6kZ3KaNub1zwaCdHgj8ik3dmsSURUNaSg6OcHEmOeQF",
+                'amount' => 5522.0,
+                'description' => "byPvTHbjOWbqqVGNOP2f7Fmc6XS",
                 'is_disabled' => TRUE,
-                'additional_private_money_ids' => ["25bd1eb3-4ccf-4d78-93b8-0bf1e5f6fc44", "1b6844dd-6d7a-4afe-9fd3-42d15e9fce9f", "15348a07-be30-4bd9-8812-6c561d5ae918", "933b1d9d-4c4e-44c3-9b2a-ea16f43e9eb6", "a4778e05-af10-44a9-9383-1a6631996cf2", "c9bad83a-4b4c-4029-b3de-b745c2a0faa2", "9a4aa223-c3e7-4962-b709-8dfdbe93e944", "61fedff2-9825-46e1-8b3e-1b063de4db66", "725fca1e-5623-4d11-a75d-f9fafb84a0f9"]
+                'additional_private_money_ids' => ["92a4482e-b14d-4910-bbb3-08871cfea9d9", "f02bdeb5-3c58-4efc-bf5f-395001e21003", "5f50c0f8-69fd-4dee-aaa4-dbbfcb5b60af", "3d56ee2a-12c6-44e8-a6eb-a8666316a59f", "d592ffd9-2bab-4867-b6c1-1242b5baca78", "451e5ad2-d106-4a5b-abe8-42ead37b6ad6", "adfabd04-26ab-46b7-b285-ea2f770a7ba9", "b398f708-a0d8-4a6d-8a60-27b6990ba246", "a47f16b6-79ef-4592-ae94-575f42c14f68"]
             ]
         );
         try {

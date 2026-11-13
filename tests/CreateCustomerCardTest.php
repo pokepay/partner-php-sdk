@@ -8,8 +8,8 @@ class CreateCustomerCard extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerCard(
-            "28fc759d-a3b4-4558-8566-92554f2bd615",
-            "e1"
+            "04cd8060-9453-4095-b5bb-19a4b42b0eb7",
+            "AEF"
         );
         try {
             $response = $client->send($request);
@@ -24,10 +24,10 @@ class CreateCustomerCard extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CreateCustomerCard(
-            "28fc759d-a3b4-4558-8566-92554f2bd615",
-            "e1",
+            "04cd8060-9453-4095-b5bb-19a4b42b0eb7",
+            "AEF",
             [
-                'is_cardholder_name_specified' => TRUE
+                'is_cardholder_name_specified' => FALSE
             ]
         );
         try {

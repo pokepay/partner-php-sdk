@@ -8,7 +8,7 @@ class CancelBulkTransaction extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\CancelBulkTransaction(
-            "f2da52ad-3ed7-4701-8752-64527e4b1204"
+            "573bea28-78db-405a-80cb-e1c8e802a4aa"
         );
         try {
             $response = $client->send($request);

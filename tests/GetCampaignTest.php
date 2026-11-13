@@ -8,7 +8,7 @@ class GetCampaign extends TestCase
     {
         $client = $this->newClient();
         $request = new Request\GetCampaign(
-            "1087c955-b864-4c8a-935d-25dd75fdfe07"
+            "6a9727d5-f5aa-4f07-9627-3286e47da8fc"
         );
         try {
             $response = $client->send($request);
